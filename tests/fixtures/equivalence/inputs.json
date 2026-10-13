@@ -1,0 +1,1010 @@
+{
+  "schema_version": "esi-benchmark/equivalence-inputs-v1",
+  "fixture_origin": "Synthetic, no simulator assets or trajectory exports. Cases follow upstream CPU test scenarios.",
+  "parser": [
+    {
+      "id": "wait",
+      "arguments": {
+        "action": "wait"
+      }
+    },
+    {
+      "id": "distance_tolerance",
+      "arguments": {
+        "action": "move_forward",
+        "move_distance_m": 0.3005,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "distance_outside_tolerance",
+      "arguments": {
+        "action": "move_forward",
+        "move_distance_m": 0.302
+      }
+    },
+    {
+      "id": "distance_arbitrary",
+      "arguments": {
+        "action": "move_left",
+        "move_distance_m": 0.4
+      }
+    },
+    {
+      "id": "distance_boolean",
+      "arguments": {
+        "action": "move_forward",
+        "move_distance_m": true
+      }
+    },
+    {
+      "id": "turn_numeric_string",
+      "arguments": {
+        "action": "turn_left",
+        "turn_angle_deg": "30"
+      }
+    },
+    {
+      "id": "turn_invalid_string",
+      "arguments": {
+        "action": "turn_left",
+        "turn_angle_deg": "30 degrees"
+      }
+    },
+    {
+      "id": "repeat_limit",
+      "arguments": {
+        "action": "move_backward",
+        "repeat": 10,
+        "move_distance_m": 0.6
+      }
+    },
+    {
+      "id": "repeat_too_large",
+      "arguments": {
+        "action": "turn_right",
+        "repeat": 11
+      }
+    },
+    {
+      "id": "repeat_boolean",
+      "arguments": {
+        "action": "turn_right",
+        "repeat": true
+      }
+    },
+    {
+      "id": "repeat_disabled",
+      "arguments": {
+        "action": "turn_right",
+        "repeat": 2
+      },
+      "options": {
+        "allow_navigation_repeat": false
+      }
+    },
+    {
+      "id": "size_disabled",
+      "arguments": {
+        "action": "move_right",
+        "move_distance_m": 0.3
+      },
+      "options": {
+        "allow_navigation_step_sizes": false
+      }
+    },
+    {
+      "id": "optional_fields_discarded",
+      "arguments": {
+        "action": "done",
+        "target": 9,
+        "target_description": "irrelevant",
+        "repeat": 10,
+        "move_distance_m": 0.6,
+        "turn_angle_deg": 30
+      }
+    },
+    {
+      "id": "marker_orphan_description",
+      "arguments": {
+        "action": "pick",
+        "target_description": "red cup"
+      }
+    },
+    {
+      "id": "marker_selection",
+      "arguments": {
+        "action": "pick",
+        "target": 2,
+        "target_description": "red cup"
+      }
+    },
+    {
+      "id": "marker_boolean_target",
+      "arguments": {
+        "action": "pick",
+        "target": true
+      }
+    },
+    {
+      "id": "marker_out_of_range",
+      "arguments": {
+        "action": "pick",
+        "target": 1000
+      }
+    },
+    {
+      "id": "native_reasoning",
+      "arguments": {
+        "action": "wait"
+      },
+      "message_fields": {
+        "reasoning_content": "Inspect the visible shelf."
+      }
+    },
+    {
+      "id": "content_think",
+      "arguments": {
+        "action": "wait"
+      },
+      "message_fields": {
+        "content": "<think>Inspect the visible shelf.</think>"
+      }
+    },
+    {
+      "id": "different_reasoning_fields",
+      "arguments": {
+        "action": "wait"
+      },
+      "message_fields": {
+        "reasoning_content": "one",
+        "reasoning": "two"
+      }
+    },
+    {
+      "id": "free_prose_rejected",
+      "arguments": {
+        "action": "wait"
+      },
+      "message_fields": {
+        "content": "I will wait."
+      }
+    },
+    {
+      "id": "lossless_tool_envelope",
+      "arguments": {},
+      "argument_text": "<tool_call>{\"name\":\"robot_action\",\"arguments\":{\"action\":\"wait\"}}</tool_call>"
+    },
+    {
+      "id": "unknown_action",
+      "arguments": {
+        "action": "teleport"
+      }
+    },
+    {
+      "id": "unknown_argument",
+      "arguments": {
+        "action": "wait",
+        "private_goal": "leak"
+      }
+    }
+  ],
+  "public_results": [
+    {
+      "id": "remaining_zero",
+      "fields": {
+        "status": "completed",
+        "action_decisions_remaining": 0
+      }
+    },
+    {
+      "id": "remaining_over_limit",
+      "fields": {
+        "status": "completed",
+        "action_decisions_remaining": 151
+      }
+    },
+    {
+      "id": "selection_stage_two",
+      "fields": {
+        "status": "selection_required",
+        "stage": 2
+      }
+    },
+    {
+      "id": "invalid_stage",
+      "fields": {
+        "status": "selection_required",
+        "stage": 3
+      }
+    },
+    {
+      "id": "odometry_rounding",
+      "fields": {
+        "status": "completed",
+        "body_odometry": {
+          "forward_m": 0.154,
+          "left_m": -0.004,
+          "yaw_deg": 10.004
+        }
+      }
+    },
+    {
+      "id": "odometry_limit",
+      "fields": {
+        "status": "completed",
+        "body_odometry": {
+          "forward_m": 0.61,
+          "left_m": 0,
+          "yaw_deg": 0
+        }
+      }
+    },
+    {
+      "id": "blocked_category",
+      "fields": {
+        "status": "blocked",
+        "blocked_category": "out_of_reach"
+      }
+    },
+    {
+      "id": "invalid_blocked_category",
+      "fields": {
+        "status": "completed",
+        "blocked_category": "out_of_reach"
+      }
+    }
+  ],
+  "depth": [
+    {
+      "id": "median",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "invalid",
+      "array": [
+        [
+          0,
+          -1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "outside",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "anchor": [
+        3,
+        3
+      ]
+    }
+  ],
+  "conversation": [
+    {
+      "arguments": {
+        "action": "pick"
+      },
+      "result": {
+        "status": "selection_required",
+        "stage": 1
+      },
+      "kind": "marker",
+      "targets": [
+        1,
+        2
+      ]
+    },
+    {
+      "arguments": {
+        "action": "pick",
+        "target": 2,
+        "target_description": "red cup"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    },
+    {
+      "arguments": {
+        "action": "place_inside"
+      },
+      "result": {
+        "status": "selection_required",
+        "stage": 1
+      },
+      "kind": "marker",
+      "targets": [
+        3
+      ]
+    },
+    {
+      "arguments": {
+        "action": "place_inside",
+        "target": 3,
+        "target_description": "cabinet"
+      },
+      "result": {
+        "status": "selection_required",
+        "stage": 2
+      },
+      "kind": "marker",
+      "targets": [
+        4
+      ]
+    },
+    {
+      "arguments": {
+        "action": "place_inside",
+        "target": 4,
+        "target_description": "empty lower shelf"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    },
+    {
+      "arguments": {
+        "action": "wait"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    },
+    {
+      "arguments": {
+        "action": "wait"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    },
+    {
+      "arguments": {
+        "action": "wait"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    },
+    {
+      "arguments": {
+        "action": "wait"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    },
+    {
+      "arguments": {
+        "action": "wait"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    },
+    {
+      "arguments": {
+        "action": "wait"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    },
+    {
+      "arguments": {
+        "action": "wait"
+      },
+      "result": {
+        "status": "completed"
+      },
+      "kind": "physical"
+    }
+  ],
+  "official_scores": [
+    {
+      "id": "none",
+      "initial": [
+        [
+          false,
+          false
+        ]
+      ],
+      "current": [
+        [
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "id": "partial",
+      "initial": [
+        [
+          false,
+          false
+        ]
+      ],
+      "current": [
+        [
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "id": "initial_credit_excluded",
+      "initial": [
+        [
+          true,
+          false
+        ]
+      ],
+      "current": [
+        [
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "id": "any_option_success",
+      "initial": [
+        [
+          false,
+          false
+        ],
+        [
+          false,
+          false
+        ]
+      ],
+      "current": [
+        [
+          false,
+          false
+        ],
+        [
+          true,
+          true
+        ]
+      ]
+    }
+  ],
+  "projected_scores": [
+    {
+      "id": "initial_credit_and_stability",
+      "goal": {
+        "route": "official_projection",
+        "clauses": [
+          {
+            "canonical_predicate": "inside",
+            "quantifier": "ALL_LISTED",
+            "target_scopes": [
+              "a",
+              "b"
+            ],
+            "destination_scopes": [
+              "box"
+            ]
+          }
+        ]
+      },
+      "initial": {
+        "a": true,
+        "b": false
+      },
+      "stability_window": 2,
+      "steps": [
+        {
+          "truth": {
+            "a": true,
+            "b": false
+          },
+          "done": true
+        },
+        {
+          "truth": {
+            "a": false,
+            "b": true
+          }
+        },
+        {
+          "truth": {
+            "a": true,
+            "b": true
+          }
+        },
+        {
+          "truth": {
+            "a": true,
+            "b": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "already_satisfied_no_credit",
+      "goal": {
+        "route": "official_projection",
+        "clauses": [
+          {
+            "canonical_predicate": "inside",
+            "quantifier": "ALL_LISTED",
+            "target_scopes": [
+              "a",
+              "b"
+            ],
+            "destination_scopes": [
+              "box"
+            ]
+          }
+        ]
+      },
+      "initial": {
+        "a": true,
+        "b": true
+      },
+      "steps": [
+        {
+          "truth": {
+            "a": true,
+            "b": true
+          },
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "truth_reader_fails_closed",
+      "goal": {
+        "route": "official_projection",
+        "clauses": [
+          {
+            "canonical_predicate": "inside",
+            "quantifier": "ALL_LISTED",
+            "target_scopes": [
+              "a",
+              "b"
+            ],
+            "destination_scopes": [
+              "box"
+            ]
+          }
+        ]
+      },
+      "initial": {
+        "a": false,
+        "b": false
+      },
+      "steps": [
+        {
+          "truth": {
+            "a": "unknown",
+            "b": false
+          },
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "official_full_rejected",
+      "goal": {
+        "route": "official_full",
+        "clauses": [
+          {
+            "canonical_predicate": "inside",
+            "quantifier": "ALL_LISTED",
+            "target_scopes": [
+              "a",
+              "b"
+            ],
+            "destination_scopes": [
+              "box"
+            ]
+          }
+        ]
+      },
+      "initial": {
+        "a": false,
+        "b": false
+      },
+      "steps": [
+        {
+          "truth": {
+            "a": true,
+            "b": true
+          }
+        }
+      ]
+    }
+  ],
+  "process": [
+    {
+      "id": "legal_placement",
+      "requirements": {
+        "no_manipulation_roles": [],
+        "before_placement": [
+          {
+            "subject_role": "tool",
+            "required_relations": [
+              {
+                "predicate": "closed",
+                "subject_role": "cab",
+                "desired": true
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "action": "place_on_top",
+          "before": {
+            "held_roles": [
+              "tool"
+            ],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "after": {
+            "held_roles": [],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "violation_latches_after_repair",
+      "requirements": {
+        "no_manipulation_roles": [],
+        "before_placement": [
+          {
+            "subject_role": "tool",
+            "required_relations": [
+              {
+                "predicate": "closed",
+                "subject_role": "cab",
+                "desired": true
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "action": "place_on_top",
+          "before": {
+            "held_roles": [
+              "tool"
+            ],
+            "prerequisites": [
+              false
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "after": {
+            "held_roles": [],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "status": "completed"
+        },
+        {
+          "action": "place_on_top",
+          "before": {
+            "held_roles": [
+              "tool"
+            ],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "after": {
+            "held_roles": [],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "protected_pick",
+      "requirements": {
+        "no_manipulation_roles": [
+          "can"
+        ],
+        "before_placement": []
+      },
+      "steps": [
+        {
+          "action": "pick",
+          "before": {
+            "held_roles": [],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "after": {
+            "held_roles": [
+              "can"
+            ],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "blocked_release_unknown",
+      "requirements": {
+        "no_manipulation_roles": [],
+        "before_placement": [
+          {
+            "subject_role": "tool",
+            "required_relations": [
+              {
+                "predicate": "closed",
+                "subject_role": "cab",
+                "desired": true
+              }
+            ]
+          }
+        ]
+      },
+      "steps": [
+        {
+          "action": "place_on_top",
+          "before": {
+            "held_roles": [
+              "tool"
+            ],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "after": {
+            "held_roles": [],
+            "prerequisites": [
+              true
+            ],
+            "placement_goals": [
+              true
+            ],
+            "protected_relations": [
+              true
+            ]
+          },
+          "status": "blocked"
+        }
+      ]
+    }
+  ],
+  "model_loop": [
+    {
+      "id": "done_only",
+      "responses": [
+        {
+          "action": "done"
+        }
+      ],
+      "steps": []
+    },
+    {
+      "id": "three_call_one_budget",
+      "maximum_action_decisions": 1,
+      "responses": [
+        {
+          "action": "place_inside"
+        },
+        {
+          "action": "place_inside",
+          "target": 1
+        },
+        {
+          "action": "place_inside",
+          "target": 2
+        }
+      ],
+      "steps": [
+        {
+          "result": {
+            "status": "selection_required",
+            "stage": 1
+          },
+          "kind": "marker",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "result": {
+            "status": "selection_required",
+            "stage": 2
+          },
+          "kind": "marker",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "result": {
+            "status": "completed"
+          },
+          "kind": "physical"
+        }
+      ]
+    },
+    {
+      "id": "retry_one_budget",
+      "maximum_action_decisions": 1,
+      "responses": [
+        {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "message": {
+                "role": "assistant",
+                "content": null,
+                "reasoning_content": "Need a valid native action.",
+                "tool_calls": []
+              }
+            }
+          ]
+        },
+        {
+          "action": "wait"
+        }
+      ],
+      "steps": [
+        {
+          "result": {
+            "status": "completed"
+          },
+          "kind": "physical"
+        }
+      ]
+    },
+    {
+      "id": "blocked_limit",
+      "maximum_consecutive_blocked": 2,
+      "responses": [
+        {
+          "action": "wait"
+        },
+        {
+          "action": "wait"
+        }
+      ],
+      "steps": [
+        {
+          "result": {
+            "status": "blocked"
+          },
+          "kind": "physical"
+        },
+        {
+          "result": {
+            "status": "blocked"
+          },
+          "kind": "physical"
+        }
+      ]
+    },
+    {
+      "id": "model_call_cap",
+      "maximum_model_calls": 1,
+      "responses": [
+        {
+          "action": "wait"
+        }
+      ],
+      "steps": [
+        {
+          "result": {
+            "status": "completed"
+          },
+          "kind": "physical"
+        }
+      ]
+    }
+  ]
+}

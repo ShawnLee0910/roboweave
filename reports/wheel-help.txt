@@ -1,0 +1,21 @@
+usage: __main__.py [-h] [--version]
+                   {doctor,config,tasks,assets,run,results,score} ...
+
+Frozen ESI Benchmark public candidate (CPU replay and explicit Live execution)
+
+positional arguments:
+  {doctor,config,tasks,assets,run,results,score}
+    doctor              Check installed CPU imports and packaged source
+                        layout; no device or network calls
+    config              Inspect configuration
+    tasks               List frozen public task definitions
+    assets              Verify or import separately obtained evaluation inputs
+    run                 Execute a synthetic CPU replay or one explicitly
+                        configured owned Live episode
+    results             Validate and summarize local trajectory artifacts
+    score               Replay the canonical verifier over a CPU evidence
+                        record; no Live claim
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit

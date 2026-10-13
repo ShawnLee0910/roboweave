@@ -1,0 +1,12 @@
+{
+  "schema_version": "esi-benchmark/config-v1",
+  "profile": "l0-english-v2",
+  "mode": "replay",
+  "assets": {"root": "../assets/local"},
+  "run": {
+    "task_id": "am200v1_a001_b2_control",
+    "family": "L0",
+    "output_root": "../outputs",
+    "history_frames": 5
+  }
+}

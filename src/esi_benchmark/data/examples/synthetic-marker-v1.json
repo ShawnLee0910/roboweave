@@ -1,0 +1,18 @@
+{
+  "schema_version": "esi-benchmark/offline-fixture-v1",
+  "fixture_id": "synthetic-marker-v1",
+  "instruction": "Synthetic protocol exercise: choose the container, choose its interior, then end the episode.",
+  "license": "CC0-1.0",
+  "origin": "Hand-authored synthetic fixture; no simulator or research trajectory assets",
+  "actions": [
+    {"action": "place_inside"},
+    {"action": "place_inside", "target": 1, "target_description": "blue container"},
+    {"action": "place_inside", "target": 3, "target_description": "container interior"},
+    {"action": "done"}
+  ],
+  "steps": [
+    {"action_result": {"status": "selection_required", "stage": 1}, "kind": "marker", "marker_targets": [1, 2]},
+    {"action_result": {"status": "selection_required", "stage": 2}, "kind": "marker", "marker_targets": [3, 4]},
+    {"action_result": {"status": "completed"}, "kind": "physical", "marker_targets": []}
+  ]
+}

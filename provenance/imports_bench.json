@@ -1,0 +1,466 @@
+[
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "Agent.py",
+    "source_sha256": "21089b3ec7a788679def07216bbcfb8001bbae18ce769b58a7aabad4db624405",
+    "destination": "src/esi_benchmark/_vendor/bench/Agent.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "action20_bare_marker_schema.json",
+    "source_sha256": "cfd4860d6fd50049e9b1cc3bfec1893faced7d5d51886315e509064752741b4f",
+    "destination": "src/esi_benchmark/_vendor/bench/action20_bare_marker_schema.json",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "action20_core_instructions.txt",
+    "source_sha256": "4b9b5168a0541be734cda28133cdb86fe18b82f999a9663a1048795631bafefd",
+    "destination": "src/esi_benchmark/_vendor/bench/action20_core_instructions.txt",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "action20_protocol.py",
+    "source_sha256": "28b6545b70408e32afba70216a909bc1dcf717e5878cc774a2d1eb1358661143",
+    "destination": "src/esi_benchmark/_vendor/bench/action20_protocol.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "action20_tool_schema.json",
+    "source_sha256": "2b11b8ba14c56fa480020989d218069c207f265cc1ecd28f35dbe9e3da74e4e2",
+    "destination": "src/esi_benchmark/_vendor/bench/action20_tool_schema.json",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "agent_artifacts.py",
+    "source_sha256": "c77a913142ae8f3c16559b24b5676398ecdeb6f957bf9507d3543fd23f59eddd",
+    "destination": "src/esi_benchmark/_vendor/bench/agent_artifacts.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "agent_common.py",
+    "source_sha256": "71bf09de60ec05ce62a8474bcd076f89acc1bd6a7aa920e7b0c39d6c24977a72",
+    "destination": "src/esi_benchmark/_vendor/bench/agent_common.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "agent_observation.py",
+    "source_sha256": "8b70dba47d8d76c735ff80264e50afe12b075f83edf5d70b1c8635ed8df3c9aa",
+    "destination": "src/esi_benchmark/_vendor/bench/agent_observation.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "agent_prompt.py",
+    "source_sha256": "3eb5af1ae24d70b54301a1942c6b2467f0e4660027e52551fa35e86fabb17cc9",
+    "destination": "src/esi_benchmark/_vendor/bench/agent_prompt.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "agent_protocol.py",
+    "source_sha256": "d6556997c345e7ff3b72a5a25deee8b5ee0291a819c66ae09c493693a016b55e",
+    "destination": "src/esi_benchmark/_vendor/bench/agent_protocol.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "agent_resume.py",
+    "source_sha256": "5d61fdf510c1cf38518974229a54ee627448ef4822c7a069dc0d6efb420c947c",
+    "destination": "src/esi_benchmark/_vendor/bench/agent_resume.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "episode_conversation.py",
+    "source_sha256": "69a18e62eaa3155c189076956a4fa0778b261d0eda439c7766de0be5a3498f87",
+    "destination": "src/esi_benchmark/_vendor/bench/episode_conversation.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/action20_atomic_validation.py",
+    "source_sha256": "1a4fe76b51c8fe69de079f3626ab035effedd67fc4c21e52d758a9db05742a91",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/action20_atomic_validation.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/anthropic_messages_adapter.py",
+    "source_sha256": "d389dffd2e2d179e5f3134aea6f56f6057471d517695a56498b9a9c8b1e7085a",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/anthropic_messages_adapter.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/atomic_fixture_inventory.py",
+    "source_sha256": "2d679ede691e659e79f0cb21160ca01397e231725656ce2f4632ed7093f75512",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/atomic_fixture_inventory.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/campaign_manifest.py",
+    "source_sha256": "92478b440cb83f876846b33756d8db09f1336912843d2643a153431e63454ef0",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/campaign_manifest.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/instruction_handoff.py",
+    "source_sha256": "745e80bebbefb5e56ac806c7b9cb2d52a61895a984c73a5be73ab18536591dd5",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/instruction_handoff.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/l1_episode.py",
+    "source_sha256": "9a35245d1fd026cf8857908e511ee32e5aef52bc86ff36da9fbeedb7e9566f3f",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/l1_episode.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/l1p_model_entry.py",
+    "source_sha256": "7bc28e8182296399095a5ecd3bf7af7bb173351adcca252b8581fe0c480af411",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/l1p_model_entry.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/model_client.py",
+    "source_sha256": "2224523570db9ae882b18233210a401aea0cd0dcadf493ad079bc13752611c48",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/model_client.py",
+    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/native_tool_preflight.py",
+    "source_sha256": "5e9bb6de0168edb1d436c92f0bba127883f28a1c3af8dfd4b054892f246f157b",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/native_tool_preflight.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/persistent_scene_checkpoints.py",
+    "source_sha256": "f8bb2b1283054c07b501acfe214bf230183d33635bb6f6f79c137e36ab180026",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/persistent_scene_checkpoints.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/physical_model_results.py",
+    "source_sha256": "be8d2ee32a8465869e7ec133ebe5f77cc0de043d01135ec636c1becf797a2c58",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/physical_model_results.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/provider_retry.py",
+    "source_sha256": "8b10640cdf34ec2da32bf02230cf4f2c21a0539e9968715cf4740e826e9c94ff",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/provider_retry.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/reset_safe_three_rgb_wrapper.py",
+    "source_sha256": "e9a2d139f1756b68ec8a61aca94e968fbe4627d0d7dbcdec9c20a9223ed3096d",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/reset_safe_three_rgb_wrapper.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/responses_image_proxy.py",
+    "source_sha256": "ec67a1f0a0b96d916bc247cbab8a4e4bd47c3deb6cb94828afe8fc50f2030bcd",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/responses_image_proxy.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/rolling_episode_checkpoints.py",
+    "source_sha256": "62e9d74864aac0d10db859c6c1ae7580d59dc094e226bb6d5571b4e169676c55",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/rolling_episode_checkpoints.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/run_artifact_layout.py",
+    "source_sha256": "c806817fbb33850600e187477deae335b736fe5a2f01176f3bc120a93cf2dd9c",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/run_artifact_layout.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/scene_action_preconditions.py",
+    "source_sha256": "07840dad01714d903bc0a66b046bf12a9959eeddaf2b937f73c32686dd12b4dc",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/scene_action_preconditions.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/scene_protocol.py",
+    "source_sha256": "67f9ae36db161a8f658396923f3ce1449ab34d3adcdb1315c744c7a63dc9b247",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/scene_protocol.py",
+    "changes": "Add explicit runtime registry root while preserving ready-path containment and task identity checks."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/scene_server.py",
+    "source_sha256": "4dfd4e20db689ea875c20a0d370d04df5b83ba84f7b07cac6df3f26f8f2bf938",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/scene_server.py",
+    "changes": "Pass explicit runtime registry to persistent checkpoint validation; preserve containment and frozen scene logic. Add own PID to ready metadata so the public parent verifies child ownership before connection."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/scene_socket_transport.py",
+    "source_sha256": "b1a17fc51f68e5f451d3d307e8530dd643d53938a05cd502fbc82e1ff7402212",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/scene_socket_transport.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/scene_source_identity.py",
+    "source_sha256": "8d4d2ed578e164988e82d8c4735af4bba667584267cdb51538b9c5563e4baf20",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/scene_source_identity.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "responses_adapter.py",
+    "source_sha256": "538c93dd9bd2da9e3f2ba7d11086650298cb3ea55b607b32d9fb3d3cc7380aff",
+    "destination": "src/esi_benchmark/_vendor/bench/responses_adapter.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_agent_prompt.py",
+    "source_sha256": "427809dd27c836fb5d3079a25215e39924e26eff5b8409a2b7221519239bf387",
+    "destination": "tests/upstream_bench/test_agent_prompt.py",
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_agent_target_description.py",
+    "source_sha256": "b959a760fa4c722a69bccc36e528fd31f12b76c7db413c6e2e8347b217afec14",
+    "destination": "tests/upstream_bench/test_agent_target_description.py",
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_agent_marker_cancellation.py",
+    "source_sha256": "26fbd3c4fe303f5f6f92bd165c274c9ee0624ca7301cd09408e72cd06242be92",
+    "destination": "tests/upstream_bench/test_agent_marker_cancellation.py",
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_blocked_detail.py",
+    "source_sha256": "11f3f438aca5d449977413abe4b81b1bc5b62688acf78d12a6dbe191974318b9",
+    "destination": "tests/upstream_bench/test_blocked_detail.py",
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_model_protocol_retry.py",
+    "source_sha256": "43f32c110e9a4ef87f9e98d344e10706dd221baea7d664e9d8cc19cf68813c4f",
+    "destination": "tests/upstream_bench/test_model_protocol_retry.py",
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_navigation_float_tolerance.py",
+    "source_sha256": "422169ab5076378aa3e32f4a1099ddc725845c54d465b6f5aed6c8270cd0a38e",
+    "destination": "tests/upstream_bench/test_navigation_float_tolerance.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_optional_output_budget.py",
+    "source_sha256": "54c63696f75046e00c7311d9d6fb925909275dc4a9f19b247c26e7a1f00337b8",
+    "destination": "tests/upstream_bench/test_optional_output_budget.py",
+    "changes": "Replace excluded internal SSH scheduler/model registry fixture checks with public model-config checks; preserve provider serialization, native preflight, invalid-budget and episode-summary assertions."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_output_budget.py",
+    "source_sha256": "dd9df3dc364f68202de6a2d72e30cb917e6598e6d0ac3ac11ebc18b77c6590fa",
+    "destination": "tests/upstream_bench/test_output_budget.py",
+    "changes": "Replace excluded internal SSH scheduler/model registry fixture checks with public model-config checks; preserve provider serialization, native preflight, invalid-budget and episode-summary assertions."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_provider_retry.py",
+    "source_sha256": "50ecd32b5ba16aceb36b142b77a7fe4b2b398d7478a969096a1c0e4a2783b3b9",
+    "destination": "tests/upstream_bench/test_provider_retry.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_responses_adapter.py",
+    "source_sha256": "10a91918b1750c0b9ab6de2b24f8f8ad23ff595c0bacbd2d444858621c47d9bb",
+    "destination": "tests/upstream_bench/test_responses_adapter.py",
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_anthropic_messages_adapter.py",
+    "source_sha256": "e0548c70e6bbb4120dbd8237b41ed166bf69f803a648e58f63e8b0d865d55e50",
+    "destination": "tests/upstream_bench/test_anthropic_messages_adapter.py",
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_three_view_model_composite.py",
+    "source_sha256": "a0fdbfc40b376949b751a81b2680b48575c402aedea4a707eaa80788efe12a4f",
+    "destination": "tests/upstream_bench/test_three_view_model_composite.py",
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_turn_angle_strings.py",
+    "source_sha256": "ffba76ff70686c0d2de46d0fb35fae2fddd9db539ca8324667be5ab318d00a97",
+    "destination": "tests/upstream_bench/test_turn_angle_strings.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_tool_content_echo.py",
+    "source_sha256": "7f4d07c0b050737ef02ec7663d2ca13bf83a9021ff2ce836b123a91ad44793be",
+    "destination": "tests/upstream_bench/test_tool_content_echo.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_scene_socket_transport.py",
+    "source_sha256": "0b80c72b5731de2068516e4af7ecd0c683f4f97563976a66998d8fe56cf524bd",
+    "destination": "tests/upstream_bench/test_scene_socket_transport.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/prepared_state_inputs.py",
+    "source_sha256": "1d76ec8087a781c9ee98d184663297c92d58c00549307010df2cc430935d89b8",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/prepared_state_inputs.py",
+    "changes": "Replace private remote interpreter location with PATH-resolved python3 in the optional historical evidence helper; public local asset flow uses only load_prepared."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/instruction_scene_groups.py",
+    "source_sha256": "c1346cdfd9b7beee7c7d38aef9c0e6580db3a41ef63e49d6832701c9a6df9d62",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/instruction_scene_groups.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/package_scene_server.py",
+    "source_sha256": "596bcb346db1db17811a249e828877eb0b5a5242c24ce52358e974dea3e3a80b",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/package_scene_server.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_native_tool_preflight.py",
+    "source_sha256": "bc65e689c743d9454bdfbfbf4cc572a0d65d0a87d65712ef56f63f60960c1659",
+    "destination": "tests/upstream_bench/test_native_tool_preflight.py",
+    "changes": "Relocate test source path only."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/ssh_password_askpass.py",
+    "source_sha256": "5677101a238c46211ec59de8560e4f8cfac375921b21fde3417b4192e2908b59",
+    "destination": "src/esi_benchmark/_vendor/bench/lab/ssh_password_askpass.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_persistent_scene_checkpoints.py",
+    "source_sha256": "8c74997ff0998438305558d5264359cb8e8febbdb985338c36eef1c80271c08b",
+    "destination": "tests/upstream_bench/test_persistent_scene_checkpoints.py",
+    "changes": "none"
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_scene_server_private_errors_v188.py",
+    "source_sha256": "02fdc1a47bb57dec33049ec5fea5020d6c91fb5dc0b165259405c0c7ac0d778e",
+    "destination": "tests/upstream_bench/test_scene_server_private_errors_v188.py",
+    "changes": "Relocate source paths for the independent candidate; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_scene_terminal_success_contract_v1.py",
+    "source_sha256": "856471982e2e207a096bae7db0fd233bc61e6b850cce6f4c151847cbc788a29f",
+    "destination": "tests/upstream_bench/test_scene_terminal_success_contract_v1.py",
+    "changes": "Relocate source paths for the independent candidate; assertions unchanged."
+  },
+  {
+    "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
+    "source_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "source_path": "lab/test_model_scene_recovery.py",
+    "source_sha256": "d7d689ee7ab23531468137f3d3ffc030aa1a3f3dc22752422b164f675c05d619",
+    "destination": "tests/upstream_bench/test_model_scene_recovery.py",
+    "changes": "none"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "schema_version": "esi-benchmark/config-v1",
+  "profile": "l0-english-v2",
+  "mode": "live",
+  "assets": {"root": "../assets/local"},
+  "run": {
+    "task_id": "am200v1_a001_b2_control",
+    "family": "L0",
+    "output_root": "../outputs",
+    "history_frames": 5
+  },
+  "model": {
+    "endpoint": "http://127.0.0.1:8000/v1",
+    "model": "YOUR_MODEL_ID",
+    "api_key_env": "ESI_MODEL_API_KEY",
+    "api": "chat_completions",
+    "timeout": 120
+  },
+  "runtime": {
+    "workspace": "../outputs/live-runtime",
+    "python": "../environments/live/bin/python",
+    "behavior_root": "../external/BEHAVIOR-1K",
+    "data_root": "../external/behavior-data",
+    "mdl_root": "../external/authorized-mdl",
+    "toolchain_root": "../external/toolchain",
+    "overlay_root": "../environments/live",
+    "gpu": 0,
+    "server_port": 19500,
+    "accept_eula": false,
+    "expected_gpu_uuid": "GPU-REPLACE_WITH_OWNED_DEVICE_UUID",
+    "scene_load_timeout": 1800,
+    "max_scene_loads": 1
+  }
+}

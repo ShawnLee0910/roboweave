@@ -1,0 +1,1598 @@
+{
+  "schema_version": 1,
+  "profile": "l0-english-v2",
+  "evidence_type": "CPU_ONLY_REAL_FROZEN_INPUTS_NO_SIMULATION_OR_MODEL_REQUESTS",
+  "runtime_reference_count": 715,
+  "unique_runtime_file_count": 713,
+  "import_file_count": 769,
+  "supplemental_closure": {
+    "reason": "Exact native loader lookups omitted by upstream dependency manifest; recovered from original frozen handoff layout, never inferred from current HEAD.",
+    "native_source": "bench@5b8d2b37fd7d97b161e88de4d438ec789c78f9b4:lab/instruction_handoff.py",
+    "file_count": 55,
+    "bytes": 2246417,
+    "task_lookups": [
+      {
+        "task_id": "l0_new_20260905_001",
+        "lookup": "handoff-relative perception_frozen package",
+        "package_sha256": "b39f05bf10f3102e798453c5c49b0d5c73cc6eb82af22f87d8bfb031a39fa160"
+      },
+      {
+        "task_id": "l0_new_20260905_010",
+        "lookup": "handoff-relative perception_frozen package",
+        "package_sha256": "b39f05bf10f3102e798453c5c49b0d5c73cc6eb82af22f87d8bfb031a39fa160"
+      },
+      {
+        "task_id": "l0_new_20260905_020",
+        "lookup": "handoff-relative perception_frozen package",
+        "package_sha256": "b39f05bf10f3102e798453c5c49b0d5c73cc6eb82af22f87d8bfb031a39fa160"
+      },
+      {
+        "task_id": "l0_new_20260905_032",
+        "lookup": "handoff-relative perception_frozen package",
+        "package_sha256": "b39f05bf10f3102e798453c5c49b0d5c73cc6eb82af22f87d8bfb031a39fa160"
+      },
+      {
+        "task_id": "l0_new_20260905_038",
+        "lookup": "handoff-relative perception_frozen package",
+        "package_sha256": "b39f05bf10f3102e798453c5c49b0d5c73cc6eb82af22f87d8bfb031a39fa160"
+      },
+      {
+        "task_id": "l0_new_20260905_041",
+        "lookup": "handoff-relative perception_frozen package",
+        "package_sha256": "b39f05bf10f3102e798453c5c49b0d5c73cc6eb82af22f87d8bfb031a39fa160"
+      },
+      {
+        "task_id": "l0_new_20260905_053",
+        "lookup": "handoff-relative perception_frozen package",
+        "package_sha256": "b39f05bf10f3102e798453c5c49b0d5c73cc6eb82af22f87d8bfb031a39fa160"
+      },
+      {
+        "task_id": "l0e1_ben1_01",
+        "lookup": "expansion_root + scene_model registration catalog",
+        "catalog_sha256": "01c133d333d1f5921b8fa9902f00ac980d3b810eade5dd1348ac9b9799d085e2"
+      },
+      {
+        "task_id": "l0e1_ben1_09",
+        "lookup": "expansion_root + scene_model registration catalog",
+        "catalog_sha256": "01c133d333d1f5921b8fa9902f00ac980d3b810eade5dd1348ac9b9799d085e2"
+      },
+      {
+        "task_id": "l0e1_gbd_06",
+        "lookup": "expansion_root + scene_model registration catalog",
+        "catalog_sha256": "240ee20c66c9b5cbf2e088fdffd1eddcb107d12651ce6d5be4f3444f005471a5"
+      },
+      {
+        "task_id": "l0e1_gbd_07",
+        "lookup": "expansion_root + scene_model registration catalog",
+        "catalog_sha256": "240ee20c66c9b5cbf2e088fdffd1eddcb107d12651ce6d5be4f3444f005471a5"
+      }
+    ]
+  },
+  "unique_runtime_bytes": 97073009,
+  "source_dependency_manifest_sha256": "045ddbba715e9f08eb33a97fb2d8e55e2e8709dc17d42f6f3ff1f814199b6b86",
+  "tasks": [
+    {
+      "task_id": "am200v1_a001_b2_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.958
+    },
+    {
+      "task_id": "am200v1_a003_b12_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 3.512
+    },
+    {
+      "task_id": "am200v1_a012_b2_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.893
+    },
+    {
+      "task_id": "am200v1_a013_b1_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.878
+    },
+    {
+      "task_id": "am200v1_a013_b2_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.246
+    },
+    {
+      "task_id": "am200v1_a014_b1_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.14
+    },
+    {
+      "task_id": "am200v1_a014_b2_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.179
+    },
+    {
+      "task_id": "am200v1_a035_b1_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 4.376
+    },
+    {
+      "task_id": "am200v1_a035_b2_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 4.266
+    },
+    {
+      "task_id": "am200v1_a066_b_neutral_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 3.507
+    },
+    {
+      "task_id": "am200v1_a131_b1_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 20,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 3.397
+    },
+    {
+      "task_id": "am200v1_a131_b2_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 20,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 3.067
+    },
+    {
+      "task_id": "am200v1_a139_b_on_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.284
+    },
+    {
+      "task_id": "amreuse100_a003_w0_challenge",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 10.745
+    },
+    {
+      "task_id": "aq1a25_ne_005_w0_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.408
+    },
+    {
+      "task_id": "aq1a25_mc_001_w0_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.551
+    },
+    {
+      "task_id": "aq1a25_mc_002_w0_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.393
+    },
+    {
+      "task_id": "aq1a25_mc_003_w0_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.236
+    },
+    {
+      "task_id": "aq1a25_mf_002_w0_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.173
+    },
+    {
+      "task_id": "aq1a25_mt_001_w0_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.152
+    },
+    {
+      "task_id": "aq1a25_mt_002_w0_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.228
+    },
+    {
+      "task_id": "aq1a25_mt_004_w0_control",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.241
+    },
+    {
+      "task_id": "l0_new_20260905_001",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 25,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.666
+    },
+    {
+      "task_id": "l0_new_20260905_010",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 24,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.487
+    },
+    {
+      "task_id": "l0_new_20260905_020",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 24,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.433
+    },
+    {
+      "task_id": "l0_new_20260905_032",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 25,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.116
+    },
+    {
+      "task_id": "l0_new_20260905_038",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 23,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.537
+    },
+    {
+      "task_id": "l0_new_20260905_041",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 26,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.87
+    },
+    {
+      "task_id": "l0_new_20260905_053",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 25,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.597
+    },
+    {
+      "task_id": "l0_to300_ns01_floor_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.917
+    },
+    {
+      "task_id": "l0_to300_ns01_nextto_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.693
+    },
+    {
+      "task_id": "l0_to300_ns01_toggle_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.72
+    },
+    {
+      "task_id": "l0_to300_ns02_floor_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.935
+    },
+    {
+      "task_id": "l0_to300_ns02_nextto_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.57
+    },
+    {
+      "task_id": "l0_to300_ns02_toggle_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.69
+    },
+    {
+      "task_id": "l0_to300_ns03_nextto_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.82
+    },
+    {
+      "task_id": "l0_to300_ns03_toggle_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.964
+    },
+    {
+      "task_id": "l0_to300_ns04_floor_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.622
+    },
+    {
+      "task_id": "l0_to300_ns04_inside_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.551
+    },
+    {
+      "task_id": "l0_to300_ns04_toggle_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.765
+    },
+    {
+      "task_id": "l0_to300_ns04_under_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.766
+    },
+    {
+      "task_id": "l0_to300_ns06_floor_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.143
+    },
+    {
+      "task_id": "l0_to300_ns06_toggle_20260912",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 16,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 0.692
+    },
+    {
+      "task_id": "l0atom53_t001_001",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.808
+    },
+    {
+      "task_id": "l0atom53_t002_003",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.989
+    },
+    {
+      "task_id": "l0atom53_t002_004",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.655
+    },
+    {
+      "task_id": "l0atom53_t002_005",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.51
+    },
+    {
+      "task_id": "l0atom53_t003_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.657
+    },
+    {
+      "task_id": "l0atom53_t003_003",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.653
+    },
+    {
+      "task_id": "l0atom53_t003_004",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.341
+    },
+    {
+      "task_id": "l0atom53_t005_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.243
+    },
+    {
+      "task_id": "l0atom53_t008_003",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.549
+    },
+    {
+      "task_id": "l0atom53_t008_005",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.854
+    },
+    {
+      "task_id": "l0atom53_t011_004",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.827
+    },
+    {
+      "task_id": "l0atom53_t011_005",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.591
+    },
+    {
+      "task_id": "l0atom53_t012_005",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.728
+    },
+    {
+      "task_id": "l0atom53_t018_001",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.029
+    },
+    {
+      "task_id": "l0atom53_t018_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.283
+    },
+    {
+      "task_id": "l0atom53_t019_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.863
+    },
+    {
+      "task_id": "l0atom53_t019_004",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.728
+    },
+    {
+      "task_id": "l0atom53_t021_001",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.853
+    },
+    {
+      "task_id": "l0atom53_t021_003",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.51
+    },
+    {
+      "task_id": "l0atom53_t024_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.002
+    },
+    {
+      "task_id": "l0atom53_t024_005",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.348
+    },
+    {
+      "task_id": "l0atom53_t028_001",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.912
+    },
+    {
+      "task_id": "l0atom53_t053_003",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.79
+    },
+    {
+      "task_id": "l0atom53_t053_004",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.368
+    },
+    {
+      "task_id": "l0atom53_t054_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.824
+    },
+    {
+      "task_id": "l0atom53_t059_003",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.453
+    },
+    {
+      "task_id": "l0atom53_t059_004",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.326
+    },
+    {
+      "task_id": "l0atom53_t077_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.479
+    },
+    {
+      "task_id": "l0atom53_t077_004",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.419
+    },
+    {
+      "task_id": "l0atom53_t082_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.454
+    },
+    {
+      "task_id": "l0atom53_t086_001",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.514
+    },
+    {
+      "task_id": "l0atom53_t092_002",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.595
+    },
+    {
+      "task_id": "l0e1_ben1_01",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 25,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 4.373
+    },
+    {
+      "task_id": "l0e1_ben1_09",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 24,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 3.705
+    },
+    {
+      "task_id": "l0e1_gbd_06",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 25,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 3.8
+    },
+    {
+      "task_id": "l0e1_gbd_07",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 25,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 3.489
+    },
+    {
+      "task_id": "l0exp_20260909_0001",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.421
+    },
+    {
+      "task_id": "l0exp_20260909_0005",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.409
+    },
+    {
+      "task_id": "l0exp_20260909_0036",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.991
+    },
+    {
+      "task_id": "l0exp_20260909_0048",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.051
+    },
+    {
+      "task_id": "l0exp_20260909_0068",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.902
+    },
+    {
+      "task_id": "l0exp_20260909_0070",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.24
+    },
+    {
+      "task_id": "l0exp_20260909_0084",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.493
+    },
+    {
+      "task_id": "l0exp_20260909_0093",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.957
+    },
+    {
+      "task_id": "l0exp_20260909_0100",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.472
+    },
+    {
+      "task_id": "l0exp_20260909_0138",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 17,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.093
+    },
+    {
+      "task_id": "l0exp_20260909_0149",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.779
+    },
+    {
+      "task_id": "l0exp_20260909_0159",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 19,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.394
+    },
+    {
+      "task_id": "l0exp_20260909_0190",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 20,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.129
+    },
+    {
+      "task_id": "l0exp_20260909_0191",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.939
+    },
+    {
+      "task_id": "l0exp_20260909_0194",
+      "status": "PASS",
+      "route": "registered_l0",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 2.217
+    },
+    {
+      "task_id": "l0v2_p_c11",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.582
+    },
+    {
+      "task_id": "l0v2_p_c12",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.726
+    },
+    {
+      "task_id": "l0v2_p_c19",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.797
+    },
+    {
+      "task_id": "l0v2_p_c46",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.381
+    },
+    {
+      "task_id": "l0v2_p_c51",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.603
+    },
+    {
+      "task_id": "l0v2_x12",
+      "status": "PASS",
+      "route": "l0_taskspec",
+      "files": 18,
+      "checks": [
+        "source_sha256",
+        "single_task_non_path_semantics_equal",
+        "compile_handoff",
+        "native_arguments",
+        "prepared_bundle_identity_seed_profile",
+        "registration_or_taskspec"
+      ],
+      "seconds": 1.269
+    }
+  ],
+  "failures": [],
+  "import_check": {
+    "ok": true,
+    "profile": "l0-english-v2",
+    "checked": 769,
+    "missing": [],
+    "invalid": [],
+    "scope": "all"
+  },
+  "passed": 100,
+  "failed": 0,
+  "original_import_hashes_after_validation": {
+    "ok": true,
+    "profile": "l0-english-v2",
+    "checked": 769,
+    "missing": [],
+    "invalid": [],
+    "scope": "all"
+  },
+  "private_asset_cleanup": "COMPLETE: created private imported assets and all per-task derivatives deleted after verification; only metadata/hashes/counts retained.",
+  "reproduce": "ESI_BENCHMARK_ASSET_ROOT=/path/to/authorized/import .venv/bin/python -m pytest tests/test_assets_authorized.py --basetemp .tmp/authorized-audit -q",
+  "public_adapter_sha256": "17a4cc7f984267adb674ccb7d4f7051f01d4234d5de7423bbaa43b9700f86596",
+  "repro_test_sha256": "5e0024cd7121ea5b1c58a0d1925a2f48aebff1d198a4d38b45208c8c8dbb9516"
+}

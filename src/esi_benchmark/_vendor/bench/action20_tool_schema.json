@@ -1,0 +1,77 @@
+{
+  "type": "function",
+  "function": {
+    "name": "robot_action",
+    "description": "Control the R1Pro robot using robot_action. Each onboard observation is one three-view RGB composite: the head camera fills the large right panel, with the left-wrist view above the right-wrist view on the left. Only the LEFT arm manipulates objects; the right-wrist camera is observation-only.\n\nResults:\n- selection_required: select a current C-label to continue; nothing has been placed or grasped yet.\n- completed: this action completed, not necessarily the whole task.\n- blocked: this action did not complete. An optional blocked_category gives a coarse reason; if absent, the cause is unknown.\n- action_decisions_remaining: remaining new action decisions.\n\nMarker selection:\nOmit target to request candidates. Select C3 with target=3, using the same action. Labels belong only to the latest selection stage. Never reuse old labels. While selection is pending, any action without target cancels it. Repeating the same action without target restarts selection and uses a new decision; it is not a free refresh.\n\nOne-decision Marker actions (usually two calls):\npick, open, close, toggle_on, toggle_off, place_under: request, then select the object or part. For place_under, select the upper reference.\n\nOne-decision, two-stage Marker actions (usually three calls):\nplace_on_top: request, select a support, then select a marked surface.\nplace_next_to: request, select a reference, then select a position.\nplace_inside: request, select a container, then select a compartment or region if another selection_required is returned.\n\nEvery place_* action moves the object already held, not the selected destination. Other than OnTop's one-time support approach, manipulation does not automatically move the base. Selected targets must be within about 1.7 m horizontally; OnTop measures reach to the future placement footprint. A visible Marker does not guarantee reachability or a feasible placement.\n\nBlocked categories:\n- out_of_reach: target or placement is not reachable, including a failed approach when that action permits one.\n- no_selectable_candidates: no selectable Markers were returned.\n- selection_unavailable: the selected Marker is stale or unavailable.\n- requires_empty_left_hand / requires_object_in_left_hand: the hand state does not meet the action's requirement.\n- geometric_fit_blocked: no candidate fits the selected space.\n- placement_support_unavailable: no valid support was found.\n- placement_collision_blocked: placement candidates intersect obstacles.\n- relation_not_realized: the requested placement relation was not achieved.\n- articulated_part_blocked: the selected door or drawer is obstructed. Optional blocked_detail: robot_obstruction (robot body), external_obstruction (scene obstacle), contents_obstruction (contained items), or multiple_obstructions (mixed sources).\n- navigation_blocked: an explicitly requested base movement or turn was blocked.\n- view_limit_reached / view_motion_blocked_while_holding: the view limit or a carrying restriction prevents camera motion.\n- execution_unverified: the scene may or may not have changed. Inspect the latest observation before retrying; assume neither success nor no effect.\n\nThese results do not report task progress or scores. Provide only parameters applicable to the action. Inapplicable fields have no effect and are recorded as protocol normalizations.",
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "Navigation:\n- move_forward, move_backward, move_left, move_right: move by move_distance_m (0.15, 0.30, or 0.60 m; default 0.15).\n- turn_left, turn_right: turn by turn_angle_deg (10 or 30 degrees; default 10).\nMoves use the robot's current body frame, not world axes. body_odometry reports measured increments: forward_m (forward), left_m (left), yaw_deg (left turn). These are local increments, not absolute poses. Repeated navigation returns ordered steps with each repetition's increments.\n\nCamera:\n- look_up, look_down: move one pitch level among down, center, and up (about 15 degrees per step). At a limit, return blocked without changing the view.\n\nObject interaction (LEFT hand):\n- pick: grasp the selected object; requires an empty hand.\n- open, close: open or close the selected object or part; requires an empty hand. In Symbolic mode, safe partial motion is kept even when blocked; completion follows the open/closed state, not full travel.\n- toggle_on, toggle_off: switch the selected device on or off; requires an empty hand.\n\nPlacement (requires a held object):\n- place_on_floor: place on nearby floor or valid floor covering; no target.\n- place_inside: place inside the selected container or region.\n- place_on_top: place on the selected support surface.\n- place_under: place beneath the selected upper reference.\n- place_next_to: place at the selected position beside the reference.\n\nOther:\n- wait: observe again without intentionally moving the robot. In Symbolic mode, no physics steps advance.\n- done: end the episode when the task is complete or no viable recovery remains.",
+          "enum": [
+            "move_forward",
+            "move_backward",
+            "move_left",
+            "move_right",
+            "turn_left",
+            "turn_right",
+            "look_up",
+            "look_down",
+            "wait",
+            "pick",
+            "open",
+            "close",
+            "toggle_on",
+            "toggle_off",
+            "place_on_floor",
+            "place_inside",
+            "place_on_top",
+            "place_under",
+            "place_next_to",
+            "done"
+          ]
+        },
+        "move_distance_m": {
+          "type": "number",
+          "enum": [
+            0.15,
+            0.3,
+            0.6
+          ],
+          "description": "Step distance for move actions only. Choose 0.15 m for precise or cluttered motion, 0.30 m for ordinary motion, or 0.60 m only when the route is visibly open. Omit for the 0.15 m default."
+        },
+        "repeat": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "For navigation only: repeat the selected movement or turn 1-10 times. Each base step executes separately; you cannot intervene until the repeated action returns. Repetition stops on blocked or terminal results. A repeated action may return multiple ordered observations."
+        },
+        "turn_angle_deg": {
+          "type": "number",
+          "enum": [
+            10,
+            30
+          ],
+          "description": "Step angle for turn actions only. Choose 10 degrees for precise turning or 30 degrees for coarse turning in open space. Omit for the 10-degree default."
+        },
+        "target": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 999,
+          "description": "Temporary visual C-label for target-based manipulation. Omit `target` to request visible candidates. When `selection_required` is returned, provide one C-label from the current same-action Marker observation. If no suitable candidate is present, or if you choose not to continue the pending manipulation, choose a different action without `target` to cancel the pending selection; the pending manipulation is not executed. Switching actions counts the pending Marker action and its replacement as two action decisions total."
+        },
+        "target_description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Optional descriptive note for history and audit. target alone selects the object or region. This text never changes target resolution, reachability, or execution. Describe only the selected candidate, not plans or reasoning."
+        }
+      },
+      "required": [
+        "action"
+      ]
+    }
+  }
+}

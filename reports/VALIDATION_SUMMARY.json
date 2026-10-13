@@ -1,0 +1,45 @@
+{
+  "status": "CPU_ACCEPTED_WITH_DOCUMENTED_SKIPS",
+  "full_run": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "1",
+    "skipped": "3",
+    "tests": "931",
+    "time": "39.515",
+    "timestamp": "2026-10-13T02:15:35.985357+00:00",
+    "hostname": "other-a6cda58c-vnwkp"
+  },
+  "targeted_recheck": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "1",
+    "time": "8.318",
+    "timestamp": "2026-10-13T02:18:05.029099+00:00",
+    "hostname": "other-a6cda58c-vnwkp"
+  },
+  "resolved_failure": {
+    "old_test": "test_ready_identity_is_checked_without_connecting",
+    "current_test": "test_ready_owner",
+    "cause": "pytest temporary socket path exceeded OS limit; same assertions passed after shortening test name"
+  },
+  "distinct_executable_tests_with_passing_evidence": 928,
+  "skips": 3,
+  "fixed_input_equivalence": {
+    "passed": 75,
+    "total": 75
+  },
+  "real_task_input_cpu_audit": {
+    "passed": 100,
+    "total": 100,
+    "source_files": 769
+  },
+  "live_runs": 0,
+  "model_requests": 0,
+  "original_services_attached": 0,
+  "source_asset_contents_distributed": false,
+  "license_status": "PROJECT_OWNER_PERMISSION_PENDING",
+  "historical_release_gate": "BLOCKED_UNRESOLVED_BASELINE_CPU_FAILURES (preserved)"
+}

@@ -1,0 +1,98 @@
+{
+  "captured_at_utc": "2026-10-13T01:47:45.297652+00:00",
+  "purpose": "Read-only source identity snapshot; not a claim that these heads ran every task family. Imported untracked files are recorded separately.",
+  "sources": {
+    "bench": {
+      "source_path": "/liyuanshuai/bench-consolidated-baseline-20260913",
+      "head": "a623762b2cf1b5f02025e6f1cd48cd80f426c7c5",
+      "tracked_status": [
+        " M lab/deepseek_v41_flash_acceptance.py",
+        " M lab/deepseek_visual_probe_paths.py",
+        " M lab/test_deepseek_acceptance_metrics.py"
+      ],
+      "tracked_file_count": 416,
+      "modified_files": [
+        {
+          "path": "lab/deepseek_v41_flash_acceptance.py",
+          "sha256": "e22708d4127a9b12db5a7f6ddaf778f7be784c98f784a228240f4604ca3e6925"
+        },
+        {
+          "path": "lab/deepseek_visual_probe_paths.py",
+          "sha256": "945c9233eaf98e11333076a327b916db0cdf2c688ddbe0dbaccd03f7f5c74d86"
+        },
+        {
+          "path": "lab/test_deepseek_acceptance_metrics.py",
+          "sha256": "d772acc542e63e7c62f1578115df596f7c368718e9cf3069750092de9c246c56"
+        }
+      ],
+      "inspected_untracked_out_of_profile": [
+        {
+          "path": "lab/deepseek_historical_marker_replay.py",
+          "bytes": 17404,
+          "sha256": "576a774d8e6fe93adea60a78f90ec776861813e5ce36b2a63153b6a1e52263c1",
+          "included": false,
+          "reason": "Current experiment is outside the task-frozen Bench 5b8d profile"
+        },
+        {
+          "path": "lab/deepseek_visual_trial_batch.py",
+          "bytes": 2333,
+          "sha256": "152c5bef08c07942866452650926af378e8afdcc365060d1f44841d8133d451e",
+          "included": false,
+          "reason": "Current experiment is outside the task-frozen Bench 5b8d profile"
+        }
+      ]
+    },
+    "runtime": {
+      "source_path": "/liyuanshuai/worktrees/action20/unified-runtime-collection-20260917",
+      "head": "9b992b6797330a836e9533e5409627bf63f7d94b",
+      "tracked_status": [],
+      "tracked_file_count": 685,
+      "modified_files": []
+    },
+    "tasks": {
+      "source_path": "/liyuanshuai/action20-capability-benchmark",
+      "head": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "tracked_status": [
+        " M .gitignore",
+        " M README.md",
+        " M docs/benchmark/l0/L0_TASK_GENERATION_PROMPT.md",
+        " M docs/benchmark/l0/README.md",
+        " M scripts/compile_l0_taskspecs.py",
+        " M tests/test_l0_verifier_mutations.py"
+      ],
+      "tracked_file_count": 49,
+      "modified_files": [
+        {
+          "path": ".gitignore",
+          "sha256": "fd2fc2c38d858aa216c5e4edb52f739ed269dd4c57ed1e89e657baf1326f282d"
+        },
+        {
+          "path": "README.md",
+          "sha256": "e99224cf4effa8745bbc3ad6eb3e17d331b2e35666252a380bedca3303da8c48"
+        },
+        {
+          "path": "docs/benchmark/l0/L0_TASK_GENERATION_PROMPT.md",
+          "sha256": "36ba3ae39c7b9632dad488d5135bdb0e135dc46104176e7ccb9fdaccb763654e"
+        },
+        {
+          "path": "docs/benchmark/l0/README.md",
+          "sha256": "5c32073aa42a6fd30a177c13a7220ac5cc9e5a37585c9ac916b90fa6f358f092"
+        },
+        {
+          "path": "scripts/compile_l0_taskspecs.py",
+          "sha256": "9acf3cdd5a92aabcc038ae0977edecc5d5d0951c73c3c0be5172a4b06f83eb8f"
+        },
+        {
+          "path": "tests/test_l0_verifier_mutations.py",
+          "sha256": "22fafee02ae5c64d9c675d866089c27c98082f0e665fa75bf30fdf6fba9e29c5"
+        }
+      ]
+    }
+  },
+  "selected_execution_profile": {
+    "id": "l0-english-v2",
+    "bench_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "runtime_revision": "9b992b6797330a836e9533e5409627bf63f7d94b",
+    "rationale": "Frozen task runtime_lock; current source root HEAD is not substituted"
+  }
+}

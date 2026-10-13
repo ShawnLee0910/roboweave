@@ -1,0 +1,95 @@
+{
+  "l0-english-v2": {
+    "family": "L0",
+    "count": 100,
+    "runtime_revision": "9b992b6797330a836e9533e5409627bf63f7d94b",
+    "bench_revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "execution_supported": true,
+    "status": "CPU_CANDIDATE_LIVE_UNVERIFIED",
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "historical_publication_gate": "BLOCKED_UNRESOLVED_BASELINE_CPU_FAILURES",
+    "official_benchmark_eligible": false,
+    "strict_production_eligible": false,
+    "live_validation": "NOT_RUN"
+  },
+  "l1-a30": {
+    "family": "L1-A",
+    "count": 30,
+    "runtime_revision": "cd25f9ba1579bdca1f0dadf6fce7ad10974b8717",
+    "bench_revision": "1d76bc5dc53b1995f2e7c301cb06569bcf0c4923",
+    "execution_supported": false,
+    "status": "CATALOG_ONLY",
+    "action_mode": "Symbolic",
+    "profile": "l1-a30"
+  },
+  "l1-m30-public-v2": {
+    "family": "L1-M",
+    "count": 30,
+    "runtime_revision": "918aefd40beb72368126cc3fa2891bbb732ad490",
+    "bench_revision": "fb1cf143f850fe43a04d25440f07cbfab4007093",
+    "execution_supported": false,
+    "status": "CATALOG_ONLY",
+    "action_mode": "Symbolic",
+    "profile": "l1-m30-public-v2"
+  },
+  "l1-v30": {
+    "family": "L1-V",
+    "count": 30,
+    "runtime_revision": "918aefd40beb72368126cc3fa2891bbb732ad490",
+    "bench_revision": "d8ae5151fadfb3338d122fdb12b26051ed753852",
+    "execution_supported": false,
+    "status": "CATALOG_ONLY",
+    "action_mode": "Symbolic",
+    "profile": "l1-v30"
+  },
+  "l1-p-inside5": {
+    "family": "L1-P",
+    "count": 5,
+    "runtime_revision": "955585540d95cba02f672c0d3cdb94048db23bf2",
+    "bench_revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+    "execution_supported": false,
+    "status": "CATALOG_ONLY",
+    "action_mode": "Physical",
+    "profile": "l1-p-inside5"
+  },
+  "l1-p-ontop5": {
+    "family": "L1-P",
+    "count": 5,
+    "runtime_revision": "c813a24f853bb90ba3772365ca5182ecb28c553b",
+    "bench_revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+    "execution_supported": false,
+    "status": "CATALOG_ONLY",
+    "action_mode": "Physical",
+    "profile": "l1-p-ontop5"
+  },
+  "l1-p-additions20": {
+    "family": "L1-P",
+    "count": 20,
+    "runtime_revision": "ab615d43d4ede7e6a50eaeda189077529bef361a",
+    "bench_revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+    "execution_supported": false,
+    "status": "CATALOG_ONLY",
+    "action_mode": "Physical",
+    "profile": "l1-p-additions20"
+  },
+  "l2-proposals": {
+    "family": "L2",
+    "count": 0,
+    "proposal_count": 36,
+    "complete_package_count": 3,
+    "base_only_count": 6,
+    "blocked_count": 27,
+    "runtime_revision": "e75bcd742ee093e5e9d64f8079d44b11fcc4d9b1",
+    "compiler_revision": "37160fd489b56cbd893299c47a16d23f60b77c46",
+    "execution_supported": false,
+    "status": "AUDIT_ONLY",
+    "supported_authoring_routes": [
+      "AM_SYMBOLIC",
+      "MV_BASE_SYMBOLIC",
+      "MV_D0_D1_SYMBOLIC_UNARY_MILESTONES",
+      "MP_PHYSICAL_ONTOP_HISTORY"
+    ],
+    "profile": "l2-proposals"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "esi-benchmark/score-record-v1",
+  "route": "official_projection",
+  "stability_window": 2,
+  "goal_spec": {
+    "route": "official_projection",
+    "clauses": [{"canonical_predicate": "inside", "quantifier": "ALL_LISTED", "target_scopes": ["toy"], "destination_scopes": ["box"]}]
+  },
+  "initial_truth": [{"predicate": "inside", "target": "toy", "destination": "box", "value": false}],
+  "snapshots": [
+    {"truth": [{"predicate": "inside", "target": "toy", "destination": "box", "value": true}]},
+    {"truth": [{"predicate": "inside", "target": "toy", "destination": "box", "value": true}], "done_requested": true}
+  ]
+}

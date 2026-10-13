@@ -1,0 +1,36 @@
+.........s.....................................F........................ [  7%]
+........................................................................ [ 15%]
+........................................................................ [ 23%]
+........................................................................ [ 30%]
+........................................................................ [ 38%]
+........................................................................ [ 46%]
+........................................................................ [ 54%]
+........................................................................ [ 61%]
+....................................................s................... [ 69%]
+........................................................................ [ 77%]
+........................................................................ [ 85%]
+....................................................................s... [ 92%]
+...................................................................      [100%]
+=================================== FAILURES ===================================
+______________ test_ready_identity_is_checked_without_connecting _______________
+
+tmp_path = PosixPath('/liyuanshuai/esi-benchmark-public-20261013/.tmp/pytest-final-current/test_ready_identity_is_checked0')
+
+    def test_ready_identity_is_checked_without_connecting(tmp_path):
+        scene = tmp_path / "scene"
+        scene.mkdir()
+        run = scene / "simulator"
+        run.mkdir()
+        plan = dict(workspace=str(tmp_path), ready_path=str(scene / "ready.json"))
+        with socket.socket(socket.AF_UNIX) as sock:
+>           sock.bind(str(scene / "s"))
+E           OSError: AF_UNIX path too long
+
+tests/test_runtime.py:50: OSError
+- generated xml file: /liyuanshuai/esi-benchmark-public-20261013/reports/pytest.xml -
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_assets_authorized.py:55: Requires separately authorized private assets; never bundled
+SKIPPED [1] tests/upstream_runtime/test_l1_process_audit.py:127: restricted eight-task package is not distributed
+SKIPPED [1] tests/upstream_runtime/test_process_goal_lifecycle.py:62: local six-task delivery fixture unavailable
+FAILED tests/test_runtime.py::test_ready_identity_is_checked_without_connecting
+1 failed, 927 passed, 3 skipped in 39.80s

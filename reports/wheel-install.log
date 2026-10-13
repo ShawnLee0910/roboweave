@@ -1,0 +1,15 @@
+Processing ./dist/esi_benchmark-0.1.0rc1-py3-none-any.whl
+Collecting numpy<2,>=1.26 (from esi-benchmark==0.1.0rc1)
+  Downloading numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting Pillow<12,>=11 (from esi-benchmark==0.1.0rc1)
+  Downloading pillow-11.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.0 kB)
+Collecting PyYAML<7,>=6 (from esi-benchmark==0.1.0rc1)
+  Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Downloading numpy-1.26.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.0/18.0 MB 846.0 kB/s eta 0:00:00
+Downloading pillow-11.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 514.8 kB/s eta 0:00:00
+Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 367.3 kB/s eta 0:00:00
+Installing collected packages: PyYAML, Pillow, numpy, esi-benchmark
+Successfully installed Pillow-11.3.0 PyYAML-6.0.3 esi-benchmark-0.1.0rc1 numpy-1.26.4

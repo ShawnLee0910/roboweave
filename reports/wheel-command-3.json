@@ -1,0 +1,2502 @@
+[
+  {
+    "task_id": "am200v1_a001_b2_control",
+    "instruction_id": "am200v1_a001_b2",
+    "runtime_instruction_id": "am200v1_a001_b2_control",
+    "family": "L0",
+    "instruction_en": "The magazine is on the right side of the desktop. Put it on the coffee table.",
+    "instruction_sha256": "31a202a12de3b8306bc14aa4b8b2b54cad7e71fa44c7d7e0fc7d7cdcfa01544b",
+    "scene_model": "gates_bedroom",
+    "budget": {
+      "maximum_action_decisions": 33,
+      "maximum_model_calls": 330,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 0
+    }
+  },
+  {
+    "task_id": "am200v1_a003_b12_control",
+    "instruction_id": "am200v1_a003_b12",
+    "runtime_instruction_id": "am200v1_a003_b12_control",
+    "family": "L0",
+    "instruction_en": "Two lab tables have microscopes on them. Put the goggles on either of those two tables; do not move the microscopes.",
+    "instruction_sha256": "0fe68e86470f9f523aac90d66d37399d2790be90d4ee5840c67bb79e62d4973b",
+    "scene_model": "school_biology",
+    "budget": {
+      "maximum_action_decisions": 54,
+      "maximum_model_calls": 540,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 1
+    }
+  },
+  {
+    "task_id": "am200v1_a012_b2_control",
+    "instruction_id": "am200v1_a012_b2",
+    "runtime_instruction_id": "am200v1_a012_b2_control",
+    "family": "L0",
+    "instruction_en": "The cereal box is inside one of the two wall cabinets, and that cabinet is closed. The canned food is on the countertop. Put the canned food in the empty cabinet. Do not move the cereal box, and close both cabinets afterward.",
+    "instruction_sha256": "3052909226cf3397bc37bfc8bbf594564488c5e44bfe95669c4e5764f844d670",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 18,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 2
+    }
+  },
+  {
+    "task_id": "am200v1_a013_b1_control",
+    "instruction_id": "am200v1_a013_b1",
+    "runtime_instruction_id": "am200v1_a013_b1_control",
+    "family": "L0",
+    "instruction_en": "The eyeglasses and newspaper are inside the two bookcases. Find the eyeglasses and put them on the sofa. Leave the newspaper in its bookcase.",
+    "instruction_sha256": "9b6cc5b8e0299ea0f6daaa09369306a6ba66ab0bd482b1a7ae6e9c5331b92f7f",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 3
+    }
+  },
+  {
+    "task_id": "am200v1_a013_b2_control",
+    "instruction_id": "am200v1_a013_b2",
+    "runtime_instruction_id": "am200v1_a013_b2_control",
+    "family": "L0",
+    "instruction_en": "The eyeglasses and newspaper are inside the two bookcases. Find the eyeglasses and put them on the sofa. Leave the newspaper in its bookcase.",
+    "instruction_sha256": "9b6cc5b8e0299ea0f6daaa09369306a6ba66ab0bd482b1a7ae6e9c5331b92f7f",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 33,
+      "maximum_model_calls": 330,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 4
+    }
+  },
+  {
+    "task_id": "am200v1_a014_b1_control",
+    "instruction_id": "am200v1_a014_b1",
+    "runtime_instruction_id": "am200v1_a014_b1_control",
+    "family": "L0",
+    "instruction_en": "Two plates are on the countertop, with a mug on one of them. Put the plate without the mug on the dining table. Do not move the mug or the plate beneath it.",
+    "instruction_sha256": "04ee2d09285644452538a3511e8629fa8067254305d1f5552c7131f7296d6463",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 27,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 5
+    }
+  },
+  {
+    "task_id": "am200v1_a014_b2_control",
+    "instruction_id": "am200v1_a014_b2",
+    "runtime_instruction_id": "am200v1_a014_b2_control",
+    "family": "L0",
+    "instruction_en": "Two plates are on the countertop, with a mug on one of them. Put the plate without the mug on the dining table. Do not move the mug or the plate beneath it.",
+    "instruction_sha256": "04ee2d09285644452538a3511e8629fa8067254305d1f5552c7131f7296d6463",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 42,
+      "maximum_model_calls": 420,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 6
+    }
+  },
+  {
+    "task_id": "am200v1_a035_b1_control",
+    "instruction_id": "am200v1_a035_b1",
+    "runtime_instruction_id": "am200v1_a035_b1_control",
+    "family": "L0",
+    "instruction_en": "Two microscopes are on the lab table: one is switched off and the other is switched on. Move the one that is off to the teacher's desk. Do not move the one that is on, and do not change either microscope's power state.",
+    "instruction_sha256": "7e8b48de68c2f6e8b00b922ae8eb95f5426f3adf4d353cdc2c41dcdf1b9b35bb",
+    "scene_model": "school_biology",
+    "budget": {
+      "maximum_action_decisions": 33,
+      "maximum_model_calls": 330,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 7
+    }
+  },
+  {
+    "task_id": "am200v1_a035_b2_control",
+    "instruction_id": "am200v1_a035_b2",
+    "runtime_instruction_id": "am200v1_a035_b2_control",
+    "family": "L0",
+    "instruction_en": "Two microscopes are on the lab table: one is on and the other is off. Move the one that is off to the teacher's desk. Do not move the one that is on, and do not change either microscope's power state.",
+    "instruction_sha256": "3857ba09ee730fd30c19ca225b58a372e3fc6892c9731d99ad8c81e4a8668227",
+    "scene_model": "school_biology",
+    "budget": {
+      "maximum_action_decisions": 30,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 8
+    }
+  },
+  {
+    "task_id": "am200v1_a066_b_neutral_control",
+    "instruction_id": "am200v1_a066_b_neutral",
+    "runtime_instruction_id": "am200v1_a066_b_neutral_control",
+    "family": "L0",
+    "instruction_en": "Do not change the food processor that was off at the start. Turn the other food processor off as well.",
+    "instruction_sha256": "7e344909a49d3654ba473be31401d0b92be7bfec8e6d9a4064dcac016f984ad5",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 9
+    }
+  },
+  {
+    "task_id": "am200v1_a131_b1_control",
+    "instruction_id": "am200v1_a131_b1",
+    "runtime_instruction_id": "am200v1_a131_b1_control",
+    "family": "L0",
+    "instruction_en": "Inspect the two ice buckets and put the loose ice cube in the one that was genuinely empty at the start; do not move the already stored ice cube.",
+    "instruction_sha256": "e806a5c5eac31d8866913a43b3327a3527e735b426513494432e58c6464cee69",
+    "scene_model": "restaurant_diner",
+    "budget": {
+      "maximum_action_decisions": 45,
+      "maximum_model_calls": 450,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 10
+    }
+  },
+  {
+    "task_id": "am200v1_a131_b2_control",
+    "instruction_id": "am200v1_a131_b2",
+    "runtime_instruction_id": "am200v1_a131_b2_control",
+    "family": "L0",
+    "instruction_en": "Inspect the two ice buckets and put the loose ice cube in the one that was genuinely empty at the start; do not move the already stored ice cube.",
+    "instruction_sha256": "e806a5c5eac31d8866913a43b3327a3527e735b426513494432e58c6464cee69",
+    "scene_model": "restaurant_diner",
+    "budget": {
+      "maximum_action_decisions": 24,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 11
+    }
+  },
+  {
+    "task_id": "am200v1_a139_b_on_control",
+    "instruction_id": "am200v1_a139_b_on",
+    "runtime_instruction_id": "am200v1_a139_b_on_control",
+    "family": "L0",
+    "instruction_en": "Do not change the modem that was on at the start. Turn the other modem on as well.",
+    "instruction_sha256": "2961c1e374acfde9e2ada8205a1201e98661482f27d0b54b863f09792b59ae69",
+    "scene_model": "Rs_int",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 12
+    }
+  },
+  {
+    "task_id": "amreuse100_a003_w0_challenge",
+    "instruction_id": "amreuse100_a003_w0",
+    "runtime_instruction_id": "amreuse100_a003_w0_challenge",
+    "family": "L0",
+    "instruction_en": "Before manipulating an appliance, observe it from an available viewpoint until you can identify it and determine its current state. Then open the microwave and leave the oven closed.",
+    "instruction_sha256": "c1221d28873a22046a25336568211e57e990b5eb0534a644dd6ef98715a84ded",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 13
+    }
+  },
+  {
+    "task_id": "aq1a25_ne_005_w0_control",
+    "instruction_id": "aq1a25_ne_005_w0",
+    "runtime_instruction_id": "aq1a25_ne_005_w0_control",
+    "family": "L0",
+    "instruction_en": "Inspect the umbrella and paper bag around the conference table. Put the umbrella, which is not currently under the table, underneath it. Return the paper bag, which is currently under the table, to the tabletop.",
+    "instruction_sha256": "8a65dca7d4d63f23f52fea9ee26fffda83c9dc37be8e95d6ef56d8359eb8ef6e",
+    "scene_model": "office_vendor_machine",
+    "budget": {
+      "maximum_action_decisions": 24,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 14
+    }
+  },
+  {
+    "task_id": "aq1a25_mc_001_w0_control",
+    "instruction_id": "aq1a25_mc_001_w0",
+    "runtime_instruction_id": "aq1a25_mc_001_w0_control",
+    "family": "L0",
+    "instruction_en": "Select the narrowest of the three milk cartons and place it on the dining table; leave the other two cartons on the counter.",
+    "instruction_sha256": "8fe924fda75d08084154a738fc3cc0b5a121ebd8896f8e1d2608d8daed7ad2e1",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 15,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 15
+    }
+  },
+  {
+    "task_id": "aq1a25_mc_002_w0_control",
+    "instruction_id": "aq1a25_mc_002_w0",
+    "runtime_instruction_id": "aq1a25_mc_002_w0_control",
+    "family": "L0",
+    "instruction_en": "Select the shortest of the three barbecue tongs and place it on the pedestal table; leave the other two tongs on the coffee table.",
+    "instruction_sha256": "ed2954f23150340bac4477d0eca59601d2032fd9738a97b4b23485bb7026be0a",
+    "scene_model": "Rs_garden",
+    "budget": {
+      "maximum_action_decisions": 72,
+      "maximum_model_calls": 720,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 16
+    }
+  },
+  {
+    "task_id": "aq1a25_mc_003_w0_control",
+    "instruction_id": "aq1a25_mc_003_w0",
+    "runtime_instruction_id": "aq1a25_mc_003_w0_control",
+    "family": "L0",
+    "instruction_en": "Select the smallest of the three gym shoes and put it under the training bench. Leave the other two shoes on the bench seat.",
+    "instruction_sha256": "3d24931ae9d12aadd19d27b607c7a023d838eb59249e92bc5c7c7be2234f3321",
+    "scene_model": "hotel_gym_spa",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 17
+    }
+  },
+  {
+    "task_id": "aq1a25_mf_002_w0_control",
+    "instruction_id": "aq1a25_mf_002_w0",
+    "runtime_instruction_id": "aq1a25_mf_002_w0_control",
+    "family": "L0",
+    "instruction_en": "Inspect both calculators' current power states and switch each calculator to the opposite of the state you observe.",
+    "instruction_sha256": "7d83ef7590cff112d816d2bb08d89fdd6e705f72b5327e689128157b249ffa1d",
+    "scene_model": "gates_bedroom",
+    "budget": {
+      "maximum_action_decisions": 33,
+      "maximum_model_calls": 330,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 18
+    }
+  },
+  {
+    "task_id": "aq1a25_mt_001_w0_control",
+    "instruction_id": "aq1a25_mt_001_w0",
+    "runtime_instruction_id": "aq1a25_mt_001_w0_control",
+    "family": "L0",
+    "instruction_en": "Inspect the microwave and oven door states, then open the microwave and close the oven; do not assume either device is already correct.",
+    "instruction_sha256": "8b605230b56f6869cfdf71fcf0bd0f4fa89c046c2d5982e251ada543cad8e0e1",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 18,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 19
+    }
+  },
+  {
+    "task_id": "aq1a25_mt_002_w0_control",
+    "instruction_id": "aq1a25_mt_002_w0",
+    "runtime_instruction_id": "aq1a25_mt_002_w0_control",
+    "family": "L0",
+    "instruction_en": "Inspect both calculators' power states. Turn on the calculator that is off and turn off the calculator that is on.",
+    "instruction_sha256": "7887fb71f2162ba0d7c0a56fea8f20a8703eb2795f297ed616e5047967432429",
+    "scene_model": "gates_bedroom",
+    "budget": {
+      "maximum_action_decisions": 18,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 20
+    }
+  },
+  {
+    "task_id": "aq1a25_mt_004_w0_control",
+    "instruction_id": "aq1a25_mt_004_w0",
+    "runtime_instruction_id": "aq1a25_mt_004_w0_control",
+    "family": "L0",
+    "instruction_en": "Inspect the oven and microwave door states. Open the oven door and close the microwave door.",
+    "instruction_sha256": "3c4ec6baf21b91a364a4180442487ceeb8ce8c9a21bd7f9ed426f3aff87c778e",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 21
+    }
+  },
+  {
+    "task_id": "l0_new_20260905_001",
+    "instruction_id": "l0_new_20260905_001",
+    "runtime_instruction_id": "l0_new_20260905_001",
+    "family": "L0",
+    "instruction_en": "Put the narrower milk carton on the dining table; leave the wider carton on the counter.",
+    "instruction_sha256": "d202b654025d409d10443d023c03f9a3d8c5d21d9daa787f1b0351bde747c998",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 63,
+      "maximum_model_calls": 630,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 22
+    }
+  },
+  {
+    "task_id": "l0_new_20260905_010",
+    "instruction_id": "l0_new_20260905_010",
+    "runtime_instruction_id": "l0_new_20260905_010",
+    "family": "L0",
+    "instruction_en": "Stow the water bottle lying on its side under the coffee table; leave the upright bottle on the pedestal table.",
+    "instruction_sha256": "46fd4f1b2dd8b46b6c818aa7454c86b3b3c955df1b8f558ff98ff9a320fca3d8",
+    "scene_model": "Rs_garden",
+    "budget": {
+      "maximum_action_decisions": 30,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 23
+    }
+  },
+  {
+    "task_id": "l0_new_20260905_020",
+    "instruction_id": "l0_new_20260905_020",
+    "runtime_instruction_id": "l0_new_20260905_020",
+    "family": "L0",
+    "instruction_en": "Turn on the face-up calculator; leave the face-down calculator switched off.",
+    "instruction_sha256": "eb1236252551b310aab14167b3db196c822afe7b3e7d0b02b6bf1ddc02b897b6",
+    "scene_model": "gates_bedroom",
+    "budget": {
+      "maximum_action_decisions": 45,
+      "maximum_model_calls": 450,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 24
+    }
+  },
+  {
+    "task_id": "l0_new_20260905_032",
+    "instruction_id": "l0_new_20260905_032",
+    "runtime_instruction_id": "l0_new_20260905_032",
+    "family": "L0",
+    "instruction_en": "Put the magazine on the desk; leave the newspaper on the ottoman.",
+    "instruction_sha256": "e0d1511e5aa3c90f72aca8f92bd17cc0c818c55bab32add486f2ed322459a795",
+    "scene_model": "hotel_suite_large",
+    "budget": {
+      "maximum_action_decisions": 21,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 25
+    }
+  },
+  {
+    "task_id": "l0_new_20260905_038",
+    "instruction_id": "l0_new_20260905_038",
+    "runtime_instruction_id": "l0_new_20260905_038",
+    "family": "L0",
+    "instruction_en": "Close the microwave and leave the oven open.",
+    "instruction_sha256": "c11198e9b1eba55bb5b915b37ba24c2fa0899353bcbbf41fe8f8400a12cecc5c",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 26
+    }
+  },
+  {
+    "task_id": "l0_new_20260905_041",
+    "instruction_id": "l0_new_20260905_041",
+    "runtime_instruction_id": "l0_new_20260905_041",
+    "family": "L0",
+    "instruction_en": "Put the smaller notebook next to the calculator on the desk; leave the larger notebook on the bed.",
+    "instruction_sha256": "d851a5685919fc5b24b24ff7dd81e4375e764bb25cea863cc46c3459b612eaf7",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 27,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 27
+    }
+  },
+  {
+    "task_id": "l0_new_20260905_053",
+    "instruction_id": "l0_new_20260905_053",
+    "runtime_instruction_id": "l0_new_20260905_053",
+    "family": "L0",
+    "instruction_en": "Stow the umbrella under the conference table; leave the paper bag on the table.",
+    "instruction_sha256": "16f28b04e50581f50e29f46b5d72eed5935557b4e5f3611e62dec5b521e56bb4",
+    "scene_model": "office_vendor_machine",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 28
+    }
+  },
+  {
+    "task_id": "l0_to300_ns01_floor_20260912",
+    "instruction_id": "l0_to300_ns01_floor_20260912",
+    "runtime_instruction_id": "l0_to300_ns01_floor_20260912",
+    "family": "L0",
+    "instruction_en": "Put the bottle of water from the desk on the floor.",
+    "instruction_sha256": "8307ef7c1feb49146a4f171e5509ceda3d0bee7f26f11932a0bf497543677a75",
+    "scene_model": "school_geography",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 29
+    }
+  },
+  {
+    "task_id": "l0_to300_ns01_nextto_20260912",
+    "instruction_id": "l0_to300_ns01_nextto_20260912",
+    "runtime_instruction_id": "l0_to300_ns01_nextto_20260912",
+    "family": "L0",
+    "instruction_en": "Move the tissue box from the desk onto the floor beside that same desk.",
+    "instruction_sha256": "7b537318a59966faa11f347213860ce02fbdf454db0b3befc0348cb6e0edabbd",
+    "scene_model": "school_geography",
+    "budget": {
+      "maximum_action_decisions": 18,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 30
+    }
+  },
+  {
+    "task_id": "l0_to300_ns01_toggle_20260912",
+    "instruction_id": "l0_to300_ns01_toggle_20260912",
+    "runtime_instruction_id": "l0_to300_ns01_toggle_20260912",
+    "family": "L0",
+    "instruction_en": "Turn on the calculator on the desk.",
+    "instruction_sha256": "5ed3203ae6cf36abaa107b9a0bf0c46ef3a202d5dfa797bda5c15cb4b75d6cc1",
+    "scene_model": "school_geography",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 31
+    }
+  },
+  {
+    "task_id": "l0_to300_ns02_floor_20260912",
+    "instruction_id": "l0_to300_ns02_floor_20260912",
+    "runtime_instruction_id": "l0_to300_ns02_floor_20260912",
+    "family": "L0",
+    "instruction_en": "Put the paper bag from the laboratory desk on the floor.",
+    "instruction_sha256": "25e22f5b757beb32b618a45b4bd25946668722459c3623b4ce0e4ff209ae232e",
+    "scene_model": "school_chemistry",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 32
+    }
+  },
+  {
+    "task_id": "l0_to300_ns02_nextto_20260912",
+    "instruction_id": "l0_to300_ns02_nextto_20260912",
+    "runtime_instruction_id": "l0_to300_ns02_nextto_20260912",
+    "family": "L0",
+    "instruction_en": "Move the tissue box from the laboratory desk onto the floor beside that same laboratory desk.",
+    "instruction_sha256": "b0aad426ca15f1e085d9974c23a03c6702918e10ecda4d1f80da8d28ac9c06a2",
+    "scene_model": "school_chemistry",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 33
+    }
+  },
+  {
+    "task_id": "l0_to300_ns02_toggle_20260912",
+    "instruction_id": "l0_to300_ns02_toggle_20260912",
+    "runtime_instruction_id": "l0_to300_ns02_toggle_20260912",
+    "family": "L0",
+    "instruction_en": "Turn off the microscope on the laboratory desk.",
+    "instruction_sha256": "7d209a70689c97f53a286b1cc1552a78a916d636c46f34ce660238fedb3ca0c5",
+    "scene_model": "school_chemistry",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 34
+    }
+  },
+  {
+    "task_id": "l0_to300_ns03_nextto_20260912",
+    "instruction_id": "l0_to300_ns03_nextto_20260912",
+    "runtime_instruction_id": "l0_to300_ns03_nextto_20260912",
+    "family": "L0",
+    "instruction_en": "Move the tissue box from the desk onto the floor beside that same desk.",
+    "instruction_sha256": "7b537318a59966faa11f347213860ce02fbdf454db0b3befc0348cb6e0edabbd",
+    "scene_model": "school_computer_lab_and_infirmary",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 35
+    }
+  },
+  {
+    "task_id": "l0_to300_ns03_toggle_20260912",
+    "instruction_id": "l0_to300_ns03_toggle_20260912",
+    "runtime_instruction_id": "l0_to300_ns03_toggle_20260912",
+    "family": "L0",
+    "instruction_en": "Turn on the radio on the desk.",
+    "instruction_sha256": "23977c633f7144555eea834bb0b1bcc8a45bb3d38b30b9c064713b58e7205095",
+    "scene_model": "school_computer_lab_and_infirmary",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 36
+    }
+  },
+  {
+    "task_id": "l0_to300_ns04_floor_20260912",
+    "instruction_id": "l0_to300_ns04_floor_20260912",
+    "runtime_instruction_id": "l0_to300_ns04_floor_20260912",
+    "family": "L0",
+    "instruction_en": "Put the shoe from the desk on the floor.",
+    "instruction_sha256": "b9d2309a64fe269db12419ed90057e93d83a825765c0f80ce03cf6db608fac9c",
+    "scene_model": "hotel_suite_small",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 37
+    }
+  },
+  {
+    "task_id": "l0_to300_ns04_inside_20260912",
+    "instruction_id": "l0_to300_ns04_inside_20260912",
+    "runtime_instruction_id": "l0_to300_ns04_inside_20260912",
+    "family": "L0",
+    "instruction_en": "Put the bottle of essential oil into the paper bag on the desk.",
+    "instruction_sha256": "c83e1b14240dbe2d62d3ff58e338cb4f1d130bdd8a9c6d2b32bd4707c9e7b525",
+    "scene_model": "hotel_suite_small",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 38
+    }
+  },
+  {
+    "task_id": "l0_to300_ns04_toggle_20260912",
+    "instruction_id": "l0_to300_ns04_toggle_20260912",
+    "runtime_instruction_id": "l0_to300_ns04_toggle_20260912",
+    "family": "L0",
+    "instruction_en": "Turn off the radio on the desk.",
+    "instruction_sha256": "0be7cdb558bda2d11a7dc799b0d60001bed1a333211edd1ce7c219b7109df5e5",
+    "scene_model": "hotel_suite_small",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 39
+    }
+  },
+  {
+    "task_id": "l0_to300_ns04_under_20260912",
+    "instruction_id": "l0_to300_ns04_under_20260912",
+    "runtime_instruction_id": "l0_to300_ns04_under_20260912",
+    "family": "L0",
+    "instruction_en": "Move the shoe from the desk to underneath that same desk.",
+    "instruction_sha256": "7605917347faafc3109de1bc710a6ddb9332b277cc32e3d54e7baf7df74ec919",
+    "scene_model": "hotel_suite_small",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 40
+    }
+  },
+  {
+    "task_id": "l0_to300_ns06_floor_20260912",
+    "instruction_id": "l0_to300_ns06_floor_20260912",
+    "runtime_instruction_id": "l0_to300_ns06_floor_20260912",
+    "family": "L0",
+    "instruction_en": "Put the paper bag from the coffee table on the floor.",
+    "instruction_sha256": "8f468c9423174511f219c537baf0e8774a4c5cf5a3141c95d271a75db406b141",
+    "scene_model": "restaurant_brunch",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 41
+    }
+  },
+  {
+    "task_id": "l0_to300_ns06_toggle_20260912",
+    "instruction_id": "l0_to300_ns06_toggle_20260912",
+    "runtime_instruction_id": "l0_to300_ns06_toggle_20260912",
+    "family": "L0",
+    "instruction_en": "Turn off the radio on the coffee table.",
+    "instruction_sha256": "cfee4876c38c146fa20626567452a5dc1787fd8b27e248a383de6e907d00a36c",
+    "scene_model": "restaurant_brunch",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 42
+    }
+  },
+  {
+    "task_id": "l0atom53_t001_001",
+    "instruction_id": "l0atom53_t001_001",
+    "runtime_instruction_id": "l0atom53_t001_001",
+    "family": "L0",
+    "instruction_en": "Put one can of soda from the living room inside a trash can in the kitchen.",
+    "instruction_sha256": "3c4ade476bdbf971e2764b52b387467be31c34e16cd538922f3de990d6c3599d",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 21,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 43
+    }
+  },
+  {
+    "task_id": "l0atom53_t002_003",
+    "instruction_id": "l0atom53_t002_003",
+    "runtime_instruction_id": "l0atom53_t002_003",
+    "family": "L0",
+    "instruction_en": "Put one pillar candle from the living room inside a bottom cabinet in the living room.",
+    "instruction_sha256": "1f1c9e2295fae0cbe1d7c8df6af42cf192bdfe8ebf8689fc38e38c24f902dc0a",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 21,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 44
+    }
+  },
+  {
+    "task_id": "l0atom53_t002_004",
+    "instruction_id": "l0atom53_t002_004",
+    "runtime_instruction_id": "l0atom53_t002_004",
+    "family": "L0",
+    "instruction_en": "Put one pumpkin from the living room inside a bottom cabinet in the living room.",
+    "instruction_sha256": "6ba84e96b6cee33481339637c8722f9eac79c4a1c6b81b9dfc150d7db5646de9",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 27,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 45
+    }
+  },
+  {
+    "task_id": "l0atom53_t002_005",
+    "instruction_id": "l0atom53_t002_005",
+    "runtime_instruction_id": "l0atom53_t002_005",
+    "family": "L0",
+    "instruction_en": "Put one cauldron from the living room next to a coffee table in the living room.",
+    "instruction_sha256": "acad506d3b1545a34fe1f15064a7ff810f8380e5734ec78ab908972490bc2ef5",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 42,
+      "maximum_model_calls": 420,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 46
+    }
+  },
+  {
+    "task_id": "l0atom53_t003_002",
+    "instruction_id": "l0atom53_t003_002",
+    "runtime_instruction_id": "l0atom53_t003_002",
+    "family": "L0",
+    "instruction_en": "Open the fridge in the kitchen.",
+    "instruction_sha256": "3059bfa072c2a99aec8d2102b1e594c8fea4ad38f1483a6b05aa49bc76341e2b",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 18,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 47
+    }
+  },
+  {
+    "task_id": "l0atom53_t003_003",
+    "instruction_id": "l0atom53_t003_003",
+    "runtime_instruction_id": "l0atom53_t003_003",
+    "family": "L0",
+    "instruction_en": "Put one bowl from the kitchen inside the drop-in sink in the kitchen.",
+    "instruction_sha256": "78f023ea438c66572dcba0e140b55a5b3d33f7e65481814d09d3e58b8647c680",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 30,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 48
+    }
+  },
+  {
+    "task_id": "l0atom53_t003_004",
+    "instruction_id": "l0atom53_t003_004",
+    "runtime_instruction_id": "l0atom53_t003_004",
+    "family": "L0",
+    "instruction_en": "Put one pizza from the kitchen inside a fridge in the kitchen.",
+    "instruction_sha256": "c15fca8515407cc143a0b308c958e9b18c9fa7400a8da078c8feb39bfb35cb89",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 36,
+      "maximum_model_calls": 360,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 49
+    }
+  },
+  {
+    "task_id": "l0atom53_t005_002",
+    "instruction_id": "l0atom53_t005_002",
+    "runtime_instruction_id": "l0atom53_t005_002",
+    "family": "L0",
+    "instruction_en": "Put one mousetrap from the bathroom under a furniture sink in the bathroom.",
+    "instruction_sha256": "76d8f86b85dc3ca3b5fe17e9f7fca926c02df61dc5bcb46368775ec7a92c4726",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 21,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 50
+    }
+  },
+  {
+    "task_id": "l0atom53_t008_003",
+    "instruction_id": "l0atom53_t008_003",
+    "runtime_instruction_id": "l0atom53_t008_003",
+    "family": "L0",
+    "instruction_en": "Put one food processor from the kitchen inside a top cabinet in the kitchen.",
+    "instruction_sha256": "1d35f4609555e9d2ee0ca04a27e67c115992d966d8395cd96d646b3493e38301",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 42,
+      "maximum_model_calls": 420,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 51
+    }
+  },
+  {
+    "task_id": "l0atom53_t008_005",
+    "instruction_id": "l0atom53_t008_005",
+    "runtime_instruction_id": "l0atom53_t008_005",
+    "family": "L0",
+    "instruction_en": "Put one toaster from the kitchen inside a top cabinet in the kitchen.",
+    "instruction_sha256": "ec51959e483ea5b9c52aaa60d8f85a9f9332e57abed988272a94f06005c95993",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 24,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 52
+    }
+  },
+  {
+    "task_id": "l0atom53_t011_004",
+    "instruction_id": "l0atom53_t011_004",
+    "runtime_instruction_id": "l0atom53_t011_004",
+    "family": "L0",
+    "instruction_en": "Open one bottom cabinet without a top in the kitchen.",
+    "instruction_sha256": "ab826113a20ed606f1048f88baea1625a6f5801ee4b7843b42299fc346932ff8",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 53
+    }
+  },
+  {
+    "task_id": "l0atom53_t011_005",
+    "instruction_id": "l0atom53_t011_005",
+    "runtime_instruction_id": "l0atom53_t011_005",
+    "family": "L0",
+    "instruction_en": "Put one plate from the kitchen inside a bottom cabinet without a top in the kitchen.",
+    "instruction_sha256": "ff9c615db5a91de09c3485abe07ef49b4422a48caad66467b013175ab72af435",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 24,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 54
+    }
+  },
+  {
+    "task_id": "l0atom53_t012_005",
+    "instruction_id": "l0atom53_t012_005",
+    "runtime_instruction_id": "l0atom53_t012_005",
+    "family": "L0",
+    "instruction_en": "Put one apple half from the kitchen inside a packing box in the kitchen.",
+    "instruction_sha256": "fe21c0ad97d6afa82ac5dc8d7f1d532855c862deac0ed0c0534b3be5f77da5d2",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 21,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 55
+    }
+  },
+  {
+    "task_id": "l0atom53_t018_001",
+    "instruction_id": "l0atom53_t018_001",
+    "runtime_instruction_id": "l0atom53_t018_001",
+    "family": "L0",
+    "instruction_en": "Put one sandal from the bedroom next to a bed in the bedroom.",
+    "instruction_sha256": "f2fc9738e95046324378e2d375803d13083b96ebbc1f8df9f0ddb71ba5ab3242",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 15,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 56
+    }
+  },
+  {
+    "task_id": "l0atom53_t018_002",
+    "instruction_id": "l0atom53_t018_002",
+    "runtime_instruction_id": "l0atom53_t018_002",
+    "family": "L0",
+    "instruction_en": "Put one of the sandals in the bedroom next to the other sandal.",
+    "instruction_sha256": "6666365e841f02eb0a118c881c07ee32a16884569b388991e2e4346844ae9a43",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 57,
+      "maximum_model_calls": 570,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 57
+    }
+  },
+  {
+    "task_id": "l0atom53_t019_002",
+    "instruction_id": "l0atom53_t019_002",
+    "runtime_instruction_id": "l0atom53_t019_002",
+    "family": "L0",
+    "instruction_en": "Open one toolbox in the utility room.",
+    "instruction_sha256": "16ea447ccbe82e62a093122b9664985bc35b6af2b510b535d32cdaa8fe92bfdd",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 58
+    }
+  },
+  {
+    "task_id": "l0atom53_t019_004",
+    "instruction_id": "l0atom53_t019_004",
+    "runtime_instruction_id": "l0atom53_t019_004",
+    "family": "L0",
+    "instruction_en": "Put one drill from the utility room inside a toolbox in the utility room.",
+    "instruction_sha256": "79957ae483ab214151317b88e7ca4c7b6a877f7e6ced115745c1f92149f415fb",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 21,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 59
+    }
+  },
+  {
+    "task_id": "l0atom53_t021_001",
+    "instruction_id": "l0atom53_t021_001",
+    "runtime_instruction_id": "l0atom53_t021_001",
+    "family": "L0",
+    "instruction_en": "Put one board game from the child’s room inside a bookcase in the child’s room.",
+    "instruction_sha256": "a961aa03e44a6272d4d9a096a7d06797448a7ff411586a67f39328c9928e1fb7",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 33,
+      "maximum_model_calls": 330,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 60
+    }
+  },
+  {
+    "task_id": "l0atom53_t021_003",
+    "instruction_id": "l0atom53_t021_003",
+    "runtime_instruction_id": "l0atom53_t021_003",
+    "family": "L0",
+    "instruction_en": "Put one teddy bear from the child's room inside a bookcase in the child's room.",
+    "instruction_sha256": "34b220f6f2b11f206cdd47099c8efd06d748337b94498e4326bea45b9b32ba6f",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 15,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 61
+    }
+  },
+  {
+    "task_id": "l0atom53_t024_002",
+    "instruction_id": "l0atom53_t024_002",
+    "runtime_instruction_id": "l0atom53_t024_002",
+    "family": "L0",
+    "instruction_en": "Put one bag of chips from the kitchen inside a top cabinet in the kitchen.",
+    "instruction_sha256": "407786f9b5e6f7cf2aeec0ea14c0b6786f760c9b827d4ec0cbd477729a1c46b1",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 24,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 62
+    }
+  },
+  {
+    "task_id": "l0atom53_t024_005",
+    "instruction_id": "l0atom53_t024_005",
+    "runtime_instruction_id": "l0atom53_t024_005",
+    "family": "L0",
+    "instruction_en": "Put one jar of sugar from the kitchen inside a top cabinet in the kitchen.",
+    "instruction_sha256": "27e2ef5b79bd894c6ae4a9e5c5a04f47fb7016274afa333be5be21337d2b4107",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 24,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 63
+    }
+  },
+  {
+    "task_id": "l0atom53_t028_001",
+    "instruction_id": "l0atom53_t028_001",
+    "runtime_instruction_id": "l0atom53_t028_001",
+    "family": "L0",
+    "instruction_en": "Put one folder from the bedroom next to a mouse in the bedroom.",
+    "instruction_sha256": "143247524854909f062a5354444dfd29c8add79e02810ef1385056ace72d5d0a",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 27,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 64
+    }
+  },
+  {
+    "task_id": "l0atom53_t053_003",
+    "instruction_id": "l0atom53_t053_003",
+    "runtime_instruction_id": "l0atom53_t053_003",
+    "family": "L0",
+    "instruction_en": "Put one notebook from the living room on a desk in the living room.",
+    "instruction_sha256": "bc8fe51156a09c9ce117de81fc51f723c69fdde21874b5fd5f29b9734c281881",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 33,
+      "maximum_model_calls": 330,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 65
+    }
+  },
+  {
+    "task_id": "l0atom53_t053_004",
+    "instruction_id": "l0atom53_t053_004",
+    "runtime_instruction_id": "l0atom53_t053_004",
+    "family": "L0",
+    "instruction_en": "Put one potted plant from the living room on a coffee table in the living room.",
+    "instruction_sha256": "bc966d2fa4d010332f9678c124f978625632adebe78e9db98e74dce192a5abf4",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 24,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 66
+    }
+  },
+  {
+    "task_id": "l0atom53_t054_002",
+    "instruction_id": "l0atom53_t054_002",
+    "runtime_instruction_id": "l0atom53_t054_002",
+    "family": "L0",
+    "instruction_en": "Put one toy figure from the living room inside a toy box in the living room.",
+    "instruction_sha256": "afaf43692a3a2c37b1bd97cbeb043b5bce15d1660d8d9bf521a010e21e8a5df5",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 24,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 67
+    }
+  },
+  {
+    "task_id": "l0atom53_t059_003",
+    "instruction_id": "l0atom53_t059_003",
+    "runtime_instruction_id": "l0atom53_t059_003",
+    "family": "L0",
+    "instruction_en": "Put one paintbrush from the bedroom inside a tote in the bedroom.",
+    "instruction_sha256": "82d8bf53b6fc7c6a1bc350f27a5d1b5bbe5ab8ab799705293f80f9595d5c79a6",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 15,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 68
+    }
+  },
+  {
+    "task_id": "l0atom53_t059_004",
+    "instruction_id": "l0atom53_t059_004",
+    "runtime_instruction_id": "l0atom53_t059_004",
+    "family": "L0",
+    "instruction_en": "Put one rubber eraser from the bedroom inside a tote in the bedroom.",
+    "instruction_sha256": "5a329a53f76cc6e1bd9ee31bfa0fd2ec505ad72538f54654e4c76c980e849cd4",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 69
+    }
+  },
+  {
+    "task_id": "l0atom53_t077_002",
+    "instruction_id": "l0atom53_t077_002",
+    "runtime_instruction_id": "l0atom53_t077_002",
+    "family": "L0",
+    "instruction_en": "Put one modem from the living room on a bottom cabinet in the living room.",
+    "instruction_sha256": "aef7347c5f98c6bbd5d38606cfe14dd69060eebe1a88be6edf658a4d9ae03bac",
+    "scene_model": "Rs_int",
+    "budget": {
+      "maximum_action_decisions": 21,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 70
+    }
+  },
+  {
+    "task_id": "l0atom53_t077_004",
+    "instruction_id": "l0atom53_t077_004",
+    "runtime_instruction_id": "l0atom53_t077_004",
+    "family": "L0",
+    "instruction_en": "Turn on one modem in the living room.",
+    "instruction_sha256": "d9e5647e7cff75ea6dd64e71092b871c1b012a27c31d44ebe6d5070e1082e0cf",
+    "scene_model": "Rs_int",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 71
+    }
+  },
+  {
+    "task_id": "l0atom53_t082_002",
+    "instruction_id": "l0atom53_t082_002",
+    "runtime_instruction_id": "l0atom53_t082_002",
+    "family": "L0",
+    "instruction_en": "Put one battery inside a bottom cabinet in the living room.",
+    "instruction_sha256": "4f36cb471617ca71a3a970042bb94c6625659eacc36323f93e7653410a1277c2",
+    "scene_model": "Rs_int",
+    "budget": {
+      "maximum_action_decisions": 33,
+      "maximum_model_calls": 330,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 72
+    }
+  },
+  {
+    "task_id": "l0atom53_t086_001",
+    "instruction_id": "l0atom53_t086_001",
+    "runtime_instruction_id": "l0atom53_t086_001",
+    "family": "L0",
+    "instruction_en": "Put one toy die from the living room inside a paper bag in the living room.",
+    "instruction_sha256": "503bde2a3494a97f91d823d2010979b4283552bb4461a9651e18cb1dfeda553d",
+    "scene_model": "Rs_int",
+    "budget": {
+      "maximum_action_decisions": 15,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 73
+    }
+  },
+  {
+    "task_id": "l0atom53_t092_002",
+    "instruction_id": "l0atom53_t092_002",
+    "runtime_instruction_id": "l0atom53_t092_002",
+    "family": "L0",
+    "instruction_en": "Turn on one scanner in the private office.",
+    "instruction_sha256": "e5be21ebd88f0595a60e8b3d44b58a9369b06362aa9e63ca0ed8bd4897652ad4",
+    "scene_model": "office_cubicles_right",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 74
+    }
+  },
+  {
+    "task_id": "l0e1_ben1_01",
+    "instruction_id": "l0e1_ben1_01",
+    "runtime_instruction_id": "l0e1_ben1_01",
+    "family": "L0",
+    "instruction_en": "Put the mug on the dining table.",
+    "instruction_sha256": "e208c642d01d7a91e334526e072e5565a9dc6312ac1e82501c5e1837dc3bb837",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 75
+    }
+  },
+  {
+    "task_id": "l0e1_ben1_09",
+    "instruction_id": "l0e1_ben1_09",
+    "runtime_instruction_id": "l0e1_ben1_09",
+    "family": "L0",
+    "instruction_en": "Turn on the wall-mounted television.",
+    "instruction_sha256": "574863db53de47ff8b0b29435ea06e8d6c5492bad49f8b535e773686c7a6ce76",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 76
+    }
+  },
+  {
+    "task_id": "l0e1_gbd_06",
+    "instruction_id": "l0e1_gbd_06",
+    "runtime_instruction_id": "l0e1_gbd_06",
+    "family": "L0",
+    "instruction_en": "Put the bottle of water on the desk.",
+    "instruction_sha256": "8c762065e8f983ca507d67d88f111faadaf0642b8a02fd42b95c3e9c42685d20",
+    "scene_model": "gates_bedroom",
+    "budget": {
+      "maximum_action_decisions": 21,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 77
+    }
+  },
+  {
+    "task_id": "l0e1_gbd_07",
+    "instruction_id": "l0e1_gbd_07",
+    "runtime_instruction_id": "l0e1_gbd_07",
+    "family": "L0",
+    "instruction_en": "Put the gym shoe next to the bed.",
+    "instruction_sha256": "381db433e4b07d18180152b364cdeeaa32bd2e21f410e38ac4f7b27668b6c58b",
+    "scene_model": "gates_bedroom",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 78
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0001",
+    "instruction_id": "l0exp_20260909_0001",
+    "runtime_instruction_id": "l0exp_20260909_0001",
+    "family": "L0",
+    "instruction_en": "Put the carton of milk on the breakfast table.",
+    "instruction_sha256": "8dd3e0627e7d7469ff7c4996cec6754170aaa7743163df2e224efd216c8d9d60",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 39,
+      "maximum_model_calls": 390,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 79
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0005",
+    "instruction_id": "l0exp_20260909_0005",
+    "runtime_instruction_id": "l0exp_20260909_0005",
+    "family": "L0",
+    "instruction_en": "Put the bowl on the bar.",
+    "instruction_sha256": "55df984914a752d57aaefff86306a34497367947d537028e6bbc5b2b3f36aa31",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 18,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 80
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0036",
+    "instruction_id": "l0exp_20260909_0036",
+    "runtime_instruction_id": "l0exp_20260909_0036",
+    "family": "L0",
+    "instruction_en": "Put the newspaper next to the box of tissues.",
+    "instruction_sha256": "56a79a4c81802b118eb7a1a5a7cce31e65d5259f328199dcfa134ee61ea6d725",
+    "scene_model": "hotel_suite_large",
+    "budget": {
+      "maximum_action_decisions": 18,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 81
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0048",
+    "instruction_id": "l0exp_20260909_0048",
+    "runtime_instruction_id": "l0exp_20260909_0048",
+    "family": "L0",
+    "instruction_en": "Put the newspaper on the desk.",
+    "instruction_sha256": "bff4c91a9e06d28cb2937a385105695acfa04d00b4c0cd587ec1a0e1614f8fd0",
+    "scene_model": "hotel_suite_large",
+    "budget": {
+      "maximum_action_decisions": 15,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 82
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0068",
+    "instruction_id": "l0exp_20260909_0068",
+    "runtime_instruction_id": "l0exp_20260909_0068",
+    "family": "L0",
+    "instruction_en": "Put the bottle of water next to the box of tissues.",
+    "instruction_sha256": "49bc77979600eba292b0f5fc877349c74361fbc86c2a226b116a91dc9419087f",
+    "scene_model": "hotel_suite_large",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 83
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0070",
+    "instruction_id": "l0exp_20260909_0070",
+    "runtime_instruction_id": "l0exp_20260909_0070",
+    "family": "L0",
+    "instruction_en": "Put the notebook under the desk.",
+    "instruction_sha256": "11e3d752ff91a5f4d8aceea4bac46abc555728d4617a910cec5bf9d7a59f48b2",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 27,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 84
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0084",
+    "instruction_id": "l0exp_20260909_0084",
+    "runtime_instruction_id": "l0exp_20260909_0084",
+    "family": "L0",
+    "instruction_en": "Put the mug on the folder.",
+    "instruction_sha256": "9685944950f27ecf2170f77ce0b0857649a51eb05d14184533a9a2c8264ce361",
+    "scene_model": "office_cubicles_right",
+    "budget": {
+      "maximum_action_decisions": 15,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 85
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0093",
+    "instruction_id": "l0exp_20260909_0093",
+    "runtime_instruction_id": "l0exp_20260909_0093",
+    "family": "L0",
+    "instruction_en": "Put the calculator on the folder.",
+    "instruction_sha256": "47b4baee9385795df3b89d7a82ac7bc4c1e32feb2da7951fa959bfadcc57f4b9",
+    "scene_model": "office_cubicles_right",
+    "budget": {
+      "maximum_action_decisions": 33,
+      "maximum_model_calls": 330,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 86
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0100",
+    "instruction_id": "l0exp_20260909_0100",
+    "runtime_instruction_id": "l0exp_20260909_0100",
+    "family": "L0",
+    "instruction_en": "Put the notebook next to the calculator.",
+    "instruction_sha256": "666fe7e0129d7d1e3afd2d3f30babfee134241ef47675835a50fee64ba0f5ab1",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 30,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 87
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0138",
+    "instruction_id": "l0exp_20260909_0138",
+    "runtime_instruction_id": "l0exp_20260909_0138",
+    "family": "L0",
+    "instruction_en": "Open the microwave and open the oven.",
+    "instruction_sha256": "4cc5c00e1c7eac8d922ddcd60bd7c8e8b0e0c4ca35ae0c8de3922bfe87e54355",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 88
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0149",
+    "instruction_id": "l0exp_20260909_0149",
+    "runtime_instruction_id": "l0exp_20260909_0149",
+    "family": "L0",
+    "instruction_en": "Put the notebook inside the bottom cabinet, and put the mug on the bottom cabinet.",
+    "instruction_sha256": "cfed7ee4f3d11252f6b85589a9a8de7d006bbdc54c297e60896922bb5190ff33",
+    "scene_model": "Rs_int",
+    "budget": {
+      "maximum_action_decisions": 27,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 89
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0159",
+    "instruction_id": "l0exp_20260909_0159",
+    "runtime_instruction_id": "l0exp_20260909_0159",
+    "family": "L0",
+    "instruction_en": "Put the stapler on the nightstand and turn on the calculator.",
+    "instruction_sha256": "9aa8851cd2d857e283dc071ca48170ad209fb1f0225d1df42de8a151c7df192f",
+    "scene_model": "gates_bedroom",
+    "budget": {
+      "maximum_action_decisions": 30,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 90
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0190",
+    "instruction_id": "l0exp_20260909_0190",
+    "runtime_instruction_id": "l0exp_20260909_0190",
+    "family": "L0",
+    "instruction_en": "Put the folder, the notebook, and the bottle of water inside the bottom cabinet, then close it.",
+    "instruction_sha256": "0a4851caf7983f02e655e28d7972bf8ef8d75293de292d4e30442c972352a6bb",
+    "scene_model": "Rs_int",
+    "budget": {
+      "maximum_action_decisions": 30,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 91
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0191",
+    "instruction_id": "l0exp_20260909_0191",
+    "runtime_instruction_id": "l0exp_20260909_0191",
+    "family": "L0",
+    "instruction_en": "Move the carton of milk from the dining room to the living room and put it on the cedar chest.",
+    "instruction_sha256": "6f577ef2e24afb967669d17165616c824e3c790cd256ae87ae2f7522b4dd084a",
+    "scene_model": "Benevolence_1_int",
+    "budget": {
+      "maximum_action_decisions": 51,
+      "maximum_model_calls": 510,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 92
+    }
+  },
+  {
+    "task_id": "l0exp_20260909_0194",
+    "instruction_id": "l0exp_20260909_0194",
+    "runtime_instruction_id": "l0exp_20260909_0194",
+    "family": "L0",
+    "instruction_en": "Move the paper bag from the living room to the kitchen and put it on the bar.",
+    "instruction_sha256": "0c3d3d0cfc0359d45a3c5c22a39774e485cf5245ed15975228fd15a7a7952411",
+    "scene_model": "house_double_floor_lower",
+    "budget": {
+      "maximum_action_decisions": 27,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 93
+    }
+  },
+  {
+    "task_id": "l0v2_p_c11",
+    "instruction_id": "l0v2_p_c11",
+    "runtime_instruction_id": "l0v2_p_c11",
+    "family": "L0",
+    "instruction_en": "Place the keyboard next to the monitor.",
+    "instruction_sha256": "533e8d40e803474c05c668abd62ed2bc0c05d70910c581fa1a4fedf344fdded8",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 94
+    }
+  },
+  {
+    "task_id": "l0v2_p_c12",
+    "instruction_id": "l0v2_p_c12",
+    "runtime_instruction_id": "l0v2_p_c12",
+    "family": "L0",
+    "instruction_en": "Place the mouse next to the keyboard.",
+    "instruction_sha256": "0a0c8961df036570be0b75c3f64ac7cdd592b9b569baadbe67f7f5aed9e27ab4",
+    "scene_model": "house_double_floor_upper",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 95
+    }
+  },
+  {
+    "task_id": "l0v2_p_c19",
+    "instruction_id": "l0v2_p_c19",
+    "runtime_instruction_id": "l0v2_p_c19",
+    "family": "L0",
+    "instruction_en": "Throw the cork away in the bathroom trash can.",
+    "instruction_sha256": "9abf606ab14f954550303f99687fe519d74ffbc023c92becddb2e3b3c377af44",
+    "scene_model": "hotel_suite_large",
+    "budget": {
+      "maximum_action_decisions": 18,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 96
+    }
+  },
+  {
+    "task_id": "l0v2_p_c46",
+    "instruction_id": "l0v2_p_c46",
+    "runtime_instruction_id": "l0v2_p_c46",
+    "family": "L0",
+    "instruction_en": "Put the chocolate chip cookie inside the packing box.",
+    "instruction_sha256": "bf0e8c9dc528050e042147d8dff76926067ebde7f180f28c34a16d0911f42677",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 42,
+      "maximum_model_calls": 420,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 97
+    }
+  },
+  {
+    "task_id": "l0v2_p_c51",
+    "instruction_id": "l0v2_p_c51",
+    "runtime_instruction_id": "l0v2_p_c51",
+    "family": "L0",
+    "instruction_en": "Put both bottles of olive oil inside one top kitchen cabinet.",
+    "instruction_sha256": "3f07a71091553f37b601a3843b6f12a7283cd7597d5bee7144b31e2b6740bfc6",
+    "scene_model": "house_single_floor",
+    "budget": {
+      "maximum_action_decisions": 51,
+      "maximum_model_calls": 510,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 98
+    }
+  },
+  {
+    "task_id": "l0v2_x12",
+    "instruction_id": "l0v2_x12",
+    "runtime_instruction_id": "l0v2_x12",
+    "family": "L0",
+    "instruction_en": "Place the modem next to the television and turn the modem on.",
+    "instruction_sha256": "4e4f1e7a193205c29f27635ef3167838e7559f250d439aef82cad273fc08192c",
+    "scene_model": "Rs_int",
+    "budget": {
+      "maximum_action_decisions": 12,
+      "maximum_model_calls": 300,
+      "repeats_per_model": 1,
+      "wall_clock_seconds": 3600
+    },
+    "action_mode": "Symbolic",
+    "profile": "l0-english-v2",
+    "source": {
+      "root": "action20-capability-benchmark",
+      "path": "benchmark/L0-100-FINAL/revisions/english_v2/tasks.json",
+      "sha256": "5daca755447954c2b1bd2c9a0cafb9cf5e92c78f8cf470666ffee1531dfbd969",
+      "revision": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "state": "untracked",
+      "row_index": 99
+    }
+  }
+]

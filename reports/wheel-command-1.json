@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "profile": "l0-english-v2",
+  "python": "3.12.9",
+  "packages": {
+    "esi-benchmark": "0.1.0rc1",
+    "numpy": "1.26.4",
+    "Pillow": "11.3.0",
+    "PyYAML": "6.0.3"
+  },
+  "source_revisions": {
+    "bench": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+    "runtime": "9b992b6797330a836e9533e5409627bf63f7d94b"
+  },
+  "source_roots": {
+    "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/bench",
+    "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/runtime"
+  },
+  "live_status": "not tested; separate simulator, assets and owned GPU required"
+}
