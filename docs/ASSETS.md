@@ -10,6 +10,8 @@ The installed manifest `esi_benchmark/data/assets/l0-english-v2.json` is metadat
 
 Set `assets.root` in an independent configuration to an empty directory owned by this project. The importer creates `.esi-benchmark-assets.json`, `import_receipt.json` and immutable copies under `files/<source_root>/<source_path>`. It refuses unknown keys, traversal, symlink paths, hash/size mismatches, source/destination overlap, unowned nonempty destinations and overwriting different imported bytes. All selected source files pass validation before any destination content is created. It never downloads, extracts archives or writes to a supplied source tree.
 
+On the supported Linux platform, import roots and newly created directories use owner-only `0700` permissions; copied files, markers and receipts use `0600`, independent of the process umask. Reusing an import with a matching ownership marker tightens the root and selected files to those modes. Destinations must belong to the current OS user; hard-linked or nonregular destination files are rejected before their permissions or contents can be changed. Existing parent directories and source permissions are left unchanged. Exclusive-create conflicts preserve the competing file; failed copies remove only a destination successfully created by that call.
+
 There are three supported import forms:
 
 ```bash
@@ -35,6 +37,8 @@ Python callers can prepare or check one task by passing `task=get_task(task_id, 
 `resolve_task_inputs(config, task)` verifies the imported originals and returns private paths plus the model's public instruction/budget binding. Its full return object is an evaluator input, not a model observation.
 
 `materialize_task_inputs(config, task, new_output_directory)` creates private per-run copies. It selects the exact task record from aggregate TaskSpecs, registry, package, handoff and preparation index, and rewrites paths into that new directory. Dependent file SHA256 references and the handoff-index binding are refreshed. Every input's original and derived hash, each path/hash rewrite and aggregate task selection appears in `materialization_receipt.json`.
+
+The new materialization root and directories use `0700`; inputs and the receipt use `0600`. An existing output directory is still refused, and no imported source file is chmodded or rewritten.
 
 The task's selected initial state, objects, goal, process/history contract, seed, instruction and budget retain their frozen meanings. The importer never changes the original preparation package. Runtime provenance that refers to older source versions remains historical evidence; it is not relabeled as execution under the candidate runtime.
 

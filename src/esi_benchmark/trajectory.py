@@ -25,7 +25,10 @@ def _read(root: Path, relative: str) -> dict[str, Any]:
     path = _path(root, relative)
     if not path.is_file() or path.stat().st_size > MAX_JSON_BYTES:
         raise ValueError(f"Missing or oversized run artifact: {relative}")
-    value = json.loads(path.read_text(), parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Non-finite JSON value")))
+    try:
+        value = json.loads(path.read_text(), parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Non-finite JSON value")))
+    except RecursionError as exc:
+        raise ValueError(f"Run artifact exceeds JSON nesting limit: {relative}") from exc
     if not isinstance(value, dict):
         raise ValueError(f"Run artifact must be an object: {relative}")
     return value
@@ -45,13 +48,23 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
         raise ValueError("Run summary has no terminal status")
     record = _read(root, "run_record.json") if _path(root, "run_record.json").is_file() else {}
     mode = record.get("mode", "unknown_legacy")
-    if mode not in _MODES:
+    if not isinstance(mode, str) or mode not in _MODES:
         raise ValueError("Unknown run evidence mode")
     variant = record.get("evaluation_variant", "unknown")
     if not isinstance(variant, str) or variant not in {*_VARIANT_HISTORY, "unknown"}:
         raise ValueError("Unknown evaluation variant")
     if variant in _VARIANT_HISTORY and summary.get("physical_history_max") not in (None, _VARIANT_HISTORY[variant]):
         raise ValueError("Evaluation variant disagrees with recorded physical history")
+    for field in ("source_revisions", "task_identity", "model", "declared_budget"):
+        if record.get(field) is not None and not isinstance(record[field], dict):
+            raise ValueError(f"run_record.{field} must be an object or null")
+    failure = None
+    if _path(root, "candidate_error.json").is_file():
+        error = _read(root, "candidate_error.json")
+        for field in ("status", "stage", "error_type"):
+            if not isinstance(error.get(field), str) or not error[field]:
+                raise ValueError(f"candidate_error.{field} must be a nonempty string")
+        failure = {field: error[field] for field in ("status", "stage", "error_type")}
     result = {
         "schema_version": "esi-benchmark/trajectory-inspection-v1", "run_dir": str(root),
         "mode": mode, "evaluation_variant": variant, "client_status": summary["status"], "official_success": None,
@@ -63,6 +76,8 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
         "strict_production_eligible": record.get("strict_production_eligible") is True,
         "private_artifacts_present": any((root / name).exists() for name in ("private", "conversation_private.json", "provider_calls")),
     }
+    if failure is not None:
+        result["candidate_error"] = failure
     if not _path(root, "conversation_chatml.json").is_file():
         unavailable = _path(root, "conversation_unavailable.json")
         if unavailable.is_file():
@@ -71,10 +86,13 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
                 raise ValueError("Conversation-unavailable record lacks a reason")
         elif summary["status"] == "INITIALIZATION_FAILED":
             reason = "initialization_failed"
+        elif failure is not None:
+            reason = "candidate_failure"
         else:
             raise ValueError("Missing ChatML without an explicit initialization failure record")
         return {**result, "status": "INCOMPLETE", "messages": None, "images": None,
-                "completeness": "initialization_failed" if summary["status"] == "INITIALIZATION_FAILED" else "conversation_unavailable",
+                "completeness": "candidate_failure" if failure is not None else (
+                    "initialization_failed" if summary["status"] == "INITIALIZATION_FAILED" else "conversation_unavailable"),
                 "reason": reason}
     chatml = _read(root, "conversation_chatml.json")
     manifest = _read(root, "client_manifest.json")
@@ -84,7 +102,8 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
         raise ValueError("Trajectory message count exceeds the inspection bounds")
     images = {}
     for message in chatml["messages"]:
-        if not isinstance(message, dict) or message.get("role") not in {"system", "user", "assistant", "tool"}:
+        if (not isinstance(message, dict) or not isinstance(message.get("role"), str)
+                or message["role"] not in {"system", "user", "assistant", "tool"}):
             raise ValueError("Malformed trajectory message")
         content = message.get("content")
         if not isinstance(content, list):
@@ -104,28 +123,41 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
     if not prompt_path.is_file() or prompt_path.stat().st_size > MAX_JSON_BYTES:
         raise ValueError("Missing or oversized system prompt")
     prompt_sha = hashlib.sha256(prompt_path.read_bytes()).hexdigest()
-    if prompt_sha != summary.get("prompt_sha256") or prompt_sha != manifest.get("prompt_provenance", {}).get("rendered_prompt_sha256"):
+    prompt_provenance = manifest.get("prompt_provenance", {})
+    if not isinstance(prompt_provenance, dict):
+        raise ValueError("client_manifest.prompt_provenance must be an object")
+    if prompt_sha != summary.get("prompt_sha256") or prompt_sha != prompt_provenance.get("rendered_prompt_sha256"):
         raise ValueError("Rendered system prompt provenance mismatch")
     if not isinstance(manifest.get("source_sha256"), dict) or not manifest["source_sha256"]:
         raise ValueError("Run lacks source hash provenance")
     candidate = summary.get("candidate_result")
     if candidate is not None:
-        if not isinstance(candidate, dict) or candidate.get("status") not in {"recorded", "unavailable"}:
+        if (not isinstance(candidate, dict) or not isinstance(candidate.get("status"), str)
+                or candidate["status"] not in {"recorded", "unavailable"}):
             raise ValueError("Candidate result is malformed")
+        evidence_records = candidate.get("evidence", {})
+        if not isinstance(evidence_records, dict):
+            raise ValueError("candidate_result.evidence must be an object")
+        if any(not isinstance(evidence, dict) for evidence in evidence_records.values()):
+            raise ValueError("candidate_result.evidence entries must be objects")
         if candidate["status"] == "unavailable":
             if candidate.get("official_success") is not None or candidate.get("official_q") is not None:
                 raise ValueError("Unavailable result must not contain a score")
         else:
             from .models import recorded_score_result
-            evidence = candidate.get("evidence", {}).get("final_score.json", {})
+            evidence = evidence_records.get("final_score.json", {})
             archived = _path(root, evidence.get("path"))
             if not archived.is_file() or archived.stat().st_size > 512 * 1024:
                 raise ValueError("Archived final score is missing or oversized")
             if hashlib.sha256(archived.read_bytes()).hexdigest() != evidence.get("sha256"):
                 raise ValueError("Archived final score hash mismatch")
             interpreted = recorded_score_result(_read(root, evidence["path"]), candidate.get("episode_id"))
-            if any(candidate.get(key) != value for key, value in interpreted.items()):
+            if any(type(candidate.get(key)) is not type(value) or candidate.get(key) != value
+                   for key, value in interpreted.items()):
                 raise ValueError("Candidate result differs from original final score")
+    if failure is not None:
+        return {**result, "status": "INCOMPLETE", "messages": len(chatml["messages"]), "images": len(images),
+                "completeness": "candidate_failure", "reason": "Candidate execution failed; see candidate_error.json"}
     if mode == "live" and candidate is not None and candidate["status"] == "recorded":
         result.update(official_success=candidate["official_success"], official_q=candidate["official_q"], score_available=True)
     elif mode == "unknown_legacy":
@@ -145,18 +177,19 @@ def summarize_runs(run_dirs: Iterable[str | Path]) -> dict[str, Any]:
     for path in run_dirs:
         try:
             runs.append(inspect_run(path))
-        except (ValueError, OSError, TypeError) as exc:
+        except (ValueError, OSError) as exc:
             root = Path(path).resolve()
             mode = "unknown_legacy"
             variant = "unknown"
             try:
                 record = _read(root, "run_record.json")
                 recorded_mode = record.get("mode")
-                if record.get("evaluation_variant") in _VARIANT_HISTORY:
-                    variant = record["evaluation_variant"]
-                if recorded_mode in _MODES:
+                recorded_variant = record.get("evaluation_variant")
+                if isinstance(recorded_variant, str) and recorded_variant in _VARIANT_HISTORY:
+                    variant = recorded_variant
+                if isinstance(recorded_mode, str) and recorded_mode in _MODES:
                     mode = recorded_mode
-            except (ValueError, OSError, TypeError):
+            except (ValueError, OSError):
                 pass
             runs.append({"run_dir": str(root), "mode": mode, "evaluation_variant": variant, "status": "INVALID", "error": str(exc),
                          "score_available": False, "official_success": None, "completeness": "invalid_artifacts"})

@@ -1,0 +1,1 @@
+{"status": "PASS", "case_count": 75, "case_groups": {"budget": 2, "conversation": 13, "model_loop": 5, "observation": 5, "parser": 24, "process": 4, "result": 8, "score": 8, "termination": 2, "trajectory": 4}, "differences": []}

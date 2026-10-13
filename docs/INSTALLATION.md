@@ -25,7 +25,7 @@ To review the built distribution in a second environment:
 python -m pip wheel --no-deps --wheel-dir dist .
 python3.11 -m venv .venv-wheel
 . .venv-wheel/bin/activate
-python -m pip install dist/esi_benchmark-0.1.0rc1-py3-none-any.whl
+python -m pip install dist/esi_benchmark-0.1.0rc2-py3-none-any.whl
 esi-benchmark --help
 esi-benchmark doctor
 ```
@@ -36,6 +36,26 @@ installation checks in [Validation](VALIDATION.md). Package version ranges are
 compatibility declarations, not a fully locked transitive environment. Preserve
 `python -m pip freeze`, wheel hashes and Python/platform versions when reproducing
 the reported CPU environment.
+
+The source archive includes the same tests, synthetic fixtures, verification tools
+and reviewed reports as the checkout. With the `test` extra installed, build and
+verify it independently:
+
+```bash
+python -c "from setuptools.build_meta import build_sdist; build_sdist('dist')"
+mkdir -p .tmp/source-release
+tar -xzf dist/esi_benchmark-0.1.0rc2.tar.gz -C .tmp/source-release
+ESI_TEST_TMP="$PWD/.tmp/sdist-tests"
+cd .tmp/source-release/esi_benchmark-0.1.0rc2
+python -m pip install '.[test]'
+PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -ra --basetemp="$ESI_TEST_TMP"
+python tools/check_equivalence.py
+```
+
+Keep extraction and test paths short: the inherited Unix-socket tests share the
+operating system's address-length limit. The automated distribution regression
+also builds an archive, checks its contents, and runs the previously omitted
+verification tests from the extracted tree.
 
 The frozen Live dependency target is:
 

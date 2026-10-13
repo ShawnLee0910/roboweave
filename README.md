@@ -12,6 +12,12 @@ owner decisions. Simulation assets are obtained separately under their own terms
 See [license status](LICENSE_STATUS.md) and
 [distribution boundaries](docs/DISTRIBUTION.md).
 
+Version `0.1.0rc2` fixes the eight issues identified in the second review:
+credential redirects, incomplete process evidence, private input permissions,
+concurrent import cleanup, mixed source modules, hidden archival failures,
+malformed result isolation and incomplete source distributions. See
+[the fix record](docs/FIXES_RC2.md) and [validation evidence](docs/VALIDATION.md).
+
 The architecture keeps the existing executor and evaluator: a thin public package
 coordinates the frozen task catalog, model adapter, Bench episode loop, Runtime
 and trajectory artifacts. [Architecture](docs/ARCHITECTURE.md) explains the module

@@ -78,7 +78,35 @@ evidence fails closed. To replay an audit, pass an explicit fresh directory via
 
 - `roles` and the original `requirements`;
 - `initial_truth` and `final_truth`, each a list of `{ "atom": <original atom>, "value": <boolean> }`;
-- ordered `events`, each with `action`, `before`, `after`, `status`, and `action_index`, preserving the original audit snapshot fields.
+- ordered `events`, each with nonempty string `action` and `status`, `before`,
+  `after`, and a nonnegative integer or null `action_index`.
+
+Both event snapshots must be objects with `held_roles` (distinct declared roles),
+`prerequisites` (one boolean per before-placement rule), and
+`protected_relations` (boolean readbacks). A placement contract also requires
+`placement_goals`, with one boolean per rule. State protection requires
+`protected_states` covering the declared protected states. Protection readback
+counts must remain unchanged throughout the record. The number of protected
+relations comes from the private initial recipe, not the public requirements;
+the replay cannot independently certify that recipe or the supplied truth.
+
+Current-reference contracts require one `current_references` entry per rule,
+each containing `source_matches` and `target_matches` as distinct roles in that
+rule's domain. Milestone programs require each declared boolean in `milestones`,
+plus the `_unary` role readbacks when the original program uses a unary-state
+extension. An optional `selected_roles` list retains the native protected-pick
+receipt. Missing snapshots, missing required fields, wrong types and changing
+protection readback counts raise `ValueError`; they cannot produce a passing
+score. Structural validation runs before event receipts are written. Valid
+records retain the original audit's success, violation and verifier-error
+classification and the unmodified canonical Q.
+
+`history_program` contracts are rejected by this CPU API: their original audit
+re-reads predicate truth during each event, while `score-record-v1` has only
+initial and final atom truth. Those records cannot establish a complete history
+audit. The original Live history verifier and its contract are unchanged; a
+future replay format needs explicit per-event predicate evidence before this
+route can support history programs.
 
 The wrapper invokes the original `ProcessAudit`; it writes its original private
 event receipts into that fresh directory. This API replays supplied audit facts.

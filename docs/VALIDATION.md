@@ -1,5 +1,40 @@
 # Candidate validation
 
+## Current rc2 repair acceptance
+
+Version `0.1.0rc2` fixes all eight issues identified by the second review. The
+complete CPU suite now reports **1,088 passed, 3 skipped**. The skips remain the
+separately authorized full task assets and the two undistributed historical
+process packages. No original source or task input was changed.
+
+- [rc2 test log](../reports/rc2/pytest.log) and [JUnit](../reports/rc2/pytest.xml)
+- [rc2 wheel acceptance](../reports/rc2/WHEEL_VALIDATION.json)
+- [rc2 source-archive acceptance](../reports/rc2/SDIST_VALIDATION.json)
+- [distribution regression after excluding bytecode](../reports/rc2/distribution-recheck.log)
+- [rc2 behavior comparison](../reports/rc2/equivalence.log): 75/75 unchanged
+- [Eight fixes and their regression checks](FIXES_RC2.md)
+
+The suite covers credential-safe redirects, contract-specific evidence rejection,
+private file permissions, import conflict cleanup, source-module isolation,
+archival errors, malformed/deep JSON and source-archive completeness. A separate
+review traced these changes and rechecked the discovered deep-JSON edge case.
+The recorded warning is a Python tar extraction default deprecation in the test
+harness; it extracts its own archive after rejecting links and escaping paths.
+
+Wheel checks use a separate environment and working directory with `PYTHONPATH`
+unset. Source-archive checks build and extract the actual tarball and execute the
+shipped verification tools. These CPU and packaging checks remain distinct from
+Live, model-provider interoperability and formal benchmark qualification.
+
+The 100-task real-input audit below is evidence from rc1, not a new private-asset
+import in this repair. The task catalog and manifest are unchanged; the importer
+permission/cleanup corrections are covered by synthetic regression fixtures.
+
+## Historical rc1 acceptance
+
+The remainder records the initial candidate before the eight review fixes. Its
+logs and counts are preserved for provenance, not substituted for rc2 acceptance.
+
 The candidate is installed and CPU-validated. **No GPU, simulator scene, actual
 model request, SSH, existing resident, service or scheduler was used.** Neither
 these checks nor the synthetic example constitute a Live benchmark pass.

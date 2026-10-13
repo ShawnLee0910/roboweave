@@ -16,6 +16,7 @@ RGB images, declared CC0-1.0 in its fixture metadata.
 | `action_after/*.png` | Chronological post-action composites. Recovery branches have separate directories. |
 | `provider_calls/call_####/` | Request/response, attempts, error and token/timing evidence. Treat as private. |
 | `summary.json` | Original terminal classification and counters; the candidate may add `candidate_result` without replacing original fields. |
+| `candidate_error.json` | Candidate execution or score-archive failure after the original summary was written; records the failure stage and exception type without replacing the original summary. |
 | `private/scene_final_score.json` | Byte-for-byte archived resident score after episode end, when available. Never added to model observations. |
 | `private/task_binding.json`, `private/oracle_prepared_restore.json` | Frozen identity/preparation evidence for Live runs when present. |
 
@@ -52,6 +53,15 @@ malformed runs are individually `INVALID` and do not erase other runs from the
 report. Neither is reported as a completed trajectory check. Legacy runs without
 `run_record.json` have `unknown_legacy` mode rather than being assumed Live.
 This is a per-run compatibility check, not a data export tool.
+
+A valid `candidate_error.json` makes inspection `INCOMPLETE` even if the original
+client status is `DONE` or a score was previously archived. The report preserves
+the original client status and failure `status`, `stage` and `error_type`; it does
+not count this attempt as scored or successful. A missing final score alone can
+still pass the trajectory/provenance check with `score_available: false`.
+Malformed nested result, evidence, prompt-provenance or run-record objects are
+validation errors, reported per run as `INVALID` by the summarizer. Summary and
+other source artifacts are never rewritten during inspection.
 
 A replay run records `mode: offline_replay`, `official_score: null`,
 `simulator_started: false` and `model_requested: false`. The complete original

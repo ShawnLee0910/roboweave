@@ -31,6 +31,15 @@ This is a new Git repository with no imported internal history or remote. There
 are no source-tree symlinks. Runtime `SOURCE_IDENTITY.json` hashes its installed
 files and retains the upstream revision separately from packaging adaptations.
 Model runs record source hashes, the rendered prompt hash and wrapper hashes.
+Before using the bundle, bootstrap checks every already imported module owned by
+the bundled Bench, `lab`, Runtime `behavior_hl` and runtime script modules against
+its exact installed file and package search path. Both top-level and `lab.*`
+imports are covered. Namespace packages such as `lab` are accepted only when all
+their search locations belong to the expected installed directory. Foreign or
+missing origins fail immediately, including when `doctor` runs inside an existing
+Python process. Bootstrap does not replace imported modules: use a fresh process
+instead of mixing source profiles in a notebook or custom adapter. The static
+bundle index is cached; loaded module origins are checked on every activation.
 Asset imports verify raw bytes before generating private relocation copies; their
 receipts retain original and derived identities. A derived path does not relabel
 an original run or prepared state as having used new code.

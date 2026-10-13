@@ -557,6 +557,12 @@ def _aggregate_provider_metrics(
     }
 
 
+class _NoProviderRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        # Never forward credentials or request bodies beyond the configured endpoint.
+        return None
+
+
 class OpenAICompatibleProvider:
     def __init__(
         self,
@@ -736,7 +742,9 @@ class OpenAICompatibleProvider:
             reasoning_effort if provider_api == "anthropic_messages" else None
         )
         self.requires_api_key = require_api_key or not (loopback_http or private_http)
-        self.opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+        self.opener = urllib.request.build_opener(
+            urllib.request.ProxyHandler({}), _NoProviderRedirect()
+        )
         self._pending_responses_replay: dict[str, Mapping[str, Any]] = {}
         self._anthropic_replay: dict[str, list[Any]] = {}
 

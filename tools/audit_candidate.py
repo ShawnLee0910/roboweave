@@ -18,6 +18,8 @@ SECRET_PATTERNS = {
 AUDITED_TEST_LITERALS = {
     ("tests/test_models.py", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
     ("reports/pytest.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
+    ("reports/rc2/pytest.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
+    ("reports/rc2/sdist-pytest.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
     ("tests/upstream_bench/test_model_protocol_retry.py", "provider_key", "d7741caceb829b07fe116f5ba10ea4415e361d02efbedddd352674b25b678ced"),
 }
 

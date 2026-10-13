@@ -165,9 +165,10 @@ def test_provider_hard_disables_environment_proxy(monkeypatch) -> None:
     assert provider.opener is not None
     handlers = captured["handlers"]
     assert isinstance(handlers, tuple)
-    assert len(handlers) == 1
+    assert len(handlers) == 2
     assert isinstance(handlers[0], urllib.request.ProxyHandler)
     assert handlers[0].proxies == {}
+    assert isinstance(handlers[1], model_client._NoProviderRedirect)
 
 
 def test_provider_rewrites_only_the_wire_model() -> None:

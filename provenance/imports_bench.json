@@ -157,7 +157,7 @@
     "source_path": "lab/model_client.py",
     "source_sha256": "2224523570db9ae882b18233210a401aea0cd0dcadf493ad079bc13752611c48",
     "destination": "src/esi_benchmark/_vendor/bench/lab/model_client.py",
-    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport."
+    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained"
   },
   {
     "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",
@@ -309,7 +309,7 @@
     "source_path": "lab/test_model_protocol_retry.py",
     "source_sha256": "43f32c110e9a4ef87f9e98d344e10706dd221baea7d664e9d8cc19cf68813c4f",
     "destination": "tests/upstream_bench/test_model_protocol_retry.py",
-    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged."
+    "changes": "Relocate test source paths and cross-test helper import for standalone candidate layout; assertions unchanged.; rc2: opener assertions retain proxy isolation and require the credential-safe no-redirect handler"
   },
   {
     "source_root": "/liyuanshuai/bench-consolidated-baseline-20260913",

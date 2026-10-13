@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "esi-benchmark"
-version = "0.1.0rc1"
+version = "0.1.0rc2"
 description = "A source-frozen, locally reviewable ESI Benchmark release candidate"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["numpy>=1.26,<2", "Pillow>=11,<12", "PyYAML>=6,<7"]
 
 [project.optional-dependencies]
-test = ["pytest>=8,<9", "opencv-python-headless==4.11.0.86", "websockets>=13,<16", "msgpack>=1,<2"]
+test = ["pytest>=8,<9", "setuptools>=68", "wheel", "opencv-python-headless==4.11.0.86", "websockets>=13,<16", "msgpack>=1,<2"]
 live = ["websockets>=13,<16", "msgpack>=1,<2"]
 
 [project.scripts]
@@ -24,6 +24,9 @@ include-package-data = true
 
 [tool.setuptools.package-data]
 esi_benchmark = ["_vendor/**/*", "data/**/*"]
+
+[tool.setuptools.exclude-package-data]
+esi_benchmark = ["**/*.pyc", "**/*.pyo"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

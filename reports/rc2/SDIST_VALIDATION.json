@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "version": "0.1.0rc2",
+  "archive": "esi_benchmark-0.1.0rc2.tar.gz",
+  "extracted_tree": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/sdist-rc2-validation/esi_benchmark-0.1.0rc2",
+  "evidence_scope": "Full suite from extracted source archive; final archive may add updated docs and acceptance receipts. Code, tests and build configuration are identical to this tested payload.",
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "3",
+    "tests": "1091",
+    "time": "85.143",
+    "timestamp": "2026-10-13T04:01:13.395213+00:00",
+    "hostname": "other-a6cda58c-vnwkp"
+  },
+  "payload_files": 422,
+  "payload_sha256": "25692a642ef495367f0b8bc0e1c54bfe837042c5f0d265e1c4214d92205e93b5",
+  "missing_verification_material": [],
+  "bytecode_exclusion_regression": "PASS",
+  "model_or_simulator_requests": 0
+}

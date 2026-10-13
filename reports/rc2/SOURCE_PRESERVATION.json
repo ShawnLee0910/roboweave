@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-13T04:02:21.325478+00:00",
+  "candidate_version": "0.1.0rc2",
+  "checks": {
+    "bench": {
+      "head_unchanged": true,
+      "tracked_status_unchanged": true,
+      "modified_file_hashes_unchanged": true
+    },
+    "runtime": {
+      "head_unchanged": true,
+      "tracked_status_unchanged": true,
+      "modified_file_hashes_unchanged": true
+    },
+    "tasks": {
+      "head_unchanged": true,
+      "tracked_status_unchanged": true,
+      "modified_file_hashes_unchanged": true
+    }
+  },
+  "scope": "Original HEAD, tracked status and initially modified tracked file hashes. Not a filesystem or running-service inventory.",
+  "original_process_or_service_actions": 0
+}

@@ -158,7 +158,7 @@
     "bench/lab/provider_retry.py": "8b10640cdf34ec2da32bf02230cf4f2c21a0539e9968715cf4740e826e9c94ff",
     "bench/lab/anthropic_messages_adapter.py": "d389dffd2e2d179e5f3134aea6f56f6057471d517695a56498b9a9c8b1e7085a",
     "bench/responses_adapter.py": "538c93dd9bd2da9e3f2ba7d11086650298cb3ea55b607b32d9fb3d3cc7380aff",
-    "bench/lab/model_client.py": "f62239e72e8956f3f9e4ecc3e7157551e16e95905920e9ab91b4cc89476ad54a",
+    "bench/lab/model_client.py": "8a7a09e7bd37acd013bcf9cf48bdfcaf57fd17691754ad006f5cdd27cee7f595",
     "bench/lab/physical_model_results.py": "be8d2ee32a8465869e7ec133ebe5f77cc0de043d01135ec636c1becf797a2c58",
     "bench/action20_core_instructions.txt": "4b9b5168a0541be734cda28133cdb86fe18b82f999a9663a1048795631bafefd",
     "bench/action20_tool_schema.json": "2b11b8ba14c56fa480020989d218069c207f265cc1ecd28f35dbe9e3da74e4e2",

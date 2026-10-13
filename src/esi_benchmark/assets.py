@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path, PurePosixPath
 import shutil
+import stat
 from importlib.resources import files
 
 from .tasks import profile_for
@@ -45,6 +46,36 @@ def _within(root, relative):
 
 def _path(root, row):
     return _within(root, Path("files") / _relative(row["source_root"]) / _relative(row["source_path"]))
+
+
+def _private_directory(path, *, exist_ok=True):
+    if not path.parent.exists():
+        _private_directory(path.parent, exist_ok=False)
+    path.mkdir(mode=0o700, exist_ok=exist_ok)
+    status = path.lstat()
+    if not stat.S_ISDIR(status.st_mode) or status.st_uid != os.geteuid():
+        raise ValueError("Private input directory must be owned by the current user")
+    path.chmod(0o700)
+
+
+def _private_open(path, *, exclusive=True):
+    flags = os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW | os.O_NONBLOCK
+    fd = os.open(path, flags | (os.O_EXCL if exclusive else 0), 0o600)
+    try:
+        status = os.fstat(fd)
+        if not stat.S_ISREG(status.st_mode) or status.st_uid != os.geteuid() or status.st_nlink != 1:
+            raise ValueError("Private input file must be a singly linked file owned by the current user")
+        os.fchmod(fd, 0o600)
+        return os.fdopen(fd, "r+b")
+    except BaseException:
+        os.close(fd)
+        raise
+
+
+def _private_write(path, data, *, exclusive=False):
+    with _private_open(path, exclusive=exclusive) as stream:
+        stream.truncate(0)
+        stream.write(data)
 
 
 def _selected(config, task=None):
@@ -118,7 +149,7 @@ def prepare_assets(config, source_roots=None, mapping=None, bundle=None, task=No
             source = _within(source_root, row["source_path"])
         else:
             raise ValueError(f"No source supplied for {row['source_root']} ({row['key']})")
-        if root.resolve() == source_root.resolve() or root.resolve().is_relative_to(source_root.resolve()):
+        if root.resolve().is_relative_to(source_root.resolve()) or source_root.resolve().is_relative_to(root.resolve()):
             raise ValueError("Asset destination overlaps a source tree")
         if not source.is_file() or source.stat().st_size != row["bytes"] or _sha(source) != row["sha256"]:
             raise ValueError(f"Asset missing or SHA256/size mismatch: {row['key']}")
@@ -126,26 +157,32 @@ def prepare_assets(config, source_roots=None, mapping=None, bundle=None, task=No
         if destination.exists() and (not destination.is_file() or _sha(destination) != row["sha256"]):
             raise ValueError(f"Refusing to overwrite a different imported asset: {row['key']}")
         candidates.append((row, source, destination))
-    root.mkdir(parents=True, exist_ok=True)
-    marker.write_text(json.dumps({"schema_version": 1, "profile": manifest["profile"]}) + "\n")
+    _private_directory(root)
+    _private_write(marker, (json.dumps({"schema_version": 1, "profile": manifest["profile"]}) + "\n").encode())
     copied = 0
     for row, source, destination in candidates:
         if destination.exists():
+            with _private_open(destination, exclusive=False):
+                pass
             continue
-        destination.parent.mkdir(parents=True, exist_ok=True)
+        _private_directory(destination.parent)
+        created = False
         try:
-            with source.open("rb") as incoming, destination.open("xb") as outgoing:
-                shutil.copyfileobj(incoming, outgoing)
+            with source.open("rb") as incoming:
+                with _private_open(destination) as outgoing:
+                    created = True
+                    shutil.copyfileobj(incoming, outgoing)
             if _sha(destination) != row["sha256"]:
                 raise ValueError(f"Source changed during import: {row['key']}")
         except BaseException:
-            destination.unlink(missing_ok=True)
+            if created:
+                destination.unlink(missing_ok=True)
             raise
         copied += 1
     receipt = {"schema_version": 1, "profile": manifest["profile"],
                "files": {row["key"]: {"path": str(_path(root, row).relative_to(root)), "sha256": row["sha256"]}
                          for row in manifest["files"] if _path(root, row).is_file()}}
-    _within(root, "import_receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
+    _private_write(_within(root, "import_receipt.json"), (json.dumps(receipt, indent=2) + "\n").encode())
     return {**check_assets(config, task), "copied": copied}
 
 
@@ -257,7 +294,7 @@ def materialize_task_inputs(config, task, output_dir):
     for parent in output.parents:
         if parent.is_symlink():
             raise ValueError("Materialization output ancestors must not be symlinks")
-    output.mkdir(parents=True)
+    _private_directory(output, exist_ok=False)
     by_key = {row["key"]: row for row in rows}
     destinations = {row["key"]: _path(output, row) for row in rows}
     states, hashes, records = {}, {}, []
@@ -325,9 +362,8 @@ def materialize_task_inputs(config, task, output_dir):
                     if original.suffix == ".jsonl" else json.dumps(transformed, ensure_ascii=False, indent=2) + "\n").encode()
         else:
             data = original.read_bytes()
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        with destination.open("xb") as stream:
-            stream.write(data)
+        _private_directory(destination.parent)
+        _private_write(destination, data, exclusive=True)
         hashes[key] = hashlib.sha256(data).hexdigest()
         states[key] = "done"
         records.append({"key": key, "original_sha256": row["sha256"], "derived_sha256": hashes[key],
@@ -340,7 +376,7 @@ def materialize_task_inputs(config, task, output_dir):
                "instruction_id": instruction_id, "files": records,
                "semantics": "Single-task selection and file relocation only; no goal/process/initial-state/budget changes."}
     receipt_path = output / "materialization_receipt.json"
-    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n")
+    _private_write(receipt_path, (json.dumps(receipt, indent=2) + "\n").encode(), exclusive=True)
     original_to_derived = {str(_path(source_root, row)): str(destinations[row["key"]]) for row in rows}
     result = {k: original_to_derived.get(v, v) if isinstance(v, str) else v for k, v in resolved.items()}
     result["mapping"] = {_suffix(row): str(destinations[row["key"]]) for row in rows}

@@ -1,0 +1,57 @@
+{
+  "status": "ALL_EIGHT_REVIEW_FINDINGS_FIXED_CPU_VALIDATED",
+  "version": "0.1.0rc2",
+  "previous_commit": "28df6efec9a7957a2f51121362f1ce01d913c53e",
+  "checkout_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "3",
+    "tests": "1091",
+    "time": "66.154",
+    "timestamp": "2026-10-13T03:55:35.164152+00:00",
+    "hostname": "other-a6cda58c-vnwkp"
+  },
+  "source_distribution_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "3",
+    "tests": "1091",
+    "time": "85.143",
+    "timestamp": "2026-10-13T04:01:13.395213+00:00",
+    "hostname": "other-a6cda58c-vnwkp"
+  },
+  "equivalence": {
+    "passed": 75,
+    "differences": 0
+  },
+  "findings_fixed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "additional_boundary_fixes": [
+    "excessive JSON nesting is isolated to its run",
+    "out-of-range huge integer Q is rejected without overflow",
+    "compiled local caches excluded from wheels"
+  ],
+  "live_runs": 0,
+  "network_model_requests": 0,
+  "remaining": [
+    "Live and Python 3.11 simulator acceptance not run",
+    "three private-asset-dependent tests skipped",
+    "score-record-v1 history_program lacks per-event truth and is rejected",
+    "historical release gate and licensing conditions unchanged"
+  ],
+  "original_source_or_service_mutations": 0,
+  "independent_review": {
+    "remaining_blockers": 0,
+    "additional_finding_fixed": "Deep JSON recursion error at result parsing boundary"
+  }
+}

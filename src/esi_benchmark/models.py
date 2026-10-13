@@ -163,7 +163,7 @@ def recorded_score_result(score: Mapping[str, Any], episode_id: str) -> dict[str
     if type(score.get("official_success")) is not bool or type(score.get("verifier_ok")) is not bool:
         raise ValueError("Final score lacks boolean verifier status")
     q = score.get("official_q")
-    if q is not None and (type(q) not in (int, float) or not math.isfinite(q) or not 0 <= q <= 1):
+    if q is not None and (type(q) not in (int, float) or not 0 <= q <= 1 or not math.isfinite(q)):
         raise ValueError("Final score Q must be null or a finite number in [0, 1]")
     if "task_success" in score and type(score["task_success"]) is not bool:
         raise ValueError("Final task_success must be boolean")

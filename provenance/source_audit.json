@@ -1,12 +1,22 @@
 {
   "schema_version": "esi-benchmark/source-audit-v1",
-  "files": 477,
-  "bytes": 10760414,
+  "files": 504,
+  "bytes": 11413617,
   "secret_or_symlink_findings": [],
   "syntax_errors": [],
   "reviewed_synthetic_test_literals": [
     {
       "path": "reports/pytest.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "reports/rc2/pytest.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "reports/rc2/sdist-pytest.xml",
       "kind": "credential_url",
       "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
     },

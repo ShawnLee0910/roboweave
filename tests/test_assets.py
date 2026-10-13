@@ -1,6 +1,8 @@
 import hashlib
 import json
+import os
 from pathlib import Path
+import stat
 
 import pytest
 
@@ -189,3 +191,142 @@ def test_legacy_candidate_id_registration_preserves_the_selected_record():
     projected = assets._project(value, {"roles": ["registration_catalog"]}, "one")
     assert projected == {"tasks": [record], "task_count": 1}
     assert value["task_count"] == 2
+
+
+@pytest.mark.parametrize("mask", [0o000, 0o022, 0o077, 0o777])
+def test_private_import_and_materialization_permissions_ignore_umask(inputs, mask):
+    config, task, _, source, tmp_path, _ = inputs
+    before = {path: stat.S_IMODE(path.stat().st_mode) for path in [tmp_path, source, *source.iterdir()]}
+    config["assets"]["root"] = str(tmp_path / "nested" / "local")
+    previous = os.umask(mask)
+    try:
+        assets.prepare_assets(config)
+        assets.materialize_task_inputs(config, task, tmp_path / "run" / "private" / "inputs")
+    finally:
+        os.umask(previous)
+    for root in (tmp_path / "nested", tmp_path / "run"):
+        for path in [root, *root.rglob("*")]:
+            assert stat.S_IMODE(path.stat().st_mode) == (0o700 if path.is_dir() else 0o600)
+    assert {path: stat.S_IMODE(path.stat().st_mode) for path in before} == before
+
+
+def test_owned_import_permissions_are_tightened_without_changing_source(inputs):
+    config, _, _, source, _, _ = inputs
+    assets.prepare_assets(config)
+    root = Path(config["assets"]["root"])
+    root.chmod(0o755)
+    for path in root.rglob("*"):
+        if path.is_file():
+            path.chmod(0o644)
+    before = {path: (sha(path), path.stat().st_mode) for path in source.iterdir()}
+    assert assets.prepare_assets(config)["copied"] == 0
+    assert stat.S_IMODE(root.stat().st_mode) == 0o700
+    assert all(stat.S_IMODE(path.stat().st_mode) == 0o600 for path in root.rglob("*") if path.is_file())
+    assert {path: (sha(path), path.stat().st_mode) for path in source.iterdir()} == before
+
+
+def test_unmarked_nonempty_import_root_is_unchanged(inputs):
+    config, _, _, _, _, _ = inputs
+    root = Path(config["assets"]["root"])
+    root.mkdir(mode=0o755)
+    root.chmod(0o755)
+    existing = root / "someone-elses-file"
+    existing.write_text("keep")
+    with pytest.raises(ValueError, match="ownership marker"):
+        assets.prepare_assets(config)
+    assert stat.S_IMODE(root.stat().st_mode) == 0o755
+    assert existing.read_text() == "keep"
+
+
+def test_existing_root_not_owned_by_current_user_is_unchanged(inputs, monkeypatch):
+    config, _, _, _, _, _ = inputs
+    root = Path(config["assets"]["root"])
+    root.mkdir(mode=0o755)
+    root.chmod(0o755)
+    monkeypatch.setattr(assets.os, "geteuid", lambda: root.stat().st_uid + 1)
+    with pytest.raises(ValueError, match="owned by the current user"):
+        assets.prepare_assets(config)
+    assert stat.S_IMODE(root.stat().st_mode) == 0o755
+    assert not list(root.iterdir())
+
+
+def test_source_nested_in_owned_destination_is_rejected_before_permissions_change(inputs):
+    config, _, _, source, tmp_path, _ = inputs
+    config["assets"]["root"] = str(tmp_path)
+    marker = tmp_path / ".esi-benchmark-assets.json"
+    marker.write_text(json.dumps({"profile": "l0-english-v2"}))
+    before = {path: path.stat().st_mode for path in [tmp_path, marker, source, *source.iterdir()]}
+    with pytest.raises(ValueError, match="overlaps"):
+        assets.prepare_assets(config)
+    assert {path: path.stat().st_mode for path in before} == before
+
+
+def test_import_refuses_hardlinked_destination_without_chmodding_source(inputs):
+    config, _, manifest, source, _, _ = inputs
+    assets.prepare_assets(config)
+    row = manifest["files"][0]
+    original = source / row["source_path"]
+    destination = assets._path(config["assets"]["root"], row)
+    destination.unlink()
+    os.link(original, destination)
+    before = original.stat().st_mode
+    with pytest.raises(ValueError, match="singly linked"):
+        assets.prepare_assets(config)
+    assert original.stat().st_mode == before
+    assert sha(original) == row["sha256"]
+
+
+def test_concurrent_exclusive_create_conflict_keeps_competing_file(inputs, monkeypatch):
+    config, _, manifest, _, _, _ = inputs
+    destination = assets._path(config["assets"]["root"], manifest["files"][0])
+    original_open = assets._private_open
+
+    def competing_open(path, *, exclusive=True):
+        if path == destination and exclusive:
+            destination.write_bytes(b"created by another importer")
+        return original_open(path, exclusive=exclusive)
+
+    monkeypatch.setattr(assets, "_private_open", competing_open)
+    with pytest.raises(FileExistsError):
+        assets.prepare_assets(config)
+    assert destination.read_bytes() == b"created by another importer"
+
+
+def test_source_open_failure_does_not_remove_competing_destination(inputs, monkeypatch):
+    config, _, manifest, source, _, _ = inputs
+    row = manifest["files"][0]
+    source_path = source / row["source_path"]
+    destination = assets._path(config["assets"]["root"], row)
+    original_open = Path.open
+    reads = 0
+
+    def failing_source_open(path, *args, **kwargs):
+        nonlocal reads
+        if path == source_path and args == ("rb",):
+            reads += 1
+            if reads == 2:
+                destination.write_bytes(b"created during source failure")
+                raise OSError("source became unreadable")
+        return original_open(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", failing_source_open)
+    with pytest.raises(OSError, match="source became unreadable"):
+        assets.prepare_assets(config)
+    assert destination.read_bytes() == b"created during source failure"
+
+
+@pytest.mark.parametrize("failure", ["copy_error", "hash_mismatch"])
+def test_failed_copy_cleans_up_only_its_created_file(inputs, monkeypatch, failure):
+    config, _, manifest, _, _, _ = inputs
+    destination = assets._path(config["assets"]["root"], manifest["files"][0])
+
+    def broken_copy(incoming, outgoing):
+        assert stat.S_IMODE(os.fstat(outgoing.fileno()).st_mode) == 0o600
+        outgoing.write(b"incomplete or changed source")
+        if failure == "copy_error":
+            raise OSError("copy failed")
+
+    monkeypatch.setattr(assets.shutil, "copyfileobj", broken_copy)
+    with pytest.raises((OSError, ValueError), match="copy failed|Source changed"):
+        assets.prepare_assets(config)
+    assert not destination.exists()

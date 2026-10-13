@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "version": "0.1.0rc2",
+  "package_file": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/__init__.py",
+  "python": "3.12.9",
+  "cwd": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-cwd",
+  "network_model_calls": 0,
+  "runtime_sources": {
+    "upstream_revision": "9b992b6797330a836e9533e5409627bf63f7d94b",
+    "files_verified": 303,
+    "candidate_adaptations": {
+      "configs/picking_up_toys_r1pro_hla.yaml": "replace internal default artifact directory with a relative output; public Live worker supplies its own artifact root",
+      "scripts/tokenplan_approach_decision.py": "remove internal credential file lookup; environment-only by default, optional explicit ESI_MODEL_ENV_FILE",
+      "scripts/tokenplan_resident_decision.py": "remove internal credential file lookup; environment-only by default, optional explicit ESI_MODEL_ENV_FILE",
+      "src/behavior_hl/embodied/evaluator_bridge/benchmark_execution_contract.py": "use explicit upstream/candidate source manifest instead of parent repository HEAD; preserve original source hash evidence",
+      "src/behavior_hl/embodied/evaluator_bridge/construction_material_adapter.py": "explicit session material path lets licensed external VRay dependencies stay outside the distribution; material algorithm unchanged",
+      "src/behavior_hl/embodied/evaluator_bridge/gpu01_inside_experiment_coordinator.py": "internal advanced coordinator Python path uses ESI_RUNTIME_PYTHON or current interpreter",
+      "src/behavior_hl/embodied/evaluator_bridge/launch_b1_action20_model_only_debug.py": "replace internal model Python default with ESI_MODEL_PYTHON or current interpreter",
+      "src/behavior_hl/embodied/evaluator_bridge/launch_b1_single_load.py": "replace internal model Python default with ESI_MODEL_PYTHON or current interpreter",
+      "src/behavior_hl/embodied/evaluator_bridge/run_b1_marker_symbolic_rollout.py": "replace internal model Python default with ESI_MODEL_PYTHON or current interpreter",
+      "src/behavior_hl/embodied/evaluator_bridge/run_g1_canary.py": "explicit ESI path configuration; retain physical GPU, preload and isolation validation; require prior explicit EULA acceptance; optional host compatibility shim: when configured, retain file/preload checks; configurable NVIDIA Vulkan ICD path",
+      "src/behavior_hl/embodied/evaluator_bridge/run_g4a_grasp_suite.py": "replace internal model Python default with ESI_MODEL_PYTHON or current interpreter",
+      "src/behavior_hl/embodied/runtime/tokenplan_resident_model.py": "replace internal model Python default with ESI_MODEL_PYTHON or current interpreter",
+      "src/behavior_hl/project_identity.py": "use explicit upstream/candidate source manifest instead of parent repository HEAD; preserve original source hash evidence"
+    }
+  },
+  "catalog_count": 220,
+  "commands": [
+    {
+      "args": [
+        "doctor"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/configs/replay.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/configs/replay.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc2-final"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc2-final"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "summarize",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc2-final"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "score",
+        "/liyuanshuai/esi-benchmark-public-20261013/examples/score-record.json"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "equivalence": {
+    "status": "PASS",
+    "case_count": 75,
+    "case_groups": {
+      "budget": 2,
+      "conversation": 13,
+      "model_loop": 5,
+      "observation": 5,
+      "parser": 24,
+      "process": 4,
+      "result": 8,
+      "score": 8,
+      "termination": 2,
+      "trajectory": 4
+    },
+    "differences": []
+  },
+  "wheel": {
+    "name": "esi_benchmark-0.1.0rc2-py3-none-any.whl",
+    "sha256": "19694a1426f9c3bdb331e3775d6d5e6e82b9261d4d05676df46fb8503e931145",
+    "bytes": 1900010,
+    "members": 364
+  },
+  "compiled_cache_files": 0
+}

@@ -25,6 +25,13 @@ server, use HTTPS and an explicitly named environment variable. The candidate
 never falls back to an unrelated ambient provider key. Validation is offline;
 provider capability preflight makes real model requests only during a Live run.
 
+The candidate disables automatic HTTP redirects for all three adapters,
+including capability preflight. A 301, 302, 303, 307 or 308 response is a
+non-retryable `provider_http_<status>` failure; no credentials or request body
+are forwarded to the redirect target, even on the same origin. Configure the
+provider's final API base URL directly. This candidate transport safeguard
+does not change successful request payloads or the frozen evaluation protocol.
+
 ```python
 from esi_benchmark.models import validate_model_config
 
