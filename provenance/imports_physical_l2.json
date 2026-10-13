@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "scope": "P30 and L2 collection37 explicit metadata/resource references only",
+  "origin_profile": {
+    "path": "/liyuanshuai/fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/profile.json",
+    "sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add",
+    "fields_used": [
+      "dispatcher.lanes[].initial_ledger.instruction_budgets",
+      "dispatcher.lanes[].initial_ledger.instruction_jobs"
+    ]
+  },
+  "sources": [
+    {
+      "path": "/liyuanshuai/action20-capability-benchmark",
+      "head": "1665ac1b0d1863cc642165deceb020eedd0db17e",
+      "tracked_status": "M .gitignore\n M README.md\n M docs/benchmark/l0/L0_TASK_GENERATION_PROMPT.md\n M docs/benchmark/l0/README.md\n M scripts/compile_l0_taskspecs.py\n M tests/test_l0_verifier_mutations.py"
+    },
+    {
+      "path": "/liyuanshuai/p30high",
+      "head": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+      "tracked_status": ""
+    },
+    {
+      "path": "/liyuanshuai/l2g25",
+      "head": "4c8364842157153875d098ebb529adcc0620a714",
+      "tracked_status": ""
+    },
+    {
+      "path": "/liyuanshuai/fb-batchctl-20260825",
+      "head": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df",
+      "related_input_status": {
+        "tasks.json": "untracked",
+        "instructions.json": "untracked",
+        "profile.json": "untracked"
+      },
+      "note": "Campaign input bytes are frozen by SHA256; repository HEAD alone does not identify them."
+    }
+  ],
+  "manifests": [
+    {
+      "profile": "l1-p-inside5",
+      "file_count": 52,
+      "bytes": 3754849,
+      "manifest_sha256": "d771e2da7cea8893eee8ab1b1ef72a35a52c3bf8c54cfedbcf752f9f7a01368c"
+    },
+    {
+      "profile": "l1-p-ontop5",
+      "file_count": 52,
+      "bytes": 2829202,
+      "manifest_sha256": "47e886e9f62ea616bddf508eebea31ff5727663899662e46f220a2b396d28330"
+    },
+    {
+      "profile": "l1-p-additions20",
+      "file_count": 202,
+      "bytes": 11060132,
+      "manifest_sha256": "5921db72c8f06f851baf76a1f363e527ba5b035c9e289189ca2a5dfdbf6660e3"
+    },
+    {
+      "profile": "l2-collection37",
+      "file_count": 353,
+      "bytes": 16942521,
+      "manifest_sha256": "dbc007193203d01e0e6beb85c9a7d91a6a3234ef8240cbe34f67d2c0ee199121"
+    }
+  ],
+  "excluded": [
+    "credentials",
+    "operator profile",
+    "raw trajectories",
+    "simulator asset binaries"
+  ],
+  "source_file_hashes": "Every imported private input has its original complete SHA256 in the corresponding asset manifest.",
+  "validation": {
+    "scope": "CPU metadata admission only; no simulation, model endpoint or environment reproduction",
+    "profiles": {
+      "l1-p-inside5": 5,
+      "l1-p-ontop5": 5,
+      "l1-p-additions20": 20,
+      "l2-collection37": 37
+    },
+    "functions": [
+      "compile_handoff",
+      "native_instruction_arguments or native_physical_instruction_arguments",
+      "load_prepared"
+    ],
+    "passed": 67,
+    "errors": 0,
+    "adapter_tests_passed": 13,
+    "relocated_native_inputs_passed": 67,
+    "derived_file_receipts_checked": 905,
+    "relocated_report": "reports/rc3/PHYSICAL_L2_INPUT_CHECK.json"
+  }
+}

@@ -93,6 +93,52 @@ def test_complete_import_resolve_and_materialize_preserve_semantics(inputs):
         assets.materialize_task_inputs(config, task, tmp_path / "run-inputs")
 
 
+def test_compact_materialization_preserves_native_two_mib_input_limit(inputs):
+    config, task, manifest, source, tmp_path, _ = inputs
+    value = {"evidence": [[0] * 32] * 7000}
+    assert len(json.dumps(value, indent=2).encode()) > 2 * 1024 * 1024
+    path = source / "donor.json"
+    path.write_text(json.dumps(value, separators=(",", ":")))
+    assert path.stat().st_size < 2 * 1024 * 1024
+    manifest["files"].append({"key": "donor", "source_root": "bundle", "source_path": path.name,
+                              "sha256": sha(path), "bytes": path.stat().st_size,
+                              "roles": ["prepared_oracle_dependency"], "task_ids": ["one"], "selection": None})
+    assets.prepare_assets(config)
+    result = assets.materialize_task_inputs(config, task, tmp_path / "run-inputs")
+    derived = Path(result["mapping"]["bundle/donor.json"])
+    assert derived.stat().st_size < 2 * 1024 * 1024
+    assert json.loads(derived.read_text()) == value
+
+
+def test_explicit_relative_paths_and_file_and_canonical_hash_bindings(inputs):
+    config, task, manifest, source, tmp_path, _ = inputs
+    config["runtime"] = {"data_root": str(tmp_path / "licensed-data")}
+    value = {"relative": "./prepared.json", "file_hash": "before", "canonical_hash": "before",
+             "scene_asset": "/old/BEHAVIOR-1K-2026-data/scenes/object.usd", "semantic_goal_hash": "unchanged",
+             "donor_ids": ["one", "two"], "runtime": {"root": "/frozen/bundle/runtime", "commit": "unchanged"}}
+    path = source / "binding.json"
+    path.write_text(json.dumps(value))
+    manifest["files"].append({"key": "binding", "source_root": "bundle", "source_path": path.name,
+                              "sha256": sha(path), "bytes": path.stat().st_size,
+                              "roles": ["v_collection_binding"], "task_ids": ["one"], "selection": None,
+                              "path_bindings": {"./prepared.json": "prepared.json"},
+                              "hash_bindings": [{"pointer": "/file_hash", "key": "prepared.json"},
+                                                {"pointer": "/canonical_hash", "key": "prepared.json", "encoding": "canonical_json"}]})
+    assets.prepare_assets(config)
+    result = assets.materialize_task_inputs(config, task, tmp_path / "run-inputs")
+    derived = json.loads(Path(result["mapping"]["bundle/binding.json"]).read_text())
+    prepared = Path(result["mapping"]["bundle/prepared.json"])
+    assert derived["relative"] == str(prepared)
+    assert derived["file_hash"] == sha(prepared)
+    canonical = json.dumps(json.loads(prepared.read_text()), ensure_ascii=False, sort_keys=True,
+                           separators=(",", ":"), allow_nan=False).encode()
+    assert derived["canonical_hash"] == hashlib.sha256(canonical).hexdigest()
+    assert derived["scene_asset"] == str(tmp_path / "licensed-data/scenes/object.usd")
+    assert derived["donor_ids"] == ["one", "two"] and derived["semantic_goal_hash"] == "unchanged"
+    from esi_benchmark.profiles import source_roots
+    assert derived["runtime"] == {"root": str(source_roots(task["profile"])["runtime_root"]), "commit": "unchanged"}
+
+
 def test_missing_hash_mismatch_and_no_overwrite(inputs):
     config, task, manifest, source, tmp_path, _ = inputs
     assert len(assets.check_assets(config)["missing"]) == len(manifest["files"])

@@ -1,0 +1,753 @@
+{
+  "schema_version": "esi-benchmark/score-record-v2",
+  "route": "official_full",
+  "initial_options": [
+    [
+      false
+    ]
+  ],
+  "snapshots": [
+    {
+      "options": [
+        [
+          true
+        ]
+      ]
+    }
+  ],
+  "requires_process": true,
+  "process": {
+    "roles": [
+      "item_a",
+      "item_b",
+      "tray",
+      "table",
+      "cabinet"
+    ],
+    "requirements": {
+      "no_manipulation_roles": [],
+      "before_placement": [],
+      "history_program": {
+        "schema_version": "l1-history-bindings/v1",
+        "bindings": [
+          {
+            "binding_id": "first",
+            "time": "FIRST_VERIFIED_SUBJECT_SUCCESS",
+            "cardinality": "EXACTLY_ONE",
+            "update": "NEVER",
+            "on_failed_cancelled_or_selection": "DO_NOT_BIND",
+            "event": {
+              "action": "place_on_top",
+              "subject_domain_roles": [
+                "item_a",
+                "item_b"
+              ],
+              "object_role": "tray",
+              "required_public_result": "completed",
+              "required_relation_readback": true
+            }
+          }
+        ],
+        "clauses": [
+          {
+            "predicate": "closed",
+            "subject_role": "cabinet",
+            "desired": true
+          }
+        ],
+        "expression": {
+          "op": "AND",
+          "args": [
+            {
+              "predicate": "ontop",
+              "subject_ref": {
+                "binding_ref": "first"
+              },
+              "object_role": "table",
+              "desired": true
+            },
+            {
+              "op": "FOR_EACH_EXCEPT_BINDING",
+              "roles": [
+                "item_a",
+                "item_b"
+              ],
+              "binding_ref": "first",
+              "predicate": "ontop",
+              "object_role": "tray"
+            },
+            {
+              "predicate": "closed",
+              "subject_role": "cabinet",
+              "desired": true
+            }
+          ]
+        },
+        "process": {
+          "ordered_milestones": [
+            {
+              "milestone_id": "stored",
+              "condition": {
+                "op": "AND",
+                "args": [
+                  {
+                    "predicate": "ontop",
+                    "subject_role": "item_a",
+                    "desired": true,
+                    "object_role": "tray"
+                  },
+                  {
+                    "predicate": "ontop",
+                    "subject_role": "item_b",
+                    "desired": true,
+                    "object_role": "tray"
+                  },
+                  {
+                    "op": "BINDING_EXISTS",
+                    "binding_ref": "first"
+                  }
+                ]
+              }
+            },
+            {
+              "milestone_id": "closed",
+              "after": [
+                "stored"
+              ],
+              "condition": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              }
+            }
+          ],
+          "maintain_until": [
+            {
+              "condition": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "required_milestone": "stored"
+            }
+          ],
+          "before_placement": [
+            {
+              "subject_ref": {
+                "binding_ref": "first"
+              },
+              "placement_scope": {
+                "predicate": "ontop",
+                "subject_ref": {
+                  "binding_ref": "first"
+                },
+                "object_role": "table",
+                "desired": true
+              },
+              "required_milestone": "closed"
+            }
+          ]
+        }
+      }
+    },
+    "initial_truth": [
+      {
+        "atom": {
+          "predicate": "ontop",
+          "subject_role": "item_a",
+          "desired": true,
+          "object_role": "tray"
+        },
+        "value": false
+      },
+      {
+        "atom": {
+          "predicate": "ontop",
+          "subject_role": "item_a",
+          "desired": true,
+          "object_role": "table"
+        },
+        "value": true
+      },
+      {
+        "atom": {
+          "predicate": "ontop",
+          "subject_role": "item_b",
+          "desired": true,
+          "object_role": "tray"
+        },
+        "value": false
+      },
+      {
+        "atom": {
+          "predicate": "ontop",
+          "subject_role": "item_b",
+          "desired": true,
+          "object_role": "table"
+        },
+        "value": true
+      },
+      {
+        "atom": {
+          "predicate": "open",
+          "subject_role": "cabinet",
+          "desired": true
+        },
+        "value": true
+      },
+      {
+        "atom": {
+          "predicate": "closed",
+          "subject_role": "cabinet",
+          "desired": true
+        },
+        "value": false
+      }
+    ],
+    "final_truth": [
+      {
+        "atom": {
+          "predicate": "ontop",
+          "subject_role": "item_a",
+          "desired": true,
+          "object_role": "tray"
+        },
+        "value": false
+      },
+      {
+        "atom": {
+          "predicate": "ontop",
+          "subject_role": "item_a",
+          "desired": true,
+          "object_role": "table"
+        },
+        "value": true
+      },
+      {
+        "atom": {
+          "predicate": "ontop",
+          "subject_role": "item_b",
+          "desired": true,
+          "object_role": "tray"
+        },
+        "value": true
+      },
+      {
+        "atom": {
+          "predicate": "ontop",
+          "subject_role": "item_b",
+          "desired": true,
+          "object_role": "table"
+        },
+        "value": false
+      },
+      {
+        "atom": {
+          "predicate": "open",
+          "subject_role": "cabinet",
+          "desired": true
+        },
+        "value": false
+      },
+      {
+        "atom": {
+          "predicate": "closed",
+          "subject_role": "cabinet",
+          "desired": true
+        },
+        "value": true
+      }
+    ],
+    "protected_relations": [],
+    "protected_state_relations": [],
+    "placement_targets": [],
+    "events": [
+      {
+        "event_id": 1,
+        "action": "place_on_top",
+        "before": {
+          "held_roles": [
+            "item_a"
+          ],
+          "truth": [
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": false
+            }
+          ]
+        },
+        "after": {
+          "held_roles": [],
+          "truth": [
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": false
+            }
+          ]
+        },
+        "status": "completed",
+        "action_index": 1
+      },
+      {
+        "event_id": 2,
+        "action": "place_on_top",
+        "before": {
+          "held_roles": [
+            "item_b"
+          ],
+          "truth": [
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": false
+            }
+          ]
+        },
+        "after": {
+          "held_roles": [],
+          "truth": [
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": false
+            }
+          ]
+        },
+        "status": "completed",
+        "action_index": 2
+      },
+      {
+        "event_id": 3,
+        "action": "close",
+        "before": {
+          "held_roles": [],
+          "truth": [
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": false
+            }
+          ]
+        },
+        "after": {
+          "held_roles": [],
+          "truth": [
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": true
+            }
+          ]
+        },
+        "status": "completed",
+        "action_index": 3
+      },
+      {
+        "event_id": 4,
+        "action": "place_on_top",
+        "before": {
+          "held_roles": [
+            "item_a"
+          ],
+          "truth": [
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": true
+            }
+          ]
+        },
+        "after": {
+          "held_roles": [],
+          "truth": [
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_a",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "tray"
+              },
+              "value": true
+            },
+            {
+              "atom": {
+                "predicate": "ontop",
+                "subject_role": "item_b",
+                "desired": true,
+                "object_role": "table"
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "open",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": false
+            },
+            {
+              "atom": {
+                "predicate": "closed",
+                "subject_role": "cabinet",
+                "desired": true
+              },
+              "value": true
+            }
+          ]
+        },
+        "status": "completed",
+        "action_index": 4
+      }
+    ]
+  }
+}

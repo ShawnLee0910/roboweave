@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "esi-benchmark"
-version = "0.1.0rc2"
+version = "0.1.0rc3"
 description = "A source-frozen, locally reviewable ESI Benchmark release candidate"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -19,7 +19,7 @@ esi-benchmark = "esi_benchmark.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-packages = ["esi_benchmark"]
+packages = ["esi_benchmark", "esi_benchmark._native", "esi_benchmark.adapters"]
 include-package-data = true
 
 [tool.setuptools.package-data]

@@ -265,7 +265,7 @@ RESPONSES_REPLAY_COMPATIBLE_ADAPTER_VERSIONS = frozenset(
         "esi.responses-transport-adapter/v2-opaque-reasoning-replay",
     }
 )
-PROJECT_ROOT = Path(__file__).resolve().parents[2] / "runtime"
+PROJECT_ROOT = Path(os.environ.get("BEHAVIOR_HL_PROJECT_ROOT", str(Path(__file__).resolve().parents[2] / "runtime"))).resolve()
 _SINGLE_ACTION_TAG = re.compile(r"\A\s*<([a-z][a-z0-9_]*)>\s*\Z")
 _RYNNBRAIN_TARGETED_ACTION_BLOCK = re.compile(
     r"\A\s*"

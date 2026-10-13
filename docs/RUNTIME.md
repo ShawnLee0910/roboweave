@@ -9,30 +9,35 @@ esi-benchmark run
   assets.materialize_task_inputs      exact, hashed, single-task input copy
   runtime.runtime_plan                CPU file/configuration checks
   runtime.launch_runtime              one new process and one private workspace
-    lab.package_scene_server          exact handoff + prepared-state restore
+    lab.package_scene_server          prepared / V / Physical native route
       launch_resident_scene_oracle_batch(model_callback=serve)
         make_scene_server_callback    existing Unix-socket protocol
   models.run_episode                  existing provider + episode loop
   original scene final_score.json     private evaluator result
 ```
 
-The executable profile is `l0-english-v2`: Bench
-`5b8d2b37fd7d97b161e88de4d438ec789c78f9b4` and Runtime
-`9b992b6797330a836e9533e5409627bf63f7d94b`. Historical evidence may name other
-revisions. A prepared-state source revision is not relabelled as the execution
-revision. See the task support matrix and provenance files for individual task
-readiness and source distinctions.
+Eight profiles have execution integration for the 257 public configurations.
+`l0-english-v2` remains the default; A/M/V, the three P subpackages and L2 collection
+each select their own frozen Bench/Runtime pair. [Support matrix](SUPPORT_MATRIX.md)
+records the full revisions. Historical preparation evidence may name another
+revision and is never relabelled as a new candidate execution. The separate
+L2 proposal authoring snapshot is not executable.
 
 ## Layout and identity
 
-`_vendor/runtime` preserves `src/behavior_hl`, required `configs`, `scripts`, and
-`pyproject.toml`. The installed package supplies these files; no symlink to an
-internal working tree is required. `bootstrap.activate()` adds only the installed
-vendor roots. `SOURCE_IDENTITY.json` records the upstream revision, every imported
-runtime file's candidate hash, and path/deployment adaptations. Public preflight
-checks those hashes. Project identity uses the same manifest, and execution
-identity does not mistake an enclosing candidate Git commit for the upstream
-runtime revision.
+All seven Runtime bundles preserve `src/behavior_hl`, required `configs`,
+`scripts` and `pyproject.toml`; all six Bench bundles preserve their original
+module layouts. The L0 roots remain `_vendor/bench` and `_vendor/runtime`; other
+revisions are under `_vendor/revisions/<kind>/<full-revision>`. No original
+working tree or mutable symlink is needed.
+
+`profiles.source_roots(profile)` is a pure lookup. Public APIs keep the caller's
+module search path unchanged; only a private, single-profile worker activates
+legacy imports. Registered `SOURCE_IDENTITY.json` manifests pin upstream revisions,
+every bundled file hash and candidate adaptations. Manifest absence, modified
+sources and foreign loaded-module origins are rejected. An enclosing candidate
+Git commit cannot stand in for Bench or Runtime provenance. External official
+sources keep their independent exact-root Git identity checks.
 
 The original official and projected verifier files are unchanged. Adaptations
 are limited to explicit paths, optional host compatibility preload, explicit EULA
@@ -109,17 +114,59 @@ Python/dependency origins, physical GPU UUID, and local port availability. The
 underlying simulator deliberately uses the physical GPU index without
 `CUDA_VISIBLE_DEVICES` masking to preserve Vulkan/CUDA alignment.
 
-The child uses the original `package_scene_server` path. It validates the handoff,
-prepared bundle hash, seed, camera profile, robot/joint identity, exact source
-instruction, and zero pre-model Oracle/physics actions. It restores the recorded
-initial state through the original checks. It does not regenerate an initial
-state, request a pose-search fallback, or run an Oracle for the model.
+The child selects the original `package_scene_server` route for the task. Prepared
+routes retain handoff, seed, camera, robot/joint, exact instruction and zero
+pre-model Oracle/physics checks before restoring the frozen state. V additionally
+uses its exact collection binding, D1 intervention and inherited prepared bundle.
+P retains its native physical admission. L2's 14 `physical_collection` entries
+instead reconstruct and verify the declared world; their camera/preparation
+bundle is historical evidence, not a state-restoration substitute. The route is
+frozen per task, with no automatic pose-search or alternative-source fallback.
 
 A ready record is accepted only from the new workspace, with its exact Unix socket,
 contained run directory and child PID. The parent does not connect to another
 resident. It waits only until the configured scene-load deadline and always stops
 its own process group afterward. Failure preserves the launch log and independent
 output evidence; no automatic second scene load is attempted.
+
+## Task budgets and L2 interruption
+
+Action-decision and model-call budgets come from the selected task. Provider
+request timeout, scene-load timeout and model-worker wall time are different
+clocks. L0/L1 retain the source limitation that their declared 3,600-second field
+is not consumed by the common episode loop; no new global cutoff is added.
+
+For `l2-collection37` only, the engine implements the historical Common
+`model_wall_timeout/v1` safe-point policy. The frozen task threshold is 7,200
+seconds. Time starts at **model worker process creation**, measured from Linux
+`/proc/<pid>/stat` start ticks and `/proc/uptime`; scene loading is excluded.
+The original 14,400-second outer-watchdog bound is retained as policy metadata,
+not a second unconditional kill deadline.
+
+After expiry, the observer checks the exact owned run, task/model/experiment
+identity and latest provider-call artifacts. It permits one `SIGINT` to the
+owned model process group only for `STARTING_PROVIDER_CALL`, `WAITING_PROVIDER`
+or `RETRYING_PROVIDER`. It refreshes phase/ownership evidence before signaling
+and rejects a process that ignores `SIGINT`. Missing or malformed evidence,
+provider preflight, protocol/response processing and observed in-flight actions
+do not permit a watchdog interruption. There is no watchdog escalation to
+`SIGTERM`/`SIGKILL`; a run can therefore exceed its declared threshold when no
+verified safe point is available. Caller cancellation and cleanup of owned
+processes remain separate lifecycle operations.
+
+`private/model_wall_timeout.json` records the threshold, elapsed time, observed
+phase, process/run identity and request/signal timestamps. The run record uses
+`wall_clock_enforcement: owned_common_safe_point_watchdog/model_wall_timeout-v1`.
+The original L2 loop retains `pause_on_client_failure=True`, its
+`PAUSED_INTERRUPTED` status and available checkpoint; the wrapper does not create
+a successful or zero-valued final score for the interruption. Inspect raw result
+and availability evidence before summarizing the attempt.
+
+The phase observation and signal are not an atomic simulator lock. Their original
+race remains, and Live interruption has not been tested in this preparation.
+This policy covers the Common harness, not historical AgentCLI/native runners
+or complete scheduler reproduction. See [Architecture](ARCHITECTURE.md) for
+source provenance and the worker boundary.
 
 ## CPU evidence and remaining Live acceptance
 
@@ -131,8 +178,10 @@ No offline test certifies simulator rendering, an actual scene reset, GPU execut
 a model request, or task success.
 
 Before advertising Live reproducibility, use separate owned hardware and a fresh
-workspace to validate installation/import origins; load one admitted fixed-pool
-and one admitted registered L0 task; compare restored state/camera attestation;
+workspace to validate installation/import origins; exercise the supported
+family-specific routes (including registered/TaskSpec L0, A/M process, V
+intervention, P qualification and L2 prepared/fresh-world routes); compare
+state/camera attestations;
 exercise each Marker stage and error feedback; run an explicitly configured model;
 finish and archive its complete conversation, images, native score and source
 receipts. Check success, failure, budget exhaustion and process-gated termination

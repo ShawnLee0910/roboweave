@@ -1,9 +1,17 @@
 # Model integration
 
-The candidate executes the frozen Bench model loop from
-`5b8d2b37fd7d97b161e88de4d438ec789c78f9b4`. `esi_benchmark.models` configures
-that implementation; it does not introduce another episode controller.
-No model SDK is required: the inherited transports use Python's HTTP stack.
+The candidate executes the common model loop from the task's exact frozen Bench
+bundle. The eight execution profiles select six Bench revisions; the default
+remains `l0-english-v2`. [Support matrix](SUPPORT_MATRIX.md) records every binding.
+This common harness does not claim to reproduce historical native model runners,
+prompts or scheduler campaigns. The historical CODEX/AgentCLI harness is not a
+supported model entry point; the three configured HTTP adapters below are.
+
+`esi_benchmark.models.validate_model_config(..., profile=...)` and
+`run_episode(..., profile=...)` use an isolated child process. Importing or calling
+the public API does not inject legacy paths or modules into the caller. The
+`create_provider` helper is private to the worker and is not a public rc3 API.
+The inherited transports use Python's HTTP stack; no model SDK is required.
 
 The public config's `model` object contains:
 
@@ -41,7 +49,7 @@ validate_model_config({
     "api": "chat_completions",
     "api_key_env": "ESI_MODEL_API_KEY",
     "timeout": 300,
-})
+}, profile="l1-m30-public-v2")
 ```
 
 The runner builds the exact public prompt, tools, images and history through
@@ -51,8 +59,9 @@ invalid-output repair, provider retry accounting and terminal classifications
 remain in force. Generation settings and request/response artifacts are stored
 per run. Selecting a different adapter or history length is an explicit
 experimental choice and must be reported. The frozen L0 sidecar uses 5 history
-frames (`frozen_history_5`); 20 is an explicit variant
-(`history_20_variant_not_baseline`), not the frozen baseline.
+frames (`frozen_history_5`). The public profiles retain five as their default;
+20 is an explicit variant (`history_20_variant_not_baseline`), not the frozen
+baseline. Micro-step observations are distinct from completed physical history.
 
 Responses requires explicit `reasoning_effort`, `reasoning_context`,
 `reasoning_mode`, and `text_verbosity`; `reasoning_summary` is optional.
@@ -70,8 +79,9 @@ binding, and validated model config. It never discovers or attaches to unrelated
 residents. The CLI owns scene startup/cleanup. The task binding includes the
 numeric public handle, source task identity/seed/instruction and the exact
 per-task action/model-call budgets. It is obtained from the prepared task bundle;
-there is no universal 150-decision override. The implementation maximum remains
-150, while individual contracts may be smaller.
+there is no universal 150-decision override. The non-L2 Bench implementation
+ceiling is 150; L2's frozen Bench ceiling is 3,000. Each task still uses its own
+smaller decision and model-call budgets; 3,000 is not a per-task allocation.
 
 The public runner does not expose the internal SSH scheduler, key-file defaults,
 image upload proxy, gateway relay management, or automatic historical run resume.
@@ -79,10 +89,10 @@ Their historical helper code, where required by the frozen module closure, is
 not a supported public command. Ordinary Chat Completions, Responses and
 Anthropic requests use the explicitly configured endpoint directly.
 
-Some frozen handoffs declare `wall_clock_seconds: 3600`, but the source Bench
-loop has no consumer of the launcher-provided wall-clock environment variable.
-The candidate records this declaration as `declared_budget` with
-`wall_clock_enforcement: not_implemented_in_frozen_bench`; it does not silently
-add a new terminal condition. Action-decision and model-call budgets are enforced.
-Strict reproduction of a declared overall wall-clock deadline is therefore not
-claimed. Scene-load deadlines and provider request timeouts remain separate.
+L0/L1 handoffs declare `wall_clock_seconds: 3600`, but those frozen common Bench
+loops do not consume the declaration. Their run records use
+`wall_clock_enforcement: not_implemented_in_frozen_bench`; action-decision and
+model-call budgets remain enforced. L2 collection has a distinct 7,200-second
+contract and documented outer watchdog. See [Runtime](RUNTIME.md) for its timing,
+safe-point checks and incomplete-result classification. Scene-load deadlines and
+individual provider request timeouts are separate from either policy.

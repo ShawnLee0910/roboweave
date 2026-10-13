@@ -1,12 +1,19 @@
 # Action20 protocol
 
-The authoritative resources are the bundled
-`_vendor/bench/action20_tool_schema.json`, `action20_bare_marker_schema.json`,
-`action20_core_instructions.txt`, and `action20_protocol.py`. They come from
-Bench `5b8d2b37fd7d97b161e88de4d438ec789c78f9b4`; import hashes are in
-`provenance/imports_bench.json`. The runtime profile is separately frozen in
-`provenance/source_roots.json` / the support matrix. A newer repository HEAD does
-not redefine this profile.
+The authoritative resources are `action20_tool_schema.json`,
+`action20_bare_marker_schema.json`, `action20_core_instructions.txt`, and
+`action20_protocol.py` in the **selected profile's Bench root**. Resolve it with
+`esi_benchmark.profiles.source_roots(profile)["bench_root"]`; the default L0 root
+is `_vendor/bench`, while other revisions live under `_vendor/revisions/bench/`.
+All are installed package resources, independently frozen from their Runtime
+bindings. See [Support matrix](SUPPORT_MATRIX.md) and
+[import provenance](../provenance/imports_profiles.json).
+
+The six Bench bundles share the same tool schemas and core instruction bytes.
+Their implementation constants need not be identical: L2's parser has a
+3,000-decision implementation ceiling, while the other frozen parsers use 150.
+The task's declared budget is still the episode limit; neither ceiling replaces
+it. A newer checkout HEAD does not redefine any of these profiles.
 
 Action20 contains 19 robot actions plus `done`:
 
@@ -58,7 +65,7 @@ A repeated navigation counts as one decision. Provider/protocol retries consume
 the internal model-call cap, not extra public action decisions. `done` does not
 count as a robot action. At exhausted decision budget, only a pending Marker
 chain may finish, after which the episode ends. The task's frozen budget may be
-smaller than the implementation ceiling of 150.
+smaller than its profile's implementation ceiling (150 outside L2, 3,000 for L2).
 
 Public feedback includes `completed`, `selection_required`, `blocked`, and
 `execution_unverified`. A completed action is not proof of task success.
@@ -70,17 +77,21 @@ original distinctions in `summary.json`.
 
 Only the left hand manipulates objects. Empty-hand interactions and held-object
 placement requirements remain enforced; visible markers do not guarantee reach
-or collision-free placement. OnTop retains its existing one-time support
-approach; other manipulation does not silently move the base.
+or collision-free placement. The frozen Symbolic OnTop path retains its existing
+one-time support approach. Physical profiles retain their own native admission
+and execution rules; the public action name does not authorize a new approach
+or recovery policy.
 
-The profile provides a head/left-wrist/right-wrist RGB composite (head on the
+The public profiles provide a head/left-wrist/right-wrist RGB composite (head on the
 right; left wrist above right wrist on the left). The default
 history configuration is the frozen sidecar's 5 completed physical frames; 20
 is an explicit supported variant and must not be reported as the frozen baseline. A transient current observation may add one view. Marker
 micro-steps remain in the trajectory while completed physical history follows
 the original compression/selection rules. Optional RGB-D, overhead views,
 automatic approach and other experimental execution modes are not silently
-enabled by this profile.
+enabled by selecting a different family. Symbolic and Physical execution retain
+their frozen backends, prerequisites and success gates; identical public action
+names do not make their execution semantics interchangeable.
 
 Run the synthetic replay for a concrete three-call Marker example. It exercises
 the real parser, conversation state machine and writers, with synthetic scene

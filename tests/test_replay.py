@@ -61,3 +61,20 @@ def test_history_variants_are_recorded_and_not_combined_as_baseline(tmp_path):
     (variant/'run_record.json').write_text(json.dumps(record))
     with pytest.raises(ValueError, match='physical history'):
         inspect_run(variant)
+
+
+@pytest.mark.parametrize('profile', ['l1-a30', 'l1-m30-public-v2', 'l1-v30',
+                                    'l1-p-inside5', 'l1-p-ontop5', 'l1-p-additions20',
+                                    'l2-collection37'])
+def test_each_frozen_profile_replays_without_mixing_source_identity(tmp_path, profile):
+    from esi_benchmark.profiles import source_revisions
+    output = tmp_path/profile
+    result = run_replay({'profile': profile}, output)
+    assert result['summary']['status'] == 'DONE'
+    assert result['summary']['model_calls'] == 4
+    record = json.loads((output/'run_record.json').read_text())
+    assert record['profile'] == profile
+    assert record['source_revisions'] == source_revisions(profile)
+    assert record['source_verification']['profile'] == profile
+    assert record['source_verification']['status'] == 'PASS'
+    assert record['official_score'] is None

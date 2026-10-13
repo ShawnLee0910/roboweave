@@ -42,7 +42,7 @@ def test_existing_output_rejected(tmp_path):
 
 @pytest.mark.parametrize("model_fails", [False, True])
 def test_owned_live_wiring_and_cleanup_without_live(tmp_path, monkeypatch, model_fails):
-    from esi_benchmark import assets, models, runtime
+    from esi_benchmark import assets, engine, models, runtime
     config = _config(tmp_path)
     config.update(mode="live", runtime={"scene_load_timeout": 1}, model={})
     ready = tmp_path / "owned" / "scene" / "ready.json"
@@ -54,6 +54,12 @@ def test_owned_live_wiring_and_cleanup_without_live(tmp_path, monkeypatch, model
         output.mkdir(parents=True)
         return task_inputs
     monkeypatch.setattr(assets, "materialize_task_inputs", materialize)
+    def inspect(operation, payload, *, profile):
+        assert operation == "task_info" and payload == {"inputs": task_inputs}
+        assert profile == config["profile"]
+        calls.append("admission")
+        return task_inputs
+    monkeypatch.setattr(engine, "call", inspect)
     monkeypatch.setattr(runtime, "runtime_plan", lambda *a: plan)
     def launch(*a):
         ready.parent.mkdir(parents=True)
@@ -66,6 +72,7 @@ def test_owned_live_wiring_and_cleanup_without_live(tmp_path, monkeypatch, model
         assert kwargs["task"] == task_inputs["model_task"]
         assert kwargs["runtime_root"] == ready.parent.parent
         assert kwargs["output_reserved"] is True
+        assert kwargs["profile"] == config["profile"]
         assert (kwargs["output_dir"] / "private/inputs").is_dir()
         calls.append("model")
         if model_fails:
@@ -78,7 +85,7 @@ def test_owned_live_wiring_and_cleanup_without_live(tmp_path, monkeypatch, model
             cli._run(config, tmp_path / "new-run", False)
     else:
         assert cli._run(config, tmp_path / "new-run", False)["mode"] == "test_only"
-    assert calls == ["launch", "ownership", "model", "stop"]
+    assert calls == ["admission", "launch", "ownership", "model", "stop"]
     if model_fails:
         summary = json.loads((tmp_path / "new-run/summary.json").read_text())
         assert summary["status"] == "INITIALIZATION_FAILED"
@@ -116,11 +123,12 @@ def test_score_cli_forwards_process_output(tmp_path, monkeypatch, capsys):
     path = tmp_path / "record.json"
     path.write_text("{}")
     destination = tmp_path / "process"
-    def score(record, *, process_directory):
+    def score(record, *, process_directory, profile):
         assert process_directory == destination
+        assert profile == "l1-a30"
         return {"mode": "cpu-record-replay"}
     monkeypatch.setattr(scoring, "score_record", score)
-    assert cli.main(["score", str(path), "--process-output", str(destination)]) == 0
+    assert cli.main(["score", str(path), "--process-output", str(destination), "--profile", "l1-a30"]) == 0
     assert json.loads(capsys.readouterr().out)["mode"] == "cpu-record-replay"
 
 

@@ -13,7 +13,7 @@ import time
 import uuid
 
 from . import __version__
-from .bootstrap import PROFILE, REVISIONS, activate
+from .profiles import DEFAULT_PROFILE, source_revisions
 from .config import load_config, validate_config
 
 
@@ -25,7 +25,7 @@ def parser():
     result = argparse.ArgumentParser(description="Frozen ESI Benchmark public candidate (CPU replay and explicit Live execution)")
     result.add_argument("--version", action="version", version=__version__)
     commands = result.add_subparsers(dest="command", required=True)
-    commands.add_parser("doctor", help="Check installed CPU imports and packaged source layout; no device or network calls")
+    commands.add_parser("doctor", help="Check installed CPU imports in an isolated profile worker").add_argument("--profile", default=DEFAULT_PROFILE)
     config = commands.add_parser("config", help="Inspect configuration").add_subparsers(dest="operation", required=True)
     config.add_parser("validate").add_argument("--config", required=True, type=Path)
     tasks = commands.add_parser("tasks", help="List frozen public task definitions").add_subparsers(dest="operation", required=True)
@@ -52,22 +52,13 @@ def parser():
     score = commands.add_parser("score", help="Replay the canonical verifier over a CPU evidence record; no Live claim")
     score.add_argument("record", type=Path)
     score.add_argument("--process-output", type=Path, help="Fresh directory for required process-audit artifacts")
+    score.add_argument("--profile", help="Frozen verifier profile (otherwise use the record's profile or default)")
     return result
 
 
-def doctor():
-    roots = activate()
-    import Agent
-    from behavior_hl.embodied.evaluator_bridge import l0_verifier_adapter
-    packages = {}
-    for name in ("esi-benchmark", "numpy", "Pillow", "PyYAML"):
-        try:
-            packages[name] = importlib.metadata.version(name)
-        except importlib.metadata.PackageNotFoundError:
-            packages[name] = "source checkout (not installed)" if name == "esi-benchmark" else "missing"
-    return {"ok": all(value != "missing" for value in packages.values()), "profile": PROFILE,
-            "python": sys.version.split()[0], "packages": packages, "source_revisions": REVISIONS,
-            "source_roots": roots, "live_status": "not tested; separate simulator, assets and owned GPU required"}
+def doctor(profile=DEFAULT_PROFILE):
+    from .engine import call
+    return call("inspect", {}, profile=profile)
 
 
 def _fresh_output(config, requested):
@@ -107,6 +98,8 @@ def _stop_owned(process):
 def _run(config, requested, dry_run):
     from .tasks import get_task
     task = get_task(config["run"]["task_id"], family=config["run"]["family"])
+    if task["profile"] != config["profile"]:
+        raise ValueError("Task and selected source profile differ")
     output = _fresh_output(config, requested)
     if config["mode"] == "replay":
         if dry_run:
@@ -127,6 +120,8 @@ def _run(config, requested, dry_run):
     stage = "input_materialization"
     try:
         inputs = materialize_task_inputs(config, task, output / "private" / "inputs")
+        from .engine import call
+        inputs = call("task_info", {"inputs": inputs}, profile=config["profile"])
         plan = runtime_plan(config, inputs)
         stage = "scene_startup"
         process = launch_runtime(config, inputs)
@@ -145,6 +140,7 @@ def _run(config, requested, dry_run):
                            ready_path=ready, runtime_root=Path(plan["runtime_root"]),
                            output_dir=output, experiment_id=output.name,
                            output_reserved=True,
+                           profile=config["profile"],
                            history_frames=config["run"]["history_frames"])
     except (Exception, KeyboardInterrupt) as exc:
         failure = {"status": "INITIALIZATION_FAILED", "stage": stage,
@@ -152,8 +148,8 @@ def _run(config, requested, dry_run):
                    "termination_reason": "candidate_initialization_failure"}
         if not (output / "run_record.json").exists():
             (output / "run_record.json").write_text(json.dumps({
-                "schema_version": "esi-benchmark/run-v1", "mode": "live", "profile": PROFILE,
-                "source_revisions": REVISIONS, "experiment_id": output.name,
+                "schema_version": "esi-benchmark/run-v1", "mode": "live", "profile": config["profile"],
+                "source_revisions": source_revisions(config["profile"]), "experiment_id": output.name,
                 "evaluation_variant": "frozen_history_5" if config["run"]["history_frames"] == 5 else "history_20_variant_not_baseline",
                 "task_identity": {"task_id": task["task_id"], "family": task["family"]},
                 "evidence_scope": "initialization_failed; no evaluation success claim",
@@ -176,11 +172,13 @@ def main(argv=None):
     args = parser().parse_args(argv)
     try:
         if args.command == "doctor":
-            result = doctor()
+            result = doctor(args.profile)
         elif args.command == "config":
             config = load_config(args.config)
             from .tasks import get_task
-            get_task(config["run"]["task_id"], family=config["run"]["family"])
+            selected = get_task(config["run"]["task_id"], family=config["run"]["family"])
+            if selected["profile"] != config["profile"]:
+                raise ValueError("Task and selected source profile differ")
             result = {"ok": True, "profile": config["profile"], "mode": config["mode"]}
         elif args.command == "tasks":
             from .tasks import get_task, list_tasks
@@ -214,7 +212,8 @@ def main(argv=None):
             from .scoring import score_record
             if args.record.stat().st_size > 16 * 1024 * 1024:
                 raise ValueError("Score record exceeds 16 MiB")
-            result = score_record(json.loads(args.record.read_text()), process_directory=args.process_output)
+            result = score_record(json.loads(args.record.read_text()), process_directory=args.process_output,
+                                  profile=args.profile)
         else:
             raise ValueError("Unknown command")
         _print(result)

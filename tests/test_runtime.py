@@ -82,6 +82,19 @@ def test_single_load_resource_contract_is_complete():
     assert contract["evaluator_instances"] == 1
 
 
+def test_official_checkout_rejects_untracked_files_before_scene_launch(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    def git(command, **kwargs):
+        if command[-1] == "--show-toplevel":
+            return SimpleNamespace(stdout=str(tmp_path))
+        if command[-1] == "HEAD":
+            return SimpleNamespace(stdout=runtime.OFFICIAL_REVISION)
+        return SimpleNamespace(stdout="?? unexpected.py\n" if "--untracked-files=normal" in command else "")
+    monkeypatch.setattr(runtime.subprocess, "run", git)
+    with pytest.raises(ValueError, match="untracked"):
+        runtime._official_identity(tmp_path)
+
+
 def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatch):
     from esi_benchmark.bootstrap import PROFILE
     behavior = tmp_path / "official"

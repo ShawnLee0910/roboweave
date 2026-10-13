@@ -1,0 +1,930 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "task_id": "l2r_am_02_20260916_w0_challenge",
+      "instruction_id": "l2r_am_02_20260916_w0_challenge",
+      "runtime_instruction_id": "l2r_am_02_20260916_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Find the desk that initially holds the folder. First place the folder temporarily on the coffee table, then put the stapler under that desk, and finally return the folder to its original desk. Do not move the calculator on the coffee table.",
+      "instruction_sha256": "91d9535ee99e07a6b5eeee4107072777261c594f1f03619fbbcb1b7373500595",
+      "scene_model": "gates_bedroom",
+      "budget": {
+        "maximum_action_decisions": 130,
+        "maximum_model_calls": 390,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 0,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2r_am_03_20260916_w0_challenge",
+      "instruction_id": "l2r_am_03_20260916_w0_challenge",
+      "runtime_instruction_id": "l2r_am_03_20260916_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Inspect the two keyboards and two mice on the desk. First move the mouse initially on a keyboard to a clear spot on the desk. Then put the mouse initially loose on the desk on the keyboard that was empty at the start. Finally return the temporarily moved mouse to its original keyboard. Do not move either keyboard.",
+      "instruction_sha256": "07adf3167f50e958f44f1e6943711e7b961cab321659ecd184b5e8ea55937d20",
+      "scene_model": "house_double_floor_upper",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 1860,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 1,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2r_mv_02_20260916_b0_challenge",
+      "instruction_id": "l2r_mv_02_20260916_b0_challenge",
+      "runtime_instruction_id": "l2r_mv_02_20260916_b0_challenge",
+      "family": "L2",
+      "instruction_en": "Temporarily empty the two stationery trays: put both the calculator and stapler on the desktop, then return each to its own original tray.",
+      "instruction_sha256": "4f89284482147601c5de2bd5357f024075312532aae2aa4602d5381ba5b430ac",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 75,
+        "maximum_model_calls": 225,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 2,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2r_mv_03_20260916_w0_challenge",
+      "instruction_id": "l2r_mv_03_20260916_w0_challenge",
+      "runtime_instruction_id": "l2r_mv_03_20260916_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Close all three initially open microwave doors, keeping the initially closed door closed until all three have been closed. Open the initially closed door for the next use only while the other three doors are currently all closed. Finish with those three doors closed and the spare door open.",
+      "instruction_sha256": "c0481b01e8eefc49034ac505055d695335512a11b9999f89225a362604263b04",
+      "scene_model": "grocery_store_convenience",
+      "budget": {
+        "maximum_action_decisions": 295,
+        "maximum_model_calls": 885,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 3,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2r_mv_04_20260916_w0_challenge",
+      "instruction_id": "l2r_mv_04_20260916_w0_challenge",
+      "runtime_instruction_id": "l2r_mv_04_20260916_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp two off-on cycles and the flashlight one on-off cycle; interleaving is allowed, ending with the lamp on and flashlight off.",
+      "instruction_sha256": "e2f66e313ad64e348702f4febb36ce66b039ae034a3e3b667f9f8e541151ea41",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 255,
+        "maximum_model_calls": 765,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 4,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2r_mv_05_20260916_w0_challenge",
+      "instruction_id": "l2r_mv_05_20260916_w0_challenge",
+      "runtime_instruction_id": "l2r_mv_05_20260916_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Keep the initially on calculator running while turning on the initially off backup calculator. Turn off the original calculator only while the backup is currently on. Then turn off the backup. Finish with both calculators off.",
+      "instruction_sha256": "a846a3e30fc2806543e1d378051504774cfa0a471535810d0055c2ba0d6fe536",
+      "scene_model": "gates_bedroom",
+      "budget": {
+        "maximum_action_decisions": 40,
+        "maximum_model_calls": 120,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 5,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2r_mv_06_20260916_w0_challenge",
+      "instruction_id": "l2r_mv_06_20260916_w0_challenge",
+      "runtime_instruction_id": "l2r_mv_06_20260916_w0_challenge",
+      "family": "L2",
+      "instruction_en": "First move the two pens that initially rest on the two notebooks onto the desktop, then place each one on the other pen's original notebook. Do not move the third pen that started on the desktop or any of the three notebooks. Before finishing, keep the two pens on each other's original notebooks.",
+      "instruction_sha256": "539121662f5a312a1c445e3ea9f91c8c2e2f92429f8b10ce4b5978542e5a78b1",
+      "scene_model": "house_double_floor_upper",
+      "budget": {
+        "maximum_action_decisions": 75,
+        "maximum_model_calls": 225,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 6,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2r_amv_02_20260916_w0_challenge",
+      "instruction_id": "l2r_amv_02_20260916_w0_challenge",
+      "runtime_instruction_id": "l2r_amv_02_20260916_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Inspect the two keyboards and two mice on the desk. First move the mouse initially on a keyboard to a clear spot on the desk. Then put the mouse initially loose on the desk on the keyboard that was empty at the start. Finally return the temporarily moved mouse to its original keyboard. Do not move either keyboard. Keep both mouse-keyboard relations until the task ends.",
+      "instruction_sha256": "39bf5090eff86e85f704100a4de88266dacfb5e7dbfdfef26b6e3c919c202a87",
+      "scene_model": "house_double_floor_upper",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 1905,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 7,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2r_mvp_03_20260916_base",
+      "instruction_id": "l2r_mvp_03_20260916_base",
+      "runtime_instruction_id": "l2r_mvp_03_20260916_base",
+      "family": "L2",
+      "instruction_en": "Choose either the small cutting board or the dish rack that can stably support the die, and place the die on it. After that placement succeeds, temporarily place the die on the empty coffee table, then return it to the same support you chose first. Keep the die supported by that same item until the task ends. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "e43d83c18949100425a21ebba22a500a82ee01608958389e4108da3f1edc2683",
+      "scene_model": "house_double_floor_lower",
+      "budget": {
+        "maximum_action_decisions": 150,
+        "maximum_model_calls": 450,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 8,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_p50_inside_002_20260914",
+      "instruction_id": "l2x_p50_inside_002_20260914",
+      "runtime_instruction_id": "l2x_p50_inside_002_20260914",
+      "family": "L2",
+      "instruction_en": "Place the corn can from the desk into whichever of the two containers on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "3d0aad1a63a313e89966caf30eebf2c38360ebd5817b280022cd163ebe9e1b01",
+      "scene_model": "grocery_store_convenience",
+      "budget": {
+        "maximum_action_decisions": 130,
+        "maximum_model_calls": 390,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 9,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_p50_inside_011_20260914",
+      "instruction_id": "l2x_p50_inside_011_20260914",
+      "runtime_instruction_id": "l2x_p50_inside_011_20260914",
+      "family": "L2",
+      "instruction_en": "Place the cucumber from the desk into whichever of the two containers on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "18d3869abf0fd2bbd89926efbec16d5570e2469fa2f77f6123302b1f5cac1fd4",
+      "scene_model": "house_single_floor",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 900,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 10,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_p50_inside_004_20260914",
+      "instruction_id": "l2x_p50_inside_004_20260914",
+      "runtime_instruction_id": "l2x_p50_inside_004_20260914",
+      "family": "L2",
+      "instruction_en": "Place the notebook from the desk into whichever of the two containers on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "5729d72fbc80d1e00a9255b5caae600181201dfda9121d0828bcdadc954fbcb2",
+      "scene_model": "school_geography",
+      "budget": {
+        "maximum_action_decisions": 35,
+        "maximum_model_calls": 105,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 11,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_p50_support_001_20260914",
+      "instruction_id": "l2x_p50_support_001_20260914",
+      "runtime_instruction_id": "l2x_p50_support_001_20260914",
+      "family": "L2",
+      "instruction_en": "Place the apple steadily on one of the two cutting boards. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "7639af8be6733f1c5d7e8017ea8b4af688ce6e2f49244ec95a06526e0f332a87",
+      "scene_model": "house_single_floor",
+      "budget": {
+        "maximum_action_decisions": 70,
+        "maximum_model_calls": 210,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 12,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_p50_support_002_20260914",
+      "instruction_id": "l2x_p50_support_002_20260914",
+      "runtime_instruction_id": "l2x_p50_support_002_20260914",
+      "family": "L2",
+      "instruction_en": "Place the orange steadily on one of the two cutting boards. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "e0ea64a729c7fce807ccad3845c0b28c41d920a81eeaaf409bb0d0abf664a11e",
+      "scene_model": "house_single_floor",
+      "budget": {
+        "maximum_action_decisions": 60,
+        "maximum_model_calls": 180,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 13,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_p50_support_006_20260914",
+      "instruction_id": "l2x_p50_support_006_20260914",
+      "runtime_instruction_id": "l2x_p50_support_006_20260914",
+      "family": "L2",
+      "instruction_en": "Place the mug on whichever of the two supports on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "b04610c362e2de8906f089129fa6dc6d394f4e31090673e8a03a82645a54080d",
+      "scene_model": "house_single_floor",
+      "budget": {
+        "maximum_action_decisions": 65,
+        "maximum_model_calls": 195,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 14,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_p50_support_007_20260914",
+      "instruction_id": "l2x_p50_support_007_20260914",
+      "runtime_instruction_id": "l2x_p50_support_007_20260914",
+      "family": "L2",
+      "instruction_en": "Place the corn can on whichever of the two supports on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "f521551a30648b2329aa942dc0cad96df41421840ef3f080aed2cacfb69994be",
+      "scene_model": "house_single_floor",
+      "budget": {
+        "maximum_action_decisions": 60,
+        "maximum_model_calls": 180,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 15,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_pdiv12_010_20260915",
+      "instruction_id": "l2x_pdiv12_010_20260915",
+      "runtime_instruction_id": "l2x_pdiv12_010_20260915",
+      "family": "L2",
+      "instruction_en": "Place the orange steadily on one of the two deep trays on the desk. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "4d284e2d5dc58138c12bddfbc9a401a9e61d48cba34f8b3206f38e3ce0183870",
+      "scene_model": "hotel_suite_small",
+      "budget": {
+        "maximum_action_decisions": 45,
+        "maximum_model_calls": 135,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 16,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_pdiv12_012_20260915",
+      "instruction_id": "l2x_pdiv12_012_20260915",
+      "runtime_instruction_id": "l2x_pdiv12_012_20260915",
+      "family": "L2",
+      "instruction_en": "Place the orange steadily on one of the two plates on the desk. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "550b62c52e4f396769cfec815eea4dc28345e600c380ca8dbcb0fe1f82306712",
+      "scene_model": "house_double_floor_lower",
+      "budget": {
+        "maximum_action_decisions": 60,
+        "maximum_model_calls": 180,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 17,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_pnext40_026_20260916",
+      "instruction_id": "l2x_pnext40_026_20260916",
+      "runtime_instruction_id": "l2x_pnext40_026_20260916",
+      "family": "L2",
+      "instruction_en": "Place the water bottle on whichever of the two supports on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "1318384487841384166909a0b9b38552bb46ab3901a765ef18750f9acb95eeb3",
+      "scene_model": "hotel_suite_small",
+      "budget": {
+        "maximum_action_decisions": 80,
+        "maximum_model_calls": 240,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 18,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_pnext40_018_20260916",
+      "instruction_id": "l2x_pnext40_018_20260916",
+      "runtime_instruction_id": "l2x_pnext40_018_20260916",
+      "family": "L2",
+      "instruction_en": "Place the water bottle on whichever of the two supports on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "1318384487841384166909a0b9b38552bb46ab3901a765ef18750f9acb95eeb3",
+      "scene_model": "house_single_floor",
+      "budget": {
+        "maximum_action_decisions": 50,
+        "maximum_model_calls": 150,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 19,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_pnext40_020_20260916",
+      "instruction_id": "l2x_pnext40_020_20260916",
+      "runtime_instruction_id": "l2x_pnext40_020_20260916",
+      "family": "L2",
+      "instruction_en": "Place the electric kettle on whichever of the two supports on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "58c6ca2f7865573d5e64502bbda3343e7ec3a7e91392d7762b080a1357b83341",
+      "scene_model": "house_single_floor",
+      "budget": {
+        "maximum_action_decisions": 110,
+        "maximum_model_calls": 330,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 20,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_pnext40_028_20260916",
+      "instruction_id": "l2x_pnext40_028_20260916",
+      "runtime_instruction_id": "l2x_pnext40_028_20260916",
+      "family": "L2",
+      "instruction_en": "Place the electric kettle on whichever of the two supports on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
+      "instruction_sha256": "58c6ca2f7865573d5e64502bbda3343e7ec3a7e91392d7762b080a1357b83341",
+      "scene_model": "house_single_floor",
+      "budget": {
+        "maximum_action_decisions": 55,
+        "maximum_model_calls": 165,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Physical",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 21,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 1 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "c684de574eee9e7b22773f3f23c7d8b4cc3f89e03807cd7809557d380955b1ad",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 245,
+        "maximum_model_calls": 735,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 22,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 1 off-on cycles and the flashlight exactly 2 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "175e2089c6e6436643d5eb6fa78f791735520c1e893937d258783371178d79d5",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 255,
+        "maximum_model_calls": 765,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 23,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 1 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "dc7f0a15bb4de2cb623add65cb817a858c3ee4f013b3f567075438e0bdd3d798",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 265,
+        "maximum_model_calls": 795,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 24,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 1 off-on cycles and the flashlight exactly 4 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "8fc2fb793d92615af4ec87bb75e71ddcd1e3f8833cd21d204e76d0c6a4666dd6",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 275,
+        "maximum_model_calls": 825,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 25,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 2 off-on cycles and the flashlight exactly 2 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "045f931193477a236229874b575adcb6b37931cd56cf68f5d6161e1e5c2a1650",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 1890,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 26,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 2 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "c936cec78a21d9a0107ed274cd0a2bc3e8fcf810c60ac56974b81a58464656f2",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 1920,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 27,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 2 off-on cycles and the flashlight exactly 4 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "1b8ca6aee70a383a2f823fe9b114974a347654229f6c15dfbaf83c965a1a7723",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 1950,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 28,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "b4ca9329697984a2143ec2c2f7e78a1584f648faa3dc875ec1d9c7fe21c7c834",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 265,
+        "maximum_model_calls": 795,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 29,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 2 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "151a33678dc6c9348e3e0b350de54be9d78061627b0e23d91cdca0f536a4fd79",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 1920,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 30,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "e0ceccc1d4d4b68b1ad7e05be38803b69800282a1ec82fa65ade059eb7706443",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 2760,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 31,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 4 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "25c03bda13373dd3f00db476e455774457cf5b50165b2dd664d8f04f7a7335e9",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 2790,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 32,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "dbd98ff7bafe8059e5691010068ed3c3da98ac3f257b4ad9811f0a30c758ca74",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 275,
+        "maximum_model_calls": 825,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 33,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 2 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "a9f5a1b1b1b0b23416de563530375a495f3f7f4167078944d31c19c053d8e136",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 1950,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 34,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "6db192bd382dc79ba12732a7d8f51fe1122d8894637cba4fd8939b6f17ae5831",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 2790,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 35,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    },
+    {
+      "task_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
+      "instruction_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
+      "runtime_instruction_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
+      "family": "L2",
+      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 4 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
+      "instruction_sha256": "93a2c5bfad3de8227021b0fdd09504dc0c4e69ec2d8fd08db2128095277b33a2",
+      "scene_model": "office_vendor_machine",
+      "budget": {
+        "maximum_action_decisions": 300,
+        "maximum_model_calls": 3810,
+        "wall_clock_seconds": 7200
+      },
+      "action_mode": "Symbolic",
+      "profile": "l2-collection37",
+      "source": {
+        "root": "fb-batchctl-20260825",
+        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
+        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
+        "row_index": 36,
+        "state": "untracked",
+        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
+      },
+      "split": "train"
+    }
+  ]
+}

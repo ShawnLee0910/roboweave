@@ -1,0 +1,136 @@
+{
+  "authoring_environment": {
+    "cache_tag": "cpython-311",
+    "executable": "/liyuanshuai/miniconda3/envs/behavior2026/bin/python3.11",
+    "hash_algorithm": "siphash13",
+    "hash_width": "64",
+    "implementation": "CPython",
+    "python_hash_seed": "19506",
+    "version": "3.11.15"
+  },
+  "mappings": {
+    "assembling_gift_baskets": {
+      "actual_option_index": 0,
+      "all_spatial_subject_reference_distinct": true,
+      "compiled_operation_count": 16,
+      "compiled_operations_sha256": "17b4940e2d0e54d337a502a851192ba1a2e2218ccb3168bf362c31777bf391b1",
+      "definition_id": 0,
+      "expanded_problem_sha256": "6e6c82bae96d3b4efaf3026ed84c2e0ea1aefa57e2f4763c51d2c2fe7b96267e",
+      "identity_source": "v158_q1_live_identity",
+      "official_option_count": 331776,
+      "semantic_identity": [
+        "[\"inside\",\"bow.n.08_1\",\"wicker_basket.n.01_2\"]",
+        "[\"inside\",\"bow.n.08_2\",\"wicker_basket.n.01_1\"]",
+        "[\"inside\",\"bow.n.08_3\",\"wicker_basket.n.01_4\"]",
+        "[\"inside\",\"bow.n.08_4\",\"wicker_basket.n.01_3\"]",
+        "[\"inside\",\"butter_cookie.n.01_1\",\"wicker_basket.n.01_3\"]",
+        "[\"inside\",\"butter_cookie.n.01_2\",\"wicker_basket.n.01_2\"]",
+        "[\"inside\",\"butter_cookie.n.01_3\",\"wicker_basket.n.01_4\"]",
+        "[\"inside\",\"butter_cookie.n.01_4\",\"wicker_basket.n.01_1\"]",
+        "[\"inside\",\"candle.n.01_1\",\"wicker_basket.n.01_2\"]",
+        "[\"inside\",\"candle.n.01_2\",\"wicker_basket.n.01_3\"]",
+        "[\"inside\",\"candle.n.01_3\",\"wicker_basket.n.01_1\"]",
+        "[\"inside\",\"candle.n.01_4\",\"wicker_basket.n.01_4\"]",
+        "[\"inside\",\"swiss_cheese.n.01_1\",\"wicker_basket.n.01_1\"]",
+        "[\"inside\",\"swiss_cheese.n.01_2\",\"wicker_basket.n.01_2\"]",
+        "[\"inside\",\"swiss_cheese.n.01_3\",\"wicker_basket.n.01_3\"]",
+        "[\"inside\",\"swiss_cheese.n.01_4\",\"wicker_basket.n.01_4\"]"
+      ],
+      "semantic_identity_sha256": "2888b5aeed132479d44b85351d199cb55ee301d1a4f65c837374918c7857c41b",
+      "task_name": "assembling_gift_baskets"
+    },
+    "laying_tile_floors": {
+      "actual_option_index": 16,
+      "all_spatial_subject_reference_distinct": true,
+      "compiled_operation_count": 7,
+      "compiled_operations_sha256": "3310e7440a23311699aea8cfb244985754383807d5e4cd8593452622787545e4",
+      "definition_id": 0,
+      "expanded_problem_sha256": "bd85f90fbe495f2c35efc7a9ffa3d2c687cd0411e3e92e40c4de2788e9bd7e2b",
+      "identity_source": "v162_symmetric_executable_witness",
+      "official_option_count": 256,
+      "semantic_identity": [
+        "[\"nextto\",\"tile.n.01_1\",\"tile.n.01_2\"]",
+        "[\"nextto\",\"tile.n.01_2\",\"tile.n.01_1\"]",
+        "[\"nextto\",\"tile.n.01_3\",\"tile.n.01_1\"]",
+        "[\"nextto\",\"tile.n.01_4\",\"tile.n.01_1\"]",
+        "[\"ontop\",\"tile.n.01_1\",\"floor.n.01_2\"]",
+        "[\"ontop\",\"tile.n.01_2\",\"floor.n.01_2\"]",
+        "[\"ontop\",\"tile.n.01_3\",\"floor.n.01_2\"]",
+        "[\"ontop\",\"tile.n.01_4\",\"floor.n.01_2\"]"
+      ],
+      "semantic_identity_sha256": "0a05e69d4bf69f632013e44c0f9a1a334381627acc0931c0dafaff8641bab4e4",
+      "task_name": "laying_tile_floors"
+    },
+    "stacking_wood": {
+      "actual_option_index": 7776,
+      "all_spatial_subject_reference_distinct": true,
+      "compiled_operation_count": 5,
+      "compiled_operations_sha256": "a92a3f15b1af96fa8c1831fc0c6de5944ebf99901aa6d06c107d8b3ebcdb07b6",
+      "definition_id": 0,
+      "expanded_problem_sha256": "de70b18f9d401fb877f526a32105860349a5673351b45b4ccb10bf51d82cd651",
+      "identity_source": "v159_executable_lazy_witness",
+      "official_option_count": 46656,
+      "semantic_identity": [
+        "[\"touching\",\"log.n.01_1\",\"log.n.01_2\"]",
+        "[\"touching\",\"log.n.01_2\",\"log.n.01_1\"]",
+        "[\"touching\",\"log.n.01_3\",\"log.n.01_1\"]",
+        "[\"touching\",\"log.n.01_4\",\"log.n.01_1\"]",
+        "[\"touching\",\"log.n.01_5\",\"log.n.01_1\"]",
+        "[\"touching\",\"log.n.01_6\",\"log.n.01_1\"]"
+      ],
+      "semantic_identity_sha256": "e8f712f3cf577f446dcc3cc5df49780d1eef1ec27c25cdc00d8ec4e21207ac8d",
+      "task_name": "stacking_wood"
+    },
+    "storing_food": {
+      "actual_option_index": 0,
+      "all_spatial_subject_reference_distinct": true,
+      "compiled_operation_count": 8,
+      "compiled_operations_sha256": "c21c83850dc0f10c06c9cd3b48680b8582a6b564725f709c31db7ee6ef2a3603",
+      "definition_id": 0,
+      "expanded_problem_sha256": "a9fe0be77295e9c7185ccde412464f93e018f7ae11ec5b572a3ab5b0cb6e0571",
+      "identity_source": "v158_q1_live_identity",
+      "official_option_count": 1679616,
+      "semantic_identity": [
+        "[\"inside\",\"bag__of__chips.n.01_1\",\"cabinet.n.01_6\"]",
+        "[\"inside\",\"bag__of__chips.n.01_2\",\"cabinet.n.01_6\"]",
+        "[\"inside\",\"bottle__of__olive_oil.n.01_1\",\"cabinet.n.01_6\"]",
+        "[\"inside\",\"bottle__of__olive_oil.n.01_2\",\"cabinet.n.01_6\"]",
+        "[\"inside\",\"box__of__oatmeal.n.01_1\",\"cabinet.n.01_6\"]",
+        "[\"inside\",\"box__of__oatmeal.n.01_2\",\"cabinet.n.01_6\"]",
+        "[\"inside\",\"jar__of__sugar.n.01_1\",\"cabinet.n.01_6\"]",
+        "[\"inside\",\"jar__of__sugar.n.01_2\",\"cabinet.n.01_6\"]"
+      ],
+      "semantic_identity_sha256": "9a6820ebb829499f7c3f0b7aefe2d4967b3f352ef84162f1d912e00fe11ccf6d",
+      "task_name": "storing_food"
+    }
+  },
+  "schema_version": "behavior2026.official-actual-option-mapping/v1",
+  "source_provenance": {
+    "official_files": {
+      "bddl3/bddl/activity.py": "35e2c3cd0b50e131ead1553c0cce9d4f914b60acbcec8af496b8e788872f836a",
+      "bddl3/bddl/activity_definitions/assembling_gift_baskets/problem0.bddl": "6e6c82bae96d3b4efaf3026ed84c2e0ea1aefa57e2f4763c51d2c2fe7b96267e",
+      "bddl3/bddl/activity_definitions/laying_tile_floors/problem0.bddl": "bd85f90fbe495f2c35efc7a9ffa3d2c687cd0411e3e92e40c4de2788e9bd7e2b",
+      "bddl3/bddl/activity_definitions/stacking_wood/problem0.bddl": "de70b18f9d401fb877f526a32105860349a5673351b45b4ccb10bf51d82cd651",
+      "bddl3/bddl/activity_definitions/storing_food/problem0.bddl": "501ba590cc5699a4f89f20ed68d6ea7d3baccc7adbacd441999e86ed2b934ef3",
+      "bddl3/bddl/condition_evaluation.py": "e4e7c236f49a871b576666ccada4bc6e31b18c50f25361364de56bd7de013cb8",
+      "bddl3/bddl/knowledge_base/models.py": "3a9e6a2f970486ed19c98d1b82a110b1243e702ff5ac032d352870fcd4042062",
+      "bddl3/bddl/logic_base.py": "9b079058e45fbb1c0f22205fa80cd4a49630a24d05d49957049b7746381db094",
+      "bddl3/bddl/wildcard.py": "f2465afbc16e53eede393290fdf645a88b1175ce2cb3d4a515f1d5e306690887"
+    },
+    "project_files": {
+      "configs/g4_official_actual_option_authoring_spec.json": "acae3b24a117f4d456e350d660a7c4c4dfe1268b46adeb32f7dbf32e4ab880b0",
+      "scripts/export_official_actual_option_mappings.py": "edabfddf918c931081f2c448af6ea816a13ba0cff62e3701d5c9a1064a131cac",
+      "scripts/run_inside_task_oracle_once.sh": "22a13907da8726b362cf775a1c4cddcbb2b19eaebb2a781bbd90bca84b8d2ccd",
+      "src/behavior_hl/embodied/evaluator_bridge/executable_grounded_option_admission.py": "bd7a0d789016a6588b12c8ef1148a0ee671d1ac9b1e3ddacb97bcb983dc5d948",
+      "src/behavior_hl/embodied/evaluator_bridge/grounded_option_identity_owner.py": "6f50e46112f3191ad8c2133bcede01e921465092ac4f729d26423e987f7568a1",
+      "src/behavior_hl/embodied/evaluator_bridge/inside_goal_graph.py": "edb32b6ca5e87e0733be7a731c5d3835d24c0036787f4fb265fffbd4272bb1e6",
+      "src/behavior_hl/embodied/evaluator_bridge/lazy_grounded_option_solver.py": "f5f4b2229ac00781b1b287b42d11b28349d455848bb6b86ce001283d8570bce1",
+      "src/behavior_hl/embodied/evaluator_bridge/mixed_goal_graph.py": "c4fb88be69873173debc8e495d368f1004bbf8f19e3bb93933532220cf6e4889",
+      "src/behavior_hl/embodied/evaluator_bridge/official_actual_option_mapping.py": "f797d748a792d580a2ca57d80f879cb8d1735b2ae9a3162287ee9dcfa738a1dc",
+      "src/behavior_hl/embodied/evaluator_bridge/run_b1_single_load.py": "07f8b54bb2dba4b63ac73ff7fe8f0ca2fb1831bd02b47e32a5ac81206bec2493",
+      "src/behavior_hl/embodied/evaluator_bridge/run_g1_canary.py": "51092ee8bb8ea5dbd37401c828765610106f1d02caa8b853c8491d2b27e39b84",
+      "src/behavior_hl/embodied/policy/profiles.py": "20e6f086db496687bf832b1b447ca692394135ee9413fa07000a7ab969790615",
+      "src/behavior_hl/embodied/policy/registry.py": "9634e3472198c502d2a183f9e1af4f77f127a1ebe4ecef717f296514797865f6"
+    }
+  }
+}

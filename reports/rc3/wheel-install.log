@@ -1,0 +1,7 @@
+Processing ./dist/esi_benchmark-0.1.0rc3-py3-none-any.whl
+Installing collected packages: esi-benchmark
+  Attempting uninstall: esi-benchmark
+    Found existing installation: esi-benchmark 0.1.0rc2
+    Uninstalling esi-benchmark-0.1.0rc2:
+      Successfully uninstalled esi-benchmark-0.1.0rc2
+Successfully installed esi-benchmark-0.1.0rc3

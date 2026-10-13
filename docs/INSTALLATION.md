@@ -16,6 +16,7 @@ python3.11 -m venv .venv
 . .venv/bin/activate
 python -m pip install '.[test]'
 esi-benchmark doctor
+esi-benchmark doctor --profile l2-collection37
 python -m pytest
 ```
 
@@ -25,13 +26,15 @@ To review the built distribution in a second environment:
 python -m pip wheel --no-deps --wheel-dir dist .
 python3.11 -m venv .venv-wheel
 . .venv-wheel/bin/activate
-python -m pip install dist/esi_benchmark-0.1.0rc2-py3-none-any.whl
+python -m pip install dist/esi_benchmark-0.1.0rc3-py3-none-any.whl
 esi-benchmark --help
 esi-benchmark doctor
 ```
 
-The wheel includes the vendored code and JSON/text resources, so it must work
-without the original source trees on `PYTHONPATH`. Review the actual build and
+The wheel includes all 13 frozen source bundles, the eight task profiles, and
+JSON/text resources. It must work without the original source trees on
+`PYTHONPATH`. Public APIs invoke one isolated profile worker; inspecting several
+profiles in one caller does not mix their legacy modules. Review the actual build and
 installation checks in [Validation](VALIDATION.md). Package version ranges are
 compatibility declarations, not a fully locked transitive environment. Preserve
 `python -m pip freeze`, wheel hashes and Python/platform versions when reproducing
@@ -44,13 +47,19 @@ verify it independently:
 ```bash
 python -c "from setuptools.build_meta import build_sdist; build_sdist('dist')"
 mkdir -p .tmp/source-release
-tar -xzf dist/esi_benchmark-0.1.0rc2.tar.gz -C .tmp/source-release
+tar -xzf dist/esi_benchmark-0.1.0rc3.tar.gz -C .tmp/source-release
 ESI_TEST_TMP="$PWD/.tmp/sdist-tests"
-cd .tmp/source-release/esi_benchmark-0.1.0rc2
+cd .tmp/source-release/esi_benchmark-0.1.0rc3
 python -m pip install '.[test]'
 PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -ra --basetemp="$ESI_TEST_TMP"
 python tools/check_equivalence.py
 ```
+
+The retained equivalence command covers its frozen L0 reference cases; it is not
+an all-profile historical comparison. The rc3 profile, adapter and history tests
+are separate checks. These commands describe verification procedures, not a
+claim that this turn reproduced an external environment. See [Validation](VALIDATION.md)
+for the actual receipts.
 
 Keep extraction and test paths short: the inherited Unix-socket tests share the
 operating system's address-length limit. The automated distribution regression
@@ -134,7 +143,9 @@ an express NVIDIA license for use/distribution; see
 [Third-party notices](../THIRD_PARTY_NOTICES.md). If you cannot legally obtain the
 files, CPU replay remains available but the frozen Live path is unavailable.
 
-Complete the paths in `configs/live.example.json` in a private local copy.
+Complete the paths in `configs/live.example.json` in a private local copy. Set
+`profile`, `run.family` and `run.task_id` together using [Tasks](TASKS.md), and
+use an independent `assets.root` for each selected profile.
 `runtime.python` identifies the new environment; `workspace` is a new child of
 `run.output_root` owned by this run. Set `toolchain_root` to the CUDA 12.8 prefix
 containing `bin/nvcc`, and `overlay_root` to the new environment prefix containing

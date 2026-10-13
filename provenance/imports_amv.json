@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "operation": "bounded read-only execution dependency indexing",
+  "release": {
+    "path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-AMV90-RELEASE/20260924_v1/RELEASE.json",
+    "sha256": "8615ac69133f7f3ab4aa3b1240de57ff8ff2a6c212dc4b94bbde129a4f4ef2f4"
+  },
+  "profiles": {
+    "l1-a30": {
+      "sources": {
+        "bench": {
+          "root": "/liyuanshuai/l1a30c",
+          "commit": "1d76bc5dc53b1995f2e7c301cb06569bcf0c4923",
+          "tracked_clean": true
+        },
+        "runtime": {
+          "root": "/liyuanshuai/esibench_l20_bundle_20260526/l1a-runtime-cd25f9b",
+          "commit": "cd25f9ba1579bdca1f0dadf6fce7ad10974b8717",
+          "tracked_clean": true
+        }
+      },
+      "tasks": {
+        "path": "/liyuanshuai/esi_prepares/l1a30_gemini_cc_20260924/tasks.json",
+        "sha256": "0a08fc2cf9382754c7f1ee005b6cf6a81371cedb82ea44078c79e4b1398b70c4"
+      },
+      "instruction_review": {
+        "path": "/liyuanshuai/esi_prepares/l1a30_gemini_cc_20260924/instructions.json",
+        "sha256": "bd9d0fcb1e9b41a7a768a4fd476a0691376d40af2bf253d60ec6a592474550bb"
+      },
+      "resolved_tasks_path": "/liyuanshuai/esi_prepares/l1a30_gemini_cc_20260924/tasks.json",
+      "resolved_instruction_review_path": "/liyuanshuai/esi_prepares/l1a30_gemini_cc_20260924/instructions.json",
+      "files": 211,
+      "bytes": 11452570,
+      "manifest_sha256": "293967bb586d1444e77205189141ff45dcc12a18bb084581d9d6f5de8bd17504"
+    },
+    "l1-m30-public-v2": {
+      "sources": {
+        "bench": {
+          "root": "/liyuanshuai/l1r-m",
+          "commit": "fb1cf143f850fe43a04d25440f07cbfab4007093",
+          "tracked_clean": true
+        },
+        "runtime": {
+          "root": "/liyuanshuai/esibench_l20_bundle_20260526/am002-runtime-918aefd",
+          "commit": "918aefd40beb72368126cc3fa2891bbb732ad490",
+          "tracked_clean": true
+        }
+      },
+      "tasks": {
+        "path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-M-FINAL/tasks.json",
+        "sha256": "d72eee739affc1b1406174daa52a23cae6d6fd276088b7d9eec297218c18ad01"
+      },
+      "instruction_review": {
+        "path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-M-FINAL/instructions.json",
+        "sha256": "98f3c298fd6cf98eca2a4f6aedfc91860240493f98543876b6e7a277562f5c89"
+      },
+      "resolved_tasks_path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-M-FINAL/instructions-v2-20260924/tasks.json",
+      "resolved_instruction_review_path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-M-FINAL/instructions-v2-20260924/instructions.approved.json",
+      "files": 303,
+      "bytes": 25568864,
+      "manifest_sha256": "a976aefe47278f5fe4629a05242283b5b7d0f737a11fedd9d5a76f423123908b"
+    },
+    "l1-v30": {
+      "sources": {
+        "bench": {
+          "root": "/liyuanshuai/vguard-fix-20260924",
+          "commit": "d8ae5151fadfb3338d122fdb12b26051ed753852",
+          "tracked_clean": true
+        },
+        "runtime": {
+          "root": "/liyuanshuai/esibench_l20_bundle_20260526/am002-runtime-918aefd",
+          "commit": "918aefd40beb72368126cc3fa2891bbb732ad490",
+          "tracked_clean": true
+        }
+      },
+      "tasks": {
+        "path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-V-FINAL/model_batch_20260924/tasks.json",
+        "sha256": "a71cba89d5429bed41d7ec7e20e94908c801eabdf4796ea0f0a2697d01360c4d"
+      },
+      "instruction_review": {
+        "path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-V-FINAL/model_batch_20260924/instructions.json",
+        "sha256": "7cbaab64a780bc3070e9aff23b2064604092b229090d0267fe4dc0bc8be029b7"
+      },
+      "resolved_tasks_path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-V-FINAL/model_batch_20260924/tasks.json",
+      "resolved_instruction_review_path": "/liyuanshuai/action20-capability-benchmark/benchmark/L1-V-FINAL/model_batch_20260924/instructions.json",
+      "files": 325,
+      "bytes": 53615088,
+      "manifest_sha256": "44f7f7e1836bee3ec00dadfa5a6e8b3d7a41ec98a7a63f00772ee49c1326f826"
+    }
+  },
+  "asset_content_copied": false
+}

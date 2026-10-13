@@ -1,0 +1,39 @@
+profile_id: r1pro_esi_marker_symbolic_v36
+action_schema_version: behavior2026-r1pro-esi-marker-symbolic-v36
+execution_fidelity: kinematic_research
+official_challenge_eligible: false
+private_oracle_route_provider: official_traversability_astar
+actions:
+  - move_forward
+  - move_backward
+  - move_left
+  - move_right
+  - turn_left
+  - turn_right
+  - move_up
+  - move_down
+  - mark_visible_objects
+  - pick
+  - put_inside
+  - put_back
+  - open
+  - close
+  - stop
+bindings:
+  move_up: physical_r1pro_torso_up
+  move_down: physical_r1pro_torso_down
+  mark_visible_objects: official_instance_segmentation_bbox_overlay
+  pick: official_symbolic_grasp_same_frame_marker
+  put_inside: official_symbolic_place_inside_same_frame_marker
+  open: official_symbolic_open_same_frame_marker
+  close: official_symbolic_close_same_frame_marker
+  put_back: private_pre_pick_pose_restore
+forbidden:
+  - navigate_to
+  - teleport_navigation
+  - free_viewer_camera_motion
+  - world_coordinate_arguments
+  - category_fallback
+  - task_truth_to_model
+  - oracle_route_to_model
+  - traversability_map_to_model

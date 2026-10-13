@@ -1,0 +1,6 @@
+profile_id: r1pro
+robot_type: R1Pro
+action_dimension: 23
+base_controller: JointController
+viewer_camera_control: false
+teleport_enabled: false

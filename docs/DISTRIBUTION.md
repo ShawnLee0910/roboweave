@@ -26,9 +26,10 @@ a prompt.
 
 The catalog is an **evaluation catalog**. The inspected final packages did not
 establish an authoritative train/development/hidden-test partition. This candidate
-does not manufacture one. Families beyond the executable L0 profile remain
-catalog/audit entries until their frozen runtime, harness and preparation
-dependencies are integrated and validated.
+does not manufacture one. Eight frozen profiles now provide executable integration
+for the 257 catalog configurations, while the separate L2 proposal authoring
+snapshot remains audit-only. Integration and CPU evidence do not grant a license
+to distribute private resources or establish Live/official benchmark eligibility.
 
 OmniGibson software and the BEHAVIOR Data Bundle use different licenses. The
 official data agreement restricts use and redistribution, including keys. Use

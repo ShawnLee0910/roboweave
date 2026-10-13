@@ -1,0 +1,6 @@
+profile_id: picking_up_toys_v1
+task_id: picking_up_toys
+instruction: Put every toy inside the toy box.
+official_goal_leaf_count: 6
+public_goal_leaf_count: null
+private_verifier: official_bddl_and_task_metric

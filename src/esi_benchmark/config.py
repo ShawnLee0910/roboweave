@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from typing import Any
 
-from .bootstrap import PROFILE
+from .tasks import profile_for
 
 SCHEMA = "esi-benchmark/config-v1"
 FIELDS = {
@@ -39,8 +39,12 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         raise ValueError(f"Unknown config fields: {sorted(set(config) - allowed)}")
     if config.get("schema_version") != SCHEMA:
         raise ValueError(f"schema_version must be {SCHEMA}")
-    if config.get("profile") != PROFILE:
-        raise ValueError(f"Only {PROFILE} has an executable bundle")
+    profile = config.get("profile")
+    if not isinstance(profile, str):
+        raise ValueError("profile must name a frozen execution profile")
+    frozen = profile_for(profile)
+    if "bench_revision" not in frozen or "runtime_revision" not in frozen:
+        raise ValueError(f"Profile has no executable source identity: {profile}")
     if config.get("mode") not in {"replay", "live"}:
         raise ValueError("mode must be replay or live")
     for section, fields in FIELDS.items():
@@ -80,7 +84,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         if type(timeout) not in (int, float) or not 1 <= timeout <= 7200:
             raise ValueError("runtime.scene_load_timeout must be in [1, 7200] seconds")
         from .models import validate_model_config
-        validate_model_config(config.get("model", {}))
+        validate_model_config(config.get("model", {}), profile=profile)
     return config
 
 

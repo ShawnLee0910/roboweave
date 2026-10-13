@@ -20,10 +20,12 @@ Before launching, freeze a validation record containing:
   retry limits and termination policy.
 - A new output root, writable runtime directory and worker-private AppData/cache
   directory; no writable cache sharing or mutable links to an old deployment.
-- An explicit scene-load/retry budget and a separately reported operational time
-  limit, if one is imposed. The frozen task's `wall_clock_seconds: 3600` is not
-  enforced by the source episode loop; a new watchdog would create a distinct
-  execution policy, not a reproduction of that field. Start with one owned
+- An explicit scene-load/retry budget and the profile's actual termination policy.
+  L0/L1 declare `wall_clock_seconds: 3600` without enforcing it in the original
+  model loop. L2 Common uses its historical 7,200-second model-process watchdog:
+  interrupt only at a verified safe provider phase, retaining the original
+  interrupted result and the watchdog receipt. It excludes scene load and is not
+  a hard upper bound during actions or unknown phases. Start with one owned
   worker and one scene load; inspect failure evidence before authorizing a retry.
 
 Verify that the selected GPU is available to this validation and has no active
@@ -31,8 +33,9 @@ reservation or quarantine. A free-memory reading is not evidence of ownership.
 Check for existing processes before launch; do not stop unknown processes.
 
 Use the [installation instructions](INSTALLATION.md), validate the configuration,
-import the exact preparation package, and verify all resource hashes. Launch only
-the supported `l0-english-v2` profile. The first task,
+import the exact preparation package, and verify all resource hashes. Select one
+of the eight frozen execution profiles in [the support matrix](SUPPORT_MATRIX.md).
+An initial L0 smoke task,
 `am200v1_a001_b2_control`, is an example candidate; its small dependency closure
 still needs official external assets and its private preparation inputs.
 Also obtain the required licensed NVIDIA material modules and verify the hashes
@@ -68,9 +71,11 @@ The acceptance sequence is:
    Compare parsing, public input construction, action counts, verifier decisions,
    terminal reason and artifact schema. Record tolerances for simulator state
    only where the original contract defines them; do not invent score tolerances.
-8. **Coverage:** extend from the smoke task to all 100 supported tasks and the
-   declared dependency/scene combinations before claiming full-profile Live
-   reproduction. Preserve load failures and unsuccessful runs in the denominator.
+8. **Coverage:** extend from a smoke task to every task and declared dependency/
+   scene combination in the selected profile before claiming full-profile Live
+   reproduction. The executable catalog has 257 tasks across eight profiles;
+   validation of one profile cannot stand in for another. Preserve load failures
+   and unsuccessful runs in the denominator.
 
 A run passes only if its declared contract passes and its provenance is complete.
 `Q=1` alone is not a pass, a mock verifier is not a canonical verifier, and a
@@ -84,6 +89,8 @@ integration bugs and rerun only the affected checks under a recorded new attempt
 do not rewrite the first attempt or old source records.
 
 The resulting report must separate completed CPU checks, installation checks,
-one-task Live checks and full-profile Live coverage. New task families, Physical
-execution modes, Agent CLI harnesses and resume/recovery require their own frozen
-profiles and acceptance evidence before being advertised as supported.
+one-task Live checks and full-profile Live coverage. In particular, validate P's
+restore-and-verify gate separately from L2 Physical's reconstruct-and-verify gate,
+and cover V identity/intervention/protocol evidence and L2 history constraints.
+Agent CLI harnesses and resume/recovery are outside the Common entrypoint and
+require their own frozen implementation and acceptance evidence.

@@ -1,0 +1,2231 @@
+{
+  "compiler_sha256": "c4fb88be69873173debc8e495d368f1004bbf8f19e3bb93933532220cf6e4889",
+  "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+  "schema_version": "behavior2026.action23-oracle-profile-catalog/v1",
+  "strict_action23_task_count": 63,
+  "task_count": 33,
+  "tasks": [
+    {
+      "canonical_goal_leaves": [
+        [
+          "toggled_on",
+          "radio_receiver.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "radio_receiver.n.01"
+      ],
+      "expected_admitted_count": 1,
+      "expected_container_count": 1,
+      "expected_goal_leaf_count": 1,
+      "expected_graspable_count": 1,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "radio_receiver.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "radio_receiver.n.01": "radio_receiver"
+      },
+      "scene_model": "house_double_floor_lower",
+      "source_sha256": {
+        "problem0_bddl": "06bd7ab790f3b33dd9d701ea689216fd4a73d7fc17e80f3130a1f92dd1c93e32",
+        "tro_state": "9b66e5c11963bbfba94bd928f41b86a757010136f0f61664523044899788c398"
+      },
+      "split": "train",
+      "task_id": 0,
+      "task_language": "turning on radio.",
+      "task_name": "turning_on_radio",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_turning_on_radio_instances/house_double_floor_lower_task_turning_on_radio_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "bowl.n.01_1",
+          "sink.n.01_1"
+        ],
+        [
+          "inside",
+          "bowl.n.01_2",
+          "sink.n.01_1"
+        ],
+        [
+          "inside",
+          "pizza.n.01_1",
+          "electric_refrigerator.n.01_1"
+        ],
+        [
+          "inside",
+          "pizza.n.01_2",
+          "electric_refrigerator.n.01_1"
+        ],
+        [
+          "not",
+          [
+            "open",
+            "electric_refrigerator.n.01_1"
+          ]
+        ],
+        [
+          "ontop",
+          "pizza.n.01_1",
+          "plate.n.04_1"
+        ],
+        [
+          "ontop",
+          "pizza.n.01_2",
+          "plate.n.04_2"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "electric_refrigerator.n.01",
+        "plate.n.04",
+        "sink.n.01"
+      ],
+      "expected_admitted_count": 8,
+      "expected_container_count": 4,
+      "expected_goal_leaf_count": 7,
+      "expected_graspable_count": 4,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "bowl.n.01",
+        "pizza.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "bowl.n.01": "bowl",
+        "pizza.n.01": "pizza"
+      },
+      "scene_model": "house_double_floor_lower",
+      "source_sha256": {
+        "problem0_bddl": "3af8e2b962d4793e6a89439f5ca9998044eb3c1bf9aa919a8e1e62bccdaf0d74",
+        "tro_state": "38eea40e1d2611a3453faa324a6f099fae16537f8a176e7597023429597e9f13"
+      },
+      "split": "train",
+      "task_id": 3,
+      "task_language": "cleaning up plates and food.",
+      "task_name": "cleaning_up_plates_and_food",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_cleaning_up_plates_and_food_instances/house_double_floor_lower_task_cleaning_up_plates_and_food_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "ontop",
+          "mousetrap.n.01_1",
+          "floor.n.01_1"
+        ],
+        [
+          "ontop",
+          "mousetrap.n.01_2",
+          "floor.n.01_1"
+        ],
+        [
+          "ontop",
+          "mousetrap.n.01_3",
+          "floor.n.01_1"
+        ],
+        [
+          "ontop",
+          "mousetrap.n.01_4",
+          "floor.n.01_1"
+        ],
+        [
+          "under",
+          "mousetrap.n.01_1",
+          "sink.n.01_1"
+        ],
+        [
+          "under",
+          "mousetrap.n.01_2",
+          "sink.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "floor.n.01",
+        "sink.n.01"
+      ],
+      "expected_admitted_count": 6,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 6,
+      "expected_graspable_count": 4,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "mousetrap.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "mousetrap.n.01": "mousetrap"
+      },
+      "scene_model": "house_double_floor_upper",
+      "source_sha256": {
+        "problem0_bddl": "47cbc1e1c1b890509c55b8f02fe6c8e502ffe95ef3c01d6e9cf3b34455518c7b",
+        "tro_state": "38983fca693c4461f74b912597871801758054aded97ddd91b57f9dfc93063d3"
+      },
+      "split": "train",
+      "task_id": 5,
+      "task_language": "setting mousetraps.",
+      "task_name": "setting_mousetraps",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_upper/json/house_double_floor_upper_task_setting_mousetraps_instances/house_double_floor_upper_task_setting_mousetraps_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "gift_box.n.01_1",
+          "christmas_tree.n.05_1"
+        ],
+        [
+          "nextto",
+          "gift_box.n.01_2",
+          "christmas_tree.n.05_1"
+        ],
+        [
+          "nextto",
+          "gift_box.n.01_3",
+          "christmas_tree.n.05_1"
+        ],
+        [
+          "ontop",
+          "candy_cane.n.01_1",
+          "sofa.n.01_1"
+        ],
+        [
+          "ontop",
+          "candy_cane.n.01_1",
+          "table.n.02_1"
+        ],
+        [
+          "ontop",
+          "candy_cane.n.01_2",
+          "sofa.n.01_1"
+        ],
+        [
+          "ontop",
+          "pillar_candle.n.01_1",
+          "table.n.02_1"
+        ],
+        [
+          "ontop",
+          "pillar_candle.n.01_2",
+          "table.n.02_1"
+        ],
+        [
+          "ontop",
+          "wreath.n.01_1",
+          "sofa.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "christmas_tree.n.05",
+        "sofa.n.01",
+        "table.n.02"
+      ],
+      "expected_admitted_count": 15,
+      "expected_container_count": 6,
+      "expected_goal_leaf_count": 9,
+      "expected_graspable_count": 9,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "candy_cane.n.01",
+        "gift_box.n.01",
+        "pillar_candle.n.01",
+        "wreath.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "candy_cane.n.01": "candy_cane",
+        "gift_box.n.01": "gift_box",
+        "pillar_candle.n.01": "pillar_candle",
+        "wreath.n.01": "wreath"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "10cf6f3d70edf4eeadf1e79c1f71b2d8122013f24040a2fe22ac902dccadfaae",
+        "tro_state": "3330ce6335d9f81bc386217871484e3f75dc994766ac138653ee98ce34139aca"
+      },
+      "split": "train",
+      "task_id": 9,
+      "task_language": "putting up Christmas decorations inside.",
+      "task_name": "putting_up_Christmas_decorations_inside",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_putting_up_Christmas_decorations_inside_instances/house_single_floor_task_putting_up_Christmas_decorations_inside_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "bottle__of__coffee.n.01_1",
+          "coffee_maker.n.01_1"
+        ],
+        [
+          "nextto",
+          "electric_kettle.n.01_1",
+          "coffee_maker.n.01_1"
+        ],
+        [
+          "nextto",
+          "saucer.n.02_1",
+          "coffee_maker.n.01_1"
+        ],
+        [
+          "ontop",
+          "coffee_cup.n.01_1",
+          "saucer.n.02_1"
+        ],
+        [
+          "ontop",
+          "coffee_maker.n.01_1",
+          "countertop.n.01_1"
+        ],
+        [
+          "ontop",
+          "paper_coffee_filter.n.01_1",
+          "coffee_maker.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "coffee_maker.n.01",
+        "countertop.n.01",
+        "saucer.n.02"
+      ],
+      "expected_admitted_count": 7,
+      "expected_container_count": 3,
+      "expected_goal_leaf_count": 6,
+      "expected_graspable_count": 6,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "bottle__of__coffee.n.01",
+        "coffee_cup.n.01",
+        "coffee_maker.n.01",
+        "electric_kettle.n.01",
+        "paper_coffee_filter.n.01",
+        "saucer.n.02"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "bottle__of__coffee.n.01": "bottle_of_coffee",
+        "coffee_cup.n.01": "coffee_cup",
+        "coffee_maker.n.01": "coffee_maker",
+        "electric_kettle.n.01": "electric_kettle",
+        "paper_coffee_filter.n.01": "paper_coffee_filter",
+        "saucer.n.02": "saucer"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "40b21c641f854923eaa6e8ef62da756ae9de2f4523aec038d47f487f443e3b8a",
+        "tro_state": "9019b51cb35f70c4974a2be0abaaf7b41d41799453778a32a360f6c9c9f42978"
+      },
+      "split": "train",
+      "task_id": 10,
+      "task_language": "set up a coffee station in your kitchen.",
+      "task_name": "set_up_a_coffee_station_in_your_kitchen",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_set_up_a_coffee_station_in_your_kitchen_instances/house_single_floor_task_set_up_a_coffee_station_in_your_kitchen_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "ontop",
+          "plywood.n.01_1",
+          "floor.n.01_2"
+        ],
+        [
+          "ontop",
+          "plywood.n.01_2",
+          "floor.n.01_2"
+        ],
+        [
+          "ontop",
+          "plywood.n.01_3",
+          "floor.n.01_2"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "floor.n.01"
+      ],
+      "expected_admitted_count": 5,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 3,
+      "expected_graspable_count": 3,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "plywood.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "plywood.n.01": "plywood"
+      },
+      "scene_model": "house_double_floor_lower",
+      "source_sha256": {
+        "problem0_bddl": "bf157bd45031dfe3db3054536bd76c861448498cb801a929f253927ad09706f0",
+        "tro_state": "8f8bd920ce352e7c17c3dbe3457e51d5ab6288969c706cdfcb559469123d3707"
+      },
+      "split": "train",
+      "task_id": 15,
+      "task_language": "bringing in wood.",
+      "task_name": "bringing_in_wood",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_bringing_in_wood_instances/house_double_floor_lower_task_bringing_in_wood_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "ontop",
+          "storage_container.n.01_1",
+          "floor.n.01_2"
+        ],
+        [
+          "ontop",
+          "storage_container.n.01_2",
+          "storage_container.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "floor.n.01",
+        "storage_container.n.01"
+      ],
+      "expected_admitted_count": 4,
+      "expected_container_count": 4,
+      "expected_goal_leaf_count": 2,
+      "expected_graspable_count": 2,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "storage_container.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "storage_container.n.01": "storage_container"
+      },
+      "scene_model": "house_double_floor_lower",
+      "source_sha256": {
+        "problem0_bddl": "13c91058b0266345eec5a5019b3882f1a1ff794dec5643548b2d42927b700995",
+        "tro_state": "cda5caacc8efe2e62d8645de305d8cb6162ed79c8af3c862cfdbf58fd4aa9ac7"
+      },
+      "split": "train",
+      "task_id": 16,
+      "task_language": "moving boxes to storage.",
+      "task_name": "moving_boxes_to_storage",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_moving_boxes_to_storage_instances/house_double_floor_lower_task_moving_boxes_to_storage_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "not",
+          [
+            "open",
+            "electric_refrigerator.n.01_1"
+          ]
+        ],
+        [
+          "ontop",
+          "bottle.n.01_1",
+          "coffee_table.n.01_1"
+        ],
+        [
+          "ontop",
+          "bottle.n.01_2",
+          "coffee_table.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "coffee_table.n.01",
+        "electric_refrigerator.n.01"
+      ],
+      "expected_admitted_count": 4,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 3,
+      "expected_graspable_count": 2,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "bottle.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "bottle.n.01": "bottle"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "90e7602fbec064f90c21e7921f582209b2a7a3436afd823231166c69ae489297",
+        "tro_state": "2ce0c4c0c60d141feb3ae74d30ea2cd71e3565da8f8b4cd8fd2d2d01c6b57132"
+      },
+      "split": "train",
+      "task_id": 17,
+      "task_language": "bringing water.",
+      "task_name": "bringing_water",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_bringing_water_instances/house_single_floor_task_bringing_water_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "sandal.n.01_1",
+          "bed.n.01_1"
+        ],
+        [
+          "nextto",
+          "sandal.n.01_2",
+          "sandal.n.01_1"
+        ],
+        [
+          "ontop",
+          "book.n.02_1",
+          "table.n.02_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "bed.n.01",
+        "sandal.n.01",
+        "table.n.02"
+      ],
+      "expected_admitted_count": 6,
+      "expected_container_count": 5,
+      "expected_goal_leaf_count": 3,
+      "expected_graspable_count": 3,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "book.n.02",
+        "sandal.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "book.n.02": "book",
+        "sandal.n.01": "sandal"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "ab922d907c1f7ad980ea11e61abfcc41a0d8e663075b12a65db3715602a3db5d",
+        "tro_state": "d79901efafe5751951dd1ce5fda64c36185be3db0b9da9bb71a8c1e2c54e864a"
+      },
+      "split": "train",
+      "task_id": 18,
+      "task_language": "tidying bedroom.",
+      "task_name": "tidying_bedroom",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_tidying_bedroom_instances/house_single_floor_task_tidying_bedroom_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "allen_wrench.n.01_1",
+          "toolbox.n.01_1"
+        ],
+        [
+          "inside",
+          "drill.n.01_1",
+          "toolbox.n.01_1"
+        ],
+        [
+          "inside",
+          "flashlight.n.01_1",
+          "toolbox.n.01_1"
+        ],
+        [
+          "inside",
+          "pliers.n.01_1",
+          "toolbox.n.01_1"
+        ],
+        [
+          "inside",
+          "screwdriver.n.01_1",
+          "toolbox.n.01_1"
+        ],
+        [
+          "not",
+          [
+            "open",
+            "toolbox.n.01_1"
+          ]
+        ],
+        [
+          "ontop",
+          "toolbox.n.01_1",
+          "tabletop.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "tabletop.n.01",
+        "toolbox.n.01"
+      ],
+      "expected_admitted_count": 7,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 7,
+      "expected_graspable_count": 6,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "allen_wrench.n.01",
+        "drill.n.01",
+        "flashlight.n.01",
+        "pliers.n.01",
+        "screwdriver.n.01",
+        "toolbox.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "allen_wrench.n.01": "allen_wrench",
+        "drill.n.01": "drill",
+        "flashlight.n.01": "flashlight",
+        "pliers.n.01": "pliers",
+        "screwdriver.n.01": "screwdriver",
+        "toolbox.n.01": "toolbox"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "7500c3d563f851e74f083455bd3860ae271c887a64469dee3d76ad461c87e5c1",
+        "tro_state": "908fb05ccd7b8e7b9c77b69c4204c9fe191fc1b8b171e094c4ac4264ba392223"
+      },
+      "split": "train",
+      "task_id": 19,
+      "task_language": "outfit a basic toolbox.",
+      "task_name": "outfit_a_basic_toolbox",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_outfit_a_basic_toolbox_instances/house_single_floor_task_outfit_a_basic_toolbox_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "toothbrush.n.01_1",
+          "cup.n.01_1"
+        ],
+        [
+          "nextto",
+          "bottle__of__detergent.n.01_1",
+          "bottle__of__detergent.n.01_2"
+        ],
+        [
+          "nextto",
+          "tube__of__toothpaste.n.01_1",
+          "cup.n.01_1"
+        ],
+        [
+          "ontop",
+          "box__of__sanitary_napkin.n.01_1",
+          "shelf.n.01_1"
+        ],
+        [
+          "ontop",
+          "cup.n.01_1",
+          "sink.n.01_1"
+        ],
+        [
+          "ontop",
+          "soap_dispenser.n.01_1",
+          "sink.n.01_1"
+        ],
+        [
+          "under",
+          "bottle__of__detergent.n.01_1",
+          "sink.n.01_1"
+        ],
+        [
+          "under",
+          "bottle__of__detergent.n.01_2",
+          "sink.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "bottle__of__detergent.n.01",
+        "cup.n.01",
+        "shelf.n.01",
+        "sink.n.01"
+      ],
+      "expected_admitted_count": 9,
+      "expected_container_count": 5,
+      "expected_goal_leaf_count": 8,
+      "expected_graspable_count": 7,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "bottle__of__detergent.n.01",
+        "box__of__sanitary_napkin.n.01",
+        "cup.n.01",
+        "soap_dispenser.n.01",
+        "toothbrush.n.01",
+        "tube__of__toothpaste.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "bottle__of__detergent.n.01": "bottle_of_detergent",
+        "box__of__sanitary_napkin.n.01": "box_of_sanitary_napkin",
+        "cup.n.01": "cup",
+        "soap_dispenser.n.01": "soap_dispenser",
+        "toothbrush.n.01": "toothbrush",
+        "tube__of__toothpaste.n.01": "tube_of_toothpaste"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "d8eb464ba273d8ccf3efa065bcc1adf759998b567b1d8fe880f5b8529600a3a9",
+        "tro_state": "b2e383cab4de3c2974a9d182ee22d6dfb1d8a73675d3f66831402c6b5a8b01ac"
+      },
+      "split": "train",
+      "task_id": 27,
+      "task_language": "sorting household items.",
+      "task_name": "sorting_household_items",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_sorting_household_items_instances/house_single_floor_task_sorting_household_items_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "folder.n.02_1",
+          "mouse.n.04_1"
+        ],
+        [
+          "nextto",
+          "keyboard.n.01_1",
+          "monitor.n.04_1"
+        ],
+        [
+          "nextto",
+          "mouse.n.04_1",
+          "keyboard.n.01_1"
+        ],
+        [
+          "nextto",
+          "swivel_chair.n.01_1",
+          "desk.n.01_1"
+        ],
+        [
+          "ontop",
+          "keyboard.n.01_1",
+          "desk.n.01_1"
+        ],
+        [
+          "ontop",
+          "monitor.n.04_1",
+          "desk.n.01_1"
+        ],
+        [
+          "ontop",
+          "mouse.n.04_1",
+          "desk.n.01_1"
+        ],
+        [
+          "ontop",
+          "notebook.n.01_1",
+          "folder.n.02_1"
+        ],
+        [
+          "ontop",
+          "pen.n.01_1",
+          "notebook.n.01_1"
+        ],
+        [
+          "under",
+          "computer.n.01_1",
+          "desk.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "desk.n.01",
+        "folder.n.02",
+        "keyboard.n.01",
+        "monitor.n.04",
+        "mouse.n.04",
+        "notebook.n.01"
+      ],
+      "expected_admitted_count": 9,
+      "expected_container_count": 6,
+      "expected_goal_leaf_count": 10,
+      "expected_graspable_count": 8,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "computer.n.01",
+        "folder.n.02",
+        "keyboard.n.01",
+        "monitor.n.04",
+        "mouse.n.04",
+        "notebook.n.01",
+        "pen.n.01",
+        "swivel_chair.n.01"
+      ],
+      "instance_id": 0,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "computer.n.01": "computer",
+        "folder.n.02": "folder",
+        "keyboard.n.01": "keyboard",
+        "monitor.n.04": "monitor",
+        "mouse.n.04": "mouse",
+        "notebook.n.01": "notebook",
+        "pen.n.01": "pen",
+        "swivel_chair.n.01": "swivel_chair"
+      },
+      "scene_model": "house_double_floor_upper",
+      "source_sha256": {
+        "problem0_bddl": "b4c6fcb70e1c810484c7b330fb4a2f31997029577c6a28d3fb240d1b58bd2544",
+        "tro_state": "9175cc6b2bf74103d95e72b4d9c3ac18cd1f3682aa228043a6d5abf10b8bc4aa"
+      },
+      "split": "train",
+      "task_id": 28,
+      "task_language": "getting organized for work.",
+      "task_name": "getting_organized_for_work",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_upper/json/house_double_floor_upper_task_getting_organized_for_work_instances/house_double_floor_upper_task_getting_organized_for_work_0_0_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "hardback.n.01_1",
+          "bookcase.n.01_1"
+        ],
+        [
+          "ontop",
+          "newspaper.n.03_1",
+          "coffee_table.n.01_1"
+        ],
+        [
+          "ontop",
+          "notebook.n.01_1",
+          "desk.n.01_1"
+        ],
+        [
+          "ontop",
+          "pot_plant.n.01_1",
+          "coffee_table.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "bookcase.n.01",
+        "coffee_table.n.01",
+        "desk.n.01"
+      ],
+      "expected_admitted_count": 10,
+      "expected_container_count": 6,
+      "expected_goal_leaf_count": 4,
+      "expected_graspable_count": 4,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "hardback.n.01",
+        "newspaper.n.03",
+        "notebook.n.01",
+        "pot_plant.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "hardback.n.01": "hardback",
+        "newspaper.n.03": "newspaper",
+        "notebook.n.01": "notebook",
+        "pot_plant.n.01": "pot_plant"
+      },
+      "scene_model": "house_double_floor_upper",
+      "source_sha256": {
+        "problem0_bddl": "004780045ce7ab23c72558a7845768cfe7425986bf6e351b6addc7cce4a39989",
+        "tro_state": "633f147dc0c50a64278771511a4f3235e187824e45f6539dd4fe8a949a5217ad"
+      },
+      "split": "train",
+      "task_id": 53,
+      "task_language": "tidying living room.",
+      "task_name": "tidying_living_room",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_upper/json/house_double_floor_upper_task_tidying_living_room_instances/house_double_floor_upper_task_tidying_living_room_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "rose.n.01_1",
+          "vase.n.01_1"
+        ],
+        [
+          "inside",
+          "rose.n.01_2",
+          "vase.n.01_1"
+        ],
+        [
+          "inside",
+          "rose.n.01_3",
+          "vase.n.01_1"
+        ],
+        [
+          "ontop",
+          "vase.n.01_1",
+          "coffee_table.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "coffee_table.n.01",
+        "vase.n.01"
+      ],
+      "expected_admitted_count": 5,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 4,
+      "expected_graspable_count": 4,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "rose.n.01",
+        "vase.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "rose.n.01": "rose",
+        "vase.n.01": "vase"
+      },
+      "scene_model": "house_double_floor_lower",
+      "source_sha256": {
+        "problem0_bddl": "e96f193f8d486ab3361f76334711a1b027981b605a299368d700d74e3195b304",
+        "tro_state": "b74574bee082f6dc28c37b8bb3efb5881cba24464e1aee9984010458cbf0371b"
+      },
+      "split": "train",
+      "task_id": 56,
+      "task_language": "make rose centerpieces.",
+      "task_name": "make_rose_centerpieces",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_make_rose_centerpieces_instances/house_double_floor_lower_task_make_rose_centerpieces_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "touching",
+          "log.n.01_1",
+          "log.n.01_2"
+        ],
+        [
+          "touching",
+          "log.n.01_2",
+          "log.n.01_1"
+        ],
+        [
+          "touching",
+          "log.n.01_3",
+          "log.n.01_1"
+        ],
+        [
+          "touching",
+          "log.n.01_4",
+          "log.n.01_1"
+        ],
+        [
+          "touching",
+          "log.n.01_5",
+          "log.n.01_1"
+        ],
+        [
+          "touching",
+          "log.n.01_6",
+          "log.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 7776,
+      "canonical_options_examined": 7777,
+      "container_synsets": [
+        "log.n.01"
+      ],
+      "expected_admitted_count": 6,
+      "expected_container_count": 6,
+      "expected_goal_leaf_count": 6,
+      "expected_graspable_count": 6,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "log.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "log.n.01": "log"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "de70b18f9d401fb877f526a32105860349a5673351b45b4ccb10bf51d82cd651",
+        "tro_state": "993b528b6b49ff790f254bb63d310c6083c89cb3f5891f779632e2a7abf23f0e"
+      },
+      "split": "train",
+      "task_id": 58,
+      "task_language": "stacking wood.",
+      "task_name": "stacking_wood",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_stacking_wood_instances/house_single_floor_task_stacking_wood_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "glue_stick.n.01_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "inside",
+          "marker.n.03_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "inside",
+          "paintbrush.n.01_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "inside",
+          "rubber_eraser.n.01_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "ontop",
+          "carryall.n.01_1",
+          "desk.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "carryall.n.01",
+        "desk.n.01"
+      ],
+      "expected_admitted_count": 6,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 5,
+      "expected_graspable_count": 5,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "carryall.n.01",
+        "glue_stick.n.01",
+        "marker.n.03",
+        "paintbrush.n.01",
+        "rubber_eraser.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "carryall.n.01": "carryall",
+        "glue_stick.n.01": "glue_stick",
+        "marker.n.03": "marker",
+        "paintbrush.n.01": "paintbrush",
+        "rubber_eraser.n.01": "rubber_eraser"
+      },
+      "scene_model": "house_double_floor_upper",
+      "source_sha256": {
+        "problem0_bddl": "f9eb9644f8a873400d55c786ff916db6130715ab10fa5bda1379b201dfee1422",
+        "tro_state": "d037ea13bcca71e857be6f42a50a73eb7f268a794ce1e735dc46ca2505bb579c"
+      },
+      "split": "train",
+      "task_id": 59,
+      "task_language": "organizing art supplies.",
+      "task_name": "organizing_art_supplies",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_upper/json/house_double_floor_upper_task_organizing_art_supplies_instances/house_double_floor_upper_task_organizing_art_supplies_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "table_knife.n.01_1",
+          "plate.n.04_1"
+        ],
+        [
+          "nextto",
+          "table_knife.n.01_2",
+          "plate.n.04_2"
+        ],
+        [
+          "nextto",
+          "tablefork.n.01_1",
+          "plate.n.04_1"
+        ],
+        [
+          "nextto",
+          "tablefork.n.01_2",
+          "plate.n.04_2"
+        ],
+        [
+          "ontop",
+          "cupcake.n.01_1",
+          "plate.n.04_1"
+        ],
+        [
+          "ontop",
+          "cupcake.n.01_2",
+          "plate.n.04_2"
+        ],
+        [
+          "ontop",
+          "plate.n.04_1",
+          "breakfast_table.n.01_1"
+        ],
+        [
+          "ontop",
+          "plate.n.04_2",
+          "breakfast_table.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "breakfast_table.n.01",
+        "plate.n.04"
+      ],
+      "expected_admitted_count": 9,
+      "expected_container_count": 3,
+      "expected_goal_leaf_count": 8,
+      "expected_graspable_count": 8,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "cupcake.n.01",
+        "plate.n.04",
+        "table_knife.n.01",
+        "tablefork.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "cupcake.n.01": "cupcake",
+        "plate.n.04": "plate",
+        "table_knife.n.01": "table_knife",
+        "tablefork.n.01": "tablefork"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "777b6f105039dbb646c7a889ab28f16b55ca527235cb8da461a636c333267a37",
+        "tro_state": "4e07acb5f992edea7a6c9a1bd3ab224ab3125ddf748e9783cf27eef90f5bd4dd"
+      },
+      "split": "train",
+      "task_id": 64,
+      "task_language": "setting the table.",
+      "task_name": "setting_the_table",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_setting_the_table_instances/house_single_floor_task_setting_the_table_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "briefcase.n.01_1",
+          "sofa.n.01_1"
+        ],
+        [
+          "nextto",
+          "satchel.n.01_1",
+          "sofa.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "sofa.n.01"
+      ],
+      "expected_admitted_count": 3,
+      "expected_container_count": 1,
+      "expected_goal_leaf_count": 2,
+      "expected_graspable_count": 2,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "briefcase.n.01",
+        "satchel.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "briefcase.n.01": "briefcase",
+        "satchel.n.01": "satchel"
+      },
+      "scene_model": "house_double_floor_lower",
+      "source_sha256": {
+        "problem0_bddl": "1e58f03f84c57ee2835c76fcbb1b42f893643306eb5fd09192e0b1e13cd48081",
+        "tro_state": "db1a46701a100ba0e97dda1aa9887324aca1619beef07a5ba19e50a970da4981"
+      },
+      "split": "train",
+      "task_id": 65,
+      "task_language": "unloading the car.",
+      "task_name": "unloading_the_car",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_unloading_the_car_instances/house_double_floor_lower_task_unloading_the_car_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "taco.n.02_1",
+          "tupperware.n.01_1"
+        ],
+        [
+          "inside",
+          "taco.n.02_2",
+          "tupperware.n.01_1"
+        ],
+        [
+          "inside",
+          "tupperware.n.01_1",
+          "electric_refrigerator.n.01_1"
+        ],
+        [
+          "not",
+          [
+            "open",
+            "electric_refrigerator.n.01_1"
+          ]
+        ],
+        [
+          "ontop",
+          "plate.n.04_1",
+          "sink.n.01_1"
+        ],
+        [
+          "ontop",
+          "plate.n.04_2",
+          "sink.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "electric_refrigerator.n.01",
+        "sink.n.01",
+        "tupperware.n.01"
+      ],
+      "expected_admitted_count": 7,
+      "expected_container_count": 3,
+      "expected_goal_leaf_count": 6,
+      "expected_graspable_count": 5,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "plate.n.04",
+        "taco.n.02",
+        "tupperware.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "plate.n.04": "plate",
+        "taco.n.02": "taco",
+        "tupperware.n.01": "tupperware"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "807ff776b31242fd2a478d884217e16c350062ae531a93fb77406237c5753c3a",
+        "tro_state": "071f3d28dad0006c15d0de2ecfc985df8daafeecddb7420979d5f206cfb22e9a"
+      },
+      "split": "train",
+      "task_id": 67,
+      "task_language": "boxing food after dinner.",
+      "task_name": "boxing_food_after_dinner",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_boxing_food_after_dinner_instances/house_single_floor_task_boxing_food_after_dinner_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "branch.n.02_1",
+          "recycling_bin.n.01_1"
+        ],
+        [
+          "inside",
+          "branch.n.02_2",
+          "recycling_bin.n.01_1"
+        ],
+        [
+          "inside",
+          "branch.n.02_3",
+          "recycling_bin.n.01_1"
+        ],
+        [
+          "inside",
+          "branch.n.02_4",
+          "recycling_bin.n.01_1"
+        ],
+        [
+          "ontop",
+          "recycling_bin.n.01_1",
+          "floor.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "floor.n.01",
+        "recycling_bin.n.01"
+      ],
+      "expected_admitted_count": 6,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 5,
+      "expected_graspable_count": 5,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "branch.n.02",
+        "recycling_bin.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "branch.n.02": "branch",
+        "recycling_bin.n.01": "recycling_bin"
+      },
+      "scene_model": "house_double_floor_lower",
+      "source_sha256": {
+        "problem0_bddl": "a64272314473e3e02549af27925680551ac0763574b8e1139629231ece1db37b",
+        "tro_state": "d8fc7fff39dc133e65fc70f33c5780035d4444b7fae02b47b962de6034e75951"
+      },
+      "split": "train",
+      "task_id": 68,
+      "task_language": "cleaning up branches and twigs.",
+      "task_name": "cleaning_up_branches_and_twigs",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_cleaning_up_branches_and_twigs_instances/house_double_floor_lower_task_cleaning_up_branches_and_twigs_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "book.n.02_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "inside",
+          "calculator.n.02_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "inside",
+          "folder.n.02_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "inside",
+          "pen.n.01_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "inside",
+          "pencil.n.01_1",
+          "carryall.n.01_1"
+        ],
+        [
+          "ontop",
+          "carryall.n.01_1",
+          "bed.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "bed.n.01",
+        "carryall.n.01"
+      ],
+      "expected_admitted_count": 7,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 6,
+      "expected_graspable_count": 6,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "book.n.02",
+        "calculator.n.02",
+        "carryall.n.01",
+        "folder.n.02",
+        "pen.n.01",
+        "pencil.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "book.n.02": "book",
+        "calculator.n.02": "calculator",
+        "carryall.n.01": "carryall",
+        "folder.n.02": "folder",
+        "pen.n.01": "pen",
+        "pencil.n.01": "pencil"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "5118c0da1b73f21750fcafd0b2fb1c4859fb5f9cab539f5a62901c582ab183a7",
+        "tro_state": "48cbe5f602c0143e99fefe29151967300dd42f6838fe0329b24b59bdd07a4338"
+      },
+      "split": "train",
+      "task_id": 73,
+      "task_language": "organizing school stuff.",
+      "task_name": "organizing_school_stuff",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_organizing_school_stuff_instances/house_single_floor_task_organizing_school_stuff_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "ontop",
+          "barrow.n.03_1",
+          "lawn.n.01_1"
+        ],
+        [
+          "ontop",
+          "lawn_chair.n.01_1",
+          "floor.n.01_2"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "floor.n.01",
+        "lawn.n.01"
+      ],
+      "expected_admitted_count": 5,
+      "expected_container_count": 3,
+      "expected_goal_leaf_count": 2,
+      "expected_graspable_count": 2,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "barrow.n.03",
+        "lawn_chair.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "barrow.n.03": "barrow",
+        "lawn_chair.n.01": "lawn_chair"
+      },
+      "scene_model": "house_single_floor",
+      "source_sha256": {
+        "problem0_bddl": "8da2796cbfd1724c32506ed4e65427fbee79a5026cef8d3c55a81312c100c1af",
+        "tro_state": "e6ccdecda241c0e4b71ae76a33691f767e29e011081fd6ce7d88497bd4e585c4"
+      },
+      "split": "train",
+      "task_id": 74,
+      "task_language": "carrying out garden furniture.",
+      "task_name": "carrying_out_garden_furniture",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_carrying_out_garden_furniture_instances/house_single_floor_task_carrying_out_garden_furniture_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "pruner.n.02_1",
+          "toolbox.n.01_1"
+        ],
+        [
+          "inside",
+          "shears.n.01_1",
+          "toolbox.n.01_1"
+        ],
+        [
+          "not",
+          [
+            "open",
+            "toolbox.n.01_1"
+          ]
+        ],
+        [
+          "ontop",
+          "toolbox.n.01_1",
+          "floor.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "floor.n.01",
+        "toolbox.n.01"
+      ],
+      "expected_admitted_count": 4,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 4,
+      "expected_graspable_count": 3,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "pruner.n.02",
+        "shears.n.01",
+        "toolbox.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "pruner.n.02": "pruner",
+        "shears.n.01": "shears",
+        "toolbox.n.01": "toolbox"
+      },
+      "scene_model": "house_double_floor_lower",
+      "source_sha256": {
+        "problem0_bddl": "36599882052a10aa3b79ddee6eb31e40ce1df2196529f70a9d59855d2dcf2256",
+        "tro_state": "a2f2741154b7a8cc8e31b89212e04fbaffb54bb9440b144c073a3079e414ac52"
+      },
+      "split": "train",
+      "task_id": 75,
+      "task_language": "put together a basic pruning kit.",
+      "task_name": "put_together_a_basic_pruning_kit",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_put_together_a_basic_pruning_kit_instances/house_double_floor_lower_task_put_together_a_basic_pruning_kit_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "modem.n.01_1",
+          "television_receiver.n.01_1"
+        ],
+        [
+          "ontop",
+          "modem.n.01_1",
+          "cabinet.n.01_1"
+        ],
+        [
+          "ontop",
+          "television_receiver.n.01_1",
+          "cabinet.n.01_1"
+        ],
+        [
+          "toggled_on",
+          "modem.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "cabinet.n.01",
+        "modem.n.01",
+        "television_receiver.n.01"
+      ],
+      "expected_admitted_count": 4,
+      "expected_container_count": 4,
+      "expected_goal_leaf_count": 4,
+      "expected_graspable_count": 2,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "modem.n.01",
+        "television_receiver.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "modem.n.01": "modem",
+        "television_receiver.n.01": "television_receiver"
+      },
+      "scene_model": "Rs_int",
+      "source_sha256": {
+        "problem0_bddl": "4965d015fa14a43d2a08c6b11c814db069c052b3c751e4f6540f2e5884c3d8b8",
+        "tro_state": "ccd20a037f727aa78c63bab15cad667d022806b3fa22be1828b7fdcdc66b415b"
+      },
+      "split": "train",
+      "task_id": 77,
+      "task_language": "installing a modem.",
+      "task_name": "installing_a_modem",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/Rs_int/json/Rs_int_task_installing_a_modem_instances/Rs_int_task_installing_a_modem_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "wrapped_hamburger.n.01_1",
+          "sack.n.01_1"
+        ],
+        [
+          "inside",
+          "wrapped_hamburger.n.01_2",
+          "sack.n.01_2"
+        ],
+        [
+          "inside",
+          "wrapped_hamburger.n.01_3",
+          "sack.n.01_3"
+        ],
+        [
+          "ontop",
+          "sack.n.01_1",
+          "storage_container.n.01_1"
+        ],
+        [
+          "ontop",
+          "sack.n.01_2",
+          "storage_container.n.01_1"
+        ],
+        [
+          "ontop",
+          "sack.n.01_3",
+          "storage_container.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "sack.n.01",
+        "storage_container.n.01"
+      ],
+      "expected_admitted_count": 7,
+      "expected_container_count": 4,
+      "expected_goal_leaf_count": 6,
+      "expected_graspable_count": 6,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "sack.n.01",
+        "wrapped_hamburger.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "sack.n.01": "sack",
+        "wrapped_hamburger.n.01": "wrapped_hamburger"
+      },
+      "scene_model": "restaurant_diner",
+      "source_sha256": {
+        "problem0_bddl": "2112fcf730737fc7bc272e0c70a33d522630759572dfdcec756fc3dc611dd866",
+        "tro_state": "acdc5633552d4b81adc6e0d1ae8c84fd78a5173e29dd24be69b0c8ed659c98c2"
+      },
+      "split": "train",
+      "task_id": 81,
+      "task_language": "packing meal for delivery.",
+      "task_name": "packing_meal_for_delivery",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/restaurant_diner/json/restaurant_diner_task_packing_meal_for_delivery_instances/restaurant_diner_task_packing_meal_for_delivery_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "cork.n.04_1",
+          "ashcan.n.01_1"
+        ],
+        [
+          "ontop",
+          "bar_soap.n.01_1",
+          "soap_dish.n.01_1"
+        ],
+        [
+          "ontop",
+          "tissue_dispenser.n.01_1",
+          "sink.n.01_1"
+        ],
+        [
+          "ontop",
+          "toilet_tissue.n.01_1",
+          "toilet.n.02_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "ashcan.n.01",
+        "sink.n.01",
+        "soap_dish.n.01",
+        "toilet.n.02"
+      ],
+      "expected_admitted_count": 8,
+      "expected_container_count": 4,
+      "expected_goal_leaf_count": 4,
+      "expected_graspable_count": 4,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "bar_soap.n.01",
+        "cork.n.04",
+        "tissue_dispenser.n.01",
+        "toilet_tissue.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "bar_soap.n.01": "bar_soap",
+        "cork.n.04": "cork",
+        "tissue_dispenser.n.01": "tissue_dispenser",
+        "toilet_tissue.n.01": "toilet_tissue"
+      },
+      "scene_model": "hotel_suite_large",
+      "source_sha256": {
+        "problem0_bddl": "e206c6fbed1117e4a434505af629782cebfdbdd420698c2f6a1eabcf3b7517a9",
+        "tro_state": "9cf94f889b72f594c09c1d91c5c172089fbbd08208735979e705dc380f55a4ba"
+      },
+      "split": "train",
+      "task_id": 84,
+      "task_language": "tidying bathroom.",
+      "task_name": "tidying_bathroom",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/hotel_suite_large/json/hotel_suite_large_task_tidying_bathroom_instances/hotel_suite_large_task_tidying_bathroom_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "toy_dice.n.01_1",
+          "sack.n.01_1"
+        ],
+        [
+          "inside",
+          "toy_dice.n.01_2",
+          "sack.n.01_2"
+        ],
+        [
+          "inside",
+          "wafer.n.02_1",
+          "sack.n.01_1"
+        ],
+        [
+          "inside",
+          "wafer.n.02_2",
+          "sack.n.01_2"
+        ],
+        [
+          "ontop",
+          "sack.n.01_1",
+          "coffee_table.n.01_1"
+        ],
+        [
+          "ontop",
+          "sack.n.01_2",
+          "coffee_table.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "coffee_table.n.01",
+        "sack.n.01"
+      ],
+      "expected_admitted_count": 7,
+      "expected_container_count": 3,
+      "expected_goal_leaf_count": 6,
+      "expected_graspable_count": 6,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "sack.n.01",
+        "toy_dice.n.01",
+        "wafer.n.02"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "sack.n.01": "sack",
+        "toy_dice.n.01": "toy_dice",
+        "wafer.n.02": "wafer"
+      },
+      "scene_model": "Rs_int",
+      "source_sha256": {
+        "problem0_bddl": "bb68cd6b8a63bb56885821dabda0064f245e6617299ba8812d3039a064418892",
+        "tro_state": "98bd167283c0a3dcfc23b5da13b3cde3360d883569991eb6790b657bd0a75b95"
+      },
+      "split": "train",
+      "task_id": 86,
+      "task_language": "make gift bags for baby showers.",
+      "task_name": "make_gift_bags_for_baby_showers",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/Rs_int/json/Rs_int_task_make_gift_bags_for_baby_showers_instances/Rs_int_task_make_gift_bags_for_baby_showers_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "ontop",
+          "pillow.n.01_1",
+          "bed.n.01_1"
+        ],
+        [
+          "ontop",
+          "pillow.n.01_2",
+          "bed.n.01_2"
+        ],
+        [
+          "ontop",
+          "tissue_dispenser.n.01_1",
+          "stand.n.04_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "bed.n.01",
+        "stand.n.04"
+      ],
+      "expected_admitted_count": 6,
+      "expected_container_count": 3,
+      "expected_goal_leaf_count": 3,
+      "expected_graspable_count": 3,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "pillow.n.01",
+        "tissue_dispenser.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "pillow.n.01": "pillow",
+        "tissue_dispenser.n.01": "tissue_dispenser"
+      },
+      "scene_model": "hotel_suite_large",
+      "source_sha256": {
+        "problem0_bddl": "184b170862a259cd93bf96887b6fb8152220ac46077cbb7d1b6138d156611f89",
+        "tro_state": "481f89becd5a36756f353c6cfd170907afb66226445cc6162f476f1f25d253bd"
+      },
+      "split": "train",
+      "task_id": 88,
+      "task_language": "rearrange your room.",
+      "task_name": "rearrange_your_room",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/hotel_suite_large/json/hotel_suite_large_task_rearrange_your_room_instances/hotel_suite_large_task_rearrange_your_room_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "ontop",
+          "facsimile.n.02_1",
+          "carrel.n.02_1"
+        ],
+        [
+          "toggled_on",
+          "facsimile.n.02_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "carrel.n.02",
+        "facsimile.n.02"
+      ],
+      "expected_admitted_count": 11,
+      "expected_container_count": 11,
+      "expected_goal_leaf_count": 2,
+      "expected_graspable_count": 1,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "facsimile.n.02"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "facsimile.n.02": "facsimile"
+      },
+      "scene_model": "office_cubicles_right",
+      "source_sha256": {
+        "problem0_bddl": "5eb9ba3bade965e05bdc117fe2dca798943dd7a4a48e46686d92f5d7c18df1b3",
+        "tro_state": "c3c11b41086aa3d0bc5b7073b5530d9554748cc380e05851da9e726d65481f48"
+      },
+      "split": "train",
+      "task_id": 89,
+      "task_language": "installing a fax machine.",
+      "task_name": "installing_a_fax_machine",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/office_cubicles_right/json/office_cubicles_right_task_installing_a_fax_machine_instances/office_cubicles_right_task_installing_a_fax_machine_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "scanner.n.02_1",
+          "laptop.n.01_1"
+        ],
+        [
+          "toggled_on",
+          "scanner.n.02_1"
+        ]
+      ],
+      "canonical_option_index": 0,
+      "canonical_options_examined": 1,
+      "container_synsets": [
+        "laptop.n.01",
+        "scanner.n.02"
+      ],
+      "expected_admitted_count": 2,
+      "expected_container_count": 2,
+      "expected_goal_leaf_count": 2,
+      "expected_graspable_count": 1,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "scanner.n.02"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "scanner.n.02": "scanner"
+      },
+      "scene_model": "office_cubicles_right",
+      "source_sha256": {
+        "problem0_bddl": "a986dacf967d4185a622f693f0485fbfd0c2c63130727a551f9b011520656d65",
+        "tro_state": "76c8b6aa3d6b3305059bbfa5184aafc090c803b425db6ade7bc2b260e55518f7"
+      },
+      "split": "train",
+      "task_id": 92,
+      "task_language": "installing a scanner.",
+      "task_name": "installing_a_scanner",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/office_cubicles_right/json/office_cubicles_right_task_installing_a_scanner_instances/office_cubicles_right_task_installing_a_scanner_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "ice_cube.n.01_1",
+          "bucket.n.01_1"
+        ],
+        [
+          "inside",
+          "ice_cube.n.01_2",
+          "bucket.n.01_1"
+        ],
+        [
+          "inside",
+          "ice_cube.n.01_3",
+          "bucket.n.01_1"
+        ],
+        [
+          "inside",
+          "ice_cube.n.01_4",
+          "bucket.n.01_1"
+        ],
+        [
+          "inside",
+          "ice_cube.n.01_5",
+          "bucket.n.01_1"
+        ],
+        [
+          "inside",
+          "ice_cube.n.01_6",
+          "bucket.n.01_1"
+        ],
+        [
+          "nextto",
+          "can__of__soda.n.01_1",
+          "can__of__soda.n.01_2"
+        ],
+        [
+          "nextto",
+          "can__of__soda.n.01_2",
+          "can__of__soda.n.01_1"
+        ],
+        [
+          "nextto",
+          "can__of__soda.n.01_3",
+          "can__of__soda.n.01_1"
+        ],
+        [
+          "nextto",
+          "corkscrew.n.01_1",
+          "wine_bottle.n.01_1"
+        ],
+        [
+          "nextto",
+          "wineglass.n.01_1",
+          "wine_bottle.n.01_1"
+        ],
+        [
+          "nextto",
+          "wineglass.n.01_1",
+          "wineglass.n.01_2"
+        ],
+        [
+          "ontop",
+          "bucket.n.01_1",
+          "countertop.n.01_1"
+        ],
+        [
+          "ontop",
+          "can__of__soda.n.01_1",
+          "countertop.n.01_1"
+        ],
+        [
+          "ontop",
+          "can__of__soda.n.01_2",
+          "countertop.n.01_1"
+        ],
+        [
+          "ontop",
+          "can__of__soda.n.01_3",
+          "countertop.n.01_1"
+        ],
+        [
+          "ontop",
+          "corkscrew.n.01_1",
+          "countertop.n.01_1"
+        ],
+        [
+          "ontop",
+          "wine_bottle.n.01_1",
+          "countertop.n.01_1"
+        ],
+        [
+          "ontop",
+          "wineglass.n.01_1",
+          "countertop.n.01_1"
+        ],
+        [
+          "ontop",
+          "wineglass.n.01_2",
+          "countertop.n.01_1"
+        ]
+      ],
+      "canonical_option_index": 18,
+      "canonical_options_examined": 19,
+      "container_synsets": [
+        "bucket.n.01",
+        "can__of__soda.n.01",
+        "countertop.n.01",
+        "wine_bottle.n.01",
+        "wineglass.n.01"
+      ],
+      "expected_admitted_count": 15,
+      "expected_container_count": 8,
+      "expected_goal_leaf_count": 20,
+      "expected_graspable_count": 14,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "bucket.n.01",
+        "can__of__soda.n.01",
+        "corkscrew.n.01",
+        "ice_cube.n.01",
+        "wine_bottle.n.01",
+        "wineglass.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "bucket.n.01": "bucket",
+        "can__of__soda.n.01": "can_of_soda",
+        "corkscrew.n.01": "corkscrew",
+        "ice_cube.n.01": "ice_cube",
+        "wine_bottle.n.01": "wine_bottle",
+        "wineglass.n.01": "wineglass"
+      },
+      "scene_model": "restaurant_diner",
+      "source_sha256": {
+        "problem0_bddl": "2b2bbf20d80a9042b0d2d5e0b7021cf788768fd91e65bb45537ebb5bff55eb25",
+        "tro_state": "dc071c1dfd6348b7b1fff881b96f815af145b8cd1e103b2eca1b3b1ba975942e"
+      },
+      "split": "train",
+      "task_id": 97,
+      "task_language": "setup a bar for a cocktail party.",
+      "task_name": "setup_a_bar_for_a_cocktail_party",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/restaurant_diner/json/restaurant_diner_task_setup_a_bar_for_a_cocktail_party_instances/restaurant_diner_task_setup_a_bar_for_a_cocktail_party_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "nextto",
+          "tile.n.01_1",
+          "tile.n.01_2"
+        ],
+        [
+          "nextto",
+          "tile.n.01_2",
+          "tile.n.01_1"
+        ],
+        [
+          "nextto",
+          "tile.n.01_3",
+          "tile.n.01_1"
+        ],
+        [
+          "nextto",
+          "tile.n.01_4",
+          "tile.n.01_1"
+        ],
+        [
+          "ontop",
+          "tile.n.01_1",
+          "floor.n.01_2"
+        ],
+        [
+          "ontop",
+          "tile.n.01_2",
+          "floor.n.01_2"
+        ],
+        [
+          "ontop",
+          "tile.n.01_3",
+          "floor.n.01_2"
+        ],
+        [
+          "ontop",
+          "tile.n.01_4",
+          "floor.n.01_2"
+        ]
+      ],
+      "canonical_option_index": 64,
+      "canonical_options_examined": 65,
+      "container_synsets": [
+        "floor.n.01",
+        "tile.n.01"
+      ],
+      "expected_admitted_count": 6,
+      "expected_container_count": 6,
+      "expected_goal_leaf_count": 8,
+      "expected_graspable_count": 4,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "tile.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "tile.n.01": "tile"
+      },
+      "scene_model": "office_cubicles_right",
+      "source_sha256": {
+        "problem0_bddl": "bd85f90fbe495f2c35efc7a9ffa3d2c687cd0411e3e92e40c4de2788e9bd7e2b",
+        "tro_state": "b1fd4899f8bfae1c855923b613ec2290bec0c830bbc50250dba09d9958324990"
+      },
+      "split": "train",
+      "task_id": 98,
+      "task_language": "laying tile floors.",
+      "task_name": "laying_tile_floors",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/office_cubicles_right/json/office_cubicles_right_task_laying_tile_floors_instances/office_cubicles_right_task_laying_tile_floors_0_1_template-tro_state.json"
+    },
+    {
+      "canonical_goal_leaves": [
+        [
+          "inside",
+          "comic_book.n.01_1",
+          "bookcase.n.01_1"
+        ],
+        [
+          "inside",
+          "comic_book.n.01_2",
+          "bookcase.n.01_1"
+        ],
+        [
+          "inside",
+          "comic_book.n.01_3",
+          "bookcase.n.01_1"
+        ],
+        [
+          "inside",
+          "hardback.n.01_1",
+          "bookcase.n.01_1"
+        ],
+        [
+          "inside",
+          "hardback.n.01_2",
+          "bookcase.n.01_1"
+        ],
+        [
+          "inside",
+          "notebook.n.01_1",
+          "bookcase.n.01_1"
+        ],
+        [
+          "inside",
+          "notebook.n.01_2",
+          "bookcase.n.01_1"
+        ],
+        [
+          "ontop",
+          "comic_book.n.01_1",
+          "comic_book.n.01_2"
+        ],
+        [
+          "ontop",
+          "comic_book.n.01_2",
+          "comic_book.n.01_3"
+        ],
+        [
+          "ontop",
+          "hardback.n.01_1",
+          "hardback.n.01_2"
+        ],
+        [
+          "ontop",
+          "notebook.n.01_1",
+          "notebook.n.01_2"
+        ]
+      ],
+      "canonical_option_index": 85,
+      "canonical_options_examined": 86,
+      "container_synsets": [
+        "bookcase.n.01",
+        "comic_book.n.01",
+        "hardback.n.01",
+        "notebook.n.01"
+      ],
+      "expected_admitted_count": 8,
+      "expected_container_count": 8,
+      "expected_goal_leaf_count": 11,
+      "expected_graspable_count": 7,
+      "goal_signatures": [
+        "MixedAction23"
+      ],
+      "graspable_synsets": [
+        "comic_book.n.01",
+        "hardback.n.01",
+        "notebook.n.01"
+      ],
+      "instance_id": 1,
+      "mixed_goal_graph_version": "behavior2026.mixed-goal-graph/v4",
+      "public_category_by_synset": {
+        "comic_book.n.01": "comic_book",
+        "hardback.n.01": "hardback",
+        "notebook.n.01": "notebook"
+      },
+      "scene_model": "house_double_floor_upper",
+      "source_sha256": {
+        "problem0_bddl": "faac376065d4d03bbf17addeb22d1afdec65dcbda38c6487c50eb74903bc6361",
+        "tro_state": "3c58a082965fd67d6ad56917820e22afa029e7929685ede3d2bad88933c47226"
+      },
+      "split": "train",
+      "task_id": 99,
+      "task_language": "sorting books on shelf.",
+      "task_name": "sorting_books_on_shelf",
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_upper/json/house_double_floor_upper_task_sorting_books_on_shelf_instances/house_double_floor_upper_task_sorting_books_on_shelf_0_1_template-tro_state.json"
+    }
+  ]
+}

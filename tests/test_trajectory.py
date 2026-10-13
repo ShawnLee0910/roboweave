@@ -222,3 +222,300 @@ def test_deeply_nested_json_does_not_interrupt_other_runs(scored_run, tmp_path, 
     assert [run['status'] for run in report['runs']] == ['PASS', 'INVALID']
     assert report['invalid_runs'] == 1
     assert report['scored_live_runs'] == report['successful_live_runs'] == 1
+
+
+def _minimal_trajectory(root):
+    """Small artifact-parser fixture; no simulator or model was invoked."""
+    import hashlib
+    root.mkdir()
+    prompt = b'Synthetic trajectory inspection fixture.\n'
+    digest = hashlib.sha256(prompt).hexdigest()
+    (root/'system_prompt.txt').write_bytes(prompt)
+    (root/'conversation_chatml.json').write_text(json.dumps({
+        'schema_version': 'behavior-hl-action20-chatml-v3',
+        'messages': [{'role': 'user', 'content': 'Synthetic fixture'}]}))
+    (root/'client_manifest.json').write_text(json.dumps({
+        'prompt_provenance': {'rendered_prompt_sha256': digest},
+        'source_sha256': {'synthetic_fixture': digest}}))
+    (root/'run_record.json').write_text(json.dumps({'mode': 'live'}))
+    return {'status': 'DONE', 'prompt_sha256': digest, 'current_scene_episode_id': 'example'}
+
+
+def _write(root, name, value):
+    (root/name).write_text(json.dumps(value))
+
+
+def _rehash_evidence(root, name, value=None, raw=None):
+    import hashlib
+    summary = json.loads((root/'summary.json').read_text())
+    entry = summary['candidate_result']['evidence'][name]
+    path = root/entry['path']
+    if raw is not None:
+        path.write_bytes(raw)
+    elif value is not None:
+        path.write_text(json.dumps(value))
+    content = path.read_bytes()
+    entry.update(sha256=hashlib.sha256(content).hexdigest(), size_bytes=len(content))
+    _write(root, 'summary.json', summary)
+
+
+@pytest.fixture
+def rich_evidence_run(tmp_path):
+    root = tmp_path/'rich'
+    summary = _minimal_trajectory(root)
+    scene = tmp_path/'scene/episodes/example/private'
+    scene.mkdir(parents=True)
+    process = {'operational': True, 'public_process_satisfied': True, 'violations': [], 'errors': [],
+               'execution_events': 1, 'existing_frame_references': 1}
+    score = {'episode_id': 'example', 'official_q': 1, 'official_success': True, 'verifier_ok': True,
+             'public_process_report': process}
+    for name, value in [('final_score.json', score), ('task_process_result.json', process),
+                        ('physical_initial_binding.json', {'synthetic': True})]:
+        _write(scene, name, value)
+    (scene/'task_process_events.jsonl').write_text('{"event_id":1,"synthetic":true}\n')
+    (scene/'task_evidence_index.jsonl').write_text('{"frame_index":1,"synthetic":true}\n')
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, {})
+    _write(root, 'summary.json', summary)
+    return root
+
+
+def test_all_archived_evidence_is_checked_without_replaying_process(rich_evidence_run):
+    assert inspect_run(rich_evidence_run)['score_available'] is True
+    summary = json.loads((rich_evidence_run/'summary.json').read_text())
+    assert summary['candidate_result']['evidence_schema_version'] == 'esi-benchmark/result-evidence-v2'
+    assert 'task_binding.json' in summary['candidate_result']['evidence']
+
+
+@pytest.mark.parametrize('name', ['task_binding.json', 'task_process_result.json',
+    'task_process_events.jsonl', 'task_evidence_index.jsonl', 'physical_initial_binding.json'])
+@pytest.mark.parametrize('change', ['missing', 'tampered'])
+def test_every_auxiliary_evidence_reference_is_required_and_hashed(rich_evidence_run, name, change):
+    summary = json.loads((rich_evidence_run/'summary.json').read_text())
+    path = rich_evidence_run/summary['candidate_result']['evidence'][name]['path']
+    if change == 'missing':
+        path.unlink()
+    else:
+        path.write_bytes(b'{"tampered":true}\n')
+    with pytest.raises(ValueError, match='missing|hash'):
+        inspect_run(rich_evidence_run)
+    assert summarize_runs([rich_evidence_run])['invalid_runs'] == 1
+
+
+@pytest.mark.parametrize('change', ['size', 'bad_path', 'symlink', 'parent_symlink', 'missing_binding', 'bad_profile'])
+def test_evidence_descriptor_and_path_boundaries(rich_evidence_run, tmp_path, change):
+    root = rich_evidence_run
+    summary = json.loads((root/'summary.json').read_text())
+    evidence = summary['candidate_result']['evidence']
+    entry = evidence['task_process_events.jsonl']
+    if change == 'size':
+        entry['size_bytes'] += 1
+    elif change == 'bad_path':
+        entry['path'] = '../outside.jsonl'
+    elif change == 'symlink':
+        path = root/entry['path']
+        external = tmp_path/'external.jsonl'
+        path.rename(external)
+        path.symlink_to(external)
+    elif change == 'parent_symlink':
+        directory = root/'private'
+        directory.rename(root/'private-real')
+        directory.symlink_to(root/'private-real', target_is_directory=True)
+    elif change == 'missing_binding':
+        del evidence['task_binding.json']
+    else:
+        _write(root, 'run_record.json', {'mode': 'live', 'profile': []})
+    _write(root, 'summary.json', summary)
+    with pytest.raises(ValueError):
+        inspect_run(root)
+
+
+@pytest.mark.parametrize('raw', [b'[]\n', b'{"event_id":NaN}\n', b'{"event_id":1,"event_id":2}\n', b'broken\n'])
+def test_jsonl_requires_finite_unambiguous_object_records_even_when_rehashed(rich_evidence_run, raw):
+    _rehash_evidence(rich_evidence_run, 'task_process_events.jsonl', raw=raw)
+    with pytest.raises(ValueError):
+        inspect_run(rich_evidence_run)
+
+
+def test_auxiliary_limits_and_score_limit_remain_distinct(rich_evidence_run, monkeypatch):
+    from esi_benchmark import trajectory
+    monkeypatch.setattr(trajectory, 'MAX_JSON_BYTES', 16)
+    with pytest.raises(ValueError, match='oversized'):
+        trajectory._evidence(rich_evidence_run, json.loads((rich_evidence_run/'summary.json').read_text())['candidate_result'])
+
+
+@pytest.mark.parametrize('change', ['report', 'missing_report', 'missing_events', 'truncated_events'])
+def test_process_report_and_receipt_counts_cannot_be_forged(rich_evidence_run, change):
+    root = rich_evidence_run
+    if change == 'report':
+        _rehash_evidence(root, 'task_process_result.json', value={'operational': True})
+    elif change == 'truncated_events':
+        _rehash_evidence(root, 'task_process_events.jsonl', raw=b'')
+    else:
+        summary = json.loads((root/'summary.json').read_text())
+        del summary['candidate_result']['evidence']['task_process_result.json' if change == 'missing_report' else 'task_process_events.jsonl']
+        _write(root, 'summary.json', summary)
+    with pytest.raises(ValueError, match='evidence'):
+        inspect_run(root)
+
+
+def test_unavailable_or_chatml_missing_run_still_checks_its_evidence(tmp_path):
+    root = tmp_path/'unavailable'
+    root.mkdir()
+    summary = {'status': 'INITIALIZATION_FAILED'}
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, {})
+    _write(root, 'summary.json', summary)
+    assert inspect_run(root)['status'] == 'INCOMPLETE'
+    (root/'private/task_binding.json').unlink()
+    with pytest.raises(ValueError, match='missing'):
+        inspect_run(root)
+
+
+def test_legacy_evidence_without_size_metadata_still_gets_full_hash_checks(rich_evidence_run):
+    root = rich_evidence_run
+    summary = json.loads((root/'summary.json').read_text())
+    del summary['candidate_result']['evidence_schema_version']
+    for entry in summary['candidate_result']['evidence'].values():
+        del entry['size_bytes']
+    _write(root, 'summary.json', summary)
+    assert inspect_run(root)['score_available'] is True
+    (root/'private/task_process_events.jsonl').write_text('{}\n')
+    with pytest.raises(ValueError, match='hash'):
+        inspect_run(root)
+
+
+@pytest.fixture
+def v_evidence_run(tmp_path):
+    from esi_benchmark.assets import asset_manifest
+    from esi_benchmark.profiles import source_revisions
+    from esi_benchmark.tasks import list_tasks
+    root = tmp_path/'v-run'
+    summary = _minimal_trajectory(root)
+    task = list_tasks('L1-V')[0]
+    key = task['task_id']
+    profile = task['profile']
+    revisions = source_revisions(profile)
+    identity = dict(collection_config_key=key, task_spec_id=task['runtime_instruction_id'],
+        package_id='synthetic-v-package', branch='D1', runtime_revision=revisions['runtime'],
+        historical_oracle_runtime_revision=revisions['runtime'], source_oracle_success=True,
+        runtime_validation_only=False, v_package_sha256='a'*64)
+    binding = dict(task_id=task['source']['row_index'], task_name=task['task_id'],
+        task_split='synthetic', task_instance_id='0',
+        task_seed=asset_manifest(profile)['inputs_by_task'][key]['seed'],
+        instruction=task['instruction_en'], collection_config_key=key, v_identity=identity)
+    report = {'branch': 'D1', 'v_protocol_complete': True, 'operational': True}
+    score = {'episode_id': 'example', 'official_q': 1, 'official_success': True, 'verifier_ok': True,
+             'collection_config_key': key, 'v_protocol': report}
+    scene = tmp_path/'scene/episodes/example/private'
+    scene.mkdir(parents=True)
+    for name, value in [('final_score.json', score), ('v_collection_identity.json', identity),
+                        ('v_protocol_result.json', report)]:
+        _write(scene, name, value)
+    (scene/'v_marker_bindings.jsonl').write_text('{"sequence":1,"synthetic":true}\n')
+    (scene/'v_intervention').mkdir()
+    _write(scene/'v_intervention', 'event.json', {'synthetic': True})
+    summary.update(model='synthetic-model', official_task_success=True, v_protocol_complete=True)
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, binding, profile=profile)
+    _write(root, 'summary.json', summary)
+    fields = ('task_id', 'task_name', 'task_split', 'task_instance_id', 'task_seed')
+    manifest = json.loads((root/'client_manifest.json').read_text())
+    manifest.update({key: binding[key] for key in fields})
+    manifest.update(model='synthetic-model', instruction_sha256=task['instruction_sha256'])
+    _write(root, 'client_manifest.json', manifest)
+    _write(root, 'run_record.json', dict(mode='live', profile=profile, source_revisions=revisions,
+        task_identity={key: binding[key] for key in fields}, model={'model': 'synthetic-model'}))
+    return root
+
+
+def test_v_identity_is_bound_to_frozen_task_and_archived_model(v_evidence_run):
+    result = inspect_run(v_evidence_run)
+    assert result['score_available'] is True and result['official_success'] is True
+
+
+@pytest.mark.parametrize('name,field,value', [
+    ('v_protocol_result.json', 'v_protocol_complete', False),
+    ('v_collection_identity.json', 'branch', 'D0'),
+    ('v_collection_identity.json', 'collection_config_key', 'unknown-v-task'),
+    ('v_collection_identity.json', 'task_spec_id', 'another-task'),
+    ('v_collection_identity.json', 'runtime_revision', 'a'*40),
+    ('task_binding.json', 'collection_config_key', 'another-key'),
+    ('task_binding.json', 'task_id', 999),
+    ('task_binding.json', 'task_name', 'another-task'),
+    ('task_binding.json', 'task_seed', 0),
+    ('task_binding.json', 'instruction', 'changed instruction'),
+])
+def test_v_auxiliary_proof_cannot_be_rehashed_to_override_original_score(v_evidence_run, name, field, value):
+    root = v_evidence_run
+    summary = json.loads((root/'summary.json').read_text())
+    payload = json.loads((root/summary['candidate_result']['evidence'][name]['path']).read_text())
+    payload[field] = value
+    _rehash_evidence(root, name, value=payload)
+    with pytest.raises(ValueError):
+        inspect_run(root)
+
+
+@pytest.mark.parametrize('file,field,value', [
+    ('client_manifest.json', 'task_name', 'another-task'),
+    ('client_manifest.json', 'instruction_sha256', 'b'*64),
+    ('client_manifest.json', 'model', 'another-model'),
+    ('run_record.json', 'model', {'model': 'another-model'}),
+    ('run_record.json', 'task_identity', {}),
+    ('run_record.json', 'source_revisions', {}),
+    ('run_record.json', 'profile', 'l0-english-v2'),
+    ('summary.json', 'current_scene_episode_id', 'another-episode'),
+    ('summary.json', 'v_protocol_complete', False),
+    ('summary.json', 'official_task_success', False),
+    ('summary.json', 'model', 'another-model'),
+])
+def test_v_archived_model_and_episode_cannot_be_substituted(v_evidence_run, file, field, value):
+    payload = json.loads((v_evidence_run/file).read_text())
+    payload[field] = value
+    _write(v_evidence_run, file, payload)
+    with pytest.raises(ValueError):
+        inspect_run(v_evidence_run)
+
+
+@pytest.mark.parametrize('name', ['v_collection_identity.json', 'v_protocol_result.json'])
+def test_v_required_identity_and_protocol_cannot_be_removed_from_manifest(v_evidence_run, name):
+    summary = json.loads((v_evidence_run/'summary.json').read_text())
+    del summary['candidate_result']['evidence'][name]
+    _write(v_evidence_run, 'summary.json', summary)
+    with pytest.raises(ValueError, match='lacks'):
+        inspect_run(v_evidence_run)
+
+
+def test_l2_combined_physical_success_does_not_require_p30_qualification(tmp_path):
+    root = tmp_path/'l2-run'
+    summary = _minimal_trajectory(root)
+    scene = tmp_path/'scene/episodes/example/private'
+    (scene/'l2_v').mkdir(parents=True)
+    report = {'branch': 'D1', 'v_protocol_complete': True, 'checkpoint_violations': []}
+    score = {'episode_id': 'example', 'official_q': 1, 'official_success': True, 'verifier_ok': True,
+             'task_success': True, 'status': 'PASS', 'native_q_alone_is_success': False,
+             'physical_template': {'task_success': True}, 'physical_template_complete': True,
+             'v_protocol': report, 'v_protocol_complete': True}
+    _write(scene, 'final_score.json', score)
+    _write(scene/'l2_v', 'final.json', report)
+    _write(scene/'l2_v', 'checkpoint_violations.json', [])
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, {}, profile='l2-collection37')
+    _write(root, 'summary.json', summary)
+    _write(root, 'run_record.json', {'mode': 'live', 'profile': 'l2-collection37'})
+    assert inspect_run(root)['official_success'] is True
+    _rehash_evidence(root, 'l2_v/checkpoint_violations.json', value=[{'synthetic': 'violation'}])
+    with pytest.raises(ValueError, match='checkpoint'):
+        inspect_run(root)
+
+
+def test_v_public_scene_name_cannot_be_replaced_by_native_donor_name(v_evidence_run):
+    root = v_evidence_run
+    binding = json.loads((root/'private/task_binding.json').read_text())
+    native_name = binding['v_identity']['task_spec_id']
+    binding['task_name'] = native_name
+    _rehash_evidence(root, 'task_binding.json', value=binding)
+    manifest = json.loads((root/'client_manifest.json').read_text())
+    manifest['task_name'] = native_name
+    _write(root, 'client_manifest.json', manifest)
+    record = json.loads((root/'run_record.json').read_text())
+    record['task_identity']['task_name'] = native_name
+    _write(root, 'run_record.json', record)
+    with pytest.raises(ValueError, match='frozen public identity'):
+        inspect_run(root)

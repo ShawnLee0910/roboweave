@@ -1,0 +1,62 @@
+profile_id: r1pro_esi_marker_symbolic_action20_v1
+action_schema_version: behavior2026-r1pro-esi-marker-symbolic-action20-move015-turn10-floor-workspace17-on-top-two-stage-multilevel-v13-zero-physics-final-collision-disabled
+execution_fidelity: kinematic_research
+official_challenge_eligible: false
+physics_mode: disabled
+inside_solid_overlap_ratio: 0.0
+placement_solid_overlap_tolerance_m: 0.0005
+marker_protocol: internal_action_first
+local_approach_mode: disabled
+on_top_station_mode: single_plan_single_station_transactional
+actions:
+  - move_forward
+  - move_backward
+  - move_left
+  - move_right
+  - turn_left
+  - turn_right
+  - look_up
+  - look_down
+  - pick
+  - place_on_floor
+  - place_inside
+  - place_on_top
+  - place_next_to
+  - place_under
+  - open
+  - close
+  - toggle_on
+  - toggle_off
+  - wait
+bindings:
+  move_forward: restricted_kinematic_0p15m_endpoint_safe
+  move_backward: restricted_kinematic_0p15m_endpoint_safe
+  move_left: restricted_kinematic_0p15m_endpoint_safe
+  move_right: restricted_kinematic_0p15m_endpoint_safe
+  turn_left: restricted_kinematic_10deg
+  turn_right: restricted_kinematic_10deg
+  look_up: symbolic_r1pro_camera_pitch_up_15deg
+  look_down: symbolic_r1pro_camera_pitch_down_15deg
+  pick: action_first_visible_pickable_marker
+  place_on_floor: private_verified_nearby_floor_placement
+  place_inside: action_first_container_then_visible_compartment_marker
+  place_on_top: action_first_surface_cell_or_task_support_fallback_single_station
+  place_next_to: action_first_reference_then_position_marker
+  place_under: action_first_upper_reference_marker
+  open: action_first_visible_openable_object_or_part_marker
+  close: action_first_visible_openable_object_or_part_marker
+  toggle_on: action_first_visible_toggle_object_or_part_marker
+  toggle_off: action_first_visible_toggle_object_or_part_marker
+  wait: zero_step_observation_refresh
+forbidden:
+  - release
+  - mark_visible_objects
+  - move_up
+  - move_down
+  - stop
+  - put_back
+  - navigate_to
+  - teleport_navigation
+  - free_viewer_camera_motion
+  - world_coordinate_arguments
+  - task_truth_to_model

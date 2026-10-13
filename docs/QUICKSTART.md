@@ -10,6 +10,8 @@ python3.11 -m venv .venv
 python -m pip install '.[test]'
 esi-benchmark --help
 esi-benchmark doctor
+esi-benchmark doctor --profile l1-v30
+esi-benchmark doctor --profile l2-collection37
 ```
 
 Inspect a configuration and the frozen task catalog:
@@ -21,8 +23,11 @@ esi-benchmark tasks show am200v1_a001_b2_control --family L0
 ```
 
 The catalog shows permitted public task metadata. It does not expose the private
-initial state or verifier inputs. The 100-task L0 profile has a specific source
-binding; another family's catalog entry is not a supported L0 run.
+initial state or verifier inputs. The catalog has 257 configurations across eight
+execution profiles. Every task must use its own profile; choosing a family does
+not redirect it through L0. Use `tasks list --family L1-A`, `L1-M`, `L1-V`, `L1-P`
+or `L2` to inspect the other families. `l2-proposals` is an authoring audit, not an
+execution profile.
 
 Run and inspect the included synthetic example:
 
@@ -54,6 +59,10 @@ For a record that declares a process/history contract, use `esi-benchmark score
 RECORD --process-output NEWDIR` to write its process audit to a fresh directory.
 The input format and evidence limits are described in [Scoring](SCORING.md).
 This evaluates recorded truth/history; it does not acquire simulator truth.
+`examples/history-score-record.json` is a small v2 history example. Records can
+select a profile explicitly, or the command can supply `--profile`; conflicting
+identities are rejected. v1 records lack per-event truth for `history_program`
+and remain rejected for that contract.
 
 For a real task on separately allocated resources, first complete the
 [external installation](INSTALLATION.md), [asset requirements](ASSETS.md) and
@@ -63,7 +72,11 @@ For a real task on separately allocated resources, first complete the
 cp configs/live.example.json configs/live.local.json
 ```
 
-Edit `configs/live.local.json` before using it. Configure the new environment's
+Edit `configs/live.local.json` before using it. Match `profile`, `run.family` and
+`run.task_id` using [Tasks](TASKS.md). For example, the L2 configuration
+`l2r_am_02_20260916_w0_challenge` uses family `L2` and profile `l2-collection37`;
+its `assets.root` must be a separate directory such as
+`../assets/local/l2-collection37`. Configure the new environment's
 Python, official BEHAVIOR checkout and data root, the authorized `mdl_root`, runtime toolchain paths, a new
 workspace, an owned GPU UUID, a free port, and your explicit model endpoint and
 model ID. Read the relevant third-party terms before setting `accept_eula`.
@@ -103,12 +116,13 @@ esi-benchmark results validate outputs/live-example
 esi-benchmark results summarize outputs/live-example
 ```
 
-The run preserves the frozen action/call budgets and verifier contract. The
-declared `wall_clock_seconds: 3600` has no consumer in the source episode loop;
-this candidate does not add a new 3600-second cutoff or reproduce the historical
-outer scheduler's separate timeout. See [source limitations](../reports/SOURCE_LIMITATIONS.md).
-Inspect final-goal
-success, Q, process verdict and termination reason separately; `Q=1` is not a
-universal success rule. Retain unsuccessful attempts and raw evidence. The
-candidate's preparation did not execute this Live sequence, and completing one
-task does not establish coverage of all 100 tasks.
+The run preserves task-specific action/call budgets and verifier contracts.
+L0/L1 retain their documented declared-but-unenforced 3,600-second field. L2
+collection uses its separate 7,200-second safe-point watchdog; it is not a hard
+kill deadline and requires a permitted observed phase before interruption. See [Runtime](RUNTIME.md)
+for timer origin, phase/ownership checks and interruption evidence.
+
+Inspect final-goal success, Q, process verdict, V/Physical gates and termination
+reason separately; `Q=1` is not a universal success rule. Retain unsuccessful and
+interrupted attempts with their raw evidence. This preparation did not execute
+the Live sequence; one task cannot establish all-profile or all-task coverage.

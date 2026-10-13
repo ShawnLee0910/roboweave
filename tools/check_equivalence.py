@@ -74,7 +74,7 @@ def probe(layout, work):
         sys.path[:0] = [str(roots["bench_root"]), str(roots["bench_root"] / "lab"),
                         str(roots["runtime_root"] / "src"), str(roots["runtime_root"] / "scripts")]
     else:
-        from esi_benchmark.bootstrap import activate
+        from esi_benchmark._native.bootstrap import activate
         roots = activate()
     from Agent import (EpisodeConversation, PrivateEpisodeContract, PublicImage,
                        PublicObservation, PublicToolResult, load_common_system_prompt_revision)

@@ -12,9 +12,11 @@ from .tasks import profile_for
 
 
 def asset_manifest(profile="l0-english-v2"):
-    if profile != "l0-english-v2":
-        raise ValueError(f"Assets for {profile} are not supported; see docs/SUPPORT_MATRIX.md")
-    return json.loads(files("esi_benchmark").joinpath(f"data/assets/{profile}.json").read_text())
+    profile_for(profile)
+    resource = files("esi_benchmark").joinpath(f"data/assets/{profile}.json")
+    if not resource.is_file():
+        raise ValueError(f"No asset manifest for profile {profile}")
+    return json.loads(resource.read_text())
 
 
 def _sha(path):
@@ -82,8 +84,8 @@ def _selected(config, task=None):
     manifest = asset_manifest(config.get("profile", "l0-english-v2"))
     if task is None:
         return manifest, manifest["files"]
-    if not profile_for(task)["execution_supported"] or task["profile"] != manifest["profile"]:
-        raise ValueError("Task is catalog-only or belongs to a different version profile")
+    if task["profile"] != manifest["profile"]:
+        raise ValueError("Task belongs to a different version profile")
     return manifest, [row for row in manifest["files"] if task["task_id"] in row["task_ids"]]
 
 
@@ -203,11 +205,14 @@ def _match_path(value, rows):
 
 def resolve_task_inputs(config, task):
     """Return verified private inputs; these dictionaries must never reach models."""
-    _, rows = _selected(config, task)
+    manifest, rows = _selected(config, task)
     report = check_assets(config, task)
     if not report["ok"]:
         raise ValueError(f"Task assets are incomplete: {len(report['missing'])} missing, {len(report['invalid'])} invalid")
     root = Path(config["assets"]["root"]).absolute()
+    if task["profile"] != "l0-english-v2":
+        from .adapters import resolve_inputs
+        return resolve_inputs(config, task, manifest, rows, root)
     release = next(row for row in rows if "release_tasks" in row["roles"])
     source_tasks = json.loads(_path(root, release).read_text())
     matches = [row for row in source_tasks if row["runtime_instruction_id"] == task["runtime_instruction_id"]]
@@ -227,14 +232,14 @@ def resolve_task_inputs(config, task):
     package = json.loads(Path(package_json).read_text())
     task_specs_ref = source.get("task_specs_ref") or package["task_specs"]
     identity = source["bench_instruction_binding"]["source_task_identity"]
-    model_task = {"task_id": task["source"]["row_index"], "task_name": task["runtime_instruction_id"],
+    model_task = {"profile": task["profile"], "task_id": task["source"]["row_index"], "task_name": task["runtime_instruction_id"],
                   "task_split": identity["split"], "task_instance_id": str(identity["instance_id"]),
                   "task_seed": source["seed"], "instruction": task["instruction_en"],
                   **task["budget"], "budget": dict(task["budget"]), "instruction_provenance": {
                       "profile": task["profile"], "source_sha256": release["sha256"],
                       "source_task_identity": dict(identity),
                       "instruction_sha256": task["instruction_sha256"]}}
-    return {"profile": task["profile"], "asset_root": str(root), "raw_task": raw,
+    return {"profile": task["profile"], "entrypoint": "prepared", "asset_root": str(root), "raw_task": raw,
             "instruction_id": task["runtime_instruction_id"], "model_task": model_task,
             "task_json": str(_path(root, release)), "source_json": source_json,
             "handoff_json": ref(raw["handoff"]), "prepared_index_json": ref(raw["prepared_index"]),
@@ -243,8 +248,55 @@ def resolve_task_inputs(config, task):
             "mapping": {_suffix(row): str(_path(root, row)) for row in rows}, "source": source}
 
 
-def _project(value, row, instruction_id):
+def _project(value, row, instruction_id, task_id=None):
     """Select a frozen record without changing any of its semantic fields."""
+    if "selection" in row:
+        selection = row["selection"]
+        if selection is None:
+            return value
+        ids = selection["ids"].get(task_id)
+        if not isinstance(ids, list) or not ids or len(set(ids)) != len(ids):
+            raise ValueError("Asset projection lacks an unambiguous selected identity")
+        wanted = set(ids)
+        kind = selection["kind"]
+
+        def selected(items, field):
+            result = [item for item in items if item.get(field) in wanted]
+            if len(result) != len(wanted) or {item[field] for item in result} != wanted:
+                raise ValueError("Asset projection identities do not resolve uniquely")
+            return result
+
+        if kind == "release_tasks":
+            return selected(value, selection.get("field", "runtime_instruction_id"))
+        if kind == "task_specs":
+            return selected(value, "task_spec_id")
+        if kind == "registration_catalog":
+            field = selection.get("field", "task_spec_id")
+            if all(field not in item and "candidate_id" in item for item in value["tasks"]):
+                field = "candidate_id"
+            chosen = selected(value["tasks"], field)
+            return {**value, "tasks": chosen, "task_count": len(chosen)}
+        if kind == "package":
+            if not wanted <= set(value["task_spec_ids"]):
+                raise ValueError("Package projection is absent from its frozen identities")
+            return {**value, "task_spec_ids": [item for item in value["task_spec_ids"] if item in wanted],
+                    "task_count": len(wanted)}
+        if kind == "handoff":
+            samples = selected(value["samples"], "task_spec_id")
+            names = {item["package_name"] for item in samples}
+            packages = [item for item in value["packages"] if item["name"] in names]
+            if len(packages) != len(names):
+                raise ValueError("Handoff projection package identity is ambiguous")
+            return {**value, "samples": samples, "packages": packages, "count": len(samples)}
+        if kind == "prepared_index":
+            return {**value, "instructions": {key: value["instructions"][key] for key in ids}}
+        if kind == "prepared_oracle_states":
+            return {**value, "items": selected(value["items"], "task_spec_id")}
+        if kind == "v_success_index":
+            return {**value, "rows": selected(value["rows"], "collection_config_key")}
+        if kind == "v_compatibility":
+            return {**value, "configurations": {key: value["configurations"][key] for key in ids}}
+        raise ValueError(f"Unknown asset projection kind: {kind}")
     roles = row["roles"]
     if "release_tasks" in roles:
         return [item for item in value if item["runtime_instruction_id"] == instruction_id]
@@ -299,9 +351,12 @@ def materialize_task_inputs(config, task, output_dir):
     destinations = {row["key"]: _path(output, row) for row in rows}
     states, hashes, records = {}, {}, []
     instruction_id = task["runtime_instruction_id"]
-    handoff = next(row for row in rows if "handoff" in row["roles"] and str(_path(source_root, row)) == resolved["handoff_json"])
+    handoff = next((row for row in rows if "handoff" in row["roles"]
+                    and str(_path(source_root, row)) == resolved.get("handoff_json")), None)
     for row in rows:
         if row.get("handoff_relative_path"):
+            if handoff is None:
+                raise ValueError("Relative handoff dependency lacks a selected handoff")
             destinations[row["key"]] = _within(destinations[handoff["key"]].parent, row["handoff_relative_path"])
 
     def build(key):
@@ -314,12 +369,20 @@ def materialize_task_inputs(config, task, output_dir):
         original = _path(source_root, row)
         changes = []
 
+        def reference_for(value):
+            key = row.get("path_bindings", {}).get(value) if isinstance(value, str) else None
+            if key is not None:
+                if key not in by_key:
+                    raise ValueError("Relative asset reference is outside the selected manifest")
+                return by_key[key]
+            return _match_path(value, rows)
+
         def rewrite(value, pointer=""):
             if isinstance(value, list):
                 return [rewrite(item, f"{pointer}/{index}") for index, item in enumerate(value)]
             if isinstance(value, dict):
                 changed = {k: rewrite(v, pointer + "/" + k.replace("~", "~0").replace("/", "~1")) for k, v in value.items()}
-                reference = _match_path(value.get("path"), rows)
+                reference = reference_for(value.get("path"))
                 if reference and "sha256" in value:
                     digest = build(reference["key"])
                     if changed["sha256"] != digest:
@@ -327,9 +390,18 @@ def materialize_task_inputs(config, task, output_dir):
                         changed["sha256"] = digest
                 return changed
             if isinstance(value, str):
-                reference = _match_path(value, rows)
+                reference = reference_for(value)
                 replacement = str(destinations[reference["key"]]) if reference else value
-                if not reference and value.startswith("/"):
+                asset_anchor = "/BEHAVIOR-1K-2026-data/"
+                if pointer == "/runtime/root" and "v_collection_binding" in row["roles"]:
+                    from .profiles import source_roots
+                    replacement = str(source_roots(task["profile"])["runtime_root"])
+                elif not reference and asset_anchor in value and value.startswith("/"):
+                    data_root = config.get("runtime", {}).get("data_root")
+                    if not data_root:
+                        raise ValueError("Task input contains external assets; set runtime.data_root before materialization")
+                    replacement = str(_within(Path(data_root), value.split(asset_anchor, 1)[1]))
+                elif not reference and value.startswith("/"):
                     normalized = os.path.normpath(value)
                     candidates = []
                     for root_name in manifest["source_roots"]:
@@ -349,17 +421,45 @@ def materialize_task_inputs(config, task, output_dir):
         if original.suffix in (".json", ".jsonl"):
             raw = original.read_text()
             value = [json.loads(line) for line in raw.splitlines() if line.strip()] if original.suffix == ".jsonl" else json.loads(raw)
-            projected = _project(value, row, instruction_id)
+            projected = _project(value, row, instruction_id, task["task_id"])
             if projected != value:
                 changes.append({"pointer": "", "kind": "single_task_selection", "instruction_id": instruction_id,
                                 "rule": "Select the exact frozen task record and its aggregate identity/count metadata."})
             transformed = rewrite(projected)
-            if "prepared_index" in row["roles"] and "handoff_sha256" in transformed:
+            if "selection" not in row and "prepared_index" in row["roles"] and "handoff_sha256" in transformed:
+                if handoff is None:
+                    raise ValueError("Prepared index lacks a selected handoff")
                 digest = build(handoff["key"])
                 changes.append({"pointer": "/handoff_sha256", "kind": "relocated_file_hash", "old": transformed["handoff_sha256"], "new": digest})
                 transformed["handoff_sha256"] = digest
+            for binding in row.get("hash_bindings", []):
+                if "task_ids" in binding and task["task_id"] not in binding["task_ids"]:
+                    continue
+                pointer = binding["pointer"]
+                if not isinstance(pointer, str) or not pointer.startswith("/"):
+                    raise ValueError("Asset hash binding requires an absolute JSON pointer")
+                parts = [part.replace("~1", "/").replace("~0", "~") for part in pointer[1:].split("/")]
+                node = transformed
+                try:
+                    for part in parts[:-1]:
+                        node = node[int(part)] if isinstance(node, list) else node[part]
+                    leaf = int(parts[-1]) if isinstance(node, list) else parts[-1]
+                    old = node[leaf]
+                except (KeyError, IndexError, TypeError, ValueError) as exc:
+                    raise ValueError("Selected asset hash binding is absent after projection") from exc
+                digest = build(binding["key"])
+                encoding = binding.get("encoding", "file")
+                if encoding == "canonical_json":
+                    bound = json.loads(destinations[binding["key"]].read_text())
+                    digest = hashlib.sha256(json.dumps(bound, ensure_ascii=False, sort_keys=True,
+                                                       separators=(",", ":"), allow_nan=False).encode()).hexdigest()
+                elif encoding != "file":
+                    raise ValueError("Unsupported asset hash binding encoding")
+                node[leaf] = digest
+                changes.append({"pointer": pointer, "kind": "relocated_file_hash" if encoding == "file" else "relocated_canonical_json_hash",
+                                "old": old, "new": digest})
             data = ("".join(json.dumps(item, ensure_ascii=False, separators=(",", ":")) + "\n" for item in transformed)
-                    if original.suffix == ".jsonl" else json.dumps(transformed, ensure_ascii=False, indent=2) + "\n").encode()
+                    if original.suffix == ".jsonl" else json.dumps(transformed, ensure_ascii=False, separators=(",", ":")) + "\n").encode()
         else:
             data = original.read_bytes()
         _private_directory(destination.parent)
@@ -378,8 +478,17 @@ def materialize_task_inputs(config, task, output_dir):
     receipt_path = output / "materialization_receipt.json"
     _private_write(receipt_path, (json.dumps(receipt, indent=2) + "\n").encode(), exclusive=True)
     original_to_derived = {str(_path(source_root, row)): str(destinations[row["key"]]) for row in rows}
-    result = {k: original_to_derived.get(v, v) if isinstance(v, str) else v for k, v in resolved.items()}
+    def relocate(value):
+        if isinstance(value, str):
+            return original_to_derived.get(value, value)
+        if isinstance(value, dict):
+            return {key: relocate(item) for key, item in value.items()}
+        if isinstance(value, list):
+            return [relocate(item) for item in value]
+        return value
+    result = relocate(resolved)
     result["mapping"] = {_suffix(row): str(destinations[row["key"]]) for row in rows}
-    result["source"] = json.loads(Path(result["source_json"]).read_text())
+    if "source_json" in result:
+        result["source"] = json.loads(Path(result["source_json"]).read_text())
     result["materialization_receipt"] = str(receipt_path)
     return result

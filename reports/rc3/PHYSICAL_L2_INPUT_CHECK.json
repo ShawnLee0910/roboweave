@@ -1,0 +1,1598 @@
+{
+  "schema_version": 1,
+  "scope": "CPU materialization, original native metadata/registration validators and non-path semantic parity only",
+  "no_live_simulation_or_environment_reproduction": true,
+  "profiles": [
+    {
+      "profile": "l1-p-inside5",
+      "tasks_expected": 5,
+      "imported_file_count": 52,
+      "materialized": 5,
+      "imported_hashes_unchanged": true,
+      "materialization_errors": [],
+      "semantic_checks": [
+        {
+          "task_id": "p50_inside_010_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 38,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_inside_012_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 38,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_031_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "pnext40_001_20260916",
+          "files": 12,
+          "changes": {
+            "path_relocation": 38,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "pnext40_010_20260916",
+          "files": 12,
+          "changes": {
+            "path_relocation": 38,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        }
+      ],
+      "native": {
+        "profile": "l1-p-inside5",
+        "source_verification": {
+          "profile": "l1-p-inside5",
+          "status": "PASS",
+          "sources": {
+            "bench": {
+              "revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+              "manifest_sha256": "17f3bcefe8ef714dc1bf6be535f57ef2f535b340062c0cea9ea5f44a88500f2d",
+              "file_count": 39,
+              "status": "PASS"
+            },
+            "runtime": {
+              "revision": "955585540d95cba02f672c0d3cdb94048db23bf2",
+              "manifest_sha256": "e82555a4e89cb736282aaae1abbb45fe2324fa109db41f24116d4a68364c558a",
+              "file_count": 304,
+              "status": "PASS"
+            }
+          }
+        },
+        "tasks": [
+          {
+            "task_id": "p50_inside_010_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_inside_012_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_031_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "pnext40_001_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "pnext40_010_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          }
+        ],
+        "blocked_accesses": []
+      }
+    },
+    {
+      "profile": "l1-p-ontop5",
+      "tasks_expected": 5,
+      "imported_file_count": 52,
+      "materialized": 5,
+      "imported_hashes_unchanged": true,
+      "materialization_errors": [],
+      "semantic_checks": [
+        {
+          "task_id": "p50_restore_001_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_support_002_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_support_009_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 38,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "pnext40_039_20260916",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "pnext40_040_20260916",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        }
+      ],
+      "native": {
+        "profile": "l1-p-ontop5",
+        "source_verification": {
+          "profile": "l1-p-ontop5",
+          "status": "PASS",
+          "sources": {
+            "bench": {
+              "revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+              "manifest_sha256": "17f3bcefe8ef714dc1bf6be535f57ef2f535b340062c0cea9ea5f44a88500f2d",
+              "file_count": 39,
+              "status": "PASS"
+            },
+            "runtime": {
+              "revision": "c813a24f853bb90ba3772365ca5182ecb28c553b",
+              "manifest_sha256": "fe5fda4425a57fcc23602d696c4f0c0760033572722385d9f5363d8c89fbf962",
+              "file_count": 303,
+              "status": "PASS"
+            }
+          }
+        },
+        "tasks": [
+          {
+            "task_id": "p50_restore_001_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_support_002_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_support_009_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "pnext40_039_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "pnext40_040_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          }
+        ],
+        "blocked_accesses": []
+      }
+    },
+    {
+      "profile": "l1-p-additions20",
+      "tasks_expected": 20,
+      "imported_file_count": 202,
+      "materialized": 20,
+      "imported_hashes_unchanged": true,
+      "materialization_errors": [],
+      "semantic_checks": [
+        {
+          "task_id": "p50_restore_002_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_restore_004_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_restore_005_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_stack_001_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_stack_003_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_stack_005_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_stack_007_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_stack_008_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p50_stack_013_20260914",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_001_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_002_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_009_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_012_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_013_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_016_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_017_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_019_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_024_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "p70_new_027_20260915",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "pnext40_032_20260916",
+          "files": 12,
+          "changes": {
+            "path_relocation": 42,
+            "relocated_file_hash": 9,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 1
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        }
+      ],
+      "native": {
+        "profile": "l1-p-additions20",
+        "source_verification": {
+          "profile": "l1-p-additions20",
+          "status": "PASS",
+          "sources": {
+            "bench": {
+              "revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+              "manifest_sha256": "17f3bcefe8ef714dc1bf6be535f57ef2f535b340062c0cea9ea5f44a88500f2d",
+              "file_count": 39,
+              "status": "PASS"
+            },
+            "runtime": {
+              "revision": "ab615d43d4ede7e6a50eaeda189077529bef361a",
+              "manifest_sha256": "fc22d377a3a60584e547570a4a6f43c6169da325f85581a794862c528733527c",
+              "file_count": 325,
+              "status": "PASS"
+            }
+          }
+        },
+        "tasks": [
+          {
+            "task_id": "p50_restore_002_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_restore_004_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_restore_005_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_stack_001_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_stack_003_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_stack_005_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_stack_007_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_stack_008_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p50_stack_013_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_001_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_002_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_009_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_012_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_013_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_016_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_017_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_019_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_024_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "p70_new_027_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "pnext40_032_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          }
+        ],
+        "blocked_accesses": []
+      }
+    },
+    {
+      "profile": "l2-collection37",
+      "tasks_expected": 37,
+      "imported_file_count": 353,
+      "materialized": 37,
+      "imported_hashes_unchanged": true,
+      "materialization_errors": [],
+      "semantic_checks": [
+        {
+          "task_id": "l2r_am_02_20260916_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2r_am_03_20260916_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2r_mv_02_20260916_b0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 66,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2r_mv_03_20260916_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 53,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2r_mv_04_20260916_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 59,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2r_mv_05_20260916_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 59,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2r_mv_06_20260916_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 72,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2r_amv_02_20260916_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 65,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2r_mvp_03_20260916_base",
+          "files": 11,
+          "changes": {
+            "path_relocation": 48,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_p50_inside_002_20260914",
+          "files": 11,
+          "changes": {
+            "path_relocation": 41,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_p50_inside_011_20260914",
+          "files": 11,
+          "changes": {
+            "path_relocation": 41,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 5
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_p50_inside_004_20260914",
+          "files": 11,
+          "changes": {
+            "path_relocation": 41,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_p50_support_001_20260914",
+          "files": 11,
+          "changes": {
+            "path_relocation": 52,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_p50_support_002_20260914",
+          "files": 11,
+          "changes": {
+            "path_relocation": 45,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 5
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_p50_support_006_20260914",
+          "files": 11,
+          "changes": {
+            "path_relocation": 48,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_p50_support_007_20260914",
+          "files": 11,
+          "changes": {
+            "path_relocation": 41,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 5
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_pdiv12_010_20260915",
+          "files": 11,
+          "changes": {
+            "path_relocation": 45,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 5
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_pdiv12_012_20260915",
+          "files": 11,
+          "changes": {
+            "path_relocation": 52,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_pnext40_026_20260916",
+          "files": 11,
+          "changes": {
+            "path_relocation": 48,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_pnext40_018_20260916",
+          "files": 11,
+          "changes": {
+            "path_relocation": 41,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 5
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_pnext40_020_20260916",
+          "files": 11,
+          "changes": {
+            "path_relocation": 48,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_pnext40_028_20260916",
+          "files": 11,
+          "changes": {
+            "path_relocation": 41,
+            "relocated_file_hash": 7,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 5
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        },
+        {
+          "task_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
+          "files": 17,
+          "changes": {
+            "path_relocation": 60,
+            "relocated_file_hash": 11,
+            "relocated_canonical_json_hash": 0,
+            "single_task_selection": 2
+          },
+          "non_path_semantics": "PASS",
+          "identity": "PASS"
+        }
+      ],
+      "native": {
+        "profile": "l2-collection37",
+        "source_verification": {
+          "profile": "l2-collection37",
+          "status": "PASS",
+          "sources": {
+            "bench": {
+              "revision": "4c8364842157153875d098ebb529adcc0620a714",
+              "manifest_sha256": "4443d45208537bc15a7683f9f22019a44ac2f99c8a9453ed5899f405cb46791a",
+              "file_count": 37,
+              "status": "PASS"
+            },
+            "runtime": {
+              "revision": "aa878b489d402aaa9b1e30b083d0435cf44b26be",
+              "manifest_sha256": "ee22cc5db06001c4e0535413618b040bc2c39649db0c6bc020f23ecd0859d232",
+              "file_count": 316,
+              "status": "PASS"
+            }
+          }
+        },
+        "tasks": [
+          {
+            "task_id": "l2r_am_02_20260916_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2r_am_03_20260916_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2r_mv_02_20260916_b0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2r_mv_03_20260916_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2r_mv_04_20260916_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2r_mv_05_20260916_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2r_mv_06_20260916_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2r_amv_02_20260916_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2r_mvp_03_20260916_base",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_p50_inside_002_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_p50_inside_011_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_p50_inside_004_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_p50_support_001_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_p50_support_002_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_p50_support_006_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_p50_support_007_20260914",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_pdiv12_010_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_pdiv12_012_20260915",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_pnext40_026_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_pnext40_018_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_pnext40_020_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_pnext40_028_20260916",
+            "inspect_inputs": "PASS",
+            "entrypoint": "physical_collection",
+            "initial_state_strategy": "RECONSTRUCT_AND_VERIFY_DONOR_PHYSICAL_CONTRACT",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          },
+          {
+            "task_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
+            "inspect_inputs": "PASS",
+            "entrypoint": "prepared",
+            "initial_state_strategy": "RESTORE_AND_VERIFY_NO_RECONSTRUCTION",
+            "registration": "PASS"
+          }
+        ],
+        "blocked_accesses": []
+      }
+    }
+  ],
+  "private_temporary_inputs_removed": true,
+  "status": "PASS",
+  "tasks_passed": 67,
+  "derived_file_receipts_checked": 905,
+  "guard": {
+    "file_access": "Reject original /liyuanshuai source trees; allow candidate checkout and existing Python prefix only. Reject external asset placeholder opens.",
+    "network_and_subprocess": "Forbidden during native static checks",
+    "simulator_imports": "omnigibson, omni and pxr forbidden",
+    "blocked_accesses": 0,
+    "external_asset_geometry_loaded": false
+  },
+  "checks": [
+    "Exact source imports retain original manifest hashes",
+    "Single-task projection identities are unique",
+    "Every derived file hash matches its receipt",
+    "Reversing recorded path/hash changes yields the exact projected original JSON",
+    "Non-JSON input bytes are identical",
+    "Public instruction and per-task budgets are unchanged",
+    "Frozen profile native inspect_inputs passes",
+    "Frozen profile load_registered_l0_tasks passes without original tree reads"
+  ],
+  "additional_p30_source_entry_gate_check": {
+    "scope": "Exact source package, TaskSpec and handoff budgets with frozen Common preparation_only decision; CPU dictionary validation only",
+    "functions": [
+      "admit_l1p_model_start",
+      "model_scene_physical_kwargs"
+    ],
+    "passed": 30,
+    "tasks": [
+      {
+        "task_id": "p50_inside_010_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_inside_012_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_031_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "pnext40_001_20260916",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "pnext40_010_20260916",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_restore_001_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_support_002_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_support_009_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "pnext40_039_20260916",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "pnext40_040_20260916",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_restore_002_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_restore_004_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_restore_005_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_stack_001_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_stack_003_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_stack_005_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_stack_007_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_stack_008_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p50_stack_013_20260914",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_001_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_002_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_009_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_012_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_013_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_016_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_017_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_019_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_024_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "p70_new_027_20260915",
+        "preparation_only": true,
+        "status": "PASS"
+      },
+      {
+        "task_id": "pnext40_032_20260916",
+        "preparation_only": true,
+        "status": "PASS"
+      }
+    ],
+    "live_restore_ready_not_claimed": true
+  }
+}

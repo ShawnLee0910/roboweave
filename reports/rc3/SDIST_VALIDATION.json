@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "archive": {
+    "name": "esi_benchmark-0.1.0rc3.tar.gz",
+    "sha256": "6a722307e24fa0131e6e62d2c08df24857d00d56fecd35de4a866761953f2d87",
+    "bytes": 12150458,
+    "members": 2872
+  },
+  "payload_files_equal_current_source": 2573,
+  "verification_command": [
+    "/liyuanshuai/esi-benchmark-public-20261013/.venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/test_equivalence.py",
+    "tests/test_release_audit.py",
+    "tests/test_profiles.py",
+    "tests/test_bootstrap.py",
+    "tests/test_tasks.py",
+    "tests/test_amv_adapter.py",
+    "tests/test_physical_l2_adapter.py",
+    "-q",
+    "-ra",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "/liyuanshuai/esi-benchmark-public-20261013/.tmp/sdist-rc3-final/pytest",
+    "--junitxml",
+    "/liyuanshuai/esi-benchmark-public-20261013/reports/rc3/sdist-checks.xml"
+  ],
+  "verification_exit_code": 0,
+  "verification_report": "reports/rc3/sdist-checks.xml",
+  "environment": "Existing candidate CPU environment; extracted source selected by PYTHONPATH. No simulator or new environment provisioning.",
+  "embedded_receipts": "Archive includes build-time receipt snapshots; this completed receipt and the final archive hash are stored outside the archive.",
+  "scope": "Exact shipped code/tests/tools/config/examples/docs bytes, safe archive members, all profile hashes, adapters and L0 golden comparison. No Live."
+}

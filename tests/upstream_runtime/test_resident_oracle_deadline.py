@@ -90,7 +90,7 @@ def test_real_timer_exits_process_and_preserves_evidence(tmp_path, verified):
     result = subprocess.run([
         sys.executable, "-c",
         "from pathlib import Path; import sys, time; "
-        "from esi_benchmark.bootstrap import activate; activate(); "
+        "from esi_benchmark._native.bootstrap import activate; activate(); "
         "from behavior_hl.embodied.evaluator_bridge.resident_scene_live import _run_oracle_with_deadline; "
         "from behavior_hl.embodied.evaluator_bridge.oracle_episode_receipt import publish_final_verification; "
         "root=Path(sys.argv[1]); "

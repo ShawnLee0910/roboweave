@@ -12,9 +12,10 @@ Preserve frozen evaluation semantics. Record every imported file's source
 revision, source SHA256, and candidate path. Untracked source content must be
 hashed; do not silently substitute HEAD for a task's frozen revision.
 
-Architecture: `src/esi_benchmark` is a thin public interface. `_vendor/bench`
-and `_vendor/runtime` retain upstream layouts and implementations as installed
-package data. Bootstrap adds only these immutable candidate roots to import
+Architecture: `src/esi_benchmark` is a thin public interface. `_vendor/bench`,
+`_vendor/runtime` and revision bundles retain upstream layouts as package data.
+Public APIs use fixed JSON operations in isolated native child processes; only
+the private bootstrap adds the selected immutable roots to those child import
 paths. No mutable symlinks to original repositories. Default profile is
 `l0-english-v2`: Bench 5b8d2b37fd7d97b161e88de4d438ec789c78f9b4,
 Runtime 9b992b6797330a836e9533e5409627bf63f7d94b.

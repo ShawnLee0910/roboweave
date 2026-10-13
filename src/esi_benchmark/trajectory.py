@@ -4,10 +4,12 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import re
 from typing import Any, Iterable
 
 MAX_JSON_BYTES = 32 * 1024 * 1024
 MAX_IMAGE_BYTES = 64 * 1024 * 1024
+MAX_SCORE_BYTES = 512 * 1024
 _MODES = {"live", "offline_replay", "unknown_legacy"}
 _VARIANT_HISTORY = {"frozen_history_5": 5, "history_20_variant_not_baseline": 20}
 
@@ -16,22 +18,159 @@ def _path(root: Path, relative: str) -> Path:
     if not isinstance(relative, str) or not relative or Path(relative).is_absolute():
         raise ValueError("Artifact reference must be a relative path")
     path = root / relative
-    if path.is_symlink() or not path.resolve().is_relative_to(root):
+    if (".." in Path(relative).parts or "\\" in relative
+            or not path.resolve().is_relative_to(root)
+            or any(part.is_symlink() for part in (path, *path.parents) if part != root and root in part.parents)):
         raise ValueError("Artifact reference escaped the run directory")
     return path
+
+
+def _json(raw, name):
+    def pairs(items):
+        value = {}
+        for key, item in items:
+            if key in value:
+                raise ValueError(f"Duplicate JSON field in run artifact: {name}")
+            value[key] = item
+        return value
+    try:
+        return json.loads(raw, object_pairs_hook=pairs,
+                          parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Non-finite JSON value")))
+    except RecursionError as exc:
+        raise ValueError(f"Run artifact exceeds JSON nesting limit: {name}") from exc
 
 
 def _read(root: Path, relative: str) -> dict[str, Any]:
     path = _path(root, relative)
     if not path.is_file() or path.stat().st_size > MAX_JSON_BYTES:
         raise ValueError(f"Missing or oversized run artifact: {relative}")
-    try:
-        value = json.loads(path.read_text(), parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Non-finite JSON value")))
-    except RecursionError as exc:
-        raise ValueError(f"Run artifact exceeds JSON nesting limit: {relative}") from exc
+    value = _json(path.read_bytes(), relative)
     if not isinstance(value, dict):
         raise ValueError(f"Run artifact must be an object: {relative}")
     return value
+
+
+def _evidence(root, candidate):
+    from .models import EVIDENCE_SCHEMA
+    schema = candidate.get("evidence_schema_version")
+    if schema not in (None, EVIDENCE_SCHEMA):
+        raise ValueError("Unsupported result evidence schema")
+    records = candidate.get("evidence", {})
+    if not isinstance(records, dict) or len(records) > 65:
+        raise ValueError("candidate_result.evidence must be a bounded object")
+    if schema == EVIDENCE_SCHEMA and "task_binding.json" not in records:
+        raise ValueError("Result evidence lacks its archived task binding")
+    retained = {"final_score.json", "task_binding.json", "task_process_result.json",
+                "v_collection_identity.json", "v_protocol_result.json", "l2_v/final.json",
+                "l2_v/checkpoint_violations.json"}
+    documents = {}
+    for name, evidence in records.items():
+        if not isinstance(name, str) or not isinstance(evidence, dict):
+            raise ValueError("candidate_result.evidence entries must be named objects")
+        if schema == EVIDENCE_SCHEMA and (
+                set(evidence) != {"source", "path", "sha256", "size_bytes"}
+                or not isinstance(evidence["source"], str) or not evidence["source"]):
+            raise ValueError("Scene evidence descriptor is malformed")
+        suffix = Path(name).suffix
+        if (suffix not in {".json", ".jsonl"} or Path(name).is_absolute()
+                or ".." in Path(name).parts or "\\" in name):
+            raise ValueError("Invalid scene evidence name")
+        relative = evidence.get("path")
+        path = _path(root, relative)
+        expected = "private/" + ("scene_final_score.json" if name == "final_score.json" else
+                                  "v_scene/" + name if name.startswith("v_") else name)
+        if schema == EVIDENCE_SCHEMA and relative != expected:
+            raise ValueError("Scene evidence name differs from its archived path")
+        limit = MAX_JSON_BYTES if name.startswith(("v_", "l2_v/")) or suffix == ".jsonl" else MAX_SCORE_BYTES
+        if not path.is_file() or path.stat().st_size > limit:
+            raise ValueError(f"Archived scene evidence is missing or oversized: {name}")
+        raw = path.read_bytes()
+        if len(raw) > limit:
+            raise ValueError(f"Archived scene evidence is oversized: {name}")
+        digest = evidence.get("sha256")
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest) or hashlib.sha256(raw).hexdigest() != digest:
+            raise ValueError(f"Archived scene evidence hash mismatch: {name}")
+        size = evidence.get("size_bytes")
+        if (schema == EVIDENCE_SCHEMA or "size_bytes" in evidence) and (type(size) is not int or size != len(raw)):
+            raise ValueError(f"Archived scene evidence size mismatch: {name}")
+        if suffix == ".jsonl":
+            count = 0
+            for row in raw.splitlines():
+                if row.strip():
+                    if not isinstance(_json(row, name), dict):
+                        raise ValueError(f"Scene JSONL evidence must contain objects: {name}")
+                    count += 1
+            documents[name] = count
+        else:
+            document = _json(raw, name)
+            types = (dict, list) if name == "l2_v/checkpoint_violations.json" else (dict,)
+            if not isinstance(document, types):
+                raise ValueError(f"Invalid scene evidence structure: {name}")
+            if name in retained:
+                documents[name] = document
+    return documents
+
+
+def _v_identity(documents, score, candidate, record, summary, manifest):
+    from .assets import asset_manifest
+    from .models import EVIDENCE_SCHEMA
+    from .profiles import source_revisions
+    from .tasks import get_task
+    if candidate.get("evidence_schema_version") != EVIDENCE_SCHEMA:
+        raise ValueError("V identity verification requires result-evidence-v2")
+    identity = documents.get("v_collection_identity.json")
+    protocol = documents.get("v_protocol_result.json")
+    binding = documents.get("task_binding.json")
+    if not isinstance(identity, dict) or not isinstance(protocol, dict) or not isinstance(binding, dict):
+        raise ValueError("V result lacks its identity, protocol or task binding evidence")
+    identity_fields = {"collection_config_key", "task_spec_id", "package_id", "branch", "runtime_revision",
+                       "historical_oracle_runtime_revision", "source_oracle_success", "runtime_validation_only",
+                       "v_package_sha256"}
+    if (set(identity) != identity_fields
+            or any(not isinstance(identity[field], str) or not identity[field] for field in
+                   ("collection_config_key", "task_spec_id", "package_id", "branch", "runtime_revision", "v_package_sha256"))
+            or not re.fullmatch(r"[0-9a-f]{64}", identity["v_package_sha256"])
+            or type(identity["source_oracle_success"]) is not bool
+            or type(identity["runtime_validation_only"]) is not bool
+            or (identity["historical_oracle_runtime_revision"] is not None and
+                (not isinstance(identity["historical_oracle_runtime_revision"], str)
+                 or not re.fullmatch(r"[0-9a-f]{40}", identity["historical_oracle_runtime_revision"])))):
+        raise ValueError("V scene identity lacks its original frozen identity fields")
+    key = identity.get("collection_config_key")
+    if not isinstance(key, str) or not key:
+        raise ValueError("V collection identity is missing")
+    task = get_task(key, "L1-V")
+    profile = record["profile"]
+    seed = asset_manifest(profile)["inputs_by_task"][key]["seed"]
+    revisions = source_revisions(profile)
+    if (task["profile"] != profile or identity.get("branch") != "D1"
+            or identity.get("task_spec_id") != task["runtime_instruction_id"]
+            or identity.get("runtime_revision") != revisions["runtime"]
+            or record.get("source_revisions") != revisions
+            or binding.get("collection_config_key") != key or binding.get("v_identity") != identity
+            or score.get("collection_config_key") != key or score.get("v_protocol") != protocol
+            or ("branch" in protocol and protocol["branch"] != identity["branch"])):
+        raise ValueError("V scene identity or protocol differs from its frozen task binding")
+    expected = {"task_id": task["source"]["row_index"], "task_name": task["task_id"], "task_seed": seed}
+    if any(type(binding.get(field)) is not type(value) or binding.get(field) != value for field, value in expected.items()):
+        raise ValueError("V archived task differs from its frozen public identity")
+    fields = ("task_id", "task_name", "task_split", "task_instance_id", "task_seed")
+    run_identity = record.get("task_identity")
+    if (not isinstance(run_identity, dict)
+            or any(not isinstance(binding.get(field), str) or not binding[field] for field in ("task_split", "task_instance_id"))
+            or any(field not in binding or type(run_identity.get(field)) is not type(binding[field])
+                   or run_identity.get(field) != binding[field] or type(manifest.get(field)) is not type(binding[field])
+                   or manifest.get(field) != binding[field] for field in fields)
+            or binding.get("instruction") != task["instruction_en"]
+            or manifest.get("instruction_sha256") != task["instruction_sha256"]):
+        raise ValueError("V model task or instruction differs from the archived task binding")
+    model = record.get("model")
+    if (not isinstance(model, dict) or not isinstance(model.get("model"), str) or not model["model"]
+            or model["model"] != manifest.get("model") or model["model"] != summary.get("model")
+            or summary.get("current_scene_episode_id") != candidate.get("episode_id")
+            or summary.get("v_protocol_complete") is not candidate.get("v_protocol_complete")
+            or summary.get("official_task_success") is not candidate.get("official_success")):
+        raise ValueError("V archived model result disagrees with its task/protocol evidence")
 
 
 def inspect_run(run_dir: str | Path) -> dict[str, Any]:
@@ -58,6 +197,8 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
     for field in ("source_revisions", "task_identity", "model", "declared_budget"):
         if record.get(field) is not None and not isinstance(record[field], dict):
             raise ValueError(f"run_record.{field} must be an object or null")
+    if "profile" in record and (not isinstance(record["profile"], str) or not record["profile"]):
+        raise ValueError("run_record.profile must be a nonempty string")
     failure = None
     if _path(root, "candidate_error.json").is_file():
         error = _read(root, "candidate_error.json")
@@ -65,6 +206,16 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
             if not isinstance(error.get(field), str) or not error[field]:
                 raise ValueError(f"candidate_error.{field} must be a nonempty string")
         failure = {field: error[field] for field in ("status", "stage", "error_type")}
+    candidate = summary.get("candidate_result")
+    documents = {}
+    if candidate is not None:
+        if (not isinstance(candidate, dict) or not isinstance(candidate.get("status"), str)
+                or candidate["status"] not in {"recorded", "unavailable"}):
+            raise ValueError("Candidate result is malformed")
+        documents = _evidence(root, candidate)
+        if candidate["status"] == "unavailable" and (
+                candidate.get("official_success") is not None or candidate.get("official_q") is not None):
+            raise ValueError("Unavailable result must not contain a score")
     result = {
         "schema_version": "esi-benchmark/trajectory-inspection-v1", "run_dir": str(root),
         "mode": mode, "evaluation_variant": variant, "client_status": summary["status"], "official_success": None,
@@ -130,31 +281,40 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
         raise ValueError("Rendered system prompt provenance mismatch")
     if not isinstance(manifest.get("source_sha256"), dict) or not manifest["source_sha256"]:
         raise ValueError("Run lacks source hash provenance")
-    candidate = summary.get("candidate_result")
-    if candidate is not None:
-        if (not isinstance(candidate, dict) or not isinstance(candidate.get("status"), str)
-                or candidate["status"] not in {"recorded", "unavailable"}):
-            raise ValueError("Candidate result is malformed")
-        evidence_records = candidate.get("evidence", {})
-        if not isinstance(evidence_records, dict):
-            raise ValueError("candidate_result.evidence must be an object")
-        if any(not isinstance(evidence, dict) for evidence in evidence_records.values()):
-            raise ValueError("candidate_result.evidence entries must be objects")
-        if candidate["status"] == "unavailable":
-            if candidate.get("official_success") is not None or candidate.get("official_q") is not None:
-                raise ValueError("Unavailable result must not contain a score")
-        else:
-            from .models import recorded_score_result
-            evidence = evidence_records.get("final_score.json", {})
-            archived = _path(root, evidence.get("path"))
-            if not archived.is_file() or archived.stat().st_size > 512 * 1024:
-                raise ValueError("Archived final score is missing or oversized")
-            if hashlib.sha256(archived.read_bytes()).hexdigest() != evidence.get("sha256"):
-                raise ValueError("Archived final score hash mismatch")
-            interpreted = recorded_score_result(_read(root, evidence["path"]), candidate.get("episode_id"))
-            if any(type(candidate.get(key)) is not type(value) or candidate.get(key) != value
-                   for key, value in interpreted.items()):
-                raise ValueError("Candidate result differs from original final score")
+    if candidate is not None and candidate["status"] == "recorded":
+        from .models import EVIDENCE_SCHEMA, recorded_score_result
+        from .tasks import profile_for
+        score = documents.get("final_score.json")
+        if score is None:
+            raise ValueError("Archived final score is missing")
+        profile = record.get("profile", "l0-english-v2")
+        family = profile_for(profile)["family"]
+        if score.get("collection_config_key") is not None and family != "L1-V":
+            raise ValueError("V collection evidence requires its frozen V profile")
+        interpreted = recorded_score_result(score, candidate.get("episode_id"), profile=profile)
+        if any(type(candidate.get(key)) is not type(value) or candidate.get(key) != value
+               for key, value in interpreted.items()):
+            raise ValueError("Candidate result differs from original final score")
+        strict = candidate.get("evidence_schema_version") == EVIDENCE_SCHEMA
+        for name, field in (("task_process_result.json", "public_process_report"), ("l2_v/final.json", "v_protocol")):
+            required = strict and field in score and (field != "v_protocol" or family == "L2")
+            if required and name not in documents:
+                raise ValueError(f"Archived final score lacks supporting evidence: {name}")
+            if name in documents and documents[name] != score.get(field):
+                raise ValueError(f"Archived supporting evidence differs from final score: {name}")
+        process = score.get("public_process_report")
+        if strict and process is not None:
+            for field, name in (("execution_events", "task_process_events.jsonl"),
+                                ("existing_frame_references", "task_evidence_index.jsonl")):
+                count = process.get(field)
+                if type(count) is not int or count < 0 or documents.get(name, 0) != count:
+                    raise ValueError(f"Archived process evidence count mismatch: {name}")
+        if "l2_v/checkpoint_violations.json" in documents:
+            protocol = score.get("v_protocol", {})
+            if isinstance(protocol, dict) and "checkpoint_violations" in protocol and documents["l2_v/checkpoint_violations.json"] != protocol["checkpoint_violations"]:
+                raise ValueError("Archived L2 checkpoint evidence differs from final score")
+        if family == "L1-V":
+            _v_identity(documents, score, candidate, record, summary, manifest)
     if failure is not None:
         return {**result, "status": "INCOMPLETE", "messages": len(chatml["messages"]), "images": len(images),
                 "completeness": "candidate_failure", "reason": "Candidate execution failed; see candidate_error.json"}

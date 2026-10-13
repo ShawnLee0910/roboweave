@@ -1,0 +1,4100 @@
+{
+  "schema_version": 1,
+  "profile": "l1-a30",
+  "redistribution": "metadata_only; original content and simulator assets require separate authorization",
+  "source_roots": [
+    "a-from-l0-20260912",
+    "esi_prepares",
+    "human-four-collectors-20260913"
+  ],
+  "unique_runtime_file_count": 211,
+  "unique_runtime_bytes": 11452570,
+  "inputs_by_task": {
+    "adonor25_mc_001_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-5b9de1f1b159823a15b4a61a",
+      "prepared_index_json": "l1-a30-ed81534b33090a74fd6b6551",
+      "benchmark_package_json": "l1-a30-cd5886b0119c8cfce14963c3",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "adonor25_mc_002_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-30379995ff4b1c3f3805c8ec",
+      "prepared_index_json": "l1-a30-07e525fc25beabf8922f21bb",
+      "benchmark_package_json": "l1-a30-023314f889257a31981bb7fa",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "adonor25_mc_004_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-e6bbf7cfd05e19b9dee1a25d",
+      "prepared_index_json": "l1-a30-42813f32e167de01e6c09815",
+      "benchmark_package_json": "l1-a30-b7f30f41442302b9f82555e3",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "adonor25_mt_001_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-5b9de1f1b159823a15b4a61a",
+      "prepared_index_json": "l1-a30-ed81534b33090a74fd6b6551",
+      "benchmark_package_json": "l1-a30-cd5886b0119c8cfce14963c3",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "adonor25_ne_003_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-e6bbf7cfd05e19b9dee1a25d",
+      "prepared_index_json": "l1-a30-42813f32e167de01e6c09815",
+      "benchmark_package_json": "l1-a30-b7f30f41442302b9f82555e3",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "adonor25_rc_004_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-49d484a5609f51bf421f80ec",
+      "prepared_index_json": "l1-a30-fef3b9ef9ccf4f670331b450",
+      "benchmark_package_json": "l1-a30-f51a215950a6d35abf9fe3e1",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a001_b2_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a013_b1_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a014_b2_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a066_b_neutral_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a119_b2_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a135_b2_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a138_b13_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a163_b_off_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a163_b_on_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a170_b1_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a175_b1_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a175_b2_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "am200v1_a188_b2_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a006_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a008_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a026_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a032_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a036_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a053_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a087_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a088_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "amreuse100_a094_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "aq1a25_mc_002_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    },
+    "aq1a25_mf_002_w0_challenge": {
+      "entrypoint": "prepared",
+      "handoff_json": "l1-a30-182a843b7d76ef853b35b80e",
+      "prepared_index_json": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "benchmark_package_json": "l1-a30-d8007c405da0e6e1423f6834",
+      "seed": 19506,
+      "instruction_review_json": "l1-a30-2d4bf34242c459d7337c27dc",
+      "task_json": "l1-a30-9003f10cbccfd8209c36920c"
+    }
+  },
+  "files": [
+    {
+      "key": "l1-a30-8bd54a4ba7aecfb8ab3f36cb",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/activity_definitions/adonor25_mc_001_w0_challenge/problem0.bddl",
+      "sha256": "873fd6116bfd2e7c477c82c6da8a4bed79d0bb3b9e50cf55506cec5579c63c98",
+      "bytes": 835,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-dca5ebbb1b51d098284016ed",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/activity_definitions/adonor25_mc_002_w0_challenge/problem0.bddl",
+      "sha256": "b1ead76949a001f1fb3cb418d060c2d62c3fb886d77ca6ab089eec0330d4f5fb",
+      "bytes": 751,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-c5b576fd0dbb656285684b3a",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/activity_definitions/adonor25_mc_004_w0_challenge/problem0.bddl",
+      "sha256": "f835ed69f610f59ec789f373bb96571f971e946d4ec84112941e8eaf6e1ac890",
+      "bytes": 660,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-76251607921f477b0069fcb4",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/activity_definitions/adonor25_mt_001_w0_challenge/problem0.bddl",
+      "sha256": "b5cd192194c9cdef55ab314604b4a50abbb80eb734264b0d309b70b6cdb6cf09",
+      "bytes": 830,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2ed2e0ebd43ef906364301b0",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/activity_definitions/adonor25_ne_003_w0_challenge/problem0.bddl",
+      "sha256": "cd2e7681460dddc7377b639c1b225684cfda76b20bf0e5fb554176b42172de36",
+      "bytes": 661,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2307b246c06b5dcc733ac898",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/activity_definitions/adonor25_rc_004_w0_challenge/problem0.bddl",
+      "sha256": "4168df17cb18a1ec9d67ce55d6f49e30cdf7db3d38607521de9881f4b8046915",
+      "bytes": 853,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-1b66dff09086ee8ba7e8474c",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/template_contracts/adonor25_mc_001_w0_challenge.json",
+      "sha256": "f64d5ec70d32e26aed72888a1dfe202ae84e94f00cad147d8e6beee8da3f57f9",
+      "bytes": 7919,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-79b1f1cdf3acc02cc1998393",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/template_contracts/adonor25_mc_002_w0_challenge.json",
+      "sha256": "7020e7774ec2fa7031b0cfb3240909569118d110b28eb619d4e9d85dd41c9474",
+      "bytes": 7656,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-a59b1169cb3760a0cb093470",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/template_contracts/adonor25_mc_004_w0_challenge.json",
+      "sha256": "84c2ae4094f9413a85d9bd33b671d02e1f600cbd8c6e587ffe88c60fefb2cccc",
+      "bytes": 6946,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-71da7a568e4563f0ba2626c4",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/template_contracts/adonor25_mt_001_w0_challenge.json",
+      "sha256": "8616d1a89116b66904a706d3564decce319f3c6f9e8a99cc6614ff804f000164",
+      "bytes": 7894,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-966791cc802f8388abbe1b9e",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/template_contracts/adonor25_ne_003_w0_challenge.json",
+      "sha256": "e5edf50e89c412a8dc2f8a733a50cd64052d9c38ce4e1b18faa34cf883d3ae79",
+      "bytes": 6953,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-6a92ac39800cdc28ff0ba478",
+      "source_root": "a-from-l0-20260912",
+      "source_path": "attempt_004/compiled/official_compatible/template_contracts/adonor25_rc_004_w0_challenge.json",
+      "sha256": "a60911ef786756cb3f0a5046028c8ade62ade442c68889fd760802938826bcc9",
+      "bytes": 10359,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-30379995ff4b1c3f3805c8ec",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/b40897c28f60f414/handoff.json",
+      "sha256": "11ac25b242a86124879d9b1692df430460805780ebbfaba0d15a97a15c76cac4",
+      "bytes": 5188,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "adonor25_mc_002_w0_challenge": [
+            "adonor25_mc_002_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-b316b7c6ee3515443d83b25f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/b40897c28f60f414/l1a-4f53948f.catalog.json",
+      "sha256": "b15318be107b4c41e56d10e16b9eddc53550d33c7c0e135c78194c95cb2da15f",
+      "bytes": 142950,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "adonor25_mc_002_w0_challenge": [
+            "adonor25_mc_002_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-023314f889257a31981bb7fa",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/b40897c28f60f414/l1a-4f53948f.package.json",
+      "sha256": "6cf4572c1dc01af08985297d76482184be114c661cefc2ce9f7242102d8eff54",
+      "bytes": 3791,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "adonor25_mc_002_w0_challenge": [
+            "adonor25_mc_002_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-07e525fc25beabf8922f21bb",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/b40897c28f60f414/prepared_index.json",
+      "sha256": "7d06ff1ab3f17415bb0312ddf30ce90d2a5e853b638489351eafd3b65c1b79e3",
+      "bytes": 1016,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "adonor25_mc_002_w0_challenge": [
+            "adonor25_mc_002_w0_challenge"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "l1-a30-30379995ff4b1c3f3805c8ec"
+        }
+      ]
+    },
+    {
+      "key": "l1-a30-49d484a5609f51bf421f80ec",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/bcb8992aef929365/handoff.json",
+      "sha256": "6f39a211d10e90f09aaa77f35831c67713f8ebbaa8a9d56a85fb8dfe551a8838",
+      "bytes": 3190,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "adonor25_rc_004_w0_challenge": [
+            "adonor25_rc_004_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-5e1d2556df1863a52d78e6a9",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/bcb8992aef929365/l1a-4f53948f.catalog.json",
+      "sha256": "b15318be107b4c41e56d10e16b9eddc53550d33c7c0e135c78194c95cb2da15f",
+      "bytes": 142950,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "adonor25_rc_004_w0_challenge": [
+            "adonor25_rc_004_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-f51a215950a6d35abf9fe3e1",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/bcb8992aef929365/l1a-4f53948f.package.json",
+      "sha256": "d335de18f6c1e7d7ee74e9479a34ff76714fb5b93357f68e90aafac415396e14",
+      "bytes": 3791,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "adonor25_rc_004_w0_challenge": [
+            "adonor25_rc_004_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-fef3b9ef9ccf4f670331b450",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/bcb8992aef929365/prepared_index.json",
+      "sha256": "9a7e01c60d0869209207c9b2c353f4206774b6db5e5eb3725ac68fc7088ed97b",
+      "bytes": 727,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "adonor25_rc_004_w0_challenge": [
+            "adonor25_rc_004_w0_challenge"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "l1-a30-49d484a5609f51bf421f80ec"
+        }
+      ]
+    },
+    {
+      "key": "l1-a30-e6bbf7cfd05e19b9dee1a25d",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/df6b9777a6412329/handoff.json",
+      "sha256": "fad2e62bedd5c7c780f86a64d567763db693c0a4497e2220d12f0c1a0a589555",
+      "bytes": 7349,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge",
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "adonor25_mc_004_w0_challenge": [
+            "adonor25_mc_004_w0_challenge"
+          ],
+          "adonor25_ne_003_w0_challenge": [
+            "adonor25_ne_003_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-e7ccbf097b0bbcaaf1dfeca8",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/df6b9777a6412329/l1a-4f53948f.catalog.json",
+      "sha256": "b15318be107b4c41e56d10e16b9eddc53550d33c7c0e135c78194c95cb2da15f",
+      "bytes": 142950,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge",
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "adonor25_mc_004_w0_challenge": [
+            "adonor25_mc_004_w0_challenge"
+          ],
+          "adonor25_ne_003_w0_challenge": [
+            "adonor25_ne_003_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-b7f30f41442302b9f82555e3",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/df6b9777a6412329/l1a-4f53948f.package.json",
+      "sha256": "fcd6491b551df18746cc6aeb72649f54d6eb931e4e108c8aba222dba9b191291",
+      "bytes": 3791,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge",
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "adonor25_mc_004_w0_challenge": [
+            "adonor25_mc_004_w0_challenge"
+          ],
+          "adonor25_ne_003_w0_challenge": [
+            "adonor25_ne_003_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-42813f32e167de01e6c09815",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/df6b9777a6412329/prepared_index.json",
+      "sha256": "4b37ab0ccb28fa7b7f21fbdfc71e041cf475b030eaea70d490a1969c266663d6",
+      "bytes": 1304,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge",
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "adonor25_mc_004_w0_challenge": [
+            "adonor25_mc_004_w0_challenge"
+          ],
+          "adonor25_ne_003_w0_challenge": [
+            "adonor25_ne_003_w0_challenge"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "l1-a30-e6bbf7cfd05e19b9dee1a25d"
+        }
+      ]
+    },
+    {
+      "key": "l1-a30-5b9de1f1b159823a15b4a61a",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/f6207be25f629830/handoff.json",
+      "sha256": "fe407cd710fbbb8ccfab587f540ccf9c572da2de36e7b5c860bfbded0e89029b",
+      "bytes": 7419,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge",
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "adonor25_mc_001_w0_challenge": [
+            "adonor25_mc_001_w0_challenge"
+          ],
+          "adonor25_mt_001_w0_challenge": [
+            "adonor25_mt_001_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-d7f269eec5175fe7dd9273b4",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/f6207be25f629830/l1a-4f53948f.catalog.json",
+      "sha256": "b15318be107b4c41e56d10e16b9eddc53550d33c7c0e135c78194c95cb2da15f",
+      "bytes": 142950,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge",
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "adonor25_mc_001_w0_challenge": [
+            "adonor25_mc_001_w0_challenge"
+          ],
+          "adonor25_mt_001_w0_challenge": [
+            "adonor25_mt_001_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-cd5886b0119c8cfce14963c3",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/f6207be25f629830/l1a-4f53948f.package.json",
+      "sha256": "7aff2317b448dac39cd2c5b92b4be04588f28266a2899fa9663f3b8f3dc3c417",
+      "bytes": 3791,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge",
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "adonor25_mc_001_w0_challenge": [
+            "adonor25_mc_001_w0_challenge"
+          ],
+          "adonor25_mt_001_w0_challenge": [
+            "adonor25_mt_001_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-ed81534b33090a74fd6b6551",
+      "source_root": "esi_prepares",
+      "source_path": "l1a11_additions_20260916/inputs/f6207be25f629830/prepared_index.json",
+      "sha256": "e5f066c37eb6a44024456455ce7d2d645615f232369482e0b1d82e209f7b365b",
+      "bytes": 1304,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge",
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "adonor25_mc_001_w0_challenge": [
+            "adonor25_mc_001_w0_challenge"
+          ],
+          "adonor25_mt_001_w0_challenge": [
+            "adonor25_mt_001_w0_challenge"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "l1-a30-5b9de1f1b159823a15b4a61a"
+        }
+      ]
+    },
+    {
+      "key": "l1-a30-2d4bf34242c459d7337c27dc",
+      "source_root": "esi_prepares",
+      "source_path": "l1a30_gemini_cc_20260924/instructions.json",
+      "sha256": "bd9d0fcb1e9b41a7a768a4fd476a0691376d40af2bf253d60ec6a592474550bb",
+      "bytes": 8703,
+      "roles": [
+        "instruction_review"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge",
+        "adonor25_mc_002_w0_challenge",
+        "adonor25_mc_004_w0_challenge",
+        "adonor25_mt_001_w0_challenge",
+        "adonor25_ne_003_w0_challenge",
+        "adonor25_rc_004_w0_challenge",
+        "am200v1_a001_b2_challenge",
+        "am200v1_a013_b1_challenge",
+        "am200v1_a014_b2_challenge",
+        "am200v1_a066_b_neutral_challenge",
+        "am200v1_a119_b2_challenge",
+        "am200v1_a135_b2_challenge",
+        "am200v1_a138_b13_challenge",
+        "am200v1_a163_b_off_challenge",
+        "am200v1_a163_b_on_challenge",
+        "am200v1_a170_b1_challenge",
+        "am200v1_a175_b1_challenge",
+        "am200v1_a175_b2_challenge",
+        "am200v1_a188_b2_challenge",
+        "amreuse100_a006_w0_challenge",
+        "amreuse100_a008_w0_challenge",
+        "amreuse100_a026_w0_challenge",
+        "amreuse100_a032_w0_challenge",
+        "amreuse100_a036_w0_challenge",
+        "amreuse100_a053_w0_challenge",
+        "amreuse100_a087_w0_challenge",
+        "amreuse100_a088_w0_challenge",
+        "amreuse100_a094_w0_challenge",
+        "aq1a25_mc_002_w0_challenge",
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9003f10cbccfd8209c36920c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a30_gemini_cc_20260924/tasks.json",
+      "sha256": "0a08fc2cf9382754c7f1ee005b6cf6a81371cedb82ea44078c79e4b1398b70c4",
+      "bytes": 41724,
+      "roles": [
+        "release_tasks"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge",
+        "adonor25_mc_002_w0_challenge",
+        "adonor25_mc_004_w0_challenge",
+        "adonor25_mt_001_w0_challenge",
+        "adonor25_ne_003_w0_challenge",
+        "adonor25_rc_004_w0_challenge",
+        "am200v1_a001_b2_challenge",
+        "am200v1_a013_b1_challenge",
+        "am200v1_a014_b2_challenge",
+        "am200v1_a066_b_neutral_challenge",
+        "am200v1_a119_b2_challenge",
+        "am200v1_a135_b2_challenge",
+        "am200v1_a138_b13_challenge",
+        "am200v1_a163_b_off_challenge",
+        "am200v1_a163_b_on_challenge",
+        "am200v1_a170_b1_challenge",
+        "am200v1_a175_b1_challenge",
+        "am200v1_a175_b2_challenge",
+        "am200v1_a188_b2_challenge",
+        "amreuse100_a006_w0_challenge",
+        "amreuse100_a008_w0_challenge",
+        "amreuse100_a026_w0_challenge",
+        "amreuse100_a032_w0_challenge",
+        "amreuse100_a036_w0_challenge",
+        "amreuse100_a053_w0_challenge",
+        "amreuse100_a087_w0_challenge",
+        "amreuse100_a088_w0_challenge",
+        "amreuse100_a094_w0_challenge",
+        "aq1a25_mc_002_w0_challenge",
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "release_tasks",
+        "ids": {
+          "adonor25_mc_001_w0_challenge": [
+            "adonor25_mc_001_w0_challenge"
+          ],
+          "adonor25_mc_002_w0_challenge": [
+            "adonor25_mc_002_w0_challenge"
+          ],
+          "adonor25_mc_004_w0_challenge": [
+            "adonor25_mc_004_w0_challenge"
+          ],
+          "adonor25_mt_001_w0_challenge": [
+            "adonor25_mt_001_w0_challenge"
+          ],
+          "adonor25_ne_003_w0_challenge": [
+            "adonor25_ne_003_w0_challenge"
+          ],
+          "adonor25_rc_004_w0_challenge": [
+            "adonor25_rc_004_w0_challenge"
+          ],
+          "am200v1_a001_b2_challenge": [
+            "am200v1_a001_b2_challenge"
+          ],
+          "am200v1_a013_b1_challenge": [
+            "am200v1_a013_b1_challenge"
+          ],
+          "am200v1_a014_b2_challenge": [
+            "am200v1_a014_b2_challenge"
+          ],
+          "am200v1_a066_b_neutral_challenge": [
+            "am200v1_a066_b_neutral_challenge"
+          ],
+          "am200v1_a119_b2_challenge": [
+            "am200v1_a119_b2_challenge"
+          ],
+          "am200v1_a135_b2_challenge": [
+            "am200v1_a135_b2_challenge"
+          ],
+          "am200v1_a138_b13_challenge": [
+            "am200v1_a138_b13_challenge"
+          ],
+          "am200v1_a163_b_off_challenge": [
+            "am200v1_a163_b_off_challenge"
+          ],
+          "am200v1_a163_b_on_challenge": [
+            "am200v1_a163_b_on_challenge"
+          ],
+          "am200v1_a170_b1_challenge": [
+            "am200v1_a170_b1_challenge"
+          ],
+          "am200v1_a175_b1_challenge": [
+            "am200v1_a175_b1_challenge"
+          ],
+          "am200v1_a175_b2_challenge": [
+            "am200v1_a175_b2_challenge"
+          ],
+          "am200v1_a188_b2_challenge": [
+            "am200v1_a188_b2_challenge"
+          ],
+          "amreuse100_a006_w0_challenge": [
+            "amreuse100_a006_w0_challenge"
+          ],
+          "amreuse100_a008_w0_challenge": [
+            "amreuse100_a008_w0_challenge"
+          ],
+          "amreuse100_a026_w0_challenge": [
+            "amreuse100_a026_w0_challenge"
+          ],
+          "amreuse100_a032_w0_challenge": [
+            "amreuse100_a032_w0_challenge"
+          ],
+          "amreuse100_a036_w0_challenge": [
+            "amreuse100_a036_w0_challenge"
+          ],
+          "amreuse100_a053_w0_challenge": [
+            "amreuse100_a053_w0_challenge"
+          ],
+          "amreuse100_a087_w0_challenge": [
+            "amreuse100_a087_w0_challenge"
+          ],
+          "amreuse100_a088_w0_challenge": [
+            "amreuse100_a088_w0_challenge"
+          ],
+          "amreuse100_a094_w0_challenge": [
+            "amreuse100_a094_w0_challenge"
+          ],
+          "aq1a25_mc_002_w0_challenge": [
+            "aq1a25_mc_002_w0_challenge"
+          ],
+          "aq1a25_mf_002_w0_challenge": [
+            "aq1a25_mf_002_w0_challenge"
+          ]
+        },
+        "field": "instruction_id"
+      }
+    },
+    {
+      "key": "l1-a30-1cd427fdef2e640ee1a85c83",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a001_b2_challenge.bddl",
+      "sha256": "8af9ccaa04e9bef8727aeb8daa3b5f2ba91aa90ded348900ba58a7a1df736caf",
+      "bytes": 606,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2572b7a2872b4b554bf0f3bc",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a013_b1_challenge.bddl",
+      "sha256": "420eaf2be980b3ce611c7f0f329852d215d4d1a753bd00c65e4ef058b06f13b6",
+      "bytes": 820,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a013_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-675e7c9f280aca15d3d640fe",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a014_b2_challenge.bddl",
+      "sha256": "23b32cad562455662dc657865fc5d46fba4b2443a3eb3474b52bfea3b0fd871e",
+      "bytes": 871,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a014_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-c7dbb2c5a2cd5462f25c2289",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a066_b_neutral_challenge.bddl",
+      "sha256": "d67369cd6b05b9c0b7eb289d2570b877e4d4fd5263fabdedbfb284da130d0be7",
+      "bytes": 753,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a066_b_neutral_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-dfc3ef5f2ac029cb990eb1e4",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a119_b2_challenge.bddl",
+      "sha256": "6af2b4afe8102bbf1f492d76f8a2623307d15358c7eca38d895013e559248b6d",
+      "bytes": 904,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a119_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fbd06a58dedfdd23695d6a22",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a135_b2_challenge.bddl",
+      "sha256": "222608020c8a8b6572dbc530303a5993e339df1696d55f2469b2f4e8d2b5ebc4",
+      "bytes": 740,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a135_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-c24ea583a823feaa959917c3",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a138_b13_challenge.bddl",
+      "sha256": "09813a68d9f3d301d5772d8bf4397eb0b918fddf8e0b8b1d294475bb6be97a7d",
+      "bytes": 1343,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a138_b13_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-17346c91dcb9fb92b3292942",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a163_b_off_challenge.bddl",
+      "sha256": "f4f7f08fe919afd84ba4239ee5b09ced0c149809a2df99ef0a2113dcf4b11169",
+      "bytes": 660,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_off_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-d8da6f68c5a0d30f968b9a53",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a163_b_on_challenge.bddl",
+      "sha256": "85de994f911869338c8fdfdd2a9dc9d1a0710967d3a3401bdfcd576842ce1d73",
+      "bytes": 653,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_on_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-6185d23222f3b109f12b044f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a170_b1_challenge.bddl",
+      "sha256": "d1a1142294181d25cdd3a171657e957588481b4bfd79bf3eaeab16269cc4bcf2",
+      "bytes": 690,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a170_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-bc89da2f5caf296a6371f42d",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a175_b1_challenge.bddl",
+      "sha256": "4198f7963537de87ad3e8be355e60e3aa86c11a06d00ab4b730db42f498f0964",
+      "bytes": 624,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a175_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-6ccef914afd2fca6383f234f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a175_b2_challenge.bddl",
+      "sha256": "2e552072646d1db17fb8dcb18b9a4da9128590b94f40cd522fb49f2d8afbc079",
+      "bytes": 624,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a175_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-813d2b035950711208d86829",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/am200v1_a188_b2_challenge.bddl",
+      "sha256": "12d01b3f74e6b837a0a03ecdcfea0a30f9e0c2f792087541d703cc4df1e3c7b7",
+      "bytes": 720,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a188_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-227aeec00f9789d0ab25407b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a006_w0_challenge.bddl",
+      "sha256": "4e5682f26c237c5404a8ec732721ecc2c08f4c6227c262a7e7271c8a345f67ac",
+      "bytes": 751,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a006_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-06562f5c60a84bb842133e9a",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a008_w0_challenge.bddl",
+      "sha256": "6dcc7f85c1353d9048056f5abee30bf8fd2669a28e88dfcab8a93fe942c90c67",
+      "bytes": 681,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a008_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-13070586e72b6f48d376fd08",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a026_w0_challenge.bddl",
+      "sha256": "e87dc38023388169befea831b355dded63c86f49a9fbd80a256ab28e194687a3",
+      "bytes": 660,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a026_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-06092a68dc65d17b2e94d3ab",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a032_w0_challenge.bddl",
+      "sha256": "36b7129bb251560d071a0a748dfadccc94553e65457853c5a95197b31daedfd6",
+      "bytes": 745,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a032_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-5c471c5a077143172630070b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a036_w0_challenge.bddl",
+      "sha256": "f9b530763f6112c3ffae3734e89cac771ff649d57d90f118c7c8e0e91d1a98d3",
+      "bytes": 823,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a036_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-63562bbc4df5ea105b8a912d",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a053_w0_challenge.bddl",
+      "sha256": "7b00ef1b90fde35cab56ecac14507cae52908d07d2496d82c1725d3baff7a6e8",
+      "bytes": 720,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a053_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-994025955a712b8d9e7a998b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a087_w0_challenge.bddl",
+      "sha256": "7f34a71801cbefec48b8f787a4e73a5b78428845bea4418bb9a0c9accc6d94b2",
+      "bytes": 714,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a087_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-d54775f7b838f2f1ecb9370c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a088_w0_challenge.bddl",
+      "sha256": "112daf979fca8c9493fef6343d58f8d03203033dadc36cfa99cf33332f68a42a",
+      "bytes": 706,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a088_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fa169c38509cec190165565b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/amreuse100_a094_w0_challenge.bddl",
+      "sha256": "aa93778c4806f93d93957ff59a31528cfb49f57847c347c9503af654d923a216",
+      "bytes": 833,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a094_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fc37e83d642099afe5f6977b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/aq1a25_mc_002_w0_challenge.bddl",
+      "sha256": "12f3e98954624d36a9dd40a7e09dc4008845b7d83e58626de2a4361f4ae2e1ce",
+      "bytes": 866,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "aq1a25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-37b490cc2d5d139a93c62f32",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/bddl/aq1a25_mf_002_w0_challenge.bddl",
+      "sha256": "3e5f045eeeba012d514be85eef79178b982996ce9f64346e2bc2825934f045dd",
+      "bytes": 704,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-e5b138ece25d6bf318465646",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/catalog.json",
+      "sha256": "a6bc48c24ee33c1e13fe30a84644e176252bfee00cc97fefe0af5709f1f3535e",
+      "bytes": 383740,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge",
+        "am200v1_a013_b1_challenge",
+        "am200v1_a014_b2_challenge",
+        "am200v1_a066_b_neutral_challenge",
+        "am200v1_a119_b2_challenge",
+        "am200v1_a135_b2_challenge",
+        "am200v1_a138_b13_challenge",
+        "am200v1_a163_b_off_challenge",
+        "am200v1_a163_b_on_challenge",
+        "am200v1_a170_b1_challenge",
+        "am200v1_a175_b1_challenge",
+        "am200v1_a175_b2_challenge",
+        "am200v1_a188_b2_challenge",
+        "amreuse100_a006_w0_challenge",
+        "amreuse100_a008_w0_challenge",
+        "amreuse100_a026_w0_challenge",
+        "amreuse100_a032_w0_challenge",
+        "amreuse100_a036_w0_challenge",
+        "amreuse100_a053_w0_challenge",
+        "amreuse100_a087_w0_challenge",
+        "amreuse100_a088_w0_challenge",
+        "amreuse100_a094_w0_challenge",
+        "aq1a25_mc_002_w0_challenge",
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "am200v1_a001_b2_challenge": [
+            "am200v1_a001_b2_challenge"
+          ],
+          "am200v1_a013_b1_challenge": [
+            "am200v1_a013_b1_challenge"
+          ],
+          "am200v1_a014_b2_challenge": [
+            "am200v1_a014_b2_challenge"
+          ],
+          "am200v1_a066_b_neutral_challenge": [
+            "am200v1_a066_b_neutral_challenge"
+          ],
+          "am200v1_a119_b2_challenge": [
+            "am200v1_a119_b2_challenge"
+          ],
+          "am200v1_a135_b2_challenge": [
+            "am200v1_a135_b2_challenge"
+          ],
+          "am200v1_a138_b13_challenge": [
+            "am200v1_a138_b13_challenge"
+          ],
+          "am200v1_a163_b_off_challenge": [
+            "am200v1_a163_b_off_challenge"
+          ],
+          "am200v1_a163_b_on_challenge": [
+            "am200v1_a163_b_on_challenge"
+          ],
+          "am200v1_a170_b1_challenge": [
+            "am200v1_a170_b1_challenge"
+          ],
+          "am200v1_a175_b1_challenge": [
+            "am200v1_a175_b1_challenge"
+          ],
+          "am200v1_a175_b2_challenge": [
+            "am200v1_a175_b2_challenge"
+          ],
+          "am200v1_a188_b2_challenge": [
+            "am200v1_a188_b2_challenge"
+          ],
+          "amreuse100_a006_w0_challenge": [
+            "amreuse100_a006_w0_challenge"
+          ],
+          "amreuse100_a008_w0_challenge": [
+            "amreuse100_a008_w0_challenge"
+          ],
+          "amreuse100_a026_w0_challenge": [
+            "amreuse100_a026_w0_challenge"
+          ],
+          "amreuse100_a032_w0_challenge": [
+            "amreuse100_a032_w0_challenge"
+          ],
+          "amreuse100_a036_w0_challenge": [
+            "amreuse100_a036_w0_challenge"
+          ],
+          "amreuse100_a053_w0_challenge": [
+            "amreuse100_a053_w0_challenge"
+          ],
+          "amreuse100_a087_w0_challenge": [
+            "amreuse100_a087_w0_challenge"
+          ],
+          "amreuse100_a088_w0_challenge": [
+            "amreuse100_a088_w0_challenge"
+          ],
+          "amreuse100_a094_w0_challenge": [
+            "amreuse100_a094_w0_challenge"
+          ],
+          "aq1a25_mc_002_w0_challenge": [
+            "aq1a25_mc_002_w0_challenge"
+          ],
+          "aq1a25_mf_002_w0_challenge": [
+            "aq1a25_mf_002_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-1a3d80e33642fbcb45790c0b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a001_b2_challenge.json",
+      "sha256": "b5c2e04017550dc1d5b30fbdcfc6e390c7c6dc6a3a1eb5fa2c01917b55a97a80",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-5c82bb984321e5321bc07c59",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a013_b1_challenge.json",
+      "sha256": "4dedd12fc87c77516ba10d36df4a42fed99ee9820e94a6964f3bedccdce4eb1c",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a013_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-80079ac75b0c20bebdea2834",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a014_b2_challenge.json",
+      "sha256": "39e24d974fa6454610140de073dda048a27527918a317ccae41ad6235beb51e1",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a014_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f14ea0b96741fcc0c3ea82f2",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a066_b_neutral_challenge.json",
+      "sha256": "e9b7f09a34052079e14f1c9c066394b7d499dfadb0328ad5b6919a4b8a762aec",
+      "bytes": 1658,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a066_b_neutral_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-b6f28b3297cf39b6d6252bc1",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a119_b2_challenge.json",
+      "sha256": "51e266ed91faa521860a90bf6dd807ee36785eafe50ca434b060ada0cae94507",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a119_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-288f15bbbca2141bd26ae3cc",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a135_b2_challenge.json",
+      "sha256": "7fb2d782a257cdc6da70710ee7fed8ae0b9621630c7c9c2c491ea0e23c866c00",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a135_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f530c9b779f4c05ef38b127c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a138_b13_challenge.json",
+      "sha256": "889480dfd08b8eb61d3912cd93fadbe53c9f51bff193c877796d8ebfe88ca0ee",
+      "bytes": 1646,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a138_b13_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9119b1a348c4336e54a8d970",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a163_b_off_challenge.json",
+      "sha256": "79b788f5a8ae91427fc01951cfd751b30667ef3fe0c6b4e48a398f92b686d7a1",
+      "bytes": 1650,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_off_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-54389901c4c5b4c1202f0bcb",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a163_b_on_challenge.json",
+      "sha256": "f0ddefb8c77ba71450c7db9b6ea6c28261b4606115d53d665f74fe5bc2f3924d",
+      "bytes": 1648,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_on_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-a1a3d6afca5342fec6437b5a",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a170_b1_challenge.json",
+      "sha256": "b2484a8b3649c160843e83798757c3bc001771b73b5c6eb0d5418bb0ab431895",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a170_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-5ed3fc421962cd9e4629f3cc",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a175_b1_challenge.json",
+      "sha256": "9a842ed659c8b6010f5ad5939f26e64ee60e1b73f3fed4c1c008cc5d951d97e0",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a175_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-0a24b0c4830b83cf69737cf3",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a175_b2_challenge.json",
+      "sha256": "e5f3c43f79c9462c0b53663b96fc8c3e276e657898302ceda46bb8baecac6ceb",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a175_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-e2a5c6a062ff5a407dceee1f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/am200v1_a188_b2_challenge.json",
+      "sha256": "ff6dcf651ce75cc646ea8242d05f2535f907b871832ffd5e1793fba31dd87897",
+      "bytes": 1644,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "am200v1_a188_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4c7e4345524353a6a373450d",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a006_w0_challenge.json",
+      "sha256": "3a960d8ca0a9382eeb7c5ad917a2b852d9cccdcd1d608394f6345fa18f352bed",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a006_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-8154c81752e83729a0dfda4b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a008_w0_challenge.json",
+      "sha256": "af2ded80b0f860d39168a2bc6c8f0cb65f20588487aaa0ccd3594e130a924cb2",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a008_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-8b90d9bd59b5dbbe521018c5",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a026_w0_challenge.json",
+      "sha256": "9c0049f1fabd3d356e9b37a31099b70e6ea408069c225d35196b48ec6c16d3d6",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a026_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2958d0df121a9fb058a6a879",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a032_w0_challenge.json",
+      "sha256": "aab7629b9314997f156918bcdff2423326a1068660a6514ffecdbee53bc25d76",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a032_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-d2d45a6b82c68ec967b1de8c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a036_w0_challenge.json",
+      "sha256": "60e55f8eca68837e9ae8c6e4993a4bc6bf2d6f1150f75abef58ebd2a62c047af",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a036_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-28e3fc0fcc788fce58a467ca",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a053_w0_challenge.json",
+      "sha256": "58d5df88b1cd9b0eb413e1893583ec29bf9cb401788b3654902108c12fe9eaf3",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a053_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-253e97e05dd5b46a7f64510e",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a087_w0_challenge.json",
+      "sha256": "323991074450669cc33c1f6779674be7b123035f56ee5b11a0b7aa9117027286",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a087_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9a75038893763b31be6fc7d1",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a088_w0_challenge.json",
+      "sha256": "c3695c9bf38f4fd56bbebb3aa0d7762672e0c71d2da9f6fc4598e59e6639b68b",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a088_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9a8c8d0cc6d7cd6537ccea6b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/amreuse100_a094_w0_challenge.json",
+      "sha256": "4ed15f3c138363d719b6eeaac81b35434ecba31973637a6cfbcb5f50263f9ce6",
+      "bytes": 1654,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "amreuse100_a094_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-e236a4f9eae98082c36abed8",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/aq1a25_mc_002_w0_challenge.json",
+      "sha256": "576d12181a16d804740759c9956bf143776f8661fb527b3567283e4d4ba66c2d",
+      "bytes": 1664,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "aq1a25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-1186213703d3f6f8ee1fa3b7",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/derivations/aq1a25_mf_002_w0_challenge.json",
+      "sha256": "11b9b9d5b4de159608a96dc6eff1b0cda5fd65353b70c9027dff97888e77e3d1",
+      "bytes": 1665,
+      "roles": [
+        "prepared_derivation"
+      ],
+      "task_ids": [
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-182a843b7d76ef853b35b80e",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/handoff.json",
+      "sha256": "74278af72caa1327f09b180a64b7e89b5b0a7183831d2cfda4ebdcfefc3001d6",
+      "bytes": 205350,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge",
+        "am200v1_a013_b1_challenge",
+        "am200v1_a014_b2_challenge",
+        "am200v1_a066_b_neutral_challenge",
+        "am200v1_a119_b2_challenge",
+        "am200v1_a135_b2_challenge",
+        "am200v1_a138_b13_challenge",
+        "am200v1_a163_b_off_challenge",
+        "am200v1_a163_b_on_challenge",
+        "am200v1_a170_b1_challenge",
+        "am200v1_a175_b1_challenge",
+        "am200v1_a175_b2_challenge",
+        "am200v1_a188_b2_challenge",
+        "amreuse100_a006_w0_challenge",
+        "amreuse100_a008_w0_challenge",
+        "amreuse100_a026_w0_challenge",
+        "amreuse100_a032_w0_challenge",
+        "amreuse100_a036_w0_challenge",
+        "amreuse100_a053_w0_challenge",
+        "amreuse100_a087_w0_challenge",
+        "amreuse100_a088_w0_challenge",
+        "amreuse100_a094_w0_challenge",
+        "aq1a25_mc_002_w0_challenge",
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "am200v1_a001_b2_challenge": [
+            "am200v1_a001_b2_challenge"
+          ],
+          "am200v1_a013_b1_challenge": [
+            "am200v1_a013_b1_challenge"
+          ],
+          "am200v1_a014_b2_challenge": [
+            "am200v1_a014_b2_challenge"
+          ],
+          "am200v1_a066_b_neutral_challenge": [
+            "am200v1_a066_b_neutral_challenge"
+          ],
+          "am200v1_a119_b2_challenge": [
+            "am200v1_a119_b2_challenge"
+          ],
+          "am200v1_a135_b2_challenge": [
+            "am200v1_a135_b2_challenge"
+          ],
+          "am200v1_a138_b13_challenge": [
+            "am200v1_a138_b13_challenge"
+          ],
+          "am200v1_a163_b_off_challenge": [
+            "am200v1_a163_b_off_challenge"
+          ],
+          "am200v1_a163_b_on_challenge": [
+            "am200v1_a163_b_on_challenge"
+          ],
+          "am200v1_a170_b1_challenge": [
+            "am200v1_a170_b1_challenge"
+          ],
+          "am200v1_a175_b1_challenge": [
+            "am200v1_a175_b1_challenge"
+          ],
+          "am200v1_a175_b2_challenge": [
+            "am200v1_a175_b2_challenge"
+          ],
+          "am200v1_a188_b2_challenge": [
+            "am200v1_a188_b2_challenge"
+          ],
+          "amreuse100_a006_w0_challenge": [
+            "amreuse100_a006_w0_challenge"
+          ],
+          "amreuse100_a008_w0_challenge": [
+            "amreuse100_a008_w0_challenge"
+          ],
+          "amreuse100_a026_w0_challenge": [
+            "amreuse100_a026_w0_challenge"
+          ],
+          "amreuse100_a032_w0_challenge": [
+            "amreuse100_a032_w0_challenge"
+          ],
+          "amreuse100_a036_w0_challenge": [
+            "amreuse100_a036_w0_challenge"
+          ],
+          "amreuse100_a053_w0_challenge": [
+            "amreuse100_a053_w0_challenge"
+          ],
+          "amreuse100_a087_w0_challenge": [
+            "amreuse100_a087_w0_challenge"
+          ],
+          "amreuse100_a088_w0_challenge": [
+            "amreuse100_a088_w0_challenge"
+          ],
+          "amreuse100_a094_w0_challenge": [
+            "amreuse100_a094_w0_challenge"
+          ],
+          "aq1a25_mc_002_w0_challenge": [
+            "aq1a25_mc_002_w0_challenge"
+          ],
+          "aq1a25_mf_002_w0_challenge": [
+            "aq1a25_mf_002_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-d8007c405da0e6e1423f6834",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/package.json",
+      "sha256": "c76f6687173489d2df7512b3526d830c346aae923bea240429c8a239583126ab",
+      "bytes": 2418,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge",
+        "am200v1_a013_b1_challenge",
+        "am200v1_a014_b2_challenge",
+        "am200v1_a066_b_neutral_challenge",
+        "am200v1_a119_b2_challenge",
+        "am200v1_a135_b2_challenge",
+        "am200v1_a138_b13_challenge",
+        "am200v1_a163_b_off_challenge",
+        "am200v1_a163_b_on_challenge",
+        "am200v1_a170_b1_challenge",
+        "am200v1_a175_b1_challenge",
+        "am200v1_a175_b2_challenge",
+        "am200v1_a188_b2_challenge",
+        "amreuse100_a006_w0_challenge",
+        "amreuse100_a008_w0_challenge",
+        "amreuse100_a026_w0_challenge",
+        "amreuse100_a032_w0_challenge",
+        "amreuse100_a036_w0_challenge",
+        "amreuse100_a053_w0_challenge",
+        "amreuse100_a087_w0_challenge",
+        "amreuse100_a088_w0_challenge",
+        "amreuse100_a094_w0_challenge",
+        "aq1a25_mc_002_w0_challenge",
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "am200v1_a001_b2_challenge": [
+            "am200v1_a001_b2_challenge"
+          ],
+          "am200v1_a013_b1_challenge": [
+            "am200v1_a013_b1_challenge"
+          ],
+          "am200v1_a014_b2_challenge": [
+            "am200v1_a014_b2_challenge"
+          ],
+          "am200v1_a066_b_neutral_challenge": [
+            "am200v1_a066_b_neutral_challenge"
+          ],
+          "am200v1_a119_b2_challenge": [
+            "am200v1_a119_b2_challenge"
+          ],
+          "am200v1_a135_b2_challenge": [
+            "am200v1_a135_b2_challenge"
+          ],
+          "am200v1_a138_b13_challenge": [
+            "am200v1_a138_b13_challenge"
+          ],
+          "am200v1_a163_b_off_challenge": [
+            "am200v1_a163_b_off_challenge"
+          ],
+          "am200v1_a163_b_on_challenge": [
+            "am200v1_a163_b_on_challenge"
+          ],
+          "am200v1_a170_b1_challenge": [
+            "am200v1_a170_b1_challenge"
+          ],
+          "am200v1_a175_b1_challenge": [
+            "am200v1_a175_b1_challenge"
+          ],
+          "am200v1_a175_b2_challenge": [
+            "am200v1_a175_b2_challenge"
+          ],
+          "am200v1_a188_b2_challenge": [
+            "am200v1_a188_b2_challenge"
+          ],
+          "amreuse100_a006_w0_challenge": [
+            "amreuse100_a006_w0_challenge"
+          ],
+          "amreuse100_a008_w0_challenge": [
+            "amreuse100_a008_w0_challenge"
+          ],
+          "amreuse100_a026_w0_challenge": [
+            "amreuse100_a026_w0_challenge"
+          ],
+          "amreuse100_a032_w0_challenge": [
+            "amreuse100_a032_w0_challenge"
+          ],
+          "amreuse100_a036_w0_challenge": [
+            "amreuse100_a036_w0_challenge"
+          ],
+          "amreuse100_a053_w0_challenge": [
+            "amreuse100_a053_w0_challenge"
+          ],
+          "amreuse100_a087_w0_challenge": [
+            "amreuse100_a087_w0_challenge"
+          ],
+          "amreuse100_a088_w0_challenge": [
+            "amreuse100_a088_w0_challenge"
+          ],
+          "amreuse100_a094_w0_challenge": [
+            "amreuse100_a094_w0_challenge"
+          ],
+          "aq1a25_mc_002_w0_challenge": [
+            "aq1a25_mc_002_w0_challenge"
+          ],
+          "aq1a25_mf_002_w0_challenge": [
+            "aq1a25_mf_002_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-a928b690a66203f35d072112",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a001_b2_challenge.json",
+      "sha256": "d63dfb0f7fa932ab7f1f7cf450b75fc9e8eb57391a940fa60681bca7015df86a",
+      "bytes": 9336,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-ffe972070eddc1ab673858d8",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a013_b1_challenge.json",
+      "sha256": "822b6ff4b4fce6cc3a5ac56bba5f082db1c60e88ea2148f1ebc8f1bad2f4cfb6",
+      "bytes": 9591,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a013_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-bac579ba8d99c2a7283f31f7",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a014_b2_challenge.json",
+      "sha256": "31003868a45300ac30e7283f8ffb90a02b9e88517acbc82735a36962c2a5c617",
+      "bytes": 9817,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a014_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-a5835eeb60777fcdeac73886",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a066_b_neutral_challenge.json",
+      "sha256": "fa469bad85f6f576f89eaefbe1c6808cee70355909d84203cb7c0e25515888e1",
+      "bytes": 10136,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a066_b_neutral_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-03c301fcaf49602c16f1a147",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a119_b2_challenge.json",
+      "sha256": "ef4d5c9c95f817eeb8799d6880b2278eabfc2d16977f972e70b2d3a4f0b6b9e2",
+      "bytes": 9975,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a119_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-6eef102903b83627a789e743",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a135_b2_challenge.json",
+      "sha256": "3f8eab16370ed549622f72287f3a451f15f353a1330ee669553592dea72bf658",
+      "bytes": 9693,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a135_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-bd8737e3665017255328d422",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a138_b13_challenge.json",
+      "sha256": "8cb43f07dd078a8a89dcbb1b9baf384923dfcdd8530444e0cd5e74947b999a9d",
+      "bytes": 10635,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a138_b13_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-dc1acd4dc471dfc17c616d26",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a163_b_off_challenge.json",
+      "sha256": "95b687a1b0a5c5e5983708e285cb0ad02255625d88297a4d102dd15c549f7034",
+      "bytes": 10042,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_off_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-60f989a091c08be7885245e9",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a163_b_on_challenge.json",
+      "sha256": "44881a3cb59abd5fa6a8dc06c1a59051b2a47d6821aaf2b31d8e17713037bb14",
+      "bytes": 10034,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_on_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f9d555744532a80a1fc9ae4a",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a170_b1_challenge.json",
+      "sha256": "d121907bd5746e367ca6ee80770c20963403b0be4500b8524add71f75d4d318d",
+      "bytes": 9591,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a170_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4aa77b39f312b231c162cd02",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a175_b1_challenge.json",
+      "sha256": "9484b1e6f99bf8791f451205abc97532451cbf449ac59091d6950c4c52be6746",
+      "bytes": 9604,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a175_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-6ac204bcd56522c919ea2c7c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a175_b2_challenge.json",
+      "sha256": "7767e31adaf14336225b8ed192ca2f2245ab61baf65102b73d5085e3dc0db227",
+      "bytes": 9599,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a175_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-b092adab13169d9ae7639699",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/am200v1_a188_b2_challenge.json",
+      "sha256": "e2f260861660e93a9fd8c5e6d82b287934ff60417542d14932d88d0b5b2d2cc5",
+      "bytes": 9704,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "am200v1_a188_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f2cae03c199a2eef55e800df",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a006_w0_challenge.json",
+      "sha256": "08bb02355099b5f1b1152ad22a7656eed4f5f6a67450e29f34909cbf21bbd9c2",
+      "bytes": 9511,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a006_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-276f1d5820e330fd33e6932e",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a008_w0_challenge.json",
+      "sha256": "8f80f4849c0203b7e5388b37404ae4754d3f5e63a0e1dbb6ad996e3dd1575b87",
+      "bytes": 9512,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a008_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fae6ff0890e1a88f56e594de",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a026_w0_challenge.json",
+      "sha256": "2b91cf647f9803931f0c602a32b5669e242d41131446cc30ff616b9c0fd6ec8e",
+      "bytes": 9575,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a026_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-a5a695bc9a44c473a97ac1e8",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a032_w0_challenge.json",
+      "sha256": "b7a21588aa61ef9f4df8f03d26b4f94b754f0ac22595689df81338161c8bdb4f",
+      "bytes": 9585,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a032_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-637f527d53ba283fb10c0397",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a036_w0_challenge.json",
+      "sha256": "119e7e42c2ea3836044328f4042894f47073ca70e3ad78e1f659ede55e10ae8b",
+      "bytes": 9666,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a036_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-1bbcbd4f18007f3c25af3be3",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a053_w0_challenge.json",
+      "sha256": "21e1733c0aef380de5ecf87583225471e9456dd87ed16f18e3db7994f7915cf5",
+      "bytes": 9648,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a053_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f6a3b34d634318f0a6d9a7a5",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a087_w0_challenge.json",
+      "sha256": "d1dffde889f60daa17c5847ae58aac5613c480f69a4055d81dd0e57572dbe289",
+      "bytes": 9575,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a087_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-bc7d6cfa131deaad9ab1fd08",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a088_w0_challenge.json",
+      "sha256": "303570510864840a5085bb69d0b136a625f52b65848bdf67e067cf3acde13bce",
+      "bytes": 9969,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a088_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-24e073e7ca435faae92c7789",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/amreuse100_a094_w0_challenge.json",
+      "sha256": "44807aafda4382bb9e38d7672a6e86d5f0d36bfc0c8e3f3fa7c519014bd3d91c",
+      "bytes": 9669,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "amreuse100_a094_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9f64dee2c38434d352b8f85f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/aq1a25_mc_002_w0_challenge.json",
+      "sha256": "2b03491fd686db9b9fbe0931a4360bc6751a0866e0b06d59f8bbd2166184d7e8",
+      "bytes": 9545,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "aq1a25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-a842522b5df922b7cbffe1c9",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared/aq1a25_mf_002_w0_challenge.json",
+      "sha256": "93030f5b75bdcefb871f10bd4ff3ed2bb4a213aa31802e585539e27a4c809c47",
+      "bytes": 9785,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-6a46ea448e2a0a926f8fbd52",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/prepared_index.json",
+      "sha256": "cce900832dcb4f154291ed7fe41b7fa057c948a05bb33fa244fbc35838d137ef",
+      "bytes": 10436,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge",
+        "am200v1_a013_b1_challenge",
+        "am200v1_a014_b2_challenge",
+        "am200v1_a066_b_neutral_challenge",
+        "am200v1_a119_b2_challenge",
+        "am200v1_a135_b2_challenge",
+        "am200v1_a138_b13_challenge",
+        "am200v1_a163_b_off_challenge",
+        "am200v1_a163_b_on_challenge",
+        "am200v1_a170_b1_challenge",
+        "am200v1_a175_b1_challenge",
+        "am200v1_a175_b2_challenge",
+        "am200v1_a188_b2_challenge",
+        "amreuse100_a006_w0_challenge",
+        "amreuse100_a008_w0_challenge",
+        "amreuse100_a026_w0_challenge",
+        "amreuse100_a032_w0_challenge",
+        "amreuse100_a036_w0_challenge",
+        "amreuse100_a053_w0_challenge",
+        "amreuse100_a087_w0_challenge",
+        "amreuse100_a088_w0_challenge",
+        "amreuse100_a094_w0_challenge",
+        "aq1a25_mc_002_w0_challenge",
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "am200v1_a001_b2_challenge": [
+            "am200v1_a001_b2_challenge"
+          ],
+          "am200v1_a013_b1_challenge": [
+            "am200v1_a013_b1_challenge"
+          ],
+          "am200v1_a014_b2_challenge": [
+            "am200v1_a014_b2_challenge"
+          ],
+          "am200v1_a066_b_neutral_challenge": [
+            "am200v1_a066_b_neutral_challenge"
+          ],
+          "am200v1_a119_b2_challenge": [
+            "am200v1_a119_b2_challenge"
+          ],
+          "am200v1_a135_b2_challenge": [
+            "am200v1_a135_b2_challenge"
+          ],
+          "am200v1_a138_b13_challenge": [
+            "am200v1_a138_b13_challenge"
+          ],
+          "am200v1_a163_b_off_challenge": [
+            "am200v1_a163_b_off_challenge"
+          ],
+          "am200v1_a163_b_on_challenge": [
+            "am200v1_a163_b_on_challenge"
+          ],
+          "am200v1_a170_b1_challenge": [
+            "am200v1_a170_b1_challenge"
+          ],
+          "am200v1_a175_b1_challenge": [
+            "am200v1_a175_b1_challenge"
+          ],
+          "am200v1_a175_b2_challenge": [
+            "am200v1_a175_b2_challenge"
+          ],
+          "am200v1_a188_b2_challenge": [
+            "am200v1_a188_b2_challenge"
+          ],
+          "amreuse100_a006_w0_challenge": [
+            "amreuse100_a006_w0_challenge"
+          ],
+          "amreuse100_a008_w0_challenge": [
+            "amreuse100_a008_w0_challenge"
+          ],
+          "amreuse100_a026_w0_challenge": [
+            "amreuse100_a026_w0_challenge"
+          ],
+          "amreuse100_a032_w0_challenge": [
+            "amreuse100_a032_w0_challenge"
+          ],
+          "amreuse100_a036_w0_challenge": [
+            "amreuse100_a036_w0_challenge"
+          ],
+          "amreuse100_a053_w0_challenge": [
+            "amreuse100_a053_w0_challenge"
+          ],
+          "amreuse100_a087_w0_challenge": [
+            "amreuse100_a087_w0_challenge"
+          ],
+          "amreuse100_a088_w0_challenge": [
+            "amreuse100_a088_w0_challenge"
+          ],
+          "amreuse100_a094_w0_challenge": [
+            "amreuse100_a094_w0_challenge"
+          ],
+          "aq1a25_mc_002_w0_challenge": [
+            "aq1a25_mc_002_w0_challenge"
+          ],
+          "aq1a25_mf_002_w0_challenge": [
+            "aq1a25_mf_002_w0_challenge"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "l1-a30-182a843b7d76ef853b35b80e"
+        }
+      ]
+    },
+    {
+      "key": "l1-a30-c309ad10f8bd9884e4d0cb5b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/0d45bb9573b29444b682426da0a3a8d40316fcb6646ebb17b651cb5d3802019a.json",
+      "sha256": "0d45bb9573b29444b682426da0a3a8d40316fcb6646ebb17b651cb5d3802019a",
+      "bytes": 37086,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "am200v1_a066_b_neutral_challenge",
+        "am200v1_a135_b2_challenge",
+        "am200v1_a138_b13_challenge",
+        "am200v1_a188_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-200b576c94509f5883de6d24",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/1cb63deadd9c66120a6de1e7d0b3fbe796864f50a92326c96ead9de7e5958e27.json",
+      "sha256": "1cb63deadd9c66120a6de1e7d0b3fbe796864f50a92326c96ead9de7e5958e27",
+      "bytes": 18363,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_off_challenge",
+        "am200v1_a163_b_on_challenge",
+        "am200v1_a175_b1_challenge",
+        "am200v1_a175_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4ce470ad582b4f234aa2a72a",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/4ba1a159b54f65c8c6aafd0d7c5e37ecf2d506af29c0a3afadf5ec49fee9d6d6.json",
+      "sha256": "4ba1a159b54f65c8c6aafd0d7c5e37ecf2d506af29c0a3afadf5ec49fee9d6d6",
+      "bytes": 9241,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "amreuse100_a026_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-dcccc2f8e4b010e347c8c739",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/5ea6b9aba519587e3fd3e41d82139ee32e75277d074f52fd3f30253cb7311378.json",
+      "sha256": "5ea6b9aba519587e3fd3e41d82139ee32e75277d074f52fd3f30253cb7311378",
+      "bytes": 80266,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "am200v1_a013_b1_challenge",
+        "am200v1_a014_b2_challenge",
+        "am200v1_a119_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-a6ca6264bb02ae4fe1f28e47",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/84a40d13551bc49d35d4c79a3cdfeee0a9d155990f35ea1c9283a90d310756ca.json",
+      "sha256": "84a40d13551bc49d35d4c79a3cdfeee0a9d155990f35ea1c9283a90d310756ca",
+      "bytes": 2782,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "aq1a25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9b2e68e0bddd541fbde59dbd",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/8c3fb49174f43721d9b71aade0a41e897e6062c61ba00bedf66a988c4eabf7a9.json",
+      "sha256": "8c3fb49174f43721d9b71aade0a41e897e6062c61ba00bedf66a988c4eabf7a9",
+      "bytes": 17951,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-7db86da867b55b66df9f70f2",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/b8710bfe06c2972443e520509e3e704b0516f3f14549c8b7072ff7654391be8c.json",
+      "sha256": "b8710bfe06c2972443e520509e3e704b0516f3f14549c8b7072ff7654391be8c",
+      "bytes": 17931,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "amreuse100_a087_w0_challenge",
+        "amreuse100_a088_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9d79532900868d3bd1d9ef4e",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/c62c492db2930c8edd97b945766805b9d8a9149bde5a2708d07fe887db508ec5.json",
+      "sha256": "c62c492db2930c8edd97b945766805b9d8a9149bde5a2708d07fe887db508ec5",
+      "bytes": 18723,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "amreuse100_a036_w0_challenge",
+        "amreuse100_a094_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-e6a76e9fd2f69d893b897440",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/ce64adf17156b53920fcdc4ec26ccc4a58364cb75f4f4f6754c693a415462041.json",
+      "sha256": "ce64adf17156b53920fcdc4ec26ccc4a58364cb75f4f4f6754c693a415462041",
+      "bytes": 13370,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "amreuse100_a006_w0_challenge",
+        "amreuse100_a008_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-b2af85b39061fe6f426c4967",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/d9336d5e69e2fa14d35068607140eed34b6e0ed2e91a1d09ae24719463651048.json",
+      "sha256": "d9336d5e69e2fa14d35068607140eed34b6e0ed2e91a1d09ae24719463651048",
+      "bytes": 13842,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "am200v1_a170_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-38f48523283b5b9e8bfe01c8",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/d9d5aab3e767bf49ba2b164f0c69e23e6d6a4fe70a2d0b11dde608f2171d576d.json",
+      "sha256": "d9d5aab3e767bf49ba2b164f0c69e23e6d6a4fe70a2d0b11dde608f2171d576d",
+      "bytes": 6179,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fd6a327db19842fc5766c9b5",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/dff39b158990383b6ce397f48068e0f138b0d036a5d6e8e2b1f4c434c39e67f0.json",
+      "sha256": "dff39b158990383b6ce397f48068e0f138b0d036a5d6e8e2b1f4c434c39e67f0",
+      "bytes": 9529,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "amreuse100_a053_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-cfaaa8db632744b18d85d61f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/source_handoffs/e9bc6334224efadd2df126dbbe061387253a100d915e9d6cbf2887f376fb8d13.json",
+      "sha256": "e9bc6334224efadd2df126dbbe061387253a100d915e9d6cbf2887f376fb8d13",
+      "bytes": 13802,
+      "roles": [
+        "derivation_source_handoff"
+      ],
+      "task_ids": [
+        "amreuse100_a032_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-ef03b3333e40f4dda6a1c778",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/task_specs.jsonl",
+      "sha256": "5e8446c8f251dcfe2ca0d708ab9cddbdb098d9106fefcfa0e0bc2d874fb462c7",
+      "bytes": 1081890,
+      "roles": [
+        "task_specs"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge",
+        "am200v1_a013_b1_challenge",
+        "am200v1_a014_b2_challenge",
+        "am200v1_a066_b_neutral_challenge",
+        "am200v1_a119_b2_challenge",
+        "am200v1_a135_b2_challenge",
+        "am200v1_a138_b13_challenge",
+        "am200v1_a163_b_off_challenge",
+        "am200v1_a163_b_on_challenge",
+        "am200v1_a170_b1_challenge",
+        "am200v1_a175_b1_challenge",
+        "am200v1_a175_b2_challenge",
+        "am200v1_a188_b2_challenge",
+        "amreuse100_a006_w0_challenge",
+        "amreuse100_a008_w0_challenge",
+        "amreuse100_a026_w0_challenge",
+        "amreuse100_a032_w0_challenge",
+        "amreuse100_a036_w0_challenge",
+        "amreuse100_a053_w0_challenge",
+        "amreuse100_a087_w0_challenge",
+        "amreuse100_a088_w0_challenge",
+        "amreuse100_a094_w0_challenge",
+        "aq1a25_mc_002_w0_challenge",
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": {
+        "kind": "task_specs",
+        "ids": {
+          "am200v1_a001_b2_challenge": [
+            "am200v1_a001_b2_challenge"
+          ],
+          "am200v1_a013_b1_challenge": [
+            "am200v1_a013_b1_challenge"
+          ],
+          "am200v1_a014_b2_challenge": [
+            "am200v1_a014_b2_challenge"
+          ],
+          "am200v1_a066_b_neutral_challenge": [
+            "am200v1_a066_b_neutral_challenge"
+          ],
+          "am200v1_a119_b2_challenge": [
+            "am200v1_a119_b2_challenge"
+          ],
+          "am200v1_a135_b2_challenge": [
+            "am200v1_a135_b2_challenge"
+          ],
+          "am200v1_a138_b13_challenge": [
+            "am200v1_a138_b13_challenge"
+          ],
+          "am200v1_a163_b_off_challenge": [
+            "am200v1_a163_b_off_challenge"
+          ],
+          "am200v1_a163_b_on_challenge": [
+            "am200v1_a163_b_on_challenge"
+          ],
+          "am200v1_a170_b1_challenge": [
+            "am200v1_a170_b1_challenge"
+          ],
+          "am200v1_a175_b1_challenge": [
+            "am200v1_a175_b1_challenge"
+          ],
+          "am200v1_a175_b2_challenge": [
+            "am200v1_a175_b2_challenge"
+          ],
+          "am200v1_a188_b2_challenge": [
+            "am200v1_a188_b2_challenge"
+          ],
+          "amreuse100_a006_w0_challenge": [
+            "amreuse100_a006_w0_challenge"
+          ],
+          "amreuse100_a008_w0_challenge": [
+            "amreuse100_a008_w0_challenge"
+          ],
+          "amreuse100_a026_w0_challenge": [
+            "amreuse100_a026_w0_challenge"
+          ],
+          "amreuse100_a032_w0_challenge": [
+            "amreuse100_a032_w0_challenge"
+          ],
+          "amreuse100_a036_w0_challenge": [
+            "amreuse100_a036_w0_challenge"
+          ],
+          "amreuse100_a053_w0_challenge": [
+            "amreuse100_a053_w0_challenge"
+          ],
+          "amreuse100_a087_w0_challenge": [
+            "amreuse100_a087_w0_challenge"
+          ],
+          "amreuse100_a088_w0_challenge": [
+            "amreuse100_a088_w0_challenge"
+          ],
+          "amreuse100_a094_w0_challenge": [
+            "amreuse100_a094_w0_challenge"
+          ],
+          "aq1a25_mc_002_w0_challenge": [
+            "aq1a25_mc_002_w0_challenge"
+          ],
+          "aq1a25_mf_002_w0_challenge": [
+            "aq1a25_mf_002_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-8ebca3e657c75b9360b31504",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a001_b2_challenge.json",
+      "sha256": "f0564a0e64c4235931998ac01b1a3d2f663e03c6e13fd191ad6de365a5cf56d7",
+      "bytes": 5951,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-dfc98c2dc6f7e4b1b167733c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a013_b1_challenge.json",
+      "sha256": "779e72e22059e5e0bfe3e0e0e65c8b77f51a0d334463b6c93df01343dcfecdaf",
+      "bytes": 8164,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a013_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-cc8a965b4acbefaa3d000959",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a014_b2_challenge.json",
+      "sha256": "37b78fef3ffac184798db6a5737b6c3a725f6085403a4b2abd3aa487fa0f4173",
+      "bytes": 9557,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a014_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f464cb01db513f0263c077e8",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a066_b_neutral_challenge.json",
+      "sha256": "3ecab7a6ffd595737ef909349c679d6f369851228b4c680a473618c50e068028",
+      "bytes": 7892,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a066_b_neutral_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fc346ce49ad555bf6031d2dc",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a119_b2_challenge.json",
+      "sha256": "5952eac0cebc2e3ff3047827d9bc1aab2a6c4750e1956d27ce7213afd205f9b6",
+      "bytes": 8993,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a119_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-d22f8dbe2761ba00d64dcf7a",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a135_b2_challenge.json",
+      "sha256": "df6f020aecfe7ff897d39226184dd077ed9c3517612f261fb7a5c101aa29ae4b",
+      "bytes": 7316,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a135_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9134da5489d9be8f863864d7",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a138_b13_challenge.json",
+      "sha256": "3cfca290ad97d3431722a0f762178a27518e0c52240bdfd9da5be836c04e15dd",
+      "bytes": 15959,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a138_b13_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-7012e368dea0873d87334a23",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a163_b_off_challenge.json",
+      "sha256": "2b8c113de4ae277bbb945113465228c25337c3508d64e53c6dbdcb6c00c0f61e",
+      "bytes": 7414,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_off_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-0cb246741953df5950e2ae8b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a163_b_on_challenge.json",
+      "sha256": "198dcfbc7570cf9961158f573c835bb6209ccef94d21aee7350ee8fc05d044a0",
+      "bytes": 7406,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_on_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-c380023ac980908562f58137",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a170_b1_challenge.json",
+      "sha256": "b128a21bd29b0325c859c3f730028b4890a79e5582465cd0e70eba4d1ca26634",
+      "bytes": 7193,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a170_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-b72ec94d1ce203aeb91e1434",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a175_b1_challenge.json",
+      "sha256": "ac0c9ce9153cfb1375a94d2f534e0cbc8ea82665594c8690f1928bcc6a5c538d",
+      "bytes": 7079,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a175_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-af61905946556a638712e535",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a175_b2_challenge.json",
+      "sha256": "65344bdd24b6892bc74234ed10d29b42e054830240d57965c62951c1219f1dd0",
+      "bytes": 7079,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a175_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-07779f430ae6184d5042f9ca",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/am200v1_a188_b2_challenge.json",
+      "sha256": "593d789a831e1e103d1de39be013c3eb2b9bbce12f6d4aadcacf4ce3d5bb49b1",
+      "bytes": 7272,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a188_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2c32173c73f1bbc21645e35b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a006_w0_challenge.json",
+      "sha256": "f43e72b49fd5346f9c0567a6135e3b5a15c05f057806e768e154b046e7fa4e13",
+      "bytes": 7370,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a006_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-7b0647b2d728ae62f08d9370",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a008_w0_challenge.json",
+      "sha256": "ffe55c3563a4b266ea0f7f80ea1c718ea90285e5e3249513443a8d1b5c578b28",
+      "bytes": 6739,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a008_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4d4eea0d132ccd899b02653b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a026_w0_challenge.json",
+      "sha256": "56d17b09205182ee7f5cc4791c1e728243576484daa28722f43aa70d593fe65a",
+      "bytes": 6660,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a026_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-923b40c0d90aa057e73d0801",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a032_w0_challenge.json",
+      "sha256": "f81d3dc940c2c4087d459bc95797fc213a735df4d1682616007c97c7fbca2035",
+      "bytes": 7470,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a032_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-8af7ccfedf15ea6f4d6baadc",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a036_w0_challenge.json",
+      "sha256": "881cc780a84d9a0fbce4a9c3f79238c9c27f0b5ecfbc426dcc9bec67838a49d2",
+      "bytes": 7597,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a036_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-d9b685170d05ff993140bf61",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a053_w0_challenge.json",
+      "sha256": "a0ac9f967fdb9e5fb51897c9e75ef78dd90b73b2c3fc53917fd2232f538061e5",
+      "bytes": 6972,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a053_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-60717e93a9f8e2e0ee09cb7f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a087_w0_challenge.json",
+      "sha256": "8bc8fb3518f0a11eb09c5a02ebe140a0353933fdf478f33162d8c68e8aa1f9c1",
+      "bytes": 7430,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a087_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-69212f063e0ae8d1cb10d977",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a088_w0_challenge.json",
+      "sha256": "8cddf5dafe07b33af6e76f41df8a7af7c4cdf295ab1a93ca76641932422507cb",
+      "bytes": 7200,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a088_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-eda3e6705d15b2705b0b2748",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/amreuse100_a094_w0_challenge.json",
+      "sha256": "fdb831d003926da44f6861dff85c1d64e81d008402669b801e619a63e389c6f4",
+      "bytes": 7605,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a094_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-68c08272614adbd411030b97",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/aq1a25_mc_002_w0_challenge.json",
+      "sha256": "144b8252f1c8b5ed9157e6ad2fe42f2796fb60b6f5610d47a23ce9cd3f782421",
+      "bytes": 9090,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "aq1a25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-ae4fe82ed40a21a353550647",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/template_contract/aq1a25_mf_002_w0_challenge.json",
+      "sha256": "0f7cd95d0cc1dd0ff8162936331cbf69e7a3152248a5b488eb56845b3e4215ff",
+      "bytes": 7184,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f356b1e05ecf9d9d5dac5814",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a001_b2_challenge.json",
+      "sha256": "6ebf7f4e222ffbc8b6ce18dca3235c4027922c2838f1d4bfe90d6259446d9c5a",
+      "bytes": 36030,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9d85415229bfd1b0812e3811",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a013_b1_challenge.json",
+      "sha256": "310dcf43f57093540811a225300b61c74e36e1db099acadd4a8031f01dedeb42",
+      "bytes": 114790,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a013_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f595a6a930a91b1123d5a5ce",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a014_b2_challenge.json",
+      "sha256": "f3cc0af14f3da67f9e13d19802eaac4c1d7ab67fd1ae23505baff9ebed6bbe11",
+      "bytes": 116368,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a014_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-7efb36c2646657fc4563467d",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a066_b_neutral_challenge.json",
+      "sha256": "d5a84f1ed27b3f67e4b87dbe7d61b633cd8f2d6ffd90ae905154c094222d6c2a",
+      "bytes": 308335,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a066_b_neutral_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-b78d9b52789b68f599262a84",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a119_b2_challenge.json",
+      "sha256": "ccbaad765c269950b38e1acbca517ae3a278a0cccb42a2d6950c98c21364cc7e",
+      "bytes": 114916,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a119_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-e637c8e9d7a868194713d02f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a135_b2_challenge.json",
+      "sha256": "94e15a2242ca7b5dec1cf5971af6f5aa12316d23df8937d41ad329d87699c6fa",
+      "bytes": 307380,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a135_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fdaf452fadb97cf6e8bb9a5c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a138_b13_challenge.json",
+      "sha256": "f2c88799efc50a6612e4b278c84c62a89a8017b8c54aabd0add34e61cf3ff997",
+      "bytes": 313190,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a138_b13_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-8761a8254b340fbfc34988e4",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a163_b_off_challenge.json",
+      "sha256": "40470647cff96b4382cc2f6db4a5eef574a1c01a3a6f5f758b920e5eb18c4eb2",
+      "bytes": 689413,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_off_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9cdd53b7741b1fff9539aef8",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a163_b_on_challenge.json",
+      "sha256": "92b445a9a7eb8c15f6883c5fa29081fd86c52dadb61d82a1b35877d01148639b",
+      "bytes": 689424,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_on_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2f5dd9c91289185b925acdfc",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a170_b1_challenge.json",
+      "sha256": "c02231abfc180aac98784609b6dd8276f61423df34f0a9a5ea8b4f0286949834",
+      "bytes": 75935,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a170_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-d5e52d3db55d6ffc51dadc7d",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a175_b1_challenge.json",
+      "sha256": "3e1dba0f760301b73ad9f5e5d5215252a2b00fd097d6e77f896fe56cbb81887c",
+      "bytes": 689294,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a175_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-5061f4e63ecb79cef596a879",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a175_b2_challenge.json",
+      "sha256": "34fb6c52db68e2319ed189f9e7627e6d7aee25c3156bae73c0cf273997599822",
+      "bytes": 689293,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a175_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-a045ea39895ebda334749afe",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/am200v1_a188_b2_challenge.json",
+      "sha256": "a5d5182008ce69c614a76af7eceab0741e517c19146a12f26887bf500cc64250",
+      "bytes": 307365,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a188_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-0281dc3f610c91dc436ce8c1",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a006_w0_challenge.json",
+      "sha256": "0fa776ef8a24d8d38fd274bebd00153e3b255d574512fea7a844a638230f1d1c",
+      "bytes": 239500,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a006_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-3184cb678f6a75aefc2b3a64",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a008_w0_challenge.json",
+      "sha256": "1a089ea360dc58678224d22753f8ebc00c781c67e79b5ccf30beefd7d1179232",
+      "bytes": 240055,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a008_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4281825eb2fe37b9e829ed84",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a026_w0_challenge.json",
+      "sha256": "6bb9f18b51c7203870559d79a78b2bd210f84cc3bfe821d977521d1f6836040b",
+      "bytes": 346302,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a026_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f0aef788595b49b4da42365f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a032_w0_challenge.json",
+      "sha256": "27273975abe48a3891623358e171be197121cbe2e8348dfb4406f36546660055",
+      "bytes": 76366,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a032_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-778416f1ac370e21838fa1b1",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a036_w0_challenge.json",
+      "sha256": "38cafb8ce936b07c3137fac15e0ac075710feaf9e68ba9ced9761240952ee7f8",
+      "bytes": 307296,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a036_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f2b386535cb513f67171631c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a053_w0_challenge.json",
+      "sha256": "3d5ef2c4274a116e3fe7afd714926ceaaf6da0ab6cc518ddf1999d78c8f1e016",
+      "bytes": 212598,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a053_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-a3d8f54c5d7675bd0b6f4d69",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a087_w0_challenge.json",
+      "sha256": "fe6daec7cf579e4982d8e128ea5f8639399101361d015d5b9515ffac406fd101",
+      "bytes": 36850,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a087_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-eb446f94069d386c93c00f64",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a088_w0_challenge.json",
+      "sha256": "9a49f03cf1e1973ae1e33081b1575153dd59657f15ee8c10a368fe0936aef73f",
+      "bytes": 37044,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a088_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2101f100ae2a6c91c1f66457",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/amreuse100_a094_w0_challenge.json",
+      "sha256": "56218c19e4c2fbdd1da3363b43c6f130e86e1c4850bb191d23950d2a78e7df10",
+      "bytes": 307301,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a094_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2affc2026f363b165614f9eb",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/aq1a25_mc_002_w0_challenge.json",
+      "sha256": "ae6aa6f854b29c56b4f4846df10f2403458503d17fbded67cee01112603d13ed",
+      "bytes": 240667,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "aq1a25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4636d4e47453841e33c0922b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/templates/aq1a25_mf_002_w0_challenge.json",
+      "sha256": "bc9b2d22f8583d109285976030a4cd96a9c863663b1d10098cf15447c22d0055",
+      "bytes": 37029,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-3f8366f96cae8978e06a1e50",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a001_b2_challenge.json",
+      "sha256": "f358a8868176e25e5e4d98be01ebfc99e4de9faa03b772a04d70eeab7f1604db",
+      "bytes": 2336,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a001_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-83f6827ccac565fdb6876d5b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a013_b1_challenge.json",
+      "sha256": "cf568727df61d643185ef2b8406e6807acdc3e3e66673f278aca6e3803fea3a3",
+      "bytes": 3699,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a013_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-105412982d26244b0351ccf6",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a014_b2_challenge.json",
+      "sha256": "13f87fe4d19ce6f7e324c11a03353c7b177466dfda42d6c9fa2c3b87e16cd317",
+      "bytes": 3242,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a014_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-28edf1d32b00fc78f05cc41c",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a066_b_neutral_challenge.json",
+      "sha256": "3dc75690e3780e1eb7af46c1ee98d7da70f72d4c4828e49c861cd1065c011538",
+      "bytes": 2895,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a066_b_neutral_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4c595fd79b18dafbd1bfd441",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a119_b2_challenge.json",
+      "sha256": "904f341bfd5a966fcb2f7aef340f814b4f8c2cf973d9b22e9aa52d56ac523531",
+      "bytes": 3231,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a119_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-6a0bf9acbbfeee07e8ee64d5",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a135_b2_challenge.json",
+      "sha256": "c8bf963f4961f23332e2e404c368568e75475904036dc22de5133ce4781943c7",
+      "bytes": 2117,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a135_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-75b1bb6b813852f3fbe2b7e7",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a138_b13_challenge.json",
+      "sha256": "6d7f5412b058528b214d4a47d33cb64249d792cf7e6c22eb1455c7f699c2fa3d",
+      "bytes": 5089,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a138_b13_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-07bf7c5341db1e150e5416f2",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a163_b_off_challenge.json",
+      "sha256": "47c3382a3ca464423e1bb8df5283940012c97c4540152bcf6601d96c0202f6db",
+      "bytes": 2096,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_off_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-89764356b29d5240936bfacc",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a163_b_on_challenge.json",
+      "sha256": "1d40a18541772d66e1a24a3245a421745c79969cca3074fd8d89b715ee6b9252",
+      "bytes": 2096,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a163_b_on_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fdcbc905b7851928a2bb597f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a170_b1_challenge.json",
+      "sha256": "7da8270bf8f34932bcb3c1501a384ff9b1ad19f6bec20287386f835bc415f662",
+      "bytes": 1996,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a170_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-35803fdcd9995b344d375596",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a175_b1_challenge.json",
+      "sha256": "8bd9f0acdbb73e59b37275ef9301b231bab5fcc489424365b0efe13e238c945a",
+      "bytes": 1912,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a175_b1_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-aaa8cb4818819d1bd73d5ed5",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a175_b2_challenge.json",
+      "sha256": "ca16fcee6aed3c9281481956c77ecca52377c9396cdc83d89c9ef2d7978f704b",
+      "bytes": 1911,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a175_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-245d0ab84de3fa5d43164d16",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/am200v1_a188_b2_challenge.json",
+      "sha256": "a3c21c1d6335cc99d149513a9e31411df4ef409eff6e9eb15f302fdbd5821def",
+      "bytes": 2116,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "am200v1_a188_b2_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-bdd60f99e266bf4a7b197b8f",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a006_w0_challenge.json",
+      "sha256": "cf902ea5c243f163c1281c116a79b18c1598849213ddc6466f0e2a4248d596b6",
+      "bytes": 2337,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a006_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-e0fbc598b411f993716cd2b4",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a008_w0_challenge.json",
+      "sha256": "56376b6980f190536c80bd560195f04b4a99758cbe5bb8e21da4f08865f9e177",
+      "bytes": 2610,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a008_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-628ff62812c0e55cf94460b4",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a026_w0_challenge.json",
+      "sha256": "d45c0a16895f5d048973030a6ef8ed6b60379b98b37ef19b2bb00098fe3a4e05",
+      "bytes": 2416,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a026_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-10dbb7eaf7d0082ef2cafe3e",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a032_w0_challenge.json",
+      "sha256": "6de5d14063796c4e7e467a382b74f7bce0060a225e20757ac40d70ef749053c7",
+      "bytes": 2982,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a032_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-eb71a28e585aa2f146ebe100",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a036_w0_challenge.json",
+      "sha256": "230db6df3b4b5fff1be66821c1ec00c54ab8cef68f817ffacdd3e3dcf4fe77e0",
+      "bytes": 2404,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a036_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-b086e4e17c6c5a77febd927a",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a053_w0_challenge.json",
+      "sha256": "bc392725013da6444775c9f0266d3f46c4f220c8f87a2ad65c2b6ebe07d91658",
+      "bytes": 2437,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a053_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-831505fa57143c48d799682b",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a087_w0_challenge.json",
+      "sha256": "0150c98bb03bbd3770897d35b1de0bf54456ba58666aa73318727a5d0fe35619",
+      "bytes": 2515,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a087_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-1db05db8f355a606f263e00d",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a088_w0_challenge.json",
+      "sha256": "2b31a29eb24ab0558fc462acc2b1ffcdb083c21a2176ba3719b0c021be4714ba",
+      "bytes": 2229,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a088_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-405cb591a550c94bb52006fe",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/amreuse100_a094_w0_challenge.json",
+      "sha256": "c61d92bcbb422322f0a7cb6a2e47a9196f49906f13fecdac5842efa5ba08a3e3",
+      "bytes": 2411,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "amreuse100_a094_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4f6d780ae6956e6f8e3683bb",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/aq1a25_mc_002_w0_challenge.json",
+      "sha256": "71163654cfddad2f163ce54ff35d12d3a78459526620f088e135778afee16d1e",
+      "bytes": 2804,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "aq1a25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-afbc0614f473eb8024d0b8ca",
+      "source_root": "esi_prepares",
+      "source_path": "l1a43_20260916/compiled-v4/tro_state/aq1a25_mf_002_w0_challenge.json",
+      "sha256": "509df64a4b08b99598e0253ab6f6b229f104ab53bfd85f72692eb001c9ace289",
+      "bytes": 2233,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "aq1a25_mf_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-987ed6a1efbd56eadcc95ff3",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/task_specs.jsonl",
+      "sha256": "7ae300cff7fda173781d44e7fc2932fdf769ef9302ad12bf1a0cfc656980d32e",
+      "bytes": 309943,
+      "roles": [
+        "task_specs"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge",
+        "adonor25_mc_002_w0_challenge",
+        "adonor25_mc_004_w0_challenge",
+        "adonor25_mt_001_w0_challenge",
+        "adonor25_ne_003_w0_challenge",
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": {
+        "kind": "task_specs",
+        "ids": {
+          "adonor25_mc_001_w0_challenge": [
+            "adonor25_mc_001_w0_challenge"
+          ],
+          "adonor25_mc_002_w0_challenge": [
+            "adonor25_mc_002_w0_challenge"
+          ],
+          "adonor25_mc_004_w0_challenge": [
+            "adonor25_mc_004_w0_challenge"
+          ],
+          "adonor25_mt_001_w0_challenge": [
+            "adonor25_mt_001_w0_challenge"
+          ],
+          "adonor25_ne_003_w0_challenge": [
+            "adonor25_ne_003_w0_challenge"
+          ],
+          "adonor25_rc_004_w0_challenge": [
+            "adonor25_rc_004_w0_challenge"
+          ]
+        }
+      }
+    },
+    {
+      "key": "l1-a30-b7f6d5b28eb1eb44e6ca96b7",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/template/adonor25_mc_001_w0_challenge.json",
+      "sha256": "9e583e9a3cd20e9f08037b0a4c2507e227659e28d5923df4b19757d50e42d554",
+      "bytes": 117794,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-5aadf9d4287b114aa159c1d0",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/template/adonor25_mc_002_w0_challenge.json",
+      "sha256": "77c925fbcc642de46815c76f11fa68f087efd2ae4225b409b9eecb44aed24b4c",
+      "bytes": 243696,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-c78475c595e0757ebd3da571",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/template/adonor25_mc_004_w0_challenge.json",
+      "sha256": "84814441050c17dcf95e162c1e31570c3dae5f01039fbcf127e6481c40b0e62b",
+      "bytes": 349211,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-9633d5ebb824dc3bd2ef68cc",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/template/adonor25_mt_001_w0_challenge.json",
+      "sha256": "e183021278c2a2150bea4810c187fb83d6d101cb32343115a77b4ee59cb5ecf5",
+      "bytes": 115324,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-fa5804c0d32fa8021ba7c474",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/template/adonor25_ne_003_w0_challenge.json",
+      "sha256": "118eb6b45f4551d795374dd934c7ac4ac59ee104573e289a63f8cff506c79880",
+      "bytes": 349254,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4de2378a58e8de2cca29e716",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/template/adonor25_rc_004_w0_challenge.json",
+      "sha256": "9927ab8bbc01bb735345bd5fc82c800f4b5faa37f1271f5e3598efa13d3fb971",
+      "bytes": 163477,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f4e01cadd764489d08426361",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/tro_state/adonor25_mc_001_w0_challenge.json",
+      "sha256": "256f6b8d1f49748fbce84ac3b780411457e3f5293dfe6a54ce45b258a34d7c2b",
+      "bytes": 2725,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-5d06fe75aa551d57d751d7e5",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/tro_state/adonor25_mc_002_w0_challenge.json",
+      "sha256": "ed9415e6554f2cca1f467904bdf3337f0ed4d100861c48c55bce0da6b9c344c2",
+      "bytes": 2662,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-83e1d4924145da4b8a9b96f7",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/tro_state/adonor25_mc_004_w0_challenge.json",
+      "sha256": "4267a88c79ae04bd763c8c190945d117215b9b1b5e49283a33e88a6fb92b96bc",
+      "bytes": 2380,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-4bcd2bcd56e48f3d3dd6156f",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/tro_state/adonor25_mt_001_w0_challenge.json",
+      "sha256": "1a20ff255a7063d468477dffb6d15b5b76aa293321cca2a832cd6bf7302991c7",
+      "bytes": 2726,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-e31e8c9a2ff31514878c43ee",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/tro_state/adonor25_ne_003_w0_challenge.json",
+      "sha256": "5ec4293b44bb85675ba06e63029692b393a306ffd3767afa7b7d85a070db9052",
+      "bytes": 2429,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-70f4124febc0576a324399fa",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/frozen_extra/0e0e7eff2a53/tro_state/adonor25_rc_004_w0_challenge.json",
+      "sha256": "ffe6784d089f4d0a59efb03078efe35d387b321f4fbd8b71cdc6e72410faed17",
+      "bytes": 3236,
+      "roles": [
+        "registered_task_dependency"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-f41df2da6310f5def1be6d29",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/staged_extra/l0-04f1a111b6df63eec19dac6e64ab003dfb7e0d99bec8a499149ac5aba854a259/prepared.json",
+      "sha256": "eea706a08dc10b4180ac831ce2bd60192d703153aedf70d61e4b841b0daa18be",
+      "bytes": 8603,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "adonor25_mc_002_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-7810c2e41ba5172204cdfb33",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/staged_extra/l0-1da099c6262ba5e7aa5b419d8e4b88724eb551827797f0ae8181c4b229eab7f8/prepared.json",
+      "sha256": "30d8ca752afe14e53d64e1c2900d1e7ed3c3189323525eb50d532d22aab70d98",
+      "bytes": 8672,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "adonor25_mt_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-d4b5c8e68a2ffc936363c8e9",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/staged_extra/l0-22ae77d15c1513242905558374d2dc356e893ccb1f93917df7d4f871294c3704/prepared.json",
+      "sha256": "39c874699d4642de66575f2287661fbe43d2afa44ea76fa972d08ce700380630",
+      "bytes": 9236,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "adonor25_rc_004_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-d480841c28d275df14ebb84f",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/staged_extra/l0-6f6d8a9461de707a0b75b7deaf25b5063b17672f94f4e8948281b61a16943a0e/prepared.json",
+      "sha256": "694c5b259b9c42a64872d7632f84a1296c8a8e2311aaa4591c3f4609913e79d7",
+      "bytes": 8697,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "adonor25_ne_003_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-cbd8231193002fa38ed340f1",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/staged_extra/l0-e2b858ab894aeeacbc3b25a6137e5f6659c9a103e0bba15e1908fdc5182cab3f/prepared.json",
+      "sha256": "efd854d6446ab89c2bd4485b38811e7ef7241e5dabdaa9819a4f826b7215043e",
+      "bytes": 8672,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "adonor25_mc_001_w0_challenge"
+      ],
+      "selection": null
+    },
+    {
+      "key": "l1-a30-2176403c946356e0a83a3f1b",
+      "source_root": "human-four-collectors-20260913",
+      "source_path": "l1a/staged_extra/l0-ef0cbf7572c06776cc426df6a064c7fdcdd60111608bed1e7a4482d82107b29f/prepared.json",
+      "sha256": "6c218270176adce6450864a70322d4b9008f5522e92d544907ca9292376ef625",
+      "bytes": 8661,
+      "roles": [
+        "prepared_state"
+      ],
+      "task_ids": [
+        "adonor25_mc_004_w0_challenge"
+      ],
+      "selection": null
+    }
+  ]
+}

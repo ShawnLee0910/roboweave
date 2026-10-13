@@ -1,7 +1,7 @@
 {
   "schema_version": "esi-benchmark/source-audit-v1",
-  "files": 504,
-  "bytes": 11413617,
+  "files": 2703,
+  "bytes": 64634927,
   "secret_or_symlink_findings": [],
   "syntax_errors": [],
   "reviewed_synthetic_test_literals": [
@@ -21,6 +21,16 @@
       "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
     },
     {
+      "path": "reports/rc3/final-related.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "reports/rc3/pytest.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
       "path": "tests/test_models.py",
       "kind": "credential_url",
       "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
@@ -33,7 +43,8 @@
   ],
   "source_files_with_historical_absolute_paths": [
     "tests/test_tasks.py",
-    "tests/upstream_runtime/test_action20_placement_commit.py"
+    "tests/upstream_runtime/test_action20_placement_commit.py",
+    "tools/import_profile_sources.py"
   ],
   "coverage": [
     "src",

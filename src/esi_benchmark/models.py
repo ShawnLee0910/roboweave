@@ -1,5 +1,4 @@
-"""Thin public adapter for the frozen provider and episode implementation."""
-
+"""Public model configuration and episode APIs with isolated frozen workers."""
 from __future__ import annotations
 
 import hashlib
@@ -9,153 +8,42 @@ import os
 from pathlib import Path
 import re
 from typing import Any, Mapping
-from urllib.parse import urlsplit
 
-from .bootstrap import PROFILE, REVISIONS, activate
+from .profiles import DEFAULT_PROFILE
 
-_GENERATION = {
-    "maximum_output_tokens", "temperature", "top_p", "top_k",
-    "repetition_penalty", "preserve_thinking", "reasoning_effort",
-    "reasoning_context", "reasoning_mode", "reasoning_summary", "text_verbosity",
-}
-_MODEL_FIELDS = {"endpoint", "model", "api_key_env", "api", "timeout"} | _GENERATION
+EVIDENCE_SCHEMA = "esi-benchmark/result-evidence-v2"
 
 
-def validate_model_config(config: Mapping[str, Any]) -> dict[str, Any]:
-    """Validate configuration without reading credentials or making requests."""
-    if not isinstance(config, Mapping) or set(config) - _MODEL_FIELDS:
-        raise ValueError("Unknown or invalid model configuration fields")
-    result = dict(config)
-    for name in ("endpoint", "model"):
-        if not isinstance(result.get(name), str) or not result[name].strip():
-            raise ValueError(f"model.{name} must be a nonempty string")
-    endpoint = urlsplit(result["endpoint"])
-    if not endpoint.hostname or endpoint.username or endpoint.password or endpoint.query or endpoint.fragment:
-        raise ValueError("Model endpoint must have a host and no credentials, query or fragment")
-    key_env = result.get("api_key_env")
-    if key_env is not None and (not isinstance(key_env, str) or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key_env)):
-        raise ValueError("api_key_env must name an environment variable; never put a key in JSON")
-    result.setdefault("api", "chat_completions")
-    result.setdefault("timeout", 300)
-    if type(result["timeout"]) is not int:
-        raise ValueError("Model timeout must be an integer in [1, 900]")
-    # Reuse all frozen transport/generation checks without issuing a request.
-    _provider(result)
-    return result
-
-
-def _provider(config: Mapping[str, Any]):
-    activate()
-    from model_client import OpenAICompatibleProvider
-    return OpenAICompatibleProvider(
-        model=config["model"], base_url=config["endpoint"],
-        provider_api=config.get("api", "chat_completions"),
-        timeout_seconds=config.get("timeout", 300),
-        api_key_file=None,
-        api_key_env=config.get("api_key_env") or "ESI_UNCONFIGURED_API_KEY",
-        require_api_key=config.get("api_key_env") is not None,
-        **{key: config[key] for key in _GENERATION if key in config},
-    )
-
-
-def create_provider(config: Mapping[str, Any]):
-    """Construct the upstream transport; credentials are read only when sent."""
-    validated = validate_model_config(config)
-    provider = _provider(validated)
-    if provider.requires_api_key:
-        key_env = validated.get("api_key_env")
-        if not key_env or not os.environ.get(key_env, "").strip():
-            raise ValueError("The configured API key environment variable is unavailable")
-    return provider
+def validate_model_config(config: Mapping[str, Any], *, profile: str = DEFAULT_PROFILE) -> dict[str, Any]:
+    """Validate with the selected frozen provider without issuing a request."""
+    from .engine import call
+    if not isinstance(config, Mapping):
+        raise ValueError("Model configuration must be an object")
+    return call("validate_model", {"model_config": dict(config)}, profile=profile)
 
 
 def run_episode(
     *, model_config: Mapping[str, Any], task: Mapping[str, Any],
     ready_path: Path, runtime_root: Path, output_dir: Path,
     experiment_id: str, history_frames: int = 5, output_reserved: bool = False,
+    profile: str = DEFAULT_PROFILE,
 ) -> dict[str, Any]:
-    """Run a frozen Action20 episode on a caller-owned, independently started scene.
-
-    ``task`` contains task_id (numeric public handle), task_name, task_split,
-    task_instance_id, task_seed, instruction and optional instruction_provenance.
-    The caller owns the resident process and must always stop its own child.
-    """
-    activate()
-    from model_client import run_model_episode
-    from scene_protocol import SceneClient
-    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", experiment_id):
-        raise ValueError("Experiment ID must be a safe path component")
-    if type(task.get("task_id")) is not int or not 0 <= task["task_id"] <= 999:
-        raise ValueError("Task public handle must be an integer in [0, 999]")
-    if type(task.get("task_seed")) is not int or not 0 <= task["task_seed"] <= 0xFFFF_FFFF:
-        raise ValueError("Task seed must be an unsigned 32-bit integer")
-    for field in ("task_name", "task_split", "task_instance_id", "instruction"):
-        if not isinstance(task.get(field), str) or not task[field].strip():
-            raise ValueError(f"Frozen task is missing {field}")
-    if type(history_frames) is not int or history_frames not in {5, 20}:
-        raise ValueError("history_frames must be 5 or 20")
-    if "budget" in task and not isinstance(task["budget"], Mapping):
-        raise ValueError("Frozen task budget must be an object")
-    for name, limit in (("maximum_action_decisions", 150), ("maximum_model_calls", 30000)):
-        if type(task.get(name)) is not int or not 1 <= task[name] <= limit:
-            raise ValueError(f"Frozen task requires {name} in [1, {limit}]")
-    output_dir = Path(output_dir).resolve()
-    if type(output_reserved) is not bool:
-        raise ValueError("output_reserved must be boolean")
-    if output_reserved:
-        private = output_dir / "private"
-        inputs = private / "inputs"
-        if (not output_dir.is_dir() or set(output_dir.iterdir()) != {private}
-                or private.is_symlink() or not private.is_dir()
-                or set(private.iterdir()) != {inputs} or inputs.is_symlink() or not inputs.is_dir()):
-            raise FileExistsError("Reserved output must contain only private/inputs")
-    elif output_dir.exists():
-        raise FileExistsError("Episode output must be a new directory")
-    provider = create_provider(model_config)
-    scene = SceneClient(
-        ready_path=Path(ready_path), runtime_root=Path(runtime_root),
-        expected_task_id=task["task_id"], expected_task_name=task["task_name"],
-        expected_split=task["task_split"], expected_instance_id=task["task_instance_id"],
-    )
-    if not output_reserved:
-        output_dir.mkdir(parents=True)
-    record = {
-        "schema_version": "esi-benchmark/run-v1", "mode": "live", "profile": PROFILE,
-        "source_revisions": REVISIONS, "experiment_id": experiment_id,
-        "public_runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        "task_identity": {k: task[k] for k in ("task_id", "task_name", "task_split", "task_instance_id", "task_seed")},
-        "model": validate_model_config(model_config), "history_frames": history_frames,
-        "evaluation_variant": "frozen_history_5" if history_frames == 5 else "history_20_variant_not_baseline",
-        "maximum_action_decisions": task["maximum_action_decisions"],
-        "maximum_model_calls": task["maximum_model_calls"],
-        "evidence_scope": "live_execution_requested; inspect final private score for success",
-        "official_benchmark_eligible": False, "strict_production_eligible": False,
-        "release_qualification": "candidate_live_pending; historical release gate remains unresolved",
-    }
-    if "budget" in task:
-        record["declared_budget"] = dict(task["budget"])
-        if "wall_clock_seconds" in task["budget"]:
-            record["wall_clock_enforcement"] = "not_implemented_in_frozen_bench"
-    (output_dir / "run_record.json").write_text(json.dumps(record, indent=2) + "\n")
-    summary = run_model_episode(
-        scene=scene, provider=provider, experiment_id=experiment_id,
-        instruction=task["instruction"], task_id=task["task_id"],
-        task_name=task["task_name"], task_split=task["task_split"],
-        task_instance_id=task["task_instance_id"], task_seed=task["task_seed"],
-        instruction_provenance=task.get("instruction_provenance"),
-        maximum_action_decisions=task["maximum_action_decisions"],
-        maximum_model_calls=task["maximum_model_calls"],
-        physical_history_max=history_frames, output_dir=output_dir,
-    )
-    result = _archive_scene_result(scene.scene_run_dir, output_dir, summary, task)
-    summary = {**summary, "candidate_result": result}
-    from scene_protocol import _write_json
-    _write_json(output_dir / "summary.json", summary)
-    return {"output_dir": str(output_dir), "mode": "live", "summary": summary}
+    """Run the frozen loop in a child; the caller owns its simulator process."""
+    from .engine import call
+    if not isinstance(model_config, Mapping) or not isinstance(task, Mapping):
+        raise ValueError("Model configuration and task binding must be objects")
+    return call("episode", {
+        "model_config": dict(model_config), "task": dict(task),
+        "ready_path": str(ready_path), "runtime_root": str(runtime_root),
+        "output_dir": str(output_dir), "experiment_id": experiment_id,
+        "history_frames": history_frames, "output_reserved": output_reserved,
+    }, profile=profile)
 
 
-def recorded_score_result(score: Mapping[str, Any], episode_id: str) -> dict[str, Any]:
+def recorded_score_result(score: Mapping[str, Any], episode_id: str, *, profile: str = DEFAULT_PROFILE) -> dict[str, Any]:
     """Interpret the original final record conservatively without recomputing Q."""
+    from .tasks import profile_for
+    family = profile_for(profile)["family"]
     if not isinstance(episode_id, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", episode_id):
         raise ValueError("Final score episode identity is invalid")
     if not isinstance(score, Mapping) or score.get("episode_id") != episode_id:
@@ -178,53 +66,131 @@ def recorded_score_result(score: Mapping[str, Any], episode_id: str) -> dict[str
     success = valid and score["official_success"] and score.get("task_success", True)
     if process is not None:
         success = success and process["operational"] and process["public_process_satisfied"] and not process["errors"] and not process["violations"]
-    if score.get("native_q_alone_is_success") is False:
+    if family == "L1-P" or (family != "L2" and score.get("native_q_alone_is_success") is False):
         success = success and score.get("physical_qualification") == "PASS"
+    v_report = score.get("v_protocol")
+    if v_report is not None and (not isinstance(v_report, Mapping)
+            or type(v_report.get("v_protocol_complete")) is not bool
+            or ("operational" in v_report and type(v_report["operational"]) is not bool)):
+        raise ValueError("Final V protocol report is malformed")
+    if family == "L1-V":
+        if v_report is None:
+            raise ValueError("Final V score lacks its protocol report")
+        success = success and v_report["v_protocol_complete"] and v_report.get("operational") is not False
+    v_complete = None if v_report is None else v_report["v_protocol_complete"]
+    if family == "L1-V":
+        v_complete = v_complete and v_report.get("operational") is not False and valid
+    physical = score.get("physical_template")
+    if physical is not None and (not isinstance(physical, Mapping)
+            or type(physical.get("task_success")) is not bool):
+        raise ValueError("Final Physical template report is malformed")
+    if family == "L2":
+        if (type(score.get("task_success")) is not bool or not isinstance(score.get("status"), str)
+                or score["status"] not in {"PASS", "FAIL"}):
+            raise ValueError("Final L2 score lacks the native combined outcome")
+        # L2 end_episode has already combined its canonical, Physical and V gates.
+        success = score["task_success"] and score["status"] == "PASS" and score.get("integrity_failure") is None
+        if v_report is not None and score.get("v_protocol_complete") is not v_report["v_protocol_complete"]:
+            raise ValueError("Final L2 V completion fields disagree")
+        if physical is not None and score.get("physical_template_complete") is not physical["task_success"]:
+            raise ValueError("Final L2 Physical completion fields disagree")
+        if success and ((v_report is not None and not v_report["v_protocol_complete"])
+                        or (physical is not None and not physical["task_success"])
+                        or not score["verifier_ok"]
+                        or (process is not None and (not process["operational"] or not process["public_process_satisfied"]
+                                                    or process["errors"] or process["violations"]))):
+            raise ValueError("Final L2 combined outcome contradicts its evidence")
     return {"status": "recorded", "episode_id": episode_id, "official_q": q,
             "official_success": bool(success), "recorded_official_success": score["official_success"],
             "verifier_ok": score["verifier_ok"], "integrity_valid": score.get("integrity_failure") is None,
             "task_success": score.get("task_success"), "termination_reason": score.get("termination_reason"),
             "public_process_satisfied": None if process is None else process["public_process_satisfied"],
-            "physical_qualification": score.get("physical_qualification")}
+            "physical_qualification": score.get("physical_qualification"),
+            "v_protocol_complete": v_complete,
+            "physical_template_complete": None if physical is None else physical["task_success"]}
 
 
-def _archive_scene_result(scene_run_dir: Path, output_dir: Path, summary: Mapping[str, Any], task: Mapping[str, Any]) -> dict[str, Any]:
-    from scene_protocol import _write_json
+def _archive_scene_result(scene_run_dir: Path, output_dir: Path, summary: Mapping[str, Any], task: Mapping[str, Any],
+                          *, profile: str = DEFAULT_PROFILE) -> dict[str, Any]:
+    from .tasks import profile_for
+    family = profile_for(profile)["family"]
     root = Path(scene_run_dir).resolve()
     episode_id = summary.get("current_scene_episode_id")
     private = output_dir / "private"
-    private.mkdir(parents=True, exist_ok=True)
-    _write_json(private / "task_binding.json", dict(task))
+    private.mkdir(parents=True, mode=0o700, exist_ok=True)
+    binding = private / "task_binding.json"
+    temporary = binding.with_suffix(".json.tmp")
+    with os.fdopen(os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "w") as stream:
+        stream.write(json.dumps(dict(task), sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n")
+    temporary.replace(binding)
+    raw_binding = binding.read_bytes()
+    evidence = {"task_binding.json": {"source": str(binding), "path": "private/task_binding.json",
+                "sha256": hashlib.sha256(raw_binding).hexdigest(), "size_bytes": len(raw_binding)}}
     if episode_id is None:
         return {"status": "unavailable", "episode_id": None, "official_success": None,
-                "official_q": None, "reason": "Upstream episode failed before establishing a score identity", "evidence": {}}
+                "official_q": None, "reason": "Upstream episode failed before establishing a score identity",
+                "evidence_schema_version": EVIDENCE_SCHEMA, "evidence": evidence}
     if not isinstance(episode_id, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", episode_id):
         raise ValueError("Final scene episode identity is invalid")
-    evidence = {}
-    for name in ("final_score.json", "oracle_prepared_restore.json", "task_process_result.json"):
-        source = root / "episodes" / episode_id / "private" / name
+    scene_private = root / "episodes" / episode_id / "private"
+    names = ["final_score.json", "oracle_prepared_restore.json", "task_process_result.json",
+             "task_process_events.jsonl", "task_evidence_index.jsonl", "physical_initial_binding.json"]
+    if family in {"L1-V", "L2"}:
+        names += ["v_collection_identity.json", "v_protocol_result.json", "v_marker_bindings.jsonl"]
+        folders = ["v_intervention"] + (["l2_v"] if family == "L2" else [])
+        for folder in folders:
+            intervention = scene_private / folder
+            if intervention.is_symlink():
+                raise ValueError("Unsafe V intervention directory")
+            if intervention.is_dir():
+                for item in intervention.iterdir():
+                    if item.suffix in {".json", ".jsonl"}:
+                        names.append(str(item.relative_to(scene_private)))
+                    if len(names) > 64:
+                        raise ValueError("V archive file limit exceeded")
+    for name in names:
+        source = scene_private / name
         if not source.exists():
             continue
-        if source.is_symlink() or not source.resolve().is_relative_to(root) or not source.is_file() or source.stat().st_size > 512 * 1024:
+        limit = 32 * 1024 * 1024 if name.startswith(("v_", "l2_v/")) or source.suffix == ".jsonl" else 512 * 1024
+        if source.is_symlink() or not source.resolve().is_relative_to(root) or not source.is_file() or source.stat().st_size > limit:
             raise ValueError("Unsafe or oversized scene result evidence")
         raw = source.read_bytes()
-        value = json.loads(raw)
-        if not isinstance(value, dict):
-            raise ValueError("Scene result evidence must be a JSON object")
-        destination = private / ("scene_final_score.json" if name == "final_score.json" else name)
+        rows = [row for row in raw.splitlines() if row.strip()] if source.suffix == ".jsonl" else [raw]
+        types = (dict, list) if name == "l2_v/checkpoint_violations.json" else (dict,)
+        if any(not isinstance(json.loads(row), types) for row in rows):
+            raise ValueError("Scene result evidence has an invalid JSON structure")
+        relative = ("scene_final_score.json" if name == "final_score.json" else
+                    "v_scene/" + name if name.startswith("v_") else name)
+        destination = private / relative
+        destination.parent.mkdir(parents=True, mode=0o700, exist_ok=True)
         if destination.exists():
             if destination.is_symlink() or destination.read_bytes() != raw:
                 raise ValueError("Previously archived scene evidence differs")
         else:
-            with destination.open("xb") as stream:
+            with os.fdopen(os.open(destination, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "wb") as stream:
                 stream.write(raw)
-            destination.chmod(0o600)
         evidence[name] = {"source": str(source), "path": str(destination.relative_to(output_dir)),
-                          "sha256": hashlib.sha256(raw).hexdigest()}
+                          "sha256": hashlib.sha256(raw).hexdigest(), "size_bytes": len(raw)}
     if "final_score.json" not in evidence:
         return {"status": "unavailable", "episode_id": episode_id, "official_success": None,
-                "official_q": None, "reason": "Scene did not produce a final score", "evidence": evidence}
+                "official_q": None, "reason": "Scene did not produce a final score",
+                "evidence_schema_version": EVIDENCE_SCHEMA, "evidence": evidence}
     score = json.loads((private / "scene_final_score.json").read_text())
-    result = recorded_score_result(score, episode_id)
-    result["evidence"] = evidence
+    result = recorded_score_result(score, episode_id, profile=profile)
+    if family == "L1-V":
+        if not {"v_collection_identity.json", "v_protocol_result.json"} <= set(evidence):
+            raise ValueError("V result lacks its identity or protocol evidence")
+        identity = json.loads((output_dir / evidence["v_collection_identity.json"]["path"]).read_text())
+        report = json.loads((output_dir / evidence["v_protocol_result.json"]["path"]).read_text())
+        if (identity.get("branch") != "D1" or not isinstance(identity.get("collection_config_key"), str)
+                or not identity["collection_config_key"]
+                or score.get("collection_config_key") != identity["collection_config_key"]
+                or score.get("v_protocol") != report
+                or ("collection_config_key" in task and task["collection_config_key"] != identity["collection_config_key"])):
+            raise ValueError("V result identity or protocol binding mismatch")
+        if (summary.get("v_protocol_complete") is not result["v_protocol_complete"]
+                or summary.get("official_task_success") is not result["official_success"]):
+            raise ValueError("V native model result disagrees with its archived proof")
+    result.update(evidence=evidence, evidence_schema_version=EVIDENCE_SCHEMA)
     return result

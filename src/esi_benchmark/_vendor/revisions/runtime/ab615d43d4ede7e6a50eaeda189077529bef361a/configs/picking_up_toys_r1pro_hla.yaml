@@ -1,0 +1,155 @@
+schema_version: picking-up-toys-r1pro-hla-v1
+
+task:
+  name: picking_up_toys
+  b100_id: 7
+  mode: train
+  instance_id: 0
+  language: >-
+    Pick up all board games, jigsaw puzzles, and the tennis ball,
+    and place them completely inside the toy box.
+
+runtime:
+  gpu: 0
+  headless: true
+  reuse_g2_pass: true
+  partial_scene_load: true
+  max_steps_override: null
+  wrapper: omnigibson.eval.wrappers.RGBDFullResWrapper
+  write_video: true
+  video_fps: 30
+  artifact_root: >-
+    ./artifacts/picking_up_toys_r1pro_v1
+
+observation:
+  schema_version: r1pro-rgbd-observation-v1
+  proprio_dim: 61
+  cam_rel_pose_dim: 21
+  head_resolution: [720, 720]
+  wrist_resolution: [480, 480]
+  minimum_depth_finite_ratio: 0.95
+
+action:
+  dimension: 23
+  enabled:
+    - move_forward
+    - move_backward
+    - move_left
+    - move_right
+    - turn_left
+    - turn_right
+    - look_up
+    - look_down
+    - look_center
+    - grasp_at
+    - place_inside_at
+    - release
+    - stop
+
+g1:
+  simulator_steps: 8
+  server_host: 127.0.0.1
+  server_port: 0
+  open_gripper_command: 1.0
+
+g2:
+  command_frequency_hz: 30
+  translation_command: 0.20
+  rotation_command: 0.20
+  translation_steps: 30
+  rotation_steps: 20
+  stop_steps: 5
+  minimum_translation_m: 0.05
+  minimum_rotation_rad: 0.08
+  maximum_z_drift_m: 0.02
+  maximum_roll_pitch_rad: 0.05
+  collision_slow_clearance_m: 0.80
+  collision_probe_command: 0.04
+  collision_contact_probe_steps: 6
+  blocked_window_steps: 6
+  blocked_max_public_speed: 0.02
+  blocked_max_displacement_m: 0.008
+  blocked_search_max_steps: 1080
+  reset_invariant:
+    position_tolerance_m: 0.03
+    orientation_tolerance_rad: 0.05
+    joint_tolerance_rad: 0.05
+
+g3a:
+  translate:
+    neutral: 0.50
+    incremental_down: 0.60
+    incremental_up: 0.40
+  max_torso_delta_per_step: 0.025
+  profile_tolerance_rad: 0.04
+  max_profile_steps: 90
+  settle_steps: 8
+  minimum_head_rgb_mad: 2.0
+  maximum_arm_drift_rad: 0.05
+  maximum_z_drift_m: 0.02
+  maximum_roll_pitch_rad: 0.05
+
+g4a_approach:
+  enabled: true
+  calibration_segment: true
+  model: qwen3.8-max-preview
+  temperature: 0.1
+  top_p: 0.9
+  maximum_model_calls: 32
+  maximum_invalid_responses: 2
+  maximum_consecutive_same_action: 6
+  maximum_consecutive_blocked: 3
+  maximum_grasp_queries: 8
+  maximum_grasp_executions: 1
+  maximum_simulator_steps: 2400
+  prompt_history_items: 8
+  translations_after_out_of_reach: 2
+  minimum_effective_translation_m: 0.05
+  tokenplan_wall_timeout_seconds: 180
+  base:
+    translation_command: 0.20
+    rotation_command: 0.20
+    forward_slow_command: 0.04
+    forward_slow_clearance_m: 0.80
+    forward_hard_stop_clearance_m: 0.45
+    translation_steps: 30
+    forward_slow_steps: 90
+    rotation_steps: 20
+    settle_steps: 4
+    stall_warmup_steps: 6
+    stall_window_steps: 6
+    stall_speed_threshold: 0.02
+    minimum_completed_translation_m: 0.05
+    minimum_partial_translation_m: 0.005
+    minimum_completed_rotation_deg: 3.0
+    minimum_partial_rotation_deg: 0.5
+  look:
+    translate_up: 0.40
+    translate_center: 0.50
+    translate_down: 0.60
+    maximum_steps: 90
+    settle_steps: 4
+    tolerance_rad: 0.04
+    maximum_delta_per_step: 0.025
+
+g4a:
+  scored_main_protocol: false
+  calibration_segment: true
+  camera: head
+  hand: right
+  tennis_ball_point: [0.782, 0.543]
+  point_source: tokenplan_qwen3.8_max_previous_same_seed_head_observation
+  depth_radius_px: 1
+  minimum_depth_m: 0.05
+  maximum_depth_m: 5.0
+  maximum_depth_spread_m: 0.10
+  maximum_horizontal_reach_m: 0.90
+  minimum_target_height_m: 0.20
+  maximum_target_height_m: 1.50
+  grasp_approach_clearance_m: 0.01
+  post_grasp_lift_m: 0.10
+  settle_steps: 8
+  maximum_generator_steps: 900
+  maximum_base_xy_drift_m: 0.01
+  maximum_z_drift_m: 0.02
+  maximum_roll_pitch_rad: 0.05

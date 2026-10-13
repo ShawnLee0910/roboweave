@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "profile": "l1-v30",
+  "python": "3.12.9",
+  "packages": {
+    "esi-benchmark": "0.1.0rc3",
+    "numpy": "1.26.4",
+    "Pillow": "11.3.0",
+    "PyYAML": "6.0.3"
+  },
+  "source_revisions": {
+    "bench": "d8ae5151fadfb3338d122fdb12b26051ed753852",
+    "runtime": "918aefd40beb72368126cc3fa2891bbb732ad490"
+  },
+  "source_verification": {
+    "profile": "l1-v30",
+    "status": "PASS",
+    "sources": {
+      "bench": {
+        "revision": "d8ae5151fadfb3338d122fdb12b26051ed753852",
+        "manifest_sha256": "9a9799ec0e6433cf2d7c0612ef333ea82e02dd7c8ba3a95930ab02a037aa20ed",
+        "file_count": 42,
+        "status": "PASS"
+      },
+      "runtime": {
+        "revision": "918aefd40beb72368126cc3fa2891bbb732ad490",
+        "manifest_sha256": "2faab9550171cf0a41d31993ff49f9b3676ff91f40c2d5476f9291d59aee5058",
+        "file_count": 325,
+        "status": "PASS"
+      }
+    }
+  },
+  "source_roots": {
+    "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/bench/d8ae5151fadfb3338d122fdb12b26051ed753852",
+    "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490"
+  },
+  "live_status": "not tested; separate simulator, assets and owned GPU required"
+}

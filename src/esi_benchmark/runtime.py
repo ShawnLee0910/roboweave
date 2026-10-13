@@ -17,7 +17,7 @@ import subprocess
 import sys
 from typing import Any, Mapping
 
-from .bootstrap import activate, PROFILE, REVISIONS
+from .profiles import DEFAULT_PROFILE, source_roots, source_revisions, verify_sources
 
 OFFICIAL_REVISION = "802356a83d210a42bb6bfde93544bda4e33124e1"
 MDL_SHA256 = {
@@ -36,20 +36,13 @@ def _jsonable(value):
     return value
 
 
-def verify_runtime_sources() -> dict[str, Any]:
-    root = activate()["runtime_root"]
+def verify_runtime_sources(profile=DEFAULT_PROFILE) -> dict[str, Any]:
+    report = verify_sources(profile)
+    root = source_roots(profile)["runtime_root"]
     identity = json.loads((root / "SOURCE_IDENTITY.json").read_text())
-    if identity.get("upstream_revision") != REVISIONS["runtime"]:
-        raise ValueError("runtime source revision differs from the selected profile")
-    files = identity["files"]
-    for relative, expected in files.items():
-        path = (root / relative).resolve()
-        if not path.is_relative_to(root) or not path.is_file():
-            raise ValueError("runtime source file is missing or escaped its bundle")
-        if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
-            raise ValueError(f"runtime source changed: {relative}")
-    return {"upstream_revision": identity["upstream_revision"], "files_verified": len(files),
-            "candidate_adaptations": identity["candidate_adaptations"]}
+    return {"upstream_revision": identity["upstream_revision"], "files_verified": len(identity["files"]),
+            "candidate_adaptations": identity["candidate_adaptations"], "profile": profile,
+            "source_verification": report}
 
 
 def _file(path, label):
@@ -76,19 +69,32 @@ def _official_identity(root: Path):
                               capture_output=True, text=True, timeout=15).stdout.strip()
     if revision != OFFICIAL_REVISION:
         raise ValueError("external BEHAVIOR checkout does not match the frozen dependency revision")
-    dirty = subprocess.run(git + ["status", "--porcelain", "--untracked-files=no"], check=True,
+    dirty = subprocess.run(git + ["status", "--porcelain=v1", "--untracked-files=normal"], check=True,
                            capture_output=True, text=True, timeout=15).stdout
     if dirty.strip():
-        raise ValueError("external BEHAVIOR checkout has tracked changes")
+        raise ValueError("external BEHAVIOR checkout has tracked or untracked changes")
     return revision
 
 
 def _launch_inputs(task_inputs):
-    required = ("handoff_json", "prepared_index_json", "model_task", "instruction_id")
+    entrypoint = task_inputs.get("entrypoint", "prepared")
+    entry_fields = _entry_files(entrypoint)
+    required = (*entry_fields, "model_task", "instruction_id")
     if any(key not in task_inputs for key in required):
-        raise ValueError("task inputs require materialized handoff, prepared index, model_task and instruction_id")
-    return {**{key: _jsonable(task_inputs[key]) for key in required},
-            "materialization_receipt": task_inputs.get("materialization_receipt")}
+        raise ValueError("task inputs lack the selected entrypoint files or model identity")
+    fields = {key for key in task_inputs if key.endswith(("_json", "_jsonl"))}
+    fields.update({"profile", "entrypoint", "model_task", "instruction_id", "materialization_receipt",
+                   "source_task_identity", "scene_model", "action_mode", "public_config_id", "native_args"})
+    return {**{key: _jsonable(task_inputs[key]) for key in fields if key in task_inputs},
+            "entrypoint": entrypoint, "materialization_receipt": task_inputs.get("materialization_receipt")}
+
+
+def _entry_files(entrypoint):
+    if entrypoint in {"prepared", "physical_collection"}:
+        return ("handoff_json", "prepared_index_json")
+    if entrypoint == "v_collection":
+        return ("v_collection_binding_json",)
+    raise ValueError(f"Unsupported frozen scene entrypoint: {entrypoint}")
 
 
 def runtime_plan(config: Mapping[str, Any], task_inputs: Mapping[str, Any]) -> dict[str, Any]:
@@ -97,8 +103,8 @@ def runtime_plan(config: Mapping[str, Any], task_inputs: Mapping[str, Any]) -> d
     validate_config(dict(config))
     if config["mode"] != "live":
         raise ValueError("runtime launch requires mode=live")
-    roots = activate(config["profile"])
-    source = verify_runtime_sources()
+    roots = source_roots(config["profile"])
+    source = verify_runtime_sources(config["profile"])
     runtime = config["runtime"]
     workspace = Path(runtime["workspace"]).resolve()
     output_root = Path(config["run"]["output_root"]).resolve()
@@ -142,14 +148,14 @@ def runtime_plan(config: Mapping[str, Any], task_inputs: Mapping[str, Any]) -> d
         raise ValueError("NVIDIA Vulkan driver ICD is missing; set runtime.vulkan_icd")
     icd = _file(icd, "runtime.vulkan_icd")
     launch_inputs = _launch_inputs(task_inputs)
-    for key in ("handoff_json", "prepared_index_json"):
+    for key in _entry_files(launch_inputs["entrypoint"]):
         _file(launch_inputs[key], key)
     task = launch_inputs["model_task"]
     if type(task.get("task_id")) is not int or type(task.get("task_seed")) is not int:
         raise ValueError("frozen public task handle and seed must be integers")
     scene_root = workspace / "scene"
-    from scene_protocol import control_socket_path
-    control_socket_path(scene_root)
+    if len(os.fsencode(scene_root / "s")) > 107:
+        raise ValueError("Owned scene socket path exceeds the Unix socket address limit")
     paths = [Path(__file__).resolve().parents[1], roots["bench_root"], roots["bench_root"] / "lab",
              roots["runtime_root"] / "src", roots["runtime_root"] / "scripts",
              behavior / "OmniGibson", behavior / "bddl3", behavior / "joylo"]
@@ -200,7 +206,7 @@ def launch_runtime(config, task_inputs) -> subprocess.Popen:
         (workspace / name).mkdir(mode=0o700)
     for filename in MDL_SHA256:
         shutil.copyfile(Path(config["runtime"]["mdl_root"]) / filename, workspace / "materials" / filename)
-    shutil.copyfile(activate()["runtime_root"] / "configs/materials/behavior_hl_vray_roughness.mdl",
+    shutil.copyfile(source_roots(config["profile"])["runtime_root"] / "configs/materials/behavior_hl_vray_roughness.mdl",
                     workspace / "materials/behavior_hl_vray_roughness.mdl")
     stripped = {"CUDA_VISIBLE_DEVICES", "VCUDA_PORT", "LOCAL_HOST_IP", "PYTHONPATH", "LD_PRELOAD",
                 "HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy",
@@ -257,7 +263,7 @@ def _verify_materialized_inputs(inputs):
         if hashlib.sha256(member.read_bytes()).hexdigest() != row["derived_sha256"]:
             raise ValueError("materialized input changed after preparation")
         members.add(member)
-    if any(Path(inputs[key]).resolve() not in members for key in ("handoff_json", "prepared_index_json")):
+    if any(Path(inputs[key]).resolve() not in members for key in _entry_files(inputs.get("entrypoint", "prepared"))):
         raise ValueError("launcher input is absent from its materialization receipt")
 
 
@@ -280,8 +286,9 @@ def _main(argv=None):
     args = parser.parse_args(argv)
     payload = json.loads(args.launch_json)
     runtime, inputs = payload["runtime"], payload["task_inputs"]
+    from ._native.bootstrap import activate
     activate(payload["profile"])
-    verify_runtime_sources()
+    verify_runtime_sources(payload["profile"])
     _verify_materialized_inputs(inputs)
     if sys.version_info[:2] != (3, 11):
         raise ValueError("Live requires the frozen Python 3.11 environment")
@@ -298,19 +305,23 @@ def _main(argv=None):
         if util.find_spec(module) is None:
             raise ValueError(f"Live dependency is missing: {module}")
     _verify_launch_device(runtime)
-    from instruction_handoff import native_instruction_arguments
+    from .adapters import inspect_inputs
     from package_scene_server import main as package_main
+    inputs = inspect_inputs(payload["profile"], inputs)
     task = inputs["model_task"]
-    native = native_instruction_arguments(Path(inputs["handoff_json"]), inputs["instruction_id"])
-    return package_main([
-        "--handoff", inputs["handoff_json"], "--instruction-id", inputs["instruction_id"],
-        "--prepared-state-index", inputs["prepared_index_json"], "--public-task-id", str(task["task_id"]),
+    arguments = ["--instruction-id", inputs["instruction_id"], "--public-task-id", str(task["task_id"]),
         "--runtime-root", str(Path(runtime["workspace"]) / "scene"),
         "--worker-id", "public-single-scene", "--physical-gpu", str(runtime["gpu"]),
         "--server-port", str(runtime["server_port"]), "--seed", str(task["task_seed"]),
-        "--artifact-root", str(Path(runtime["workspace"]) / "scene/simulator"),
-        "--task-names", inputs["instruction_id"], *native,
-    ])
+        "--artifact-root", str(Path(runtime["workspace"]) / "scene/simulator")]
+    if inputs["entrypoint"] == "v_collection":
+        arguments += ["--v-collection-binding", inputs["v_collection_binding_json"],
+                      "--public-config-id", inputs["public_config_id"],
+                      "--registered-public-action20-marker-se2-navigation"]
+    else:
+        arguments += ["--handoff", inputs["handoff_json"], "--prepared-state-index", inputs["prepared_index_json"],
+                      "--task-names", inputs["instruction_id"], *inputs["native_args"]]
+    return package_main(arguments)
 
 
 if __name__ == "__main__":

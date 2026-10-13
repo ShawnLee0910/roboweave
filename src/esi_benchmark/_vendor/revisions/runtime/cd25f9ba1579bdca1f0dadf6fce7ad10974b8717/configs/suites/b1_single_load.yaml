@@ -1,0 +1,77 @@
+schema_version: behavior2026.b1-single-load-runner/v3
+# Physical GPU ownership belongs to the immutable per-run WorkerSpec.
+physical_gpu: worker_spec
+scene_load_budget: 1
+evaluator_instances: 1
+automatic_retry: false
+empty_close_minimum_trials: 3
+empty_close_maximum_false_positives: 0
+post_calibration_in_memory_resets: 1
+official_challenge_eligible: false
+maximum_grasp_base_position_drift_m: 0.01
+maximum_grasp_base_orientation_drift_rad: 0.01
+
+# The local Oracle websocket is a private control boundary.  Route and
+# inventory precomputation may block its handler for longer than the official
+# policy timeout, so both sides explicitly disable websocket keepalive.  This
+# setting is not imported by the QA benchmark or the official evaluator.
+websocket_keepalive:
+  scope: private_oracle
+  client:
+    ping_interval_s: null
+    ping_timeout_s: null
+  server:
+    ping_interval_s: null
+    ping_timeout_s: null
+  reason: long_cpu_precompute
+  qa_default_unchanged: true
+
+stage_order:
+  - capture_pre_calibration_reset_state
+  - observation_only_approach
+  - candidate_proposal
+  - empty_wrist_negative_calibration
+  - physical_grasp_lift
+  - safe_carry_g3b
+  - freeze_calibration_records
+  - author_and_freeze_single_leaf_witness
+  - same_scene_episode_reset
+  - capture_post_reset_state
+  - private_reset_attestation
+  - build_b1_dispatcher
+  - build_b1_service_factory
+  - build_b1_resident_episode
+  - run_b1_resident_episode
+
+# These are admission thresholds, not a fixed safe-carry pose.  The pose must
+# be proposed from the live robot state and pass official collision-aware IK.
+safe_carry_limits:
+  max_retract_steps: 180
+  g3b_stages: [neutral, downward, neutral_return]
+  # Default CarrySafetyLimits requires 42 ticks for the largest neutral ↔
+  # downward torso-joint delta at 0.025 rad/tick.  Fifty leaves margin for
+  # physical tracking while remaining bounded.
+  samples_per_stage: 50
+  arm_tolerance_rad: 0.05
+  eef_position_tolerance_m: 0.03
+  eef_orientation_tolerance_deg: 4.0
+  minimum_object_lift_m: 0.05
+  maximum_payload_linear_speed_mps: 0.05
+  maximum_payload_angular_speed_radps: 0.10
+  maximum_base_z_drift_m: 0.02
+  maximum_abs_roll_pitch_deg: 3.0
+
+reset_tolerances:
+  base_position_m: 0.03
+  base_orientation_rad: 0.05
+  joint_position_rad: 0.05
+  stable_state_numeric_abs: 0.00001
+
+# These references establish why an in-memory reset should restore the loaded
+# task instance.  The private attestation is still mandatory and authoritative.
+official_reset_semantics_source_refs:
+  evaluator_reset: OmniGibson/omnigibson/eval/evaluator.py:395
+  instance_initial_file_update: OmniGibson/omnigibson/eval/evaluator.py:333
+  task_reset: OmniGibson/omnigibson/tasks/task_base.py:208
+  task_reset_scene: OmniGibson/omnigibson/tasks/task_base.py:176
+  scene_hard_reset: OmniGibson/omnigibson/scenes/scene_base.py:728

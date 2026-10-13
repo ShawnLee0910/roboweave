@@ -1,0 +1,173 @@
+{
+  "schema_version": "esi-benchmark/score-result-v1",
+  "mode": "cpu-record-replay",
+  "route": "official_projection",
+  "truth_source": "supplied-records",
+  "snapshots": [
+    {
+      "operational": true,
+      "success": false,
+      "q_score": 1.0,
+      "initial_goal_satisfied": false,
+      "current_goal_satisfied": true,
+      "clause_reports": [
+        {
+          "index": 0,
+          "canonical_predicate": "inside",
+          "quantifier": "ALL_LISTED",
+          "required_count": 1,
+          "matched_count": 1,
+          "matched_targets": [
+            "toy"
+          ],
+          "matched_destination": null,
+          "satisfied": true,
+          "initial_matched_count": 0,
+          "required_slot_count": 1,
+          "eligible_count": 1,
+          "new_credit": 1,
+          "credit_destination": null,
+          "new_credit_relations": [
+            {
+              "target": "toy",
+              "destination": "box"
+            }
+          ]
+        }
+      ],
+      "stability": {
+        "required": 2,
+        "consecutive": 1,
+        "current_goal_satisfied": true,
+        "complete": false
+      },
+      "regressions": [],
+      "early_done": false,
+      "errors": []
+    },
+    {
+      "operational": true,
+      "success": true,
+      "q_score": 1.0,
+      "initial_goal_satisfied": false,
+      "current_goal_satisfied": true,
+      "clause_reports": [
+        {
+          "index": 0,
+          "canonical_predicate": "inside",
+          "quantifier": "ALL_LISTED",
+          "required_count": 1,
+          "matched_count": 1,
+          "matched_targets": [
+            "toy"
+          ],
+          "matched_destination": null,
+          "satisfied": true,
+          "initial_matched_count": 0,
+          "required_slot_count": 1,
+          "eligible_count": 1,
+          "new_credit": 1,
+          "credit_destination": null,
+          "new_credit_relations": [
+            {
+              "target": "toy",
+              "destination": "box"
+            }
+          ]
+        }
+      ],
+      "stability": {
+        "required": 2,
+        "consecutive": 2,
+        "current_goal_satisfied": true,
+        "complete": true
+      },
+      "regressions": [],
+      "early_done": false,
+      "errors": []
+    }
+  ],
+  "canonical": {
+    "operational": true,
+    "success": true,
+    "q_score": 1.0,
+    "initial_goal_satisfied": false,
+    "current_goal_satisfied": true,
+    "clause_reports": [
+      {
+        "index": 0,
+        "canonical_predicate": "inside",
+        "quantifier": "ALL_LISTED",
+        "required_count": 1,
+        "matched_count": 1,
+        "matched_targets": [
+          "toy"
+        ],
+        "matched_destination": null,
+        "satisfied": true,
+        "initial_matched_count": 0,
+        "required_slot_count": 1,
+        "eligible_count": 1,
+        "new_credit": 1,
+        "credit_destination": null,
+        "new_credit_relations": [
+          {
+            "target": "toy",
+            "destination": "box"
+          }
+        ]
+      }
+    ],
+    "stability": {
+      "required": 2,
+      "consecutive": 2,
+      "current_goal_satisfied": true,
+      "complete": true
+    },
+    "regressions": [],
+    "early_done": false,
+    "errors": []
+  },
+  "process": null,
+  "final": {
+    "operational": true,
+    "success": true,
+    "q_score": 1.0,
+    "initial_goal_satisfied": false,
+    "current_goal_satisfied": true,
+    "clause_reports": [
+      {
+        "index": 0,
+        "canonical_predicate": "inside",
+        "quantifier": "ALL_LISTED",
+        "required_count": 1,
+        "matched_count": 1,
+        "matched_targets": [
+          "toy"
+        ],
+        "matched_destination": null,
+        "satisfied": true,
+        "initial_matched_count": 0,
+        "required_slot_count": 1,
+        "eligible_count": 1,
+        "new_credit": 1,
+        "credit_destination": null,
+        "new_credit_relations": [
+          {
+            "target": "toy",
+            "destination": "box"
+          }
+        ]
+      }
+    ],
+    "stability": {
+      "required": 2,
+      "consecutive": 2,
+      "current_goal_satisfied": true,
+      "complete": true
+    },
+    "regressions": [],
+    "early_done": false,
+    "errors": []
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "esi-benchmark/rc3-acceptance-v1",
+  "status": "CPU_SOURCE_WHEEL_SDIST_PASS",
+  "candidate_version": "0.1.0rc3",
+  "scope": "Local review candidate; implementation, CPU contracts and distribution checks. No simulator environment reproduction or Live.",
+  "task_count": 257,
+  "execution_profiles": 8,
+  "source_bundles": 13,
+  "model_harness": "common",
+  "tests": {
+    "integrated": {
+      "passed": 1196,
+      "skipped": 3,
+      "failed": 0,
+      "report": "reports/rc3/pytest.xml"
+    },
+    "final_related": {
+      "passed": 259,
+      "skipped": 0,
+      "failed": 0,
+      "report": "reports/rc3/final-related.xml"
+    },
+    "distinct_passing_test_identities_across_runs": 1275,
+    "accounting": "Final related checks cover the changed public interfaces after the integrated collection; repeated identities are counted once."
+  },
+  "new_private_input_cpu_checks": {
+    "AMV": 90,
+    "P_and_L2": 67,
+    "total": 157,
+    "temporary_private_inputs_removed": true
+  },
+  "historical_L0_input_checks": {
+    "count": 100,
+    "report": "reports/TASK_ASSET_CPU_VALIDATION.json",
+    "repeated_this_revision": false
+  },
+  "L0_behavior_equivalence": {
+    "passed": 75,
+    "differences": 0,
+    "report": "reports/rc3/EQUIVALENCE.json"
+  },
+  "wheel_validation": "reports/rc3/WHEEL_VALIDATION.json",
+  "source_archive_validation": "reports/rc3/SDIST_VALIDATION.json",
+  "source_and_distribution_audit": "reports/rc3/SOURCE_AUDIT.json",
+  "source_preservation": "reports/rc3/SOURCE_PRESERVATION.json",
+  "live_validation": "NOT_RUN",
+  "new_simulator_environment_created": false,
+  "gpu_or_real_model_calls": 0,
+  "official_benchmark_eligible": false,
+  "strict_production_eligible": false,
+  "published_or_pushed": false,
+  "limitations": [
+    "CPU fixtures and static metadata checks do not prove scene restoration, physics, provider interoperability or Live task success.",
+    "Historical CODEX/AgentCLI harnesses and outer controllers are not exposed by this Common entrypoint.",
+    "L0/L1 wall time is a declared field without a loop consumer; L2 uses its historical conditional safe-point watchdog, with the original observation-to-signal race.",
+    "Licensing and private-input redistribution remain unresolved; self-contained artifact hashes do not authenticate a recording."
+  ],
+  "source_archive": {
+    "status": "PASS",
+    "tests_passed": 77,
+    "payload_files_equal_current_source": 2573,
+    "artifact": {
+      "name": "esi_benchmark-0.1.0rc3.tar.gz",
+      "sha256": "6a722307e24fa0131e6e62d2c08df24857d00d56fecd35de4a866761953f2d87",
+      "bytes": 12150458,
+      "members": 2872
+    }
+  }
+}

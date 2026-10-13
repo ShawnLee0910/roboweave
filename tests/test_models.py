@@ -1,8 +1,9 @@
 import json
 import pytest
 
-from esi_benchmark.models import create_provider, validate_model_config, run_episode
-from esi_benchmark.bootstrap import activate
+from esi_benchmark.models import validate_model_config, run_episode
+from esi_benchmark._native.models import create_provider
+from esi_benchmark._native.bootstrap import activate
 
 
 def test_explicit_key_selection_never_falls_back(monkeypatch):
@@ -81,3 +82,114 @@ def test_reserved_output_rejects_previous_run_artifacts(tmp_path):
     with pytest.raises(FileExistsError, match='private/inputs'):
         run_episode(model_config={}, task=task, ready_path=tmp_path/'runtime/scene/ready.json',
                     runtime_root=tmp_path/'runtime', output_dir=output, experiment_id='test', output_reserved=True)
+
+
+def test_profile_specific_scores_preserve_physical_and_v_gates(monkeypatch):
+    from esi_benchmark.models import recorded_score_result
+    from esi_benchmark import tasks
+    score = {'episode_id': 'example', 'official_q': 1.0, 'official_success': True,
+             'verifier_ok': True, 'task_success': True}
+    monkeypatch.setattr(tasks, 'profile_for', lambda profile: {'family': profile})
+    assert recorded_score_result(score, 'example', profile='L1-P')['official_success'] is False
+    assert recorded_score_result({**score, 'physical_qualification': 'PASS'}, 'example', profile='L1-P')['official_success'] is True
+    with pytest.raises(ValueError, match='protocol'):
+        recorded_score_result(score, 'example', profile='L1-V')
+    incomplete = {**score, 'v_protocol': {'v_protocol_complete': False, 'operational': True}}
+    assert recorded_score_result(incomplete, 'example', profile='L1-V')['official_success'] is False
+
+
+def test_l2_uses_its_combined_score_without_p30_qualification(monkeypatch):
+    from esi_benchmark.models import recorded_score_result
+    from esi_benchmark import tasks
+    monkeypatch.setattr(tasks, 'profile_for', lambda profile: {'family': 'L2'})
+    score = {'episode_id': 'example', 'official_q': 1, 'official_success': True,
+             'verifier_ok': True, 'task_success': True, 'status': 'PASS',
+             'physical_template': {'task_success': True}, 'physical_template_complete': True,
+             'native_q_alone_is_success': False,
+             'v_protocol': {'v_protocol_complete': True}, 'v_protocol_complete': True}
+    result = recorded_score_result(score, 'example', profile='l2-example')
+    assert result['official_success'] is True and result['physical_qualification'] is None
+    assert result['physical_template_complete'] is True and result['v_protocol_complete'] is True
+    with pytest.raises(ValueError, match='disagree'):
+        recorded_score_result({**score, 'physical_template_complete': False}, 'example', profile='l2-example')
+    failed = {**score, 'task_success': False, 'status': 'FAIL'}
+    assert recorded_score_result(failed, 'example', profile='l2-example')['official_success'] is False
+
+
+def test_v_archive_preserves_bound_jsonl_and_rejects_summary_disagreement(tmp_path):
+    from esi_benchmark.models import _archive_scene_result
+    scene = tmp_path/'scene'
+    source = scene/'episodes/example/private'
+    source.mkdir(parents=True)
+    report = {'v_protocol_complete': True, 'operational': True}
+    score = {'episode_id': 'example', 'official_q': 1, 'official_success': True,
+             'verifier_ok': True, 'collection_config_key': 'v-example', 'v_protocol': report}
+    identity = {'branch': 'D1', 'collection_config_key': 'v-example', 'package_id': 'v-package'}
+    for name, value in [('final_score.json', score), ('v_collection_identity.json', identity),
+                        ('v_protocol_result.json', report)]:
+        (source/name).write_text(json.dumps(value))
+    marker_raw = b'{"id":"private-marker"}\n'
+    (source/'v_marker_bindings.jsonl').write_bytes(marker_raw)
+    (source/'v_intervention').mkdir()
+    (source/'v_intervention/events.jsonl').write_text('{"event":"recorded"}\n')
+    summary = {'current_scene_episode_id': 'example', 'v_protocol_complete': True, 'official_task_success': True}
+    result = _archive_scene_result(scene, tmp_path/'run', summary,
+                                   {'collection_config_key': 'v-example'}, profile='l1-v30')
+    assert result['official_success'] is True
+    assert 'v_intervention/events.jsonl' in result['evidence']
+    assert (tmp_path/'run/private/v_scene/v_marker_bindings.jsonl').read_bytes() == marker_raw
+    with pytest.raises(ValueError, match='disagrees'):
+        _archive_scene_result(scene, tmp_path/'failed', {**summary, 'v_protocol_complete': False},
+                              {'collection_config_key': 'v-example'}, profile='l1-v30')
+
+
+def test_l2_archive_keeps_native_process_and_intervention_records(tmp_path, monkeypatch):
+    from esi_benchmark.models import _archive_scene_result
+    from esi_benchmark import tasks
+    monkeypatch.setattr(tasks, 'profile_for', lambda profile: {'family': 'L2'})
+    private = tmp_path/'scene/episodes/example/private'
+    (private/'l2_v').mkdir(parents=True)
+    report = {'v_protocol_complete': True}
+    score = {'episode_id': 'example', 'official_q': 1, 'official_success': True,
+             'verifier_ok': True, 'task_success': True, 'status': 'PASS',
+             'v_protocol': report, 'v_protocol_complete': True}
+    (private/'final_score.json').write_text(json.dumps(score))
+    (private/'l2_v/final.json').write_text(json.dumps(report))
+    (private/'l2_v/checkpoint_violations.json').write_text('[]\n')
+    process = b'{"actor":"AGENT","event_id":1}\n'
+    (private/'task_process_events.jsonl').write_bytes(process)
+    result = _archive_scene_result(tmp_path/'scene', tmp_path/'run',
+        {'current_scene_episode_id': 'example'}, {}, profile='l2-example')
+    assert result['official_success'] is True
+    assert set(result['evidence']) == {'final_score.json', 'task_binding.json', 'task_process_events.jsonl',
+                                      'l2_v/final.json', 'l2_v/checkpoint_violations.json'}
+    assert (tmp_path/'run/private/task_process_events.jsonl').read_bytes() == process
+    assert (tmp_path/'run/private/l2_v/checkpoint_violations.json').read_text() == '[]\n'
+
+
+@pytest.mark.parametrize('profile,paused', [('l0-english-v2', False), ('l2-collection37', True)])
+def test_only_l2_restores_historical_common_pause_semantics(tmp_path, monkeypatch, profile, paused):
+    from types import SimpleNamespace
+    from esi_benchmark._native import models
+    import model_client
+    import scene_protocol
+    captured = {}
+    monkeypatch.setattr(models, 'activate', lambda profile: None)
+    monkeypatch.setattr(models, 'create_provider', lambda config: SimpleNamespace())
+    monkeypatch.setattr(models, 'validate_model_config', lambda config: dict(config))
+    monkeypatch.setattr(models, '_archive_scene_result', lambda *args, **kwargs: {'status': 'unavailable'})
+    monkeypatch.setattr(scene_protocol, 'SceneClient', lambda **kwargs: SimpleNamespace(scene_run_dir=tmp_path/'scene'))
+    def episode(**kwargs):
+        captured.update(kwargs)
+        return {'status': 'PAUSED_INTERRUPTED'}
+    monkeypatch.setattr(model_client, 'run_model_episode', episode)
+    task = {'task_id': 0, 'task_name': 'test', 'task_split': 'train', 'task_instance_id': '0',
+            'task_seed': 0, 'instruction': 'test', 'maximum_action_decisions': 300, 'maximum_model_calls': 3810,
+            'budget': {'wall_clock_seconds': 7200}}
+    result = models.run_episode(model_config={'model': 'fixture'}, task=task,
+        ready_path=tmp_path/'scene/ready.json', runtime_root=tmp_path/'scene', output_dir=tmp_path/'run',
+        experiment_id='test', profile=profile)
+    assert captured.get('pause_on_client_failure', False) is paused
+    assert result['summary']['status'] == 'PAUSED_INTERRUPTED'
+    record = json.loads((tmp_path/'run/run_record.json').read_text())
+    assert ('safe_point_watchdog' in record['wall_clock_enforcement']) is paused

@@ -1,0 +1,289 @@
+{
+  "schema_version": "esi-benchmark/source-audit-v1",
+  "files": 2703,
+  "bytes": 64634927,
+  "secret_or_symlink_findings": [],
+  "syntax_errors": [],
+  "reviewed_synthetic_test_literals": [
+    {
+      "path": "reports/pytest.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "reports/rc2/pytest.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "reports/rc2/sdist-pytest.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "reports/rc3/final-related.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "reports/rc3/pytest.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "tests/test_models.py",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    },
+    {
+      "path": "tests/upstream_bench/test_model_protocol_retry.py",
+      "kind": "provider_key",
+      "literal_sha256": "d7741caceb829b07fe116f5ba10ea4415e361d02efbedddd352674b25b678ced"
+    }
+  ],
+  "source_files_with_historical_absolute_paths": [
+    "tests/test_tasks.py",
+    "tests/upstream_runtime/test_action20_placement_commit.py",
+    "tools/import_profile_sources.py"
+  ],
+  "coverage": [
+    "src",
+    "configs",
+    "examples",
+    "docs",
+    "provenance",
+    "reports",
+    "tests",
+    "tools"
+  ],
+  "limits": "Pattern scan, not proof of absence of every possible credential. Historical path references require reachability review.",
+  "supplementary_source_review": {
+    "registered_bundle_files": 2434,
+    "registered_bundle_bytes": 52594633,
+    "file_suffix_counts": {
+      ".py": 2276,
+      ".json": 40,
+      ".txt": 6,
+      ".yaml": 98,
+      ".mdl": 7,
+      ".toml": 7
+    },
+    "credential_literal_ast_findings": [],
+    "private_nonloopback_url_literal_findings": [],
+    "syntax_scope": "All registered Python bundle files",
+    "unregistered_vendor_files": [],
+    "forbidden_asset_or_private_artifact_names": [],
+    "private_state_top_level_schema_findings": [],
+    "mdl_files": [
+      {
+        "path": "src/esi_benchmark/_vendor/runtime/configs/materials/behavior_hl_vray_roughness.mdl",
+        "suffix": ".mdl",
+        "bytes": 4254,
+        "sha256": "0f3383bff3764c03c70d6f497800af87931289f85765c28236c8cf3a7880a605"
+      },
+      {
+        "path": "src/esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/configs/materials/behavior_hl_vray_roughness.mdl",
+        "suffix": ".mdl",
+        "bytes": 4254,
+        "sha256": "0f3383bff3764c03c70d6f497800af87931289f85765c28236c8cf3a7880a605"
+      },
+      {
+        "path": "src/esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/configs/materials/behavior_hl_vray_roughness.mdl",
+        "suffix": ".mdl",
+        "bytes": 4254,
+        "sha256": "0f3383bff3764c03c70d6f497800af87931289f85765c28236c8cf3a7880a605"
+      },
+      {
+        "path": "src/esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/configs/materials/behavior_hl_vray_roughness.mdl",
+        "suffix": ".mdl",
+        "bytes": 4254,
+        "sha256": "0f3383bff3764c03c70d6f497800af87931289f85765c28236c8cf3a7880a605"
+      },
+      {
+        "path": "src/esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/configs/materials/behavior_hl_vray_roughness.mdl",
+        "suffix": ".mdl",
+        "bytes": 4254,
+        "sha256": "0f3383bff3764c03c70d6f497800af87931289f85765c28236c8cf3a7880a605"
+      },
+      {
+        "path": "src/esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/configs/materials/behavior_hl_vray_roughness.mdl",
+        "suffix": ".mdl",
+        "bytes": 4254,
+        "sha256": "0f3383bff3764c03c70d6f497800af87931289f85765c28236c8cf3a7880a605"
+      },
+      {
+        "path": "src/esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/configs/materials/behavior_hl_vray_roughness.mdl",
+        "suffix": ".mdl",
+        "bytes": 4254,
+        "sha256": "0f3383bff3764c03c70d6f497800af87931289f85765c28236c8cf3a7880a605"
+      }
+    ],
+    "restricted_nvidia_modules_distributed": false,
+    "material_adapter_note": "Only the existing runner-owned BehaviorHL material adapter is included, with original author attribution; distribution licensing still requires confirmation. Its dependencies vray_maps.mdl and vray_materials.mdl are external and excluded."
+  },
+  "distribution_boundary": {
+    "manifest_file_sha256": "dc31210bd986d7550cbe72ea08854e4d401a2f86af18ee4493a4365971700b62",
+    "pyproject_sha256": "d1605bf72e09596ae22a22a60343dcada0c0d8e82ebfb0956e027c67f3d6891d",
+    "wheel_data_patterns": [
+      "_vendor/**/*",
+      "data/**/*"
+    ],
+    "sdist_private_temp_directories_included": false,
+    "source_payload_inventory": "Source code, frozen evaluator configuration, source identities, public task catalog and private-asset path/hash manifests only; no imported private task asset files or raw run data.",
+    "canonical_goal_configuration": "The existing b100 evaluator profiles include canonical goals and task identities as evaluator code/config. Their tro_state fields are string references, not initial-state payloads. They are not presented as model-visible observations. Redistribution licensing remains unresolved.",
+    "actual_rc3_wheel_check": {
+      "artifact": "dist/esi_benchmark-0.1.0rc3-py3-none-any.whl",
+      "sha256": "bd83e054152ec6e1b2a8817b31d34bbaf0c9af5fda796eced24bcb08e086f590",
+      "source_byte_mismatches": [],
+      "private_asset_payload_matches": [],
+      "restricted_mdl_hash_matches": [],
+      "private_state_schema_findings": [],
+      "forbidden_artifact_names": [],
+      "secret_pattern_findings": [],
+      "symlinks_or_unsafe_members": [],
+      "zip_integrity": "PASS",
+      "members": 2489,
+      "uncompressed_bytes": 55535188,
+      "package_members": 2483,
+      "missing_expected_package_files": [],
+      "unexpected_package_files": [],
+      "metadata_members": [
+        "esi_benchmark-0.1.0rc3.dist-info/METADATA",
+        "esi_benchmark-0.1.0rc3.dist-info/RECORD",
+        "esi_benchmark-0.1.0rc3.dist-info/WHEEL",
+        "esi_benchmark-0.1.0rc3.dist-info/entry_points.txt",
+        "esi_benchmark-0.1.0rc3.dist-info/licenses/LICENSE_STATUS.md",
+        "esi_benchmark-0.1.0rc3.dist-info/top_level.txt"
+      ],
+      "private_asset_hashes_compared": 2109,
+      "package_suffix_counts": {
+        ".py": 2299,
+        ".yaml": 98,
+        ".json": 66,
+        ".toml": 7,
+        ".txt": 6,
+        ".mdl": 7
+      },
+      "metadata_identity": "PASS",
+      "status": "PASS",
+      "reviewed_asset_hash_matches_to_evaluator_source": [
+        {
+          "sha256": "be2f435dc785d13bc501da0f85e1f279114348bc57360ca287ddbe08d4c9f098",
+          "wheel_members": [
+            "esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+            "esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+            "esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+            "esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+            "esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+            "esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+            "esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py"
+          ],
+          "asset_references": [
+            {
+              "profile": "l0-english-v2",
+              "source_path": "BEHAVIOR-HL-action20-solmax-master53-20260823/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+              "roles": [
+                "task_spec_dependency"
+              ]
+            },
+            {
+              "profile": "l0-english-v2",
+              "source_path": "action20/runtime-consolidated-20260910/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+              "roles": [
+                "task_spec_dependency"
+              ]
+            },
+            {
+              "profile": "l1-v30",
+              "source_path": "v-r4-pizza-microwave-20260913/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+              "roles": [
+                "v_variant_grounder_evidence"
+              ]
+            }
+          ]
+        },
+        {
+          "sha256": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff",
+          "wheel_members": [
+            "esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+            "esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+            "esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+            "esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+            "esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+            "esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+            "esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py"
+          ],
+          "asset_references": [
+            {
+              "profile": "l0-english-v2",
+              "source_path": "scripts/l0_verifier_adapter.py",
+              "roles": [
+                "historical_evidence",
+                "task_spec_dependency"
+              ]
+            },
+            {
+              "profile": "l0-english-v2",
+              "source_path": "action20-capability-benchmark/l0-expansion-v1/scripts/l0_verifier_adapter.py",
+              "roles": [
+                "task_spec_dependency"
+              ]
+            }
+          ]
+        },
+        {
+          "sha256": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0",
+          "wheel_members": [
+            "esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+            "esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+            "esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+            "esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+            "esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+            "esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+            "esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py"
+          ],
+          "asset_references": [
+            {
+              "profile": "l0-english-v2",
+              "source_path": "action20/runtime-consolidated-20260910/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+              "roles": [
+                "task_spec_dependency"
+              ]
+            }
+          ]
+        },
+        {
+          "sha256": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb",
+          "wheel_members": [
+            "esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/runtime/verification.py",
+            "esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/runtime/verification.py",
+            "esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/runtime/verification.py",
+            "esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/runtime/verification.py",
+            "esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/runtime/verification.py",
+            "esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/runtime/verification.py",
+            "esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/runtime/verification.py"
+          ],
+          "asset_references": [
+            {
+              "profile": "l0-english-v2",
+              "source_path": "BEHAVIOR-HL-action20-solmax-master53-20260823/src/behavior_hl/embodied/runtime/verification.py",
+              "roles": [
+                "task_spec_dependency"
+              ]
+            },
+            {
+              "profile": "l0-english-v2",
+              "source_path": "action20/runtime-consolidated-20260910/src/behavior_hl/embodied/runtime/verification.py",
+              "roles": [
+                "task_spec_dependency"
+              ]
+            }
+          ]
+        }
+      ],
+      "reviewed_hash_match_basis": "Four exact evaluator-source contents occur both in frozen source bundles and in asset manifests as verifier dependency/evidence references. Every wheel occurrence equals its registered SOURCE_IDENTITY hash. These are evaluator code, not imported private input/state/trajectory payloads."
+    }
+  },
+  "scan_phase": "Final distributable source, documentation and test-report scan after business-code freeze; later changes limited to source-archive build logs, final hash inventory and local commit.",
+  "status": "PASS"
+}

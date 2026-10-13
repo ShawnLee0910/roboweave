@@ -2333,7 +2333,7 @@
     "source_path": "tests/embodied/test_resident_oracle_deadline.py",
     "source_sha256": "383812780e7ae1f4ef6f272ba47b2390f67cf45d195de90d6b8bee8ebe051a54",
     "destination": "tests/upstream_runtime/test_resident_oracle_deadline.py",
-    "changes": "activate installed vendor source in CPU subprocess tests"
+    "changes": "activate installed vendor source in CPU subprocess tests; rc3: standalone CPU child explicitly uses private native bootstrap"
   },
   {
     "source_root": "/liyuanshuai/worktrees/action20/unified-runtime-collection-20260917",

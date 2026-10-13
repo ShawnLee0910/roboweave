@@ -6,7 +6,7 @@ import sys
 
 import pytest
 
-from esi_benchmark.bootstrap import activate
+from esi_benchmark._native.bootstrap import activate
 
 
 def test_installed_bundle_locations():
@@ -73,7 +73,7 @@ def _isolated_python(script, tmp_path, *arguments):
     assert result.returncode == 0, result.stdout + result.stderr
 
 
-@pytest.mark.parametrize("entrypoint", ["activate", "doctor"])
+@pytest.mark.parametrize("entrypoint", ["activate"])
 def test_rejects_preloaded_protocol_with_different_tolerance(tmp_path, entrypoint):
     bench = activate()["bench_root"]
     source = (bench / "agent_protocol.py").read_text()
@@ -85,7 +85,7 @@ import sys
 sys.path[:0] = [sys.argv[1], sys.argv[2]]
 import agent_protocol
 assert agent_protocol._NAVIGATION_DISTANCE_ABS_TOL_M == 0.02
-from esi_benchmark.bootstrap import activate
+from esi_benchmark._native.bootstrap import activate
 from esi_benchmark.cli import doctor
 try:
     {"activate": activate, "doctor": doctor}[sys.argv[3]]()
@@ -97,14 +97,14 @@ assert sys.modules["agent_protocol"] is agent_protocol
 """, tmp_path, tmp_path, bench, entrypoint)
 
 
-@pytest.mark.parametrize("entrypoint", ["activate", "doctor"])
+@pytest.mark.parametrize("entrypoint", ["activate"])
 def test_rejects_foreign_runtime_submodule_in_isolated_process(tmp_path, entrypoint):
     foreign = tmp_path / "l0_verifier_adapter.py"
     foreign.write_text("EXTERNAL_SOURCE = True\n")
     _isolated_python("""
 import importlib.util
 import sys
-from esi_benchmark.bootstrap import activate
+from esi_benchmark._native.bootstrap import activate
 from esi_benchmark.cli import doctor
 activate()
 import behavior_hl.embodied.evaluator_bridge
@@ -127,7 +127,7 @@ assert sys.modules[name] is module
 def test_normal_namespace_and_repeated_doctor_in_isolated_process(tmp_path):
     _isolated_python("""
 import sys
-from esi_benchmark.bootstrap import activate
+from esi_benchmark._native.bootstrap import activate
 from esi_benchmark.cli import doctor
 roots = activate()
 import lab

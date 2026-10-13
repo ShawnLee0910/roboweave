@@ -1,4 +1,8 @@
-# Independent integration review
+# Initial L0 integration review (historical)
+
+This retained rc1/L0 review is historical evidence. The rc2 fixes are recorded in
+[FIXES_RC2.md](FIXES_RC2.md); current rc3 scope and acceptance belong in
+[Validation](VALIDATION.md) and [Support matrix](SUPPORT_MATRIX.md).
 
 A separate read-only review traced public task selection through resource
 relocation, the original scene loader, model execution and result inspection.
@@ -24,5 +28,6 @@ interrupted startup recording were checked in the coordinator's final integratio
 
 The review ran no simulator, GPU, model request, SSH or resident connection.
 CPU integration and wheel acceptance results are in [VALIDATION.md](VALIDATION.md).
-This review is not a Live qualification or an approval of other task-family
-execution profiles.
+This original review is not evidence for rc3's added task-family integration and
+is not a Live qualification. New profile implementations have separate CPU
+checks and remain Live-unverified.

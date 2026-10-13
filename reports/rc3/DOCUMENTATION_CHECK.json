@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "documents": 25,
+  "local_links": 157,
+  "missing": [],
+  "scope": "Local Markdown target paths, excluding remote URLs and in-file anchors."
+}

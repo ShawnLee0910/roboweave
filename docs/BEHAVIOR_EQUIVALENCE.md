@@ -1,7 +1,9 @@
 # Fixed-input behavior equivalence
 
-The candidate matches **75 fixed-input CPU comparison cases** from the frozen
-L0 English-v2 implementation. The reference was independently extracted with
+The retained L0 reference suite contains **75 fixed-input CPU comparison cases**
+from the frozen L0 English-v2 implementation. Its historical passing receipt is
+preserved; [Validation](VALIDATION.md) identifies the latest candidate run.
+This suite does not establish equivalence for all eight rc3 profiles. The reference was independently extracted with
 `git show`, run in another Python process, and compared with the installed
 candidate. Expected results are not hand-authored and were not generated from
 the candidate implementation.
@@ -79,6 +81,8 @@ These checks establish CPU behavior preservation for the selected source profile
 and samples. They do **not** prove simulator geometry, visual rendering in Kit,
 asset admission, live object binding, endpoint transport, full task success,
 all failure/recovery paths, or any other task family's historical source profile.
-Process checks exercise this runtime's available CPU process auditor; they do not
-claim L1-family release support. See the Live validation checklist for the
+These process cases exercise the L0 bundle's available CPU auditor. The separate
+rc3 family adapters, source snapshots and v2 history-record tests are outside this
+75-case reference comparison; their support and acceptance are documented in
+[Support matrix](SUPPORT_MATRIX.md) and [Validation](VALIDATION.md). See the Live validation checklist for the
 remaining independent environment acceptance work.

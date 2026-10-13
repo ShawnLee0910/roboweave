@@ -1,0 +1,10 @@
+profile_id: r1pro_rgbd_fullres
+wrapper: behavior_hl.embodied.evaluator_bridge.camera_only_rgbd_wrapper.CameraOnlyRGBDWrapper
+cameras:
+  - head
+  - left_wrist
+  - right_wrist
+modalities:
+  - rgb
+  - depth_linear
+privileged_task_observation: false

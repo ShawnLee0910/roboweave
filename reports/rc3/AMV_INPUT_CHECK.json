@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-13T04:49:25.757349+00:00",
+  "scope": "CPU-only frozen import, relocation and native static contract loading; no simulator or model requests",
+  "live_verified": false,
+  "new_reproduction_environment_created": false,
+  "source_revisions": {
+    "l1-a30": {
+      "bench": "1d76bc5dc53b1995f2e7c301cb06569bcf0c4923",
+      "runtime": "cd25f9ba1579bdca1f0dadf6fce7ad10974b8717"
+    },
+    "l1-m30-public-v2": {
+      "bench": "fb1cf143f850fe43a04d25440f07cbfab4007093",
+      "runtime": "918aefd40beb72368126cc3fa2891bbb732ad490"
+    },
+    "l1-v30": {
+      "bench": "d8ae5151fadfb3338d122fdb12b26051ed753852",
+      "runtime": "918aefd40beb72368126cc3fa2891bbb732ad490"
+    }
+  },
+  "manifest_sha256": {
+    "l1-a30": "293967bb586d1444e77205189141ff45dcc12a18bb084581d9d6f5de8bd17504",
+    "l1-m30-public-v2": "a976aefe47278f5fe4629a05242283b5b7d0f737a11fedd9d5a76f423123908b",
+    "l1-v30": "44f7f7e1836bee3ec00dadfa5a6e8b3d7a41ec98a7a63f00772ee49c1326f826"
+  },
+  "initial_full_pass": {
+    "l1-a30": {
+      "passed": 30,
+      "total": 30
+    },
+    "l1-m30-public-v2": {
+      "passed": 28,
+      "total": 30
+    },
+    "l1-v30": {
+      "passed": 30,
+      "total": 30
+    }
+  },
+  "repair": "Compact relocated JSON preserves the frozen 2 MiB donor-evidence loader bound; no limit was relaxed.",
+  "targeted_rechecks": [
+    {
+      "task": "mnext40_m2_05_w0_challenge",
+      "ok": true,
+      "split": "train",
+      "full_static_contract_check": true
+    },
+    {
+      "task": "mnext40_m2_06_w0_challenge",
+      "ok": true,
+      "split": "train",
+      "full_static_contract_check": true
+    },
+    {
+      "task": "v_r1_009fa3663b7a70babc33",
+      "ok": true,
+      "split": "train",
+      "full_static_contract_check": true
+    }
+  ],
+  "final_passed_task_count": 90,
+  "source_access_guard": {
+    "apis": [
+      "Path.read_bytes",
+      "Path.read_text"
+    ],
+    "allowed_root": "candidate repository including temporary private materializations",
+    "outside_reads": "rejected"
+  },
+  "private_cleanup": {
+    "targeted_temporary_directory_removed": true,
+    "remaining_owned_temporary_directories": []
+  },
+  "limitations": [
+    "No Live restoration or action execution",
+    "No model/provider request",
+    "No external simulator environment installation",
+    "A30 and M28 passed the initial full static check; M2 was rechecked after compact JSON repair, and V30 was fully rechecked after explicit installed-Runtime relocation and private V identity binding. No Live claim is made."
+  ],
+  "v_runtime_recheck": {
+    "checked_at": "2026-10-13T04:52:44.606054+00:00",
+    "passed": 30,
+    "total": 30,
+    "checks": [
+      "V binding Runtime root equals installed profile source root",
+      "Original verify_runtime including immutable source manifest verification",
+      "Original V native package, prepared state and registration checks",
+      "Private model task V identity equals expected scene binding"
+    ],
+    "results": [
+      {
+        "task": "v_r1_009fa3663b7a70babc33",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_25fc0ce8ba03d64ea6c2",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_2373323e0729d87f0195",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_0793884ee9f063c6cba5",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_11e4bbc746c511485929",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_2d65e1a57a1a096ed661",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_591d957b65772a5d4f8d",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_5a96afabde314c2b7614",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_5b824cc5b550c44b8098",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_6f3e6cb8fbb8afc89ca8",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_83f56527dfdceb9f84f8",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_8be587c5fe314c773b4d",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_99eb0a305f369e2d75c5",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_9a0d97cd649d2c253952",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r3_e70ed977f20fbceb675d",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_b340e1bfb7224624bb7a",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_b68b5b3956cd89d69edb",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_b7260e2156f3bc2bcc52",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_d201a7daee10f8580147",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_db5559c86842f5eed6de",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_e489c4b726b1764e7058",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r4_dcf3d11c92b764f5ec5a",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_eb8b59b19d295bd238b4",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_f17bdad75deb5ffc5f88",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_f924e48d6166e35902e2",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r1_ff701387c27e0288ed9c",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r3_5cf68617cffd2394095e",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r3_9709d48d010a8064a454",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r4_123e331416c2ad87c414",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      },
+      {
+        "task": "v_r4_ac6f0b3583ee1afe98b8",
+        "ok": true,
+        "split": "train",
+        "installed_runtime_verified": true,
+        "private_v_identity_bound": true
+      }
+    ],
+    "temporary_directory_removed": true
+  },
+  "code_sha256": {
+    "src/esi_benchmark/adapters/amv.py": "95c7d79be32d0b44bfc4840bf3080d53cab8285a5c59776e541ddfebca4095f4",
+    "src/esi_benchmark/assets.py": "647d4747cb041f7431b635f59c8efc9318b7f2d0d7f786b530048f3bd85eec1d",
+    "tools/build_amv_asset_manifests.py": "cf7d55b2c5676a7fb3bc86cc8ee38111089ece0108cf48efa1d7cb6a513a7925"
+  },
+  "public_identity_recheck": {
+    "checked_at": "2026-10-13T05:02:31.448264+00:00",
+    "passed": 30,
+    "total": 30,
+    "method": "Executed the frozen scene_server.status public identity expressions with all 30 public catalog rows, without importing or starting the simulator service.",
+    "public_task_id": "source.row_index (0..29)",
+    "public_task_name": "collection_config_key (public task_id)",
+    "native_task_identity": "inputs.instruction_id and v_identity.task_spec_id remain runtime_instruction_id",
+    "identity_field_shape_checked": 30,
+    "identity_field_shape_result": "historical_oracle_runtime_revision null or 40 lowercase hex; v_package_sha256 64 lowercase hex; source_oracle_success boolean",
+    "distributable_amv_tests": {
+      "passed": 14,
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q tests/test_amv_adapter.py"
+    },
+    "private_assets_reimported": false,
+    "live": false
+  }
+}

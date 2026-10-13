@@ -1,0 +1,55 @@
+profile_id: r1pro_esi_marker_symbolic_action23_v1
+action_schema_version: behavior2026-r1pro-esi-marker-symbolic-action23-v1
+execution_fidelity: kinematic_research
+official_challenge_eligible: false
+validation_scope: public_model_integration
+actions:
+  - move_forward
+  - move_backward
+  - move_left
+  - move_right
+  - turn_left
+  - turn_right
+  - move_up
+  - move_down
+  - look_up
+  - look_down
+  - mark_visible_objects
+  - pick
+  - release
+  - place_inside
+  - place_on_top
+  - place_next_to
+  - place_under
+  - place_touching
+  - open
+  - close
+  - toggle_on
+  - toggle_off
+  - wait
+bindings:
+  move_up: physical_r1pro_torso_height_up
+  move_down: physical_r1pro_torso_height_down
+  look_up: physical_r1pro_camera_pitch_up_15deg
+  look_down: physical_r1pro_camera_pitch_down_15deg
+  mark_visible_objects: official_instance_segmentation_bbox_overlay
+  pick: official_symbolic_grasp_same_frame_marker
+  release: official_symbolic_release_implicit_hand
+  place_inside: official_symbolic_place_inside_same_frame_marker
+  place_on_top: p5_canonical_on_top_same_frame_marker
+  place_next_to: p5_canonical_next_to_same_frame_marker
+  place_under: canonical_under_default_region_same_frame_marker
+  place_touching: canonical_touching_default_region_same_frame_marker
+  open: official_symbolic_open_same_frame_marker
+  close: official_symbolic_close_same_frame_marker
+  toggle_on: official_symbolic_toggle_on_same_frame_marker
+  toggle_off: official_symbolic_toggle_off_same_frame_marker
+  wait: fixed_30_step_physical_hold
+forbidden:
+  - stop
+  - put_back
+  - navigate_to
+  - teleport_navigation
+  - free_viewer_camera_motion
+  - world_coordinate_arguments
+  - task_truth_to_model

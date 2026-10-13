@@ -12,7 +12,7 @@ import shutil
 import pytest
 
 from esi_benchmark import assets
-from esi_benchmark.bootstrap import activate
+from esi_benchmark._native.bootstrap import activate
 from esi_benchmark.tasks import list_tasks
 
 

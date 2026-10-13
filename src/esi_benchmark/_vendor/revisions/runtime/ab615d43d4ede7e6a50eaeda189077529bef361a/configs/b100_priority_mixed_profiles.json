@@ -1,0 +1,96 @@
+{
+  "schema_version": "behavior2026.priority-mixed-profile-catalog/v1",
+  "task_count": 2,
+  "tasks": [
+    {
+      "task_name": "clean_up_your_desk",
+      "task_id": 29,
+      "task_language": "Put the desk items in their required destinations and leave the laptop closed.",
+      "scene_model": "house_single_floor",
+      "split": "train",
+      "instance_id": 0,
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_single_floor/json/house_single_floor_task_clean_up_your_desk_instances/house_single_floor_task_clean_up_your_desk_0_0_template-tro_state.json",
+      "graspable_synsets": [
+        "folder.n.02",
+        "laptop.n.01",
+        "paperback_book.n.01",
+        "pen.n.01",
+        "pencil.n.01",
+        "pencil_box.n.01",
+        "stapler.n.01"
+      ],
+      "container_synsets": [
+        "bookcase.n.01",
+        "desk.n.01",
+        "laptop.n.01",
+        "pencil_box.n.01"
+      ],
+      "public_category_by_synset": {
+        "folder.n.02": "folder",
+        "laptop.n.01": "laptop",
+        "paperback_book.n.01": "paperback_book",
+        "pen.n.01": "pen",
+        "pencil.n.01": "pencil",
+        "pencil_box.n.01": "pencil_box",
+        "stapler.n.01": "stapler"
+      },
+      "expected_graspable_count": 10,
+      "expected_container_count": 4,
+      "expected_admitted_count": 12,
+      "expected_goal_leaf_count": 11,
+      "canonical_option_index": 0,
+      "canonical_goal_leaves": [
+        ["inside", "folder.n.02_1", "bookcase.n.01_1"],
+        ["inside", "folder.n.02_2", "bookcase.n.01_1"],
+        ["inside", "pen.n.01_1", "pencil_box.n.01_1"],
+        ["inside", "pen.n.01_2", "pencil_box.n.01_1"],
+        ["inside", "paperback_book.n.01_1", "bookcase.n.01_1"],
+        ["inside", "paperback_book.n.01_2", "bookcase.n.01_1"],
+        ["inside", "pencil.n.01_1", "pencil_box.n.01_1"],
+        ["ontop", "stapler.n.01_1", "desk.n.01_1"],
+        ["ontop", "pencil_box.n.01_1", "desk.n.01_1"],
+        ["ontop", "laptop.n.01_1", "desk.n.01_1"],
+        ["not", ["open", "laptop.n.01_1"]]
+      ],
+      "goal_signatures": ["MixedInsideOnTopClosed"]
+    },
+    {
+      "task_name": "putting_away_Halloween_decorations",
+      "task_id": 2,
+      "task_language": "Put all pumpkins and candles inside a cabinet, put the caldron next to a table, and leave every cabinet closed.",
+      "scene_model": "house_double_floor_lower",
+      "split": "train",
+      "instance_id": 0,
+      "tro_state": "/liyuanshuai/esibench_l20_bundle_20260526/BEHAVIOR-1K-2026-data/2026-challenge-task-instances/scenes/house_double_floor_lower/json/house_double_floor_lower_task_putting_away_Halloween_decorations_instances/house_double_floor_lower_task_putting_away_Halloween_decorations_0_0_template-tro_state.json",
+      "graspable_synsets": [
+        "caldron.n.01",
+        "candle.n.01",
+        "pumpkin.n.02"
+      ],
+      "container_synsets": [
+        "cabinet.n.01",
+        "table.n.02"
+      ],
+      "public_category_by_synset": {
+        "caldron.n.01": "caldron",
+        "candle.n.01": "candle",
+        "pumpkin.n.02": "pumpkin"
+      },
+      "expected_graspable_count": 6,
+      "expected_container_count": 2,
+      "expected_admitted_count": 8,
+      "expected_goal_leaf_count": 7,
+      "canonical_option_index": 0,
+      "canonical_goal_leaves": [
+        ["inside", "pumpkin.n.02_1", "cabinet.n.01_1"],
+        ["inside", "pumpkin.n.02_2", "cabinet.n.01_1"],
+        ["inside", "candle.n.01_1", "cabinet.n.01_1"],
+        ["inside", "candle.n.01_2", "cabinet.n.01_1"],
+        ["inside", "candle.n.01_3", "cabinet.n.01_1"],
+        ["nextto", "caldron.n.01_1", "table.n.02_1"],
+        ["not", ["open", "cabinet.n.01_1"]]
+      ],
+      "goal_signatures": ["MixedInsideNextToClosed"]
+    }
+  ]
+}

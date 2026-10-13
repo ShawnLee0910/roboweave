@@ -1,0 +1,21 @@
+{
+  "checks": {
+    "bench": {
+      "head_unchanged": true,
+      "tracked_status_unchanged": true,
+      "modified_file_hashes_unchanged": true
+    },
+    "runtime": {
+      "head_unchanged": true,
+      "tracked_status_unchanged": true,
+      "modified_file_hashes_unchanged": true
+    },
+    "tasks": {
+      "head_unchanged": true,
+      "tracked_status_unchanged": true,
+      "modified_file_hashes_unchanged": true
+    }
+  },
+  "scope": "Compare the original three source roots against their initial snapshot: HEAD, tracked status and originally modified tracked file hashes. Additional revision imports are read-only Git blobs with individual provenance hashes, not a before/after inventory of all external state.",
+  "no_gpu_scene_model_or_service_calls": true
+}

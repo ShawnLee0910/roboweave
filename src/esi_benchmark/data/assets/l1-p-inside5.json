@@ -1,0 +1,1134 @@
+{
+  "schema_version": 2,
+  "profile": "l1-p-inside5",
+  "source_roots": [
+    "action20-capability-benchmark",
+    "esi_prepares",
+    "worktrees"
+  ],
+  "private_assets_not_distributed": true,
+  "files": [
+    {
+      "key": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/instructions.json",
+      "source_root": "action20-capability-benchmark",
+      "source_path": "benchmark/L1-P-FINAL/model_batch_20260924/inside/instructions.json",
+      "sha256": "f2e16b2c57f697299ee73af2dc2f5148826309a6000b989c4dde962c9cb8a6d4",
+      "bytes": 1558,
+      "roles": [
+        "instruction_review"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914",
+        "p50_inside_012_20260914",
+        "p70_new_031_20260915",
+        "pnext40_001_20260916",
+        "pnext40_010_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/tasks.json",
+      "source_root": "action20-capability-benchmark",
+      "source_path": "benchmark/L1-P-FINAL/model_batch_20260924/inside/tasks.json",
+      "sha256": "e869f521a27d670fb2265a1cd025bdcf8e1b8b7e1d9c64a623362dd32b9d63ad",
+      "bytes": 4245,
+      "roles": [
+        "release_tasks"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914",
+        "p50_inside_012_20260914",
+        "p70_new_031_20260915",
+        "pnext40_001_20260916",
+        "pnext40_010_20260916"
+      ],
+      "selection": {
+        "kind": "release_tasks",
+        "ids": {
+          "p50_inside_010_20260914": [
+            "p50_inside_010_20260914"
+          ],
+          "p50_inside_012_20260914": [
+            "p50_inside_012_20260914"
+          ],
+          "p70_new_031_20260915": [
+            "p70_new_031_20260915"
+          ],
+          "pnext40_001_20260916": [
+            "pnext40_001_20260916"
+          ],
+          "pnext40_010_20260916": [
+            "pnext40_010_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/catalog.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/catalog.json",
+      "sha256": "e3e41d9e0869ae4d556166ae5cde709aa39291d5567fb2208825b6a9d3ccbd4b",
+      "bytes": 11545,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "p50_inside_010_20260914": [
+            "p50_inside_010_20260914"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/handoff.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/handoff.json",
+      "sha256": "60b5804a92e74af3b0af0b71e6359b879688cb6ce4a8752cfcf519e20039fee7",
+      "bytes": 2134,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "p50_inside_010_20260914": [
+            "p50_inside_010_20260914"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/initial_template.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/initial_template.json",
+      "sha256": "57e4f4298b6601270e2d9fc16d147ee1dfe94821f234f7b3bd45041089aafee3",
+      "bytes": 690487,
+      "roles": [
+        "template"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/initial_tro.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/initial_tro.json",
+      "sha256": "2ec1fd7189aa7ee5e6857c78ce24e6c0c6aad95691d49752f0fa23f285d835af",
+      "bytes": 2712,
+      "roles": [
+        "tro_state"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/package.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/package.json",
+      "sha256": "7722493de306ea651447c413fe6a35b44bfd316e3d5096b4ead5266a0566f750",
+      "bytes": 2184,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "p50_inside_010_20260914": [
+            "p50_inside_010_20260914"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/prepared/index.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/prepared/index.json",
+      "sha256": "6b9d8d293e98873b51f7448720d23cc03d3c4b3da2af53e08e8e0da13884e9e0",
+      "bytes": 430,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "p50_inside_010_20260914": [
+            "p50_inside_010_20260914"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/handoff.json",
+          "task_ids": [
+            "p50_inside_010_20260914"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/prepared/p50_inside_010_20260914.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/prepared/p50_inside_010_20260914.json",
+      "sha256": "358427028095d258d39af0045ba06882aabb7ac65d1fa56f8e248b984ab9ee0e",
+      "bytes": 9205,
+      "roles": [
+        "prepared_bundle"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/task_specs.jsonl",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/task_specs.jsonl",
+      "sha256": "59be00878ff4cdc5fac2402c4e4eb6848456ee1a6bceb5118ab2f3c440d80a8d",
+      "bytes": 18061,
+      "roles": [
+        "task_specs"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": {
+        "kind": "task_specs",
+        "ids": {
+          "p50_inside_010_20260914": [
+            "p50_inside_010_20260914"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/catalog.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/catalog.json",
+      "sha256": "bb1fafb3082033a8608c6c56d956e51e031999294e406dd570a8a6a892f1bf99",
+      "bytes": 11543,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "p50_inside_012_20260914": [
+            "p50_inside_012_20260914"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/handoff.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/handoff.json",
+      "sha256": "2433fae44e02be7920c5b6bf5fc60f3e21f74e9c774f820a593a887b998b3ed7",
+      "bytes": 2134,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "p50_inside_012_20260914": [
+            "p50_inside_012_20260914"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/initial_template.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/initial_template.json",
+      "sha256": "940efba69b6d2796aa7d615e80971b657155817e2d8d54b2ea159bf9f4faf34a",
+      "bytes": 690366,
+      "roles": [
+        "template"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/initial_tro.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/initial_tro.json",
+      "sha256": "c7fa24c659253f37e0db6cb79cb39f3e30d0d424db88f1e5b7b4e78c4bfad59c",
+      "bytes": 2603,
+      "roles": [
+        "tro_state"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/package.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/package.json",
+      "sha256": "5e272afe339966ca571f51f8aef9acc35fec82578d604fad7f647c4e1eb64718",
+      "bytes": 2184,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "p50_inside_012_20260914": [
+            "p50_inside_012_20260914"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/prepared/index.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/prepared/index.json",
+      "sha256": "3a3b4cad7fc528d8fe1f450a1bee27c9d7272b9f94ccca5be57c246082299530",
+      "bytes": 430,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "p50_inside_012_20260914": [
+            "p50_inside_012_20260914"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/handoff.json",
+          "task_ids": [
+            "p50_inside_012_20260914"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/prepared/p50_inside_012_20260914.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/prepared/p50_inside_012_20260914.json",
+      "sha256": "a5745c13acfbc2009861c843f4130d75448b8d9f856e35224439e98588bc8c62",
+      "bytes": 9205,
+      "roles": [
+        "prepared_bundle"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/task_specs.jsonl",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/task_specs.jsonl",
+      "sha256": "44db789b8f48105e9699c7f1c23e37d74344c71c9037616b71ea2127afbc87cb",
+      "bytes": 18071,
+      "roles": [
+        "task_specs"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": {
+        "kind": "task_specs",
+        "ids": {
+          "p50_inside_012_20260914": [
+            "p50_inside_012_20260914"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/catalog.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/catalog.json",
+      "sha256": "e5e4ed076a6e9f1a7c309a39798b628323ef1e97c479845912f3fa20aafc16d4",
+      "bytes": 12962,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "p70_new_031_20260915": [
+            "p70_new_031_20260915"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/handoff.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/handoff.json",
+      "sha256": "8b6f1da57e814a77930a3ddc7a87e888366edd1cfef4211e264614b4dd2102f9",
+      "bytes": 2120,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "p70_new_031_20260915": [
+            "p70_new_031_20260915"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/initial_template.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/initial_template.json",
+      "sha256": "9596d2e25b7a334f8ed6ad015d0f34033f49c1c9c217c67deee38df08f7a2fc6",
+      "bytes": 691852,
+      "roles": [
+        "template"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/initial_tro.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/initial_tro.json",
+      "sha256": "dceebd1d2b0716db45424ded5a722052a10c78238bf3083d8b0632253aaa0cfc",
+      "bytes": 3266,
+      "roles": [
+        "tro_state"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/package.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/package.json",
+      "sha256": "5af99680cb8e5c2c5c11393277caed2ffcd088e45f1e779104592e93789f1998",
+      "bytes": 2175,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "p70_new_031_20260915": [
+            "p70_new_031_20260915"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/prepared/index.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/prepared/index.json",
+      "sha256": "b3ae93a5d673be33eecb4bea2ab6974b6ea78f8c26e530bb10c70f73446cd42e",
+      "bytes": 421,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "p70_new_031_20260915": [
+            "p70_new_031_20260915"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/handoff.json",
+          "task_ids": [
+            "p70_new_031_20260915"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/prepared/p70_new_031_20260915.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/prepared/p70_new_031_20260915.json",
+      "sha256": "c248caee1bc0ce533ed86ed5a1f8a07d2126710c9ca32a4f99661834af87d6e1",
+      "bytes": 9420,
+      "roles": [
+        "prepared_bundle"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/task_specs.jsonl",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/task_specs.jsonl",
+      "sha256": "2a13f1aa0216fad8d09ae389e92ba4f467dc90d73a9b6e3cb474619f9e402f72",
+      "bytes": 20950,
+      "roles": [
+        "task_specs"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": {
+        "kind": "task_specs",
+        "ids": {
+          "p70_new_031_20260915": [
+            "p70_new_031_20260915"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/catalog.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/catalog.json",
+      "sha256": "a20c174e3f6cd3a2bfba1e1d1ea24dfbcc4a7b18f9b214cece417970a36c1855",
+      "bytes": 11503,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "pnext40_001_20260916": [
+            "pnext40_001_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/handoff.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/handoff.json",
+      "sha256": "05d0f1945884585bfd4ad82a53caa03570cb1759a5d69928788360bb689efd5b",
+      "bytes": 2126,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "pnext40_001_20260916": [
+            "pnext40_001_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/initial_template.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/initial_template.json",
+      "sha256": "fe3f824d7497ad9e11d6616085430fea9a9f7cc14695fcc9984071059a15a460",
+      "bytes": 690546,
+      "roles": [
+        "template"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/initial_tro.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/initial_tro.json",
+      "sha256": "56c89793dbfe28e94ac6afa2282c101def67e56ee6132097acbd372a9e5cc44b",
+      "bytes": 2707,
+      "roles": [
+        "tro_state"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/package.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/package.json",
+      "sha256": "e5211bc0a5ac733363a9e98434d8d347021135a12e9ef6220a26a973bd6c26a6",
+      "bytes": 2179,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "pnext40_001_20260916": [
+            "pnext40_001_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/prepared/index.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/prepared/index.json",
+      "sha256": "ce549eee756c8cd84c9808bad1dae2b3da8be0029a8872cf71b22f7ced993e98",
+      "bytes": 421,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "pnext40_001_20260916": [
+            "pnext40_001_20260916"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/handoff.json",
+          "task_ids": [
+            "pnext40_001_20260916"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/prepared/pnext40_001_20260916.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/prepared/pnext40_001_20260916.json",
+      "sha256": "4094786ce6da30ecf9fe4d4078e64770019bb8444195a9b2e813e7c99b884763",
+      "bytes": 9170,
+      "roles": [
+        "prepared_bundle"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/task_specs.jsonl",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/task_specs.jsonl",
+      "sha256": "eaf659a24aede3933323aac4d7cafd0d6a54e8f9915138325385fac864a59fa5",
+      "bytes": 18064,
+      "roles": [
+        "task_specs"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": {
+        "kind": "task_specs",
+        "ids": {
+          "pnext40_001_20260916": [
+            "pnext40_001_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/catalog.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/catalog.json",
+      "sha256": "cae43ca2a2ed1113258bd99e962c465775d238cca37dba950b5ff6f4f7f07885",
+      "bytes": 11510,
+      "roles": [
+        "registration_catalog"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": {
+        "kind": "registration_catalog",
+        "ids": {
+          "pnext40_010_20260916": [
+            "pnext40_010_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/handoff.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/handoff.json",
+      "sha256": "3a0596f9fde36487bd09bca02ccf28dfb97e50e17d6508190cefb2d1121b4e0c",
+      "bytes": 2126,
+      "roles": [
+        "handoff"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": {
+        "kind": "handoff",
+        "ids": {
+          "pnext40_010_20260916": [
+            "pnext40_010_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/initial_template.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/initial_template.json",
+      "sha256": "d0124ea6246bcab53d381bd91be0a8525f785098b1ecea144cc79aa0fbaf8f54",
+      "bytes": 690460,
+      "roles": [
+        "template"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/initial_tro.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/initial_tro.json",
+      "sha256": "66be0d2d155a3a49e9dc36400024f5806254b854ee4fb659c9314e9d85c1f788",
+      "bytes": 2719,
+      "roles": [
+        "tro_state"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/package.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/package.json",
+      "sha256": "518575cb56cc626ecf57179580187ad3002b1357b8181e201ab267698cc7702c",
+      "bytes": 2179,
+      "roles": [
+        "package"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": {
+        "kind": "package",
+        "ids": {
+          "pnext40_010_20260916": [
+            "pnext40_010_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/prepared/index.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/prepared/index.json",
+      "sha256": "411ef68cd576ea9b271d6ee52c077cf90fde6a061f9113b7f231a6614048dd8c",
+      "bytes": 421,
+      "roles": [
+        "prepared_index"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": {
+        "kind": "prepared_index",
+        "ids": {
+          "pnext40_010_20260916": [
+            "pnext40_010_20260916"
+          ]
+        }
+      },
+      "hash_bindings": [
+        {
+          "pointer": "/handoff_sha256",
+          "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/handoff.json",
+          "task_ids": [
+            "pnext40_010_20260916"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/prepared/pnext40_010_20260916.json",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/prepared/pnext40_010_20260916.json",
+      "sha256": "03028239189a4d2c43ce749d07cd804efcf9b08069cfd80a7af04d5eb49931bc",
+      "bytes": 9170,
+      "roles": [
+        "prepared_bundle"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/task_specs.jsonl",
+      "source_root": "esi_prepares",
+      "source_path": "l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/task_specs.jsonl",
+      "sha256": "61f600cdd877400c107a8f51a8e87e1b3df1f491fe3adfba30b95cca5ca650cb",
+      "bytes": 18075,
+      "roles": [
+        "task_specs"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": {
+        "kind": "task_specs",
+        "ids": {
+          "pnext40_010_20260916": [
+            "pnext40_010_20260916"
+          ]
+        }
+      }
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_inside_house_single_floor_20260914/attempt_001/p50_inside_010_20260914/compiled/activity_definitions/p50_inside_010_20260914/problem0.bddl",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_inside_house_single_floor_20260914/attempt_001/p50_inside_010_20260914/compiled/activity_definitions/p50_inside_010_20260914/problem0.bddl",
+      "sha256": "8ac96c33df9642daec65034f8a54361e2aeffb0f98b212f4b57709a93714083d",
+      "bytes": 706,
+      "roles": [
+        "bddl"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_inside_house_single_floor_20260914/attempt_001/p50_inside_010_20260914/compiled/template_contracts/p50_inside_010_20260914.json",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_inside_house_single_floor_20260914/attempt_001/p50_inside_010_20260914/compiled/template_contracts/p50_inside_010_20260914.json",
+      "sha256": "86900c05a0390af73f9d47b196b8ff5299b2e24bc05b5a3fb85aee8a7d6f2dc8",
+      "bytes": 10706,
+      "roles": [
+        "template_contract"
+      ],
+      "task_ids": [
+        "p50_inside_010_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_inside_house_single_floor_20260914/attempt_001/p50_inside_012_20260914/compiled/activity_definitions/p50_inside_012_20260914/problem0.bddl",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_inside_house_single_floor_20260914/attempt_001/p50_inside_012_20260914/compiled/activity_definitions/p50_inside_012_20260914/problem0.bddl",
+      "sha256": "4afad45d266234232da8aa89fa8a1198bf4f8534723adc5991c27437b13c80e6",
+      "bytes": 706,
+      "roles": [
+        "bddl"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_inside_house_single_floor_20260914/attempt_001/p50_inside_012_20260914/compiled/template_contracts/p50_inside_012_20260914.json",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_inside_house_single_floor_20260914/attempt_001/p50_inside_012_20260914/compiled/template_contracts/p50_inside_012_20260914.json",
+      "sha256": "0a95f37bd597e7fc8c4c5bee629fc84ddbdd0eb5119f601f4ebae3b0156840f0",
+      "bytes": 10709,
+      "roles": [
+        "template_contract"
+      ],
+      "task_ids": [
+        "p50_inside_012_20260914"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p70_inside_house_single_floor_20260915/attempt_001/p70_new_031_20260915/compiled/activity_definitions/p70_new_031_20260915/problem0.bddl",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p70_inside_house_single_floor_20260915/attempt_001/p70_new_031_20260915/compiled/activity_definitions/p70_new_031_20260915/problem0.bddl",
+      "sha256": "e1a28dd14cdef007f2761bf919f78583c11bd72a65f2afe43688b38a9baabc47",
+      "bytes": 775,
+      "roles": [
+        "bddl"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p70_inside_house_single_floor_20260915/attempt_001/p70_new_031_20260915/compiled/template_contracts/p70_new_031_20260915.json",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p70_inside_house_single_floor_20260915/attempt_001/p70_new_031_20260915/compiled/template_contracts/p70_new_031_20260915.json",
+      "sha256": "09d0ca4031ad2bcf2295f0f01a4a9793a1764c5656c4ec06104ad8b571a194be",
+      "bytes": 12784,
+      "roles": [
+        "template_contract"
+      ],
+      "task_ids": [
+        "p70_new_031_20260915"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_inside_house_single_floor_20260916/attempt_001/pnext40_001_20260916/compiled/activity_definitions/pnext40_001_20260916/problem0.bddl",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_inside_house_single_floor_20260916/attempt_001/pnext40_001_20260916/compiled/activity_definitions/pnext40_001_20260916/problem0.bddl",
+      "sha256": "df49d41f12e241621e08d00797cfe12cc96a2963a6aaeee5081f59a30bc99d56",
+      "bytes": 703,
+      "roles": [
+        "bddl"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_inside_house_single_floor_20260916/attempt_001/pnext40_001_20260916/compiled/template_contracts/pnext40_001_20260916.json",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_inside_house_single_floor_20260916/attempt_001/pnext40_001_20260916/compiled/template_contracts/pnext40_001_20260916.json",
+      "sha256": "e298dc9b58c53157b91786076a207437a94c88145cd67698b79abd6153ae5925",
+      "bytes": 10709,
+      "roles": [
+        "template_contract"
+      ],
+      "task_ids": [
+        "pnext40_001_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_inside_house_single_floor_20260916/attempt_001/pnext40_010_20260916/compiled/activity_definitions/pnext40_010_20260916/problem0.bddl",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_inside_house_single_floor_20260916/attempt_001/pnext40_010_20260916/compiled/activity_definitions/pnext40_010_20260916/problem0.bddl",
+      "sha256": "bbf241951b775b29c716d66e70cf7f3299b0f222582a843bc118fb767ac129a9",
+      "bytes": 703,
+      "roles": [
+        "bddl"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": null
+    },
+    {
+      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_inside_house_single_floor_20260916/attempt_001/pnext40_010_20260916/compiled/template_contracts/pnext40_010_20260916.json",
+      "source_root": "worktrees",
+      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_inside_house_single_floor_20260916/attempt_001/pnext40_010_20260916/compiled/template_contracts/pnext40_010_20260916.json",
+      "sha256": "8152c3d11f736c77c2c28952b74e4d57495fa8e340219c731861539b59fd0ab7",
+      "bytes": 10709,
+      "roles": [
+        "template_contract"
+      ],
+      "task_ids": [
+        "pnext40_010_20260916"
+      ],
+      "selection": null
+    }
+  ],
+  "inputs_by_task": {
+    "p50_inside_010_20260914": {
+      "handoff_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/handoff.json",
+      "prepared_index_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/prepared/index.json",
+      "benchmark_package_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/package.json",
+      "task_specs_jsonl": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/task_specs.jsonl",
+      "registration_catalog_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/catalog.json",
+      "prepared_bundle_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_010_20260914/prepared/p50_inside_010_20260914.json",
+      "source_task_identity": {
+        "task_id": 55009,
+        "task_name": "p50_inside_010_20260914",
+        "scene_model": "house_single_floor",
+        "split": "train",
+        "instance_id": 0
+      },
+      "seed": 20260914,
+      "action_mode": "Physical",
+      "entrypoint": "prepared",
+      "public_task_id": 0,
+      "instruction_id": "p50_inside_010_20260914",
+      "instruction_en": "Put the banana on the table into whichever of the two containers on the table is appropriate.",
+      "budget": {
+        "maximum_action_decisions": 12,
+        "maximum_model_calls": 300,
+        "wall_clock_seconds": 3600
+      },
+      "task_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/tasks.json",
+      "instruction_review_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/instructions.json",
+      "history_turns": 5
+    },
+    "p50_inside_012_20260914": {
+      "handoff_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/handoff.json",
+      "prepared_index_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/prepared/index.json",
+      "benchmark_package_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/package.json",
+      "task_specs_jsonl": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/task_specs.jsonl",
+      "registration_catalog_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/catalog.json",
+      "prepared_bundle_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p50_inside_012_20260914/prepared/p50_inside_012_20260914.json",
+      "source_task_identity": {
+        "task_id": 55011,
+        "task_name": "p50_inside_012_20260914",
+        "scene_model": "house_single_floor",
+        "split": "train",
+        "instance_id": 0
+      },
+      "seed": 20260914,
+      "action_mode": "Physical",
+      "entrypoint": "prepared",
+      "public_task_id": 1,
+      "instruction_id": "p50_inside_012_20260914",
+      "instruction_en": "Put the carrot on the table into whichever of the two containers on the table is appropriate.",
+      "budget": {
+        "maximum_action_decisions": 12,
+        "maximum_model_calls": 300,
+        "wall_clock_seconds": 3600
+      },
+      "task_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/tasks.json",
+      "instruction_review_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/instructions.json",
+      "history_turns": 5
+    },
+    "p70_new_031_20260915": {
+      "handoff_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/handoff.json",
+      "prepared_index_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/prepared/index.json",
+      "benchmark_package_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/package.json",
+      "task_specs_jsonl": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/task_specs.jsonl",
+      "registration_catalog_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/catalog.json",
+      "prepared_bundle_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/p70_new_031_20260915/prepared/p70_new_031_20260915.json",
+      "source_task_identity": {
+        "task_id": 57030,
+        "task_name": "p70_new_031_20260915",
+        "scene_model": "house_single_floor",
+        "split": "train",
+        "instance_id": 0
+      },
+      "seed": 20260914,
+      "action_mode": "Physical",
+      "entrypoint": "prepared",
+      "public_task_id": 2,
+      "instruction_id": "p70_new_031_20260915",
+      "instruction_en": "Put the orange on the tray into whichever of the two containers on the table is appropriate.",
+      "budget": {
+        "maximum_action_decisions": 15,
+        "maximum_model_calls": 300,
+        "wall_clock_seconds": 3600
+      },
+      "task_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/tasks.json",
+      "instruction_review_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/instructions.json",
+      "history_turns": 5
+    },
+    "pnext40_001_20260916": {
+      "handoff_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/handoff.json",
+      "prepared_index_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/prepared/index.json",
+      "benchmark_package_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/package.json",
+      "task_specs_jsonl": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/task_specs.jsonl",
+      "registration_catalog_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/catalog.json",
+      "prepared_bundle_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_001_20260916/prepared/pnext40_001_20260916.json",
+      "source_task_identity": {
+        "task_id": 59001,
+        "task_name": "pnext40_001_20260916",
+        "scene_model": "house_single_floor",
+        "split": "train",
+        "instance_id": 0
+      },
+      "seed": 20260914,
+      "action_mode": "Physical",
+      "entrypoint": "prepared",
+      "public_task_id": 3,
+      "instruction_id": "pnext40_001_20260916",
+      "instruction_en": "Put the orange on the table into whichever of the two containers on the table is appropriate.",
+      "budget": {
+        "maximum_action_decisions": 12,
+        "maximum_model_calls": 300,
+        "wall_clock_seconds": 3600
+      },
+      "task_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/tasks.json",
+      "instruction_review_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/instructions.json",
+      "history_turns": 5
+    },
+    "pnext40_010_20260916": {
+      "handoff_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/handoff.json",
+      "prepared_index_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/prepared/index.json",
+      "benchmark_package_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/package.json",
+      "task_specs_jsonl": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/task_specs.jsonl",
+      "registration_catalog_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/catalog.json",
+      "prepared_bundle_json": "esi_prepares/l1p28_20260918/attempt_004/tasks/pnext40_010_20260916/prepared/pnext40_010_20260916.json",
+      "source_task_identity": {
+        "task_id": 59010,
+        "task_name": "pnext40_010_20260916",
+        "scene_model": "house_single_floor",
+        "split": "train",
+        "instance_id": 0
+      },
+      "seed": 20260914,
+      "action_mode": "Physical",
+      "entrypoint": "prepared",
+      "public_task_id": 4,
+      "instruction_id": "pnext40_010_20260916",
+      "instruction_en": "Put the banana on the table into whichever of the two containers on the table is appropriate.",
+      "budget": {
+        "maximum_action_decisions": 12,
+        "maximum_model_calls": 300,
+        "wall_clock_seconds": 3600
+      },
+      "task_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/tasks.json",
+      "instruction_review_json": "action20-capability-benchmark/benchmark/L1-P-FINAL/model_batch_20260924/inside/instructions.json",
+      "history_turns": 5
+    }
+  }
+}

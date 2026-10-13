@@ -233,3 +233,280 @@ def test_history_replay_rejects_absent_per_event_truth(tmp_path):
     with pytest.raises(ValueError, match="per-event predicate truth"):
         score_record(record, process_directory=tmp_path / "process")
     assert not (tmp_path / "process").exists()
+
+
+def history_record():
+    return json.loads((Path(__file__).parents[1] / 'examples/history-score-record.json').read_text())
+
+
+def native_v2(record, directory):
+    """Direct frozen API sequence, independent of the wrapper reconstruction."""
+    from types import SimpleNamespace
+    from behavior_hl.embodied.evaluator_bridge.l1_process_audit import ProcessAudit
+    process = record['process']
+    objects = {r: object() for r in process['roles']}
+    current = process['initial_truth']
+    def truth(atom, _roles):
+        return next(row['value'] for row in current if row['atom'] == atom)
+    audit = ProcessAudit(process['requirements'], role_object=objects.__getitem__, recipe_truth=truth,
+        protected_relations=process['protected_relations'],
+        protected_state_relations=process['protected_state_relations'],
+        placement_targets=process['placement_targets'], directory=directory)
+    for event in process['events']:
+        snapshots = []
+        for phase in ('before', 'after'):
+            current = event[phase]['truth']
+            held = event[phase]['held_roles']
+            runtime = SimpleNamespace(symbolic_primitives=SimpleNamespace(
+                _get_obj_in_hand=lambda: objects[held[0]] if held else None))
+            snapshot = audit.snapshot(runtime)
+            assert snapshot is not None
+            if 'selected_roles' in event[phase]:
+                snapshot['selected_roles'] = event[phase]['selected_roles']
+            snapshots.append(snapshot)
+        audit.observe(action=event['action'], before=snapshots[0], after=snapshots[1],
+                      status=event['status'], action_index=event['action_index'])
+    current = process['final_truth']
+    return audit.report()
+
+
+def assert_native_v2_parity(record, tmp_path):
+    result = score_record(record, process_directory=tmp_path / 'replay')
+    expected = native_v2(record, tmp_path / 'native')
+    for field in expected.keys() - {'process_events', 'observation_index'}:
+        assert result['process'][field] == expected[field], field
+    actual_events = (tmp_path / 'replay/private/task_process_events.jsonl').read_text()
+    assert actual_events == (tmp_path / 'native/private/task_process_events.jsonl').read_text()
+    return result
+
+
+def set_atom(rows, subject, predicate, value, destination=None):
+    row = next(r for r in rows if r['atom']['subject_role'] == subject
+               and r['atom']['predicate'] == predicate and r['atom'].get('object_role') == destination)
+    row['value'] = value
+
+
+def test_v2_history_actual_subject_maintenance_and_order_match_native(tmp_path):
+    result = assert_native_v2_parity(history_record(), tmp_path)
+    assert result['final']['success'] is True
+    assert result['process']['history_bindings'] == {'first': 'item_a'}
+    assert result['process']['history_binding_events'] == {'first': 1}
+
+
+@pytest.mark.parametrize('case', ['initial_truth', 'wrong_subject', 'early_close', 'early_return',
+                                   'same_event_predecessor', 'blocked', 'uncertain', 'needs_marker'])
+def test_v2_history_never_substitutes_final_static_truth_for_history(case, tmp_path):
+    record = history_record()
+    process = record['process']
+    if case == 'initial_truth':
+        # The initial map cannot replace later event readbacks.
+        process['initial_truth'] = copy.deepcopy(process['final_truth'])
+        assert assert_native_v2_parity(record, tmp_path)['final']['success'] is True
+        return
+    if case == 'wrong_subject':
+        for subject, tray, table in [('item_a', True, False), ('item_b', False, True)]:
+            set_atom(process['final_truth'], subject, 'ontop', tray, 'tray')
+            set_atom(process['final_truth'], subject, 'ontop', table, 'table')
+    elif case == 'early_close':
+        set_atom(process['events'][0]['after']['truth'], 'cabinet', 'open', False)
+    elif case == 'early_return':
+        process['events'][2], process['events'][3] = process['events'][3], process['events'][2]
+        for i, event in enumerate(process['events'], 1):
+            event['event_id'] = i
+    elif case == 'same_event_predecessor':
+        # Closing at the same event as stored cannot establish its dependent stage.
+        process['requirements']['history_program']['process'].pop('maintain_until')
+        process['events'][2]['status'] = 'needs_marker'
+        set_atom(process['events'][1]['after']['truth'], 'cabinet', 'closed', True)
+    else:
+        process['events'][0]['status'] = case
+    result = assert_native_v2_parity(record, tmp_path)
+    assert result['canonical']['success'] is True
+    assert result['final']['q_score'] == 1
+    assert result['final']['success'] is False
+    assert result['final']['failure_class'] in {'VERIFIER_ERROR', 'PUBLIC_PROCESS_REQUIREMENT_FAILED'}
+
+
+@pytest.mark.parametrize('phase', ['before', 'after', 'final_truth'])
+def test_v2_missing_phase_truth_fails_closed(tmp_path, phase):
+    record = history_record()
+    if phase == 'final_truth':
+        record['process'][phase] = []
+    else:
+        record['process']['events'][0][phase]['truth'] = []
+    with pytest.raises(ValueError, match='predicate truth'):
+        score_record(record, process_directory=tmp_path / 'process')
+
+
+@pytest.mark.parametrize('case', ['order', 'duplicate_event', 'boolean_event', 'missing_private',
+    'forged_history', 'forged_milestones', 'unknown_role', 'unhashable_role', 'multiple_held',
+    'duplicate_truth', 'nonboolean_truth', 'after_selection'])
+def test_v2_invalid_evidence_rejected_before_writing(tmp_path, case):
+    record = history_record()
+    process = record['process']
+    event = process['events'][0]
+    if case == 'order':
+        process['events'].reverse()
+    elif case == 'duplicate_event':
+        process['events'][1]['event_id'] = 1
+    elif case == 'boolean_event':
+        event['event_id'] = True
+    elif case == 'missing_private':
+        del process['protected_relations']
+    elif case.startswith('forged_'):
+        event['before'][case.removeprefix('forged_')] = {'reached': {'stored': 0}}
+    elif case in {'unknown_role', 'unhashable_role'}:
+        event['before']['truth'][0]['atom']['subject_role'] = 'unknown' if case == 'unknown_role' else []
+    elif case == 'multiple_held':
+        event['before']['held_roles'] = ['item_a', 'item_b']
+    elif case == 'duplicate_truth':
+        event['before']['truth'].append(copy.deepcopy(event['before']['truth'][0]))
+    elif case == 'nonboolean_truth':
+        event['before']['truth'][0]['value'] = 1
+    else:
+        event['after']['selected_roles'] = []
+    with pytest.raises(ValueError):
+        score_record(record, process_directory=tmp_path / 'process')
+    assert not (tmp_path / 'process').exists()
+
+
+def test_v2_event_order_is_distinct_from_shared_or_absent_action_index(tmp_path):
+    record = history_record()
+    for index, event in enumerate(record['process']['events']):
+        event['action_index'] = None if index < 2 else 0
+    assert assert_native_v2_parity(record, tmp_path)['final']['success']
+
+
+def test_score_profile_identity_conflict_rejected():
+    record = history_record()
+    record['profile'] = 'one'
+    with pytest.raises(ValueError, match='profile differs'):
+        score_record(record, profile='two')
+
+
+@pytest.mark.parametrize('binding_kind', ['destination', 'layout'])
+def test_v2_first_destination_and_first_complete_layout_match_native(binding_kind, tmp_path):
+    record = history_record()
+    process = record['process']
+    program = process['requirements']['history_program']
+    exists = dict(op='BINDING_EXISTS', binding_ref='first')
+    def atom(role, destination):
+        return dict(predicate='ontop', subject_role=role, object_role=destination, desired=True)
+    if binding_kind == 'destination':
+        program['bindings'][0].update(time='FIRST_VERIFIED_SUCCESS', event=dict(action='place_on_top',
+            subject_role='item_a', destination_domain_roles=['tray', 'table'],
+            required_public_result='completed', required_relation_readback=True))
+        program['expression'] = dict(predicate='ontop', subject_role='item_b',
+                                     object_ref={'binding_ref': 'first'}, desired=True)
+        program['clauses'] = [atom('item_a', 'tray')]
+        process['events'] = process['events'][:2]
+        expected = {'first': 'tray'}
+    else:
+        mapping = dict(op='RELATION_MAP', roles=['item_a', 'item_b'], predicate='ontop',
+                       destination_domain_roles=['tray', 'table'])
+        program['bindings'] = [dict(binding_id='first', time='FIRST_VERIFIED_PHASE_COMPLETION',
+            cardinality='TOTAL_BIJECTION', update='NEVER_AFTER_TRIGGER',
+            on_failed_cancelled_or_selection='DO_NOT_BIND', select=mapping,
+            trigger=dict(after_action='place_on_top', required_public_result='completed',
+                         condition=dict(mapping, op='BIJECTION')))]
+        program['expression'] = dict(op='AND', args=[dict(predicate='ontop', subject_role=role,
+            object_ref=dict(op='MAP_LOOKUP', map_ref={'binding_ref': 'first'}, key_role=other), desired=True)
+            for role, other in [('item_a', 'item_b'), ('item_b', 'item_a')]])
+        program['clauses'] = [atom('item_a', 'table')]
+        process['events'] = [process['events'][i] for i in [0, 1, 3]]
+        expected = {'first': {'item_a': 'tray', 'item_b': 'table'}}
+    program['process'] = dict(ordered_milestones=[dict(milestone_id='bound', condition=exists)])
+    for i, event in enumerate(process['events'], 1):
+        event['event_id'] = i
+    process['final_truth'] = copy.deepcopy(process['events'][-1]['after']['truth'])
+    result = assert_native_v2_parity(record, tmp_path)
+    assert result['final']['success'] is True
+    assert result['process']['history_bindings'] == expected
+
+
+def cycle_record(ordinal='last'):
+    def atom(role, predicate):
+        return dict(predicate=predicate, subject_role=role, desired=True)
+    stages = [dict(milestone_id=f'{role}_{predicate}', after=[] if predicate == 'open' else [f'{role}_open'],
+                   requirements=[atom(role, predicate)]) for role in ['a', 'b'] for predicate in ['open', 'closed']]
+    program = dict(schema_version='l1-public-process-program/v1', milestones=stages,
+        final_requirements=[], final_placement_after=None,
+        completion_rule='ALL_DECLARED_MILESTONES_AND_CURRENT_FINAL_REQUIREMENTS',
+        condition_evaluation='CANONICAL_READBACK_AFTER_VERIFIED_EXECUTION_OR_INITIAL_READBACK',
+        milestone_memory='LATCH_ONCE_AFTER_DECLARED_PREDECESSORS_SATISFIED',
+        source_process={}, public_instruction_evidence={'instruction': 'Check both devices; leave the selected cycle device open.'},
+        exact_cycles_per_role={'a': 1, 'b': 1}, cycle_order_final=dict(cycle_end_milestones=['a_closed', 'b_closed'],
+            active_predicate='open', neutral_predicate='closed', ordinal=ordinal))
+    opened = dict(a=False, b=False)
+    def truth():
+        return [dict(atom=atom(role, predicate), value=value if predicate == 'open' else not value)
+                for role, value in opened.items() for predicate in ['open', 'closed']]
+    process = dict(roles=['a', 'b'], requirements=dict(no_manipulation_roles=[], before_placement=[],
+        process_program=program), initial_truth=truth(), final_truth=[], events=[],
+        protected_relations=[], protected_state_relations=[], placement_targets=[])
+    selected = 'b' if ordinal == 'last' else 'a'
+    for index, (role, value) in enumerate([('a', True), ('a', False), ('b', True), ('b', False), (selected, True)], 1):
+        before = dict(held_roles=[], truth=truth())
+        opened[role] = value
+        process['events'].append(dict(event_id=index, action='open' if value else 'close', status='completed',
+            action_index=index, before=before, after=dict(held_roles=[], truth=truth())))
+    process['final_truth'] = truth()
+    return dict(official(), schema_version='esi-benchmark/score-record-v2',
+                snapshots=[{'options': [[True, True, True]]}], process=process)
+
+
+@pytest.mark.parametrize('ordinal', ['last', 1])
+@pytest.mark.parametrize('valid_final', [True, False])
+def test_v2_dynamic_milestone_final_reads_end_truth(ordinal, valid_final, tmp_path):
+    record = cycle_record(ordinal)
+    if not valid_final:
+        for row in record['process']['final_truth']:
+            row['value'] = not row['value']
+    result = assert_native_v2_parity(record, tmp_path)
+    assert result['final']['success'] is valid_final
+    assert result['process']['milestones_reached'] == {'a_open': 1, 'a_closed': 2, 'b_open': 3, 'b_closed': 4}
+
+
+@pytest.mark.parametrize('phase', ['initial_truth', 'final_truth'])
+def test_v2_dynamic_milestone_missing_begin_or_end_truth_rejected(phase, tmp_path):
+    record = cycle_record()
+    record['process'][phase] = []
+    with pytest.raises(ValueError, match='predicate truth'):
+        score_record(record, process_directory=tmp_path / 'process')
+
+
+def test_v2_private_protection_recipes_use_original_snapshot(tmp_path):
+    record = history_record()
+    process = record['process']
+    protected = dict(predicate='open', subject_role='cabinet', desired=True)
+    process['requirements']['state_protection_roles'] = ['cabinet']
+    process['protected_state_relations'] = [protected]
+    result = assert_native_v2_parity(record, tmp_path)
+    assert not result['final']['success']
+    assert any(v['kind'] == 'PROTECTED_STATE_CHANGED' for v in result['process']['violations'])
+    process['protected_state_relations'] = []
+    with pytest.raises(ValueError, match='protected state identity'):
+        score_record(record, process_directory=tmp_path / 'missing-protection')
+
+
+def test_public_score_does_not_reorder_caller_import_paths():
+    import sys
+    original = list(sys.path)
+    result = score_record(official())
+    assert result['final']['q_score'] == pytest.approx(1 / 3)
+    assert sys.path == original
+
+
+@pytest.mark.parametrize('profile', ['l1-m30-public-v2', 'l2-collection37'])
+def test_v2_history_uses_explicit_frozen_profile(profile, tmp_path):
+    record = history_record()
+    record['profile'] = profile
+    assert score_record(record, process_directory=tmp_path / 'process')['final']['success']
+
+
+@pytest.mark.parametrize('profile', ['l1-p-inside5', 'l1-p-ontop5'])
+def test_v2_does_not_substitute_new_history_features_into_older_profiles(profile, tmp_path):
+    record = history_record()
+    with pytest.raises(ValueError, match='history'):
+        score_record(record, profile=profile, process_directory=tmp_path / 'process')
+    assert not (tmp_path / 'process').exists()

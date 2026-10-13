@@ -10,8 +10,8 @@ from esi_benchmark.tasks import get_task, list_tasks, profile_for
 
 def test_catalog_identity_instruction_budget_and_counts():
     tasks = list_tasks()
-    assert Counter(task["family"] for task in tasks) == {"L0": 100, "L1-A": 30, "L1-M": 30, "L1-V": 30, "L1-P": 30}
-    assert len({(task["family"], task["task_id"]) for task in tasks}) == 220
+    assert Counter(task["family"] for task in tasks) == {"L0": 100, "L1-A": 30, "L1-M": 30, "L1-V": 30, "L1-P": 30, "L2": 37}
+    assert len({(task["family"], task["task_id"]) for task in tasks}) == 257
     for task in tasks:
         assert hashlib.sha256(task["instruction_en"].encode()).hexdigest() == task["instruction_sha256"]
         assert len(task["source"]["sha256"]) == 64
@@ -27,7 +27,7 @@ def test_public_catalog_is_a_strict_whitelist_and_contains_no_private_paths():
     allowed = {"task_id", "instruction_id", "runtime_instruction_id", "family", "instruction_en",
                "instruction_sha256", "scene_model", "budget", "action_mode", "profile", "source"}
     tasks = list_tasks()
-    assert all(set(task) == allowed for task in tasks)
+    assert all(set(task) == allowed | ({"split"} if task["family"] == "L2" else set()) for task in tasks)
     serialized = json.dumps(tasks)
     for private in ("/liyuanshuai/", "prepared_index", "goal_contract", "source_task_identity",
                     "human_success_episode", "private_runtime", "hidden_scope"):
@@ -37,10 +37,14 @@ def test_public_catalog_is_a_strict_whitelist_and_contains_no_private_paths():
 
 
 def test_profiles_are_separate_and_l2_proposals_are_not_executable_tasks():
-    assert list_tasks("L2") == []
+    assert len(list_tasks("L2")) == 37
+    assert {task["profile"] for task in list_tasks("L2")} == {"l2-collection37"}
+    assert Counter(task["action_mode"] for task in list_tasks("L2")) == {"Symbolic": 23, "Physical": 14}
     assert profile_for("l2-proposals")["proposal_count"] == 36
-    assert {profile_for(task)["execution_supported"] for task in list_tasks("L0")} == {True}
-    assert all(not profile_for(task)["execution_supported"] for task in list_tasks() if task["family"] != "L0")
+    assert all(profile_for(task)["execution_supported"] for task in list_tasks())
+    assert all(profile_for(task)["live_validation"] == "NOT_RUN" for task in list_tasks())
+    assert all(not profile_for(task)["official_benchmark_eligible"] for task in list_tasks())
+    assert profile_for("l2-proposals")["execution_supported"] is False
     assert len({profile_for(task)["runtime_revision"] for task in list_tasks("L1-P")}) == 3
     with pytest.raises(ValueError, match="Unknown"):
         get_task("unknown")

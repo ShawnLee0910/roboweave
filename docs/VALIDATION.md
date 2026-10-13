@@ -1,6 +1,54 @@
 # Candidate validation
 
-## Current rc2 repair acceptance
+## Current rc3 acceptance
+
+Version `0.1.0rc3` connects 257 configurations across eight frozen Common
+execution profiles. It uses isolated native workers and supplied history-v2
+records, while preserving the original goal, process, V and Physical gates.
+**No simulator environment reproduction, Live run, GPU or model request was
+performed.** Existing CPU dependencies were reused for tests and package checks.
+
+- [Current acceptance report](../reports/rc3/RESULT.md) and
+  [machine summary](../reports/rc3/VALIDATION_SUMMARY.json).
+- [Integrated CPU log](../reports/rc3/pytest.log) and [JUnit](../reports/rc3/pytest.xml):
+  **1,196 passed, 3 skipped**. The later related checks cover the final watchdog,
+  evidence archive and V identity changes; the machine summary counts distinct
+  passing test identities across both runs rather than adding duplicate checks.
+- [Final related checks](../reports/rc3/final-related.log) and
+  [JUnit](../reports/rc3/final-related.xml).
+- [AMV 90-task input checks](../reports/rc3/AMV_INPUT_CHECK.json) and
+  [P/L2 67-task input checks](../reports/rc3/PHYSICAL_L2_INPUT_CHECK.json).
+  These check relocation, non-path semantics, frozen metadata loaders and source
+  identity. Temporary private inputs were removed. They do not restore a scene.
+- [L0 fixed-input equivalence](../reports/rc3/EQUIVALENCE.json): **75/75** unchanged.
+  This receipt is specific to L0; it is not behavior parity evidence for all new
+  source versions. The 100-task L0 input audit below remains historical evidence.
+- [Wheel acceptance](../reports/rc3/WHEEL_VALIDATION.json),
+  [source archive acceptance](../reports/rc3/SDIST_VALIDATION.json),
+  [source/distribution audit](../reports/rc3/SOURCE_AUDIT.json), and
+  [original source preservation](../reports/rc3/SOURCE_PRESERVATION.json).
+
+The three integrated-suite skips have the same explicit resource reasons as rc2:
+a separately authorized full private L0 import and two historical task packages
+that are not distributed. The archive extraction warning comes from checking a
+locally built tarball after rejecting links and unsafe paths.
+
+Independent source reviews caught and corrected the V installed-runtime root,
+V public/native task-name distinction, and official-checkout untracked-file
+preflight. L2's conditional watchdog was compared with the original controller;
+its phase-to-signal race remains documented, and no real model was interrupted.
+Archive validation now checks every evidence descriptor and binds V protocol,
+scene identity, model identity and the final score. Hashes establish local byte
+integrity, not authenticity of an externally supplied recording.
+
+All profiles remain `live_validation=NOT_RUN` with false formal-eligibility flags.
+The Common entrypoint does not reproduce historical CODEX/AgentCLI harnesses.
+L0/L1's declared 3,600-second field has no model-loop consumer; L2 retains the
+7,200-second safe-point watchdog, not a hard deadline. See the
+[support matrix](SUPPORT_MATRIX.md) and [Live validation plan](LIVE_VALIDATION.md).
+Licensing and private-input redistribution remain unresolved.
+
+## Historical rc2 repair acceptance
 
 Version `0.1.0rc2` fixes all eight issues identified by the second review. The
 complete CPU suite now reports **1,088 passed, 3 skipped**. The skips remain the

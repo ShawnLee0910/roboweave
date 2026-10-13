@@ -1,0 +1,47 @@
+{
+  "schema_version": "esi-benchmark/score-result-v1",
+  "mode": "cpu-record-replay",
+  "route": "official_full",
+  "truth_source": "supplied-records",
+  "snapshots": [
+    {
+      "operational": true,
+      "success": true,
+      "q_score": 1.0,
+      "errors": []
+    }
+  ],
+  "canonical": {
+    "operational": true,
+    "success": true,
+    "q_score": 1.0,
+    "errors": []
+  },
+  "process": {
+    "operational": true,
+    "public_process_satisfied": true,
+    "history_bindings": {
+      "first": "item_a"
+    },
+    "history_binding_events": {
+      "first": 1
+    },
+    "history_violations": [],
+    "milestones_reached": {},
+    "current_reference_placements": {},
+    "violations": [],
+    "errors": [],
+    "execution_events": 4,
+    "existing_frame_references": 0,
+    "extra_render_calls": 0,
+    "axis_review_status": "PENDING_REVIEW",
+    "process_events": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc3/history-process/private/task_process_events.jsonl",
+    "observation_index": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc3/history-process/private/task_evidence_index.jsonl"
+  },
+  "final": {
+    "operational": true,
+    "success": true,
+    "q_score": 1.0,
+    "errors": []
+  }
+}
