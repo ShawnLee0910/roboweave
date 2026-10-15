@@ -1,0 +1,506 @@
+{
+  "scope": "CPU-only private model request boundary; no network, simulator, GPU or Live",
+  "profiles": [
+    {
+      "profile": "l0-english-v2",
+      "cases": [
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        }
+      ],
+      "history": [
+        {
+          "history": 5,
+          "active_images": 6
+        },
+        {
+          "history": 20,
+          "active_images": 21
+        }
+      ],
+      "captured_count": 24,
+      "all_private_sentinels_absent": true,
+      "no_network": true,
+      "root": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l0-english-v2-5od_d_dd"
+    },
+    {
+      "profile": "l1-a30",
+      "cases": [
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        }
+      ],
+      "history": [
+        {
+          "history": 5,
+          "active_images": 6
+        },
+        {
+          "history": 20,
+          "active_images": 21
+        }
+      ],
+      "captured_count": 24,
+      "all_private_sentinels_absent": true,
+      "no_network": true,
+      "root": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l1-a30-js6lp4tq"
+    },
+    {
+      "profile": "l1-m30-public-v2",
+      "cases": [
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        }
+      ],
+      "history": [
+        {
+          "history": 5,
+          "active_images": 6
+        },
+        {
+          "history": 20,
+          "active_images": 21
+        }
+      ],
+      "captured_count": 24,
+      "all_private_sentinels_absent": true,
+      "no_network": true,
+      "root": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l1-m30-public-v2-b_xut4_o"
+    },
+    {
+      "profile": "l1-p-additions20",
+      "cases": [
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        }
+      ],
+      "history": [
+        {
+          "history": 5,
+          "active_images": 6
+        },
+        {
+          "history": 20,
+          "active_images": 21
+        }
+      ],
+      "captured_count": 24,
+      "all_private_sentinels_absent": true,
+      "no_network": true,
+      "root": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l1-p-additions20-6sm_nsqk"
+    },
+    {
+      "profile": "l1-p-inside5",
+      "cases": [
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        }
+      ],
+      "history": [
+        {
+          "history": 5,
+          "active_images": 6
+        },
+        {
+          "history": 20,
+          "active_images": 21
+        }
+      ],
+      "captured_count": 24,
+      "all_private_sentinels_absent": true,
+      "no_network": true,
+      "root": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l1-p-inside5-b6ds3pz0"
+    },
+    {
+      "profile": "l1-p-ontop5",
+      "cases": [
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        }
+      ],
+      "history": [
+        {
+          "history": 5,
+          "active_images": 6
+        },
+        {
+          "history": 20,
+          "active_images": 21
+        }
+      ],
+      "captured_count": 24,
+      "all_private_sentinels_absent": true,
+      "no_network": true,
+      "root": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l1-p-ontop5-913r9bwo"
+    },
+    {
+      "profile": "l1-v30",
+      "cases": [
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        }
+      ],
+      "history": [
+        {
+          "history": 5,
+          "active_images": 6
+        },
+        {
+          "history": 20,
+          "active_images": 21
+        }
+      ],
+      "captured_count": 24,
+      "all_private_sentinels_absent": true,
+      "no_network": true,
+      "root": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l1-v30-z120y0nx"
+    },
+    {
+      "profile": "l2-collection37",
+      "cases": [
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "chat_completions",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 5,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "responses",
+          "supported": true,
+          "history": 20,
+          "requests": 4,
+          "status": "DONE"
+        },
+        {
+          "api": "anthropic_messages",
+          "supported": false,
+          "error": "provider API is invalid"
+        }
+      ],
+      "history": [
+        {
+          "history": 5,
+          "active_images": 6
+        },
+        {
+          "history": 20,
+          "active_images": 21
+        }
+      ],
+      "captured_count": 16,
+      "all_private_sentinels_absent": true,
+      "no_network": true,
+      "root": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l2-collection37-vasfiaxw"
+    }
+  ],
+  "supported_api_history_cases": 46,
+  "captured_serialized_http_requests": 184,
+  "history_pruning_checks": 16,
+  "all_private_sentinels_absent": true,
+  "limitations": [
+    "SceneClient was replaced by a fixed synthetic scene; provider capability preflight was stubbed; final score archiving was bypassed.",
+    "Provider complete and _post payload serialization ran; opener.open returned in-memory synthetic replies and socket.socket was denied.",
+    "Visual-window checks used 25 completed synthetic wait steps; expected active images are history_frames + current.",
+    "This does not validate renderer content, scene behavior, goal verification, endpoint capability or Live outcomes."
+  ],
+  "probe_sha256": "2f29fee101b0e904c2fb5cd586d97bee26bfcfc46fc9d8bc6b3979623009ad14",
+  "discovered_before_fix": [
+    {
+      "profile": "l0-english-v2",
+      "mode": "CPU_stubs_no_network",
+      "status": "PAUSED_PROVIDER",
+      "error_artifact": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/prompt-boundary-20261015/l0-english-v2-yc_iadt8/failure-case/provider_calls/call_0001/provider_error.json",
+      "secret_retained_in_error": true,
+      "transport_used_header_from_actual_request": true
+    }
+  ],
+  "evidence_stage": "Normal request-path checks before the credential-error preview repair; successful request serialization is unchanged by that repair."
+}

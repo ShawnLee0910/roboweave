@@ -61,7 +61,7 @@ def main():
             result = dispatch(request)
         response = {"schema_version": SCHEMA, "ok": True, "result": result, "error": None}
         status = 0
-    except Exception as exc:
+    except (Exception, KeyboardInterrupt) as exc:
         response = {"schema_version": SCHEMA, "ok": False, "result": None,
                     "error": {"type": type(exc).__name__, "message": str(exc)}}
         status = 1

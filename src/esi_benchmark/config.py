@@ -45,7 +45,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     frozen = profile_for(profile)
     if "bench_revision" not in frozen or "runtime_revision" not in frozen:
         raise ValueError(f"Profile has no executable source identity: {profile}")
-    if config.get("mode") not in {"replay", "live"}:
+    if not isinstance(config.get("mode"), str) or config["mode"] not in {"replay", "live"}:
         raise ValueError("mode must be replay or live")
     for section, fields in FIELDS.items():
         value = config.get(section, {})
@@ -88,12 +88,19 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     return config
 
 
-def load_config(path: str | Path) -> dict[str, Any]:
+def load_config(path: str | Path, *, mode: str | None = None) -> dict[str, Any]:
     path = Path(path).resolve()
     if not path.is_file() or path.stat().st_size > 1024 * 1024:
         raise ValueError("Config must be a JSON file no larger than 1 MiB")
-    config = json.loads(path.read_text(), object_pairs_hook=_object,
-                        parse_constant=lambda v: (_ for _ in ()).throw(ValueError(f"Invalid JSON constant {v}")))
+    try:
+        config = json.loads(path.read_text(), object_pairs_hook=_object,
+                            parse_constant=lambda v: (_ for _ in ()).throw(ValueError(f"Invalid JSON constant {v}")))
+    except RecursionError as exc:
+        raise ValueError("Config JSON exceeds the nesting limit") from exc
+    if mode is not None:
+        if not isinstance(config, dict):
+            raise ValueError("Config must be an object")
+        config["mode"] = mode
     validate_config(config)
     for section in FIELDS:
         for key, value in config.get(section, {}).items():

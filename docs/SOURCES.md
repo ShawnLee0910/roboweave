@@ -53,8 +53,18 @@ profiles, while one public caller may operate on multiple profiles through
 separate workers. `bootstrap.activate()` is now a compatibility path lookup,
 not permission to import bare legacy modules in a caller.
 
+The private bootstrap resolves owned module names from the selected source index,
+including namespace packages, and rejects unlisted modules under those names.
+It compiles frozen Python source directly instead of reading installed bytecode:
+`-B` alone only disables cache writes. Ordinary installation caches can remain,
+and third-party loaders retain their normal behavior. The projected verifier's
+explicit file-based import uses the same source-only loader. A preloaded owned
+module must also have used that loader; matching its reported file path alone is
+insufficient to establish which code ran.
+
 A registered bundle's manifest must exist and match its registry digest and
-files. Missing manifests never fall back to the candidate's parent Git HEAD.
+files. Both the bundle entry and every path segment below the installed package
+must be free of symlinks. Missing manifests never fall back to the candidate's parent Git HEAD.
 External official source identity is still checked with Git, but its reported
 top-level must exactly equal the given source root. Model run records retain the
 selected revisions, source-verification receipt and prompt/implementation hashes.

@@ -33,13 +33,22 @@ def _entries(profile):
     return entries
 
 
+def _bundle_path(entry):
+    relative = Path(entry["path"])
+    if relative.is_absolute() or ".." in relative.parts:
+        raise ValueError("Source bundle path escapes the installed package")
+    root = _PACKAGE_ROOT
+    for part in relative.parts:
+        root = root / part
+        if root.is_symlink():
+            raise ValueError("Source bundle path contains a symlink")
+    return root.resolve()
+
+
 def source_roots(profile=DEFAULT_PROFILE):
     roots = {}
     for kind, (_, entry) in _entries(profile).items():
-        relative = Path(entry["path"])
-        root = (_PACKAGE_ROOT / relative).resolve()
-        if relative.is_absolute() or not root.is_relative_to(_PACKAGE_ROOT):
-            raise ValueError(f"Source bundle path escapes the installed package: {kind}")
+        root = _bundle_path(entry)
         if not root.is_dir():
             raise ValueError(f"Installed source bundle is missing: {kind}")
         roots[kind + "_root"] = root
@@ -51,18 +60,21 @@ def registered_revision(root):
     root = Path(root).resolve()
     for entries in _registry()["bundles"].values():
         for revision, entry in entries.items():
-            if (_PACKAGE_ROOT / entry["path"]).resolve() == root:
+            if _bundle_path(entry) == root:
                 return revision
     return None
 
 
 def verify_bundle(root, revision, manifest_sha256=None):
     """Fail closed on missing, modified, unexpected or redirected source files."""
-    root = Path(root).resolve()
+    root = Path(root)
+    if root.is_symlink():
+        raise ValueError("Source bundle root is a symlink")
+    root = root.resolve()
     if manifest_sha256 is None:
         entries = [entries[revision] for entries in _registry()["bundles"].values()
                    if revision in entries]
-        entries = [entry for entry in entries if (_PACKAGE_ROOT / entry["path"]).resolve() == root]
+        entries = [entry for entry in entries if _bundle_path(entry) == root]
         if len(entries) != 1:
             raise ValueError("Source root is not the registered frozen bundle")
         manifest_sha256 = entries[0]["manifest_sha256"]

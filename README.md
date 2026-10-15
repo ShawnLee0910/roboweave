@@ -1,7 +1,7 @@
 # ESI Benchmark — local release candidate
 
 ESI evaluates embodied agents through frozen tasks, Action20, public visual
-observations and canonical goal/process verification. Version `0.1.0rc3` provides
+observations and canonical goal/process verification. Version `0.1.0rc4` provides
 one installable package and command-line workflow for **257 task configurations**:
 L0 (100), L1 A/M/V/P (30 each), and L2 collection (37).
 
@@ -9,6 +9,10 @@ L0 (100), L1 A/M/V/P (30 each), and L2 collection (37).
 validation result.** Private evaluation inputs and licensed simulator assets are
 obtained separately. Project licensing and redistribution remain unresolved;
 see [license status](LICENSE_STATUS.md) and [distribution boundaries](docs/DISTRIBUTION.md).
+
+The rc4 repair pass adds source-only loading, strict task/result binding,
+concurrent asset-import protection and credential-safe error diagnostics. The
+review and CPU acceptance evidence are recorded in [the rc4 report](reports/rc4/RESULT.md).
 
 The repository connects the existing implementations through explicit modules:
 
@@ -28,7 +32,7 @@ revisions are stored once. The source trees retain their original layout and
 algorithms. [Architecture](docs/ARCHITECTURE.md) explains the interfaces and
 ownership boundaries.
 
-| Capability | rc3 scope |
+| Capability | Current scope |
 | --- | --- |
 | Task execution integration | Eight profiles: L0, A, M, V, three P subpackages, and L2 collection. Family-specific preparation, native admission, model episodes and result archival are connected. |
 | Source identity | Exact upstream commits, per-file hashes, candidate adaptations and loaded-module origin checks. No original checkout or mutable source symlink is required. |

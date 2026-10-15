@@ -40,7 +40,10 @@ def validate_model_config(config: Mapping[str, Any]) -> dict[str, Any]:
     if type(result["timeout"]) is not int:
         raise ValueError("Model timeout must be an integer in [1, 900]")
     # Reuse all frozen transport/generation checks without issuing a request.
-    _provider(result)
+    provider = _provider(result)
+    if provider.requires_api_key and key_env is None:
+        raise ValueError("This endpoint requires model.api_key_env")
+    result["model"] = provider.model
     return result
 
 
@@ -113,6 +116,8 @@ def run_episode(
             raise FileExistsError("Reserved output must contain only private/inputs")
     elif output_dir.exists():
         raise FileExistsError("Episode output must be a new directory")
+    from ..tasks import validate_model_task
+    validate_model_task(profile, task)
     provider = create_provider(model_config)
     scene = SceneClient(
         ready_path=Path(ready_path), runtime_root=Path(runtime_root),
@@ -150,7 +155,8 @@ def run_episode(
         maximum_action_decisions=task["maximum_action_decisions"],
         maximum_model_calls=task["maximum_model_calls"],
         physical_history_max=history_frames, output_dir=output_dir,
-        **({"pause_on_client_failure": True} if profile == "l2-collection37" else {}),
+        # Frozen Common launches pause on provider/protocol failure for every profile.
+        pause_on_client_failure=True,
     )
     result = _archive_scene_result(scene.scene_run_dir, output_dir, summary, task, profile=profile)
     summary = {**summary, "candidate_result": result}

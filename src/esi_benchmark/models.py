@@ -4,7 +4,6 @@ from __future__ import annotations
 import hashlib
 import json
 import math
-import os
 from pathlib import Path
 import re
 from typing import Any, Mapping
@@ -12,6 +11,18 @@ from typing import Any, Mapping
 from .profiles import DEFAULT_PROFILE
 
 EVIDENCE_SCHEMA = "esi-benchmark/result-evidence-v2"
+
+
+def _native_abort_score(score, family):
+    """Recognize the frozen scene recovery writer's explicitly unsuccessful score."""
+    return (score.get("official_success") is False and score.get("verifier_ok") is False
+            and "official_q" in score and score["official_q"] is None
+            and score.get("task_success") in (None, False)
+            and isinstance(score.get("termination_reason"), str) and bool(score["termination_reason"])
+            and ((score["termination_reason"] == "execution_integrity_failure" and score.get("integrity_failure") is not None
+                  and (family != "L2" or score.get("failure_class") == "EXECUTION_INTEGRITY_FAILURE"))
+                 or (family == "L2" and score.get("task_success") is False
+                     and score.get("failure_class") == "EXECUTION_EXCEPTION" and score.get("integrity_failure") is None)))
 
 
 def validate_model_config(config: Mapping[str, Any], *, profile: str = DEFAULT_PROFILE) -> dict[str, Any]:
@@ -55,6 +66,7 @@ def recorded_score_result(score: Mapping[str, Any], episode_id: str, *, profile:
         raise ValueError("Final score Q must be null or a finite number in [0, 1]")
     if "task_success" in score and type(score["task_success"]) is not bool:
         raise ValueError("Final task_success must be boolean")
+    aborted = _native_abort_score(score, family)
     process = score.get("public_process_report")
     if process is not None and (not isinstance(process, Mapping)
             or type(process.get("operational")) is not bool
@@ -68,34 +80,41 @@ def recorded_score_result(score: Mapping[str, Any], episode_id: str, *, profile:
         success = success and process["operational"] and process["public_process_satisfied"] and not process["errors"] and not process["violations"]
     if family == "L1-P" or (family != "L2" and score.get("native_q_alone_is_success") is False):
         success = success and score.get("physical_qualification") == "PASS"
+    if family != "L2" and (process is not None or family == "L1-P" or score.get("native_q_alone_is_success") is False):
+        success = success and score.get("task_success") is True
     v_report = score.get("v_protocol")
     if v_report is not None and (not isinstance(v_report, Mapping)
             or type(v_report.get("v_protocol_complete")) is not bool
             or ("operational" in v_report and type(v_report["operational"]) is not bool)):
         raise ValueError("Final V protocol report is malformed")
     if family == "L1-V":
-        if v_report is None:
+        if v_report is None and not aborted:
             raise ValueError("Final V score lacks its protocol report")
-        success = success and v_report["v_protocol_complete"] and v_report.get("operational") is not False
+        success = success and v_report is not None and v_report["v_protocol_complete"] and v_report.get("operational") is not False
     v_complete = None if v_report is None else v_report["v_protocol_complete"]
     if family == "L1-V":
-        v_complete = v_complete and v_report.get("operational") is not False and valid
+        v_complete = bool(v_complete and v_report.get("operational") is not False and valid)
     physical = score.get("physical_template")
     if physical is not None and (not isinstance(physical, Mapping)
             or type(physical.get("task_success")) is not bool):
         raise ValueError("Final Physical template report is malformed")
     if family == "L2":
-        if (type(score.get("task_success")) is not bool or not isinstance(score.get("status"), str)
-                or score["status"] not in {"PASS", "FAIL"}):
+        status = score.get("status", "FAIL" if aborted else None)
+        if (type(score.get("task_success")) is not bool or not isinstance(status, str) or status not in {"PASS", "FAIL"}
+                or status != ("PASS" if score["task_success"] else "FAIL")):
             raise ValueError("Final L2 score lacks the native combined outcome")
         # L2 end_episode has already combined its canonical, Physical and V gates.
-        success = score["task_success"] and score["status"] == "PASS" and score.get("integrity_failure") is None
+        success = score["task_success"] and status == "PASS" and score.get("integrity_failure") is None
+        if (("v_protocol_complete" in score and v_report is None)
+                or ("physical_template_complete" in score and physical is None)):
+            raise ValueError("Final L2 completion field lacks its native report")
         if v_report is not None and score.get("v_protocol_complete") is not v_report["v_protocol_complete"]:
             raise ValueError("Final L2 V completion fields disagree")
         if physical is not None and score.get("physical_template_complete") is not physical["task_success"]:
             raise ValueError("Final L2 Physical completion fields disagree")
         if success and ((v_report is not None and not v_report["v_protocol_complete"])
                         or (physical is not None and not physical["task_success"])
+                        or (physical is None and not score["official_success"])
                         or not score["verifier_ok"]
                         or (process is not None and (not process["operational"] or not process["public_process_satisfied"]
                                                     or process["errors"] or process["violations"]))):
@@ -112,18 +131,32 @@ def recorded_score_result(score: Mapping[str, Any], episode_id: str, *, profile:
 
 def _archive_scene_result(scene_run_dir: Path, output_dir: Path, summary: Mapping[str, Any], task: Mapping[str, Any],
                           *, profile: str = DEFAULT_PROFILE) -> dict[str, Any]:
+    from .assets import _private_directory, _private_open
     from .tasks import profile_for
+    from .trajectory import MAX_JSON_BYTES, MAX_SCORE_BYTES, _json, _path
     family = profile_for(profile)["family"]
     root = Path(scene_run_dir).resolve()
+    output_dir = Path(output_dir).resolve()
     episode_id = summary.get("current_scene_episode_id")
-    private = output_dir / "private"
-    private.mkdir(parents=True, mode=0o700, exist_ok=True)
-    binding = private / "task_binding.json"
-    temporary = binding.with_suffix(".json.tmp")
-    with os.fdopen(os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "w") as stream:
-        stream.write(json.dumps(dict(task), sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n")
-    temporary.replace(binding)
-    raw_binding = binding.read_bytes()
+    private = _path(output_dir, "private")
+    _private_directory(private)
+
+    def archive(relative, raw):
+        destination = _path(output_dir, "private/" + relative)
+        _private_directory(destination.parent)
+        existing = destination.exists()
+        with _private_open(destination, exclusive=not existing) as stream:
+            if existing:
+                if stream.read(len(raw) + 1) != raw:
+                    raise ValueError("Previously archived scene evidence differs")
+            else:
+                stream.write(raw)
+        return destination
+
+    raw_binding = (json.dumps(dict(task), sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n").encode("utf-8")
+    if len(raw_binding) > MAX_SCORE_BYTES:
+        raise ValueError("Oversized archived task binding")
+    binding = archive("task_binding.json", raw_binding)
     evidence = {"task_binding.json": {"source": str(binding), "path": "private/task_binding.json",
                 "sha256": hashlib.sha256(raw_binding).hexdigest(), "size_bytes": len(raw_binding)}}
     if episode_id is None:
@@ -132,11 +165,11 @@ def _archive_scene_result(scene_run_dir: Path, output_dir: Path, summary: Mappin
                 "evidence_schema_version": EVIDENCE_SCHEMA, "evidence": evidence}
     if not isinstance(episode_id, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", episode_id):
         raise ValueError("Final scene episode identity is invalid")
-    scene_private = root / "episodes" / episode_id / "private"
-    names = ["final_score.json", "oracle_prepared_restore.json", "task_process_result.json",
+    scene_private = _path(root, f"episodes/{episode_id}/private")
+    names = ["final_score.json", "aborted_after_environment_error.json", "oracle_prepared_restore.json", "task_process_result.json",
              "task_process_events.jsonl", "task_evidence_index.jsonl", "physical_initial_binding.json"]
     if family in {"L1-V", "L2"}:
-        names += ["v_collection_identity.json", "v_protocol_result.json", "v_marker_bindings.jsonl"]
+        names += ["v_collection_identity.json", "v_protocol_result.json", "v_protocol_abort.json", "v_marker_bindings.jsonl"]
         folders = ["v_intervention"] + (["l2_v"] if family == "L2" else [])
         for folder in folders:
             intervention = scene_private / folder
@@ -149,27 +182,23 @@ def _archive_scene_result(scene_run_dir: Path, output_dir: Path, summary: Mappin
                     if len(names) > 64:
                         raise ValueError("V archive file limit exceeded")
     for name in names:
-        source = scene_private / name
+        source = _path(root, str((scene_private / name).relative_to(root)))
         if not source.exists():
             continue
-        limit = 32 * 1024 * 1024 if name.startswith(("v_", "l2_v/")) or source.suffix == ".jsonl" else 512 * 1024
+        limit = MAX_JSON_BYTES if name.startswith(("v_", "l2_v/")) or source.suffix == ".jsonl" else MAX_SCORE_BYTES
         if source.is_symlink() or not source.resolve().is_relative_to(root) or not source.is_file() or source.stat().st_size > limit:
             raise ValueError("Unsafe or oversized scene result evidence")
-        raw = source.read_bytes()
+        with source.open("rb") as stream:
+            raw = stream.read(limit + 1)
+        if len(raw) > limit:
+            raise ValueError("Unsafe or oversized scene result evidence")
         rows = [row for row in raw.splitlines() if row.strip()] if source.suffix == ".jsonl" else [raw]
         types = (dict, list) if name == "l2_v/checkpoint_violations.json" else (dict,)
-        if any(not isinstance(json.loads(row), types) for row in rows):
+        if any(not isinstance(_json(row, name), types) for row in rows):
             raise ValueError("Scene result evidence has an invalid JSON structure")
         relative = ("scene_final_score.json" if name == "final_score.json" else
                     "v_scene/" + name if name.startswith("v_") else name)
-        destination = private / relative
-        destination.parent.mkdir(parents=True, mode=0o700, exist_ok=True)
-        if destination.exists():
-            if destination.is_symlink() or destination.read_bytes() != raw:
-                raise ValueError("Previously archived scene evidence differs")
-        else:
-            with os.fdopen(os.open(destination, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "wb") as stream:
-                stream.write(raw)
+        destination = archive(relative, raw)
         evidence[name] = {"source": str(source), "path": str(destination.relative_to(output_dir)),
                           "sha256": hashlib.sha256(raw).hexdigest(), "size_bytes": len(raw)}
     if "final_score.json" not in evidence:
@@ -178,14 +207,21 @@ def _archive_scene_result(scene_run_dir: Path, output_dir: Path, summary: Mappin
                 "evidence_schema_version": EVIDENCE_SCHEMA, "evidence": evidence}
     score = json.loads((private / "scene_final_score.json").read_text())
     result = recorded_score_result(score, episode_id, profile=profile)
+    aborted = _native_abort_score(score, family)
+    if aborted and "aborted_after_environment_error.json" not in evidence:
+        raise ValueError("Aborted final score lacks its native recovery evidence")
     if family == "L1-V":
-        if not {"v_collection_identity.json", "v_protocol_result.json"} <= set(evidence):
+        if ("v_collection_identity.json" not in evidence
+                or (not aborted and "v_protocol_result.json" not in evidence)
+                or (aborted and "v_protocol_abort.json" not in evidence)):
             raise ValueError("V result lacks its identity or protocol evidence")
         identity = json.loads((output_dir / evidence["v_collection_identity.json"]["path"]).read_text())
-        report = json.loads((output_dir / evidence["v_protocol_result.json"]["path"]).read_text())
+        report = (json.loads((output_dir / evidence["v_protocol_result.json"]["path"]).read_text())
+                  if "v_protocol_result.json" in evidence else None)
         if (identity.get("branch") != "D1" or not isinstance(identity.get("collection_config_key"), str)
                 or not identity["collection_config_key"]
-                or score.get("collection_config_key") != identity["collection_config_key"]
+                or (score.get("collection_config_key") != identity["collection_config_key"]
+                    and not (aborted and "collection_config_key" not in score))
                 or score.get("v_protocol") != report
                 or ("collection_config_key" in task and task["collection_config_key"] != identity["collection_config_key"])):
             raise ValueError("V result identity or protocol binding mismatch")

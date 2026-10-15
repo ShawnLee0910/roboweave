@@ -22,6 +22,19 @@ def test_official_new_credit_and_integrity():
                                                 errors=["recorded execution integrity failure"])
 
 
+@pytest.mark.parametrize("next_frame", [{"options": [[True, True, True]]},
+    {"options": [[True, True, True]], "integrity_ok": True}])
+def test_official_integrity_failure_cannot_be_cleared_by_a_later_snapshot(next_frame):
+    record = official()
+    record["snapshots"] += [dict(options=[[True, True, True]], integrity_ok=False), next_frame]
+    result = score_record(record)
+    assert result["snapshots"][0]["operational"] is True
+    for snapshot in result["snapshots"][1:]:
+        assert snapshot["operational"] is False
+        assert snapshot["success"] is False
+        assert snapshot["q_score"] is None
+
+
 def test_projected_stability_initial_credit_and_missing_evidence():
     path = Path(__file__).parents[1] / "examples/score-record.json"
     record = json.loads(path.read_text())
@@ -35,6 +48,23 @@ def test_projected_stability_initial_credit_and_missing_evidence():
     assert result["final"]["early_done"]
     record["snapshots"][-1]["truth"] = []
     assert score_record(record)["final"]["operational"] is False
+
+
+@pytest.mark.parametrize('route', ['official_projection', 'canonical_fallback'])
+@pytest.mark.parametrize('phase', ['initial_truth', 'snapshot'])
+@pytest.mark.parametrize('positive,negative', [('open', 'closed'), ('toggled_on', 'toggled_off')])
+def test_projected_rejects_contradictory_native_state_readbacks(route, phase, positive, negative):
+    record = dict(schema_version='esi-benchmark/score-record-v1', route=route,
+        goal_spec=dict(route=route, clauses=[dict(canonical_predicate=predicate, quantifier='ALL_LISTED',
+            target_scopes=['device'], destination_scopes=[]) for predicate in (positive, negative)]),
+        initial_truth=[dict(predicate=predicate, target='device', destination=None, value=value)
+                       for predicate, value in [(positive, False), (negative, True)]],
+        snapshots=[dict(truth=[dict(predicate=predicate, target='device', destination=None, value=value)
+                              for predicate, value in [(positive, True), (negative, False)]])])
+    rows = record['initial_truth'] if phase == 'initial_truth' else record['snapshots'][0]['truth']
+    rows[1]['value'] = rows[0]['value']
+    with pytest.raises(ValueError, match='contradictory.*state'):
+        score_record(record)
 
 
 def test_routes_and_shapes_cannot_be_substituted():
@@ -192,7 +222,7 @@ def test_current_reference_requires_complete_domain_readbacks(tmp_path):
             score_record(record, process_directory=tmp_path / str(index))
 
 
-def test_milestone_contract_requires_declared_boolean_readbacks(tmp_path):
+def milestone_record():
     record = process_record()
     process = record["process"]
     atom = dict(predicate="open", subject_role="protected", desired=True)
@@ -209,6 +239,20 @@ def test_milestone_contract_requires_declared_boolean_readbacks(tmp_path):
     event["action"] = "open"
     event["before"]["milestones"] = dict(opened=False)
     event["after"]["milestones"] = dict(opened=True)
+    return record
+
+
+@pytest.mark.parametrize("profile", ["l1-p-inside5", "l1-p-ontop5"])
+def test_v1_older_profiles_replay_their_supported_single_milestone(profile, tmp_path):
+    result = score_record(milestone_record(), profile=profile, process_directory=tmp_path / "process")
+    assert result["final"]["success"] is True
+    assert result["process"]["milestones_reached"] == {"opened": 1}
+
+
+def test_milestone_contract_requires_declared_boolean_readbacks(tmp_path):
+    record = milestone_record()
+    process = record["process"]
+    event = process["events"][0]
     assert score_record(record, process_directory=tmp_path / "valid")["final"]["success"]
     for index, value in enumerate((None, {}, dict(opened=1))):
         event["after"]["milestones"] = value
@@ -309,6 +353,7 @@ def test_v2_history_never_substitutes_final_static_truth_for_history(case, tmp_p
             set_atom(process['final_truth'], subject, 'ontop', table, 'table')
     elif case == 'early_close':
         set_atom(process['events'][0]['after']['truth'], 'cabinet', 'open', False)
+        set_atom(process['events'][0]['after']['truth'], 'cabinet', 'closed', True)
     elif case == 'early_return':
         process['events'][2], process['events'][3] = process['events'][3], process['events'][2]
         for i, event in enumerate(process['events'], 1):
@@ -318,6 +363,7 @@ def test_v2_history_never_substitutes_final_static_truth_for_history(case, tmp_p
         process['requirements']['history_program']['process'].pop('maintain_until')
         process['events'][2]['status'] = 'needs_marker'
         set_atom(process['events'][1]['after']['truth'], 'cabinet', 'closed', True)
+        set_atom(process['events'][1]['after']['truth'], 'cabinet', 'open', False)
     else:
         process['events'][0]['status'] = case
     result = assert_native_v2_parity(record, tmp_path)
@@ -336,6 +382,22 @@ def test_v2_missing_phase_truth_fails_closed(tmp_path, phase):
         record['process']['events'][0][phase]['truth'] = []
     with pytest.raises(ValueError, match='predicate truth'):
         score_record(record, process_directory=tmp_path / 'process')
+
+
+@pytest.mark.parametrize('phase', ['initial_truth', 'before', 'after', 'final_truth'])
+@pytest.mark.parametrize('positive,negative', [('open', 'closed'), ('toggled_on', 'toggled_off')])
+def test_process_replay_rejects_contradictory_native_state_readbacks(phase, positive, negative, tmp_path):
+    record = json.loads(json.dumps(history_record()).replace('"open"', '"' + positive + '"')
+                        .replace('"closed"', '"' + negative + '"')
+                        .replace('"close"', '"close"' if positive == 'open' else '"toggle_off"'))
+    process = record['process']
+    rows = process[phase] if phase.endswith('_truth') else process['events'][0][phase]['truth']
+    observed = next(row['value'] for row in rows if row['atom']['predicate'] == positive)
+    set_atom(rows, 'cabinet', negative, observed)
+    directory = tmp_path / 'process'
+    with pytest.raises(ValueError, match='contradictory.*state'):
+        score_record(record, process_directory=directory)
+    assert not directory.exists()
 
 
 @pytest.mark.parametrize('case', ['order', 'duplicate_event', 'boolean_event', 'missing_private',
@@ -453,6 +515,36 @@ def cycle_record(ordinal='last'):
     process['final_truth'] = truth()
     return dict(official(), schema_version='esi-benchmark/score-record-v2',
                 snapshots=[{'options': [[True, True, True]]}], process=process)
+
+
+def test_v1_milestone_readbacks_cannot_hide_an_extra_device_cycle(tmp_path):
+    record = cycle_record()
+    native_v2(record, tmp_path / 'native')
+    events = [json.loads(line) for line in
+              (tmp_path / 'native/private/task_process_events.jsonl').read_text().splitlines()]
+    for event in events:
+        event.pop('event_id')
+    record['schema_version'] = 'esi-benchmark/score-record-v1'
+    process = record['process']
+    process['events'] = events
+    for field in ('protected_relations', 'protected_state_relations', 'placement_targets'):
+        process.pop(field)
+    closed = copy.deepcopy(events[1]['after'])
+    opened = copy.deepcopy(closed)
+    opened['milestones'].update(a_open=True, a_closed=False)
+    extra = [dict(action='open', status='completed', action_index=2, before=closed, after=opened),
+             dict(action='close', status='completed', action_index=3,
+                  before=copy.deepcopy(opened), after=copy.deepcopy(closed))]
+    events[2:2] = extra
+    directory = tmp_path / 'conflicting'
+    with pytest.raises(ValueError, match='contradictory milestone'):
+        score_record(record, process_directory=directory)
+    assert not directory.exists()
+    extra[0]['after']['milestones']['_unary']['a'] = True
+    extra[1]['before']['milestones']['_unary']['a'] = True
+    result = score_record(record, process_directory=tmp_path / 'consistent')
+    assert result['final']['success'] is False
+    assert any(v['kind'] == 'EXACT_CYCLE_LIMIT_EXCEEDED' for v in result['process']['violations'])
 
 
 @pytest.mark.parametrize('ordinal', ['last', 1])

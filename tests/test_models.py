@@ -28,6 +28,19 @@ def test_local_anonymous_provider_needs_no_key():
     assert create_provider({'endpoint': 'http://127.0.0.1:8000/v1', 'model': 'local'}).requires_api_key is False
 
 
+def test_remote_provider_requires_explicit_key_name_without_reading_credentials(monkeypatch):
+    monkeypatch.delenv('ESI_TEST_KEY', raising=False)
+    config = {'endpoint': 'https://provider.example/v1', 'model': 'model'}
+    with pytest.raises(ValueError, match='model.api_key_env'):
+        validate_model_config(config)
+    assert validate_model_config({**config, 'api_key_env': 'ESI_TEST_KEY'})['api_key_env'] == 'ESI_TEST_KEY'
+
+
+def test_model_record_matches_frozen_provider_normalization():
+    config = {'endpoint': 'http://127.0.0.1:8000/v1', 'model': ' local '}
+    assert validate_model_config(config)['model'] == create_provider(config).model == 'local'
+
+
 def test_native_adapters_validate_frozen_parameters():
     base = {'endpoint': 'http://localhost:8000/v1', 'model': 'model'}
     with pytest.raises(ValueError):
@@ -51,6 +64,21 @@ def test_episode_requires_frozen_budget_before_contacting_scene(tmp_path):
     with pytest.raises(ValueError, match='maximum_action_decisions'):
         run_episode(model_config={}, task=task, ready_path=tmp_path/'runtime/scene/ready.json',
                     runtime_root=tmp_path/'runtime', output_dir=tmp_path/'output', experiment_id='test')
+    assert not (tmp_path/'output').exists()
+
+
+def test_episode_checks_catalog_binding_before_provider_or_scene(tmp_path, monkeypatch):
+    from esi_benchmark._native import models
+    from esi_benchmark.tasks import list_tasks
+    public = list_tasks('L0')[0]
+    task = {'task_id': public['source']['row_index'], 'task_name': public['runtime_instruction_id'],
+            'task_split': 'train', 'task_instance_id': '0', 'task_seed': 0,
+            'instruction': 'tampered instruction', 'budget': dict(public['budget']), **public['budget'],
+            'instruction_provenance': {'profile': public['profile'], 'instruction_sha256': public['instruction_sha256']}}
+    monkeypatch.setattr(models, 'create_provider', lambda *args: pytest.fail('contacted provider for changed task'))
+    with pytest.raises(ValueError, match='instruction'):
+        models.run_episode(model_config={}, task=task, ready_path=tmp_path/'runtime/scene/ready.json',
+                           runtime_root=tmp_path/'runtime', output_dir=tmp_path/'output', experiment_id='test')
     assert not (tmp_path/'output').exists()
 
 
@@ -167,14 +195,17 @@ def test_l2_archive_keeps_native_process_and_intervention_records(tmp_path, monk
     assert (tmp_path/'run/private/l2_v/checkpoint_violations.json').read_text() == '[]\n'
 
 
-@pytest.mark.parametrize('profile,paused', [('l0-english-v2', False), ('l2-collection37', True)])
-def test_only_l2_restores_historical_common_pause_semantics(tmp_path, monkeypatch, profile, paused):
+@pytest.mark.parametrize('profile,watchdog', [('l0-english-v2', False), ('l1-a30', False), ('l1-m30-public-v2', False),
+                                              ('l1-v30', False), ('l1-p-inside5', False), ('l2-collection37', True)])
+def test_every_profile_keeps_frozen_bench_pause_semantics(tmp_path, monkeypatch, profile, watchdog):
     from types import SimpleNamespace
     from esi_benchmark._native import models
+    from esi_benchmark import tasks
     import model_client
     import scene_protocol
     captured = {}
     monkeypatch.setattr(models, 'activate', lambda profile: None)
+    monkeypatch.setattr(tasks, 'validate_model_task', lambda profile, task: task)
     monkeypatch.setattr(models, 'create_provider', lambda config: SimpleNamespace())
     monkeypatch.setattr(models, 'validate_model_config', lambda config: dict(config))
     monkeypatch.setattr(models, '_archive_scene_result', lambda *args, **kwargs: {'status': 'unavailable'})
@@ -189,7 +220,21 @@ def test_only_l2_restores_historical_common_pause_semantics(tmp_path, monkeypatc
     result = models.run_episode(model_config={'model': 'fixture'}, task=task,
         ready_path=tmp_path/'scene/ready.json', runtime_root=tmp_path/'scene', output_dir=tmp_path/'run',
         experiment_id='test', profile=profile)
-    assert captured.get('pause_on_client_failure', False) is paused
+    assert captured['pause_on_client_failure'] is True
     assert result['summary']['status'] == 'PAUSED_INTERRUPTED'
     record = json.loads((tmp_path/'run/run_record.json').read_text())
-    assert ('safe_point_watchdog' in record['wall_clock_enforcement']) is paused
+    assert ('safe_point_watchdog' in record['wall_clock_enforcement']) is watchdog
+
+
+@pytest.mark.parametrize('profile', ['l0-english-v2', 'l1-a30', 'l1-m30-public-v2',
+                                   'l1-v30', 'l1-p-inside5', 'l2-collection37'])
+def test_frozen_provider_failures_redact_credentials_without_changing_raw_evidence(tmp_path, profile):
+    from pathlib import Path
+    import subprocess
+    import sys
+    probe = Path(__file__).with_name('provider_redaction_probe.py')
+    result = subprocess.run([sys.executable, '-I', '-B', str(probe), profile, str(tmp_path),
+                             str(probe.parents[1] / 'src')], capture_output=True, text=True, timeout=60)
+    assert result.returncode == 0, result.stdout + result.stderr
+    report = json.loads(result.stdout)
+    assert report['status'] == 'PASS' and report['network_used'] is False

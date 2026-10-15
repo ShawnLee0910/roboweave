@@ -42,6 +42,8 @@ is rejected. It also rejects traversal, symlink paths, hash/size mismatches,
 source/destination overlap, unowned nonempty directories and conflicting bytes.
 All selected sources are validated before import begins. Sources are never
 modified; the importer neither downloads nor extracts archives.
+Concurrent imports lock the destination directory before reading its ownership
+marker, and serialize profile claims, copies and receipt updates.
 
 On Linux, private directories use `0700`; files, markers and receipts use `0600`
 regardless of umask. Existing source/parent permissions are not changed. Reusing
@@ -93,6 +95,8 @@ and canonical-JSON hashes only where the manifest declares a dependent binding.
 `materialization_receipt.json` records original/derived hashes, task selections
 and every path/hash rewrite. Directories use `0700`, files use `0600`, and an
 existing materialization directory is refused.
+Each file's exact read bytes are checked again before transformation, so a change
+after the initial asset check cannot be recorded as a frozen source.
 
 The selected profile's isolated worker then invokes its original metadata
 validators. A/M retain preparation and process contracts; V additionally validates
@@ -101,6 +105,9 @@ physical admission. L2 retains approved public English separately from source
 TaskSpec text. Its 14 Physical entries use native fresh-world construction,
 while the 23 Symbolic entries use prepared routes. Relocation does not silently
 convert one route or action mode into another.
+Before native admission, the public inspection entry checks the model handle,
+instruction, budgets and instruction provenance against the installed catalog,
+then verifies the selected native instruction and V collection identity.
 
 Task instructions, initial-state meaning, objects, seed, goal/process contracts,
 budgets and original version evidence remain frozen. Private source inputs are

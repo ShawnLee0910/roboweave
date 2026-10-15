@@ -1,0 +1,231 @@
+{
+  "scope": "CPU/static only; no simulator/GPU/model/SSH/service; original sources and vendor files unchanged by this agent",
+  "files": [
+    "src/esi_benchmark/models.py",
+    "src/esi_benchmark/trajectory.py",
+    "tests/test_trajectory.py",
+    "docs/TRAJECTORIES.md"
+  ],
+  "findings": [
+    {
+      "id": "T1",
+      "severity": "P1",
+      "trigger": "Existing private/v_scene symlink or duplicate final-score fields",
+      "before": "Archive wrote task_binding outside run, and duplicate official_success:false/true returned success=True",
+      "fix": "Reuse bounded path/strict JSON checks and owner-private file helpers; never replace changed existing binding/evidence"
+    },
+    {
+      "id": "T2",
+      "severity": "P1",
+      "source": "lab/physical_model_results.py:39-45",
+      "trigger": "P/process final score omitted task_success despite true official/verifier flags",
+      "before": "Public score interpreted success while frozen collector returned false",
+      "fix": "Require native explicit task_success True; differential tests against frozen collector for P3 profiles and M"
+    },
+    {
+      "id": "T3",
+      "severity": "P1",
+      "source": "L2 lab/scene_server.py::end_episode",
+      "trigger": "L2 PASS/task_success True with official_success False but no Physical report, or detached completion flags",
+      "before": "Contradictory/missing evidence accepted as success",
+      "fix": "Reject contradictory combined outcome and require reports for completion flags; preserve valid Physical combined semantics"
+    },
+    {
+      "id": "T4",
+      "severity": "P1",
+      "trigger": "P12 record changed to 900 actions, 20 history frames, different experiment ID",
+      "before": "inspect_run returned PASS",
+      "fix": "Reuse shared tasks.validate_model_task and bind native manifest/summary/run budgets, history variant and experiment; validate SHA256 strings"
+    },
+    {
+      "id": "T5",
+      "severity": "P2",
+      "trigger": "Self-referential symlink; JSON exponent 1e1000; malformed watchdog phase/timing",
+      "before": "Symlink RuntimeError aborted batch; exponent overflow passed JSON validation; invalid timeout could be classified as sent",
+      "fix": "Per-run INVALID retains other attempts; reject nonfinite numeric overflow and unsafe/mismatched timeout metadata"
+    },
+    {
+      "id": "T6",
+      "severity": "P1",
+      "source": "_recover_failed_episode_runtime across 8 frozen profiles, plus V v_collection_lifecycle.py:61",
+      "trigger": "Real negative abort final-score schema has no L2 status or embedded process report",
+      "before": "Valid negative scores rejected as malformed/support mismatch",
+      "fix": "Accept only explicit native negative schema with recovery evidence; preserve separate process receipts and V abort receipt without permitting missing success gates"
+    },
+    {
+      "id": "T7",
+      "severity": "P2",
+      "trigger": "Legacy run lacks run_record but has verified false final score and stale true summary flag",
+      "before": "Inspector returned summary success ignoring checked evidence",
+      "fix": "Prefer verified candidate score; keep unknown_legacy out of Live denominator"
+    }
+  ],
+  "denominator": "Preserve all Live attempts, raw-score-covered denominator, and V native outcome/formal qualification fields; no new formal rate",
+  "abort_profile_table": [
+    {
+      "profile": "l0-english-v2",
+      "source": "/liyuanshuai/esi-benchmark-public-20261013/src/esi_benchmark/_vendor/bench/lab/scene_server.py",
+      "function": "_recover_failed_episode_runtime",
+      "line": 3090,
+      "fixture": "tests/test_trajectory.py::test_native_abort_schema_keeps_each_profiles_negative_score",
+      "raw_schema": "verifier_ok=false/official_success=false/Q=null/integrity_failure; task_success omitted",
+      "expected": {
+        "inspection": "PASS",
+        "score_available": true,
+        "official_success": false,
+        "official_q": null,
+        "all_live_attempts": 1,
+        "scored_live_runs": 1,
+        "invalid_runs": 0
+      }
+    },
+    {
+      "profile": "l1-a30",
+      "source": "/liyuanshuai/esi-benchmark-public-20261013/src/esi_benchmark/_vendor/revisions/bench/1d76bc5dc53b1995f2e7c301cb06569bcf0c4923/lab/scene_server.py",
+      "function": "_recover_failed_episode_runtime",
+      "line": 3090,
+      "fixture": "tests/test_trajectory.py::test_native_abort_schema_keeps_each_profiles_negative_score",
+      "raw_schema": "verifier_ok=false/official_success=false/Q=null/integrity_failure; task_success omitted",
+      "expected": {
+        "inspection": "PASS",
+        "score_available": true,
+        "official_success": false,
+        "official_q": null,
+        "all_live_attempts": 1,
+        "scored_live_runs": 1,
+        "invalid_runs": 0
+      }
+    },
+    {
+      "profile": "l1-m30-public-v2",
+      "source": "/liyuanshuai/esi-benchmark-public-20261013/src/esi_benchmark/_vendor/revisions/bench/fb1cf143f850fe43a04d25440f07cbfab4007093/lab/scene_server.py",
+      "function": "_recover_failed_episode_runtime",
+      "line": 3090,
+      "fixture": "tests/test_trajectory.py::test_native_abort_schema_keeps_each_profiles_negative_score",
+      "raw_schema": "verifier_ok=false/official_success=false/Q=null/integrity_failure; task_success omitted",
+      "expected": {
+        "inspection": "PASS",
+        "score_available": true,
+        "official_success": false,
+        "official_q": null,
+        "all_live_attempts": 1,
+        "scored_live_runs": 1,
+        "invalid_runs": 0
+      }
+    },
+    {
+      "profile": "l1-p-additions20",
+      "source": "/liyuanshuai/esi-benchmark-public-20261013/src/esi_benchmark/_vendor/revisions/bench/7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb/lab/scene_server.py",
+      "function": "_recover_failed_episode_runtime",
+      "line": 3090,
+      "fixture": "tests/test_trajectory.py::test_native_abort_schema_keeps_each_profiles_negative_score",
+      "raw_schema": "verifier_ok=false/official_success=false/Q=null/integrity_failure; task_success omitted",
+      "expected": {
+        "inspection": "PASS",
+        "score_available": true,
+        "official_success": false,
+        "official_q": null,
+        "all_live_attempts": 1,
+        "scored_live_runs": 1,
+        "invalid_runs": 0
+      }
+    },
+    {
+      "profile": "l1-p-inside5",
+      "source": "/liyuanshuai/esi-benchmark-public-20261013/src/esi_benchmark/_vendor/revisions/bench/7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb/lab/scene_server.py",
+      "function": "_recover_failed_episode_runtime",
+      "line": 3090,
+      "fixture": "tests/test_trajectory.py::test_native_abort_schema_keeps_each_profiles_negative_score",
+      "raw_schema": "verifier_ok=false/official_success=false/Q=null/integrity_failure; task_success omitted",
+      "expected": {
+        "inspection": "PASS",
+        "score_available": true,
+        "official_success": false,
+        "official_q": null,
+        "all_live_attempts": 1,
+        "scored_live_runs": 1,
+        "invalid_runs": 0
+      }
+    },
+    {
+      "profile": "l1-p-ontop5",
+      "source": "/liyuanshuai/esi-benchmark-public-20261013/src/esi_benchmark/_vendor/revisions/bench/7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb/lab/scene_server.py",
+      "function": "_recover_failed_episode_runtime",
+      "line": 3090,
+      "fixture": "tests/test_trajectory.py::test_native_abort_schema_keeps_each_profiles_negative_score",
+      "raw_schema": "verifier_ok=false/official_success=false/Q=null/integrity_failure; task_success omitted",
+      "expected": {
+        "inspection": "PASS",
+        "score_available": true,
+        "official_success": false,
+        "official_q": null,
+        "all_live_attempts": 1,
+        "scored_live_runs": 1,
+        "invalid_runs": 0
+      }
+    },
+    {
+      "profile": "l1-v30",
+      "source": "/liyuanshuai/esi-benchmark-public-20261013/src/esi_benchmark/_vendor/revisions/bench/d8ae5151fadfb3338d122fdb12b26051ed753852/lab/scene_server.py",
+      "function": "_recover_failed_episode_runtime",
+      "line": 3108,
+      "fixture": "tests/test_trajectory.py::test_native_abort_schema_keeps_each_profiles_negative_score",
+      "raw_schema": "verifier_ok=false/official_success=false/Q=null/integrity_failure; task_success omitted",
+      "expected": {
+        "inspection": "PASS",
+        "score_available": true,
+        "official_success": false,
+        "official_q": null,
+        "all_live_attempts": 1,
+        "scored_live_runs": 1,
+        "invalid_runs": 0
+      }
+    },
+    {
+      "profile": "l2-collection37",
+      "source": "/liyuanshuai/esi-benchmark-public-20261013/src/esi_benchmark/_vendor/revisions/bench/4c8364842157153875d098ebb529adcc0620a714/lab/scene_server.py",
+      "function": "_recover_failed_episode_runtime",
+      "line": 3369,
+      "fixture": "tests/test_trajectory.py::test_native_abort_schema_keeps_each_profiles_negative_score",
+      "raw_schema": "explicit task_success=false/failure_class; status omitted",
+      "expected": {
+        "inspection": "PASS",
+        "score_available": true,
+        "official_success": false,
+        "official_q": null,
+        "all_live_attempts": 1,
+        "scored_live_runs": 1,
+        "invalid_runs": 0
+      }
+    }
+  ],
+  "validation": [
+    {
+      "phase": "archive before additional identity/abort edits",
+      "passed": 169,
+      "command": "tests/test_trajectory.py"
+    },
+    {
+      "phase": "new identity/archive/parser/explicit native gate focused checks",
+      "passed": 194,
+      "deselected": 87
+    },
+    {
+      "phase": "public model score/archive callers",
+      "passed": 5,
+      "deselected": 18
+    },
+    {
+      "phase": "final abort/score/archive focused checks",
+      "passed": 41,
+      "deselected": 262
+    },
+    {
+      "phase": "full trajectory + replay before abort additions; bundle credential patch overlapped final replay tail without any failures",
+      "passed": 297,
+      "seconds": 643.89,
+      "command": "tests/test_trajectory.py tests/test_replay.py"
+    }
+  ],
+  "remaining": "Owned implementation frozen. All owned targeted checks passed; final root integration must include 17 additional abort-schema cases appended after full-suite collection, already covered by the 41-pass focused run. Vendor credential patch is a separate agent change."
+}

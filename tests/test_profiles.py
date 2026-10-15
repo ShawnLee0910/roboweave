@@ -61,6 +61,30 @@ def test_source_roots_do_not_follow_registry_escape(monkeypatch, tmp_path):
         profiles.source_roots("test")
 
 
+@pytest.mark.parametrize("redirect", ["root", "parent"])
+@pytest.mark.parametrize("operation", ["source_roots", "registered_revision", "verify_bundle"])
+def test_registered_bundle_rejects_symlink_entries(monkeypatch, tmp_path, redirect, operation):
+    root = frozen_bundle(tmp_path / "bundle")
+    digest = hashlib.sha256((root / "SOURCE_IDENTITY.json").read_bytes()).hexdigest()
+    if redirect == "root":
+        link = tmp_path / "redirect"
+        link.symlink_to(root, target_is_directory=True)
+    else:
+        (tmp_path / "redirect").symlink_to(tmp_path, target_is_directory=True)
+        link = tmp_path / "redirect/bundle"
+    entry = {"path": str(link.relative_to(tmp_path)), "manifest_sha256": digest}
+    monkeypatch.setattr(profiles, "_PACKAGE_ROOT", tmp_path)
+    monkeypatch.setattr(profiles, "_registry", lambda: {"bundles": {"bench": {"a" * 40: entry}}})
+    monkeypatch.setattr(profiles, "_entries", lambda _: {"bench": ("a" * 40, entry)})
+    with pytest.raises(ValueError, match="symlink"):
+        if operation == "source_roots":
+            profiles.source_roots("test")
+        elif operation == "registered_revision":
+            profiles.registered_revision(root)
+        else:
+            profiles.verify_bundle(root, "a" * 40)
+
+
 def test_registered_bundles_are_complete_and_syntax_valid():
     package = Path(profiles.__file__).parent
     registry = profiles._registry()
@@ -124,6 +148,17 @@ def test_importer_adapts_only_matching_context_and_preserves_new_logic():
     assert result == newer.replace("b = 2", "b = 6")
     with pytest.raises(ValueError, match="requires review"):
         module.apply_adaptation(old, adapted, newer.replace("b = 2", "b = 9"), "fixture.py")
+
+
+def test_importer_limits_source_only_adaptation_to_projected_verifier_loader():
+    module = _importer()
+    original = "def load():\n    spec = importlib.util.spec_from_file_location(module_name, path)\n    return spec\n"
+    result = module.adapt_projected_verifier_loader(original)
+    assert "loader=_SourceOnlyLoader(module_name, str(path))" in result
+    assert result.endswith("    return spec\n")
+    ast.parse(result)
+    with pytest.raises(ValueError, match="requires review"):
+        module.adapt_projected_verifier_loader(result)
 
 
 def _scene_identity_module():

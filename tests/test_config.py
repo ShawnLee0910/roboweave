@@ -19,7 +19,7 @@ def test_resolves_paths_against_config_not_cwd(tmp_path, monkeypatch):
     assert load_config(path)["run"]["output_root"] == str(tmp_path / "outputs")
 
 
-@pytest.mark.parametrize("field,value", [("mode", "mock_live"), ("profile", "latest"), ("unknown", 1)])
+@pytest.mark.parametrize("field,value", [("mode", "mock_live"), ("mode", []), ("mode", {}), ("profile", "latest"), ("unknown", 1)])
 def test_rejects_unknown_semantics(field, value):
     config = valid()
     config[field] = value

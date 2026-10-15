@@ -164,6 +164,12 @@ def test_watchdog_requires_exact_run_and_task_identity(watchdog_payload, tmp_pat
     assert engine._safe_model_phase(watchdog_payload, run) is None
 
 
+@pytest.mark.parametrize("configured,expected", [(" fixture ", "STARTING_PROVIDER_CALL"), ("other", None)])
+def test_watchdog_matches_the_frozen_provider_normalized_model(watchdog_payload, configured, expected):
+    watchdog_payload["model_config"]["model"] = configured
+    assert engine._safe_model_phase(watchdog_payload, Path(watchdog_payload["output_dir"])) == expected
+
+
 def test_watchdog_observation_capacity_covers_the_declared_l2_budget(watchdog_payload):
     run = Path(watchdog_payload["output_dir"])
     for index in range(2, 514):

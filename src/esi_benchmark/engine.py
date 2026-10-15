@@ -83,12 +83,12 @@ def _read_json(raw):
         result = {}
         for key, value in items:
             if key in result:
-                raise ValueError("Duplicate engine JSON field")
+                raise ValueError("Duplicate JSON field")
             result[key] = value
         return result
 
     return json.loads(raw, object_pairs_hook=pairs,
-                      parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Non-finite engine JSON")))
+                      parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Non-finite JSON")))
 
 
 def _watchdog_json(path, maximum=2 * 1024 * 1024):
@@ -116,7 +116,7 @@ def _safe_model_phase(payload, run):
             or record.get("task_identity") != identity
             or manifest.get("experiment_id") != payload["experiment_id"]
             or any(manifest.get(key) != value for key, value in identity.items())
-            or manifest.get("model") != payload["model_config"].get("model")
+            or manifest.get("model") != payload["model_config"].get("model", "").strip()
             or manifest.get("pause_on_client_failure") is not True
             or manifest.get("agent_cli") is not None):
         return None
@@ -306,4 +306,4 @@ def call(operation: str, payload: Mapping[str, Any], *, profile: str = DEFAULT_P
         raise RuntimeError("Invalid engine failure response")
     kind = {"ValueError": ValueError, "FileExistsError": FileExistsError,
             "FileNotFoundError": FileNotFoundError, "TimeoutError": TimeoutError}.get(error["type"], RuntimeError)
-    raise kind(error["message"])
+    raise kind(error["message"] or error["type"])

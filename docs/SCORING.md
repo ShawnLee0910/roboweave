@@ -72,11 +72,17 @@ For projected routes, supply `goal_spec`, `initial_truth`, optional
 `stability_window` and ordered `snapshots`. Each truth item has exactly
 `predicate`, `target`, `destination` (string or null), and boolean `value`.
 A snapshot supplies `truth` and optional `done_requested`.
+When both `open`/`closed` or `toggled_on`/`toggled_off` are recorded for the same
+target with a null destination, their values must be complementary. Initial
+and snapshot records with contradictory native state values are rejected.
 
 For `official_full`, supply `initial_options` and ordered snapshots containing
 `options`: nonempty lists of nonempty boolean leaf lists in the same frozen
 option/leaf order. A snapshot may declare `integrity_ok: false`, which produces
-an invalid result with unavailable Q. This low-level input assumes the supplied
+an invalid result with unavailable Q for that snapshot and every later snapshot
+in the same record, matching the native episode's persistent integrity fault.
+Omitting the flag or setting it to true later cannot clear that fault.
+This low-level input assumes the supplied
 leaf positions retain their original identity; the Live verifier additionally
 checks grounded predicate identities against the actual evaluator.
 
@@ -108,12 +114,18 @@ Current-reference contracts require one `current_references` entry per rule,
 each containing `source_matches` and `target_matches` as distinct roles in that
 rule's domain. Milestone programs require each declared boolean in `milestones`,
 plus the `_unary` role readbacks when the original program uses a unary-state
-extension. An optional `selected_roles` list retains the native protected-pick
+extension. For those programs, milestone booleans must agree with the same
+`_unary` states when read through the selected runtime's `MilestoneProgress.read`;
+conflicting duplicate readbacks cannot hide an extra device cycle.
+An optional `selected_roles` list retains the native protected-pick
 receipt. Missing snapshots, missing required fields, wrong types and changing
 protection readback counts raise `ValueError`; they cannot produce a passing
 score. Structural validation runs before event receipts are written. Valid
 records retain the original audit's success, violation and verifier-error
 classification and the unmodified canonical Q.
+The selected frozen runtime determines supported milestone features. The older
+P inside/ontop profiles still support their original single milestone through
+v1; they do not acquire newer unary-phase or cycle-ledger extensions.
 
 `history_program` contracts remain rejected for v1: their original audit
 re-reads predicate truth during each event, while `score-record-v1` has only
@@ -153,6 +165,11 @@ placement references. Supply these lists from the same private contract;
 use empty lists when the contract has no corresponding rule. Predicate atoms
 retain their exact native shape, including `desired` when present; replay keys
 use that full atom, and never guess a role or substitute an alias.
+Within each truth list, a role's `open`/`closed` and
+`toggled_on`/`toggled_off` readbacks must be complementary when both are supplied,
+because each pair reads the same native boolean state. Contradictory values are
+rejected before writing receipts. This check also applies to v1 initial/final
+atom truth; it does not infer exclusivity between spatial predicates.
 
 Each event has exactly `event_id`, `action`, `status`, `action_index`, `before`
 and `after`. `event_id` is the one-based audit ordinal and must be consecutive.

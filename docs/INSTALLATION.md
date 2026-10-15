@@ -26,7 +26,7 @@ To review the built distribution in a second environment:
 python -m pip wheel --no-deps --wheel-dir dist .
 python3.11 -m venv .venv-wheel
 . .venv-wheel/bin/activate
-python -m pip install dist/esi_benchmark-0.1.0rc3-py3-none-any.whl
+python -m pip install dist/esi_benchmark-0.1.0rc4-py3-none-any.whl
 esi-benchmark --help
 esi-benchmark doctor
 ```
@@ -47,9 +47,9 @@ verify it independently:
 ```bash
 python -c "from setuptools.build_meta import build_sdist; build_sdist('dist')"
 mkdir -p .tmp/source-release
-tar -xzf dist/esi_benchmark-0.1.0rc3.tar.gz -C .tmp/source-release
+tar -xzf dist/esi_benchmark-0.1.0rc4.tar.gz -C .tmp/source-release
 ESI_TEST_TMP="$PWD/.tmp/sdist-tests"
-cd .tmp/source-release/esi_benchmark-0.1.0rc3
+cd .tmp/source-release/esi_benchmark-0.1.0rc4
 python -m pip install '.[test]'
 PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -ra --basetemp="$ESI_TEST_TMP"
 python tools/check_equivalence.py

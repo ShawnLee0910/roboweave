@@ -103,6 +103,10 @@ def runtime_plan(config: Mapping[str, Any], task_inputs: Mapping[str, Any]) -> d
     validate_config(dict(config))
     if config["mode"] != "live":
         raise ValueError("runtime launch requires mode=live")
+    from .tasks import validate_model_task
+    selected = validate_model_task(config["profile"], task_inputs["model_task"])
+    if (config["run"]["task_id"], config["run"]["family"]) != (selected["task_id"], selected["family"]):
+        raise ValueError("Runtime task selection differs from its frozen model binding")
     roots = source_roots(config["profile"])
     source = verify_runtime_sources(config["profile"])
     runtime = config["runtime"]
@@ -199,7 +203,7 @@ def build_runtime_command(config, task_inputs) -> list[str]:
 def launch_runtime(config, task_inputs) -> subprocess.Popen:
     """Create one owned workspace and process; never retry a scene load."""
     plan = runtime_plan(config, task_inputs)
-    _verify_materialized_inputs(_launch_inputs(task_inputs))
+    _verify_materialized_inputs(_launch_inputs(task_inputs), profile=config["profile"], task_id=config["run"]["task_id"])
     workspace = Path(plan["workspace"])
     workspace.mkdir(parents=True, mode=0o700, exist_ok=False)
     for name in ("appdata", "tmp", "cache", "config", "data", "xdg", "materials"):
@@ -211,7 +215,8 @@ def launch_runtime(config, task_inputs) -> subprocess.Popen:
     stripped = {"CUDA_VISIBLE_DEVICES", "VCUDA_PORT", "LOCAL_HOST_IP", "PYTHONPATH", "LD_PRELOAD",
                 "HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy",
                 "TOKEN_PLAN_API_KEY", "DASHSCOPE_API_KEY", "OPENAI_API_KEY",
-                "TOKEN_PLAN_BASE_URL", "DASHSCOPE_BASE_URL", "OPENAI_BASE_URL"}
+                "ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN",
+                "TOKEN_PLAN_BASE_URL", "DASHSCOPE_BASE_URL", "OPENAI_BASE_URL", "ANTHROPIC_BASE_URL"}
     credential = config.get("model", {}).get("api_key_env")
     env = {key: value for key, value in os.environ.items()
            if key not in stripped and key != credential and not key.startswith(("BEHAVIOR_HL_", "ESI_", "OMNIGIBSON_", "BEHAVIOR2026_"))}
@@ -246,13 +251,20 @@ def validate_owned_ready(plan, process_pid: int) -> dict[str, Any]:
 
 
 
-def _verify_materialized_inputs(inputs):
+def _verify_materialized_inputs(inputs, *, profile, task_id=None):
     receipt = inputs.get("materialization_receipt")
     if not receipt:
         raise ValueError("Live requires independently materialized and hashed task inputs")
     path = _file(receipt, "materialization receipt")
     root = path.parent
     report = json.loads(path.read_text())
+    from .tasks import validate_model_task
+    selected = validate_model_task(profile, inputs["model_task"])
+    if (report.get("profile") != profile or inputs.get("profile", profile) != profile
+            or report.get("task_id") != selected["task_id"]
+            or (task_id is not None and task_id != selected["task_id"])
+            or inputs["instruction_id"] != selected["runtime_instruction_id"]):
+        raise ValueError("Materialized receipt differs from its frozen task or profile")
     if report.get("instruction_id") != inputs["instruction_id"]:
         raise ValueError("materialized input selection changed")
     members = set()
@@ -289,7 +301,7 @@ def _main(argv=None):
     from ._native.bootstrap import activate
     activate(payload["profile"])
     verify_runtime_sources(payload["profile"])
-    _verify_materialized_inputs(inputs)
+    _verify_materialized_inputs(inputs, profile=payload["profile"])
     if sys.version_info[:2] != (3, 11):
         raise ValueError("Live requires the frozen Python 3.11 environment")
     if Path(sys.prefix).resolve() != Path(runtime["overlay_root"]).resolve():

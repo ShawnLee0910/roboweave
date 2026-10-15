@@ -1,5 +1,6 @@
 """Hash-checked private input import and immutable per-run path relocation."""
 
+import fcntl
 import hashlib
 import json
 import os
@@ -134,9 +135,6 @@ def prepare_assets(config, source_roots=None, mapping=None, bundle=None, task=No
         raise ValueError("Asset destination must not be a symlink")
     if root.exists() and any(root.iterdir()) and not marker.is_file():
         raise ValueError("Refusing a nonempty destination without an ESI asset ownership marker")
-    if marker.exists():
-        if marker.is_symlink() or json.loads(marker.read_text()).get("profile") != manifest["profile"]:
-            raise ValueError("Asset destination ownership/profile mismatch")
     candidates = []
     for row in rows:
         if row["key"] in mapping:
@@ -156,35 +154,54 @@ def prepare_assets(config, source_roots=None, mapping=None, bundle=None, task=No
         if not source.is_file() or source.stat().st_size != row["bytes"] or _sha(source) != row["sha256"]:
             raise ValueError(f"Asset missing or SHA256/size mismatch: {row['key']}")
         destination = _path(root, row)
-        if destination.exists() and (not destination.is_file() or _sha(destination) != row["sha256"]):
-            raise ValueError(f"Refusing to overwrite a different imported asset: {row['key']}")
         candidates.append((row, source, destination))
-    _private_directory(root)
-    _private_write(marker, (json.dumps({"schema_version": 1, "profile": manifest["profile"]}) + "\n").encode())
-    copied = 0
-    for row, source, destination in candidates:
-        if destination.exists():
-            with _private_open(destination, exclusive=False):
-                pass
-            continue
-        _private_directory(destination.parent)
-        created = False
+    if not root.exists():
         try:
-            with source.open("rb") as incoming:
-                with _private_open(destination) as outgoing:
-                    created = True
-                    shutil.copyfileobj(incoming, outgoing)
-            if _sha(destination) != row["sha256"]:
-                raise ValueError(f"Source changed during import: {row['key']}")
-        except BaseException:
-            if created:
-                destination.unlink(missing_ok=True)
-            raise
-        copied += 1
-    receipt = {"schema_version": 1, "profile": manifest["profile"],
-               "files": {row["key"]: {"path": str(_path(root, row).relative_to(root)), "sha256": row["sha256"]}
-                         for row in manifest["files"] if _path(root, row).is_file()}}
-    _private_write(_within(root, "import_receipt.json"), (json.dumps(receipt, indent=2) + "\n").encode())
+            _private_directory(root, exist_ok=False)
+        except FileExistsError:
+            pass  # A concurrent creator's ownership is checked under the directory lock.
+    directory_fd = os.open(root, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+    try:
+        if os.fstat(directory_fd).st_uid != os.geteuid():
+            raise ValueError("Private input directory must be owned by the current user")
+        # Lock the directory before the marker exists so initial claims and receipt writes are serialized.
+        fcntl.flock(directory_fd, fcntl.LOCK_EX)
+        marker = _within(root, ".esi-benchmark-assets.json")
+        if marker.exists() and json.loads(marker.read_text()).get("profile") != manifest["profile"]:
+            raise ValueError("Asset destination ownership/profile mismatch")
+        if any(root.iterdir()) and not marker.is_file():
+            raise ValueError("Refusing a nonempty destination without an ESI asset ownership marker")
+        for row, _, destination in candidates:
+            if destination.exists() and (not destination.is_file() or _sha(destination) != row["sha256"]):
+                raise ValueError(f"Refusing to overwrite a different imported asset: {row['key']}")
+        _private_directory(root)
+        _private_write(marker, (json.dumps({"schema_version": 1, "profile": manifest["profile"]}) + "\n").encode())
+        copied = 0
+        for row, source, destination in candidates:
+            if destination.exists():
+                with _private_open(destination, exclusive=False):
+                    pass
+                continue
+            _private_directory(destination.parent)
+            created = False
+            try:
+                with source.open("rb") as incoming:
+                    with _private_open(destination) as outgoing:
+                        created = True
+                        shutil.copyfileobj(incoming, outgoing)
+                if _sha(destination) != row["sha256"]:
+                    raise ValueError(f"Source changed during import: {row['key']}")
+            except BaseException:
+                if created:
+                    destination.unlink(missing_ok=True)
+                raise
+            copied += 1
+        receipt = {"schema_version": 1, "profile": manifest["profile"],
+                   "files": {row["key"]: {"path": str(_path(root, row).relative_to(root)), "sha256": row["sha256"]}
+                             for row in manifest["files"] if _path(root, row).is_file()}}
+        _private_write(_within(root, "import_receipt.json"), (json.dumps(receipt, indent=2) + "\n").encode())
+    finally:
+        os.close(directory_fd)
     return {**check_assets(config, task), "copied": copied}
 
 
@@ -418,8 +435,11 @@ def materialize_task_inputs(config, task, output_dir):
                 return replacement
             return value
 
+        data = original.read_bytes()
+        if hashlib.sha256(data).hexdigest() != row["sha256"]:
+            raise ValueError(f"Imported asset changed during materialization: {key}")
         if original.suffix in (".json", ".jsonl"):
-            raw = original.read_text()
+            raw = data.decode()
             value = [json.loads(line) for line in raw.splitlines() if line.strip()] if original.suffix == ".jsonl" else json.loads(raw)
             projected = _project(value, row, instruction_id, task["task_id"])
             if projected != value:
@@ -460,8 +480,6 @@ def materialize_task_inputs(config, task, output_dir):
                                 "old": old, "new": digest})
             data = ("".join(json.dumps(item, ensure_ascii=False, separators=(",", ":")) + "\n" for item in transformed)
                     if original.suffix == ".jsonl" else json.dumps(transformed, ensure_ascii=False, separators=(",", ":")) + "\n").encode()
-        else:
-            data = original.read_bytes()
         _private_directory(destination.parent)
         _private_write(destination, data, exclusive=True)
         hashes[key] = hashlib.sha256(data).hexdigest()

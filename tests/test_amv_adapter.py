@@ -195,3 +195,47 @@ def test_all_v_public_handles_match_frozen_scene_status_contract():
         assert namespace['result'] == {'task_id': index, 'task_name': task['task_id'],
                                        'task_split': 'train', 'task_instance_id': '0'}
         assert task['task_id'] != task['runtime_instruction_id']
+
+
+@pytest.mark.parametrize('profile', sorted({task['profile'] for task in list_tasks()}))
+@pytest.mark.parametrize('change', ['instruction', 'budget', 'native_identity'])
+def test_public_inspection_rejects_changed_model_binding_before_native_admission(monkeypatch, profile, change):
+    from esi_benchmark import adapters
+
+    task = next(task for task in list_tasks() if task['profile'] == profile)
+    model_task = {'task_id': task['source']['row_index'],
+                  'task_name': task['task_id'] if task['family'] == 'L1-V' else task['runtime_instruction_id'],
+                  'instruction': task['instruction_en'], 'budget': dict(task['budget']), **task['budget'],
+                  'instruction_provenance': {'profile': profile, 'instruction_sha256': task['instruction_sha256']}}
+    inputs = {'profile': profile, 'model_task': model_task, 'instruction_id': task['runtime_instruction_id'],
+              'public_config_id': task['task_id']}
+    if change == 'native_identity':
+        inputs['instruction_id'] = 'different-native-task'
+    elif change == 'budget':
+        model_task['maximum_action_decisions'] += 1
+    else:
+        model_task['instruction'] = 'Changed after private input materialization.'
+
+    def unexpected_native(*args):
+        raise AssertionError('Changed public binding reached native admission')
+
+    monkeypatch.setattr(adapters, '_adapter', unexpected_native)
+    with pytest.raises(ValueError, match='frozen'):
+        adapters.inspect_inputs(profile, inputs)
+
+
+def test_public_inspection_keeps_v_collection_and_native_id_separate(monkeypatch):
+    from esi_benchmark import adapters
+    from types import SimpleNamespace
+
+    task = list_tasks('L1-V')[0]
+    model_task = {'task_id': task['source']['row_index'], 'task_name': task['task_id'],
+                  'instruction': task['instruction_en'], 'budget': dict(task['budget']), **task['budget'],
+                  'instruction_provenance': {'profile': task['profile'], 'instruction_sha256': task['instruction_sha256']}}
+    inputs = {'profile': task['profile'], 'instruction_id': task['runtime_instruction_id'],
+              'public_config_id': task['task_id'], 'model_task': model_task}
+    monkeypatch.setattr(adapters, '_adapter', lambda profile: SimpleNamespace(inspect_inputs=lambda profile, inputs: inputs))
+    assert adapters.inspect_inputs(task['profile'], inputs) == inputs
+    inputs['public_config_id'] = task['runtime_instruction_id']
+    with pytest.raises(ValueError, match='V collection configuration'):
+        adapters.inspect_inputs(task['profile'], inputs)

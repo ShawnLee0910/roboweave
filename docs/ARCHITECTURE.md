@@ -100,11 +100,15 @@ check-to-signal race remains a separate Live validation concern.
 
 The engine writes the requested threshold, observed elapsed time/phase, PID,
 experiment/run identity and sent signal to `private/model_wall_timeout.json`.
-It leaves the native result untouched. L2 uses the original
-`pause_on_client_failure=True`, preserving `PAUSED_INTERRUPTED` and its native
-checkpoint when interruption reaches that branch; paused attempts do not gain
-an invented final score. Other profiles retain their previous pause setting.
-The run record reports `owned_common_safe_point_watchdog/model_wall_timeout-v1`.
+It leaves the native result untouched. Every profile launches the Common loop
+with `pause_on_client_failure=True`, as each frozen `bench.py model start` does.
+Exhausted provider retries and terminal protocol failures therefore end as
+`PAUSED_PROVIDER` or `PAUSED_MODEL_PROTOCOL` with their native checkpoint, not as
+a scored `client_error` episode, and the native automatic provider retry windows
+remain enabled. L2 preserves `PAUSED_INTERRUPTED` when watchdog interruption
+reaches that branch. Paused attempts do not gain an invented final score; this
+candidate does not resume them. The run record reports
+`owned_common_safe_point_watchdog/model_wall_timeout-v1` for L2.
 
 The policy is adapted from `scene_backfill.py` (`SAFE_MODEL_INTERRUPT_PHASES`,
 `_task_wall_timeout_evidence`, `_wall_timeout_evidence`, `_interrupt_owned_model`;
@@ -120,10 +124,21 @@ conditions. No zero-Q early-stop or historical scheduler/queue is introduced.
 Model API keys remain environment variables. JSON contains the selected
 `api_key_env` name, never the key value. Public `validate_model_config()` performs
 provider validation in a CPU worker without requests. The public episode API
-accepts model configuration and a task binding; `create_provider()` is now a
+accepts model configuration and a task binding, and checks its public handle,
+instruction, budget and provenance against the frozen catalog before creating
+a provider or contacting the scene. Recorded model names use the frozen
+provider's whitespace normalization, including the watchdog identity check.
+`create_provider()` is now a
 private implementation detail, not an in-process extension API. Integrations
 that imported this previous candidate helper should use `run_episode()` or the
 CLI with an explicit model endpoint.
+
+Provider failure messages and diagnostic previews redact credential headers and
+the exact credential sent with the failing request before applying the preview
+length limit. Raw response byte counts and SHA256 digests remain available for
+audit, and the original failure and retry classifications are retained. Invalid
+credential characters are rejected with a fixed message before HTTP header
+serialization can echo their value.
 
 ## Evaluation and evidence
 

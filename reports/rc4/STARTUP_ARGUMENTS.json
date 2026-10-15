@@ -1,0 +1,50 @@
+{
+  "scope": "CPU parser compatibility only; no package preparation, scene, hardware or model call",
+  "records": [
+    {
+      "profile": "l0-english-v2",
+      "route": "prepared",
+      "package_and_native_argument_parsers": "PASS"
+    },
+    {
+      "profile": "l1-a30",
+      "route": "prepared",
+      "package_and_native_argument_parsers": "PASS"
+    },
+    {
+      "profile": "l1-m30-public-v2",
+      "route": "prepared",
+      "package_and_native_argument_parsers": "PASS"
+    },
+    {
+      "profile": "l1-p-additions20",
+      "route": "prepared",
+      "package_and_native_argument_parsers": "PASS"
+    },
+    {
+      "profile": "l1-p-inside5",
+      "route": "prepared",
+      "package_and_native_argument_parsers": "PASS"
+    },
+    {
+      "profile": "l1-p-ontop5",
+      "route": "prepared",
+      "package_and_native_argument_parsers": "PASS"
+    },
+    {
+      "profile": "l1-v30",
+      "route": "v_collection",
+      "package_and_native_argument_parsers": "PASS"
+    },
+    {
+      "profile": "l2-collection37",
+      "route": "prepared",
+      "package_and_native_argument_parsers": "PASS"
+    },
+    {
+      "profile": "l2-collection37",
+      "route": "physical_collection",
+      "package_and_native_argument_parsers": "PASS"
+    }
+  ]
+}

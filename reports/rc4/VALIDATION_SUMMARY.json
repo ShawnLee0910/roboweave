@@ -1,0 +1,92 @@
+{
+  "schema_version": "esi-benchmark/rc4-acceptance-v1",
+  "status": "CPU_SOURCE_WHEEL_AND_SDIST_PASS",
+  "candidate_version": "0.1.0rc4",
+  "base_revision": "744bb80990c72cc0311fb62d39f177bb3e3ffead",
+  "review_areas": 6,
+  "task_count": 257,
+  "execution_profiles": 8,
+  "source_bundles": 13,
+  "tests": {
+    "passed": 1593,
+    "skipped": 3,
+    "failed": 0,
+    "report": "reports/rc4/pytest.xml",
+    "accounting": "Integrated suite before the final credential preflight guard; affected CLI/model/config/engine checks were rerun afterward. Counts from repeated tests are not summed.",
+    "post_preflight_guard": {
+      "passed": 92,
+      "failed": 0,
+      "skipped": 0,
+      "report": "reports/rc4/final-related.xml",
+      "scope": "CLI/model/config/engine, including four new credential checks; no Live or real requests.",
+      "independent_review": "Runtime reviewer confirmed agreement with all six frozen provider credential rules; no normal payload or anonymous local transport change."
+    },
+    "distinct_cases_with_passing_evidence": 1597
+  },
+  "frozen_tasks_and_asset_manifests_changed": false,
+  "new_private_inputs_imported": false,
+  "source_identity_report": "reports/rc4/SOURCE_IDENTITY_CHECK.json",
+  "L0_equivalence": {
+    "passed": 75,
+    "differences": 0,
+    "report": "reports/rc4/EQUIVALENCE.json"
+  },
+  "prompt_boundary": {
+    "supported_api_history_cases": 46,
+    "serialized_requests": 184,
+    "history_pruning_checks": 16,
+    "report": "reports/rc4/PROMPT_BOUNDARY.json"
+  },
+  "credential_diagnostics": {
+    "status": "PASS",
+    "report": "reports/rc4/CREDENTIAL_RECHECK.json"
+  },
+  "wheel": {
+    "status": "PASS",
+    "profiles": 8,
+    "commands": 36,
+    "default_pip_bytecode_present": true,
+    "report": "reports/rc4/WHEEL_VALIDATION.json",
+    "content_audit": "reports/rc4/WHEEL_CONTENT_AUDIT.json",
+    "artifact": {
+      "name": "esi_benchmark-0.1.0rc4-py3-none-any.whl",
+      "sha256": "0fa94edadeea7a5d6a30deeb8c29dda19590e3a54f8626085e17576f7c177698",
+      "bytes": 13116761,
+      "members": 2489
+    }
+  },
+  "source_archive_validation": "reports/rc4/SDIST_VALIDATION.json",
+  "source_and_distribution_audit": "reports/rc4/SOURCE_AUDIT.json",
+  "live_validation": "NOT_RUN",
+  "new_simulator_environment_created": false,
+  "real_model_requests": 0,
+  "gpu_workers_started": 0,
+  "published_or_pushed": false,
+  "official_benchmark_eligible": false,
+  "strict_production_eligible": false,
+  "limitations": [
+    "CPU fixtures and request capture do not attest rendered scenes, physics, real endpoint behavior or Live task success.",
+    "Historical CODEX/AgentCLI harnesses and outer controllers remain outside the Common interface.",
+    "Direct model API callers must provide a verified frozen seed; native scene status does not attest it.",
+    "L2 retains its historical safe-point observation/signal race; its watchdog is not a hard deadline.",
+    "Recorded truth and self-contained hashes cannot authenticate external recordings; licensing and private-input redistribution remain unresolved."
+  ],
+  "local_document_links": {
+    "status": "PASS",
+    "documents": 25,
+    "targets": 160,
+    "report": "reports/rc4/DOCUMENT_LINKS.json"
+  },
+  "source_archive": {
+    "status": "PASS",
+    "artifact": {
+      "name": "esi_benchmark-0.1.0rc4.tar.gz",
+      "sha256": "368ab575c87bfbd4ac22e2462047f0bda1fe4255d35b4d698210bd9ef4f66f68",
+      "bytes": 12373950,
+      "members": 2947
+    },
+    "payload_files_equal_source": 2579,
+    "extracted_source_tests_passed": 127,
+    "report": "reports/rc4/SDIST_VALIDATION.json"
+  }
+}

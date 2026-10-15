@@ -1,7 +1,7 @@
 """Task-family preparation; native imports occur only inside profile workers."""
 
 from ..profiles import DEFAULT_PROFILE
-from ..tasks import profile_for
+from ..tasks import profile_for, validate_model_task
 
 
 def _adapter(profile):
@@ -22,6 +22,11 @@ def resolve_inputs(config, task, manifest, rows, root):
 def inspect_inputs(profile, inputs):
     if inputs.get("profile", profile) != profile:
         raise ValueError("Task inputs do not match the selected source profile")
+    task = validate_model_task(profile, inputs.get("model_task"))
+    if inputs.get("instruction_id") != task["runtime_instruction_id"]:
+        raise ValueError("Native instruction differs from the frozen public task")
+    if task["family"] == "L1-V" and inputs.get("public_config_id") != task["task_id"]:
+        raise ValueError("V collection configuration differs from the frozen public task")
     if profile != DEFAULT_PROFILE:
         return _adapter(profile).inspect_inputs(profile, inputs)
     from pathlib import Path

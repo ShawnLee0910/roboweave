@@ -36,9 +36,45 @@ def test_summary_keeps_invalid_and_unscored_live_attempts(tmp_path):
     assert report['success_rate_scored_live'] is None
 
 
+TASK_FIELDS = ('task_id', 'task_name', 'task_split', 'task_instance_id', 'task_seed')
+
+
+def _live_binding(root, profile='l0-english-v2', *, summary=None):
+    """Synthetic Live identity for one catalog task; no simulator or model was invoked."""
+    from esi_benchmark.assets import asset_manifest
+    from esi_benchmark.profiles import source_revisions
+    from esi_benchmark.tasks import list_tasks
+    task = next(task for task in list_tasks() if task['profile'] == profile)
+    frozen = asset_manifest(profile).get('inputs_by_task', {}).get(task['task_id'], {})
+    identity = frozen.get('source_task_identity', {'split': 'synthetic', 'instance_id': 0})
+    binding = dict(task_id=task['source']['row_index'], task_name=task['task_id'], task_split=identity['split'],
+                   task_instance_id=str(identity['instance_id']), task_seed=frozen.get('seed', 0),
+                   instruction=task['instruction_en'], budget=task['budget'], **task['budget'],
+                   instruction_provenance={'profile': profile, 'instruction_sha256': task['instruction_sha256']})
+    limits = {key: task['budget'][key] for key in ('maximum_action_decisions', 'maximum_model_calls')}
+    manifest = json.loads((root/'client_manifest.json').read_text())
+    manifest.update({field: binding[field] for field in TASK_FIELDS}, instruction_sha256=task['instruction_sha256'])
+    manifest.update(limits, physical_history_max=5, experiment_id=root.name)
+    manifest.setdefault('model', 'synthetic-model')
+    (root/'client_manifest.json').write_text(json.dumps(manifest))
+    if summary is None:
+        summary = json.loads((root/'summary.json').read_text())
+        summary.update(limits, physical_history_max=5)
+        (root/'summary.json').write_text(json.dumps(summary))
+    else:
+        summary.update(limits, physical_history_max=5)
+    # A synthetic test of the Live record format, never evidence of a Live run.
+    (root/'run_record.json').write_text(json.dumps(dict(
+        mode='live', profile=profile, source_revisions=source_revisions(profile), experiment_id=root.name,
+        task_identity={field: binding[field] for field in TASK_FIELDS}, model={'model': manifest['model']},
+        declared_budget=task['budget'], history_frames=5, evaluation_variant='frozen_history_5', **limits)))
+    return binding
+
+
 def test_score_reference_is_verified_without_q_shortcut(tmp_path):
     output = tmp_path/'replay'
     run_replay({}, output)
+    binding = _live_binding(output)
     scene = tmp_path/'scene/episodes/example/private'
     scene.mkdir(parents=True)
     score = {'episode_id': 'example', 'official_q': 1, 'official_success': False,
@@ -46,10 +82,8 @@ def test_score_reference_is_verified_without_q_shortcut(tmp_path):
     (scene/'final_score.json').write_text(json.dumps(score))
     summary = json.loads((output/'summary.json').read_text())
     summary['current_scene_episode_id'] = 'example'
-    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', output, summary, {})
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', output, summary, binding)
     (output/'summary.json').write_text(json.dumps(summary))
-    # A synthetic test of the Live record format, never evidence of a Live run.
-    (output/'run_record.json').write_text(json.dumps({'mode': 'live'}))
     inspected = inspect_run(output)
     assert inspected['score_available'] is True
     assert inspected['official_success'] is False and inspected['official_q'] == 1
@@ -69,6 +103,7 @@ def test_malformed_final_score_rejected(field, value):
 def scored_run(tmp_path):
     output = tmp_path/'scored'
     run_replay({}, output)
+    binding = _live_binding(output)
     scene = tmp_path/'scene/episodes/example/private'
     scene.mkdir(parents=True)
     score = {'episode_id': 'example', 'official_q': 1, 'official_success': True, 'verifier_ok': True}
@@ -76,9 +111,8 @@ def scored_run(tmp_path):
     summary_path = output/'summary.json'
     summary = json.loads(summary_path.read_text())
     summary['current_scene_episode_id'] = 'example'
-    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', output, summary, {})
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', output, summary, binding)
     summary_path.write_text(json.dumps(summary))
-    (output/'run_record.json').write_text(json.dumps({'mode': 'live'}))
     return output
 
 
@@ -236,9 +270,9 @@ def _minimal_trajectory(root):
         'messages': [{'role': 'user', 'content': 'Synthetic fixture'}]}))
     (root/'client_manifest.json').write_text(json.dumps({
         'prompt_provenance': {'rendered_prompt_sha256': digest},
-        'source_sha256': {'synthetic_fixture': digest}}))
+        'source_sha256': {'synthetic_fixture': digest}, 'model': 'synthetic-model'}))
     (root/'run_record.json').write_text(json.dumps({'mode': 'live'}))
-    return {'status': 'DONE', 'prompt_sha256': digest, 'current_scene_episode_id': 'example'}
+    return {'status': 'DONE', 'prompt_sha256': digest, 'current_scene_episode_id': 'example', 'model': 'synthetic-model'}
 
 
 def _write(root, name, value):
@@ -268,13 +302,13 @@ def rich_evidence_run(tmp_path):
     process = {'operational': True, 'public_process_satisfied': True, 'violations': [], 'errors': [],
                'execution_events': 1, 'existing_frame_references': 1}
     score = {'episode_id': 'example', 'official_q': 1, 'official_success': True, 'verifier_ok': True,
-             'public_process_report': process}
+             'task_success': True, 'public_process_report': process}
     for name, value in [('final_score.json', score), ('task_process_result.json', process),
                         ('physical_initial_binding.json', {'synthetic': True})]:
         _write(scene, name, value)
     (scene/'task_process_events.jsonl').write_text('{"event_id":1,"synthetic":true}\n')
     (scene/'task_evidence_index.jsonl').write_text('{"frame_index":1,"synthetic":true}\n')
-    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, {})
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, _live_binding(root, summary=summary))
     _write(root, 'summary.json', summary)
     return root
 
@@ -398,10 +432,8 @@ def v_evidence_run(tmp_path):
         package_id='synthetic-v-package', branch='D1', runtime_revision=revisions['runtime'],
         historical_oracle_runtime_revision=revisions['runtime'], source_oracle_success=True,
         runtime_validation_only=False, v_package_sha256='a'*64)
-    binding = dict(task_id=task['source']['row_index'], task_name=task['task_id'],
-        task_split='synthetic', task_instance_id='0',
-        task_seed=asset_manifest(profile)['inputs_by_task'][key]['seed'],
-        instruction=task['instruction_en'], collection_config_key=key, v_identity=identity)
+    binding = _live_binding(root, profile, summary=summary)
+    binding.update(collection_config_key=key, v_identity=identity)
     report = {'branch': 'D1', 'v_protocol_complete': True, 'operational': True}
     score = {'episode_id': 'example', 'official_q': 1, 'official_success': True, 'verifier_ok': True,
              'collection_config_key': key, 'v_protocol': report}
@@ -416,13 +448,6 @@ def v_evidence_run(tmp_path):
     summary.update(model='synthetic-model', official_task_success=True, v_protocol_complete=True)
     summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, binding, profile=profile)
     _write(root, 'summary.json', summary)
-    fields = ('task_id', 'task_name', 'task_split', 'task_instance_id', 'task_seed')
-    manifest = json.loads((root/'client_manifest.json').read_text())
-    manifest.update({key: binding[key] for key in fields})
-    manifest.update(model='synthetic-model', instruction_sha256=task['instruction_sha256'])
-    _write(root, 'client_manifest.json', manifest)
-    _write(root, 'run_record.json', dict(mode='live', profile=profile, source_revisions=revisions,
-        task_identity={key: binding[key] for key in fields}, model={'model': 'synthetic-model'}))
     return root
 
 
@@ -496,9 +521,9 @@ def test_l2_combined_physical_success_does_not_require_p30_qualification(tmp_pat
     _write(scene, 'final_score.json', score)
     _write(scene/'l2_v', 'final.json', report)
     _write(scene/'l2_v', 'checkpoint_violations.json', [])
-    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, {}, profile='l2-collection37')
+    binding = _live_binding(root, 'l2-collection37', summary=summary)
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, binding, profile='l2-collection37')
     _write(root, 'summary.json', summary)
-    _write(root, 'run_record.json', {'mode': 'live', 'profile': 'l2-collection37'})
     assert inspect_run(root)['official_success'] is True
     _rehash_evidence(root, 'l2_v/checkpoint_violations.json', value=[{'synthetic': 'violation'}])
     with pytest.raises(ValueError, match='checkpoint'):
@@ -519,3 +544,375 @@ def test_v_public_scene_name_cannot_be_replaced_by_native_donor_name(v_evidence_
     _write(root, 'run_record.json', record)
     with pytest.raises(ValueError, match='frozen public identity'):
         inspect_run(root)
+
+
+FAMILY_SCORES = {
+    'l0-english-v2': {},
+    'l1-a30': {},
+    'l1-m30-public-v2': {},
+    'l1-p-inside5': {'task_success': True, 'physical_qualification': 'PASS'},
+    'l1-p-ontop5': {'task_success': True, 'physical_qualification': 'PASS'},
+    'l1-p-additions20': {'task_success': True, 'physical_qualification': 'PASS'},
+    'l2-collection37': {'task_success': True, 'status': 'PASS'},
+}
+
+
+@pytest.fixture(params=sorted(FAMILY_SCORES))
+def bound_run(tmp_path, request):
+    root = tmp_path/'bound'
+    summary = _minimal_trajectory(root)
+    binding = _live_binding(root, request.param, summary=summary)
+    scene = tmp_path/'scene/episodes/example/private'
+    scene.mkdir(parents=True)
+    _write(scene, 'final_score.json', {'episode_id': 'example', 'official_q': 1, 'official_success': True,
+                                       'verifier_ok': True, **FAMILY_SCORES[request.param]})
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, binding,
+                                                        profile=request.param)
+    _write(root, 'summary.json', summary)
+    return root
+
+
+def test_every_family_binds_its_score_to_run_task_and_model(bound_run):
+    result = inspect_run(bound_run)
+    assert result['status'] == 'PASS' and result['official_success'] is True
+
+
+@pytest.mark.parametrize('file,field,value', [
+    ('summary.json', 'current_scene_episode_id', 'another-attempt'),
+    ('summary.json', 'model', 'another-model'),
+    ('run_record.json', 'task_identity', {'task_id': 999, 'task_name': 'another-task', 'task_split': 'x',
+                                          'task_instance_id': 'y', 'task_seed': 1}),
+    ('run_record.json', 'source_revisions', {'bench': '0'*40, 'runtime': '1'*40}),
+    ('run_record.json', 'profile', None),
+    ('run_record.json', 'model', {'model': 'another-model'}),
+    ('client_manifest.json', 'task_seed', 12345),
+    ('client_manifest.json', 'instruction_sha256', 'b'*64),
+    ('run_record.json', 'declared_budget', {}),
+    ('run_record.json', 'maximum_action_decisions', 3000),
+    ('summary.json', 'maximum_model_calls', 30000),
+    ('client_manifest.json', 'maximum_action_decisions', 3000),
+    ('client_manifest.json', 'physical_history_max', 20),
+    ('summary.json', 'physical_history_max', 20),
+    ('run_record.json', 'history_frames', 20),
+    ('client_manifest.json', 'experiment_id', 'another-experiment'),
+    ('client_manifest.json', 'source_sha256', {'file': 'not-a-hash'}),
+])
+def test_non_v_score_cannot_be_rebound_to_another_attempt_task_or_source(bound_run, file, field, value):
+    payload = json.loads((bound_run/file).read_text())
+    if value is None:
+        del payload[field]
+    else:
+        payload[field] = value
+    _write(bound_run, file, payload)
+    with pytest.raises(ValueError):
+        inspect_run(bound_run)
+    assert summarize_runs([bound_run])['invalid_runs'] == 1
+
+
+@pytest.mark.parametrize('field,value', [('task_name', 'another-task'), ('task_seed', 12345),
+                                         ('task_id', 999), ('instruction', 'changed instruction'),
+                                         ('budget', {}), ('maximum_model_calls', 30000)])
+def test_non_v_task_binding_cannot_be_rehashed_to_another_task(bound_run, field, value):
+    from esi_benchmark.tasks import list_tasks
+    binding = json.loads((bound_run/'private/task_binding.json').read_text())
+    record = json.loads((bound_run/'run_record.json').read_text())
+    if field == 'task_name':
+        value = next(task['task_id'] for task in list_tasks()
+                     if task['profile'] == record['profile'] and task['task_id'] != binding['task_name'])
+    binding[field] = value
+    _rehash_evidence(bound_run, 'task_binding.json', value=binding)
+    with pytest.raises(ValueError):
+        inspect_run(bound_run)
+
+
+def test_candidate_failure_summary_requires_its_candidate_error(tmp_path):
+    root = tmp_path/'episode-failed'
+    _minimal_trajectory(root)
+    _write(root, 'summary.json', {'status': 'EPISODE_FAILED', 'stage': 'model_episode'})
+    with pytest.raises(ValueError, match='prompt provenance'):
+        inspect_run(root)
+    _write(root, 'candidate_error.json', {'status': 'EPISODE_FAILED', 'stage': 'model_episode',
+                                          'error_type': 'RuntimeError'})
+    result = inspect_run(root)
+    assert result['status'] == 'INCOMPLETE' and result['completeness'] == 'candidate_failure'
+    # A native summary keeps its own prompt hash requirement even with a candidate error.
+    _write(root, 'summary.json', {'status': 'DONE', 'prompt_sha256': '0'*64})
+    with pytest.raises(ValueError, match='prompt provenance'):
+        inspect_run(root)
+
+
+def _wall_timeout_run(root, *, signal=True, experiment=None):
+    _minimal_trajectory(root)
+    _write(root, 'run_record.json', {'mode': 'live', 'profile': 'l2-collection37', 'experiment_id': root.name})
+    summary = {'status': 'PAUSED_INTERRUPTED', 'prompt_sha256': json.loads(
+        (root/'client_manifest.json').read_text())['prompt_provenance']['rendered_prompt_sha256'],
+        'current_scene_episode_id': 'example', 'model': 'synthetic-model',
+        'candidate_result': {'status': 'unavailable', 'episode_id': 'example', 'official_success': None,
+                             'official_q': None, 'evidence': {}}}
+    _write(root, 'summary.json', summary)
+    evidence = {'policy': 'model_wall_timeout/v1', 'reason': 'model_wall_timeout', 'observed_phase': 'WAITING_PROVIDER',
+                'threshold_elapsed_seconds': 7200, 'observed_elapsed_seconds': 7201.5,
+                'experiment_id': experiment or root.name}
+    if signal:
+        evidence['signal'] = 'SIGINT'
+    (root/'private').mkdir(exist_ok=True)
+    _write(root, 'private/model_wall_timeout.json', evidence)
+    return root
+
+
+def test_signalled_l2_wall_timeout_is_reported_as_a_historical_failure(rich_evidence_run, tmp_path):
+    timed_out = _wall_timeout_run(tmp_path/'timed-out')
+    requested = _wall_timeout_run(tmp_path/'requested-only', signal=False)
+    result = inspect_run(timed_out)
+    assert result['status'] == 'PASS' and result['score_available'] is False
+    assert result['wall_timeout']['signal_sent'] is True
+    assert result['wall_timeout']['observed_phase'] == 'WAITING_PROVIDER'
+    assert inspect_run(requested)['wall_timeout']['signal_sent'] is False
+    report = summarize_runs([rich_evidence_run, timed_out, requested])
+    assert report['scored_live_runs'] == 1 and report['successful_live_runs'] == 1
+    assert report['success_rate_scored_live'] == 1
+    assert report['wall_timeout_failed_live_runs'] == 1
+    assert report['success_rate_scored_or_wall_timeout_live'] == 0.5
+    assert report['success_rate_all_live_attempts'] == pytest.approx(1 / 3)
+
+
+@pytest.mark.parametrize('change', ['experiment', 'profile', 'signal', 'policy',
+                                  'observed_phase', 'threshold_elapsed_seconds', 'observed_elapsed_seconds'])
+def test_wall_timeout_evidence_must_belong_to_its_owned_l2_run(tmp_path, change):
+    root = _wall_timeout_run(tmp_path/'timed-out', experiment='another-run' if change == 'experiment' else None)
+    if change == 'profile':
+        record = json.loads((root/'run_record.json').read_text())
+        _write(root, 'run_record.json', {**record, 'profile': 'l1-a30'})
+    elif change != 'experiment':
+        evidence = json.loads((root/'private/model_wall_timeout.json').read_text())
+        evidence[change] = {'signal': 'SIGKILL', 'policy': 'model_wall_timeout/v0', 'observed_phase': 'ACTION_RUNNING',
+                            'threshold_elapsed_seconds': -1, 'observed_elapsed_seconds': 1}[change]
+        _write(root, 'private/model_wall_timeout.json', evidence)
+    with pytest.raises(ValueError, match='wall-timeout'):
+        inspect_run(root)
+    assert summarize_runs([root])['invalid_runs'] == 1
+
+
+@pytest.mark.parametrize('raw', [
+    b'{"episode_id":"example","official_q":1,"official_success":false,"official_success":true,"verifier_ok":true}',
+    b'{"episode_id":"example","official_q":1,"official_success":true,"verifier_ok":true,"extra":NaN}',
+    b'{"episode_id":"example","official_q":1,"official_success":true,"verifier_ok":true,"extra":1e1000}',
+])
+def test_archiver_rejects_ambiguous_or_nonfinite_score_before_claiming_success(tmp_path, raw):
+    scene = tmp_path/'scene/episodes/example/private'
+    scene.mkdir(parents=True)
+    (scene/'final_score.json').write_bytes(raw)
+    with pytest.raises(ValueError):
+        _archive_scene_result(tmp_path/'scene', tmp_path/'run', {'current_scene_episode_id': 'example'}, {})
+    assert not (tmp_path/'run/private/scene_final_score.json').exists()
+
+
+@pytest.mark.parametrize('location', ['private', 'v_scene', 'source_parent'])
+def test_archiver_rejects_redirected_private_paths(tmp_path, location):
+    root = tmp_path/'run'
+    root.mkdir()
+    outside = tmp_path/'outside'
+    outside.mkdir()
+    scene = tmp_path/'scene/episodes/example/private'
+    scene.mkdir(parents=True)
+    if location == 'private':
+        (root/'private').symlink_to(outside, target_is_directory=True)
+    elif location == 'v_scene':
+        (root/'private').mkdir()
+        (root/'private/v_scene').symlink_to(outside, target_is_directory=True)
+        _write(scene, 'v_collection_identity.json', {})
+    else:
+        scene.rmdir()
+        scene.symlink_to(outside, target_is_directory=True)
+    with pytest.raises(ValueError, match='escaped'):
+        _archive_scene_result(tmp_path/'scene', root, {'current_scene_episode_id': 'example'}, {}, profile='l1-v30')
+    assert list(outside.iterdir()) == []
+
+
+def test_archiver_never_replaces_existing_task_binding(tmp_path):
+    root = tmp_path/'run'
+    result = _archive_scene_result(tmp_path/'scene', root, {}, {'seed': 1})
+    binding = root/result['evidence']['task_binding.json']['path']
+    original = binding.read_bytes()
+    with pytest.raises(ValueError, match='Previously archived'):
+        _archive_scene_result(tmp_path/'scene', root, {}, {'seed': 2})
+    assert binding.read_bytes() == original
+    assert _archive_scene_result(tmp_path/'scene', root, {}, {'seed': 1}) == result
+
+
+@pytest.mark.parametrize('patch', [
+    {'official_success': False}, {'physical_template_complete': True}, {'v_protocol_complete': True},
+])
+def test_l2_success_cannot_drop_native_completion_evidence(patch):
+    score = {'episode_id': 'example', 'official_q': 1, 'official_success': True,
+             'verifier_ok': True, 'task_success': True, 'status': 'PASS', **patch}
+    with pytest.raises(ValueError, match='L2'):
+        recorded_score_result(score, 'example', profile='l2-collection37')
+
+
+@pytest.mark.parametrize('location', ['root', 'image', 'evidence'])
+def test_symlink_loop_is_an_invalid_run_without_aborting_summary(tmp_path, location):
+    root = tmp_path/'loop'
+    if location == 'root':
+        root.symlink_to(root.name, target_is_directory=True)
+    else:
+        summary = _minimal_trajectory(root)
+        if location == 'image':
+            (root/'loop.png').symlink_to('loop.png')
+            _write(root, 'conversation_chatml.json', {'schema_version': 'behavior-hl-action20-chatml-v3',
+                'messages': [{'role': 'user', 'content': [{'type': 'image', 'image': 'loop.png'}]}]})
+        else:
+            summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, {}, {})
+            binding = root/'private/task_binding.json'
+            binding.unlink()
+            binding.symlink_to(binding.name)
+        _write(root, 'summary.json', summary)
+    with pytest.raises(ValueError):
+        inspect_run(root)
+    good = tmp_path/'good'
+    good.mkdir()
+    _write(good, 'summary.json', {'status': 'INITIALIZATION_FAILED'})
+    _write(good, 'run_record.json', {'mode': 'live'})
+    report = summarize_runs([root, good])
+    assert [run['status'] for run in report['runs']] == ['INVALID', 'INCOMPLETE']
+    assert report['total_live_attempts'] == (1 if location == 'root' else 2)
+
+
+@pytest.mark.parametrize('profile,extra', [
+    ('l1-p-inside5', {'physical_qualification': 'PASS', 'native_q_alone_is_success': False}),
+    ('l1-p-ontop5', {'physical_qualification': 'PASS', 'native_q_alone_is_success': False}),
+    ('l1-p-additions20', {'physical_qualification': 'PASS', 'native_q_alone_is_success': False}),
+    ('l1-m30-public-v2', {'public_process_report': {
+        'operational': True, 'public_process_satisfied': True, 'errors': [], 'violations': []}}),
+])
+def test_physical_and_process_scores_keep_native_explicit_task_success_gate(tmp_path, profile, extra):
+    import runpy
+    from esi_benchmark.profiles import source_roots
+    native = runpy.run_path(str(source_roots(profile)['bench_root']/'lab/physical_model_results.py'))
+    scene = tmp_path/'scene/episodes/example/private'
+    scene.mkdir(parents=True)
+    for index, task_success in enumerate([None, False, True]):
+        score = {'episode_id': 'example', 'official_q': 1, 'official_success': True,
+                 'verifier_ok': True, **extra}
+        if task_success is not None:
+            score['task_success'] = task_success
+        _write(scene, 'final_score.json', score)
+        original = native['collect_physical_result']({}, scene_run_dir=tmp_path/'scene',
+            episode_id='example', output_dir=tmp_path/f'native-{index}')
+        result = recorded_score_result(score, 'example', profile=profile)
+        assert result['official_success'] is original['official_success'] is (task_success is True)
+
+
+def test_archived_binding_is_bounded_and_private(tmp_path, monkeypatch):
+    from esi_benchmark import trajectory
+    root = tmp_path/'run'
+    (root/'private').mkdir(parents=True, mode=0o777)
+    (root/'private').chmod(0o777)
+    _archive_scene_result(tmp_path/'scene', root, {}, {})
+    assert (root/'private').stat().st_mode & 0o777 == 0o700
+    assert (root/'private/task_binding.json').stat().st_mode & 0o777 == 0o600
+    monkeypatch.setattr(trajectory, 'MAX_SCORE_BYTES', 10)
+    with pytest.raises(ValueError, match='Oversized'):
+        _archive_scene_result(tmp_path/'scene', tmp_path/'oversized', {}, {'value': 'too large'})
+    assert not (tmp_path/'oversized/private/task_binding.json').exists()
+
+
+def test_unknown_legacy_mode_still_prefers_its_verified_score_to_summary(tmp_path):
+    root = tmp_path/'legacy'
+    summary = _minimal_trajectory(root)
+    scene = tmp_path/'scene/episodes/example/private'
+    scene.mkdir(parents=True)
+    _write(scene, 'final_score.json', {'episode_id': 'example', 'official_q': 1,
+                                     'official_success': False, 'verifier_ok': True})
+    summary.update(official_task_success=True, q_score=0)
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, {})
+    _write(root, 'summary.json', summary)
+    (root/'run_record.json').unlink()
+    result = inspect_run(root)
+    assert result['mode'] == 'unknown_legacy' and result['score_available'] is True
+    assert result['official_success'] is False and result['official_q'] == 1
+    assert summarize_runs([root])['total_live_attempts'] == 0
+
+
+def test_v_native_invalid_classification_is_retained_with_raw_score(v_evidence_run):
+    root = v_evidence_run
+    score = json.loads((root/'private/scene_final_score.json').read_text())
+    score['v_protocol']['v_protocol_complete'] = False
+    _rehash_evidence(root, 'final_score.json', value=score)
+    _rehash_evidence(root, 'v_protocol_result.json', value=score['v_protocol'])
+    summary = json.loads((root/'summary.json').read_text())
+    summary.update(status='FAIL_V_PROTOCOL', official_task_success=False, v_protocol_complete=False,
+                   formal_score_eligible=False, outcome_class='INVALID_FORMAL_RUN')
+    summary['candidate_result'].update(recorded_score_result(score, 'example', profile='l1-v30'))
+    _write(root, 'summary.json', summary)
+    result = inspect_run(root)
+    assert result['status'] == 'PASS' and result['score_available'] is True
+    assert result['outcome_class'] == 'INVALID_FORMAL_RUN' and result['formal_score_eligible'] is False
+    assert result['official_success'] is False
+    report = summarize_runs([root])
+    assert report['total_live_attempts'] == report['scored_live_runs'] == 1
+    assert report['success_rate_scored_live'] == 0
+
+
+@pytest.fixture(params=[*FAMILY_SCORES, 'l1-v30'])
+def aborted_run(tmp_path, request):
+    from esi_benchmark.profiles import source_revisions
+    from esi_benchmark.tasks import get_task
+    root = tmp_path/'aborted'
+    summary = _minimal_trajectory(root)
+    binding = _live_binding(root, request.param, summary=summary)
+    scene = tmp_path/'scene/episodes/example/private'
+    scene.mkdir(parents=True)
+    score = {'episode_id': 'example', 'official_q': None, 'official_success': False, 'verifier_ok': False,
+             'integrity_failure': 'synthetic_abort', 'termination_reason': 'execution_integrity_failure'}
+    if request.param == 'l2-collection37':
+        score.update(task_success=False, failure_class='EXECUTION_INTEGRITY_FAILURE')
+    if request.param == 'l1-v30':
+        task = get_task(binding['task_name'], 'L1-V')
+        revision = source_revisions(request.param)['runtime']
+        identity = dict(collection_config_key=task['task_id'], task_spec_id=task['runtime_instruction_id'],
+            package_id='synthetic-v-package', branch='D1', runtime_revision=revision,
+            historical_oracle_runtime_revision=revision, source_oracle_success=True,
+            runtime_validation_only=False, v_package_sha256='a'*64)
+        binding.update(collection_config_key=task['task_id'], v_identity=identity)
+        _write(scene, 'v_collection_identity.json', identity)
+        _write(scene, 'v_protocol_abort.json', {'aborted': True, 'v_protocol_complete': False,
+            'reason': 'synthetic_environment_error', 'same_scene_recovery_allowed': False})
+        summary.update(v_protocol_complete=False, official_task_success=False)
+    _write(scene, 'final_score.json', score)
+    _write(scene, 'aborted_after_environment_error.json', {'reason': 'synthetic_environment_error',
+        'public_actions_executed': 0, 'symbolic_collision_filter_cleanup': {'active': False},
+        'same_scene_reset_required_before_retry': True, 'recovery_admitted': False})
+    _write(scene, 'task_process_result.json', {'operational': False, 'public_process_satisfied': False,
+        'errors': ['synthetic_environment_error'], 'violations': [], 'execution_events': 0, 'existing_frame_references': 0})
+    summary['candidate_result'] = _archive_scene_result(tmp_path/'scene', root, summary, binding, profile=request.param)
+    _write(root, 'summary.json', summary)
+    return root
+
+
+def test_native_abort_schema_keeps_each_profiles_negative_score(aborted_run):
+    result = inspect_run(aborted_run)
+    assert result['status'] == 'PASS' and result['score_available'] is True
+    assert result['official_success'] is False and result['official_q'] is None
+    report = summarize_runs([aborted_run])
+    assert report['total_live_attempts'] == report['scored_live_runs'] == 1
+    assert report['successful_live_runs'] == report['invalid_runs'] == 0
+
+
+def test_native_abort_cannot_drop_its_recovery_record(aborted_run):
+    summary = json.loads((aborted_run/'summary.json').read_text())
+    del summary['candidate_result']['evidence']['aborted_after_environment_error.json']
+    _write(aborted_run, 'summary.json', summary)
+    with pytest.raises(ValueError, match='recovery evidence'):
+        inspect_run(aborted_run)
+
+
+def test_l2_explicit_environment_exception_can_omit_status():
+    score = dict(episode_id='example', official_q=None, official_success=False, verifier_ok=False,
+                 task_success=False, failure_class='EXECUTION_EXCEPTION', integrity_failure=None,
+                 termination_reason='synthetic_environment_error')
+    assert recorded_score_result(score, 'example', profile='l2-collection37')['official_success'] is False
+    for changed in ({'task_success': True}, {'official_success': True}, {'verifier_ok': True},
+                    {'official_q': 1}, {'failure_class': 'unknown'}, {'status': 'PASS'}):
+        with pytest.raises(ValueError):
+            recorded_score_result({**score, **changed}, 'example', profile='l2-collection37')

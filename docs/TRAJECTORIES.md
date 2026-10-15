@@ -16,11 +16,13 @@ RGB images, declared CC0-1.0 in its fixture metadata.
 | `action_after/*.png` | Chronological post-action composites. Recovery branches have separate directories. |
 | `provider_calls/call_####/` | Request/response, attempts, error and token/timing evidence. Treat as private. |
 | `summary.json` | Original terminal classification and counters; the candidate may add `candidate_result` without replacing original fields. |
-| `candidate_error.json` | Candidate execution or score-archive failure after the original summary was written; records the failure stage and exception type without replacing the original summary. |
+| `candidate_error.json` | Candidate execution or score-archive failure after the original summary was written, or an exception that escaped the model episode before the native summary existed (`EPISODE_FAILED`); records the failure stage and exception type without replacing an original summary. |
+| `private/model_wall_timeout.json` | L2 only: the owned safe-point watchdog's threshold, observed phase/elapsed time and, when sent, the `SIGINT` record. |
 | `private/scene_final_score.json` | Byte-for-byte archived resident score after episode end, when available. Never added to model observations. |
 | `private/task_binding.json`, `private/oracle_prepared_restore.json` | Frozen identity/preparation evidence for Live runs when present. |
 | `private/task_process_result.json`, `private/task_process_events.jsonl`, `private/task_evidence_index.jsonl` | Original process report, per-action audit receipts and frame references. |
 | `private/physical_initial_binding.json` | Original Physical admission/binding record when emitted by the selected runtime. |
+| `private/aborted_after_environment_error.json` | Native scene recovery receipt supporting an explicitly negative aborted score. |
 | `private/v_scene/` | V collection identity, protocol result, marker bindings and intervention records, kept private. |
 | `private/l2_v/` | L2 V session records, including its native combined-protocol final report and checkpoint violations. |
 
@@ -35,16 +37,30 @@ archived relative path and SHA256. Its interpretation requires verifier validity
 no execution-integrity failure, the original success flag and any task/process/
 Physical qualification gate. `official_q` is copied unchanged; Q=1 is never used
 to invent success. Missing final evidence is `unavailable`, not zero or success.
+Physical and process-scored records require the native explicit
+`task_success: true`; omitting that field cannot turn a failure into success.
 The original score has no mandatory schema-version field. This candidate does
 not rewrite it to a new scoring format. L2 keeps its native combined
 `task_success`/`status`, Physical-template and V-protocol gates; the P30
 `physical_qualification` field is not imposed on L2.
+L2 completion flags require their corresponding native reports, and a successful
+L2 result without a Physical report must also retain canonical official success.
+The native recovery writer has a separate negative schema: L2 omits `status`,
+and all profiles may write the process receipt separately from the score. These
+records remain scored failures when their explicit false flags, null Q,
+integrity/exception classification and archived recovery receipt agree. V also
+requires its original `v_protocol_abort.json` receipt; this exception cannot
+certify success or replace a missing normal completion report.
 
 New rc3 archives add `candidate_result.evidence_schema_version:
 esi-benchmark/result-evidence-v2`. Each `evidence` entry records its original
 source, fixed archive-relative `path`, `sha256` and `size_bytes`. The generated
 `task_binding.json` is included in this inventory, including when no final score
 was produced. These descriptors do not alter the original score or raw JSONL.
+The archiver applies the same finite, unambiguous JSON and path checks before
+returning a score. Private paths cannot traverse symlinks, existing evidence is
+never replaced with different content, and archive files/directories use
+owner-only permissions.
 
 `trajectory.validate_run(path)` (also `inspect_run`) reads only the named run's
 bounded JSON files, validates ChatML structure, checks local image containment
@@ -78,6 +94,21 @@ approved instruction, run-record task identity and client-manifest task/model
 must agree. A different auxiliary identity or report cannot override the score
 by merely updating its hash.
 
+Every family's recorded v2 Live score is also bound to its run. The run record
+must name its profile and that profile's exact source revisions. The archived
+task binding must name a catalog task of that profile, with its public handle,
+approved instruction and frozen seed/instance where the asset manifest records
+them. Its five task fields must equal `run_record.task_identity` and the client
+manifest, whose instruction hash must match the catalog. The run-record, client
+manifest and summary model must agree, and the summary's
+`current_scene_episode_id` must be the archived score's episode.
+The archived task and run-record budgets must equal the catalog; the action and
+model-call limits must agree across the run record, client manifest and summary.
+History length must agree with the run's evaluation variant and both native
+records, and the manifest must carry the same experiment ID. Source hash entries
+must contain SHA256 digests. Native task provenance is checked with the same
+catalog validator used before launching an episode.
+
 Legacy evidence entries without the v2 schema remain readable without a
 mandatory `size_bytes`; all references they do declare still undergo containment,
 size-bound, hash and format checks. L0 historical records need no migration.
@@ -89,7 +120,9 @@ consistently; preserve the original run and source manifests for provenance.
 `trajectory.summarize_runs(paths)` accepts explicit run directories. It reports
 Live, synthetic replay and unknown legacy modes separately. It publishes both
 all-Live-attempt and score-covered denominators, score coverage, and unscored
-Live attempts. `evaluation_variant_counts` separates `frozen_history_5` from
+Live attempts. Signalled L2 wall-timeout attempts without a score are listed in
+`wall_timeout_failed_live_runs` and counted as failures in
+`success_rate_scored_or_wall_timeout_live`, the historical scheduler's outcome. `evaluation_variant_counts` separates `frozen_history_5` from
 `history_20_variant_not_baseline`; `mixed_evaluation_variants` flags mixed inputs.
 Missing legacy variant metadata stays `unknown`. Explicit initialization/conversation failures are `INCOMPLETE`;
 malformed runs are individually `INVALID` and do not erase other runs from the
@@ -98,13 +131,24 @@ report. Neither is reported as a completed trajectory check. Legacy runs without
 This is a per-run compatibility check, not a data export tool.
 
 A valid `candidate_error.json` makes inspection `INCOMPLETE` even if the original
-client status is `DONE` or a score was previously archived. The report preserves
+client status is `DONE` or a score was previously archived. When an exception
+escapes the model episode after the native loop wrote its conversation views but
+before its summary, the CLI writes an `EPISODE_FAILED` summary plus
+`candidate_error.json`; inspection then checks the prompt against the client
+manifest only and reports the attempt as `INCOMPLETE`, not `INVALID`. Without
+`candidate_error.json`, such a summary still fails prompt provenance. Any final
+score the scene wrote for that interrupted episode is not archived or counted. The report preserves
 the original client status and failure `status`, `stage` and `error_type`; it does
 not count this attempt as scored or successful. A missing final score alone can
 still pass the trajectory/provenance check with `score_available: false`.
 Malformed nested result, evidence, prompt-provenance or run-record objects are
 validation errors, reported per run as `INVALID` by the summarizer. Summary and
 other source artifacts are never rewritten during inspection.
+The native `outcome_class` and `formal_score_eligible` fields are preserved when
+present. Score-covered rates describe auditable raw final scores, not formal
+benchmark eligibility: a V protocol failure can retain a checked final score
+and its native `INVALID_FORMAL_RUN` classification. Legacy runs with an archived
+score use that verified score before any conflicting summary success flag.
 
 A replay run records `mode: offline_replay`, `official_score: null`,
 `simulator_started: false` and `model_requested: false`. The complete original

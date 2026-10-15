@@ -165,7 +165,7 @@
     "source_path": "lab/model_client.py",
     "source_sha256": "2224523570db9ae882b18233210a401aea0cd0dcadf493ad079bc13752611c48",
     "destination": "src/esi_benchmark/_vendor/revisions/bench/1d76bc5dc53b1995f2e7c301cb06569bcf0c4923/lab/model_client.py",
-    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; select the frozen Runtime from the explicit worker environment"
+    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; rc3: require the explicit selected BEHAVIOR_HL_PROJECT_ROOT; rc4: normalize JSON diagnostics and redact Bearer/quoted credential fields and exact sent credentials from provider diagnostic messages/previews before truncation; retain raw response hashes, lengths and failure/retry classification; reject credential characters that HTTP header serialization would echo"
   },
   {
     "source_root": "/liyuanshuai/l1a30c",
@@ -477,7 +477,7 @@
     "source_path": "lab/model_client.py",
     "source_sha256": "2224523570db9ae882b18233210a401aea0cd0dcadf493ad079bc13752611c48",
     "destination": "src/esi_benchmark/_vendor/revisions/bench/fb1cf143f850fe43a04d25440f07cbfab4007093/lab/model_client.py",
-    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; select the frozen Runtime from the explicit worker environment"
+    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; rc3: require the explicit selected BEHAVIOR_HL_PROJECT_ROOT; rc4: normalize JSON diagnostics and redact Bearer/quoted credential fields and exact sent credentials from provider diagnostic messages/previews before truncation; retain raw response hashes, lengths and failure/retry classification; reject credential characters that HTTP header serialization would echo"
   },
   {
     "source_root": "/liyuanshuai/l1r-m",
@@ -789,7 +789,7 @@
     "source_path": "lab/model_client.py",
     "source_sha256": "44742be7fbe5cf06e70eef95e461b994f46e77f0b56637375fb7e79fd77aaf7a",
     "destination": "src/esi_benchmark/_vendor/revisions/bench/d8ae5151fadfb3338d122fdb12b26051ed753852/lab/model_client.py",
-    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; select the frozen Runtime from the explicit worker environment"
+    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; rc3: require the explicit selected BEHAVIOR_HL_PROJECT_ROOT; rc4: normalize JSON diagnostics and redact Bearer/quoted credential fields and exact sent credentials from provider diagnostic messages/previews before truncation; retain raw response hashes, lengths and failure/retry classification; reject credential characters that HTTP header serialization would echo"
   },
   {
     "source_root": "/liyuanshuai/vguard-fix-20260924",
@@ -1125,7 +1125,7 @@
     "source_path": "lab/model_client.py",
     "source_sha256": "2224523570db9ae882b18233210a401aea0cd0dcadf493ad079bc13752611c48",
     "destination": "src/esi_benchmark/_vendor/revisions/bench/7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb/lab/model_client.py",
-    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; select the frozen Runtime from the explicit worker environment"
+    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; rc3: require the explicit selected BEHAVIOR_HL_PROJECT_ROOT; rc4: normalize JSON diagnostics and redact Bearer/quoted credential fields and exact sent credentials from provider diagnostic messages/previews before truncation; retain raw response hashes, lengths and failure/retry classification; reject credential characters that HTTP header serialization would echo"
   },
   {
     "source_root": "/liyuanshuai/p30high",
@@ -1413,7 +1413,7 @@
     "source_path": "lab/model_client.py",
     "source_sha256": "50afba98a75ee674fc874e1d1489610d1f1b870d517dba2d2431c52aec37eb96",
     "destination": "src/esi_benchmark/_vendor/revisions/bench/4c8364842157153875d098ebb529adcc0620a714/lab/model_client.py",
-    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; select the frozen Runtime from the explicit worker environment"
+    "changes": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; rc3: require the explicit selected BEHAVIOR_HL_PROJECT_ROOT; rc4: normalize JSON diagnostics and redact Bearer/quoted credential fields and exact sent credentials from provider diagnostic messages/previews before truncation; retain raw response hashes, lengths and failure/retry classification; reject credential characters that HTTP header serialization would echo"
   },
   {
     "source_root": "/liyuanshuai/l2g25",
@@ -2165,7 +2165,7 @@
     "source_path": "src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
     "source_sha256": "06fa04d474fd8a5fcfa12af201d922541755910d3b4837cf8e5f687a13b219fb",
     "destination": "src/esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
-    "changes": "none"
+    "changes": "load the SHA256-verified projected verifier source directly; ignore unverified installed bytecode without changing verifier logic"
   },
   {
     "source_root": "/liyuanshuai/esibench_l20_bundle_20260526/l1a-runtime-cd25f9b",
@@ -4765,7 +4765,7 @@
     "source_path": "src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
     "source_sha256": "06fa04d474fd8a5fcfa12af201d922541755910d3b4837cf8e5f687a13b219fb",
     "destination": "src/esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
-    "changes": "none"
+    "changes": "load the SHA256-verified projected verifier source directly; ignore unverified installed bytecode without changing verifier logic"
   },
   {
     "source_root": "/liyuanshuai/esibench_l20_bundle_20260526/am002-runtime-918aefd",
@@ -7365,7 +7365,7 @@
     "source_path": "src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
     "source_sha256": "06fa04d474fd8a5fcfa12af201d922541755910d3b4837cf8e5f687a13b219fb",
     "destination": "src/esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
-    "changes": "none"
+    "changes": "load the SHA256-verified projected verifier source directly; ignore unverified installed bytecode without changing verifier logic"
   },
   {
     "source_root": "/liyuanshuai/esibench_l20_bundle_20260526/p28-inside",
@@ -9797,7 +9797,7 @@
     "source_path": "src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
     "source_sha256": "06fa04d474fd8a5fcfa12af201d922541755910d3b4837cf8e5f687a13b219fb",
     "destination": "src/esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
-    "changes": "none"
+    "changes": "load the SHA256-verified projected verifier source directly; ignore unverified installed bytecode without changing verifier logic"
   },
   {
     "source_root": "/liyuanshuai/esibench_l20_bundle_20260526/p28-ontop",
@@ -12221,7 +12221,7 @@
     "source_path": "src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
     "source_sha256": "06fa04d474fd8a5fcfa12af201d922541755910d3b4837cf8e5f687a13b219fb",
     "destination": "src/esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
-    "changes": "none"
+    "changes": "load the SHA256-verified projected verifier source directly; ignore unverified installed bytecode without changing verifier logic"
   },
   {
     "source_root": "/liyuanshuai/esibench_l20_bundle_20260526/l1-unified-scorefix-20260919",
@@ -14821,7 +14821,7 @@
     "source_path": "src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
     "source_sha256": "06fa04d474fd8a5fcfa12af201d922541755910d3b4837cf8e5f687a13b219fb",
     "destination": "src/esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
-    "changes": "none"
+    "changes": "load the SHA256-verified projected verifier source directly; ignore unverified installed bytecode without changing verifier logic"
   },
   {
     "source_root": "/liyuanshuai/esibench_l20_bundle_20260526/l2-collection-runtime-20260922",

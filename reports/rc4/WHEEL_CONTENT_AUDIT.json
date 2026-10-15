@@ -1,0 +1,169 @@
+{
+  "schema_version": "esi-benchmark/wheel-content-audit-v1",
+  "status": "PASS",
+  "checked_at_utc": "2026-10-15T06:01:14.759753+00:00",
+  "artifact": "dist/esi_benchmark-0.1.0rc4-py3-none-any.whl",
+  "version": "0.1.0rc4",
+  "sha256": "0fa94edadeea7a5d6a30deeb8c29dda19590e3a54f8626085e17576f7c177698",
+  "bytes": 13116761,
+  "members": 2489,
+  "package_members": 2483,
+  "uncompressed_bytes": 55573420,
+  "source_package_files_compared": 2483,
+  "source_byte_mismatches": [],
+  "missing_expected_package_files": [],
+  "unexpected_package_files": [],
+  "metadata_members": [
+    "esi_benchmark-0.1.0rc4.dist-info/METADATA",
+    "esi_benchmark-0.1.0rc4.dist-info/RECORD",
+    "esi_benchmark-0.1.0rc4.dist-info/WHEEL",
+    "esi_benchmark-0.1.0rc4.dist-info/entry_points.txt",
+    "esi_benchmark-0.1.0rc4.dist-info/licenses/LICENSE_STATUS.md",
+    "esi_benchmark-0.1.0rc4.dist-info/top_level.txt"
+  ],
+  "metadata_and_record_identity": "PASS",
+  "zip_integrity": "PASS",
+  "symlinks_or_unsafe_members": [],
+  "forbidden_artifact_names": [],
+  "secret_pattern_findings": [],
+  "restricted_mdl_hash_matches": [],
+  "private_asset_payload_matches": [],
+  "private_asset_hashes_compared": 2109,
+  "reviewed_evaluator_source_matches": [
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+      "sha256": "be2f435dc785d13bc501da0f85e1f279114348bc57360ca287ddbe08d4c9f098"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+      "sha256": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+      "sha256": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490/src/behavior_hl/embodied/runtime/verification.py",
+      "sha256": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+      "sha256": "be2f435dc785d13bc501da0f85e1f279114348bc57360ca287ddbe08d4c9f098"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+      "sha256": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+      "sha256": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2/src/behavior_hl/embodied/runtime/verification.py",
+      "sha256": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+      "sha256": "be2f435dc785d13bc501da0f85e1f279114348bc57360ca287ddbe08d4c9f098"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+      "sha256": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+      "sha256": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be/src/behavior_hl/embodied/runtime/verification.py",
+      "sha256": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+      "sha256": "be2f435dc785d13bc501da0f85e1f279114348bc57360ca287ddbe08d4c9f098"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+      "sha256": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+      "sha256": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a/src/behavior_hl/embodied/runtime/verification.py",
+      "sha256": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+      "sha256": "be2f435dc785d13bc501da0f85e1f279114348bc57360ca287ddbe08d4c9f098"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+      "sha256": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+      "sha256": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b/src/behavior_hl/embodied/runtime/verification.py",
+      "sha256": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+      "sha256": "be2f435dc785d13bc501da0f85e1f279114348bc57360ca287ddbe08d4c9f098"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+      "sha256": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+      "sha256": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0"
+    },
+    {
+      "path": "esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717/src/behavior_hl/embodied/runtime/verification.py",
+      "sha256": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb"
+    },
+    {
+      "path": "esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/evaluator_bridge/canonical_bddl_grounder.py",
+      "sha256": "be2f435dc785d13bc501da0f85e1f279114348bc57360ca287ddbe08d4c9f098"
+    },
+    {
+      "path": "esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py",
+      "sha256": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff"
+    },
+    {
+      "path": "esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py",
+      "sha256": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0"
+    },
+    {
+      "path": "esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/runtime/verification.py",
+      "sha256": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb"
+    }
+  ],
+  "prior_boundary_review_reuse": {
+    "report": "reports/rc3/SOURCE_AUDIT.json",
+    "report_sha256": "9d5e31fce610cecf070f809ce893dbeef5f0117130a8077c4fdbda1c88e1011b",
+    "source_commit": "744bb80990c72cc0311fb62d39f177bb3e3ffead",
+    "unchanged_noncode_payload_files": 170,
+    "asset_manifest_sha256": {
+      "src/esi_benchmark/data/assets/l0-english-v2.json": "e2ddb75bb463a0d063986c9fc30ec0300625ecaebe53f9f31aefaf58d274fad3",
+      "src/esi_benchmark/data/assets/l1-a30.json": "293967bb586d1444e77205189141ff45dcc12a18bb084581d9d6f5de8bd17504",
+      "src/esi_benchmark/data/assets/l1-m30-public-v2.json": "a976aefe47278f5fe4629a05242283b5b7d0f737a11fedd9d5a76f423123908b",
+      "src/esi_benchmark/data/assets/l1-p-additions20.json": "5921db72c8f06f851baf76a1f363e527ba5b035c9e289189ca2a5dfdbf6660e3",
+      "src/esi_benchmark/data/assets/l1-p-inside5.json": "d771e2da7cea8893eee8ab1b1ef72a35a52c3bf8c54cfedbcf752f9f7a01368c",
+      "src/esi_benchmark/data/assets/l1-p-ontop5.json": "47e886e9f62ea616bddf508eebea31ff5727663899662e46f220a2b396d28330",
+      "src/esi_benchmark/data/assets/l1-v30.json": "44f7f7e1836bee3ec00dadfa5a6e8b3d7a41ec98a7a63f00772ee49c1326f826",
+      "src/esi_benchmark/data/assets/l2-collection37.json": "dbc007193203d01e0e6beb85c9a7d91a6a3234ef8240cbe34f67d2c0ee199121"
+    },
+    "basis": "The 28 exact member/hash matches are the same four evaluator-source contents reviewed in rc3, not private input/state/trajectory payloads. Non-code package resources except source identity manifests and registry are byte-identical to rc3; restricted NVIDIA modules remain excluded."
+  },
+  "errors": [],
+  "limits": [
+    "Pattern scanning is not proof of absence of every possible credential.",
+    "No installation, provider/model call, GPU/Live run, or whole-directory source audit was performed.",
+    "Licensing and redistribution clearance remain separate from this artifact content check."
+  ]
+}

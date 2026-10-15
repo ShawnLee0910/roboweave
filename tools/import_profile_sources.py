@@ -13,6 +13,7 @@ import io
 import json
 from functools import lru_cache
 from pathlib import Path
+import re
 import subprocess
 import tarfile
 
@@ -103,7 +104,7 @@ def adaptation_blocks(old, adapted, context=3):
 
 
 def apply_adaptation(old, adapted, target, name):
-    """Apply reviewed rc2 changed blocks only where the old context matches exactly."""
+    """Apply reviewed candidate changes only where the old context matches exactly."""
     for context in (3, 1):
         result = target
         for original, replacement in adaptation_blocks(old, adapted, context):
@@ -112,7 +113,7 @@ def apply_adaptation(old, adapted, target, name):
             result = result.replace(original, replacement, 1)
         else:
             return result
-    raise ValueError(f"rc2 adaptation requires review: {name}")
+    raise ValueError(f"Candidate adaptation requires review: {name}")
 
 
 def replace_function(source, name, replacement):
@@ -160,6 +161,50 @@ def adapt_scene_identity(source):
     return source.replace(original, insert)
 
 
+def adapt_projected_verifier_loader(source):
+    original = "    spec = importlib.util.spec_from_file_location(module_name, path)\n"
+    replacement = ("    from esi_benchmark._native.bootstrap import _SourceOnlyLoader\n"
+                   "    spec = importlib.util.spec_from_file_location(\n"
+                   "        module_name, path, loader=_SourceOnlyLoader(module_name, str(path)))\n")
+    if source.count(original) != 1:
+        raise ValueError("projected verifier loader adaptation requires review")
+    return source.replace(original, replacement)
+
+
+_PROVIDER_REDACTION_VALUES = '''        redaction_values = (
+            headers.get("x-api-key", ""),
+            headers.get("Authorization", "").removeprefix("Bearer "),
+        )
+'''
+
+
+def adapt_provider_error_requests(source):
+    """Bind each revision's existing failure paths to the credential it sent."""
+    start = '        try:\n            with self.opener.open(http_request, timeout=self.timeout_seconds) as response:\n'
+    if source.count(start) != 1:
+        raise ValueError("provider error redaction adaptation requires review")
+    source = source.replace(start, _PROVIDER_REDACTION_VALUES + start)
+    provider = next(node for node in ast.parse(source).body
+                    if isinstance(node, ast.ClassDef) and node.name == "OpenAICompatibleProvider")
+    post = next(node for node in provider.body if isinstance(node, ast.FunctionDef) and node.name == "_post")
+    calls = [node for node in ast.walk(post) if isinstance(node, ast.Call)
+             and isinstance(node.func, ast.Name) and node.func.id == "ProviderRequestError"]
+    if len(calls) not in {7, 10} or any(keyword.arg == "redaction_values" for node in calls for keyword in node.keywords):
+        raise ValueError("provider failure paths changed; credential binding requires review")
+    original = ast.get_source_segment(source, post)
+    redacted = original
+    for expression in ("exc.reason", "exc"):
+        redacted = redacted.replace("{" + expression + "}",
+            "{_redact_provider_error_text(str(" + expression + "), redaction_values)}")
+    source = source.replace(original, redacted, 1)
+    lines = source.splitlines(keepends=True)
+    for call in sorted(calls, key=lambda node: node.end_lineno, reverse=True):
+        index = call.end_lineno - 1
+        indent = len(lines[index]) - len(lines[index].lstrip()) + 4
+        lines.insert(index, " " * indent + "redaction_values=redaction_values,\n")
+    return "".join(lines)
+
+
 def adapt(kind, files):
     changes = {}
     for row in read_records(kind):
@@ -168,6 +213,10 @@ def adapt(kind, files):
             continue
         if kind == "bench" and name == "lab/scene_source_identity.py":
             continue  # Its manifest and external-checkout policy is applied below.
+        if kind == "runtime" and name == "src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py":
+            files[name] = adapt_projected_verifier_loader(files[name].decode()).encode()
+            changes[name] = row["changes"]
+            continue
         if kind == "bench" and name == "lab/scene_server.py":
             source = files[name].decode()
             cls = next(n for n in ast.parse(source).body
@@ -189,6 +238,15 @@ def adapt(kind, files):
             continue
         old = git(row["source_root"], "show", row["source_revision"] + ":" + name).decode()
         adapted = (ROOT / row["destination"]).read_text()
+        if kind == "bench" and name == "lab/model_client.py":
+            # L2 has no Anthropic branch; adapt only failure paths that revision actually has.
+            if adapted.count(_PROVIDER_REDACTION_VALUES) != 1:
+                raise ValueError("reviewed provider credential binding is missing")
+            adapted = adapted.replace(_PROVIDER_REDACTION_VALUES, "")
+            adapted = re.sub(r"(?m)^ +redaction_values=redaction_values,\n", "", adapted)
+            for expression in ("exc.reason", "exc"):
+                adapted = adapted.replace("{_redact_provider_error_text(str(" + expression + "), redaction_values)}",
+                                          "{" + expression + "}")
         if name == "scripts/tokenplan_resident_decision.py" and "if ENV_FILE.is_file()" in files[name].decode():
             source = files[name].decode()
             # The L2 loader already has environment fallback; retain that newer logic.
@@ -201,6 +259,8 @@ def adapt(kind, files):
             changes[name] = row["changes"] + "; retain the newer L2 environment credential fallback"
             continue
         files[name] = apply_adaptation(old, adapted, files[name].decode(), name).encode()
+        if kind == "bench" and name == "lab/model_client.py":
+            files[name] = adapt_provider_error_requests(files[name].decode()).encode()
         changes[name] = row["changes"]
     if kind == "bench":
         name = "lab/model_client.py"
@@ -210,7 +270,9 @@ def adapt(kind, files):
         if source.count(previous) != 1:
             raise ValueError("model Runtime root adaptation requires review")
         files[name] = source.replace(previous, replacement).encode()
-        changes[name] += "; select the frozen Runtime from the explicit worker environment"
+        changes[name] = changes[name].replace(
+            "rc3: honor explicit BEHAVIOR_HL_PROJECT_ROOT; otherwise use the installed default L0 Runtime bundle",
+            "rc3: require the explicit selected BEHAVIOR_HL_PROJECT_ROOT")
         name = "lab/scene_source_identity.py"
         files[name] = adapt_scene_identity(files[name].decode()).encode()
         changes[name] = "verify registered frozen source manifests; preserve external official checkout Git identity only when its top-level exactly equals the supplied root"

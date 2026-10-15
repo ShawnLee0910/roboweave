@@ -501,7 +501,7 @@
     "source_path": "src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
     "source_sha256": "06fa04d474fd8a5fcfa12af201d922541755910d3b4837cf8e5f687a13b219fb",
     "destination": "src/esi_benchmark/_vendor/runtime/src/behavior_hl/embodied/evaluator_bridge/l0_taskspec_live_adapter.py",
-    "changes": "none"
+    "changes": "load the SHA256-verified projected verifier source directly; ignore unverified installed bytecode without changing verifier logic"
   },
   {
     "source_root": "/liyuanshuai/worktrees/action20/unified-runtime-collection-20260917",

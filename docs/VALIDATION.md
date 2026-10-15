@@ -1,6 +1,23 @@
 # Candidate validation
 
-## Current rc3 acceptance
+## Current rc4 review and repair
+
+Version `0.1.0rc4` audits the rc3 implementation and the following uncommitted
+repairs through six independent review areas. It preserves the eight frozen
+profiles and 257-task catalog. Changes enforce source-only imports, bind model
+inputs and archived results to their frozen task, protect concurrent private
+imports, retain integrity failures in scoring records, and reject malformed
+input before evaluation. Goal/action thresholds and original task inputs are
+unchanged.
+
+The current results and exact checks are in
+[the rc4 review report](../reports/rc4/RESULT.md) and
+[acceptance summary](../reports/rc4/VALIDATION_SUMMARY.json). Earlier rc1–rc3
+receipts below remain historical evidence. The existing CPU environment is
+reused; simulator installation, GPU evaluation, real providers and Live
+reproduction have not been exercised. No publication clearance is implied.
+
+## Historical rc3 acceptance
 
 Version `0.1.0rc3` connects 257 configurations across eight frozen Common
 execution profiles. It uses isolated native workers and supplied history-v2

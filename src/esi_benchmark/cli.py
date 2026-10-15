@@ -6,6 +6,7 @@ import importlib.metadata
 import json
 import os
 from pathlib import Path
+import re
 import signal
 import subprocess
 import sys
@@ -14,7 +15,7 @@ import uuid
 
 from . import __version__
 from .profiles import DEFAULT_PROFILE, source_revisions
-from .config import load_config, validate_config
+from .config import load_config
 
 
 def _print(value):
@@ -69,6 +70,12 @@ def _fresh_output(config, requested):
         raise ValueError("Output cannot be written into the installed source bundle")
     if path.exists():
         raise ValueError(f"Output already exists; choose a new directory: {path}")
+    if config["mode"] == "live":
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", path.name):
+            raise ValueError("Output directory name must be a safe experiment ID (1–128 letters, digits, dots, hyphens or underscores)")
+        workspace = Path(config["runtime"]["workspace"]).resolve()
+        if path.is_relative_to(workspace) or workspace.is_relative_to(path):
+            raise ValueError("Episode output and runtime.workspace must be separate, non-overlapping directories")
     return path
 
 
@@ -107,6 +114,9 @@ def _run(config, requested, dry_run):
                     "evidence": "Synthetic protocol fixture; does not evaluate the selected catalog task"}
         from .offline import run_replay
         return run_replay(config, output)
+    key_env = config.get("model", {}).get("api_key_env")
+    if not dry_run and key_env and not os.environ.get(key_env, "").strip():
+        raise ValueError("The configured API key environment variable is unavailable")
     from .assets import materialize_task_inputs, resolve_task_inputs
     from .runtime import launch_runtime, runtime_plan, validate_owned_ready
     inputs = resolve_task_inputs(config, task)
@@ -143,24 +153,28 @@ def _run(config, requested, dry_run):
                            profile=config["profile"],
                            history_frames=config["run"]["history_frames"])
     except (Exception, KeyboardInterrupt) as exc:
-        failure = {"status": "INITIALIZATION_FAILED", "stage": stage,
+        episode = stage == "model_episode"
+        failure = {"status": "EPISODE_FAILED" if episode else "INITIALIZATION_FAILED", "stage": stage,
                    "error_type": type(exc).__name__, "official_success": None, "q_score": None,
-                   "termination_reason": "candidate_initialization_failure"}
+                   "termination_reason": "candidate_episode_failure" if episode else "candidate_initialization_failure"}
         if not (output / "run_record.json").exists():
             (output / "run_record.json").write_text(json.dumps({
                 "schema_version": "esi-benchmark/run-v1", "mode": "live", "profile": config["profile"],
                 "source_revisions": source_revisions(config["profile"]), "experiment_id": output.name,
                 "evaluation_variant": "frozen_history_5" if config["run"]["history_frames"] == 5 else "history_20_variant_not_baseline",
                 "task_identity": {"task_id": task["task_id"], "family": task["family"]},
-                "evidence_scope": "initialization_failed; no evaluation success claim",
+                "evidence_scope": ("episode_failed" if episode else "initialization_failed") + "; no evaluation success claim",
                 "official_benchmark_eligible": False, "strict_production_eligible": False,
             }, indent=2) + "\n")
-        if not (output / "summary.json").exists():
+        summary_written = (output / "summary.json").exists()
+        if not summary_written:
             (output / "summary.json").write_text(json.dumps(failure, indent=2) + "\n")
-            (output / "conversation_unavailable.json").write_text(json.dumps({
-                "reason": "initialization_failed", "stage": stage, "error_type": type(exc).__name__,
-            }, indent=2) + "\n")
-        else:
+            if not (output / "conversation_chatml.json").exists():
+                (output / "conversation_unavailable.json").write_text(json.dumps({
+                    "reason": "episode_failed" if episode else "initialization_failed",
+                    "stage": stage, "error_type": type(exc).__name__,
+                }, indent=2) + "\n")
+        if summary_written or episode:
             (output / "candidate_error.json").write_text(json.dumps(failure, indent=2) + "\n")
         raise
     finally:
@@ -197,22 +211,23 @@ def main(argv=None):
                     if not name or not value or name in mappings:
                         raise ValueError("Source roots require unique names and nonempty paths")
                     mappings[name] = str(Path(value).expanduser().resolve())
-                mapping = json.loads(args.mapping.read_text()) if args.mapping else None
+                from .engine import _read_json
+                if args.mapping and (not args.mapping.is_file() or args.mapping.stat().st_size > 16 * 1024 * 1024):
+                    raise ValueError("Asset mapping must be a JSON file no larger than 16 MiB")
+                mapping = _read_json(args.mapping.read_bytes()) if args.mapping else None
                 result = prepare_assets(config, source_roots=mappings or None, mapping=mapping, bundle=args.bundle)
         elif args.command == "run":
-            config = load_config(args.config)
-            if args.mode:
-                config["mode"] = args.mode
-                validate_config(config)
+            config = load_config(args.config, mode=args.mode)
             result = _run(config, args.output, args.dry_run)
         elif args.command == "results":
             from .trajectory import summarize_runs, validate_run
             result = validate_run(args.run_dir) if args.operation == "validate" else summarize_runs(args.run_dirs)
         elif args.command == "score":
             from .scoring import score_record
-            if args.record.stat().st_size > 16 * 1024 * 1024:
-                raise ValueError("Score record exceeds 16 MiB")
-            result = score_record(json.loads(args.record.read_text()), process_directory=args.process_output,
+            from .engine import _read_json
+            if not args.record.is_file() or args.record.stat().st_size > 16 * 1024 * 1024:
+                raise ValueError("Score record must be a JSON file no larger than 16 MiB")
+            result = score_record(_read_json(args.record.read_bytes()), process_directory=args.process_output,
                                   profile=args.profile)
         else:
             raise ValueError("Unknown command")

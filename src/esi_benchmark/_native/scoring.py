@@ -18,10 +18,23 @@ SCHEMA = "esi-benchmark/score-record-v1"
 SCHEMA_V2 = "esi-benchmark/score-record-v2"
 
 
+def _check_unary_truth(states, predicate, subject, destination, value):
+    if (isinstance(predicate, str) and predicate in {"open", "closed", "toggled_on", "toggled_off"}
+            and destination is None):
+        # Native readback obtains each complementary pair from one boolean state.
+        positive = "open" if predicate in {"open", "closed"} else "toggled_on"
+        key = json.dumps([positive, subject], sort_keys=True)
+        observed = value if predicate == positive else not value
+        if key in states and states[key] != observed:
+            raise ValueError("contradictory native state readbacks")
+        states[key] = observed
+
+
 def _truth_reader(rows):
     if not isinstance(rows, list):
         raise ValueError("truth must be a list of predicate records")
     values = {}
+    unary_states = {}
     for row in rows:
         if not isinstance(row, dict) or set(row) != {"predicate", "target", "destination", "value"}:
             raise ValueError("invalid predicate truth record")
@@ -35,6 +48,7 @@ def _truth_reader(rows):
         if key in values:
             raise ValueError("duplicate predicate truth")
         values[key] = row["value"]
+        _check_unary_truth(unary_states, *key, row["value"])
     # Missing evidence deliberately raises; ProjectedGoalVerifier fails closed.
     return lambda predicate, target, destination: values[(predicate, target, destination)]
 
@@ -52,6 +66,7 @@ def _atom_truth(rows):
     if not isinstance(rows, list):
         raise ValueError("process atom truth must be a list")
     values = {}
+    unary_states = {}
     for row in rows:
         if (not isinstance(row, dict) or set(row) != {"atom", "value"}
                 or not isinstance(row["atom"], dict) or type(row["value"]) is not bool):
@@ -60,6 +75,9 @@ def _atom_truth(rows):
         if key in values:
             raise ValueError("duplicate process atom truth")
         values[key] = row["value"]
+        atom = row["atom"]
+        _check_unary_truth(unary_states, atom.get("predicate"), atom.get("subject_role"),
+                           atom.get("object_role"), row["value"])
     return values
 
 
@@ -103,10 +121,10 @@ def _process_snapshot(snapshot, requirements, roles, name):
             for field, matches_roles in matches.items():
                 _role_list(matches_roles, rule["domain_roles"], name + ".current_references." + field)
     if "process_program" in requirements:
-        from behavior_hl.embodied.evaluator_bridge.l1_am_process_programs import EXTENSIONS
+        from behavior_hl.embodied.evaluator_bridge import l1_am_process_programs
         program = requirements["process_program"]
         keys = {stage["milestone_id"] for stage in program["milestones"]}
-        unary = any(k in program for k in EXTENSIONS)
+        unary = any(k in program for k in getattr(l1_am_process_programs, "EXTENSIONS", ()))
         values = snapshot.get("milestones")
         if not isinstance(values, dict) or set(values) != keys | ({"_unary"} if unary else set()):
             raise ValueError(f"{name}.milestones lacks declared milestone readbacks")
@@ -117,6 +135,11 @@ def _process_snapshot(snapshot, requirements, roles, name):
             if (not isinstance(values["_unary"], dict) or set(values["_unary"]) != domain
                     or any(type(v) is not bool for v in values["_unary"].values())):
                 raise ValueError(f"{name}.milestones._unary lacks declared state readbacks")
+            polarity = {"open": True, "closed": False, "toggled_on": True, "toggled_off": False}
+            readback = l1_am_process_programs.MilestoneProgress(program,
+                lambda atom: values["_unary"][atom["subject_role"]] == polarity[atom["predicate"]])
+            if readback.read() != values:
+                raise ValueError(f"{name} has contradictory milestone and unary state readbacks")
 
 
 def _atom_roles(atom, roles):
@@ -322,8 +345,10 @@ def score_record(record: Mapping[str, Any], *, process_directory: Path | None = 
         from behavior_hl.embodied.evaluator_bridge.official_predicate_verifier import OfficialPredicateVerifier
         initial = _options(record["initial_options"])
         verifier = OfficialPredicateVerifier(require_single_option=len(initial) == 1)
+        integrity_ok = True
         for frame in frames:
-            if frame.get("integrity_ok", True) is not True:
+            integrity_ok = integrity_ok and frame.get("integrity_ok", True) is True
+            if not integrity_ok:
                 snapshots.append({"operational": False, "success": False, "q_score": None,
                                   "errors": ["recorded execution integrity failure"]})
                 continue

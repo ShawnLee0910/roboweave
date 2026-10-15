@@ -1,0 +1,17 @@
+Obtaining file:///liyuanshuai/esi-benchmark-public-20261013
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: esi-benchmark
+  Building editable for esi-benchmark (pyproject.toml): started
+  Building editable for esi-benchmark (pyproject.toml): finished with status 'done'
+  Created wheel for esi-benchmark: filename=esi_benchmark-0.1.0rc4-0.editable-py3-none-any.whl size=5558 sha256=efe22acc9035284543cd5e87e37b43e7cc65a86fc265181b4044a6f9228af9ca
+  Stored in directory: /liyuanshuai/esi-benchmark-public-20261013/.tmp/pip-ephem-wheel-cache-p1yp5f3e/wheels/70/2e/37/865c4969a7a6591b673b8e808711a94e6d8e4706c8513b1090
+Successfully built esi-benchmark
+Installing collected packages: esi-benchmark
+  Attempting uninstall: esi-benchmark
+    Found existing installation: esi-benchmark 0.1.0rc3
+    Uninstalling esi-benchmark-0.1.0rc3:
+      Successfully uninstalled esi-benchmark-0.1.0rc3
+Successfully installed esi-benchmark-0.1.0rc4

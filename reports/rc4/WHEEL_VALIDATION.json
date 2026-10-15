@@ -1,0 +1,812 @@
+{
+  "status": "PASS",
+  "version": "0.1.0rc4",
+  "package_file": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/__init__.py",
+  "python": "3.12.9",
+  "cwd": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/cwd",
+  "default_pip_bytecode_present": true,
+  "reused_existing_cpu_environment": true,
+  "new_simulator_environment_created": false,
+  "network_model_calls": 0,
+  "profiles": {
+    "l0-english-v2": {
+      "ok": true,
+      "profile": "l0-english-v2",
+      "python": "3.12.9",
+      "packages": {
+        "esi-benchmark": "0.1.0rc4",
+        "numpy": "1.26.4",
+        "Pillow": "11.3.0",
+        "PyYAML": "6.0.3"
+      },
+      "source_revisions": {
+        "bench": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+        "runtime": "9b992b6797330a836e9533e5409627bf63f7d94b"
+      },
+      "source_verification": {
+        "profile": "l0-english-v2",
+        "status": "PASS",
+        "sources": {
+          "bench": {
+            "revision": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+            "manifest_sha256": "a4c1786d313b15f3799f9a6a8073ca6aa20c0f4797f00705480637b7e6176282",
+            "file_count": 38,
+            "status": "PASS"
+          },
+          "runtime": {
+            "revision": "9b992b6797330a836e9533e5409627bf63f7d94b",
+            "manifest_sha256": "7854c32c7d9fdb5a20238be68b36135d3a08ec859a527729d6e9256a2faa4eb2",
+            "file_count": 303,
+            "status": "PASS"
+          }
+        }
+      },
+      "source_roots": {
+        "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/bench",
+        "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/runtime"
+      },
+      "live_status": "not tested; separate simulator, assets and owned GPU required"
+    },
+    "l1-a30": {
+      "ok": true,
+      "profile": "l1-a30",
+      "python": "3.12.9",
+      "packages": {
+        "esi-benchmark": "0.1.0rc4",
+        "numpy": "1.26.4",
+        "Pillow": "11.3.0",
+        "PyYAML": "6.0.3"
+      },
+      "source_revisions": {
+        "bench": "1d76bc5dc53b1995f2e7c301cb06569bcf0c4923",
+        "runtime": "cd25f9ba1579bdca1f0dadf6fce7ad10974b8717"
+      },
+      "source_verification": {
+        "profile": "l1-a30",
+        "status": "PASS",
+        "sources": {
+          "bench": {
+            "revision": "1d76bc5dc53b1995f2e7c301cb06569bcf0c4923",
+            "manifest_sha256": "bd8f1868e030dbfa25bf87e862fa3134e01727841b4cfb988beb4f96edf782af",
+            "file_count": 38,
+            "status": "PASS"
+          },
+          "runtime": {
+            "revision": "cd25f9ba1579bdca1f0dadf6fce7ad10974b8717",
+            "manifest_sha256": "74af04e66a34c5be9c6c53fd27ab303757990981bb833a6320dd403cd50ecf63",
+            "file_count": 325,
+            "status": "PASS"
+          }
+        }
+      },
+      "source_roots": {
+        "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/bench/1d76bc5dc53b1995f2e7c301cb06569bcf0c4923",
+        "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/runtime/cd25f9ba1579bdca1f0dadf6fce7ad10974b8717"
+      },
+      "live_status": "not tested; separate simulator, assets and owned GPU required"
+    },
+    "l1-m30-public-v2": {
+      "ok": true,
+      "profile": "l1-m30-public-v2",
+      "python": "3.12.9",
+      "packages": {
+        "esi-benchmark": "0.1.0rc4",
+        "numpy": "1.26.4",
+        "Pillow": "11.3.0",
+        "PyYAML": "6.0.3"
+      },
+      "source_revisions": {
+        "bench": "fb1cf143f850fe43a04d25440f07cbfab4007093",
+        "runtime": "918aefd40beb72368126cc3fa2891bbb732ad490"
+      },
+      "source_verification": {
+        "profile": "l1-m30-public-v2",
+        "status": "PASS",
+        "sources": {
+          "bench": {
+            "revision": "fb1cf143f850fe43a04d25440f07cbfab4007093",
+            "manifest_sha256": "9aac72f17b8010557ab524c52cce43917c6f4959367fc0bb9b680a68d8cd2994",
+            "file_count": 39,
+            "status": "PASS"
+          },
+          "runtime": {
+            "revision": "918aefd40beb72368126cc3fa2891bbb732ad490",
+            "manifest_sha256": "29d44dc83bb4f8cc6d7850079c68c9cf108d8b3314b552bbb7bdc4185bed00e7",
+            "file_count": 325,
+            "status": "PASS"
+          }
+        }
+      },
+      "source_roots": {
+        "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/bench/fb1cf143f850fe43a04d25440f07cbfab4007093",
+        "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490"
+      },
+      "live_status": "not tested; separate simulator, assets and owned GPU required"
+    },
+    "l1-p-additions20": {
+      "ok": true,
+      "profile": "l1-p-additions20",
+      "python": "3.12.9",
+      "packages": {
+        "esi-benchmark": "0.1.0rc4",
+        "numpy": "1.26.4",
+        "Pillow": "11.3.0",
+        "PyYAML": "6.0.3"
+      },
+      "source_revisions": {
+        "bench": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+        "runtime": "ab615d43d4ede7e6a50eaeda189077529bef361a"
+      },
+      "source_verification": {
+        "profile": "l1-p-additions20",
+        "status": "PASS",
+        "sources": {
+          "bench": {
+            "revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+            "manifest_sha256": "9a28b367bef8633b3c4fdeeb318fae4936da6a2fdc481250e6a5be0fbb12740d",
+            "file_count": 39,
+            "status": "PASS"
+          },
+          "runtime": {
+            "revision": "ab615d43d4ede7e6a50eaeda189077529bef361a",
+            "manifest_sha256": "a38d99a065fe1e82c83e73988b758ceb0a38845240127722b3bb2541ede2c8a7",
+            "file_count": 325,
+            "status": "PASS"
+          }
+        }
+      },
+      "source_roots": {
+        "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/bench/7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+        "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/runtime/ab615d43d4ede7e6a50eaeda189077529bef361a"
+      },
+      "live_status": "not tested; separate simulator, assets and owned GPU required"
+    },
+    "l1-p-inside5": {
+      "ok": true,
+      "profile": "l1-p-inside5",
+      "python": "3.12.9",
+      "packages": {
+        "esi-benchmark": "0.1.0rc4",
+        "numpy": "1.26.4",
+        "Pillow": "11.3.0",
+        "PyYAML": "6.0.3"
+      },
+      "source_revisions": {
+        "bench": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+        "runtime": "955585540d95cba02f672c0d3cdb94048db23bf2"
+      },
+      "source_verification": {
+        "profile": "l1-p-inside5",
+        "status": "PASS",
+        "sources": {
+          "bench": {
+            "revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+            "manifest_sha256": "9a28b367bef8633b3c4fdeeb318fae4936da6a2fdc481250e6a5be0fbb12740d",
+            "file_count": 39,
+            "status": "PASS"
+          },
+          "runtime": {
+            "revision": "955585540d95cba02f672c0d3cdb94048db23bf2",
+            "manifest_sha256": "4bbdd4b077665e577dcf8b1264f90c3cdc25eb4a7b7a4bb00412362a05ef75ea",
+            "file_count": 304,
+            "status": "PASS"
+          }
+        }
+      },
+      "source_roots": {
+        "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/bench/7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+        "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/runtime/955585540d95cba02f672c0d3cdb94048db23bf2"
+      },
+      "live_status": "not tested; separate simulator, assets and owned GPU required"
+    },
+    "l1-p-ontop5": {
+      "ok": true,
+      "profile": "l1-p-ontop5",
+      "python": "3.12.9",
+      "packages": {
+        "esi-benchmark": "0.1.0rc4",
+        "numpy": "1.26.4",
+        "Pillow": "11.3.0",
+        "PyYAML": "6.0.3"
+      },
+      "source_revisions": {
+        "bench": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+        "runtime": "c813a24f853bb90ba3772365ca5182ecb28c553b"
+      },
+      "source_verification": {
+        "profile": "l1-p-ontop5",
+        "status": "PASS",
+        "sources": {
+          "bench": {
+            "revision": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+            "manifest_sha256": "9a28b367bef8633b3c4fdeeb318fae4936da6a2fdc481250e6a5be0fbb12740d",
+            "file_count": 39,
+            "status": "PASS"
+          },
+          "runtime": {
+            "revision": "c813a24f853bb90ba3772365ca5182ecb28c553b",
+            "manifest_sha256": "c972f4e5422a25921c9657f312d1fc5485ca70d665e412845e8bb5ce342013c5",
+            "file_count": 303,
+            "status": "PASS"
+          }
+        }
+      },
+      "source_roots": {
+        "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/bench/7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+        "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/runtime/c813a24f853bb90ba3772365ca5182ecb28c553b"
+      },
+      "live_status": "not tested; separate simulator, assets and owned GPU required"
+    },
+    "l1-v30": {
+      "ok": true,
+      "profile": "l1-v30",
+      "python": "3.12.9",
+      "packages": {
+        "esi-benchmark": "0.1.0rc4",
+        "numpy": "1.26.4",
+        "Pillow": "11.3.0",
+        "PyYAML": "6.0.3"
+      },
+      "source_revisions": {
+        "bench": "d8ae5151fadfb3338d122fdb12b26051ed753852",
+        "runtime": "918aefd40beb72368126cc3fa2891bbb732ad490"
+      },
+      "source_verification": {
+        "profile": "l1-v30",
+        "status": "PASS",
+        "sources": {
+          "bench": {
+            "revision": "d8ae5151fadfb3338d122fdb12b26051ed753852",
+            "manifest_sha256": "bbf3e37af56a592444193c86b934f2fc76e4c000e27f8e31a1ac4cac6d3551dc",
+            "file_count": 42,
+            "status": "PASS"
+          },
+          "runtime": {
+            "revision": "918aefd40beb72368126cc3fa2891bbb732ad490",
+            "manifest_sha256": "29d44dc83bb4f8cc6d7850079c68c9cf108d8b3314b552bbb7bdc4185bed00e7",
+            "file_count": 325,
+            "status": "PASS"
+          }
+        }
+      },
+      "source_roots": {
+        "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/bench/d8ae5151fadfb3338d122fdb12b26051ed753852",
+        "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/runtime/918aefd40beb72368126cc3fa2891bbb732ad490"
+      },
+      "live_status": "not tested; separate simulator, assets and owned GPU required"
+    },
+    "l2-collection37": {
+      "ok": true,
+      "profile": "l2-collection37",
+      "python": "3.12.9",
+      "packages": {
+        "esi-benchmark": "0.1.0rc4",
+        "numpy": "1.26.4",
+        "Pillow": "11.3.0",
+        "PyYAML": "6.0.3"
+      },
+      "source_revisions": {
+        "bench": "4c8364842157153875d098ebb529adcc0620a714",
+        "runtime": "aa878b489d402aaa9b1e30b083d0435cf44b26be"
+      },
+      "source_verification": {
+        "profile": "l2-collection37",
+        "status": "PASS",
+        "sources": {
+          "bench": {
+            "revision": "4c8364842157153875d098ebb529adcc0620a714",
+            "manifest_sha256": "4a1f4f273908d27512db90d5696827ec5cc38fb18cf98213b8d1f215385c17b7",
+            "file_count": 37,
+            "status": "PASS"
+          },
+          "runtime": {
+            "revision": "aa878b489d402aaa9b1e30b083d0435cf44b26be",
+            "manifest_sha256": "68bbec1a5a02e9c5957614286f7e6319e6a5535b944482466fe767e850bfaf1c",
+            "file_count": 316,
+            "status": "PASS"
+          }
+        }
+      },
+      "source_roots": {
+        "bench_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/bench/4c8364842157153875d098ebb529adcc0620a714",
+        "runtime_root": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/esi_benchmark/_vendor/revisions/runtime/aa878b489d402aaa9b1e30b083d0435cf44b26be"
+      },
+      "live_status": "not tested; separate simulator, assets and owned GPU required"
+    }
+  },
+  "catalog_count": 257,
+  "commands": [
+    {
+      "args": [
+        "doctor",
+        "--profile",
+        "l0-english-v2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l0-english-v2.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l0-english-v2.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l0-english-v2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l0-english-v2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "doctor",
+        "--profile",
+        "l1-a30"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-a30.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-a30.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-a30"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-a30"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "doctor",
+        "--profile",
+        "l1-m30-public-v2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-m30-public-v2.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-m30-public-v2.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-m30-public-v2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-m30-public-v2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "doctor",
+        "--profile",
+        "l1-p-additions20"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-p-additions20.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-p-additions20.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-additions20"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-additions20"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "doctor",
+        "--profile",
+        "l1-p-inside5"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-p-inside5.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-p-inside5.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-inside5"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-inside5"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "doctor",
+        "--profile",
+        "l1-p-ontop5"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-p-ontop5.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-p-ontop5.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-ontop5"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-ontop5"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "doctor",
+        "--profile",
+        "l1-v30"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-v30.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l1-v30.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-v30"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-v30"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "doctor",
+        "--profile",
+        "l2-collection37"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "config",
+        "validate",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l2-collection37.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "run",
+        "--config",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/l2-collection37.json",
+        "--output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l2-collection37"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "validate",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l2-collection37"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "tasks",
+        "list"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "results",
+        "summarize",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l0-english-v2",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-a30",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-m30-public-v2",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-additions20",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-inside5",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-ontop5",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-v30",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l2-collection37"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "score",
+        "/liyuanshuai/esi-benchmark-public-20261013/examples/score-record.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "score",
+        "/liyuanshuai/esi-benchmark-public-20261013/examples/history-score-record.json",
+        "--process-output",
+        "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/history-process"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "equivalence": {
+    "schema_version": "esi-benchmark/behavior-equivalence-v1",
+    "status": "PASS",
+    "case_count": 75,
+    "case_groups": {
+      "budget": 2,
+      "conversation": 13,
+      "model_loop": 5,
+      "observation": 5,
+      "parser": 24,
+      "process": 4,
+      "result": 8,
+      "score": 8,
+      "termination": 2,
+      "trajectory": 4
+    },
+    "differences": [],
+    "source_revisions": {
+      "bench": "5b8d2b37fd7d97b161e88de4d438ec789c78f9b4",
+      "runtime": "9b992b6797330a836e9533e5409627bf63f7d94b"
+    },
+    "reference_mode": "frozen_source_golden",
+    "evidence_scope": "CPU fixed-input comparison; synthetic scene/provider; no Live verification",
+    "normalization": [
+      "temporary, installed and upstream configured project roots replaced by stable labels",
+      "PNG data URLs compared as mode, size and decoded pixel SHA256"
+    ],
+    "inputs_sha256": "612e16ea5763e839cc72001b017b0849056a320c49d01c7aa8cba8272a102f3f",
+    "reference_output_sha256": "4b7bae88ad6edc054b61a226d2f2826578c8683e4bbcdb51623570ccb63d001e",
+    "candidate_output_sha256": "4b7bae88ad6edc054b61a226d2f2826578c8683e4bbcdb51623570ccb63d001e",
+    "reference_source_sha256": {
+      "bench/action20_protocol.py": "28b6545b70408e32afba70216a909bc1dcf717e5878cc774a2d1eb1358661143",
+      "bench/agent_common.py": "71bf09de60ec05ce62a8474bcd076f89acc1bd6a7aa920e7b0c39d6c24977a72",
+      "bench/agent_observation.py": "8b70dba47d8d76c735ff80264e50afe12b075f83edf5d70b1c8635ed8df3c9aa",
+      "bench/agent_prompt.py": "3eb5af1ae24d70b54301a1942c6b2467f0e4660027e52551fa35e86fabb17cc9",
+      "bench/agent_protocol.py": "d6556997c345e7ff3b72a5a25deee8b5ee0291a819c66ae09c493693a016b55e",
+      "bench/agent_artifacts.py": "c77a913142ae8f3c16559b24b5676398ecdeb6f957bf9507d3543fd23f59eddd",
+      "bench/agent_resume.py": "5d61fdf510c1cf38518974229a54ee627448ef4822c7a069dc0d6efb420c947c",
+      "bench/episode_conversation.py": "69a18e62eaa3155c189076956a4fa0778b261d0eda439c7766de0be5a3498f87",
+      "bench/Agent.py": "21089b3ec7a788679def07216bbcfb8001bbae18ce769b58a7aabad4db624405",
+      "runtime/src/behavior_hl/actions.py": "310148a5f8ecb900448a76290c478a0e4ba1530b5b4b630215d637afcecd37a7",
+      "runtime/src/behavior_hl/tasks.py": "4f6caf0d75d562c9d6bb50ffdf004abee8a984b1fa1793f561b3514e0cc30df9",
+      "runtime/src/behavior_hl/controller.py": "f528f7c36f7a0c6c304f5c4719e93787bdf52274d10ceb10f73df68d117ecd77",
+      "runtime/src/behavior_hl/__init__.py": "8a10419ebfbb424f54f8db3d9773cdc956a4aa5436be92798c59ebaf19ebf049",
+      "runtime/src/behavior_hl/embodied/policy/protocol.py": "2e334416179c180ed10445635d75c525f2f7c9d4e118aa9610a05dc4877020d7",
+      "runtime/src/behavior_hl/embodied/policy/registry.py": "9634e3472198c502d2a183f9e1af4f77f127a1ebe4ecef717f296514797865f6",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/base_motion.py": "0b7533f30103a25d1add27ebe1581c99515f031f3a2e32b210d4320770898f97",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/grasp_at.py": "e0503ddb5546b9e0864a21acc7eee43359ad00032b060f0f8b3c517e82cb5b24",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/grasp_object.py": "743dab1893c9f103c37d196e9349fe37b1317fa92c58ea027c2dd8eebbc37831",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/marker_symbolic_grasp.py": "cdd9c54aea9002de30cc6e05c2cd39f32328a3bab87f7ee1ae20de632758e2ff",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/place_inside_at.py": "864b3967d4c91d2aa67e1e905ce7ede054739bc82c6b11aa2e937d3a05299c6e",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/release.py": "412f18c86a1ce3c1ffc8c4112184cd6e5891162fef9b47036f21601180697d16",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/stop.py": "b833525f8210a9dee019d64a031283b9e11543a862fbfaf40c7c4f0bdef9b815",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/torso_look.py": "3e8c1afa77bab876ecaba94d6ce2000ea7ba6e24a29fdfd576bf01420bc346f3",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/wait.py": "985b1d042987c9aef578f6107f96d4738ccd93e3d920aa989553388aefdf5aa8",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/__init__.py": "6115ae0024d276c96e685f25fba6dcfa4752ae10abff7986b3b8c334bd605abc",
+      "runtime/src/behavior_hl/embodied/policy/profiles.py": "2a2bbebc2b706f2a721ac130cc7fee0b61e14a8a085c426d64016d16d0987de2",
+      "runtime/src/behavior_hl/embodied/policy/__init__.py": "c3f706e43770a7436700576b7098b2e8cda990ecd91831367fe444ab54ec9a9f",
+      "runtime/src/behavior_hl/embodied/__init__.py": "2a2bbc678614ad690216d6b2cdca09fa704f28a2e9c017e7d3a7478f73bfbb81",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/__init__.py": "7c1d179567de3eaeb3e202a112989c64acec29091def95665a489328d7c65759",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/inside_goal_graph.py": "e6c47cc8340042074587c6b9fbba6ccf31893ac678eaba08fcf30524bf1deb1b",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/official_predicate_identity.py": "2b5d9114f16fbedb8af676facdda23c0caaf5cdeb4cf26e9bd9be069a6f56d5c",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/spatial_symbolic_actions.py": "8de094d7dcde5b844999623d78d10c067f3423e3f96fd2fcdc32901eae213c57",
+      "runtime/src/behavior_hl/embodied/runtime/artifacts.py": "b59ce6d0d14146ba67b37b38308e2e711670deb3ce861a1e9cda7ad7c4819eaf",
+      "runtime/src/behavior_hl/embodied/runtime/episode.py": "78f1a74e04c38e9a80b9b0a210689ceadf33fda3717649d58b5176a50d0ff0ce",
+      "runtime/src/behavior_hl/embodied/runtime/observation.py": "7966d66bb8b361adf14584556f2b9821bacfe5065b730e3a2831cd3bbbd6a51c",
+      "runtime/src/behavior_hl/embodied/runtime/availability.py": "c94183cd484e1190936e6ac43a99454c68d3df7cf23de3099100fb415906d387",
+      "runtime/src/behavior_hl/embodied/runtime/artifact_contract.py": "1d98d61f6a3bfdf8d92b44d1892954dde44b6bc943dc72d452377151339ed688",
+      "runtime/src/behavior_hl/embodied/runtime/dispatch.py": "73c3005f0c259e7c351938dae04558bcb097874fccaa4fa88f623aafd05833a7",
+      "runtime/src/behavior_hl/embodied/runtime/config_composition.py": "d658795895df47493c07f868ba10c040512e6d93067b916b70d5fa6012f0504b",
+      "runtime/src/behavior_hl/embodied/runtime/verifier.py": "708df17f5953462fd2d625e49e74d6d2d8d39e27e48ac36c09c17de4d405e255",
+      "runtime/src/behavior_hl/embodied/runtime/policy_loop.py": "d61d160c52fb46e604879aa476e095552f6659b5ff7f560f5afcf998416aa5eb",
+      "runtime/src/behavior_hl/embodied/policy/observations.py": "ce9a6b34a267b6ab9852b3dfab9c3a09e26b5f17ab67828f0738f3e6bdab8e6c",
+      "runtime/src/behavior_hl/embodied/runtime/public_action_feedback.py": "35814658fcb46fe22b8cef5b1aea2ba284ca2b56224ba8ff5b3a2a5580cf8873",
+      "runtime/src/behavior_hl/embodied/runtime/prompt.py": "6d5b260c656fdaaa9719a158dbf8acdc0688459aff9b1cfceae5e06568a65208",
+      "runtime/src/behavior_hl/embodied/runtime/termination.py": "05a9f474c44d2c14bb4ea60f59626afb58f53e7d2a845ddb21b1caff8fe167cb",
+      "runtime/src/behavior_hl/embodied/runtime/verification.py": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb",
+      "runtime/src/behavior_hl/embodied/runtime/writer.py": "8cc82ab7740b13e06230c6d96529617088acb568aa3676032bdbe219cc41e612",
+      "runtime/src/behavior_hl/embodied/runtime/__init__.py": "09fddbfd83cc28af0874dfe362a1911cd307aa693ba147c6e41804599e235894",
+      "runtime/src/behavior_hl/embodied/runtime/action_integrity.py": "bfa8bf2c603947dfe34ea5bba40c6beba4737a55ec6bb9386fee41da02142253",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/l1_process_audit.py": "35b02c1a8ec33d571282f0f0dd882b5bb7bd87dcba6e6955b4ffeede4acec67a",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/private_json_sanitizer.py": "d3f3f12edc6a9b11769092408e2428d79565aef086fd1615e1edf0e7d3f7e0aa",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/oracle_progress_journal.py": "19cc0175a6380c151f47f1d2a2573a052318d2760e06995b8962b5f17828e05b",
+      "bench/lab/scene_protocol.py": "67f9ae36db161a8f658396923f3ce1449ab34d3adcdb1315c744c7a63dc9b247",
+      "bench/lab/native_tool_preflight.py": "5e9bb6de0168edb1d436c92f0bba127883f28a1c3af8dfd4b054892f246f157b",
+      "bench/lab/campaign_manifest.py": "92478b440cb83f876846b33756d8db09f1336912843d2643a153431e63454ef0",
+      "bench/lab/run_artifact_layout.py": "c806817fbb33850600e187477deae335b736fe5a2f01176f3bc120a93cf2dd9c",
+      "bench/lab/provider_retry.py": "8b10640cdf34ec2da32bf02230cf4f2c21a0539e9968715cf4740e826e9c94ff",
+      "bench/lab/anthropic_messages_adapter.py": "d389dffd2e2d179e5f3134aea6f56f6057471d517695a56498b9a9c8b1e7085a",
+      "bench/responses_adapter.py": "538c93dd9bd2da9e3f2ba7d11086650298cb3ea55b607b32d9fb3d3cc7380aff",
+      "bench/lab/model_client.py": "2224523570db9ae882b18233210a401aea0cd0dcadf493ad079bc13752611c48",
+      "bench/lab/physical_model_results.py": "be8d2ee32a8465869e7ec133ebe5f77cc0de043d01135ec636c1becf797a2c58",
+      "bench/action20_core_instructions.txt": "4b9b5168a0541be734cda28133cdb86fe18b82f999a9663a1048795631bafefd",
+      "bench/action20_tool_schema.json": "2b11b8ba14c56fa480020989d218069c207f265cc1ecd28f35dbe9e3da74e4e2",
+      "bench/action20_bare_marker_schema.json": "cfd4860d6fd50049e9b1cc3bfec1893faced7d5d51886315e509064752741b4f"
+    },
+    "candidate_source_sha256": {
+      "bench/action20_protocol.py": "28b6545b70408e32afba70216a909bc1dcf717e5878cc774a2d1eb1358661143",
+      "bench/agent_common.py": "71bf09de60ec05ce62a8474bcd076f89acc1bd6a7aa920e7b0c39d6c24977a72",
+      "bench/agent_observation.py": "8b70dba47d8d76c735ff80264e50afe12b075f83edf5d70b1c8635ed8df3c9aa",
+      "bench/agent_prompt.py": "3eb5af1ae24d70b54301a1942c6b2467f0e4660027e52551fa35e86fabb17cc9",
+      "bench/agent_protocol.py": "d6556997c345e7ff3b72a5a25deee8b5ee0291a819c66ae09c493693a016b55e",
+      "bench/agent_artifacts.py": "c77a913142ae8f3c16559b24b5676398ecdeb6f957bf9507d3543fd23f59eddd",
+      "bench/agent_resume.py": "5d61fdf510c1cf38518974229a54ee627448ef4822c7a069dc0d6efb420c947c",
+      "bench/episode_conversation.py": "69a18e62eaa3155c189076956a4fa0778b261d0eda439c7766de0be5a3498f87",
+      "bench/Agent.py": "21089b3ec7a788679def07216bbcfb8001bbae18ce769b58a7aabad4db624405",
+      "runtime/src/behavior_hl/actions.py": "310148a5f8ecb900448a76290c478a0e4ba1530b5b4b630215d637afcecd37a7",
+      "runtime/src/behavior_hl/tasks.py": "4f6caf0d75d562c9d6bb50ffdf004abee8a984b1fa1793f561b3514e0cc30df9",
+      "runtime/src/behavior_hl/controller.py": "f528f7c36f7a0c6c304f5c4719e93787bdf52274d10ceb10f73df68d117ecd77",
+      "runtime/src/behavior_hl/__init__.py": "8a10419ebfbb424f54f8db3d9773cdc956a4aa5436be92798c59ebaf19ebf049",
+      "runtime/src/behavior_hl/embodied/policy/protocol.py": "2e334416179c180ed10445635d75c525f2f7c9d4e118aa9610a05dc4877020d7",
+      "runtime/src/behavior_hl/embodied/policy/registry.py": "9634e3472198c502d2a183f9e1af4f77f127a1ebe4ecef717f296514797865f6",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/base_motion.py": "0b7533f30103a25d1add27ebe1581c99515f031f3a2e32b210d4320770898f97",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/grasp_at.py": "e0503ddb5546b9e0864a21acc7eee43359ad00032b060f0f8b3c517e82cb5b24",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/grasp_object.py": "743dab1893c9f103c37d196e9349fe37b1317fa92c58ea027c2dd8eebbc37831",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/marker_symbolic_grasp.py": "cdd9c54aea9002de30cc6e05c2cd39f32328a3bab87f7ee1ae20de632758e2ff",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/place_inside_at.py": "864b3967d4c91d2aa67e1e905ce7ede054739bc82c6b11aa2e937d3a05299c6e",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/release.py": "412f18c86a1ce3c1ffc8c4112184cd6e5891162fef9b47036f21601180697d16",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/stop.py": "b833525f8210a9dee019d64a031283b9e11543a862fbfaf40c7c4f0bdef9b815",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/torso_look.py": "3e8c1afa77bab876ecaba94d6ce2000ea7ba6e24a29fdfd576bf01420bc346f3",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/wait.py": "985b1d042987c9aef578f6107f96d4738ccd93e3d920aa989553388aefdf5aa8",
+      "runtime/src/behavior_hl/embodied/policy/action_specs/__init__.py": "6115ae0024d276c96e685f25fba6dcfa4752ae10abff7986b3b8c334bd605abc",
+      "runtime/src/behavior_hl/embodied/policy/profiles.py": "2a2bbebc2b706f2a721ac130cc7fee0b61e14a8a085c426d64016d16d0987de2",
+      "runtime/src/behavior_hl/embodied/policy/__init__.py": "c3f706e43770a7436700576b7098b2e8cda990ecd91831367fe444ab54ec9a9f",
+      "runtime/src/behavior_hl/embodied/__init__.py": "2a2bbc678614ad690216d6b2cdca09fa704f28a2e9c017e7d3a7478f73bfbb81",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/__init__.py": "7c1d179567de3eaeb3e202a112989c64acec29091def95665a489328d7c65759",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/inside_goal_graph.py": "e6c47cc8340042074587c6b9fbba6ccf31893ac678eaba08fcf30524bf1deb1b",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/official_predicate_identity.py": "2b5d9114f16fbedb8af676facdda23c0caaf5cdeb4cf26e9bd9be069a6f56d5c",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/spatial_symbolic_actions.py": "8de094d7dcde5b844999623d78d10c067f3423e3f96fd2fcdc32901eae213c57",
+      "runtime/src/behavior_hl/embodied/runtime/artifacts.py": "b59ce6d0d14146ba67b37b38308e2e711670deb3ce861a1e9cda7ad7c4819eaf",
+      "runtime/src/behavior_hl/embodied/runtime/episode.py": "78f1a74e04c38e9a80b9b0a210689ceadf33fda3717649d58b5176a50d0ff0ce",
+      "runtime/src/behavior_hl/embodied/runtime/observation.py": "7966d66bb8b361adf14584556f2b9821bacfe5065b730e3a2831cd3bbbd6a51c",
+      "runtime/src/behavior_hl/embodied/runtime/availability.py": "c94183cd484e1190936e6ac43a99454c68d3df7cf23de3099100fb415906d387",
+      "runtime/src/behavior_hl/embodied/runtime/artifact_contract.py": "1d98d61f6a3bfdf8d92b44d1892954dde44b6bc943dc72d452377151339ed688",
+      "runtime/src/behavior_hl/embodied/runtime/dispatch.py": "73c3005f0c259e7c351938dae04558bcb097874fccaa4fa88f623aafd05833a7",
+      "runtime/src/behavior_hl/embodied/runtime/config_composition.py": "d658795895df47493c07f868ba10c040512e6d93067b916b70d5fa6012f0504b",
+      "runtime/src/behavior_hl/embodied/runtime/verifier.py": "708df17f5953462fd2d625e49e74d6d2d8d39e27e48ac36c09c17de4d405e255",
+      "runtime/src/behavior_hl/embodied/runtime/policy_loop.py": "d61d160c52fb46e604879aa476e095552f6659b5ff7f560f5afcf998416aa5eb",
+      "runtime/src/behavior_hl/embodied/policy/observations.py": "ce9a6b34a267b6ab9852b3dfab9c3a09e26b5f17ab67828f0738f3e6bdab8e6c",
+      "runtime/src/behavior_hl/embodied/runtime/public_action_feedback.py": "35814658fcb46fe22b8cef5b1aea2ba284ca2b56224ba8ff5b3a2a5580cf8873",
+      "runtime/src/behavior_hl/embodied/runtime/prompt.py": "6d5b260c656fdaaa9719a158dbf8acdc0688459aff9b1cfceae5e06568a65208",
+      "runtime/src/behavior_hl/embodied/runtime/termination.py": "05a9f474c44d2c14bb4ea60f59626afb58f53e7d2a845ddb21b1caff8fe167cb",
+      "runtime/src/behavior_hl/embodied/runtime/verification.py": "97057f7e50c8bd8ec5580ff62304e650cea88523feee131fab66e1cd8abffcfb",
+      "runtime/src/behavior_hl/embodied/runtime/writer.py": "8cc82ab7740b13e06230c6d96529617088acb568aa3676032bdbe219cc41e612",
+      "runtime/src/behavior_hl/embodied/runtime/__init__.py": "09fddbfd83cc28af0874dfe362a1911cd307aa693ba147c6e41804599e235894",
+      "runtime/src/behavior_hl/embodied/runtime/action_integrity.py": "bfa8bf2c603947dfe34ea5bba40c6beba4737a55ec6bb9386fee41da02142253",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/official_predicate_verifier.py": "21c087e0e68bc6e01114e0c19556411a21b118fd5856e9e2ce5a2a835f17d7c0",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/l0_verifier_adapter.py": "198a14cb47b16a505532b57a2e1feed968ca2210771713416459d54a7bb72cff",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/l1_process_audit.py": "35b02c1a8ec33d571282f0f0dd882b5bb7bd87dcba6e6955b4ffeede4acec67a",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/private_json_sanitizer.py": "d3f3f12edc6a9b11769092408e2428d79565aef086fd1615e1edf0e7d3f7e0aa",
+      "runtime/src/behavior_hl/embodied/evaluator_bridge/oracle_progress_journal.py": "19cc0175a6380c151f47f1d2a2573a052318d2760e06995b8962b5f17828e05b",
+      "bench/lab/scene_protocol.py": "83d3a5604b29809094f20f99588defa3f68fe5bf38e183fd6b9f2f23e20c1257",
+      "bench/lab/native_tool_preflight.py": "5e9bb6de0168edb1d436c92f0bba127883f28a1c3af8dfd4b054892f246f157b",
+      "bench/lab/campaign_manifest.py": "92478b440cb83f876846b33756d8db09f1336912843d2643a153431e63454ef0",
+      "bench/lab/run_artifact_layout.py": "c806817fbb33850600e187477deae335b736fe5a2f01176f3bc120a93cf2dd9c",
+      "bench/lab/provider_retry.py": "8b10640cdf34ec2da32bf02230cf4f2c21a0539e9968715cf4740e826e9c94ff",
+      "bench/lab/anthropic_messages_adapter.py": "d389dffd2e2d179e5f3134aea6f56f6057471d517695a56498b9a9c8b1e7085a",
+      "bench/responses_adapter.py": "538c93dd9bd2da9e3f2ba7d11086650298cb3ea55b607b32d9fb3d3cc7380aff",
+      "bench/lab/model_client.py": "9a025a9411c217cd6752d7f280e780a8d12e674d9ced09133d0fd4c37db350ba",
+      "bench/lab/physical_model_results.py": "be8d2ee32a8465869e7ec133ebe5f77cc0de043d01135ec636c1becf797a2c58",
+      "bench/action20_core_instructions.txt": "4b9b5168a0541be734cda28133cdb86fe18b82f999a9663a1048795631bafefd",
+      "bench/action20_tool_schema.json": "2b11b8ba14c56fa480020989d218069c207f265cc1ecd28f35dbe9e3da74e4e2",
+      "bench/action20_bare_marker_schema.json": "cfd4860d6fd50049e9b1cc3bfec1893faced7d5d51886315e509064752741b4f"
+    }
+  },
+  "wheel": {
+    "name": "esi_benchmark-0.1.0rc4-py3-none-any.whl",
+    "sha256": "0fa94edadeea7a5d6a30deeb8c29dda19590e3a54f8626085e17576f7c177698",
+    "bytes": 13116761,
+    "members": 2489
+  },
+  "scope": "Installed-package CPU import, synthetic replay, supplied-record scoring and L0 golden parity only; no Live or simulator environment reproduction."
+}

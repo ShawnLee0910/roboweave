@@ -113,7 +113,9 @@ def _import_projected_verifier_class(raw_path: str, digest: str) -> type[Any]:
             "PROVENANCE_MISMATCH", "projected verifier SHA256 differs"
         )
     module_name = f"_l0_projected_verifier_{digest}"
-    spec = importlib.util.spec_from_file_location(module_name, path)
+    from esi_benchmark._native.bootstrap import _SourceOnlyLoader
+    spec = importlib.util.spec_from_file_location(
+        module_name, path, loader=_SourceOnlyLoader(module_name, str(path)))
     if spec is None or spec.loader is None:
         raise L0LiveAdapterError("PROVENANCE_MISMATCH", "projected verifier module cannot be loaded")
     module = importlib.util.module_from_spec(spec)

@@ -1,0 +1,39 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+_______ test_malformed_score_json_is_rejected_before_evaluation[nesting] _______
+
+tmp_path = PosixPath('/liyuanshuai/esi-benchmark-public-20261013/.tmp/rc4-json/test_malformed_score_json_is_r2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fc8a179bec0>
+capsys = <_pytest.capture.CaptureFixture object at 0x7fc8a196ec60>
+raw = '[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[...]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]'
+
+    @pytest.mark.parametrize("raw", ['{"official":{},"official":{"snapshots":[]}}',
+                                      '{"truth":NaN}', None],
+                             ids=["duplicate", "nonfinite", "nesting"])
+    def test_malformed_score_json_is_rejected_before_evaluation(tmp_path, monkeypatch, capsys, raw):
+        from esi_benchmark import scoring
+        if raw is None:
+            depth = sys.getrecursionlimit() + 100
+            raw = '[' * depth + '0' + ']' * depth
+        path = tmp_path / "record.json"
+        path.write_text(raw)
+        monkeypatch.setattr(scoring, "score_record", lambda *args, **kwargs: pytest.fail("Malformed JSON must not reach scoring"))
+>       assert cli.main(["score", str(path)]) == 2
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_cli.py:206: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/esi_benchmark/cli.py:227: in main
+    result = score_record(_read_json(args.record.read_bytes()), process_directory=args.process_output,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ([[[[[[...]]]]]],), kwargs = {'process_directory': None, 'profile': None}
+
+>   monkeypatch.setattr(scoring, "score_record", lambda *args, **kwargs: pytest.fail("Malformed JSON must not reach scoring"))
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: Malformed JSON must not reach scoring
+
+tests/test_cli.py:205: Failed
+=========================== short test summary info ============================
+FAILED tests/test_cli.py::test_malformed_score_json_is_rejected_before_evaluation[nesting]
+1 failed, 2 passed, 15 deselected in 5.99s

@@ -25,7 +25,7 @@
     "lab/instruction_handoff.py": "8f769a059034abc319d9a22ce075527e435e7a96c1407df0c60920d80048a7ad",
     "lab/instruction_scene_groups.py": "c1346cdfd9b7beee7c7d38aef9c0e6580db3a41ef63e49d6832701c9a6df9d62",
     "lab/l1_episode.py": "73e5f385caf988748cf6be7ad17e4353ca0d50edf1cee6aaa601bb383796877f",
-    "lab/model_client.py": "ffe99cd6d3c5e833daeb95a8e9a62c40816c532d80a9c39570e42f2afaaa53fa",
+    "lab/model_client.py": "543eceb5fd294773ea727fd698c13b36758a6c83d4de82c57a229d05b2f687a5",
     "lab/model_observation_delivery.py": "e9943850b65bc80b77549bcc308b6bb4b4e46376bb522b7858d4d9225370cd39",
     "lab/native_tool_preflight.py": "5e9bb6de0168edb1d436c92f0bba127883f28a1c3af8dfd4b054892f246f157b",
     "lab/package_scene_server.py": "5c1f965771af55c4b64d8b1cec036a1f40720b25de08576f2d4f3ffe8e91a344",
@@ -46,7 +46,7 @@
     "responses_adapter.py": "538c93dd9bd2da9e3f2ba7d11086650298cb3ea55b607b32d9fb3d3cc7380aff"
   },
   "candidate_adaptations": {
-    "lab/model_client.py": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; select the frozen Runtime from the explicit worker environment",
+    "lab/model_client.py": "Replace internal runtime/secret-file paths with candidate runtime and disabled private upload default; add optional explicit api_key_env credential selection without changing model transport.; rc2: reject automatic provider HTTP redirects to prevent credential forwarding; normal transport and retry semantics retained; rc3: require the explicit selected BEHAVIOR_HL_PROJECT_ROOT; rc4: normalize JSON diagnostics and redact Bearer/quoted credential fields and exact sent credentials from provider diagnostic messages/previews before truncation; retain raw response hashes, lengths and failure/retry classification; reject credential characters that HTTP header serialization would echo",
     "lab/scene_protocol.py": "Add explicit runtime registry root while preserving ready-path containment and task identity checks.",
     "lab/scene_server.py": "Pass explicit runtime registry to persistent checkpoint validation; preserve containment and frozen scene logic. Add own PID to ready metadata so the public parent verifies child ownership before connection.",
     "lab/prepared_state_inputs.py": "Replace private remote interpreter location with PATH-resolved python3 in the optional historical evidence helper; public local asset flow uses only load_prepared.",

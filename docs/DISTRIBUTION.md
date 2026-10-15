@@ -50,3 +50,10 @@ candidate file set; do not upload the working directory with its local virtual
 environments, imported private resources, outputs or provenance containing
 operational details. Review the built wheel and source archive as well as the
 repository. A clean Git working tree alone is not a distribution review.
+
+`tools/audit_candidate.py` scans the declared source/data/documentation trees and
+the top-level README, build metadata and license-status files. Root-directory
+symlinks, including dangling ones, are rejected. Findings report file locations
+and types without printing matched credential values. The scan also lists
+historical absolute paths in JSON/YAML and other distributed file types for
+reachability review; a listed provenance path is not itself a runtime dependency.

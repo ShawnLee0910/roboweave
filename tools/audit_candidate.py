@@ -9,6 +9,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SCANNED_ROOTS = ("src", "configs", "examples", "docs", "provenance", "reports", "tests", "tools")
+SCANNED_FILES = ("pyproject.toml", "MANIFEST.in", "README.md", "LICENSE_STATUS.md", "THIRD_PARTY_NOTICES.md")
 SECRET_PATTERNS = {
     "private_key": re.compile(rb"-----BEGIN (?:RSA |OPENSSH |EC |DSA )?PRIVATE KEY-----"),
     "provider_key": re.compile(rb"\b(?:sk-[A-Za-z0-9_-]{24,}|AKIA[A-Z0-9]{16})\b"),
@@ -22,6 +23,8 @@ AUDITED_TEST_LITERALS = {
     ("reports/rc2/sdist-pytest.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
     ("reports/rc3/pytest.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
     ("reports/rc3/final-related.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
+    ("reports/rc4/pytest.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
+    ("reports/rc4/final-related.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
     ("tests/upstream_bench/test_model_protocol_retry.py", "provider_key", "d7741caceb829b07fe116f5ba10ea4415e361d02efbedddd352674b25b678ced"),
 }
 
@@ -33,11 +36,14 @@ def audit():
     syntax_errors = []
     internal_paths = []
     synthetic_findings = []
-    for relative in SCANNED_ROOTS:
+    for relative in (*SCANNED_ROOTS, *SCANNED_FILES):
         base = ROOT / relative
+        if base.is_symlink():
+            findings.append({"path": relative, "kind": "symlink"})
+            continue
         if not base.exists():
             continue
-        for path in sorted(base.rglob("*")):
+        for path in sorted(base.rglob("*")) if base.is_dir() else (base,):
             if "__pycache__" in path.parts or path.suffix in {".pyc", ".pyo"}:
                 continue
             if path.is_symlink():
@@ -64,13 +70,13 @@ def audit():
                     ast.parse(content, filename=str(path.relative_to(ROOT)))
                 except SyntaxError as exc:
                     syntax_errors.append({"path": str(path.relative_to(ROOT)), "line": exc.lineno})
-                if re.search(rb"/(?:liyuanshuai|root)/", content):
-                    internal_paths.append(str(path.relative_to(ROOT)))
+            if re.search(rb"/(?:liyuanshuai|root)/", content):
+                internal_paths.append(str(path.relative_to(ROOT)))
     return {"schema_version": "esi-benchmark/source-audit-v1", "files": count, "bytes": byte_count,
             "secret_or_symlink_findings": findings, "syntax_errors": syntax_errors,
             "reviewed_synthetic_test_literals": synthetic_findings,
             "source_files_with_historical_absolute_paths": internal_paths,
-            "coverage": list(SCANNED_ROOTS),
+            "coverage": [*SCANNED_ROOTS, *SCANNED_FILES],
             "limits": "Pattern scan, not proof of absence of every possible credential. Historical path references require reachability review."}
 
 

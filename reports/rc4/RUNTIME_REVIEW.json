@@ -1,0 +1,66 @@
+{
+  "scope": "runtime.py, engine.py, _native/models.py, _native/worker.py; connected frozen entry points, SceneClient and Common model loop",
+  "frozen_vendor_modified_by_this_review": false,
+  "live_verified": false,
+  "findings_fixed": [
+    {
+      "priority": "P1",
+      "finding": "Public execution entry points accepted modified model instructions, public handles or budgets after input preparation.",
+      "fix": "Use the shared catalog validator in runtime_plan and native run_episode before provider/scene contact; bind runtime selection and materialization receipt to the profile, public task and native instruction.",
+      "files": [
+        "src/esi_benchmark/runtime.py",
+        "src/esi_benchmark/_native/models.py"
+      ],
+      "shared_dependency": "src/esi_benchmark/tasks.py::validate_model_task (coordinator-owned)"
+    },
+    {
+      "priority": "P2",
+      "finding": "ANTHROPIC_API_KEY and ANTHROPIC_AUTH_TOKEN inherited from an unrelated parent configuration were retained in the simulator child environment.",
+      "fix": "Remove both supported Anthropic credential variables and its conventional endpoint override alongside the existing provider defaults and selected custom credential.",
+      "files": [
+        "src/esi_benchmark/runtime.py"
+      ]
+    },
+    {
+      "priority": "P2",
+      "finding": "A valid model identifier with surrounding whitespace was normalized by the frozen provider but not by run records or the L2 watchdog, preventing safe-point interruption and causing strict result identity rejection.",
+      "fix": "Record the provider-normalized model identifier and compare the watchdog manifest against the same normalization.",
+      "files": [
+        "src/esi_benchmark/engine.py",
+        "src/esi_benchmark/_native/models.py"
+      ]
+    }
+  ],
+  "preserved_existing_fixes": [
+    "All Common profiles retain pause_on_client_failure=True.",
+    "Worker KeyboardInterrupt responses retain a typed failure instead of an invalid empty protocol response.",
+    "Empty native failure messages fall back to the error type."
+  ],
+  "validation": {
+    "focused_cpu": {
+      "passed": 62,
+      "failed": 0,
+      "log": ".tmp/deep-runtime-tests.log",
+      "junit": ".tmp/deep-runtime-tests.xml"
+    },
+    "launcher_argument_compatibility": {
+      "profiles": 8,
+      "routes": 9,
+      "passed": 9,
+      "report": ".tmp/deep-runtime-parser-review.json",
+      "script": ".tmp/deep-runtime-parser-review.py"
+    },
+    "provider_loop_sceneclient_signature_checks": {
+      "profiles": 8,
+      "passed": 8
+    },
+    "git_diff_check": "PASS"
+  },
+  "limitations": [
+    "Parser checks mock external interpreter, dependency and GPU verification and never call package preparation.",
+    "No real provider request, simulator, GPU, SSH, resident service or queue was started.",
+    "The native SceneClient status protocol does not attest task seed; the CLI checks seed through immutable input admission, while a direct model API caller remains responsible for supplying that frozen binding.",
+    "The historical safe-point observation/signal race remains; no watchdog phase or frozen termination semantics were changed."
+  ],
+  "evidence_stage": "Runtime and task binding review; the subsequent credential-preview repair has separate final regression evidence."
+}

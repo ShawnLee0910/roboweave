@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "documents": 25,
+  "local_link_targets_checked": 160,
+  "missing": [],
+  "scope": "Current top-level instructions, docs/*.md and rc4 result Markdown links; path existence only. External URLs and heading anchors not fetched."
+}

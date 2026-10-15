@@ -99,16 +99,20 @@ installed package. No asset download or license acceptance is automated.
 Configuration requires a physical GPU index **and** its explicitly owned UUID,
 an explicit unprivileged server port, `max_scene_loads: 1`, and explicit acceptance
 of the external simulator EULA after reading its terms. `runtime_plan()` does not
-start a process, call a model, query GPUs, bind a port, or create files. It checks
-source hashes, dependency file identities, input availability, version markers,
-and output isolation. A plan is not a Live pass. Keep the workspace path short
+start a process, call a model, query GPUs, bind a port, or create files. It first
+binds the public task handle, instruction, budget and selected family to the
+frozen catalog, then checks source hashes, dependency file identities, input
+availability, version markers, and output isolation. Before process creation and
+again in the child, the materialization receipt must match the task and profile.
+A plan is not a Live pass. Keep the workspace path short
 enough for the Unix socket address limit; preflight rejects an overlong address
 before loading a scene. CLI `--dry-run` does not materialize private inputs and
 therefore reports resource/configuration checks, not native task admission.
 
 Actual launch exclusively creates a new workspace. It creates independent AppData,
 XDG and temporary directories there, removes inherited simulator tuning overrides,
-internal Python paths, proxies and model credentials from the simulator child,
+internal Python paths, proxies, the explicitly selected model credential and
+the supported providers' default credential variables from the simulator child,
 and starts a new process session. Before scene construction, the child verifies
 Python/dependency origins, physical GPU UUID, and local port availability. The
 underlying simulator deliberately uses the physical GPU index without
@@ -159,8 +163,12 @@ phase, process/run identity and request/signal timestamps. The run record uses
 `wall_clock_enforcement: owned_common_safe_point_watchdog/model_wall_timeout-v1`.
 The original L2 loop retains `pause_on_client_failure=True`, its
 `PAUSED_INTERRUPTED` status and available checkpoint; the wrapper does not create
-a successful or zero-valued final score for the interruption. Inspect raw result
-and availability evidence before summarizing the attempt.
+a successful or zero-valued final score for the interruption. The historical
+scheduler recorded such a signalled attempt as `FAILED` unless the model had
+already reached official success. Result inspection therefore reports the
+validated watchdog record as `wall_timeout`, and the run summary counts a
+signalled attempt without a score in `wall_timeout_failed_live_runs` and
+`success_rate_scored_or_wall_timeout_live`. The scored-only rate is unchanged.
 
 The phase observation and signal are not an atomic simulator lock. Their original
 race remains, and Live interruption has not been tested in this preparation.

@@ -299,8 +299,10 @@ class ProviderRequestError(ModelClientError):
         request_body_sha256: str | None = None,
         request_body_path: str | None = None,
         retry_after_seconds: float | None = None,
+        redaction_values: tuple[str, ...] = (),
     ) -> None:
-        super().__init__(message)
+        super().__init__(_redact_provider_error_text(message, redaction_values))
+        self._redaction_values = redaction_values
         self.failure_type = failure_type
         self.retryable = retryable
         self.status_code = status_code
@@ -315,13 +317,13 @@ class ProviderRequestError(ModelClientError):
         return {
             "failure_type": self.failure_type,
             "exception_type": type(self).__name__,
-            "exception_message": _redact_provider_error_text(str(self)),
+            "exception_message": _redact_provider_error_text(str(self), self._redaction_values),
             "retryable": self.retryable,
             "http_status": self.status_code,
             "response_body_bytes": len(self.response_body),
             "response_body_sha256": hashlib.sha256(self.response_body).hexdigest(),
             "response_body_truncated": self.response_body_truncated,
-            "response_body_preview": _redact_provider_error_text(preview),
+            "response_body_preview": _redact_provider_error_text(preview, self._redaction_values),
             "request_body_sha256": self.request_body_sha256,
             "request_body_path": self.request_body_path,
             "retry_after_seconds": self.retry_after_seconds,
@@ -1277,6 +1279,10 @@ class OpenAICompatibleProvider:
             headers=headers,
             method="POST",
         )
+        redaction_values = (
+            headers.get("x-api-key", ""),
+            headers.get("Authorization", "").removeprefix("Bearer "),
+        )
         try:
             with self.opener.open(http_request, timeout=self.timeout_seconds) as response:
                 value = response.read(MAX_PROVIDER_RESPONSE_BYTES + 1)
@@ -1302,30 +1308,35 @@ class OpenAICompatibleProvider:
                 response_body=body,
                 response_body_truncated=truncated,
                 retry_after_seconds=retry_after_seconds,
+                redaction_values=redaction_values,
             ) from exc
         except urllib.error.URLError as exc:
             raise ProviderRequestError(
-                f"provider transport request failed: {exc.reason}",
+                f"provider transport request failed: {_redact_provider_error_text(str(exc.reason), redaction_values)}",
                 failure_type="provider_transport_error",
                 retryable=True,
+                redaction_values=redaction_values,
             ) from exc
         except (ConnectionError, http.client.HTTPException) as exc:
             raise ProviderRequestError(
-                f"provider transport request failed: {exc}",
+                f"provider transport request failed: {_redact_provider_error_text(str(exc), redaction_values)}",
                 failure_type="provider_transport_error",
                 retryable=True,
+                redaction_values=redaction_values,
             ) from exc
         except (TimeoutError, socket.timeout) as exc:
             raise ProviderRequestError(
-                f"provider request timed out: {exc}",
+                f"provider request timed out: {_redact_provider_error_text(str(exc), redaction_values)}",
                 failure_type="provider_timeout",
                 retryable=True,
+                redaction_values=redaction_values,
             ) from exc
         if len(value) > MAX_PROVIDER_RESPONSE_BYTES:
             raise ProviderRequestError(
                 "provider response exceeds size limit",
                 failure_type="provider_response_oversized",
                 retryable=False,
+                redaction_values=redaction_values,
             )
         if self.provider_api == "anthropic_messages" and wire_request.get("stream") is True:
             stripped = value.lstrip()
@@ -1336,23 +1347,26 @@ class OpenAICompatibleProvider:
                     retryable=False,
                     response_body=value[:MAX_PROVIDER_ERROR_BODY_BYTES],
                     response_body_truncated=(len(value) > MAX_PROVIDER_ERROR_BODY_BYTES),
+                    redaction_values=redaction_values,
                 )
             try:
                 events = parse_sse_json_events(value)
                 decoded = assemble_anthropic_sse(events)
             except AnthropicMessagesAdapterError as exc:
                 raise ProviderRequestError(
-                    f"provider Anthropic stream is invalid: {exc}",
+                    f"provider Anthropic stream is invalid: {_redact_provider_error_text(str(exc), redaction_values)}",
                     failure_type="provider_invalid_json",
                     retryable=True,
                     response_body=value[:MAX_PROVIDER_ERROR_BODY_BYTES],
                     response_body_truncated=(len(value) > MAX_PROVIDER_ERROR_BODY_BYTES),
+                    redaction_values=redaction_values,
                 ) from exc
             if not isinstance(decoded, Mapping):
                 raise ProviderRequestError(
                     "provider Anthropic stream is not a JSON object",
                     failure_type="provider_non_object_json",
                     retryable=True,
+                    redaction_values=redaction_values,
                 )
             return decoded
         try:
@@ -1364,6 +1378,7 @@ class OpenAICompatibleProvider:
                 retryable=True,
                 response_body=value[:MAX_PROVIDER_ERROR_BODY_BYTES],
                 response_body_truncated=(len(value) > MAX_PROVIDER_ERROR_BODY_BYTES),
+                redaction_values=redaction_values,
             ) from exc
         if not isinstance(decoded, Mapping):
             raise ProviderRequestError(
@@ -1372,6 +1387,7 @@ class OpenAICompatibleProvider:
                 retryable=True,
                 response_body=value[:MAX_PROVIDER_ERROR_BODY_BYTES],
                 response_body_truncated=(len(value) > MAX_PROVIDER_ERROR_BODY_BYTES),
+                redaction_values=redaction_values,
             )
         return decoded
 
@@ -1396,6 +1412,8 @@ class OpenAICompatibleProvider:
             )
         if not key:
             raise ModelClientError("provider API key is unavailable")
+        if "\r" in key or "\n" in key or any(ord(character) > 255 for character in key):
+            raise ModelClientError("provider API key contains invalid HTTP header characters")
         return key
 
 
@@ -4582,18 +4600,32 @@ def _redact_data_urls(value: Any) -> Any:
     return value
 
 
-def _redact_provider_error_text(value: str) -> str:
+def _redact_provider_error_text(value: str, redaction_values: tuple[str, ...] = ()) -> str:
     """Bound and redact provider diagnostics before writing public artifacts."""
 
-    text = str(value)[:MAX_PROVIDER_ERROR_PREVIEW_CHARS]
+    text = str(value)
+    credentials = tuple(value for value in redaction_values if value)
+    if credentials:
+        if "\ufffd" in text:
+            return "<redacted undecodable provider diagnostic>"
+        try:
+            text = json.dumps(json.loads(text), ensure_ascii=True)
+        except (ValueError, RecursionError):
+            if text.lstrip().startswith(("{", "[", '\"')):
+                return "<redacted invalid JSON provider diagnostic>"
+    # Normalize JSON escapes and redact before a preview can cut through a key.
+    for credential in credentials:
+        text = text.replace(json.dumps(credential, ensure_ascii=True)[1:-1], "<redacted>")
+        text = text.replace(credential, "<redacted>")
     text = re.sub(
-        r"(?i)(authorization|api[_ -]?key|access[_ -]?token|password)"
-        r"\s*[:=]\s*[^\s,;]+",
-        r"\1=<redacted>",
+        r"(?i)(\b(?:authorization|x-api-key|api[_ -]?key|access[_ -]?token|password)\b[\"']?\s*[:=]\s*)"
+        r"(?:\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'|(?:Bearer\s+)?[^\s,;}\]]+)",
+        r"\1<redacted>",
         text,
     )
+    text = re.sub(r"(?i)\bBearer\s+[^\s,;\"'}\]]+", "Bearer <redacted>", text)
     text = re.sub(r"\bsk-[A-Za-z0-9._-]{8,}\b", "sk-<redacted>", text)
-    return text
+    return text[:MAX_PROVIDER_ERROR_PREVIEW_CHARS]
 
 
 def _write_private_json(path: Path, value: Any) -> None:

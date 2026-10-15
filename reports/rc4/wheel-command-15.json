@@ -1,0 +1,37 @@
+{
+  "schema_version": "esi-benchmark/trajectory-inspection-v1",
+  "run_dir": "/liyuanshuai/esi-benchmark-public-20261013/.tmp/wheel-rc4-final/outputs/l1-p-additions20",
+  "mode": "offline_replay",
+  "evaluation_variant": "frozen_history_5",
+  "client_status": "DONE",
+  "official_success": null,
+  "outcome_class": null,
+  "formal_score_eligible": null,
+  "official_q": null,
+  "score_available": false,
+  "model_calls": 4,
+  "actions_sent_to_scene": 3,
+  "macro_actions_resolved": 1,
+  "source_revisions": {
+    "bench": "7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb",
+    "runtime": "ab615d43d4ede7e6a50eaeda189077529bef361a"
+  },
+  "profile": "l1-p-additions20",
+  "official_benchmark_eligible": false,
+  "strict_production_eligible": false,
+  "private_artifacts_present": true,
+  "wall_timeout": null,
+  "status": "PASS",
+  "messages": 10,
+  "images": 4,
+  "image_sha256": {
+    "observations/initial/three_view_composite.png": "aaaa275d1bde17f24728752e1b054faeb8287d91189242aeb57bb7940de2ec0f",
+    "observations/replay_1/three_view_composite.png": "aaaa275d1bde17f24728752e1b054faeb8287d91189242aeb57bb7940de2ec0f",
+    "observations/replay_2/three_view_composite.png": "aaaa275d1bde17f24728752e1b054faeb8287d91189242aeb57bb7940de2ec0f",
+    "observations/replay_3/three_view_composite.png": "aaaa275d1bde17f24728752e1b054faeb8287d91189242aeb57bb7940de2ec0f"
+  },
+  "source_hashes_recorded": 14,
+  "prompt_sha256": "2b41bb352a762180fe3751cb3f527e61cdd620863bc8863d42ba60bb61a24d53",
+  "public_projection": "conversation_chatml.json and relative images; review model-authored text before sharing",
+  "completeness": "bounded single-run ChatML and provenance inspection; private evaluator and source files are not re-executed"
+}

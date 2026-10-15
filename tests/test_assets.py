@@ -376,3 +376,105 @@ def test_failed_copy_cleans_up_only_its_created_file(inputs, monkeypatch, failur
     with pytest.raises((OSError, ValueError), match="copy failed|Source changed"):
         assets.prepare_assets(config)
     assert not destination.exists()
+
+
+def test_profile_claimed_after_preflight_is_not_overwritten(inputs, monkeypatch):
+    config, _, _, _, _, _ = inputs
+    root = Path(config["assets"]["root"])
+    marker = root / ".esi-benchmark-assets.json"
+    original_directory = assets._private_directory
+
+    def other_profile_claim(path, *, exist_ok=True):
+        original_directory(path, exist_ok=exist_ok)
+        if path == root:
+            marker.write_text(json.dumps({"schema_version": 1, "profile": "l1-a30"}))
+
+    monkeypatch.setattr(assets, "_private_directory", other_profile_claim)
+    with pytest.raises(ValueError, match="ownership/profile mismatch"):
+        assets.prepare_assets(config)
+    assert json.loads(marker.read_text())["profile"] == "l1-a30"
+    assert set(root.iterdir()) == {marker}
+
+
+def test_concurrent_task_imports_preserve_one_complete_receipt(inputs, monkeypatch):
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Barrier
+
+    config, task, manifest, _, _, _ = inputs
+    root = Path(config["assets"]["root"])
+    marker = root / ".esi-benchmark-assets.json"
+    for index, row in enumerate(manifest["files"]):
+        row["task_ids"] = ["one" if index % 2 else "two"]
+    ready = Barrier(2)
+    original_open = assets.os.open
+
+    def simultaneous_open(path, flags, mode=0o777, *, dir_fd=None):
+        fd = original_open(path, flags, mode, dir_fd=dir_fd)
+        if path == root:
+            ready.wait(timeout=5)
+        return fd
+
+    monkeypatch.setattr(assets.os, "open", simultaneous_open)
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        pending = [pool.submit(assets.prepare_assets, config, task={**task, "task_id": task_id})
+                   for task_id in ("one", "two")]
+        assert all(result.result(timeout=10)["ok"] for result in pending)
+    receipt = json.loads((root / "import_receipt.json").read_text())
+    assert receipt["profile"] == config["profile"]
+    assert set(receipt["files"]) == {row["key"] for row in manifest["files"]}
+    assert assets.check_assets(config)["ok"]
+
+
+def test_wrong_profile_rejection_preserves_existing_permissions(inputs):
+    config, _, _, _, _, _ = inputs
+    root = Path(config["assets"]["root"])
+    root.mkdir(mode=0o755)
+    root.chmod(0o755)
+    marker = root / ".esi-benchmark-assets.json"
+    marker.write_text(json.dumps({"schema_version": 1, "profile": "l1-a30"}))
+    marker.chmod(0o644)
+    before = {path: path.stat().st_mode for path in (root, marker)}
+    with pytest.raises(ValueError, match="ownership/profile mismatch"):
+        assets.prepare_assets(config)
+    assert {path: path.stat().st_mode for path in before} == before
+    assert json.loads(marker.read_text())["profile"] == "l1-a30"
+
+
+def test_other_profile_winning_root_creation_keeps_its_permissions(inputs, monkeypatch):
+    config, _, _, _, _, _ = inputs
+    root = Path(config["assets"]["root"])
+    marker = root / ".esi-benchmark-assets.json"
+    original_directory = assets._private_directory
+    before = {}
+
+    def competing_creation(path, *, exist_ok=True):
+        if path == root and not root.exists():
+            root.mkdir(mode=0o755)
+            root.chmod(0o755)
+            marker.write_text(json.dumps({"schema_version": 1, "profile": "l1-a30"}))
+            marker.chmod(0o644)
+            before.update({item: item.stat().st_mode for item in (root, marker)})
+        original_directory(path, exist_ok=exist_ok)
+
+    monkeypatch.setattr(assets, "_private_directory", competing_creation)
+    with pytest.raises(ValueError, match="ownership/profile mismatch"):
+        assets.prepare_assets(config)
+    assert {path: path.stat().st_mode for path in before} == before
+    assert json.loads(marker.read_text())["profile"] == "l1-a30"
+
+
+def test_materialization_rechecks_the_bytes_it_actually_reads(inputs, monkeypatch):
+    config, task, manifest, _, tmp_path, _ = inputs
+    assets.prepare_assets(config)
+    prepared = next(row for row in manifest["files"] if row["key"] == "prepared.json")
+    original_resolve = assets.resolve_task_inputs
+
+    def modified_after_resolution(config, task):
+        result = original_resolve(config, task)
+        assets._path(config["assets"]["root"], prepared).write_text('{"pose":[99,99,99],"goal":true}')
+        return result
+
+    monkeypatch.setattr(assets, "resolve_task_inputs", modified_after_resolution)
+    with pytest.raises(ValueError, match="changed during materialization"):
+        assets.materialize_task_inputs(config, task, tmp_path / "run-inputs")
+    assert not (tmp_path / "run-inputs/materialization_receipt.json").exists()

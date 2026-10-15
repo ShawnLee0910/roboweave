@@ -5,7 +5,7 @@ from importlib.resources import files
 
 import pytest
 
-from esi_benchmark.tasks import get_task, list_tasks, profile_for
+from esi_benchmark.tasks import get_task, list_tasks, profile_for, validate_model_task
 
 
 def test_catalog_identity_instruction_budget_and_counts():
@@ -56,6 +56,28 @@ def test_records_are_independent_between_callers():
     task = list_tasks("L0")[0]
     task["budget"]["maximum_action_decisions"] = 1
     assert list_tasks("L0")[0]["budget"]["maximum_action_decisions"] == 33
+
+
+def _model_binding(task):
+    return {"task_id": task["source"]["row_index"],
+            "task_name": task["task_id"] if task["family"] == "L1-V" else task["runtime_instruction_id"],
+            "instruction": task["instruction_en"], "budget": dict(task["budget"]), **task["budget"],
+            "instruction_provenance": {"profile": task["profile"], "instruction_sha256": task["instruction_sha256"]}}
+
+
+def test_all_frozen_model_bindings_preserve_public_and_native_handles():
+    for task in list_tasks():
+        assert validate_model_task(task["profile"], _model_binding(task)) == task
+
+
+@pytest.mark.parametrize("field,value", [("task_id", True), ("task_name", "wrong-task"),
+    ("instruction", "wrong instruction"), ("budget", {}), ("maximum_action_decisions", 999),
+    ("maximum_model_calls", 330.0), ("wall_clock_seconds", 1), ("repeats_per_model", True),
+    ("profile", "l1-a30"), ("instruction_provenance", {})])
+def test_model_binding_rejects_post_materialization_changes(field, value):
+    task = list_tasks("L0")[0]
+    with pytest.raises(ValueError, match="[Ff]rozen"):
+        validate_model_task(task["profile"], {**_model_binding(task), field: value})
 
 
 def test_asset_manifest_is_metadata_only_and_accounts_for_aliases():

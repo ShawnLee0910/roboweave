@@ -10,6 +10,17 @@ from esi_benchmark import runtime
 from esi_benchmark.bootstrap import REVISIONS, activate
 
 
+@pytest.fixture
+def frozen_task():
+    from esi_benchmark.tasks import list_tasks
+    public = list_tasks("L0")[0]
+    model = dict(task_id=public["source"]["row_index"], task_name=public["runtime_instruction_id"],
+                 task_split="train", task_instance_id="0", task_seed=19506,
+                 instruction=public["instruction_en"], budget=dict(public["budget"]), **public["budget"],
+                 instruction_provenance={"profile": public["profile"], "instruction_sha256": public["instruction_sha256"]})
+    return public, model
+
+
 def test_source_identity_is_upstream_plus_candidate_hashes():
     report = runtime.verify_runtime_sources()
     assert report["upstream_revision"] == REVISIONS["runtime"]
@@ -21,23 +32,33 @@ def test_source_identity_is_upstream_plus_candidate_hashes():
     assert identity["candidate_source_manifest_sha256"]
 
 
-def test_materialized_input_identity_and_no_path_escape(tmp_path):
-    inputs = dict(instruction_id="task", handoff_json=str(tmp_path/"handoff.json"),
-                  prepared_index_json=str(tmp_path/"prepared.json"))
+def test_materialized_input_identity_and_no_path_escape(tmp_path, frozen_task):
+    public, model = frozen_task
+    inputs = dict(instruction_id=public["runtime_instruction_id"], handoff_json=str(tmp_path/"handoff.json"),
+                  prepared_index_json=str(tmp_path/"prepared.json"), model_task=model)
     with pytest.raises(ValueError, match="materialized"):
-        runtime._verify_materialized_inputs(inputs)
+        runtime._verify_materialized_inputs(inputs, profile=public["profile"])
     files = []
     for filename in ("handoff.json", "prepared.json"):
         path = tmp_path / filename
         path.write_text("{}")
         files.append(dict(derived_path=filename, derived_sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
     receipt = tmp_path / "materialization_receipt.json"
-    receipt.write_text(json.dumps(dict(instruction_id="task", files=files)))
+    report = dict(instruction_id=public["runtime_instruction_id"], files=files,
+                  profile=public["profile"], task_id=public["task_id"])
+    receipt.write_text(json.dumps(report))
     inputs["materialization_receipt"] = str(receipt)
-    runtime._verify_materialized_inputs(inputs)
+    runtime._verify_materialized_inputs(inputs, profile=public["profile"])
+    for change in ({"profile": "l1-a30"}, {"task_id": "another-task"}):
+        receipt.write_text(json.dumps({**report, **change}))
+        with pytest.raises(ValueError, match="receipt"):
+            runtime._verify_materialized_inputs(inputs, profile=public["profile"])
+    receipt.write_text(json.dumps(report))
+    with pytest.raises(ValueError, match="receipt"):
+        runtime._verify_materialized_inputs(inputs, profile=public["profile"], task_id="another-task")
     (tmp_path / "prepared.json").write_text('{"changed":true}')
     with pytest.raises(ValueError, match="changed"):
-        runtime._verify_materialized_inputs(inputs)
+        runtime._verify_materialized_inputs(inputs, profile=public["profile"])
 
 
 def test_ready_owner(tmp_path):
@@ -95,8 +116,9 @@ def test_official_checkout_rejects_untracked_files_before_scene_launch(tmp_path,
         runtime._official_identity(tmp_path)
 
 
-def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatch):
+def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatch, frozen_task):
     from esi_benchmark.bootstrap import PROFILE
+    public, model = frozen_task
     behavior = tmp_path / "official"
     for child in ("OmniGibson/omnigibson", "bddl3/bddl", "joylo"):
         (behavior / child).mkdir(parents=True)
@@ -118,7 +140,7 @@ def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatc
     icd.write_text("{}")
     output = tmp_path.parent / "plan-outputs"
     config = dict(schema_version="esi-benchmark/config-v1", mode="live", profile=PROFILE,
-                  assets=dict(root=str(data)), run=dict(task_id="example", family="L0", output_root=str(output), history_frames=20),
+                  assets=dict(root=str(data)), run=dict(task_id=public["task_id"], family="L0", output_root=str(output), history_frames=20),
                   model=dict(endpoint="https://example.invalid/v1", model="example", api_key_env="EXAMPLE_TEST_KEY"),
                   runtime=dict(workspace=str(output / "w"), python=str(environment / "bin/python"),
                                behavior_root=str(behavior), data_root=str(data), toolchain_root=str(environment),
@@ -127,8 +149,8 @@ def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatc
                                vulkan_icd=str(icd), mdl_root=str(mdl)))
     for name in ("handoff.json", "prepared.json"):
         (tmp_path / name).write_text("{}")
-    inputs = dict(instruction_id="example", handoff_json=str(tmp_path / "handoff.json"),
-                  prepared_index_json=str(tmp_path / "prepared.json"), model_task=dict(task_id=0, task_seed=19506))
+    inputs = dict(instruction_id=public["runtime_instruction_id"], handoff_json=str(tmp_path / "handoff.json"),
+                  prepared_index_json=str(tmp_path / "prepared.json"), model_task=model)
     monkeypatch.setattr(runtime, "_official_identity", lambda path: runtime.OFFICIAL_REVISION)
     plan = runtime.runtime_plan(config, inputs)
     assert not output.exists()
@@ -139,3 +161,38 @@ def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatc
     with pytest.raises(ValueError, match="materialized"):
         runtime.launch_runtime(config, inputs)
     assert not output.exists()
+    monkeypatch.setattr(runtime, "verify_runtime_sources", lambda *args: pytest.fail("read runtime before checking task"))
+    with pytest.raises(ValueError, match="instruction"):
+        runtime.runtime_plan(config, {**inputs, "model_task": {**model, "instruction": "changed"}})
+    with pytest.raises(ValueError, match="selection"):
+        runtime.runtime_plan({**config, "run": {**config["run"], "task_id": "other"}}, inputs)
+
+
+def test_scene_launch_strips_all_supported_provider_credentials(tmp_path, monkeypatch):
+    from esi_benchmark.profiles import DEFAULT_PROFILE
+    workspace = tmp_path / "owned"
+    plan = {"workspace": str(workspace), "command": ["synthetic-not-executed"], "env": {"PYTHONDONTWRITEBYTECODE": "1"}}
+    observed = {}
+    credentials = ("OPENAI_API_KEY", "DASHSCOPE_API_KEY", "TOKEN_PLAN_API_KEY",
+                   "ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "CUSTOM_SELECTED_KEY")
+    for key in credentials:
+        monkeypatch.setenv(key, "synthetic-secret")
+    monkeypatch.setenv("ANTHROPIC_BASE_URL", "https://unused.invalid")
+    monkeypatch.setenv("ESI_TEST_PRIVATE_OVERRIDE", "private-state")
+    monkeypatch.setenv("LANG", "C.UTF-8")
+    monkeypatch.setattr(runtime, "runtime_plan", lambda *args: plan)
+    monkeypatch.setattr(runtime, "_verify_materialized_inputs", lambda *args, **kwargs: None)
+    monkeypatch.setattr(runtime, "MDL_SHA256", {})
+    def spawn(command, **kwargs):
+        observed.update(command=command, **kwargs)
+        return object()
+    monkeypatch.setattr(runtime.subprocess, "Popen", spawn)
+    runtime.launch_runtime({"profile": DEFAULT_PROFILE, "runtime": {}, "run": {"task_id": "task"},
+                            "model": {"api_key_env": "CUSTOM_SELECTED_KEY"}},
+        {"handoff_json": "unused", "prepared_index_json": "unused", "instruction_id": "task", "model_task": {}})
+    assert not set(credentials) & observed["env"].keys()
+    assert "ANTHROPIC_BASE_URL" not in observed["env"]
+    assert "ESI_TEST_PRIVATE_OVERRIDE" not in observed["env"]
+    assert observed["env"]["LANG"] == "C.UTF-8"
+    assert observed["start_new_session"] is True
+    assert "synthetic-secret" not in (workspace / "launch_plan.json").read_text()
