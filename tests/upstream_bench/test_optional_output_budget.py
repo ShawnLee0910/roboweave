@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 sys.path[:0]=[str(Path(__file__).parents[1]),str(Path(__file__).parent)]
-from esi_benchmark.models import validate_model_config
+from roboweave.models import validate_model_config
 import model_client as m
 from test_responses_adapter import _request, _opaque_response_bundle
 

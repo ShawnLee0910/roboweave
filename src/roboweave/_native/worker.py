@@ -19,11 +19,11 @@ def dispatch(request):
         import Agent  # noqa: F401
         from behavior_hl.embodied.evaluator_bridge import l0_verifier_adapter  # noqa: F401
         packages = {}
-        for name in ("esi-benchmark", "numpy", "Pillow", "PyYAML"):
+        for name in ("roboweave", "numpy", "Pillow", "PyYAML"):
             try:
                 packages[name] = importlib.metadata.version(name)
             except importlib.metadata.PackageNotFoundError:
-                packages[name] = "source checkout (not installed)" if name == "esi-benchmark" else "missing"
+                packages[name] = "source checkout (not installed)" if name == "roboweave" else "missing"
         return {"ok": all(value != "missing" for value in packages.values()), "profile": profile,
                 "python": sys.version.split()[0], "packages": packages,
                 "source_revisions": source_revisions(profile), "source_verification": sources,

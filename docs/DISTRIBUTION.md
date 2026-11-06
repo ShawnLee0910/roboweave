@@ -1,12 +1,12 @@
 # Distribution and information boundaries
 
-This repository is a local candidate. Public release awaits an ESI license and
+This repository is a local candidate. Public release awaits an RoboWeave license and
 approval of task and evaluator content; see [LICENSE_STATUS](../LICENSE_STATUS.md).
 Technical completeness and publication clearance are separate checks.
 
 | Material | Local candidate treatment | Public-release boundary |
 | --- | --- | --- |
-| Public CLI, selected Bench sources, Runtime sources, tests and documentation | Included with source identity and hashes | Requires ESI rights-holder authorization; preserve authorship. |
+| Public CLI, selected Bench sources, Runtime sources, tests and documentation | Included with source identity and hashes | Requires RoboWeave rights-holder authorization; preserve authorship. |
 | Public task catalog | Task identity, public instruction, scene identity, declared budget, action mode and version profile | Review the exact allowlist before release; do not infer a hidden-test split. |
 | Evaluator implementation | Included so execution and scoring can be audited | Code may be released only under approved terms. Its availability does not authorize revealing hidden task inputs to a model. |
 | Task preparation data | Imported separately through checked manifests where available | Initial states, goals, private scopes, poses and verifier inputs need a separate release decision. |

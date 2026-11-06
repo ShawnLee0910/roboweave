@@ -1,9 +1,9 @@
 import json
 import pytest
 
-from esi_benchmark.models import _archive_scene_result, recorded_score_result
-from esi_benchmark.offline import run_replay
-from esi_benchmark.trajectory import inspect_run, summarize_runs
+from roboweave.models import _archive_scene_result, recorded_score_result
+from roboweave.offline import run_replay
+from roboweave.trajectory import inspect_run, summarize_runs
 
 
 def test_failed_initialization_is_preserved_and_not_scored(tmp_path):
@@ -41,9 +41,9 @@ TASK_FIELDS = ('task_id', 'task_name', 'task_split', 'task_instance_id', 'task_s
 
 def _live_binding(root, profile='l0-english-v2', *, summary=None):
     """Synthetic Live identity for one catalog task; no simulator or model was invoked."""
-    from esi_benchmark.assets import asset_manifest
-    from esi_benchmark.profiles import source_revisions
-    from esi_benchmark.tasks import list_tasks
+    from roboweave.assets import asset_manifest
+    from roboweave.profiles import source_revisions
+    from roboweave.tasks import list_tasks
     task = next(task for task in list_tasks() if task['profile'] == profile)
     frozen = asset_manifest(profile).get('inputs_by_task', {}).get(task['task_id'], {})
     identity = frozen.get('source_task_identity', {'split': 'synthetic', 'instance_id': 0})
@@ -144,7 +144,7 @@ def test_archive_identity_failure_is_visible_without_rewriting_summary(tmp_path,
     assert inspected['score_available'] is False
     assert inspected['official_success'] is None and inspected['official_q'] is None
     assert summary_path.read_bytes() == before
-    from esi_benchmark.cli import main
+    from roboweave.cli import main
     assert main(['results', 'validate', str(output)]) == 1
     assert json.loads(capsys.readouterr().out)['candidate_error'] == failure
 
@@ -316,7 +316,7 @@ def rich_evidence_run(tmp_path):
 def test_all_archived_evidence_is_checked_without_replaying_process(rich_evidence_run):
     assert inspect_run(rich_evidence_run)['score_available'] is True
     summary = json.loads((rich_evidence_run/'summary.json').read_text())
-    assert summary['candidate_result']['evidence_schema_version'] == 'esi-benchmark/result-evidence-v2'
+    assert summary['candidate_result']['evidence_schema_version'] == 'roboweave/result-evidence-v2'
     assert 'task_binding.json' in summary['candidate_result']['evidence']
 
 
@@ -371,7 +371,7 @@ def test_jsonl_requires_finite_unambiguous_object_records_even_when_rehashed(ric
 
 
 def test_auxiliary_limits_and_score_limit_remain_distinct(rich_evidence_run, monkeypatch):
-    from esi_benchmark import trajectory
+    from roboweave import trajectory
     monkeypatch.setattr(trajectory, 'MAX_JSON_BYTES', 16)
     with pytest.raises(ValueError, match='oversized'):
         trajectory._evidence(rich_evidence_run, json.loads((rich_evidence_run/'summary.json').read_text())['candidate_result'])
@@ -419,9 +419,9 @@ def test_legacy_evidence_without_size_metadata_still_gets_full_hash_checks(rich_
 
 @pytest.fixture
 def v_evidence_run(tmp_path):
-    from esi_benchmark.assets import asset_manifest
-    from esi_benchmark.profiles import source_revisions
-    from esi_benchmark.tasks import list_tasks
+    from roboweave.assets import asset_manifest
+    from roboweave.profiles import source_revisions
+    from roboweave.tasks import list_tasks
     root = tmp_path/'v-run'
     summary = _minimal_trajectory(root)
     task = list_tasks('L1-V')[0]
@@ -613,7 +613,7 @@ def test_non_v_score_cannot_be_rebound_to_another_attempt_task_or_source(bound_r
                                          ('task_id', 999), ('instruction', 'changed instruction'),
                                          ('budget', {}), ('maximum_model_calls', 30000)])
 def test_non_v_task_binding_cannot_be_rehashed_to_another_task(bound_run, field, value):
-    from esi_benchmark.tasks import list_tasks
+    from roboweave.tasks import list_tasks
     binding = json.loads((bound_run/'private/task_binding.json').read_text())
     record = json.loads((bound_run/'run_record.json').read_text())
     if field == 'task_name':
@@ -787,7 +787,7 @@ def test_symlink_loop_is_an_invalid_run_without_aborting_summary(tmp_path, locat
 ])
 def test_physical_and_process_scores_keep_native_explicit_task_success_gate(tmp_path, profile, extra):
     import runpy
-    from esi_benchmark.profiles import source_roots
+    from roboweave.profiles import source_roots
     native = runpy.run_path(str(source_roots(profile)['bench_root']/'lab/physical_model_results.py'))
     scene = tmp_path/'scene/episodes/example/private'
     scene.mkdir(parents=True)
@@ -804,7 +804,7 @@ def test_physical_and_process_scores_keep_native_explicit_task_success_gate(tmp_
 
 
 def test_archived_binding_is_bounded_and_private(tmp_path, monkeypatch):
-    from esi_benchmark import trajectory
+    from roboweave import trajectory
     root = tmp_path/'run'
     (root/'private').mkdir(parents=True, mode=0o777)
     (root/'private').chmod(0o777)
@@ -856,8 +856,8 @@ def test_v_native_invalid_classification_is_retained_with_raw_score(v_evidence_r
 
 @pytest.fixture(params=[*FAMILY_SCORES, 'l1-v30'])
 def aborted_run(tmp_path, request):
-    from esi_benchmark.profiles import source_revisions
-    from esi_benchmark.tasks import get_task
+    from roboweave.profiles import source_revisions
+    from roboweave.tasks import get_task
     root = tmp_path/'aborted'
     summary = _minimal_trajectory(root)
     binding = _live_binding(root, request.param, summary=summary)

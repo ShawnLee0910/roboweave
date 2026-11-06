@@ -11,7 +11,7 @@ for every task. The L2 collection has 37 tasks: 23 Symbolic and 14 Physical.
 | `l1-p-additions20` | 20 | `7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb` | `ab615d43d4ede7e6a50eaeda189077529bef361a` | Prepared Physical restore |
 | `l2-collection37` | 37 | `4c8364842157153875d098ebb529adcc0620a714` | `aa878b489d402aaa9b1e30b083d0435cf44b26be` | Per-task Symbolic restore or Physical reconstruction |
 
-The family adapter is `src/esi_benchmark/adapters/physical.py`. Its first operation,
+The family adapter is `src/roboweave/adapters/physical.py`. Its first operation,
 `resolve_inputs`, only reads verified private files and the selected public task.
 Its second operation, `inspect_inputs`, runs after the profile has been activated
 in an isolated worker and calls that profile's original handoff validators and
@@ -39,8 +39,8 @@ P30 still requires its source TaskSpec public instruction to equal its approved
 English instruction.
 
 See [the import record](../provenance/imports_physical_l2.json), the per-file
-SHA256 manifests in `src/esi_benchmark/data/assets/`, and the L2 catalog delta in
-`src/esi_benchmark/data/tasks/l2-collection37.json`. `tools/build_physical_l2_manifests.py`
+SHA256 manifests in `src/roboweave/data/assets/`, and the L2 catalog delta in
+`src/roboweave/data/tasks/l2-collection37.json`. `tools/build_physical_l2_manifests.py`
 is a maintainer-only, bounded reader of the original inputs, not an installation
 step or an external user's dependency. It does not traverse artifact directories.
 

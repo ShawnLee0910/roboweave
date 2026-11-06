@@ -4,11 +4,11 @@ from pathlib import Path
 
 import pytest
 
-from esi_benchmark.scoring import score_record
+from roboweave.scoring import score_record
 
 
 def official():
-    return dict(schema_version="esi-benchmark/score-record-v1", route="official_full",
+    return dict(schema_version="roboweave/score-record-v1", route="official_full",
                 initial_options=[[True, False, False]], snapshots=[{"options": [ [True, True, False]]}])
 
 
@@ -54,7 +54,7 @@ def test_projected_stability_initial_credit_and_missing_evidence():
 @pytest.mark.parametrize('phase', ['initial_truth', 'snapshot'])
 @pytest.mark.parametrize('positive,negative', [('open', 'closed'), ('toggled_on', 'toggled_off')])
 def test_projected_rejects_contradictory_native_state_readbacks(route, phase, positive, negative):
-    record = dict(schema_version='esi-benchmark/score-record-v1', route=route,
+    record = dict(schema_version='roboweave/score-record-v1', route=route,
         goal_spec=dict(route=route, clauses=[dict(canonical_predicate=predicate, quantifier='ALL_LISTED',
             target_scopes=['device'], destination_scopes=[]) for predicate in (positive, negative)]),
         initial_truth=[dict(predicate=predicate, target='device', destination=None, value=value)
@@ -513,7 +513,7 @@ def cycle_record(ordinal='last'):
         process['events'].append(dict(event_id=index, action='open' if value else 'close', status='completed',
             action_index=index, before=before, after=dict(held_roles=[], truth=truth())))
     process['final_truth'] = truth()
-    return dict(official(), schema_version='esi-benchmark/score-record-v2',
+    return dict(official(), schema_version='roboweave/score-record-v2',
                 snapshots=[{'options': [[True, True, True]]}], process=process)
 
 
@@ -524,7 +524,7 @@ def test_v1_milestone_readbacks_cannot_hide_an_extra_device_cycle(tmp_path):
               (tmp_path / 'native/private/task_process_events.jsonl').read_text().splitlines()]
     for event in events:
         event.pop('event_id')
-    record['schema_version'] = 'esi-benchmark/score-record-v1'
+    record['schema_version'] = 'roboweave/score-record-v1'
     process = record['process']
     process['events'] = events
     for field in ('protected_relations', 'protected_state_relations', 'placement_targets'):

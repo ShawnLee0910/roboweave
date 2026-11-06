@@ -35,9 +35,10 @@ def test_source_archive_preserves_verification_material(tmp_path):
                    and (m.isfile() or m.isdir()) for m in members)
         names = {"/".join(PurePosixPath(m.name).parts[1:]) for m in members if m.isfile()}
         for directory in ("tests", "tools", "reports", "provenance"):
-            for path in (ROOT / directory).rglob("*"):
+            # Compare the build's snapshot; the live checkout may gain test reports.
+            for path in (source / directory).rglob("*"):
                 if path.is_file() and path.suffix in {".py", ".json", ".txt", ".log", ".xml", ".md"}:
-                    assert str(path.relative_to(ROOT)) in names
+                    assert str(path.relative_to(source)) in names
         # Members were built locally and checked above; no links or escaping paths are allowed.
         archive.extractall(unpacked)
     release = next(unpacked.iterdir())
@@ -48,7 +49,7 @@ def test_source_archive_preserves_verification_material(tmp_path):
         cwd=release, env=environment, capture_output=True, text=True, timeout=90,
     )
     assert checks.returncode == 0, checks.stdout + checks.stderr
-    cache = source / "src/esi_benchmark/_vendor/bench/__pycache__"
+    cache = source / "src/roboweave/_vendor/bench/__pycache__"
     cache.mkdir(exist_ok=True)
     (cache / "stale.cpython-312.pyc").write_bytes(b"synthetic cache; never import")
     wheel = subprocess.run(

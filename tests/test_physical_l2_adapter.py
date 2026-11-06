@@ -7,7 +7,7 @@ import sys
 
 import pytest
 
-from esi_benchmark.adapters.physical import resolve_inputs, inspect_inputs
+from roboweave.adapters.physical import resolve_inputs, inspect_inputs
 
 
 def fixture_inputs(tmp_path, *, family='L2', mode='Physical'):
@@ -149,7 +149,7 @@ def test_p_original_entry_gate_can_reject_inspection(tmp_path,monkeypatch,gate):
 
 def test_bundled_manifest_totals_and_release_boundaries():
     from importlib.resources import files
-    root=files('esi_benchmark').joinpath('data')
+    root=files('roboweave').joinpath('data')
     total=0
     for profile,count in [('l1-p-inside5',5),('l1-p-ontop5',5),('l1-p-additions20',20),('l2-collection37',37)]:
         manifest=json.loads(root.joinpath(f'assets/{profile}.json').read_text())

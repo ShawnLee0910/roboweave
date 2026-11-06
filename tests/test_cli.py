@@ -10,11 +10,11 @@ from types import SimpleNamespace
 
 import pytest
 
-from esi_benchmark import cli
+from roboweave import cli
 
 
 def _config(tmp_path):
-    return {"schema_version": "esi-benchmark/config-v1", "profile": "l0-english-v2", "mode": "replay",
+    return {"schema_version": "roboweave/config-v1", "profile": "l0-english-v2", "mode": "replay",
             "run": {"task_id": "am200v1_a001_b2_control", "family": "L0",
                     "output_root": str(tmp_path / "outputs"), "history_frames": 5}}
 
@@ -53,7 +53,7 @@ def test_replay_override_validates_selected_mode_without_live_dependencies(tmp_p
 
 @pytest.mark.parametrize("relative", ["workspace", "workspace/episode", "."])
 def test_output_workspace_overlap_fails_before_resolving_or_loading_scene(tmp_path, monkeypatch, relative):
-    from esi_benchmark import assets
+    from roboweave import assets
     config = _config(tmp_path)
     config.update(mode="live", runtime={"workspace": str(tmp_path / "outputs/workspace")})
     def unexpected(*args):
@@ -75,7 +75,7 @@ def test_output_id_is_checked_before_scene_load(tmp_path, name):
 
 @pytest.mark.parametrize("model_fails", [False, "before_views", "after_views"])
 def test_owned_live_wiring_and_cleanup_without_live(tmp_path, monkeypatch, model_fails):
-    from esi_benchmark import assets, engine, models, runtime
+    from roboweave import assets, engine, models, runtime
     config = _config(tmp_path)
     config.update(mode="live", runtime={"scene_load_timeout": 1, "workspace": str(tmp_path / "owned")}, model={})
     ready = tmp_path / "owned" / "scene" / "ready.json"
@@ -132,7 +132,7 @@ def test_owned_live_wiring_and_cleanup_without_live(tmp_path, monkeypatch, model
         assert cli._run(config, tmp_path / "new-run", False)["mode"] == "test_only"
     assert calls == ["admission", "launch", "ownership", "model", "stop"]
     if model_fails:
-        from esi_benchmark.trajectory import inspect_run, summarize_runs
+        from roboweave.trajectory import inspect_run, summarize_runs
         output = tmp_path / "new-run"
         summary = json.loads((output / "summary.json").read_text())
         assert summary["status"] == "EPISODE_FAILED" and summary["stage"] == "model_episode"
@@ -148,7 +148,7 @@ def test_owned_live_wiring_and_cleanup_without_live(tmp_path, monkeypatch, model
 
 @pytest.mark.parametrize("value", [None, "", "   "])
 def test_missing_model_key_fails_before_assets_or_scene(tmp_path, monkeypatch, value):
-    from esi_benchmark import assets
+    from roboweave import assets
     config = _config(tmp_path)
     config.update(mode="live", runtime={"workspace": str(tmp_path / "runtime")},
                   model={"api_key_env": "ESI_TEST_KEY"})
@@ -190,7 +190,7 @@ def test_cleanup_reaps_owned_child_after_leader_exits():
 
 
 def test_score_cli_forwards_process_output(tmp_path, monkeypatch, capsys):
-    from esi_benchmark import scoring
+    from roboweave import scoring
     path = tmp_path / "record.json"
     path.write_text("{}")
     destination = tmp_path / "process"
@@ -204,7 +204,7 @@ def test_score_cli_forwards_process_output(tmp_path, monkeypatch, capsys):
 
 
 def test_incomplete_validation_returns_nonzero(tmp_path, monkeypatch, capsys):
-    from esi_benchmark import trajectory
+    from roboweave import trajectory
     monkeypatch.setattr(trajectory, "validate_run", lambda _: {"status": "INCOMPLETE"})
     assert cli.main(["results", "validate", str(tmp_path)]) == 1
 
@@ -213,7 +213,7 @@ def test_incomplete_validation_returns_nonzero(tmp_path, monkeypatch, capsys):
                                   '{"truth":NaN}', None],
                          ids=["duplicate", "nonfinite", "nesting"])
 def test_malformed_score_json_is_rejected_before_evaluation(tmp_path, monkeypatch, capsys, raw):
-    from esi_benchmark import scoring
+    from roboweave import scoring
     if raw is None:
         depth = 20000  # CPython 3.12's C JSON decoder has a separate recursion limit.
         raw = '[' * depth + '0' + ']' * depth
@@ -221,7 +221,7 @@ def test_malformed_score_json_is_rejected_before_evaluation(tmp_path, monkeypatc
     path.write_text(raw)
     monkeypatch.setattr(scoring, "score_record", lambda *args, **kwargs: pytest.fail("Malformed JSON must not reach scoring"))
     assert cli.main(["score", str(path)]) == 2
-    assert "esi-benchmark:" in capsys.readouterr().err
+    assert "roboweave:" in capsys.readouterr().err
 
 
 def test_score_rejects_nonregular_input_without_opening_it(tmp_path, capsys):

@@ -64,14 +64,14 @@ def _read(root: Path, relative: str) -> dict[str, Any]:
 
 
 def _evidence(root, candidate):
-    from .models import EVIDENCE_SCHEMA
+    from .models import EVIDENCE_SCHEMAS
     schema = candidate.get("evidence_schema_version")
-    if schema not in (None, EVIDENCE_SCHEMA):
+    if schema not in (None, *EVIDENCE_SCHEMAS):
         raise ValueError("Unsupported result evidence schema")
     records = candidate.get("evidence", {})
     if not isinstance(records, dict) or len(records) > 65:
         raise ValueError("candidate_result.evidence must be a bounded object")
-    if schema == EVIDENCE_SCHEMA and "task_binding.json" not in records:
+    if schema in EVIDENCE_SCHEMAS and "task_binding.json" not in records:
         raise ValueError("Result evidence lacks its archived task binding")
     retained = {"final_score.json", "aborted_after_environment_error.json", "task_binding.json", "task_process_result.json",
                 "v_collection_identity.json", "v_protocol_result.json", "v_protocol_abort.json", "l2_v/final.json",
@@ -80,7 +80,7 @@ def _evidence(root, candidate):
     for name, evidence in records.items():
         if not isinstance(name, str) or not isinstance(evidence, dict):
             raise ValueError("candidate_result.evidence entries must be named objects")
-        if schema == EVIDENCE_SCHEMA and (
+        if schema in EVIDENCE_SCHEMAS and (
                 set(evidence) != {"source", "path", "sha256", "size_bytes"}
                 or not isinstance(evidence["source"], str) or not evidence["source"]):
             raise ValueError("Scene evidence descriptor is malformed")
@@ -92,7 +92,7 @@ def _evidence(root, candidate):
         path = _path(root, relative)
         expected = "private/" + ("scene_final_score.json" if name == "final_score.json" else
                                   "v_scene/" + name if name.startswith("v_") else name)
-        if schema == EVIDENCE_SCHEMA and relative != expected:
+        if schema in EVIDENCE_SCHEMAS and relative != expected:
             raise ValueError("Scene evidence name differs from its archived path")
         limit = MAX_JSON_BYTES if name.startswith(("v_", "l2_v/")) or suffix == ".jsonl" else MAX_SCORE_BYTES
         if not path.is_file() or path.stat().st_size > limit:
@@ -105,7 +105,7 @@ def _evidence(root, candidate):
         if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest) or hashlib.sha256(raw).hexdigest() != digest:
             raise ValueError(f"Archived scene evidence hash mismatch: {name}")
         size = evidence.get("size_bytes")
-        if (schema == EVIDENCE_SCHEMA or "size_bytes" in evidence) and (type(size) is not int or size != len(raw)):
+        if (schema in EVIDENCE_SCHEMAS or "size_bytes" in evidence) and (type(size) is not int or size != len(raw)):
             raise ValueError(f"Archived scene evidence size mismatch: {name}")
         if suffix == ".jsonl":
             count = 0
@@ -127,10 +127,10 @@ def _evidence(root, candidate):
 
 def _v_identity(documents, score, candidate, record, summary):
     from .assets import asset_manifest
-    from .models import EVIDENCE_SCHEMA, _native_abort_score
+    from .models import EVIDENCE_SCHEMAS, _native_abort_score
     from .profiles import source_revisions
     from .tasks import get_task
-    if candidate.get("evidence_schema_version") != EVIDENCE_SCHEMA:
+    if candidate.get("evidence_schema_version") not in EVIDENCE_SCHEMAS:
         raise ValueError("V identity verification requires result-evidence-v2")
     identity = documents.get("v_collection_identity.json")
     protocol = documents.get("v_protocol_result.json")
@@ -307,7 +307,7 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
                 candidate.get("official_success") is not None or candidate.get("official_q") is not None):
             raise ValueError("Unavailable result must not contain a score")
     result = {
-        "schema_version": "esi-benchmark/trajectory-inspection-v1", "run_dir": str(root),
+        "schema_version": "roboweave/trajectory-inspection-v1", "run_dir": str(root),
         "mode": mode, "evaluation_variant": variant, "client_status": summary["status"], "official_success": None,
         "outcome_class": summary.get("outcome_class"), "formal_score_eligible": summary.get("formal_score_eligible"),
         "official_q": None, "score_available": False,
@@ -379,7 +379,7 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
                    or not re.fullmatch(r"[0-9a-f]{64}", digest) for name, digest in manifest["source_sha256"].items())):
         raise ValueError("Run lacks source hash provenance")
     if candidate is not None and candidate["status"] == "recorded":
-        from .models import EVIDENCE_SCHEMA, _native_abort_score, recorded_score_result
+        from .models import EVIDENCE_SCHEMAS, _native_abort_score, recorded_score_result
         from .tasks import profile_for
         score = documents.get("final_score.json")
         if score is None:
@@ -392,7 +392,7 @@ def inspect_run(run_dir: str | Path) -> dict[str, Any]:
         if any(type(candidate.get(key)) is not type(value) or candidate.get(key) != value
                for key, value in interpreted.items()):
             raise ValueError("Candidate result differs from original final score")
-        strict = candidate.get("evidence_schema_version") == EVIDENCE_SCHEMA
+        strict = candidate.get("evidence_schema_version") in EVIDENCE_SCHEMAS
         aborted = _native_abort_score(score, family)
         if strict and aborted:
             abort = documents.get("aborted_after_environment_error.json")
@@ -481,7 +481,7 @@ def summarize_runs(run_dirs: Iterable[str | Path]) -> dict[str, Any]:
     timed_out = sum(run["mode"] == "live" and not run["score_available"]
                     and (run.get("wall_timeout") or {}).get("signal_sent") is True for run in runs)
     return {
-        "schema_version": "esi-benchmark/run-summary-v1", "runs": runs, "counts": counts,
+        "schema_version": "roboweave/run-summary-v1", "runs": runs, "counts": counts,
         "evaluation_variant_counts": variant_counts, "mixed_evaluation_variants": len(variant_counts) > 1,
         "total_live_attempts": live, "scored_live_runs": len(scored), "successful_live_runs": successes,
         "success_rate_scored_live": successes / len(scored) if scored else None,

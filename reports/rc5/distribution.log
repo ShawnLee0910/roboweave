@@ -1,0 +1,9 @@
+.                                                                        [100%]
+=============================== warnings summary ===============================
+tests/test_distribution.py::test_source_archive_preserves_verification_material
+  /liyuanshuai/esi-benchmark-public-20261013/tests/test_distribution.py:43: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+    archive.extractall(unpacked)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /liyuanshuai/esi-benchmark-public-20261013/reports/rc5/distribution.xml -
+1 passed, 1 warning in 183.03s (0:03:03)

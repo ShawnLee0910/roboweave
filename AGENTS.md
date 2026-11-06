@@ -2,7 +2,9 @@
 
 Only this directory may be modified. Original source trees, assets, services,
 environments and run outputs are read-only. Do not start GPU, simulator, model
-requests, SSH, resident services or queues during preparation. Do not publish.
+requests, SSH, resident services or queues during preparation. Public publication
+requires separate authorization. On 2026-11-06 the user authorized preparing the
+RoboWeave rename and uploading this candidate to ShawnLee0910/roboweave as Private.
 
 Multiple agents share this workspace. Respect file ownership; never revert
 another agent's changes. The coordinator owns packaging, CLI, configuration,
@@ -12,7 +14,7 @@ Preserve frozen evaluation semantics. Record every imported file's source
 revision, source SHA256, and candidate path. Untracked source content must be
 hashed; do not silently substitute HEAD for a task's frozen revision.
 
-Architecture: `src/esi_benchmark` is a thin public interface. `_vendor/bench`,
+Architecture: `src/roboweave` is a thin public interface. `_vendor/bench`,
 `_vendor/runtime` and revision bundles retain upstream layouts as package data.
 Public APIs use fixed JSON operations in isolated native child processes; only
 the private bootstrap adds the selected immutable roots to those child import

@@ -1,0 +1,126 @@
+{
+  "status": "PASS",
+  "artifact": "roboweave-0.1.0rc5-py3-none-any.whl",
+  "checks": [
+    {
+      "check": "new_cli",
+      "exit_code": 0,
+      "stdout_sha256": "f89664884f297b722ab3cb8e678cf1186f0d8f1e2460798cfce5017bad5a8c11"
+    },
+    {
+      "check": "legacy_cli",
+      "exit_code": 0,
+      "stdout_sha256": "f89664884f297b722ab3cb8e678cf1186f0d8f1e2460798cfce5017bad5a8c11"
+    },
+    {
+      "check": "new_module",
+      "exit_code": 0,
+      "stdout_sha256": "f89664884f297b722ab3cb8e678cf1186f0d8f1e2460798cfce5017bad5a8c11"
+    },
+    {
+      "check": "legacy_module",
+      "exit_code": 0,
+      "stdout_sha256": "f89664884f297b722ab3cb8e678cf1186f0d8f1e2460798cfce5017bad5a8c11"
+    },
+    {
+      "check": "installed_imports",
+      "exit_code": 0,
+      "stdout_sha256": "dc0750eae3fd8e5438058b748c27e14bf013543830969213a0300d5f8b9ca3b1"
+    },
+    {
+      "check": "doctor:l0-english-v2",
+      "exit_code": 0,
+      "stdout_sha256": "9463c91ad0dab4484168a0da72f7d2926ae1321efc3f47b338f3ab6590b31212"
+    },
+    {
+      "check": "doctor:l1-a30",
+      "exit_code": 0,
+      "stdout_sha256": "d5be293232d5e015f720fd406f19633c858555e95591981fa7ce5b1cd708f82a"
+    },
+    {
+      "check": "doctor:l1-m30-public-v2",
+      "exit_code": 0,
+      "stdout_sha256": "826107ddfb2cf84cde936a338cf6e26dda3f28fab409b7471fd52c5a89a1914f"
+    },
+    {
+      "check": "doctor:l1-v30",
+      "exit_code": 0,
+      "stdout_sha256": "a8655983f41c1d17d81bdb97e51b99bb199dab11b7b97cb98534465514013731"
+    },
+    {
+      "check": "doctor:l1-p-inside5",
+      "exit_code": 0,
+      "stdout_sha256": "b28b36629f2ba06da3a10040a3237c8da9ea39999cfff18e416da23a73afb851"
+    },
+    {
+      "check": "doctor:l1-p-ontop5",
+      "exit_code": 0,
+      "stdout_sha256": "5699c595ad4b1308253b37a12f2dba0f521c9421078d611ac4a18cf09e323b17"
+    },
+    {
+      "check": "doctor:l1-p-additions20",
+      "exit_code": 0,
+      "stdout_sha256": "c1961f0e9c81d9d919c00a5276a4a1b27e4f6ee1375c8187941e6de0e44e7b14"
+    },
+    {
+      "check": "doctor:l2-collection37",
+      "exit_code": 0,
+      "stdout_sha256": "42220810eb54c8208bcc64b13602eef89375592fd41c3885c4edd90a609e843f"
+    },
+    {
+      "check": "task_catalog",
+      "exit_code": 0,
+      "stdout_sha256": "0c0f30dc032f747837a328b6111289051296aacd79684cd03cf286dfee6f5bed"
+    },
+    {
+      "check": "new_config",
+      "exit_code": 0,
+      "stdout_sha256": "13e130d94e0d28bac7ff4bb2d237007b3ca1110269f7197c99c35cf155efb8cd"
+    },
+    {
+      "check": "legacy_config",
+      "exit_code": 0,
+      "stdout_sha256": "13e130d94e0d28bac7ff4bb2d237007b3ca1110269f7197c99c35cf155efb8cd"
+    },
+    {
+      "check": "replay",
+      "exit_code": 0,
+      "stdout_sha256": "dc49d4764bcde11e2e901a30b1cd590d661936210943c8d3e5f1dcc79a4a4588"
+    },
+    {
+      "check": "replay_validation",
+      "exit_code": 0,
+      "stdout_sha256": "7016d63e31063dab00c92c10d92f023a12a3733e247199075df09854c8058af0"
+    },
+    {
+      "check": "replay_summary",
+      "exit_code": 0,
+      "stdout_sha256": "2f8a2a2681c5a1b317f4a395b64c6c9a090b81411300fcc1989c061b0c13477b"
+    },
+    {
+      "check": "new_score",
+      "exit_code": 0,
+      "stdout_sha256": "d66693f4006abcc012c6afb4efa68b5013fa9eb437de6530b9d19e3211274fdb"
+    },
+    {
+      "check": "legacy_score",
+      "exit_code": 0,
+      "stdout_sha256": "d66693f4006abcc012c6afb4efa68b5013fa9eb437de6530b9d19e3211274fdb"
+    },
+    {
+      "check": "history_score",
+      "exit_code": 0,
+      "stdout_sha256": "04ec86b561cc585f33b690dbd284cf11f618ff32b1cbe649b30e57bffd593ac5"
+    }
+  ],
+  "checks_passed": 22,
+  "installed_package": {
+    "file": "/liyuanshuai/esi-benchmark-public-20261013/.venv-wheel/lib/python3.12/site-packages/roboweave/__init__.py",
+    "version": "0.1.0rc5"
+  },
+  "profiles_checked": 8,
+  "task_configurations": 257,
+  "external_pythonpath_removed": true,
+  "live_validation": "NOT_RUN",
+  "error": null
+}

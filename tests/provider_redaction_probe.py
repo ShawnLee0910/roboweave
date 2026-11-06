@@ -12,7 +12,7 @@ import urllib.error
 def main():
     profile, output, package = sys.argv[1:]
     sys.path.insert(0, package)
-    from esi_benchmark._native.bootstrap import activate
+    from roboweave._native.bootstrap import activate
     activate(profile)
     import model_client as native
     from native_tool_preflight import PROBE_STEPS

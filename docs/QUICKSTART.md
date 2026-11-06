@@ -8,18 +8,18 @@ wheel installation, see [Installation](INSTALLATION.md).
 python3.11 -m venv .venv
 . .venv/bin/activate
 python -m pip install '.[test]'
-esi-benchmark --help
-esi-benchmark doctor
-esi-benchmark doctor --profile l1-v30
-esi-benchmark doctor --profile l2-collection37
+roboweave --help
+roboweave doctor
+roboweave doctor --profile l1-v30
+roboweave doctor --profile l2-collection37
 ```
 
 Inspect a configuration and the frozen task catalog:
 
 ```bash
-esi-benchmark config validate --config configs/replay.json
-esi-benchmark tasks list --family L0
-esi-benchmark tasks show am200v1_a001_b2_control --family L0
+roboweave config validate --config configs/replay.json
+roboweave tasks list --family L0
+roboweave tasks show am200v1_a001_b2_control --family L0
 ```
 
 The catalog shows permitted public task metadata. It does not expose the private
@@ -32,9 +32,9 @@ execution profile.
 Run and inspect the included synthetic example:
 
 ```bash
-esi-benchmark run --config configs/replay.json --mode replay --output outputs/quickstart
-esi-benchmark results validate outputs/quickstart
-esi-benchmark results summarize outputs/quickstart
+roboweave run --config configs/replay.json --mode replay --output outputs/quickstart
+roboweave results validate outputs/quickstart
+roboweave results summarize outputs/quickstart
 ```
 
 Use an unused output directory. The fixture exercises a three-stage placement
@@ -47,15 +47,15 @@ artifact layout and public/private fields.
 The command-line help documents individual options:
 
 ```bash
-esi-benchmark run --help
-esi-benchmark assets prepare --help
-esi-benchmark results validate --help
-esi-benchmark score --help
+roboweave run --help
+roboweave assets prepare --help
+roboweave results validate --help
+roboweave score --help
 python -m pytest
 ```
 
-To replay a canonical verifier evidence record, use `esi-benchmark score RECORD`.
-For a record that declares a process/history contract, use `esi-benchmark score
+To replay a canonical verifier evidence record, use `roboweave score RECORD`.
+For a record that declares a process/history contract, use `roboweave score
 RECORD --process-output NEWDIR` to write its process audit to a fresh directory.
 The input format and evidence limits are described in [Scoring](SCORING.md).
 This evaluates recorded truth/history; it does not acquire simulator truth.
@@ -90,10 +90,10 @@ it. The candidate does not download it automatically or regenerate an approximat
 initial state. A bundle must match the documented manifest layout and file hashes:
 
 ```bash
-esi-benchmark assets prepare --config configs/live.local.json --bundle /absolute/path/to/authorized-bundle
-esi-benchmark assets verify --config configs/live.local.json
-esi-benchmark config validate --config configs/live.local.json
-esi-benchmark run --config configs/live.local.json --mode live --dry-run
+roboweave assets prepare --config configs/live.local.json --bundle /absolute/path/to/authorized-bundle
+roboweave assets verify --config configs/live.local.json
+roboweave config validate --config configs/live.local.json
+roboweave run --config configs/live.local.json --mode live --dry-run
 ```
 
 For multiple source roots or an explicit file mapping, use `assets prepare
@@ -102,7 +102,7 @@ Missing resources are expected until they have been supplied. A hash mismatch
 must be resolved against the frozen package, not by editing the expected hash.
 
 The model credential belongs in the environment variable named by
-`model.api_key_env` (the template uses `ESI_MODEL_API_KEY`). Supply it through your
+`model.api_key_env` (the template uses `ROBOWEAVE_MODEL_API_KEY`). Supply it through your
 normal secret mechanism; do not put a real key in the JSON file or commit it.
 Transport options and a provider's expected tool-call response are documented in
 [Models](MODELS.md). Dry-run validation is not a provider request or Live proof.
@@ -111,9 +111,9 @@ Only after the independent machine, resources and model usage are ready, start
 the owned run:
 
 ```bash
-esi-benchmark run --config configs/live.local.json --mode live --output outputs/live-example
-esi-benchmark results validate outputs/live-example
-esi-benchmark results summarize outputs/live-example
+roboweave run --config configs/live.local.json --mode live --output outputs/live-example
+roboweave results validate outputs/live-example
+roboweave results summarize outputs/live-example
 ```
 
 The run preserves task-specific action/call budgets and verifier contracts.

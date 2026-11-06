@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "esi-benchmark"
-version = "0.1.0rc4"
-description = "A source-frozen, locally reviewable ESI Benchmark release candidate"
+name = "roboweave"
+version = "0.1.0rc5"
+description = "A source-frozen, locally reviewable RoboWeave release candidate"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["numpy>=1.26,<2", "Pillow>=11,<12", "PyYAML>=6,<7"]
@@ -15,18 +15,19 @@ test = ["pytest>=8,<9", "setuptools>=68", "wheel", "opencv-python-headless==4.11
 live = ["websockets>=13,<16", "msgpack>=1,<2"]
 
 [project.scripts]
-esi-benchmark = "esi_benchmark.cli:main"
+roboweave = "roboweave.cli:main"
+esi-benchmark = "roboweave.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-packages = ["esi_benchmark", "esi_benchmark._native", "esi_benchmark.adapters"]
+packages = ["roboweave", "roboweave._native", "roboweave.adapters", "esi_benchmark"]
 include-package-data = true
 
 [tool.setuptools.package-data]
-esi_benchmark = ["_vendor/**/*", "data/**/*"]
+roboweave = ["_vendor/**/*", "data/**/*"]
 
 [tool.setuptools.exclude-package-data]
-esi_benchmark = ["**/*.pyc", "**/*.pyo"]
+roboweave = ["**/*.pyc", "**/*.pyo"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

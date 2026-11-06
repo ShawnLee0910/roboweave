@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 import pytest
-from esi_benchmark.offline import run_replay
-from esi_benchmark.trajectory import inspect_run, summarize_runs
+from roboweave.offline import run_replay
+from roboweave.trajectory import inspect_run, summarize_runs
 
 
 def test_record_replay_uses_marker_protocol_and_preserves_evidence(tmp_path):
@@ -67,7 +67,7 @@ def test_history_variants_are_recorded_and_not_combined_as_baseline(tmp_path):
                                     'l1-p-inside5', 'l1-p-ontop5', 'l1-p-additions20',
                                     'l2-collection37'])
 def test_each_frozen_profile_replays_without_mixing_source_identity(tmp_path, profile):
-    from esi_benchmark.profiles import source_revisions
+    from roboweave.profiles import source_revisions
     output = tmp_path/profile
     result = run_replay({'profile': profile}, output)
     assert result['summary']['status'] == 'DONE'

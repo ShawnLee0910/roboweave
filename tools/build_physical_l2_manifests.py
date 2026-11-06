@@ -110,7 +110,7 @@ class Manifest:
         payload = dict(schema_version=2, profile=self.profile,
             source_roots=sorted({r['source_root'] for r in rows}),
             private_assets_not_distributed=True, files=rows, inputs_by_task=self.inputs)
-        dest = REPO / 'src/esi_benchmark/data/assets' / (self.profile + '.json')
+        dest = REPO / 'src/roboweave/data/assets' / (self.profile + '.json')
         dest.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
         return {'profile': self.profile, 'file_count': len(rows), 'bytes': sum(r['bytes'] for r in rows),
                 'manifest_sha256': sha(dest)}
@@ -169,7 +169,7 @@ def build():
                 path=str((inputs/'tasks.json').relative_to(BASE/'fb-batchctl-20260825')),sha256=sha(inputs/'tasks.json'),
                 row_index=public_id,state='untracked',revision=input_revision),split=entry['source_task_identity']['split']))
     summary.append(manifest.write())
-    (REPO/'src/esi_benchmark/data/tasks/l2-collection37.json').write_text(json.dumps(
+    (REPO/'src/roboweave/data/tasks/l2-collection37.json').write_text(json.dumps(
         dict(schema_version=1, tasks=catalog),ensure_ascii=False,indent=2)+'\n')
     sources=[]
     for name in ['action20-capability-benchmark','p30high','l2g25','fb-batchctl-20260825']:

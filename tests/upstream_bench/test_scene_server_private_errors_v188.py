@@ -16,7 +16,7 @@ from types import SimpleNamespace
 from typing import Any, Mapping
 
 
-LAB_ROOT = (Path(__file__).resolve().parents[2] / "src/esi_benchmark/_vendor/bench/lab")
+LAB_ROOT = (Path(__file__).resolve().parents[2] / "src/roboweave/_vendor/bench/lab")
 SCENE_SERVER_PATH = LAB_ROOT / "scene_server.py"
 
 

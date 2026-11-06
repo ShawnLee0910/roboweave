@@ -1,0 +1,60 @@
+....................................................................s... [  6%]
+.....................F.................................................. [ 12%]
+........................................................................ [ 19%]
+........................................................................ [ 25%]
+........................................................................ [ 32%]
+........................................................................ [ 38%]
+........................................................................ [ 44%]
+........................................................................ [ 51%]
+........................................................................ [ 57%]
+........................................................................ [ 64%]
+........................................................................ [ 70%]
+..............................s......................................... [ 76%]
+........................................................................ [ 83%]
+........................................................................ [ 89%]
+..............................................s......................... [ 96%]
+.............................................                            [100%]
+=================================== FAILURES ===================================
+_____________ test_source_archive_preserves_verification_material ______________
+
+tmp_path = PosixPath('/liyuanshuai/esi-benchmark-public-20261013/.tmp/rw5-rest/test_source_archive_preserves_0')
+
+    def test_source_archive_preserves_verification_material(tmp_path):
+        source = tmp_path / "source"
+        source.mkdir()
+        for name in ("src", "tests", "tools", "docs", "configs", "examples", "provenance", "reports"):
+            shutil.copytree(ROOT / name, source / name,
+                            ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.egg-info"))
+        for name in ("pyproject.toml", "MANIFEST.in", "README.md", "LICENSE_STATUS.md", "THIRD_PARTY_NOTICES.md"):
+            shutil.copyfile(ROOT / name, source / name)
+        environment = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1", "TMPDIR": str(tmp_path)}
+        build = subprocess.run(
+            [sys.executable, "-c", "from setuptools.build_meta import build_sdist; build_sdist('dist')"],
+            cwd=source, env=environment, capture_output=True, text=True, timeout=90,
+        )
+        assert build.returncode == 0, build.stdout + build.stderr
+        archives = list((source / "dist").glob("*.tar.gz"))
+        assert len(archives) == 1
+        unpacked = tmp_path / "unpacked"
+        with tarfile.open(archives[0], "r:gz") as archive:
+            members = archive.getmembers()
+            assert all(not PurePosixPath(m.name).is_absolute() and ".." not in PurePosixPath(m.name).parts
+                       and (m.isfile() or m.isdir()) for m in members)
+            names = {"/".join(PurePosixPath(m.name).parts[1:]) for m in members if m.isfile()}
+            for directory in ("tests", "tools", "reports", "provenance"):
+                for path in (ROOT / directory).rglob("*"):
+                    if path.is_file() and path.suffix in {".py", ".json", ".txt", ".log", ".xml", ".md"}:
+>                       assert str(path.relative_to(ROOT)) in names
+E                       AssertionError: assert 'reports/rc5/RESULT.md' in {'LICENSE_STATUS.md', 'MANIFEST.in', 'PKG-INFO', 'README.md', 'THIRD_PARTY_NOTICES.md', 'configs/live.example.json', ...}
+E                        +  where 'reports/rc5/RESULT.md' = str(PosixPath('reports/rc5/RESULT.md'))
+E                        +    where PosixPath('reports/rc5/RESULT.md') = relative_to(PosixPath('/liyuanshuai/esi-benchmark-public-20261013'))
+E                        +      where relative_to = PosixPath('/liyuanshuai/esi-benchmark-public-20261013/reports/rc5/RESULT.md').relative_to
+
+tests/test_distribution.py:40: AssertionError
+- generated xml file: /liyuanshuai/esi-benchmark-public-20261013/reports/rc5/remaining.xml -
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_assets_authorized.py:55: Requires separately authorized private assets; never bundled
+SKIPPED [1] tests/upstream_runtime/test_l1_process_audit.py:127: restricted eight-task package is not distributed
+SKIPPED [1] tests/upstream_runtime/test_process_goal_lifecycle.py:62: local six-task delivery fixture unavailable
+FAILED tests/test_distribution.py::test_source_archive_preserves_verification_material
+1 failed, 1121 passed, 3 skipped in 232.40s (0:03:52)

@@ -18,7 +18,7 @@ import subprocess
 import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = ROOT / "src/esi_benchmark"
+PACKAGE = ROOT / "src/roboweave"
 BENCH_SOURCES = {
     "1d76bc5dc53b1995f2e7c301cb06569bcf0c4923": "/liyuanshuai/l1a30c",
     "fb1cf143f850fe43a04d25440f07cbfab4007093": "/liyuanshuai/l1r-m",
@@ -130,7 +130,7 @@ def adapt_scene_identity(source):
     lines = source.splitlines(keepends=True)
     original = """    revision = subprocess.run(
 """
-    insert = '''    from esi_benchmark.profiles import registered_revision, verify_bundle
+    insert = '''    from roboweave.profiles import registered_revision, verify_bundle
     frozen_revision = registered_revision(source)
     if frozen_revision is not None:
         verify_bundle(source, frozen_revision)
@@ -151,7 +151,7 @@ def adapt_scene_identity(source):
         raise ValueError("source identity adaptation requires its original Git implementation")
     source = replace_function(source, "git_source_head", function.replace(original, insert).rstrip() + "\n")
     original = '    commit, dirty = _cached_git_source_identity(str(source))\n'
-    insert = '''    from esi_benchmark.profiles import registered_revision
+    insert = '''    from roboweave.profiles import registered_revision
     if registered_revision(source) is not None or (source / "SOURCE_IDENTITY.json").exists():
         return {"root": str(source), "git_commit": git_source_head(source), "dirty": False}
     commit, dirty = _cached_git_source_identity(str(source))
@@ -163,7 +163,7 @@ def adapt_scene_identity(source):
 
 def adapt_projected_verifier_loader(source):
     original = "    spec = importlib.util.spec_from_file_location(module_name, path)\n"
-    replacement = ("    from esi_benchmark._native.bootstrap import _SourceOnlyLoader\n"
+    replacement = ("    from roboweave._native.bootstrap import _SourceOnlyLoader\n"
                    "    spec = importlib.util.spec_from_file_location(\n"
                    "        module_name, path, loader=_SourceOnlyLoader(module_name, str(path)))\n")
     if source.count(original) != 1:
@@ -280,7 +280,7 @@ def adapt(kind, files):
         if name in files:
             source = files[name].decode()
             source = replace_function(source, "verify_runtime", '''def verify_runtime(binding):
-    from esi_benchmark.profiles import verify_bundle
+    from roboweave.profiles import verify_bundle
     import sys
     root = Path(binding['runtime']['root']).resolve()
     verify_bundle(root, binding['runtime']['commit'])
@@ -336,7 +336,7 @@ def main():
             destination = PACKAGE / relative
             if args.write and destination.exists():
                 raise ValueError(f"Refusing to overwrite existing bundle: {kind} {revision}")
-            identity = {"schema_version": "esi-benchmark/source-identity-v1", "upstream_revision": revision,
+            identity = {"schema_version": "roboweave/source-identity-v1", "upstream_revision": revision,
                         "source_observation": {"root": root, "head": head, "tracked_dirty": dirty},
                         "files": {name: sha(data) for name, data in sorted(files.items())},
                         "candidate_adaptations": changes}
@@ -344,12 +344,12 @@ def main():
             prepared.append((kind, revision, relative, files))
             for name, digest in original.items():
                 imported.append({"source_root": root, "source_revision": revision, "source_path": name,
-                                 "source_sha256": digest, "destination": str(Path("src/esi_benchmark") / relative / name),
+                                 "source_sha256": digest, "destination": str(Path("src/roboweave") / relative / name),
                                  "changes": changes.get(name, "none")})
             print(f"{kind} {revision}: {len(original)} files, {sum(map(len, files.values()))} bytes, {len(changes)} adapted")
     if not args.write:
         return
-    registry = {"schema_version": "esi-benchmark/source-bundles-v1", "bundles": {"bench": {}, "runtime": {}}}
+    registry = {"schema_version": "roboweave/source-bundles-v1", "bundles": {"bench": {}, "runtime": {}}}
     for kind in registry["bundles"]:
         path = PACKAGE / "_vendor" / kind / "SOURCE_IDENTITY.json"
         identity = json.loads(path.read_text())

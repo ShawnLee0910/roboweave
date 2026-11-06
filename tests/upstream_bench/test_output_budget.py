@@ -5,9 +5,9 @@ import sys
 
 import pytest
 
-sys.path.insert(0, str((Path(__file__).resolve().parents[2] / "src/esi_benchmark/_vendor/bench")))
+sys.path.insert(0, str((Path(__file__).resolve().parents[2] / "src/roboweave/_vendor/bench")))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from esi_benchmark.models import validate_model_config
+from roboweave.models import validate_model_config
 from model_client import OpenAICompatibleProvider
 from native_tool_preflight import run_native_tool_preflight, PROBE_STEPS
 from test_native_tool_preflight import _completion, _prompt_revision

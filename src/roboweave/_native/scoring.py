@@ -12,10 +12,8 @@ from types import SimpleNamespace
 from typing import Any
 
 from ..profiles import DEFAULT_PROFILE as PROFILE
+from ..scoring import SCHEMA, SCHEMA_V2, canonical_record
 from .bootstrap import activate
-
-SCHEMA = "esi-benchmark/score-record-v1"
-SCHEMA_V2 = "esi-benchmark/score-record-v2"
 
 
 def _check_unary_truth(states, predicate, subject, destination, value):
@@ -328,8 +326,7 @@ def replay_process(record: Mapping[str, Any], directory: Path, *, schema_version
 def score_record(record: Mapping[str, Any], *, process_directory: Path | None = None,
                  profile: str | None = None) -> dict[str, Any]:
     """Score supplied records without connecting to a simulator or model."""
-    if not isinstance(record, Mapping) or record.get("schema_version") not in (SCHEMA, SCHEMA_V2):
-        raise ValueError(f"score record must use {SCHEMA} or {SCHEMA_V2}")
+    record = canonical_record(record)
     if profile is not None and "profile" in record and profile != record["profile"]:
         raise ValueError("score profile differs from the record profile")
     profile = record.get("profile", PROFILE) if profile is None else profile
@@ -389,6 +386,6 @@ def score_record(record: Mapping[str, Any], *, process_directory: Path | None = 
             final.update(operational=False, failure_class="VERIFIER_ERROR")
         elif process["violations"] or (canonical["success"] and not process["public_process_satisfied"]):
             final["failure_class"] = "PUBLIC_PROCESS_REQUIREMENT_FAILED"
-    return {"schema_version": "esi-benchmark/score-result-v1", "mode": "cpu-record-replay",
+    return {"schema_version": "roboweave/score-result-v1", "mode": "cpu-record-replay",
             "route": route, "truth_source": "supplied-records", "snapshots": snapshots,
             "canonical": canonical, "process": process, "final": final}

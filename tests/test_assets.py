@@ -6,7 +6,7 @@ import stat
 
 import pytest
 
-from esi_benchmark import assets
+from roboweave import assets
 
 
 def sha(path):
@@ -135,7 +135,7 @@ def test_explicit_relative_paths_and_file_and_canonical_hash_bindings(inputs):
     assert derived["canonical_hash"] == hashlib.sha256(canonical).hexdigest()
     assert derived["scene_asset"] == str(tmp_path / "licensed-data/scenes/object.usd")
     assert derived["donor_ids"] == ["one", "two"] and derived["semantic_goal_hash"] == "unchanged"
-    from esi_benchmark.profiles import source_roots
+    from roboweave.profiles import source_roots
     assert derived["runtime"] == {"root": str(source_roots(task["profile"])["runtime_root"]), "commit": "unchanged"}
 
 

@@ -25,6 +25,7 @@ AUDITED_TEST_LITERALS = {
     ("reports/rc3/final-related.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
     ("reports/rc4/pytest.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
     ("reports/rc4/final-related.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
+    ("reports/rc5/remaining.xml", "credential_url", "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"),
     ("tests/upstream_bench/test_model_protocol_retry.py", "provider_key", "d7741caceb829b07fe116f5ba10ea4415e361d02efbedddd352674b25b678ced"),
 }
 
@@ -72,7 +73,7 @@ def audit():
                     syntax_errors.append({"path": str(path.relative_to(ROOT)), "line": exc.lineno})
             if re.search(rb"/(?:liyuanshuai|root)/", content):
                 internal_paths.append(str(path.relative_to(ROOT)))
-    return {"schema_version": "esi-benchmark/source-audit-v1", "files": count, "bytes": byte_count,
+    return {"schema_version": "roboweave/source-audit-v1", "files": count, "bytes": byte_count,
             "secret_or_symlink_findings": findings, "syntax_errors": syntax_errors,
             "reviewed_synthetic_test_literals": synthetic_findings,
             "source_files_with_historical_absolute_paths": internal_paths,

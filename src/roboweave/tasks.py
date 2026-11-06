@@ -7,7 +7,7 @@ from importlib.resources import files
 
 def list_tasks(family=None):
     """Return independent public records in frozen source order."""
-    tasks = json.loads(files("esi_benchmark").joinpath("data/tasks/catalog.json").read_text())["tasks"]
+    tasks = json.loads(files("roboweave").joinpath("data/tasks/catalog.json").read_text())["tasks"]
     if family is None:
         return tasks
     families = {task["family"] for task in tasks} | {"L2"}
@@ -28,7 +28,7 @@ def get_task(task_id, family=None):
 
 def profile_for(task):
     """Return the exact frozen profile, never a floating current revision."""
-    profiles = json.loads(files("esi_benchmark").joinpath("data/tasks/profiles.json").read_text())
+    profiles = json.loads(files("roboweave").joinpath("data/tasks/profiles.json").read_text())
     key = task["profile"] if isinstance(task, dict) else task
     try:
         return profiles[key]

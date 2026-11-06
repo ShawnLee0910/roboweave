@@ -55,7 +55,7 @@ def _provider(config: Mapping[str, Any]):
         provider_api=config.get("api", "chat_completions"),
         timeout_seconds=config.get("timeout", 300),
         api_key_file=None,
-        api_key_env=config.get("api_key_env") or "ESI_UNCONFIGURED_API_KEY",
+        api_key_env=config.get("api_key_env") or "ROBOWEAVE_UNCONFIGURED_API_KEY",
         require_api_key=config.get("api_key_env") is not None,
         **{key: config[key] for key in _GENERATION if key in config},
     )
@@ -127,7 +127,7 @@ def run_episode(
     if not output_reserved:
         output_dir.mkdir(parents=True)
     record = {
-        "schema_version": "esi-benchmark/run-v1", "mode": "live", "profile": profile,
+        "schema_version": "roboweave/run-v1", "mode": "live", "profile": profile,
         "source_revisions": source_revisions(profile), "experiment_id": experiment_id,
         "source_verification": source_verification,
         "public_runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),

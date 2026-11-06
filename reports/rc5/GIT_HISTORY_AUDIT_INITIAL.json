@@ -1,0 +1,23 @@
+{
+  "status": "FAIL",
+  "commits_scanned": [
+    "5fcc4eeefff458048f894ffab7cbbc46696ecb71",
+    "744bb80990c72cc0311fb62d39f177bb3e3ffead",
+    "8ffa68c9df542000b762d776ea8383884552bd8e",
+    "28df6efec9a7957a2f51121362f1ce01d913c53e"
+  ],
+  "current_index_included": true,
+  "distinct_blobs": 1017,
+  "bytes_scanned": 37922822,
+  "largest_blob_bytes": 2727419,
+  "secret_findings": [
+    {
+      "path": "reports/rc5/remaining.xml",
+      "kind": "credential_url",
+      "blob": "0ac30d5b49cbfa0d580e8bbfd7c6d3ff74ac06ff"
+    }
+  ],
+  "non_regular_modes": [],
+  "scan_phase": "Final staged files before writing this generated receipt; all four historical candidate commits included.",
+  "limits": "Pattern audit, not proof of absence of every possible secret. No secret values are recorded."
+}

@@ -1,6 +1,13 @@
 # Candidate validation
 
-## Current rc4 review and repair
+## Current RoboWeave rc5 naming migration
+
+The package and command are now `roboweave`. See the [rc5 report](../reports/rc5/RESULT.md)
+for this revision's actual checks and [compatibility notes](NAMING.md) for the
+retained legacy interfaces. The sections below describe historical evidence;
+they are not new rc5 test results.
+
+## Historical rc4 review and repair
 
 Version `0.1.0rc4` audits the rc3 implementation and the following uncommitted
 repairs through six independent review areas. It preserves the eight frozen

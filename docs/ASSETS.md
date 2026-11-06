@@ -8,14 +8,14 @@ selected profile's authorized private resources.
 
 Obtain the simulator and dataset under their maintainers' terms, following
 [Installation](INSTALLATION.md). Dataset access does not authorize redistribution
-of ESI preparation inputs. There is no public download endpoint for these
+of RoboWeave preparation inputs. There is no public download endpoint for these
 historical private packages in this candidate. Obtain the exact package from
 its owner; missing private resources are not replaced by an approximate reset.
 
 ## Per-profile manifests
 
 Every executable profile has a metadata-only manifest at
-`esi_benchmark/data/assets/<profile>.json`. It records logical keys, source-relative
+`roboweave/data/assets/<profile>.json`. It records logical keys, source-relative
 identities, byte counts, SHA256, task membership and relocation bindings.
 
 | Profile | Manifest file records |
@@ -59,16 +59,16 @@ First copy and complete `configs/live.example.json` as described in
 
 ```bash
 # An authorized directory with files/<root>/<path> layout.
-esi-benchmark assets prepare --config configs/live.local.json --bundle /path/to/authorized-bundle
+roboweave assets prepare --config configs/live.local.json --bundle /path/to/authorized-bundle
 
 # Map all logical source roots to relocated local directories; repeat as needed.
-esi-benchmark assets prepare --config configs/live.local.json \
+roboweave assets prepare --config configs/live.local.json \
   --source-root action20-capability-benchmark=/path/to/authorized-source-copy
 
 # Map every logical asset key to its exact local file.
-esi-benchmark assets prepare --config configs/live.local.json --mapping /path/to/local-mapping.json
+roboweave assets prepare --config configs/live.local.json --mapping /path/to/local-mapping.json
 
-esi-benchmark assets verify --config configs/live.local.json
+roboweave assets verify --config configs/live.local.json
 ```
 
 The single-root command illustrates the syntax, not a complete multi-root

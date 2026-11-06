@@ -4,11 +4,11 @@ from pathlib import Path
 
 import pytest
 
-from esi_benchmark.config import load_config, validate_config
+from roboweave.config import load_config, validate_config
 
 
 def valid():
-    return {"schema_version": "esi-benchmark/config-v1", "profile": "l0-english-v2", "mode": "replay",
+    return {"schema_version": "roboweave/config-v1", "profile": "l0-english-v2", "mode": "replay",
             "run": {"task_id": "example", "family": "L0", "output_root": "outputs", "history_frames": 5}}
 
 

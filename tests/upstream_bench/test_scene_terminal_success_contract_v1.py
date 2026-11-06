@@ -11,7 +11,7 @@ import pytest
 from lab.l1_episode import audited_step
 
 
-SCENE_SERVER_PATH = (Path(__file__).resolve().parents[2] / "src/esi_benchmark/_vendor/bench/lab") / "scene_server.py"
+SCENE_SERVER_PATH = (Path(__file__).resolve().parents[2] / "src/roboweave/_vendor/bench/lab") / "scene_server.py"
 
 
 def _scene_class() -> ast.ClassDef:

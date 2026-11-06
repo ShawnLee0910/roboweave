@@ -10,7 +10,7 @@ os.environ["TMPDIR"] = tempfile.tempdir
 os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 sys.path.insert(0, str(ROOT / "src"))
 
-from esi_benchmark._native.bootstrap import activate
+from roboweave._native.bootstrap import activate
 
 activate()
 # Upstream tests share small CPU-only neighboring helpers.

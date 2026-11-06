@@ -14,7 +14,7 @@ from .tasks import profile_for
 
 def asset_manifest(profile="l0-english-v2"):
     profile_for(profile)
-    resource = files("esi_benchmark").joinpath(f"data/assets/{profile}.json")
+    resource = files("roboweave").joinpath(f"data/assets/{profile}.json")
     if not resource.is_file():
         raise ValueError(f"No asset manifest for profile {profile}")
     return json.loads(resource.read_text())

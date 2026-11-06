@@ -7,14 +7,14 @@ definitions to exact source bundles and private-input adapters. The separate
 profile remains Live-unverified; see [Support matrix](SUPPORT_MATRIX.md).
 
 ```bash
-esi-benchmark tasks list
-esi-benchmark tasks list --family L1-A
-esi-benchmark tasks list --family L1-M
-esi-benchmark tasks list --family L1-V
-esi-benchmark tasks list --family L1-P
-esi-benchmark tasks list --family L2
-esi-benchmark tasks show am200v1_a001_b2_control --family L0
-esi-benchmark tasks show l2r_am_02_20260916_w0_challenge --family L2
+roboweave tasks list
+roboweave tasks list --family L1-A
+roboweave tasks list --family L1-M
+roboweave tasks list --family L1-V
+roboweave tasks list --family L1-P
+roboweave tasks list --family L2
+roboweave tasks show am200v1_a001_b2_control --family L0
+roboweave tasks show l2r_am_02_20260916_w0_challenge --family L2
 ```
 
 Python provides `list_tasks(family=None)`, `get_task(task_id, family=None)` and

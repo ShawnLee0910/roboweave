@@ -6,7 +6,7 @@ import sys
 
 import pytest
 
-from esi_benchmark._native.bootstrap import activate
+from roboweave._native.bootstrap import activate
 
 
 def test_installed_bundle_locations():
@@ -85,8 +85,8 @@ import sys
 sys.path[:0] = [sys.argv[1], sys.argv[2]]
 import agent_protocol
 assert agent_protocol._NAVIGATION_DISTANCE_ABS_TOL_M == 0.02
-from esi_benchmark._native.bootstrap import activate
-from esi_benchmark.cli import doctor
+from roboweave._native.bootstrap import activate
+from roboweave.cli import doctor
 try:
     {"activate": activate, "doctor": doctor}[sys.argv[3]]()
 except RuntimeError as error:
@@ -104,8 +104,8 @@ def test_rejects_foreign_runtime_submodule_in_isolated_process(tmp_path, entrypo
     _isolated_python("""
 import importlib.util
 import sys
-from esi_benchmark._native.bootstrap import activate
-from esi_benchmark.cli import doctor
+from roboweave._native.bootstrap import activate
+from roboweave.cli import doctor
 activate()
 import behavior_hl.embodied.evaluator_bridge
 name = "behavior_hl.embodied.evaluator_bridge.l0_verifier_adapter"
@@ -127,8 +127,8 @@ assert sys.modules[name] is module
 def test_normal_namespace_and_repeated_doctor_in_isolated_process(tmp_path):
     _isolated_python("""
 import sys
-from esi_benchmark._native.bootstrap import activate
-from esi_benchmark.cli import doctor
+from roboweave._native.bootstrap import activate
+from roboweave.cli import doctor
 roots = activate()
 import lab
 import lab.scene_protocol
@@ -152,7 +152,7 @@ def test_frozen_namespace_cannot_be_extended_by_foreign_search_paths(tmp_path, r
     _isolated_python("""
 import importlib
 import sys
-from esi_benchmark._native.bootstrap import activate
+from roboweave._native.bootstrap import activate
 sys.path.insert(0, sys.argv[1])
 roots = activate()
 import lab
@@ -178,8 +178,8 @@ import os
 from pathlib import Path
 import py_compile
 import sys
-from esi_benchmark import profiles
-from esi_benchmark._native import bootstrap
+from roboweave import profiles
+from roboweave._native import bootstrap
 root = Path.cwd()
 bench, runtime, third_party = (root / name for name in ("bench", "runtime", "third_party"))
 for directory in (bench / "lab", runtime / "src", runtime / "scripts", third_party):
@@ -232,8 +232,8 @@ def test_activation_rejects_preloaded_source_with_unverified_loader(tmp_path):
     _isolated_python("""
 import importlib.util
 import sys
-from esi_benchmark.profiles import source_roots
-from esi_benchmark._native.bootstrap import activate
+from roboweave.profiles import source_roots
+from roboweave._native.bootstrap import activate
 path = source_roots()["bench_root"] / "action20_protocol.py"
 spec = importlib.util.spec_from_file_location("action20_protocol", path)
 module = importlib.util.module_from_spec(spec)

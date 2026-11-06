@@ -8,13 +8,13 @@ import sys
 
 import pytest
 
-from esi_benchmark.adapters.amv import PROFILES, inspect_inputs, resolve_inputs
-from esi_benchmark.tasks import list_tasks
+from roboweave.adapters.amv import PROFILES, inspect_inputs, resolve_inputs
+from roboweave.tasks import list_tasks
 
 
 def test_import_does_not_activate_vendor_sources():
     result = subprocess.run([sys.executable, '-c',
-        'import sys; before=list(sys.path); from esi_benchmark.adapters import amv; '
+        'import sys; before=list(sys.path); from roboweave.adapters import amv; '
         'assert sys.path == before; '
         'assert not any(k == "instruction_handoff" or k.startswith("behavior_hl") for k in sys.modules)'],
         capture_output=True, text=True)
@@ -86,7 +86,7 @@ def test_profile_mismatch_rejected_before_native_imports():
 
 @pytest.mark.parametrize('profile', sorted(PROFILES))
 def test_manifest_closure_and_selection_metadata(profile):
-    data = Path(__file__).resolve().parents[1] / 'src/esi_benchmark/data/assets' / (profile + '.json')
+    data = Path(__file__).resolve().parents[1] / 'src/roboweave/data/assets' / (profile + '.json')
     manifest = json.loads(data.read_text())
     tasks = {t['task_id']: t for t in list_tasks() if t['profile'] == profile}
     rows = {row['key']: row for row in manifest['files']}
@@ -130,8 +130,8 @@ def test_v_runtime_binding_requires_the_installed_frozen_source(tmp_path):
     program = '''
 import sys
 from pathlib import Path
-from esi_benchmark._native.bootstrap import activate
-from esi_benchmark.profiles import source_revisions
+from roboweave._native.bootstrap import activate
+from roboweave.profiles import source_revisions
 roots = activate('l1-v30')
 from v_collection_handoff import verify_runtime
 runtime = {'root': str(roots['runtime_root']), 'commit': source_revisions('l1-v30')['runtime']}
@@ -164,7 +164,7 @@ def test_v_public_scene_name_keeps_native_instruction_separate(frozen_inputs):
 def test_all_v_public_handles_match_frozen_scene_status_contract():
     import ast
     from types import SimpleNamespace
-    from esi_benchmark.profiles import source_roots
+    from roboweave.profiles import source_roots
 
     source = source_roots('l1-v30')['bench_root'] / 'lab/scene_server.py'
     tree = ast.parse(source.read_text())
@@ -200,7 +200,7 @@ def test_all_v_public_handles_match_frozen_scene_status_contract():
 @pytest.mark.parametrize('profile', sorted({task['profile'] for task in list_tasks()}))
 @pytest.mark.parametrize('change', ['instruction', 'budget', 'native_identity'])
 def test_public_inspection_rejects_changed_model_binding_before_native_admission(monkeypatch, profile, change):
-    from esi_benchmark import adapters
+    from roboweave import adapters
 
     task = next(task for task in list_tasks() if task['profile'] == profile)
     model_task = {'task_id': task['source']['row_index'],
@@ -225,7 +225,7 @@ def test_public_inspection_rejects_changed_model_binding_before_native_admission
 
 
 def test_public_inspection_keeps_v_collection_and_native_id_separate(monkeypatch):
-    from esi_benchmark import adapters
+    from roboweave import adapters
     from types import SimpleNamespace
 
     task = list_tasks('L1-V')[0]

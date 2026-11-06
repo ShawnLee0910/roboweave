@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "artifact": "roboweave-0.1.0rc5-py3-none-any.whl",
+  "sha256": "494c9663679829c38f8ba85896f6bfd7aa82766f9ecdd6cb59106d489435a760",
+  "bytes": 13097516,
+  "package_files_compared": 2484,
+  "content_mismatches": [],
+  "forbidden_files": [],
+  "entry_points": "[console_scripts]\nesi-benchmark = roboweave.cli:main\nroboweave = roboweave.cli:main\n",
+  "legacy_package_files": [
+    "esi_benchmark/__init__.py"
+  ]
+}

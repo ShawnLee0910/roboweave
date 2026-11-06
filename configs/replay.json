@@ -1,5 +1,5 @@
 {
-  "schema_version": "esi-benchmark/config-v1",
+  "schema_version": "roboweave/config-v1",
   "profile": "l0-english-v2",
   "mode": "replay",
   "assets": {"root": "../assets/local"},

@@ -5,7 +5,7 @@ from importlib.resources import files
 
 import pytest
 
-from esi_benchmark.tasks import get_task, list_tasks, profile_for, validate_model_task
+from roboweave.tasks import get_task, list_tasks, profile_for, validate_model_task
 
 
 def test_catalog_identity_instruction_budget_and_counts():
@@ -81,7 +81,7 @@ def test_model_binding_rejects_post_materialization_changes(field, value):
 
 
 def test_asset_manifest_is_metadata_only_and_accounts_for_aliases():
-    manifest = json.loads(files("esi_benchmark").joinpath("data/assets/l0-english-v2.json").read_text())
+    manifest = json.loads(files("roboweave").joinpath("data/assets/l0-english-v2.json").read_text())
     assert manifest["upstream_runtime_reference_count"] == 715
     assert manifest["unique_runtime_file_count"] == 713
     assert len(manifest["files"]) == 769  # Top-level task input and 55 implicit-loader dependencies.

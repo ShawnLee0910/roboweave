@@ -1,9 +1,9 @@
 import json
 import pytest
 
-from esi_benchmark.models import validate_model_config, run_episode
-from esi_benchmark._native.models import create_provider
-from esi_benchmark._native.bootstrap import activate
+from roboweave.models import validate_model_config, run_episode
+from roboweave._native.models import create_provider
+from roboweave._native.bootstrap import activate
 
 
 def test_explicit_key_selection_never_falls_back(monkeypatch):
@@ -68,8 +68,8 @@ def test_episode_requires_frozen_budget_before_contacting_scene(tmp_path):
 
 
 def test_episode_checks_catalog_binding_before_provider_or_scene(tmp_path, monkeypatch):
-    from esi_benchmark._native import models
-    from esi_benchmark.tasks import list_tasks
+    from roboweave._native import models
+    from roboweave.tasks import list_tasks
     public = list_tasks('L0')[0]
     task = {'task_id': public['source']['row_index'], 'task_name': public['runtime_instruction_id'],
             'task_split': 'train', 'task_instance_id': '0', 'task_seed': 0,
@@ -83,7 +83,7 @@ def test_episode_checks_catalog_binding_before_provider_or_scene(tmp_path, monke
 
 
 def test_private_score_archived_without_inventing_success(tmp_path):
-    from esi_benchmark.models import _archive_scene_result, recorded_score_result
+    from roboweave.models import _archive_scene_result, recorded_score_result
     scene = tmp_path/'scene'
     output = tmp_path/'run'
     private = scene/'episodes/example/private'
@@ -113,8 +113,8 @@ def test_reserved_output_rejects_previous_run_artifacts(tmp_path):
 
 
 def test_profile_specific_scores_preserve_physical_and_v_gates(monkeypatch):
-    from esi_benchmark.models import recorded_score_result
-    from esi_benchmark import tasks
+    from roboweave.models import recorded_score_result
+    from roboweave import tasks
     score = {'episode_id': 'example', 'official_q': 1.0, 'official_success': True,
              'verifier_ok': True, 'task_success': True}
     monkeypatch.setattr(tasks, 'profile_for', lambda profile: {'family': profile})
@@ -127,8 +127,8 @@ def test_profile_specific_scores_preserve_physical_and_v_gates(monkeypatch):
 
 
 def test_l2_uses_its_combined_score_without_p30_qualification(monkeypatch):
-    from esi_benchmark.models import recorded_score_result
-    from esi_benchmark import tasks
+    from roboweave.models import recorded_score_result
+    from roboweave import tasks
     monkeypatch.setattr(tasks, 'profile_for', lambda profile: {'family': 'L2'})
     score = {'episode_id': 'example', 'official_q': 1, 'official_success': True,
              'verifier_ok': True, 'task_success': True, 'status': 'PASS',
@@ -145,7 +145,7 @@ def test_l2_uses_its_combined_score_without_p30_qualification(monkeypatch):
 
 
 def test_v_archive_preserves_bound_jsonl_and_rejects_summary_disagreement(tmp_path):
-    from esi_benchmark.models import _archive_scene_result
+    from roboweave.models import _archive_scene_result
     scene = tmp_path/'scene'
     source = scene/'episodes/example/private'
     source.mkdir(parents=True)
@@ -172,8 +172,8 @@ def test_v_archive_preserves_bound_jsonl_and_rejects_summary_disagreement(tmp_pa
 
 
 def test_l2_archive_keeps_native_process_and_intervention_records(tmp_path, monkeypatch):
-    from esi_benchmark.models import _archive_scene_result
-    from esi_benchmark import tasks
+    from roboweave.models import _archive_scene_result
+    from roboweave import tasks
     monkeypatch.setattr(tasks, 'profile_for', lambda profile: {'family': 'L2'})
     private = tmp_path/'scene/episodes/example/private'
     (private/'l2_v').mkdir(parents=True)
@@ -199,8 +199,8 @@ def test_l2_archive_keeps_native_process_and_intervention_records(tmp_path, monk
                                               ('l1-v30', False), ('l1-p-inside5', False), ('l2-collection37', True)])
 def test_every_profile_keeps_frozen_bench_pause_semantics(tmp_path, monkeypatch, profile, watchdog):
     from types import SimpleNamespace
-    from esi_benchmark._native import models
-    from esi_benchmark import tasks
+    from roboweave._native import models
+    from roboweave import tasks
     import model_client
     import scene_protocol
     captured = {}

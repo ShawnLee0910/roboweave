@@ -8,7 +8,7 @@ prompts or scheduler campaigns. The historical CODEX/AgentCLI harness is not a
 supported model entry point. L0/L1 support the three HTTP adapters below;
 the frozen L2 Bench supports only Chat Completions and Responses.
 
-`esi_benchmark.models.validate_model_config(..., profile=...)` and
+`roboweave.models.validate_model_config(..., profile=...)` and
 `run_episode(..., profile=...)` use an isolated child process. Importing or calling
 the public API does not inject legacy paths or modules into the caller. The
 `create_provider` helper is private to the worker and is not a public API.
@@ -49,13 +49,13 @@ length and SHA256 remain unchanged. Unsafe or unparseable diagnostic encodings
 use a fixed preview so logging cannot expose a partial key or fail on Unicode.
 
 ```python
-from esi_benchmark.models import validate_model_config
+from roboweave.models import validate_model_config
 
 validate_model_config({
     "endpoint": "https://provider.example/v1",
     "model": "your-model",
     "api": "chat_completions",
-    "api_key_env": "ESI_MODEL_API_KEY",
+    "api_key_env": "ROBOWEAVE_MODEL_API_KEY",
     "timeout": 300,
 }, profile="l1-m30-public-v2")
 ```

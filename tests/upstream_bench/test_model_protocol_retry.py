@@ -15,7 +15,7 @@ from PIL import Image
 import pytest
 
 
-BENCH_TRY_ROOT = (Path(__file__).resolve().parents[2] / "src/esi_benchmark/_vendor/bench")
+BENCH_TRY_ROOT = (Path(__file__).resolve().parents[2] / "src/roboweave/_vendor/bench")
 if str(BENCH_TRY_ROOT) not in sys.path:
     sys.path.insert(0, str(BENCH_TRY_ROOT))
 if str(BENCH_TRY_ROOT / "lab") not in sys.path:

@@ -15,8 +15,8 @@ From the candidate root:
 python3.11 -m venv .venv
 . .venv/bin/activate
 python -m pip install '.[test]'
-esi-benchmark doctor
-esi-benchmark doctor --profile l2-collection37
+roboweave doctor
+roboweave doctor --profile l2-collection37
 python -m pytest
 ```
 
@@ -26,9 +26,9 @@ To review the built distribution in a second environment:
 python -m pip wheel --no-deps --wheel-dir dist .
 python3.11 -m venv .venv-wheel
 . .venv-wheel/bin/activate
-python -m pip install dist/esi_benchmark-0.1.0rc4-py3-none-any.whl
-esi-benchmark --help
-esi-benchmark doctor
+python -m pip install dist/roboweave-0.1.0rc5-py3-none-any.whl
+roboweave --help
+roboweave doctor
 ```
 
 The wheel includes all 13 frozen source bundles, the eight task profiles, and
@@ -47,11 +47,11 @@ verify it independently:
 ```bash
 python -c "from setuptools.build_meta import build_sdist; build_sdist('dist')"
 mkdir -p .tmp/source-release
-tar -xzf dist/esi_benchmark-0.1.0rc4.tar.gz -C .tmp/source-release
-ESI_TEST_TMP="$PWD/.tmp/sdist-tests"
-cd .tmp/source-release/esi_benchmark-0.1.0rc4
+tar -xzf dist/roboweave-0.1.0rc5.tar.gz -C .tmp/source-release
+ROBOWEAVE_TEST_TMP="$PWD/.tmp/sdist-tests"
+cd .tmp/source-release/roboweave-0.1.0rc5
 python -m pip install '.[test]'
-PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -ra --basetemp="$ESI_TEST_TMP"
+PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -ra --basetemp="$ROBOWEAVE_TEST_TMP"
 python tools/check_equivalence.py
 ```
 
@@ -89,7 +89,7 @@ BEHAVIOR default branch or a newer release and claim the same frozen experiment.
 Use Linux and an NVIDIA device supported by the selected Isaac Sim release.
 Consult the [official installation requirements](https://behavior.stanford.edu/getting_started/installation.html)
 for driver, operating-system and hardware prerequisites; upstream minimum memory
-figures do not guarantee enough memory for every ESI task. Record the real GPU
+figures do not guarantee enough memory for every RoboWeave task. Record the real GPU
 UUID, driver and available resources in the validation receipt.
 
 On the independent Live validation machine, prepare a new checkout and a new
@@ -119,7 +119,7 @@ which is why it must be the new isolated one. It may perform first-import setup;
 do not run it in an existing resident's environment.
 
 Asset acquisition is separate from task preparation. The official downloader
-supplies licensed simulator datasets; ESI's manifest supplies the exact
+supplies licensed simulator datasets; RoboWeave's manifest supplies the exact
 preparation dependencies for the frozen task. Point `runtime.data_root` at the
 actual official dataset location, set `runtime.behavior_root` to the pinned
 checkout, and import authorized task resources using [Assets](ASSETS.md). Do not
@@ -163,5 +163,5 @@ worker, keep the one-load budget for the initial check, and follow the
 and a successful simulator episode are three different evidence levels.
 
 Licensing conditions are listed in [Third-party notices](../THIRD_PARTY_NOTICES.md).
-ESI has not assigned a project license in this candidate; installation instructions
+RoboWeave has not assigned a project license in this candidate; installation instructions
 do not authorize redistribution.

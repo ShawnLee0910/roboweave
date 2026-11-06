@@ -1,0 +1,64 @@
+{
+  "schema_version": "roboweave/rc5-acceptance-v1",
+  "status": "CPU_AND_INSTALLED_WHEEL_PASS",
+  "candidate_version": "0.1.0rc5",
+  "base_revision": "5fcc4eeefff458048f894ffab7cbbc46696ecb71",
+  "project": "RoboWeave",
+  "package": "roboweave",
+  "primary_command": "roboweave",
+  "github_repository": "https://github.com/ShawnLee0910/roboweave",
+  "repository_visibility_verified": "private",
+  "tests": {
+    "distinct_passed": 1608,
+    "skipped": 3,
+    "unresolved_failures": 0,
+    "groups": {
+      "focused_unchanged_production_checks": 475,
+      "remaining_regression_checks": 1121,
+      "naming_compatibility_checks": 11,
+      "distribution_recheck": 1
+    },
+    "accounting": "Grouped runs; initial naming passes and the superseded distribution failure are not added again. The focused run was captured in the originating chat; its receipt records the original failure and resolution.",
+    "reports": [
+      "INITIAL_FOCUSED_RECEIPT.json",
+      "remaining.xml",
+      "naming.xml",
+      "distribution.xml"
+    ]
+  },
+  "repaired_validation_issues": [
+    "The new history compatibility test now provides the required fresh process output directories.",
+    "The source archive regression compares its fixed build snapshot instead of a live checkout receiving new reports."
+  ],
+  "wheel": {
+    "status": "PASS",
+    "artifact": "roboweave-0.1.0rc5-py3-none-any.whl",
+    "sha256": "494c9663679829c38f8ba85896f6bfd7aa82766f9ecdd6cb59106d489435a760",
+    "bytes": 13097516,
+    "package_files_compared": 2484,
+    "content_mismatches": [],
+    "forbidden_files": [],
+    "entry_points": "[console_scripts]\nesi-benchmark = roboweave.cli:main\nroboweave = roboweave.cli:main\n",
+    "legacy_package_files": [
+      "esi_benchmark/__init__.py"
+    ]
+  },
+  "installed_wheel_validation": "WHEEL_VALIDATION.json",
+  "frozen_content": "FROZEN_CONTENT_VERIFICATION.json",
+  "source_audit": "SOURCE_AUDIT.json",
+  "candidate_history_audit": "GIT_HISTORY_AUDIT.json",
+  "document_links": "DOCUMENT_LINKS.json",
+  "live_validation": "NOT_RUN",
+  "gpu_workers_started": 0,
+  "real_model_requests": 0,
+  "task_semantics_changed": false,
+  "public_release_authorized": false,
+  "private_upload_authorized": true,
+  "audit_regression_recheck": {
+    "passed": 3,
+    "failed": 0,
+    "report": "audit-recheck.xml",
+    "accounting": "These cases are already included in the 1608 distinct passing cases."
+  },
+  "audit_initial_match_resolution": "The final JUnit report repeated an already reviewed synthetic credential-URL literal. Exact path and literal hash were added to the existing scoped allowlist; the initial audit finding is retained in GIT_HISTORY_AUDIT_INITIAL.json."
+}

@@ -7,7 +7,7 @@ import sys
 import pytest
 
 
-BENCH_ROOT = (Path(__file__).resolve().parents[2] / "src/esi_benchmark/_vendor/bench")
+BENCH_ROOT = (Path(__file__).resolve().parents[2] / "src/roboweave/_vendor/bench")
 LAB_ROOT = BENCH_ROOT / "lab"
 if str(BENCH_ROOT) not in sys.path:
     sys.path.insert(0, str(BENCH_ROOT))

@@ -1,5 +1,5 @@
 {
-  "schema_version": "esi-benchmark/score-record-v2",
+  "schema_version": "roboweave/score-record-v2",
   "route": "official_full",
   "initial_options": [
     [

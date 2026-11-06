@@ -45,7 +45,7 @@ not satisfy this dependency.
 The acceptance sequence is:
 
 1. **Cold installation:** install the built wheel into a new environment with no
-   original ESI paths on `PYTHONPATH`. Check command help, imports, profile identity
+   original RoboWeave paths on `PYTHONPATH`. Check command help, imports, profile identity
    and resource verification before opening the simulator.
 2. **Initial state:** load the frozen task once. Preserve the materialized scene
    configuration, seed, initial observations and evaluator identity. Verify the

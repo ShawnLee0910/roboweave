@@ -1,0 +1,22 @@
+{
+  "status": "RESOLVED",
+  "initial_focused_run": {
+    "passed": 485,
+    "failed": 1,
+    "duration_seconds": 306.37,
+    "files": [
+      "test_naming.py",
+      "test_config.py",
+      "test_engine.py",
+      "test_scoring.py",
+      "test_trajectory.py",
+      "test_runtime.py",
+      "test_cli.py"
+    ],
+    "failure": "The new history-format compatibility test omitted the required fresh process output directory; the implementation correctly rejected it."
+  },
+  "correction": "Supply separate fresh directories to both formats and normalize only their path prefix when comparing results. No production scoring rule was changed.",
+  "final_naming_run": "naming.xml",
+  "current_passed_non_naming_cases_from_initial_run": 475,
+  "accounting": "Do not add the initial 10 passing naming cases to the final naming run; they are repeats. Raw initial terminal output is in the originating Codex chat."
+}

@@ -74,7 +74,7 @@ def probe(layout, work):
         sys.path[:0] = [str(roots["bench_root"]), str(roots["bench_root"] / "lab"),
                         str(roots["runtime_root"] / "src"), str(roots["runtime_root"] / "scripts")]
     else:
-        from esi_benchmark._native.bootstrap import activate
+        from roboweave._native.bootstrap import activate
         roots = activate()
     from Agent import (EpisodeConversation, PrivateEpisodeContract, PublicImage,
                        PublicObservation, PublicToolResult, load_common_system_prompt_revision)
@@ -330,7 +330,7 @@ def main():
         for key in keys:
             group = key.split("/", 1)[0]
             groups[group] = groups.get(group, 0) + 1
-        report = {"schema_version": "esi-benchmark/behavior-equivalence-v1",
+        report = {"schema_version": "roboweave/behavior-equivalence-v1",
                   "status": "PASS" if not differences else "FAIL", "case_count": len(keys),
                   "case_groups": groups, "differences": differences, "source_revisions": REVISIONS,
                   "reference_mode": "frozen_git_subprocess" if args.source_roots else "frozen_source_golden",

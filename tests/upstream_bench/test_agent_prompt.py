@@ -6,7 +6,7 @@ import sys
 import pytest
 
 
-ROOT = (Path(__file__).resolve().parents[2] / "src/esi_benchmark/_vendor/bench")
+ROOT = (Path(__file__).resolve().parents[2] / "src/roboweave/_vendor/bench")
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 

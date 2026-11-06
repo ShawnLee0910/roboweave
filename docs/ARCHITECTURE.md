@@ -8,7 +8,7 @@ or install legacy `Agent`, `lab`, `model_client` or `behavior_hl` modules.
 
 ```mermaid
 flowchart TD
-    CLI[esi-benchmark CLI / Python APIs] --> CFG[Configuration and task profile]
+    CLI[roboweave CLI / Python APIs] --> CFG[Configuration and task profile]
     CFG --> ASSET[Hash-checked external task inputs]
     CFG --> ENGINE[Fixed JSON engine operations]
     ENGINE --> WORKER[One worker / one frozen profile]
@@ -36,7 +36,7 @@ flowchart TD
 ## Source layout and profiles
 
 ```text
-src/esi_benchmark/
+src/roboweave/
   profiles.py                 pure profile/source selection and hash verification
   engine.py                   public fixed-operation worker client
   _native/                    private worker dispatch and frozen-code adapters

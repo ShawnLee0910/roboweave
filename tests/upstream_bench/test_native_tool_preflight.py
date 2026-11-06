@@ -6,7 +6,7 @@ import sys
 import unittest
 
 
-BENCH_TRY_ROOT = (Path(__file__).resolve().parents[2] / "src/esi_benchmark/_vendor/bench")
+BENCH_TRY_ROOT = (Path(__file__).resolve().parents[2] / "src/roboweave/_vendor/bench")
 LAB_ROOT = Path(__file__).resolve().parent
 if str(BENCH_TRY_ROOT) not in sys.path:
     sys.path.insert(0, str(BENCH_TRY_ROOT))

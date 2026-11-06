@@ -187,7 +187,7 @@ def runtime_plan(config: Mapping[str, Any], task_inputs: Mapping[str, Any]) -> d
         shim = str(_file(runtime["host_dlsym_shim"], "runtime.host_dlsym_shim"))
         env.update(ESI_HOST_DLSYM_SHIM=shim, LD_PRELOAD=shim)
     payload = {"profile": config["profile"], "runtime": _jsonable(runtime), "task_inputs": launch_inputs}
-    command = [str(python), "-m", "esi_benchmark.runtime", "--launch-json",
+    command = [str(python), "-m", "roboweave.runtime", "--launch-json",
                json.dumps(payload, separators=(",", ":"), allow_nan=False)]
     return {"command": command, "env": env, "workspace": str(workspace),
             "runtime_root": str(workspace), "scene_root": str(scene_root), "ready_path": str(scene_root / "ready.json"),
@@ -219,7 +219,7 @@ def launch_runtime(config, task_inputs) -> subprocess.Popen:
                 "TOKEN_PLAN_BASE_URL", "DASHSCOPE_BASE_URL", "OPENAI_BASE_URL", "ANTHROPIC_BASE_URL"}
     credential = config.get("model", {}).get("api_key_env")
     env = {key: value for key, value in os.environ.items()
-           if key not in stripped and key != credential and not key.startswith(("BEHAVIOR_HL_", "ESI_", "OMNIGIBSON_", "BEHAVIOR2026_"))}
+           if key not in stripped and key != credential and not key.startswith(("BEHAVIOR_HL_", "ESI_", "ROBOWEAVE_", "OMNIGIBSON_", "BEHAVIOR2026_"))}
     env.update(plan["env"])
     (workspace / "launch_plan.json").write_text(json.dumps(plan, indent=2) + "\n")
     with (workspace / "launcher.log").open("xb") as log:
@@ -293,7 +293,7 @@ def _verify_launch_device(runtime):
 
 
 def _main(argv=None):
-    parser = argparse.ArgumentParser(description="Private owned scene launcher; use esi-benchmark run")
+    parser = argparse.ArgumentParser(description="Private owned scene launcher; use roboweave run")
     parser.add_argument("--launch-json", required=True)
     args = parser.parse_args(argv)
     payload = json.loads(args.launch_json)

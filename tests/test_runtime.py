@@ -6,13 +6,13 @@ import sys
 
 import pytest
 
-from esi_benchmark import runtime
-from esi_benchmark.bootstrap import REVISIONS, activate
+from roboweave import runtime
+from roboweave.bootstrap import REVISIONS, activate
 
 
 @pytest.fixture
 def frozen_task():
-    from esi_benchmark.tasks import list_tasks
+    from roboweave.tasks import list_tasks
     public = list_tasks("L0")[0]
     model = dict(task_id=public["source"]["row_index"], task_name=public["runtime_instruction_id"],
                  task_split="train", task_instance_id="0", task_seed=19506,
@@ -117,7 +117,7 @@ def test_official_checkout_rejects_untracked_files_before_scene_launch(tmp_path,
 
 
 def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatch, frozen_task):
-    from esi_benchmark.bootstrap import PROFILE
+    from roboweave.bootstrap import PROFILE
     public, model = frozen_task
     behavior = tmp_path / "official"
     for child in ("OmniGibson/omnigibson", "bddl3/bddl", "joylo"):
@@ -139,7 +139,7 @@ def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatc
     icd = tmp_path / "icd.json"
     icd.write_text("{}")
     output = tmp_path.parent / "plan-outputs"
-    config = dict(schema_version="esi-benchmark/config-v1", mode="live", profile=PROFILE,
+    config = dict(schema_version="roboweave/config-v1", mode="live", profile=PROFILE,
                   assets=dict(root=str(data)), run=dict(task_id=public["task_id"], family="L0", output_root=str(output), history_frames=20),
                   model=dict(endpoint="https://example.invalid/v1", model="example", api_key_env="EXAMPLE_TEST_KEY"),
                   runtime=dict(workspace=str(output / "w"), python=str(environment / "bin/python"),
@@ -169,7 +169,7 @@ def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatc
 
 
 def test_scene_launch_strips_all_supported_provider_credentials(tmp_path, monkeypatch):
-    from esi_benchmark.profiles import DEFAULT_PROFILE
+    from roboweave.profiles import DEFAULT_PROFILE
     workspace = tmp_path / "owned"
     plan = {"workspace": str(workspace), "command": ["synthetic-not-executed"], "env": {"PYTHONDONTWRITEBYTECODE": "1"}}
     observed = {}

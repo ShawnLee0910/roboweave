@@ -1,18 +1,22 @@
-# ESI Benchmark — local release candidate
+# RoboWeave
 
-ESI evaluates embodied agents through frozen tasks, Action20, public visual
-observations and canonical goal/process verification. Version `0.1.0rc4` provides
+RoboWeave evaluates embodied agents through frozen tasks, Action20, public visual
+observations and canonical goal/process verification. Version `0.1.0rc5` provides
 one installable package and command-line workflow for **257 task configurations**:
 L0 (100), L1 A/M/V/P (30 each), and L2 collection (37).
 
-**This is a local review candidate, not an authorized public release or a Live
-validation result.** Private evaluation inputs and licensed simulator assets are
+**This is a privately shared review candidate. Public release and Live validation
+remain pending.** Private evaluation inputs and licensed simulator assets are
 obtained separately. Project licensing and redistribution remain unresolved;
 see [license status](LICENSE_STATUS.md) and [distribution boundaries](docs/DISTRIBUTION.md).
 
-The rc4 repair pass adds source-only loading, strict task/result binding,
+The prior rc4 repair pass added source-only loading, strict task/result binding,
 concurrent asset-import protection and credential-safe error diagnostics. The
-review and CPU acceptance evidence are recorded in [the rc4 report](reports/rc4/RESULT.md).
+review and CPU acceptance evidence are retained in [the rc4 report](reports/rc4/RESULT.md).
+
+Version rc5 adopts the RoboWeave package, Python namespace and CLI. The
+[rename and compatibility notes](docs/NAMING.md) describe legacy input support;
+[current verification](reports/rc5/RESULT.md) is separate from historical receipts.
 
 The repository connects the existing implementations through explicit modules:
 
@@ -47,22 +51,29 @@ completion or comparability with a historical model campaign. In particular,
 the candidate's common Bench harness does not reproduce every historical native
 model runner or scheduler. See the [support matrix](docs/SUPPORT_MATRIX.md).
 
+Clone the private repository with an authorized GitHub account:
+
+```bash
+git clone https://github.com/ShawnLee0910/roboweave.git
+cd roboweave
+```
+
 From the repository root, the CPU example uses an independent environment:
 
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
 python -m pip install '.[test]'
-esi-benchmark doctor
-esi-benchmark doctor --profile l2-collection37
-esi-benchmark config validate --config configs/replay.json
-esi-benchmark tasks list
-esi-benchmark tasks list --family L1-V
-esi-benchmark tasks list --family L2
-esi-benchmark run --config configs/replay.json --mode replay --output outputs/quickstart
-esi-benchmark results validate outputs/quickstart
-esi-benchmark results summarize outputs/quickstart
-esi-benchmark score examples/history-score-record.json --process-output outputs/history-example
+roboweave doctor
+roboweave doctor --profile l2-collection37
+roboweave config validate --config configs/replay.json
+roboweave tasks list
+roboweave tasks list --family L1-V
+roboweave tasks list --family L2
+roboweave run --config configs/replay.json --mode replay --output outputs/quickstart
+roboweave results validate outputs/quickstart
+roboweave results summarize outputs/quickstart
+roboweave score examples/history-score-record.json --process-output outputs/history-example
 ```
 
 Use fresh output directories. The replay uses synthetic images, scripted replies
@@ -86,7 +97,7 @@ and [Assets](docs/ASSETS.md) describe the complete sequence.
 | Provider setup, public inputs and model history | [Models](docs/MODELS.md) |
 | Trajectories, images and result interpretation | [Trajectory format](docs/TRAJECTORIES.md) |
 | Actual CPU evidence and remaining checks | [Validation](docs/VALIDATION.md), [behavior equivalence](docs/BEHAVIOR_EQUIVALENCE.md) |
-| Full source identities and adaptations | [Sources](docs/SOURCES.md), [bundle registry](src/esi_benchmark/data/source_bundles.json), [profile imports](provenance/imports_profiles.json) |
+| Full source identities and adaptations | [Sources](docs/SOURCES.md), [bundle registry](src/roboweave/data/source_bundles.json), [profile imports](provenance/imports_profiles.json) |
 | External dependencies and remaining acceptance | [Distribution](docs/DISTRIBUTION.md), [third-party notices](THIRD_PARTY_NOTICES.md), [Live plan](docs/LIVE_VALIDATION.md) |
 
 Historical rc1/rc2 reports remain as dated evidence, including the

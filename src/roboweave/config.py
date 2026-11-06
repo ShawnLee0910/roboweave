@@ -7,7 +7,8 @@ from typing import Any
 
 from .tasks import profile_for
 
-SCHEMA = "esi-benchmark/config-v1"
+SCHEMA = "roboweave/config-v1"
+LEGACY_SCHEMA = "esi-benchmark/config-v1"
 FIELDS = {
     "assets": {"root", "source_roots"},
     "run": {"task_id", "family", "output_root", "history_frames"},
@@ -37,7 +38,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     allowed = {"schema_version", "profile", "mode", *FIELDS}
     if set(config) - allowed:
         raise ValueError(f"Unknown config fields: {sorted(set(config) - allowed)}")
-    if config.get("schema_version") != SCHEMA:
+    if config.get("schema_version") not in (SCHEMA, LEGACY_SCHEMA):
         raise ValueError(f"schema_version must be {SCHEMA}")
     profile = config.get("profile")
     if not isinstance(profile, str):

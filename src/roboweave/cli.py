@@ -23,7 +23,7 @@ def _print(value):
 
 
 def parser():
-    result = argparse.ArgumentParser(description="Frozen ESI Benchmark public candidate (CPU replay and explicit Live execution)")
+    result = argparse.ArgumentParser(description="Frozen RoboWeave public candidate (CPU replay and explicit Live execution)")
     result.add_argument("--version", action="version", version=__version__)
     commands = result.add_subparsers(dest="command", required=True)
     commands.add_parser("doctor", help="Check installed CPU imports in an isolated profile worker").add_argument("--profile", default=DEFAULT_PROFILE)
@@ -159,7 +159,7 @@ def _run(config, requested, dry_run):
                    "termination_reason": "candidate_episode_failure" if episode else "candidate_initialization_failure"}
         if not (output / "run_record.json").exists():
             (output / "run_record.json").write_text(json.dumps({
-                "schema_version": "esi-benchmark/run-v1", "mode": "live", "profile": config["profile"],
+                "schema_version": "roboweave/run-v1", "mode": "live", "profile": config["profile"],
                 "source_revisions": source_revisions(config["profile"]), "experiment_id": output.name,
                 "evaluation_variant": "frozen_history_5" if config["run"]["history_frames"] == 5 else "history_20_variant_not_baseline",
                 "task_identity": {"task_id": task["task_id"], "family": task["family"]},
@@ -236,7 +236,7 @@ def main(argv=None):
             return 1
         return 1 if isinstance(result, dict) and result.get("ok") is False else 0
     except (ValueError, OSError, RuntimeError, KeyError) as exc:
-        print(f"esi-benchmark: {exc}", file=sys.stderr)
+        print(f"roboweave: {exc}", file=sys.stderr)
         return 2
 
 

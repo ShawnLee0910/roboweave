@@ -3,7 +3,7 @@
 The authoritative resources are `action20_tool_schema.json`,
 `action20_bare_marker_schema.json`, `action20_core_instructions.txt`, and
 `action20_protocol.py` in the **selected profile's Bench root**. Resolve it with
-`esi_benchmark.profiles.source_roots(profile)["bench_root"]`; the default L0 root
+`roboweave.profiles.source_roots(profile)["bench_root"]`; the default L0 root
 is `_vendor/bench`, while other revisions live under `_vendor/revisions/bench/`.
 All are installed package resources, independently frozen from their Runtime
 bindings. See [Support matrix](SUPPORT_MATRIX.md) and

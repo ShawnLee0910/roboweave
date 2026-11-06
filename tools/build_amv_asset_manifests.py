@@ -291,7 +291,7 @@ def main():
     for axis, profile in PROFILES.items():
         binding = release['axis_bindings'][axis]
         manifest = Closure(args.source_root, profile).build(binding)
-        out = args.candidate_root / 'src/esi_benchmark/data/assets' / (profile + '.json')
+        out = args.candidate_root / 'src/roboweave/data/assets' / (profile + '.json')
         out.write_text(json.dumps(manifest, indent=2) + '\n')
         record['profiles'][profile] = {'sources': binding['sources'], 'tasks': binding['tasks'],
             'instruction_review': binding.get('instruction_review'),

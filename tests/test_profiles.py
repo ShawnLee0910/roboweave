@@ -9,7 +9,7 @@ import subprocess
 
 import pytest
 
-from esi_benchmark import profiles
+from roboweave import profiles
 
 
 def frozen_bundle(root):

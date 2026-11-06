@@ -10,7 +10,8 @@ from typing import Any, Mapping
 
 from .profiles import DEFAULT_PROFILE
 
-EVIDENCE_SCHEMA = "esi-benchmark/result-evidence-v2"
+EVIDENCE_SCHEMA = "roboweave/result-evidence-v2"
+EVIDENCE_SCHEMAS = (EVIDENCE_SCHEMA, "esi-benchmark/result-evidence-v2")
 
 
 def _native_abort_score(score, family):

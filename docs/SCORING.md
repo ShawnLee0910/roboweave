@@ -52,11 +52,11 @@ example value.
 Run the distributable example:
 
 ```bash
-esi-benchmark score examples/score-record.json
+roboweave score examples/score-record.json
 ```
 
-Or use `esi_benchmark.scoring.score_record(record)`. Input schemas are
-`esi-benchmark/score-record-v1` and `esi-benchmark/score-record-v2`; result schema is `esi-benchmark/score-result-v1`,
+Or use `roboweave.scoring.score_record(record)`. Input schemas are
+`roboweave/score-record-v1` and `roboweave/score-record-v2`; result schema is `roboweave/score-result-v1`,
 with `mode: cpu-record-replay` and `truth_source: supplied-records`.
 An optional top-level `profile` chooses a frozen source bundle. The Python API
 also accepts `profile=...`; a conflicting record profile is rejected. The
@@ -138,7 +138,7 @@ per-event evidence.
 Run the synthetic, distributable history example into a fresh directory:
 
 ```bash
-esi-benchmark score examples/history-score-record.json --process-output outputs/history-example
+roboweave score examples/history-score-record.json --process-output outputs/history-example
 ```
 
 The example declares an actual-first-subject binding, an open-until-stored

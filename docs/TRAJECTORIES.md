@@ -53,7 +53,7 @@ requires its original `v_protocol_abort.json` receipt; this exception cannot
 certify success or replace a missing normal completion report.
 
 New rc3 archives add `candidate_result.evidence_schema_version:
-esi-benchmark/result-evidence-v2`. Each `evidence` entry records its original
+roboweave/result-evidence-v2`. Each `evidence` entry records its original
 source, fixed archive-relative `path`, `sha256` and `size_bytes`. The generated
 `task_binding.json` is included in this inventory, including when no final score
 was produced. These descriptors do not alter the original score or raw JSONL.

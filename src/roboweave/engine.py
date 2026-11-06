@@ -14,7 +14,7 @@ from typing import Any, Mapping
 
 from .profiles import DEFAULT_PROFILE, source_roots
 
-SCHEMA = "esi-benchmark/engine-v1"
+SCHEMA = "roboweave/engine-v1"
 MAX_MESSAGE_BYTES = 64 * 1024 * 1024
 SAFE_MODEL_INTERRUPT_PHASES = frozenset({
     "STARTING_PROVIDER_CALL", "WAITING_PROVIDER", "RETRYING_PROVIDER", "AGENT_CLI_RUNNING",
@@ -266,7 +266,7 @@ def call(operation: str, payload: Mapping[str, Any], *, profile: str = DEFAULT_P
     task_wall = _task_wall_seconds(request)
     package_root = Path(__file__).resolve().parents[1]
     script = ("import sys; sys.path.insert(0, " + repr(str(package_root)) + "); "
-              "from esi_benchmark._native.worker import main; raise SystemExit(main())")
+              "from roboweave._native.worker import main; raise SystemExit(main())")
     env = {**os.environ, "PYTHONDONTWRITEBYTECODE": "1"}
     process = subprocess.Popen([sys.executable, "-I", "-B", "-c", script],
                                stdin=subprocess.PIPE, stdout=subprocess.PIPE,

@@ -1,0 +1,35 @@
+{
+  "schema_version": "roboweave/naming-provenance-v1",
+  "base_revision": "5fcc4eeefff458048f894ffab7cbbc46696ecb71",
+  "package_path_mapping": {
+    "src/esi_benchmark/": "src/roboweave/"
+  },
+  "files_verified": 2657,
+  "bytes_verified": 65418729,
+  "errors": [],
+  "status": "PASS",
+  "verified_mapping_sha256": "38a8bd5f457d38eb237ca7c31bd36d9d9d0a24eb7244aa2357034a06bce65013",
+  "verification_method": "For every selected path in git ls-tree -rz BASE, compare its Git blob SHA with the mapped current file. Frozen bundle files, data manifests, historical provenance/reports and fixed equivalence inputs are selected. Only the synthetic marker example has an intentional new schema label.",
+  "groups": {
+    "historical_provenance": {
+      "files": 12,
+      "bytes": 2458981
+    },
+    "historical_reports": {
+      "files": 185,
+      "bytes": 8046971
+    },
+    "frozen_sources": {
+      "files": 2447,
+      "bytes": 52968382
+    },
+    "frozen_data": {
+      "files": 12,
+      "bytes": 1925239
+    },
+    "equivalence_inputs": {
+      "files": 1,
+      "bytes": 19156
+    }
+  }
+}

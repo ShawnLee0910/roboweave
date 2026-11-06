@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "commits_scanned": [
+    "5fcc4eeefff458048f894ffab7cbbc46696ecb71",
+    "744bb80990c72cc0311fb62d39f177bb3e3ffead",
+    "8ffa68c9df542000b762d776ea8383884552bd8e",
+    "28df6efec9a7957a2f51121362f1ce01d913c53e"
+  ],
+  "current_index_included": true,
+  "distinct_blobs": 1019,
+  "bytes_scanned": 37924505,
+  "largest_blob_bytes": 2727419,
+  "findings": [],
+  "reviewed_synthetic_literals": [
+    {
+      "path": "reports/rc5/remaining.xml",
+      "kind": "credential_url",
+      "literal_sha256": "ec25b8fa54a9d7a878a86e6f38233af24d5d27d184b396136d6d7f0251d33c19"
+    }
+  ],
+  "scan_phase": "Final staged snapshot before generating this receipt, plus four historical candidate commits.",
+  "limits": "Pattern audit, not proof of absence of every possible secret. No secret values are recorded."
+}

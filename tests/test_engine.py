@@ -8,8 +8,8 @@ import sys
 
 import pytest
 
-from esi_benchmark import engine
-from esi_benchmark.profiles import DEFAULT_PROFILE
+from roboweave import engine
+from roboweave.profiles import DEFAULT_PROFILE
 
 
 @pytest.mark.parametrize("change", [
@@ -37,10 +37,10 @@ def test_public_calls_do_not_load_or_replace_legacy_modules(tmp_path):
     script = """
 import json, sys, types
 from pathlib import Path
-from esi_benchmark.bootstrap import resolve, activate
-from esi_benchmark.engine import call
-from esi_benchmark.models import validate_model_config
-from esi_benchmark.offline import run_replay
+from roboweave.bootstrap import resolve, activate
+from roboweave.engine import call
+from roboweave.models import validate_model_config
+from roboweave.offline import run_replay
 legacy = types.ModuleType('agent_protocol')
 legacy.foreign = True
 sys.modules['agent_protocol'] = legacy

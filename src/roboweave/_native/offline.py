@@ -87,7 +87,7 @@ def run_replay(config: Mapping[str, Any], output_dir: Path, *, source_verificati
                 "images": images, "marker_targets": step["marker_targets"]}}
 
     _write_json(output / "run_record.json", {
-        "schema_version": "esi-benchmark/run-v1", "mode": "offline_replay", "profile": profile,
+        "schema_version": "roboweave/run-v1", "mode": "offline_replay", "profile": profile,
         "history_frames": history,
         "evaluation_variant": "frozen_history_5" if history == 5 else "history_20_variant_not_baseline",
         "source_revisions": source_revisions(profile), "fixture_id": fixture["fixture_id"],

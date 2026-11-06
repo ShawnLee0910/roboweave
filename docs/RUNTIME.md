@@ -5,7 +5,7 @@ not replace Action20, Marker selection, preparation, reset, geometry, collision
 checks, or episode verification.
 
 ```text
-esi-benchmark run
+roboweave run
   assets.materialize_task_inputs      exact, hashed, single-task input copy
   runtime.runtime_plan                CPU file/configuration checks
   runtime.launch_runtime              one new process and one private workspace
