@@ -8145,7 +8145,7 @@ def _execute_core(
         else:
             if (
                 runtime.zero_physics
-                and action.action in {"pick", "wipe"}
+                and action.action in {"pick", "toggle_off", "toggle_on", "wipe"}
                 and result.status == "completed"
                 and "wipe" in runtime.registry.names
             ):
