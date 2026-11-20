@@ -2773,9 +2773,52 @@ class R1ProMarkerSymbolicComponentBuilder:
 
                 success = False
                 if operation == "cut":
-                    yield from self._primitives.apply_ref(
-                        SymbolicSemanticActionPrimitiveSet.CUT, target, attempts=1
-                    )
+                    import omnigibson as og
+                    from omnigibson.macros import gm
+
+                    if gm.USE_GPU_DYNAMICS and og.sim.is_playing():
+                        from omnigibson.transition_rules import SlicingRule
+
+                        if "slicer" not in held._abilities:
+                            blocked("Hold a cutting tool.")
+                        if not {"sliceable", "diceable"} & target._abilities.keys():
+                            blocked("The selected object cannot be cut.")
+                        api = scene.transition_rule_api
+                        (rule,) = (rule for rule in api.active_rules if isinstance(rule, SlicingRule))
+                        transition = rule.transition({"sliceable": [target]})
+                        saved = og.sim.dump_state()
+                        context = og.sim._sim_context
+                        saved_clock = (og.sim.current_time, og.sim.current_time_step_index)
+                        callbacks = dict(context._physics_callback_functions)
+                        transition_rules_enabled = gm.ENABLE_TRANSITION_RULES
+
+                        # Paused GPU scenes still hold tensor views on the old collision shapes.
+                        og.sim.stop()
+                        try:
+                            api.execute_transition(added_obj_attrs=transition.add, removed_objs=transition.remove)
+                        finally:
+                            with gm.unlocked():
+                                gm.ENABLE_TRANSITION_RULES = False
+                            try:
+                                og.sim.play()
+                            finally:
+                                with gm.unlocked():
+                                    gm.ENABLE_TRANSITION_RULES = transition_rules_enabled
+                                # Isaac's STOP event resets the clock and drops these subscriptions.
+                                context._current_time, context._number_of_steps = saved_clock
+                                context._physics_callback_functions.update(callbacks)
+                            og.sim.load_state(saved)
+                            og.sim.sync_physx_to_fabric()
+                        for part in transition.add:
+                            api.obj_init_info.pop(part.obj, None)
+                            part.callback(part.obj)
+                            part.obj.update_visuals()
+                        if transition_rules_enabled:
+                            api.refresh_all_rules()
+                    else:
+                        yield from self._primitives.apply_ref(
+                            SymbolicSemanticActionPrimitiveSet.CUT, target, attempts=1
+                        )
                     success = scene.object_registry("name", target.name) is None
                 elif operation in {"soak_under", "soak_inside"}:
                     if states.Saturated not in held.states or states.ParticleRemover not in held.states:
