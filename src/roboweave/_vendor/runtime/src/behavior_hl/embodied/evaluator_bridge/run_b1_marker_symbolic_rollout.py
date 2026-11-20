@@ -9,6 +9,8 @@ ordered onboard PNGs, the public instruction, and its own prior actions.
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 from collections import deque
 import copy
 from dataclasses import asdict, dataclass, is_dataclass, replace
@@ -7343,6 +7345,7 @@ def _build_marker_runtime(
             if extended_symbolic_actions_enabled
             else None
         ),
+        household_actions="cut" in registry.names,
         wipe_primitive=(
             SymbolicSemanticActionPrimitiveSet.WIPE
             if "wipe" in registry.names
@@ -7733,6 +7736,7 @@ def _execute_core(
         "toggle_off",
         "toggle_on",
         "wipe",
+        *HOUSEHOLD_ACTIONS,
     }
     if action.action not in marker_target_actions:
         # Invalidate before synchronization / the before-frame, not merely
@@ -8145,7 +8149,7 @@ def _execute_core(
         else:
             if (
                 runtime.zero_physics
-                and action.action in {"pick", "toggle_off", "toggle_on", "wipe"}
+                and action.action in {"pick", "toggle_off", "toggle_on", "wipe", *HOUSEHOLD_ACTIONS}
                 and result.status == "completed"
                 and "wipe" in runtime.registry.names
             ):

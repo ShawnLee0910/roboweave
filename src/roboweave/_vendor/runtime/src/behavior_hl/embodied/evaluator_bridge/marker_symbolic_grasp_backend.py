@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 from dataclasses import dataclass, field, replace
 from time import perf_counter
 from typing import Any, Callable, Mapping, Sequence
@@ -413,6 +415,7 @@ class MarkerSymbolicGraspBackendAdapter:
             "toggle_on",
             "toggle_off",
             "wipe",
+            *HOUSEHOLD_ACTIONS,
             "put_back",
             "release",
             "place_on_floor",
@@ -542,8 +545,7 @@ class MarkerSymbolicGraspBackendAdapter:
             "toggle_on",
             "toggle_off",
         }
-        if "wipe" in self._operation_factories:
-            supported.add("wipe")
+        supported.update(self._operation_factories.keys() & {"wipe", *HOUSEHOLD_ACTIONS})
         if operation not in supported:
             raise MarkerSymbolicBackendError(
                 f"operation-specific markers are unsupported for {operation!r}"
@@ -816,7 +818,7 @@ class MarkerSymbolicGraspBackendAdapter:
             admitted = set(self._openable_names())
         elif operation == "place_on_top":
             admitted = set(self._support_names())
-        elif operation in _SPATIAL_OPERATIONS or operation == "wipe":
+        elif operation in _SPATIAL_OPERATIONS or operation in {"wipe", *HOUSEHOLD_ACTIONS}:
             admitted = set(self._operation_marker_objects_for(operation))
         elif operation in {"toggle_on", "toggle_off"}:
             admitted = set(self._toggleable_names())
@@ -924,7 +926,7 @@ class MarkerSymbolicGraspBackendAdapter:
             admitted_names = set(self._openable_names())
         elif operation == "place_on_top":
             admitted_names = set(self._support_names())
-        elif operation in _SPATIAL_OPERATIONS or operation == "wipe":
+        elif operation in _SPATIAL_OPERATIONS or operation in {"wipe", *HOUSEHOLD_ACTIONS}:
             admitted_names = set(eligible)
         elif operation in {"toggle_on", "toggle_off"}:
             admitted_names = set(self._toggleable_names())
@@ -1050,9 +1052,9 @@ class MarkerSymbolicGraspBackendAdapter:
                 )
             physical_consequence_committed = False
             try:
-                if token.operation == "wipe" or self._private_outcome_verifier is not None:
+                if token.operation in {"wipe", *HOUSEHOLD_ACTIONS} or self._private_outcome_verifier is not None:
                     outcome_verifier_started = perf_counter()
-                    if token.operation == "wipe":
+                    if token.operation in {"wipe", *HOUSEHOLD_ACTIONS}:
                         report = finished.value
                     else:
                         report = self._private_outcome_verifier(

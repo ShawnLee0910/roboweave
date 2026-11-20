@@ -103,3 +103,11 @@ Run the synthetic replay for a concrete three-call Marker example. It exercises
 the real parser, conversation state machine and writers, with synthetic scene
 replies; it is not evidence of collision checks, manipulation or simulator
 success.
+
+Set `ROBOWEAVE_EXPERIMENTAL_HOUSEHOLD_ACTIONS=1` with `l0-english-v2` to try
+`wipe`, `cut`, `soak_inside`, `soak_under`, `fill_with`, `pour_into`, `spread`,
+`wait_for_cooked`, `wait_for_washed`, and `wait_for_frozen`. Each action
+requests a visible Marker and then consumes its selection. Pick the cutting
+tool, absorbent object, or source container first for tool operations. The
+three wait actions update the applicable food or washing state. A household
+scene uses OmniGibson GPU dynamics for physical particle systems.

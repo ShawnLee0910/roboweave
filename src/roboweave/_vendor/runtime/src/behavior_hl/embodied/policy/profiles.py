@@ -33,6 +33,7 @@ from behavior_hl.embodied.policy.action_specs import (
 )
 from behavior_hl.embodied.policy.action_specs.marker_symbolic_grasp import (
     marker_symbolic_wipe_spec,
+    marker_symbolic_household_specs,
 )
 from behavior_hl.embodied.policy.registry import ActionRegistry
 from behavior_hl.embodied.policy.protocol import (
@@ -71,7 +72,8 @@ MARKER_SYMBOLIC_ACTION20_SCHEMA_VERSION = (
     "move015-turn10-floor-workspace17-on-top-two-stage-multilevel-"
     "v13-zero-physics-final-collision"
 )
-WIPE_ENABLED = os.environ.get("ROBOWEAVE_EXPERIMENTAL_WIPE") == "1"
+HOUSEHOLD_ENABLED = os.environ.get("ROBOWEAVE_EXPERIMENTAL_HOUSEHOLD_ACTIONS") == "1"
+WIPE_ENABLED = HOUSEHOLD_ENABLED or os.environ.get("ROBOWEAVE_EXPERIMENTAL_WIPE") == "1"
 ACTION20_LOCAL_WORKSPACE_M = 1.70
 ACTION20_LOCAL_APPROACH_MAX_M = 0.40
 
@@ -400,6 +402,7 @@ def build_picking_up_toys_registry(
             marker_symbolic_place_on_floor_spec(),
             symbolic_wait,
             *((marker_symbolic_wipe_spec(),) if WIPE_ENABLED else ()),
+            *(marker_symbolic_household_specs() if HOUSEHOLD_ENABLED else ()),
         )
         specs = _with_action20_local_approach_description(
             specs,
@@ -546,7 +549,7 @@ def build_picking_up_toys_registry(
     else:
         schema_version = PICKING_UP_TOYS_SCHEMA_VERSION
     if grasp_mode == "marker_symbolic_action20" and WIPE_ENABLED:
-        schema_version += "-experimental-wipe"
+        schema_version += "-experimental-household" if HOUSEHOLD_ENABLED else "-experimental-wipe"
     return ActionRegistry(
         specs,
         schema_version=schema_version,

@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any, Mapping
 
+from action20_protocol import HOUSEHOLD_TOOL_ACTIONS
+
 
 PLACEMENT_ACTIONS = frozenset(
     {
@@ -33,7 +35,7 @@ def public_precondition_block_reason(*, runtime: Any, action: str) -> str | None
         raise RuntimeError("public carry snapshot active_hand is invalid")
     if likely != (active_hand in {"left", "right"}):
         raise RuntimeError("public carry snapshot hand state is inconsistent")
-    if action in PLACEMENT_ACTIONS or action == "wipe":
+    if action in PLACEMENT_ACTIONS or action in (*HOUSEHOLD_TOOL_ACTIONS, "wipe"):
         return (
             None
             if active_hand == "left"

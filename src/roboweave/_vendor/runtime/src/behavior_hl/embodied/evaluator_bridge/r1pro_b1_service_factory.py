@@ -8,6 +8,8 @@ the factory never queries held-object, task, predicate, or world-pose truth.
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS, HOUSEHOLD_TOOL_ACTIONS, HOUSEHOLD_WAIT_ACTIONS
+
 from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Any, Callable, Mapping, Protocol
@@ -101,6 +103,7 @@ _KNOWN_ACTIONS = frozenset(
         "toggle_on",
         "toggle_off",
         "wipe",
+        *HOUSEHOLD_ACTIONS,
         "wait",
         "stop",
         *_BASE_ACTIONS,
@@ -514,6 +517,7 @@ class R1ProB1ServiceFactory:
             "close",
             "toggle_on",
             "toggle_off",
+            *HOUSEHOLD_WAIT_ACTIONS,
         }:
             if action.action == "pick" and likely:
                 raise R1ProB1ServiceFactoryError(
@@ -549,6 +553,7 @@ class R1ProB1ServiceFactory:
             "place_under",
             "place_touching",
             "wipe",
+            *HOUSEHOLD_TOOL_ACTIONS,
         }:
             if not likely or active_hand not in {"left", "right"}:
                 raise R1ProB1ServiceFactoryError(

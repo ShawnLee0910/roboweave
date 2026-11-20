@@ -5,8 +5,14 @@ from __future__ import annotations
 import os
 
 
-WIPE_ENABLED = os.environ.get("ROBOWEAVE_EXPERIMENTAL_WIPE") == "1"
-_WIPE_ACTIONS = ("wipe",) if WIPE_ENABLED else ()
+HOUSEHOLD_ENABLED = os.environ.get("ROBOWEAVE_EXPERIMENTAL_HOUSEHOLD_ACTIONS") == "1"
+WIPE_ENABLED = HOUSEHOLD_ENABLED or os.environ.get("ROBOWEAVE_EXPERIMENTAL_WIPE") == "1"
+HOUSEHOLD_TOOL_ACTIONS = ('cut', 'soak_inside', 'soak_under', 'fill_with', 'pour_into', 'spread')
+HOUSEHOLD_WAIT_ACTIONS = ('wait_for_cooked', 'wait_for_washed', 'wait_for_frozen')
+_EXPERIMENTAL_ACTIONS = (
+    *(("wipe",) if WIPE_ENABLED else ()),
+    *(HOUSEHOLD_TOOL_ACTIONS + HOUSEHOLD_WAIT_ACTIONS if HOUSEHOLD_ENABLED else ()),
+)
 
 BASE_ACTION20 = (
     "move_forward",
@@ -30,7 +36,7 @@ BASE_ACTION20 = (
     "place_next_to",
 )
 TERMINATION_ACTION = "done"
-STRICT_ACTION20 = (*BASE_ACTION20, *_WIPE_ACTIONS)
+STRICT_ACTION20 = (*BASE_ACTION20, *_EXPERIMENTAL_ACTIONS)
 BASE_TOOL_ACTIONS = (*BASE_ACTION20, TERMINATION_ACTION)
 PUBLIC_TOOL_ACTIONS = (*STRICT_ACTION20, TERMINATION_ACTION)
 MODEL_VISIBLE_TOOL_ACTIONS = PUBLIC_TOOL_ACTIONS
@@ -42,7 +48,7 @@ MARKER_ACTIONS = frozenset(
         "close",
         "toggle_on",
         "toggle_off",
-        *_WIPE_ACTIONS,
+        *_EXPERIMENTAL_ACTIONS,
         "place_inside",
         "place_on_top",
         "place_under",
@@ -56,7 +62,7 @@ TWO_CALL_MARKER_ACTIONS = frozenset(
         "close",
         "toggle_on",
         "toggle_off",
-        *_WIPE_ACTIONS,
+        *_EXPERIMENTAL_ACTIONS,
         "place_under",
     }
 )
@@ -121,7 +127,7 @@ def navigation_physical_repeat_max(action: str) -> int:
 if (
     len(BASE_ACTION20) != 19
     or len(set(STRICT_ACTION20)) != len(STRICT_ACTION20)
-    or len(PUBLIC_TOOL_ACTIONS) != 20 + len(_WIPE_ACTIONS)
+    or len(PUBLIC_TOOL_ACTIONS) != 20 + len(_EXPERIMENTAL_ACTIONS)
     or MODEL_VISIBLE_TOOL_ACTIONS != PUBLIC_TOOL_ACTIONS
     or TWO_CALL_MARKER_ACTIONS & THREE_CALL_MARKER_ACTIONS
     or TWO_CALL_MARKER_ACTIONS | THREE_CALL_MARKER_ACTIONS != MARKER_ACTIONS

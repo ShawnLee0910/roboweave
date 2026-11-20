@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Protocol
@@ -51,6 +53,7 @@ MARKER_SYMBOLIC_V34_CONTROLLER_KEYS = {
     "toggle_on": "manipulation.marker_symbolic_toggle_on",
     "toggle_off": "manipulation.marker_symbolic_toggle_off",
     "wipe": "manipulation.marker_symbolic_wipe",
+    **{name: f"manipulation.marker_symbolic_{name}" for name in HOUSEHOLD_ACTIONS},
     "release": "manipulation.marker_symbolic_release",
     "place_on_floor": "manipulation.marker_symbolic_place_on_floor",
 }
@@ -83,6 +86,7 @@ _ACTION_FIRST_MARKER_OPERATIONS = frozenset(
         "toggle_on",
         "toggle_off",
         "wipe",
+        *HOUSEHOLD_ACTIONS,
     }
 )
 _SECOND_STAGE_SELECTION_KINDS = {

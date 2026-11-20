@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Any, Mapping, Sequence
@@ -303,7 +305,10 @@ def build_b1_picking_up_toys_dispatcher(
         "place_under",
         *(("place_touching",) if action23_mode else ()),
     )
-    wipe_actions = ("wipe",) if action20_mode and "wipe" in expected_by_action else ()
+    household_actions = tuple(
+        name for name in ("wipe", *HOUSEHOLD_ACTIONS)
+        if action20_mode and name in expected_by_action
+    )
     if symbolic_wait_mode:
         expected_actions = {
             *BASE_ACTIONS,
@@ -316,7 +321,7 @@ def build_b1_picking_up_toys_dispatcher(
             "close",
             "toggle_on",
             "toggle_off",
-            *wipe_actions,
+            *household_actions,
             "wait",
         }
         if action23_mode:
@@ -402,7 +407,7 @@ def build_b1_picking_up_toys_dispatcher(
                 "close",
                 "toggle_on",
                 "toggle_off",
-                *wipe_actions,
+                *household_actions,
                 markerless_place_action,
             )
         )

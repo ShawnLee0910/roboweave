@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 import math
 import re
 from dataclasses import dataclass
@@ -211,6 +213,7 @@ def audit_b1_live_readiness(
         B1_MARKER_SYMBOLIC_LEGACY_ACTION23_REQUIRED_ACTIONS,
         B1_MARKER_SYMBOLIC_ACTION20_REQUIRED_ACTIONS,
         (*B1_MARKER_SYMBOLIC_ACTION20_REQUIRED_ACTIONS, "wipe"),
+        (*B1_MARKER_SYMBOLIC_ACTION20_REQUIRED_ACTIONS, "wipe", *HOUSEHOLD_ACTIONS),
     )
     gates["required_action_profile"] = actions is not None and any(
         len(actions) == len(profile) and set(actions) == set(profile)

@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+HOUSEHOLD_TOOL_ACTIONS = ("cut", "soak_inside", "soak_under", "fill_with", "pour_into", "spread")
+HOUSEHOLD_WAIT_ACTIONS = ("wait_for_cooked", "wait_for_washed", "wait_for_frozen")
+HOUSEHOLD_ACTIONS = (*HOUSEHOLD_TOOL_ACTIONS, *HOUSEHOLD_WAIT_ACTIONS)
+
 import json
 import math
 from dataclasses import dataclass

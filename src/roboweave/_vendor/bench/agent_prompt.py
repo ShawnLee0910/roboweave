@@ -13,6 +13,7 @@ from typing import Any, Mapping
 from action20_protocol import (
     BASE_TOOL_ACTIONS,
     WIPE_ENABLED,
+    HOUSEHOLD_ENABLED,
     MODEL_VISIBLE_TOOL_ACTIONS,
     NAVIGATION_MOVE_DISTANCES_M,
     NAVIGATION_REPEAT_MAX,
@@ -130,6 +131,16 @@ def load_action20_tool_schema(
             "\nTo wipe, first pick a suitable cleaning tool. Call `wipe` "
             "without a target to request Markers, then call `wipe` with the "
             "target from that frame. The cleaning tool stays in your hand."
+        )
+    if HOUSEHOLD_ENABLED and isinstance(action, dict) and tuple(action.get("enum", ())) == MODEL_VISIBLE_TOOL_ACTIONS:
+        function["description"] += (
+            "\nFor these household commands, call once without a target to show "
+            "Markers and again with the current Marker. Hold a knife for cut, "
+            "the absorbent item for soak_inside or soak_under, the container to "
+            "fill for fill_with, and the source container for pour_into or spread. "
+            "Select the heated food or its appliance for wait_for_cooked, "
+            "the washer for wait_for_washed, and the refrigerator or food inside "
+            "for wait_for_frozen."
         )
     repeat = properties.get("repeat")
     move_distance = properties.get("move_distance_m")

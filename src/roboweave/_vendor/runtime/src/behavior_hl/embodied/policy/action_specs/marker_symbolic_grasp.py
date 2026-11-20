@@ -1,5 +1,6 @@
 """Explicit visual marking followed by instance-bound symbolic grasp."""
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
 from behavior_hl.embodied.policy.protocol import (
     parse_marker_grasp_args,
     parse_marker_place_inside_args,
@@ -350,6 +351,33 @@ def marker_symbolic_v34_specs(
             controller_key="manipulation.marker_symbolic_toggle_off",
             selection_request=simple_spatial_selection,
         ),
+    )
+
+
+def marker_symbolic_household_specs() -> tuple[ActionSpec, ...]:
+    descriptions = {
+        "cut": "Cut the selected food with the held cutting tool.",
+        "soak_inside": "Soak the held item in the selected container.",
+        "soak_under": "Soak the held item under the selected running source.",
+        "fill_with": "Fill the held container from the selected running source.",
+        "pour_into": "Pour from the held container into the selected container.",
+        "spread": "Spread the contents of the held container onto the selected object.",
+        "wait_for_cooked": "Finish cooking the selected heated food or the food on or in the selected appliance.",
+        "wait_for_washed": "Finish washing the contents of the selected running washer.",
+        "wait_for_frozen": "Freeze the selected food in a refrigerator or the food in the selected refrigerator.",
+    }
+    return tuple(
+        _v34_marker_spec(
+            name=name,
+            description=(
+                "Call without a marker to request visible targets, then "
+                "select a current C-marker. " + descriptions[name]
+            ),
+            capability=f"symbolic_{name}",
+            controller_key=f"manipulation.marker_symbolic_{name}",
+            selection_request=True,
+        )
+        for name in HOUSEHOLD_ACTIONS
     )
 
 
