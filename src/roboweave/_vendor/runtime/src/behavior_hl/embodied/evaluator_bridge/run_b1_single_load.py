@@ -1150,6 +1150,10 @@ def run_b1_single_load(
         )
         import omnigibson.eval.evaluator as evaluator_module
 
+        if os.environ.get("ROBOWEAVE_EXPERIMENTAL_HOUSEHOLD_ACTIONS") == "1":
+            with gm.unlocked():
+                gm.USE_GPU_DYNAMICS = True
+
         if evaluator_module_configurer is not None:
             evaluator_module_cleanup = evaluator_module_configurer(
                 evaluator_module

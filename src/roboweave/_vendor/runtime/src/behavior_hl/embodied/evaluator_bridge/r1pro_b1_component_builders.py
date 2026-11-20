@@ -120,6 +120,9 @@ from behavior_hl.embodied.evaluator_bridge.spatial_symbolic_actions import (
     symbolic_on_top_relation,
 )
 from behavior_hl.embodied.policy.protocol import (
+    HOUSEHOLD_ACTIONS,
+    HOUSEHOLD_TOOL_ACTIONS,
+    HOUSEHOLD_WAIT_ACTIONS,
     ActionEnvelope,
     MarkerGraspArgs,
     MarkerPlaceInsideArgs,
@@ -1662,6 +1665,8 @@ class R1ProMarkerSymbolicComponentBuilder:
         close_primitive: Any | None = None,
         toggle_on_primitive: Any | None = None,
         toggle_off_primitive: Any | None = None,
+        wipe_primitive: Any | None = None,
+        household_actions: bool = False,
         release_primitive: Any | None = None,
         spatial_generator_factory: Callable[..., Any] | None = None,
         marker_store: PrivateVisualMarkerStore,
@@ -1824,6 +1829,8 @@ class R1ProMarkerSymbolicComponentBuilder:
             raise ValueError("toggle-on and toggle-off primitives must be supplied together")
         self._toggle_on_primitive = toggle_on_primitive
         self._toggle_off_primitive = toggle_off_primitive
+        self._wipe_primitive = wipe_primitive
+        self._household_actions = HOUSEHOLD_ACTIONS if household_actions else ()
         self.toggle_symbolic_actions = all(
             value is not None for value in toggle_optional
         )
@@ -1921,6 +1928,8 @@ class R1ProMarkerSymbolicComponentBuilder:
                     "close",
                     "release",
                     "place_on_floor",
+                    *(("wipe",) if self._wipe_primitive is not None else ()),
+                    *self._household_actions,
                     *(
                         ("toggle_on", "toggle_off")
                         if self.toggle_symbolic_actions
@@ -1963,6 +1972,8 @@ class R1ProMarkerSymbolicComponentBuilder:
             "place_next_to",
             "place_under",
             "place_touching",
+            "wipe",
+            *HOUSEHOLD_TOOL_ACTIONS,
         }:
             expected_type = (
                 (MarkerTargetArgs, MarkerTargetOrRequestArgs)
@@ -1974,8 +1985,11 @@ class R1ProMarkerSymbolicComponentBuilder:
                 or active_hand != self.implicit_object_grasp_hand
             ):
                 raise R1ProB1ComponentBuilderError(
-                    "marker place requires the implicit-hand carry state"
+                    f"{action.action} requires the implicit-hand carry state"
                 )
+        elif action.action in HOUSEHOLD_WAIT_ACTIONS:
+            if not isinstance(action.args, (MarkerTargetArgs, MarkerTargetOrRequestArgs)):
+                raise R1ProB1ComponentBuilderError("household wait requires parsed Marker arguments")
         elif action.action in {"open", "close", "toggle_on", "toggle_off"}:
             if (
                 not isinstance(
@@ -2189,17 +2203,61 @@ class R1ProMarkerSymbolicComponentBuilder:
                 marker_objects.update(support_objects)
                 support_names = frozenset(support_objects)
 
+            wipeable_objects = {}
+            if action.action == "wipe":
+                from omnigibson.object_states import Covered
+
+                held = self._primitives._get_obj_in_hand()
+                wipeable_objects = {
+                    str(obj.name): obj
+                    for obj in evaluator.env.scene.objects
+                    if obj is not held and Covered in getattr(obj, "states", {})
+                }
+                marker_objects.update(wipeable_objects)
+
+            household_objects = {}
+            if action.action in self._household_actions:
+                from omnigibson import object_states as states
+
+                def eligible_household_target(obj: Any) -> bool:
+                    operation = action.action
+                    if operation == "cut":
+                        return bool({"sliceable", "diceable"} & obj._abilities.keys())
+                    if operation in {"soak_under", "fill_with"}:
+                        return states.ParticleSource in obj.states
+                    if operation in {"soak_inside", "pour_into"}:
+                        return states.Contains in obj.states
+                    if operation == "spread":
+                        return states.Covered in obj.states or states.Saturated in obj.states
+                    if operation == "wait_for_cooked":
+                        return states.Cooked in obj.states or states.HeatSourceOrSink in obj.states
+                    if operation == "wait_for_washed":
+                        return obj.category in {"washer", "dishwasher"}
+                    return states.Frozen in obj.states or obj.category in {"fridge", "freezer", "refrigerator"}
+
+                held = self._primitives._get_obj_in_hand()
+                household_objects = {
+                    obj.name: obj for obj in evaluator.env.scene.objects
+                    if obj is not held and eligible_household_target(obj)
+                }
+                marker_objects.update(household_objects)
+
             def operation_marker_objects_for(operation: str) -> dict[str, Any]:
                 diagnostic = {
                     "operation": operation, "filters_private": [],
                     "candidate_source": "custom_provider" if self._operation_marker_provider_custom else "marker_objects",
                 }
                 operation_marker_objects_for.publication_diagnostic = diagnostic
-                candidates = dict(
-                    self._operation_marker_objects_provider(evaluator, operation)
-                    if self._operation_marker_provider_custom
-                    else marker_objects
-                )
+                if operation in self._household_actions:
+                    candidates = dict(household_objects)
+                elif operation == "wipe":
+                    candidates = dict(wipeable_objects)
+                else:
+                    candidates = dict(
+                        self._operation_marker_objects_provider(evaluator, operation)
+                        if self._operation_marker_provider_custom
+                        else marker_objects
+                    )
                 fallback_names = frozenset(
                     self._task_target_fallback_names_provider(operation)
                 )
@@ -2620,6 +2678,272 @@ class R1ProMarkerSymbolicComponentBuilder:
                     target,
                     attempts=1,
                 )
+
+            def wipe_generator(target: Any):
+                from omnigibson.object_states import Covered
+
+                held = self._primitives._get_obj_in_hand()
+                covered = target.states[Covered]
+                covered.clear_cache()
+                dirty_systems = tuple(
+                    system
+                    for system in target.scene.system_registry.objects
+                    if covered.get_value(system)
+                )
+                yield from self._primitives.apply_ref(
+                    self._wipe_primitive, target, attempts=1
+                )
+                # Action20 WIPE can change the target within the same physics step.
+                covered.clear_cache()
+                cleared = sorted(
+                    system.name for system in dirty_systems if not covered.get_value(system)
+                )
+                held_retained = (
+                    held is not None and self._primitives._get_obj_in_hand() is held
+                )
+                return {
+                    "operation": "wipe",
+                    "predicate": "Covered",
+                    "cleared_systems_private": cleared,
+                    "held_tool_retained": held_retained,
+                    "semantic_state_pass": bool(cleared) and held_retained,
+                    "private": True,
+                }
+
+            def household_generator(target: Any, operation: str):
+                from omnigibson import object_states as states
+                from omnigibson.action_primitives.action_primitive_set_base import ActionPrimitiveError
+                from omnigibson.action_primitives.symbolic_semantic_action_primitives import (
+                    SymbolicSemanticActionPrimitiveSet,
+                )
+                from omnigibson.utils.constants import PrimType
+
+                scene = target.scene
+                held = self._primitives._get_obj_in_hand()
+
+                def blocked(message: str) -> None:
+                    raise ActionPrimitiveError(ActionPrimitiveError.Reason.PRE_CONDITION_ERROR, message)
+
+                def producing(source: Any) -> tuple[Any, ...]:
+                    source_state = source.states[states.ParticleSource]
+                    return tuple(
+                        scene.get_system(name) for name in source_state.conditions
+                        if source_state.check_conditions_for_system(name)
+                    )
+
+                def contained(container: Any) -> tuple[Any, ...]:
+                    contain = container.states.get(states.Contains)
+                    if contain is None:
+                        return ()
+                    contain.clear_cache()
+                    container.states[states.ContainedParticles].clear_cache()
+                    return tuple(
+                        system for system in scene.system_registry.objects
+                        if contain.get_value(system)
+                    )
+
+                def contents(container: Any, state_type: Any) -> tuple[Any, ...]:
+                    found = []
+                    for obj in scene.objects:
+                        if obj is container or state_type not in obj.states or states.Inside not in obj.states:
+                            continue
+                        inside = obj.states[states.Inside]
+                        inside.clear_cache()
+                        if inside.get_value(container):
+                            found.append(obj)
+                    return tuple(found)
+
+                def set_true(state: Any, *args: Any) -> bool:
+                    if state is None:
+                        return False
+                    contacts = (
+                        state.obj.states[states.ContactParticles]
+                        if isinstance(state, states.Covered)
+                        else None
+                    )
+                    if contacts is not None:
+                        contacts.clear_cache()
+                    if not state.set_value(*args, True):
+                        return False
+                    # Covered's setter reads the contacts before adding particles.
+                    if contacts is not None:
+                        contacts.clear_cache()
+                    state.clear_cache()
+                    return bool(state.get_value(*args))
+
+                success = False
+                if operation == "cut":
+                    import omnigibson as og
+                    from omnigibson.macros import gm
+
+                    if gm.USE_GPU_DYNAMICS and og.sim.is_playing():
+                        from omnigibson.transition_rules import SlicingRule
+
+                        if "slicer" not in held._abilities:
+                            blocked("Hold a cutting tool.")
+                        if not {"sliceable", "diceable"} & target._abilities.keys():
+                            blocked("The selected object cannot be cut.")
+                        api = scene.transition_rule_api
+                        (rule,) = (rule for rule in api.active_rules if isinstance(rule, SlicingRule))
+                        transition = rule.transition({"sliceable": [target]})
+                        saved = og.sim.dump_state()
+                        context = og.sim._sim_context
+                        saved_clock = (og.sim.current_time, og.sim.current_time_step_index)
+                        callbacks = dict(context._physics_callback_functions)
+                        transition_rules_enabled = gm.ENABLE_TRANSITION_RULES
+
+                        # Paused GPU scenes still hold tensor views on the old collision shapes.
+                        og.sim.stop()
+                        try:
+                            api.execute_transition(added_obj_attrs=transition.add, removed_objs=transition.remove)
+                        finally:
+                            with gm.unlocked():
+                                gm.ENABLE_TRANSITION_RULES = False
+                            try:
+                                og.sim.play()
+                            finally:
+                                with gm.unlocked():
+                                    gm.ENABLE_TRANSITION_RULES = transition_rules_enabled
+                                # Isaac's STOP event resets the clock and drops these subscriptions.
+                                context._current_time, context._number_of_steps = saved_clock
+                                context._physics_callback_functions.update(callbacks)
+                            og.sim.load_state(saved)
+                            og.sim.sync_physx_to_fabric()
+                        for part in transition.add:
+                            api.obj_init_info.pop(part.obj, None)
+                            part.callback(part.obj)
+                            part.obj.update_visuals()
+                        if transition_rules_enabled:
+                            api.refresh_all_rules()
+                    else:
+                        yield from self._primitives.apply_ref(
+                            SymbolicSemanticActionPrimitiveSet.CUT, target, attempts=1
+                        )
+                    success = scene.object_registry("name", target.name) is None
+                elif operation in {"soak_under", "soak_inside"}:
+                    if states.Saturated not in held.states or states.ParticleRemover not in held.states:
+                        blocked("The held object cannot absorb particles.")
+                    saturated = held.states[states.Saturated]
+                    remover = held.states[states.ParticleRemover]
+                    systems = producing(target) if operation == "soak_under" else contained(target)
+                    supported = tuple(
+                        system for system in systems
+                        if remover.supports_system(system.name)
+                        and remover.check_conditions_for_system(system.name)
+                    )
+                    if not supported:
+                        blocked("No absorbable particles are available at the selected target.")
+                    if operation == "soak_under":
+                        yield from self._primitives.apply_ref(
+                            SymbolicSemanticActionPrimitiveSet.SOAK_UNDER, target, attempts=1
+                        )
+                        saturated.clear_cache()
+                        success = any(saturated.get_value(system) for system in supported)
+                    else:
+                        # The pinned primitive passes a system's states instead of the system.
+                        for system in supported:
+                            success |= set_true(saturated, system)
+                    held.update_visuals()
+                elif operation == "fill_with":
+                    filled = held.states.get(states.Filled)
+                    if filled is None:
+                        blocked("Hold a fillable container.")
+                    systems = producing(target)
+                    for system in systems:
+                        if scene.is_physical_particle_system(system.name):
+                            held.states[states.ContainedParticles].clear_cache()
+                            filled.set_value(system, True)
+                            held.states[states.ContainedParticles].clear_cache()
+                            filled.clear_cache()
+                            success |= bool(filled.get_value(system))
+                elif operation in {"pour_into", "spread"}:
+                    if operation == "pour_into":
+                        receiver = target.states[states.ContainedParticles]
+                        sender = held.states.get(states.ContainedParticles)
+                        if sender is None:
+                            blocked("Hold a container with contents to transfer.")
+                        for system in contained(held):
+                            if not scene.is_physical_particle_system(system.name):
+                                continue
+                            source_count = int(sender.get_value(system).n_in_volume)
+                            total = system.n_particles
+                            system.generate_particles_from_link(
+                                obj=target, link=receiver.link, max_samples=source_count
+                            )
+                            added = system.n_particles - total
+                            if added:
+                                sender.clear_cache()
+                                indices = sender.get_value(system).in_volume.nonzero().flatten()
+                                system.remove_particles(idxs=indices[:added])
+                                sender.clear_cache()
+                                held.states[states.Contains].clear_cache()
+                                receiver.clear_cache()
+                                target.states[states.Contains].clear_cache()
+                                success |= bool(target.states[states.Contains].get_value(system))
+                    else:
+                        state_type = states.Saturated if target.prim_type == PrimType.CLOTH else states.Covered
+                        for system in contained(held):
+                            success |= set_true(target.states.get(state_type), system)
+                        target.update_visuals()
+                elif operation == "wait_for_washed":
+                    opened = target.states.get(states.Open)
+                    switched = target.states.get(states.ToggledOn)
+                    if opened is not None:
+                        opened.clear_cache()
+                    if switched is not None:
+                        switched.clear_cache()
+                    if (opened is not None and opened.get_value()) or switched is None or not switched.get_value():
+                        blocked("Close and switch on the washing appliance.")
+                    loads = contents(target, states.Covered)
+                    systems = tuple(scene.system_registry.objects)
+                    success = bool(loads)
+                    for obj in loads:
+                        covered = obj.states[states.Covered]
+                        covered.clear_cache()
+                        for system in systems:
+                            if covered.get_value(system):
+                                covered.set_value(system, False)
+                                covered.clear_cache()
+                            success &= not covered.get_value(system)
+                elif operation == "wait_for_frozen":
+                    refrigerators = [
+                        obj for obj in scene.objects if obj.category in {"fridge", "freezer", "refrigerator"}
+                    ]
+                    if target in refrigerators:
+                        loads = contents(target, states.Frozen)
+                    else:
+                        loads = (target,) if any(
+                            target in contents(appliance, states.Frozen) for appliance in refrigerators
+                        ) else ()
+                    if not loads:
+                        blocked("The selected food must be inside a refrigerator.")
+                    success = True
+                    for obj in loads:
+                        success &= set_true(obj.states[states.Frozen])
+                        obj.update_visuals()
+                elif operation == "wait_for_cooked":
+                    heat = states.HeatSourceOrSink
+                    sources = (target,) if heat in target.states else tuple(
+                        obj for obj in scene.objects if heat in obj.states
+                    )
+                    for source in sources:
+                        heater = source.states[heat]
+                        heater.clear_cache()
+                        if not heater.get_value():
+                            continue
+                        heater._update()
+                        for obj in (scene.objects if source is target else (target,)):
+                            cooked = obj.states.get(states.Cooked)
+                            if cooked is not None and heater.temperature >= cooked.cook_temperature and heater.affects_obj(obj):
+                                success |= set_true(cooked)
+                                obj.update_visuals()
+                if not success:
+                    blocked("The selected object and its current state cannot complete this operation.")
+                return {
+                    "operation": operation,
+                    "semantic_state_pass": self._primitives._get_obj_in_hand() is held,
+                    "private": True,
+                }
 
             def spatial_generator(target: Any, operation: str):
                 if self._spatial_generator_factory is None:
@@ -3366,6 +3690,15 @@ class R1ProMarkerSymbolicComponentBuilder:
                         "close": close_generator,
                         "release": release_generator,
                         "place_on_floor": place_on_floor_generator,
+                        **{
+                            name: (lambda target, operation=name: household_generator(target, operation))
+                            for name in self._household_actions
+                        },
+                        **(
+                            {"wipe": wipe_generator}
+                            if self._wipe_primitive is not None
+                            else {}
+                        ),
                         **(
                             {
                                 "toggle_on": toggle_on_generator,

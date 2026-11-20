@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 import hashlib
 import json
 from typing import Any, Mapping, Sequence
@@ -121,6 +123,8 @@ def build_episode_prompt(
                 "close",
                 "toggle_on",
                 "toggle_off",
+                "wipe",
+                *HOUSEHOLD_ACTIONS,
             )
             if name in registry.names
         )

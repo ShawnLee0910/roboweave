@@ -93,7 +93,21 @@ enabled by selecting a different family. Symbolic and Physical execution retain
 their frozen backends, prerequisites and success gates; identical public action
 names do not make their execution semantics interchangeable.
 
+The WIPE experiment adds one two-call Marker action to `l0-english-v2`.
+Set `ROBOWEAVE_EXPERIMENTAL_WIPE=1` for the run to enable it. Pick a
+compatible cleaning tool, request a `wipe` Marker, then select a visible
+target. Completion requires at least one original covering particle system
+to clear and the same cleaning tool to remain held.
+
 Run the synthetic replay for a concrete three-call Marker example. It exercises
 the real parser, conversation state machine and writers, with synthetic scene
 replies; it is not evidence of collision checks, manipulation or simulator
 success.
+
+Set `ROBOWEAVE_EXPERIMENTAL_HOUSEHOLD_ACTIONS=1` with `l0-english-v2` to try
+`wipe`, `cut`, `soak_inside`, `soak_under`, `fill_with`, `pour_into`, `spread`,
+`wait_for_cooked`, `wait_for_washed`, and `wait_for_frozen`. Each action
+requests a visible Marker and then consumes its selection. Pick the cutting
+tool, absorbent object, or source container first for tool operations. The
+three wait actions update the applicable food or washing state. A household
+scene uses OmniGibson GPU dynamics for physical particle systems.

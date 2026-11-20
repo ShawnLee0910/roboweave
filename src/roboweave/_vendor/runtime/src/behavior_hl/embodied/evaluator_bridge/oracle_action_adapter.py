@@ -8,6 +8,8 @@ so this module never imports the runner or implements another dispatcher.
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 from pathlib import Path
 from collections import Counter
 from functools import lru_cache
@@ -43,6 +45,8 @@ PUBLIC_ACTION20_ORACLE_MARKER_STAGES = {
     "close": (("target", ("part", "object")),),
     "toggle_on": (("target", ("part", "object")),),
     "toggle_off": (("target", ("part", "object")),),
+    "wipe": (("target", ("object",)),),
+    **{name: (("target", ("object",)),) for name in HOUSEHOLD_ACTIONS},
 }
 
 

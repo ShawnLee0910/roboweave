@@ -12,12 +12,16 @@ placed in a model prompt.
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 from collections import Counter
 from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
+
+from behavior_hl.embodied.policy.profiles import HOUSEHOLD_ENABLED, WIPE_ENABLED
 
 
 WITNESS_SCHEMA = "behavior2026.action20-oracle-protocol-witness/v1"
@@ -45,6 +49,8 @@ STRICT_ACTION20 = (
     "toggle_on",
     "toggle_off",
     "wait",
+    *(("wipe",) if WIPE_ENABLED else ()),
+    *(HOUSEHOLD_ACTIONS if HOUSEHOLD_ENABLED else ()),
 )
 REMOVED_PUBLIC_ACTIONS = frozenset(
     {"move_up", "move_down", "mark_visible_objects"}
@@ -67,7 +73,7 @@ SUPPORTED_DAG_ACTIONS = PLACEMENT_ACTIONS | {
     "close",
     "toggle_on",
     "toggle_off",
-}
+} | ({"wipe"} if WIPE_ENABLED else set()) | (set(HOUSEHOLD_ACTIONS) if HOUSEHOLD_ENABLED else set())
 
 _TERMINAL_PUBLIC_STATUSES = ("completed", "not_executed", "uncertain")
 _SELECTION_PUBLIC_STATUSES = ("selection_required", "markers_unavailable")
@@ -117,6 +123,8 @@ def _request_phase(action: str) -> str:
         "close": "request_visible_openable_object_or_part_choices",
         "toggle_on": "request_visible_toggleable_object_or_part_choices",
         "toggle_off": "request_visible_toggleable_object_or_part_choices",
+        "wipe": "request_visible_wipeable_choices",
+        **{name: f"request_visible_{name}_choices" for name in HOUSEHOLD_ACTIONS},
     }[action]
 
 
@@ -132,6 +140,8 @@ def _final_phase(action: str) -> str:
         "close": "execute_current_frame_object_or_part",
         "toggle_on": "execute_current_frame_object_or_part",
         "toggle_off": "execute_current_frame_object_or_part",
+        "wipe": "execute_current_frame_target",
+        **dict.fromkeys(HOUSEHOLD_ACTIONS, "execute_current_frame_target"),
     }[action]
 
 
@@ -233,6 +243,8 @@ def action_protocol_template(action: str) -> tuple[dict[str, Any], ...]:
         "close": "exact_current_frame_visible_openable_object_or_part_binding",
         "toggle_on": "exact_current_frame_visible_toggleable_object_or_part_binding",
         "toggle_off": "exact_current_frame_visible_toggleable_object_or_part_binding",
+        "wipe": "exact_current_frame_visible_wipeable_binding",
+        **dict.fromkeys(HOUSEHOLD_ACTIONS, "exact_current_frame_visible_target_binding"),
     }[action]
     return request, final
 

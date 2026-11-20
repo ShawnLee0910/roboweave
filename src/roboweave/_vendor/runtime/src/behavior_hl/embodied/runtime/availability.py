@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_TOOL_ACTIONS
+
 from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Mapping, Protocol
@@ -22,6 +24,8 @@ _CARRY_ONLY = frozenset(
         "place_on_floor",
         "put_inside",
         "put_back",
+        "wipe",
+        *HOUSEHOLD_TOOL_ACTIONS,
     }
 )
 _EMPTY_HAND_ONLY = frozenset(

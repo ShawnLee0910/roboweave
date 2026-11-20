@@ -9,6 +9,8 @@ ordered onboard PNGs, the public instruction, and its own prior actions.
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 from collections import deque
 import copy
 from dataclasses import asdict, dataclass, is_dataclass, replace
@@ -123,6 +125,7 @@ from behavior_hl.embodied.evaluator_bridge.private_observation_ingress import (
     HEAD_RGB_KEY,
     capture_action_boundary_observation as _capture_action_boundary_observation,
     capture_rendered_oracle_observation as _capture_rendered_oracle_observation,
+    refresh_head_render_product,
 )
 from behavior_hl.embodied.evaluator_bridge.private_head_segmentation_side_channel import (
     PrivateHeadSegmentationSideChannelError,
@@ -7343,6 +7346,12 @@ def _build_marker_runtime(
             if extended_symbolic_actions_enabled
             else None
         ),
+        household_actions="cut" in registry.names,
+        wipe_primitive=(
+            SymbolicSemanticActionPrimitiveSet.WIPE
+            if "wipe" in registry.names
+            else None
+        ),
         spatial_generator_factory=(
             (
                 lambda target, operation, **selector_kwargs: (
@@ -7727,6 +7736,8 @@ def _execute_core(
         "close",
         "toggle_off",
         "toggle_on",
+        "wipe",
+        *HOUSEHOLD_ACTIONS,
     }
     if action.action not in marker_target_actions:
         # Invalidate before synchronization / the before-frame, not merely
@@ -8137,6 +8148,14 @@ def _execute_core(
                 }
             )
         else:
+            if (
+                runtime.zero_physics
+                and action.action in {"pick", "toggle_off", "toggle_on", "wipe"}
+                and result.status == "completed"
+                and "wipe" in runtime.registry.names
+                and "spread" not in runtime.registry.names
+            ):
+                refresh_head_render_product(runtime.environment.evaluator_state())
             capture_timing_token = _ACTION_BOUNDARY_TIMING_PRIVATE.set(
                 after_capture_timing
             )

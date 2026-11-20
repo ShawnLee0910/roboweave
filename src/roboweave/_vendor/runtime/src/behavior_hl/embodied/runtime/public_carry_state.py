@@ -10,6 +10,8 @@ single held-object fact and stores only how the fact was established.
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 from enum import Enum
 from typing import Any, Callable, Mapping
 
@@ -74,6 +76,8 @@ _NO_STATE_ACTIONS = frozenset(
         "close",
         "toggle_on",
         "toggle_off",
+        "wipe",
+        *HOUSEHOLD_ACTIONS,
         "wait",
         "stop",
     }

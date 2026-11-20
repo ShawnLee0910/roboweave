@@ -7,6 +7,8 @@ objects inside the evaluator process.
 
 from __future__ import annotations
 
+from behavior_hl.embodied.policy.protocol import HOUSEHOLD_ACTIONS
+
 import binascii
 import hashlib
 import struct
@@ -739,6 +741,8 @@ class R1ProResidentEnvironment:
                 "close",
                 "toggle_on",
                 "toggle_off",
+                "wipe",
+                *HOUSEHOLD_ACTIONS,
             }
         ):
             # Movement, stop, markerless placement, and put_back invalidate a prior marker

@@ -93,6 +93,22 @@ def capture_private_head_frame(
     )
 
 
+def refresh_head_render_product(evaluator: Any) -> None:
+    import omnigibson as og
+
+    head_camera = evaluator.robot.sensors[CAMERA_SENSOR_NAMES["head"]]
+    texture = head_camera.render_product.hydra_texture
+    # Zero-step particle changes can leave old pixels in this render product.
+    with og.sim.editing_usd():
+        texture.set_updates_enabled(False)
+    try:
+        og.sim.render()
+    finally:
+        with og.sim.editing_usd():
+            texture.set_updates_enabled(True)
+        og.sim.update_handles()
+
+
 def capture_action_boundary_observation(
     runtime: Any,
     *,
@@ -170,6 +186,11 @@ def capture_action_boundary_observation(
     import omnigibson as og
 
     evaluator = runtime.environment.evaluator_state()
+    if (
+        getattr(runtime, "zero_physics", False)
+        and "spread" in getattr(getattr(runtime, "registry", None), "names", ())
+    ):
+        refresh_head_render_product(evaluator)
     if not callable(getattr(getattr(evaluator, "env", None), "get_obs", None)):
         raise RuntimeError("official evaluator environment cannot refresh observations")
     preprocess = getattr(evaluator, "_preprocess_obs", None)
