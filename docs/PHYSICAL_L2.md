@@ -1,15 +1,15 @@
 # Physical L1 and L2 collection profiles
 
-These bindings preserve four separate frozen profiles. They do not promote the older
-L2 proposal audit to a runnable task collection and do not reuse the latest runtime
-for every task. The L2 collection has 37 tasks: 23 Symbolic and 14 Physical.
+These bindings preserve four separate frozen profiles. The formal 20-task
+L2 suite selects 9 Symbolic tasks and 11 Physical tasks from the historical
+source collection and uses its original `l2-collection37` profile ID.
 
 | Profile | Tasks | Bench revision | Runtime revision | Initial-state route |
 | --- | ---: | --- | --- | --- |
 | `l1-p-inside5` | 5 | `7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb` | `955585540d95cba02f672c0d3cdb94048db23bf2` | Prepared Physical restore |
 | `l1-p-ontop5` | 5 | `7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb` | `c813a24f853bb90ba3772365ca5182ecb28c553b` | Prepared Physical restore |
 | `l1-p-additions20` | 20 | `7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb` | `ab615d43d4ede7e6a50eaeda189077529bef361a` | Prepared Physical restore |
-| `l2-collection37` | 37 | `4c8364842157153875d098ebb529adcc0620a714` | `aa878b489d402aaa9b1e30b083d0435cf44b26be` | Per-task Symbolic restore or Physical reconstruction |
+| `l2-collection37` | 20 | `4c8364842157153875d098ebb529adcc0620a714` | `aa878b489d402aaa9b1e30b083d0435cf44b26be` | Per-task Symbolic restore or Physical reconstruction |
 
 The family adapter is `src/roboweave/adapters/physical.py`. Its first operation,
 `resolve_inputs`, only reads verified private files and the selected public task.
@@ -38,7 +38,8 @@ It does not rewrite the TaskSpec, registration, process contract or goal formula
 P30 still requires its source TaskSpec public instruction to equal its approved
 English instruction.
 
-See [the import record](../provenance/imports_physical_l2.json), the per-file
+See the [original import record](../provenance/imports_physical_l2.json), the
+[formal L2 selection](../provenance/imports_l2_formal20.json), the per-file
 SHA256 manifests in `src/roboweave/data/assets/`, and the L2 catalog delta in
 `src/roboweave/data/tasks/l2-collection37.json`. `tools/build_physical_l2_manifests.py`
 is a maintainer-only, bounded reader of the original inputs, not an installation
@@ -74,7 +75,7 @@ model name, task ID and action budget are identical.
 | P Inside5 | 12–15 | 300 | 3600 s | 20260914 |
 | P OnTop5 | 12–54 | 300 | 3600 s | 20260914 |
 | P Additions20 | 12–78 | 300 | 3600 s | 20260914 |
-| L2 collection37 | 35–300 | 105–3810 | 7200 s | 19506 |
+| Formal L2 | 35–300 | 105–1950 | 7200 s | 19506 |
 
 Each exact per-task value is frozen in the catalog and input manifest. Ranges are
 informational, not default budgets. The inputs retain the frozen five-turn history,
@@ -106,11 +107,11 @@ The selected target contract hash is updated only to account for its recorded
 path relocation. The restricted BEHAVIOR asset tree remains a separately acquired
 external dependency configured by `runtime.data_root`.
 
-## Verification and remaining work
+## Historical verification and remaining work
 
-This change ran 13 small distributable adapter tests and checked all 67 bindings
-against their respective frozen Bench `compile_handoff`, native argument builders
-and `load_prepared` functions on CPU. All 67 passed. These checks read metadata;
+The rc3 import ran 13 small distributable adapter tests and checked the
+original 67 bindings against their frozen Bench `compile_handoff`, native
+argument builders and `load_prepared` functions on CPU. All 67 passed. These checks read metadata;
 they do not load a simulator, restore a scene or make a model request. The source
 file/hash closure was checked while constructing each manifest. A further
 [67-task relocation check](../reports/rc3/PHYSICAL_L2_INPUT_CHECK.json) imported

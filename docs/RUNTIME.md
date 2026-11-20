@@ -16,7 +16,7 @@ roboweave run
   original scene final_score.json     private evaluator result
 ```
 
-Eight profiles have execution integration for the 257 public configurations.
+Eight profiles have execution integration for the 240 public configurations.
 `l0-english-v2` remains the default; A/M/V, the three P subpackages and L2 collection
 each select their own frozen Bench/Runtime pair. [Support matrix](SUPPORT_MATRIX.md)
 records the full revisions. Historical preparation evidence may name another

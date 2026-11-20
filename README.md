@@ -2,8 +2,9 @@
 
 RoboWeave evaluates embodied agents through frozen tasks, Action20, public visual
 observations and canonical goal/process verification. Version `0.1.0rc5` provides
-one installable package and command-line workflow for **257 task configurations**:
-L0 (100), L1 A/M/V/P (30 each), and L2 collection (37).
+one installable package and command-line workflow for the **210 formal tasks**:
+L0 (100), L1 A/M/P (30 each), and L2 (20). The separate 30-task L1-V
+suite brings the executable catalog to 240 configurations.
 
 **This is a privately shared review candidate. Public release and Live validation
 remain pending.** Private evaluation inputs and licensed simulator assets are

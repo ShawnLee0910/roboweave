@@ -134,9 +134,9 @@
   "l2-collection37": {
     "profile": "l2-collection37",
     "family": "L2",
-    "count": 37,
-    "symbolic_count": 23,
-    "physical_count": 14,
+    "count": 20,
+    "symbolic_count": 9,
+    "physical_count": 11,
     "runtime_revision": "aa878b489d402aaa9b1e30b083d0435cf44b26be",
     "bench_revision": "4c8364842157153875d098ebb529adcc0620a714",
     "execution_supported": true,

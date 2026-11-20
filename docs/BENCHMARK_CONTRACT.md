@@ -1,12 +1,12 @@
 # Candidate Benchmark contract
 
-This is the contract entry point for the local public candidate. Eight frozen execution profiles cover 257 catalog configurations; **L0 English-v2** remains the default. Every profile is listed in [SUPPORT_MATRIX.md](SUPPORT_MATRIX.md). The source project's earlier contract remains useful historical context, but its old candidate pools, static milestones and protocol examples do not replace the selected FINAL inputs.
+This is the contract entry point for the local public candidate. Eight frozen execution profiles cover 240 catalog configurations, including the formal 210 tasks and separate 30-task L1-V suite. **L0 English-v2** remains the default. Every profile is listed in [SUPPORT_MATRIX.md](SUPPORT_MATRIX.md). The source project's earlier contract remains useful historical context, but its old candidate pools, static milestones and protocol examples do not replace the selected FINAL inputs.
 
 ## Frozen identity and task boundaries
 
 A task is identified by family, public catalog ID, original instruction ID, runtime instruction ID, exact source file SHA256 and version profile. [TASKS.md](TASKS.md) documents all fields. Source directory dates and current repository HEADs do not establish a historical execution version. The imported code commits, source-file hashes and private per-run derivation receipt together identify an experiment.
 
-L0 is baseline embodied execution. L1 A/M/V/P and the 37 L2 collection configurations retain their family definitions, distinct frozen sources and family-specific admission. The 36-entry L2 proposal audit is separate and not executable. The public catalog is an evaluation catalog. No new train/dev/hidden-test split or training-data export is introduced.
+L0 is baseline embodied execution. L1 A/M/V/P and the 20 formal L2 configurations retain their family definitions, distinct frozen sources and family-specific admission. The 36-entry L2 proposal audit is separate and not executable. The public catalog is an evaluation catalog. No new train/dev/hidden-test split or training-data export is introduced.
 
 A task's approved English instruction, initial preparation state, scene, seed, goal, required process/history, decision budget and model-call budget are frozen inputs. Resource relocation may change filesystem references and dependent file hashes, and a per-run aggregate may select one exact task. It must preserve the selected record's non-path semantics. A repair to a goal, process condition, initial state, instruction or threshold requires a new profile and evidence; it is not a packaging operation.
 

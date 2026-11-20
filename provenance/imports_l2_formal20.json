@@ -1,0 +1,32 @@
+[
+  {
+    "source_root": "l1a-basket-oracle-f9765b3-20261119",
+    "source_revision": null,
+    "source_path": "oracle_budget_formal_210.csv",
+    "source_sha256": "7acc90bd420c29f84820798f83873988872dc9f1a7e245dd266d8013e0945b8a",
+    "destination": "src/roboweave/data/tasks/l2-collection37.json",
+    "changes": "Select the formal L2 task IDs only. Project the selection into the executable catalog, profile counts and asset manifest using the existing frozen task records.",
+    "selected_task_ids": [
+      "l2r_am_02_20260916_w0_challenge",
+      "l2r_mv_02_20260916_b0_challenge",
+      "l2r_mv_03_20260916_w0_challenge",
+      "l2r_mv_05_20260916_w0_challenge",
+      "l2r_mvp_03_20260916_base",
+      "l2x_p50_inside_002_20260914",
+      "l2x_p50_inside_011_20260914",
+      "l2x_p50_inside_004_20260914",
+      "l2x_p50_support_002_20260914",
+      "l2x_p50_support_006_20260914",
+      "l2x_p50_support_007_20260914",
+      "l2x_pdiv12_010_20260915",
+      "l2x_pnext40_018_20260916",
+      "l2x_pnext40_020_20260916",
+      "l2x_pnext40_028_20260916",
+      "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
+      "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
+      "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
+      "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
+      "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
+    ]
+  }
+]

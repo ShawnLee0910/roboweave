@@ -73,7 +73,7 @@ The acceptance sequence is:
    only where the original contract defines them; do not invent score tolerances.
 8. **Coverage:** extend from a smoke task to every task and declared dependency/
    scene combination in the selected profile before claiming full-profile Live
-   reproduction. The executable catalog has 257 tasks across eight profiles;
+   reproduction. The executable catalog has 240 tasks across eight profiles;
    validation of one profile cannot stand in for another. Preserve load failures
    and unsuccessful runs in the denominator.
 

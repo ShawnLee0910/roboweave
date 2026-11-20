@@ -116,10 +116,10 @@ source SHA256 `c41a0950ece03ab3cbe07026818c9df89ffd1ce2f572188cb56a10beef0ff4cc`
 and the Common `monitor.py::collect_run_progress` phase rules (SHA256
 `9e1a94adddc151dcc94302e27e91321c9f21fa4fd1fdf453456a7e29da46b573`).
 Only process ownership and observation access are adapted to the local worker.
-Provider-directory discovery is bounded by the declared model-call budget,
-covering L2's valid 3810-call tasks rather than the old observer's 512-entry
-capacity. This capacity change does not alter phase classification or stop
-conditions. No zero-Q early-stop or historical scheduler/queue is introduced.
+Provider-directory discovery is bounded by the declared model-call budget.
+The historical L2 collection included budgets up to 3,810 calls. The formal
+L2 selection includes budgets up to 1,950 calls and uses the same phase
+classification and stop conditions. No zero-Q early-stop or historical scheduler/queue is introduced.
 
 Model API keys remain environment variables. JSON contains the selected
 `api_key_env` name, never the key value. Public `validate_model_config()` performs
