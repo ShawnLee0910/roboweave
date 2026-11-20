@@ -5,12 +5,12 @@
     "Agent.py": "21089b3ec7a788679def07216bbcfb8001bbae18ce769b58a7aabad4db624405",
     "action20_bare_marker_schema.json": "cfd4860d6fd50049e9b1cc3bfec1893faced7d5d51886315e509064752741b4f",
     "action20_core_instructions.txt": "4b9b5168a0541be734cda28133cdb86fe18b82f999a9663a1048795631bafefd",
-    "action20_protocol.py": "28b6545b70408e32afba70216a909bc1dcf717e5878cc774a2d1eb1358661143",
+    "action20_protocol.py": "55f15c005207252ce7cc5ad4e4f09451315452dda3377ca60b39dee4cd380c42",
     "action20_tool_schema.json": "2b11b8ba14c56fa480020989d218069c207f265cc1ecd28f35dbe9e3da74e4e2",
     "agent_artifacts.py": "c77a913142ae8f3c16559b24b5676398ecdeb6f957bf9507d3543fd23f59eddd",
     "agent_common.py": "71bf09de60ec05ce62a8474bcd076f89acc1bd6a7aa920e7b0c39d6c24977a72",
     "agent_observation.py": "8b70dba47d8d76c735ff80264e50afe12b075f83edf5d70b1c8635ed8df3c9aa",
-    "agent_prompt.py": "3eb5af1ae24d70b54301a1942c6b2467f0e4660027e52551fa35e86fabb17cc9",
+    "agent_prompt.py": "836389fee98612c4cccb6aa22b83cddcbe97e49ab79c8567ede92a00ecf255aa",
     "agent_protocol.py": "d6556997c345e7ff3b72a5a25deee8b5ee0291a819c66ae09c493693a016b55e",
     "agent_resume.py": "5d61fdf510c1cf38518974229a54ee627448ef4822c7a069dc0d6efb420c947c",
     "episode_conversation.py": "69a18e62eaa3155c189076956a4fa0778b261d0eda439c7766de0be5a3498f87",
@@ -33,7 +33,7 @@
     "lab/responses_image_proxy.py": "ec67a1f0a0b96d916bc247cbab8a4e4bd47c3deb6cb94828afe8fc50f2030bcd",
     "lab/rolling_episode_checkpoints.py": "62e9d74864aac0d10db859c6c1ae7580d59dc094e226bb6d5571b4e169676c55",
     "lab/run_artifact_layout.py": "c806817fbb33850600e187477deae335b736fe5a2f01176f3bc120a93cf2dd9c",
-    "lab/scene_action_preconditions.py": "07840dad01714d903bc0a66b046bf12a9959eeddaf2b937f73c32686dd12b4dc",
+    "lab/scene_action_preconditions.py": "8744f3d2858edc5d3d65024bfffe254566ce00b79ef63081bab0f584988dea5e",
     "lab/scene_protocol.py": "83d3a5604b29809094f20f99588defa3f68fe5bf38e183fd6b9f2f23e20c1257",
     "lab/scene_server.py": "84dce381a0a99cb10ac703f2ae66fabfb3b77da7104e2c3a154838dc63fa82b8",
     "lab/scene_socket_transport.py": "b1a17fc51f68e5f451d3d307e8530dd643d53938a05cd502fbc82e1ff7402212",
@@ -46,6 +46,9 @@
     "lab/scene_protocol.py": "Add explicit runtime registry root while preserving ready-path containment and task identity checks.",
     "lab/scene_server.py": "Pass explicit runtime registry to persistent checkpoint validation; preserve containment and frozen scene logic. Add own PID to ready metadata so the public parent verifies child ownership before connection.",
     "lab/prepared_state_inputs.py": "Replace private remote interpreter location with PATH-resolved python3 in the optional historical evidence helper; public local asset flow uses only load_prepared.",
-    "lab/scene_source_identity.py": "verify registered frozen source manifests; preserve external official checkout Git identity only when its top-level exactly equals the supplied root"
+    "lab/scene_source_identity.py": "verify registered frozen source manifests; preserve external official checkout Git identity only when its top-level exactly equals the supplied root",
+    "action20_protocol.py": "opt-in experimental WIPE through the existing Action20 execution chain (rc5 baseline SHA256 28b6545b70408e32afba70216a909bc1dcf717e5878cc774a2d1eb1358661143)",
+    "agent_prompt.py": "opt-in experimental WIPE through the existing Action20 execution chain (rc5 baseline SHA256 3eb5af1ae24d70b54301a1942c6b2467f0e4660027e52551fa35e86fabb17cc9)",
+    "lab/scene_action_preconditions.py": "opt-in experimental WIPE through the existing Action20 execution chain (rc5 baseline SHA256 07840dad01714d903bc0a66b046bf12a9959eeddaf2b937f73c32686dd12b4dc)"
   }
 }

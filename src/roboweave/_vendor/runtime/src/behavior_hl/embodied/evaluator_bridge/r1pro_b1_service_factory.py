@@ -100,6 +100,7 @@ _KNOWN_ACTIONS = frozenset(
         "place_touching",
         "toggle_on",
         "toggle_off",
+        "wipe",
         "wait",
         "stop",
         *_BASE_ACTIONS,
@@ -547,6 +548,7 @@ class R1ProB1ServiceFactory:
             "place_next_to",
             "place_under",
             "place_touching",
+            "wipe",
         }:
             if not likely or active_hand not in {"left", "right"}:
                 raise R1ProB1ServiceFactoryError(
@@ -561,7 +563,7 @@ class R1ProB1ServiceFactory:
                 ),
             ):
                 raise R1ProB1ServiceFactoryError(
-                    f"{action.action} requires parsed Marker placement arguments"
+                    f"{action.action} requires parsed Marker arguments"
                 )
             return GRASP_COMPONENT
         if action.action == "put_back":

@@ -210,6 +210,7 @@ def audit_b1_live_readiness(
         B1_MARKER_SYMBOLIC_ACTION23_REQUIRED_ACTIONS,
         B1_MARKER_SYMBOLIC_LEGACY_ACTION23_REQUIRED_ACTIONS,
         B1_MARKER_SYMBOLIC_ACTION20_REQUIRED_ACTIONS,
+        (*B1_MARKER_SYMBOLIC_ACTION20_REQUIRED_ACTIONS, "wipe"),
     )
     gates["required_action_profile"] = actions is not None and any(
         len(actions) == len(profile) and set(actions) == set(profile)

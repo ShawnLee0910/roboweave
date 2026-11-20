@@ -353,6 +353,19 @@ def marker_symbolic_v34_specs(
     )
 
 
+def marker_symbolic_wipe_spec() -> ActionSpec:
+    return _v34_marker_spec(
+        name="wipe",
+        description=(
+            "With a cleaning tool held, request visible wipeable objects, "
+            "then wipe the object selected from the fresh Marker frame."
+        ),
+        capability="official_symbolic_wipe",
+        controller_key="manipulation.marker_symbolic_wipe",
+        selection_request=True,
+    )
+
+
 def marker_symbolic_action23_specs() -> tuple[ActionSpec, ...]:
     """Return the opt-in Action23 marker-bound object-action surface.
 

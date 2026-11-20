@@ -33,7 +33,7 @@ def public_precondition_block_reason(*, runtime: Any, action: str) -> str | None
         raise RuntimeError("public carry snapshot active_hand is invalid")
     if likely != (active_hand in {"left", "right"}):
         raise RuntimeError("public carry snapshot hand state is inconsistent")
-    if action in PLACEMENT_ACTIONS:
+    if action in PLACEMENT_ACTIONS or action == "wipe":
         return (
             None
             if active_hand == "left"

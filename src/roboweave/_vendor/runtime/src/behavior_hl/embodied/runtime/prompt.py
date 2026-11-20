@@ -121,6 +121,7 @@ def build_episode_prompt(
                 "close",
                 "toggle_on",
                 "toggle_off",
+                "wipe",
             )
             if name in registry.names
         )

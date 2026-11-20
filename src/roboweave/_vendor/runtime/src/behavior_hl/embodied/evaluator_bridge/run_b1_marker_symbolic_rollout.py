@@ -7343,6 +7343,11 @@ def _build_marker_runtime(
             if extended_symbolic_actions_enabled
             else None
         ),
+        wipe_primitive=(
+            SymbolicSemanticActionPrimitiveSet.WIPE
+            if "wipe" in registry.names
+            else None
+        ),
         spatial_generator_factory=(
             (
                 lambda target, operation, **selector_kwargs: (
@@ -7727,6 +7732,7 @@ def _execute_core(
         "close",
         "toggle_off",
         "toggle_on",
+        "wipe",
     }
     if action.action not in marker_target_actions:
         # Invalidate before synchronization / the before-frame, not merely

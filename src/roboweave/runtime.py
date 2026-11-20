@@ -183,6 +183,8 @@ def runtime_plan(config: Mapping[str, Any], task_inputs: Mapping[str, Any]) -> d
            "HF_HOME": str(workspace / "cache/huggingface"), "NUMBA_CACHE_DIR": str(workspace / "cache/numba"),
            "MPLCONFIGDIR": str(workspace / "config/matplotlib"), "NO_PROXY": "127.0.0.1,localhost",
            "no_proxy": "127.0.0.1,localhost", "VK_ICD_FILENAMES": str(icd), "VK_DRIVER_FILES": str(icd)}
+    if config["profile"] == DEFAULT_PROFILE and os.environ.get("ROBOWEAVE_EXPERIMENTAL_WIPE") == "1":
+        env["ROBOWEAVE_EXPERIMENTAL_WIPE"] = "1"
     if runtime.get("host_dlsym_shim"):
         shim = str(_file(runtime["host_dlsym_shim"], "runtime.host_dlsym_shim"))
         env.update(ESI_HOST_DLSYM_SHIM=shim, LD_PRELOAD=shim)

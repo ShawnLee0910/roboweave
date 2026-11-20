@@ -22,6 +22,7 @@ _CARRY_ONLY = frozenset(
         "place_on_floor",
         "put_inside",
         "put_back",
+        "wipe",
     }
 )
 _EMPTY_HAND_ONLY = frozenset(

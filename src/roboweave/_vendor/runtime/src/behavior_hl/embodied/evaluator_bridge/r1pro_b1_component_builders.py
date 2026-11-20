@@ -1662,6 +1662,7 @@ class R1ProMarkerSymbolicComponentBuilder:
         close_primitive: Any | None = None,
         toggle_on_primitive: Any | None = None,
         toggle_off_primitive: Any | None = None,
+        wipe_primitive: Any | None = None,
         release_primitive: Any | None = None,
         spatial_generator_factory: Callable[..., Any] | None = None,
         marker_store: PrivateVisualMarkerStore,
@@ -1824,6 +1825,7 @@ class R1ProMarkerSymbolicComponentBuilder:
             raise ValueError("toggle-on and toggle-off primitives must be supplied together")
         self._toggle_on_primitive = toggle_on_primitive
         self._toggle_off_primitive = toggle_off_primitive
+        self._wipe_primitive = wipe_primitive
         self.toggle_symbolic_actions = all(
             value is not None for value in toggle_optional
         )
@@ -1921,6 +1923,7 @@ class R1ProMarkerSymbolicComponentBuilder:
                     "close",
                     "release",
                     "place_on_floor",
+                    *(("wipe",) if self._wipe_primitive is not None else ()),
                     *(
                         ("toggle_on", "toggle_off")
                         if self.toggle_symbolic_actions
@@ -1963,6 +1966,7 @@ class R1ProMarkerSymbolicComponentBuilder:
             "place_next_to",
             "place_under",
             "place_touching",
+            "wipe",
         }:
             expected_type = (
                 (MarkerTargetArgs, MarkerTargetOrRequestArgs)
@@ -1974,7 +1978,7 @@ class R1ProMarkerSymbolicComponentBuilder:
                 or active_hand != self.implicit_object_grasp_hand
             ):
                 raise R1ProB1ComponentBuilderError(
-                    "marker place requires the implicit-hand carry state"
+                    f"{action.action} requires the implicit-hand carry state"
                 )
         elif action.action in {"open", "close", "toggle_on", "toggle_off"}:
             if (
@@ -2189,17 +2193,32 @@ class R1ProMarkerSymbolicComponentBuilder:
                 marker_objects.update(support_objects)
                 support_names = frozenset(support_objects)
 
+            wipeable_objects = {}
+            if action.action == "wipe":
+                from omnigibson.object_states import Covered
+
+                held = self._primitives._get_obj_in_hand()
+                wipeable_objects = {
+                    str(obj.name): obj
+                    for obj in evaluator.env.scene.objects
+                    if obj is not held and Covered in getattr(obj, "states", {})
+                }
+                marker_objects.update(wipeable_objects)
+
             def operation_marker_objects_for(operation: str) -> dict[str, Any]:
                 diagnostic = {
                     "operation": operation, "filters_private": [],
                     "candidate_source": "custom_provider" if self._operation_marker_provider_custom else "marker_objects",
                 }
                 operation_marker_objects_for.publication_diagnostic = diagnostic
-                candidates = dict(
-                    self._operation_marker_objects_provider(evaluator, operation)
-                    if self._operation_marker_provider_custom
-                    else marker_objects
-                )
+                if operation == "wipe":
+                    candidates = dict(wipeable_objects)
+                else:
+                    candidates = dict(
+                        self._operation_marker_objects_provider(evaluator, operation)
+                        if self._operation_marker_provider_custom
+                        else marker_objects
+                    )
                 fallback_names = frozenset(
                     self._task_target_fallback_names_provider(operation)
                 )
@@ -2620,6 +2639,34 @@ class R1ProMarkerSymbolicComponentBuilder:
                     target,
                     attempts=1,
                 )
+
+            def wipe_generator(target: Any):
+                from omnigibson.object_states import Covered
+
+                held = self._primitives._get_obj_in_hand()
+                covered = target.states[Covered]
+                dirty_systems = tuple(
+                    system
+                    for system in target.scene.system_registry.objects
+                    if covered.get_value(system)
+                )
+                yield from self._primitives.apply_ref(
+                    self._wipe_primitive, target, attempts=1
+                )
+                cleared = sorted(
+                    system.name for system in dirty_systems if not covered.get_value(system)
+                )
+                held_retained = (
+                    held is not None and self._primitives._get_obj_in_hand() is held
+                )
+                return {
+                    "operation": "wipe",
+                    "predicate": "Covered",
+                    "cleared_systems_private": cleared,
+                    "held_tool_retained": held_retained,
+                    "semantic_state_pass": bool(cleared) and held_retained,
+                    "private": True,
+                }
 
             def spatial_generator(target: Any, operation: str):
                 if self._spatial_generator_factory is None:
@@ -3366,6 +3413,11 @@ class R1ProMarkerSymbolicComponentBuilder:
                         "close": close_generator,
                         "release": release_generator,
                         "place_on_floor": place_on_floor_generator,
+                        **(
+                            {"wipe": wipe_generator}
+                            if self._wipe_primitive is not None
+                            else {}
+                        ),
                         **(
                             {
                                 "toggle_on": toggle_on_generator,

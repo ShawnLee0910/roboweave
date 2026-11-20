@@ -739,6 +739,7 @@ class R1ProResidentEnvironment:
                 "close",
                 "toggle_on",
                 "toggle_off",
+                "wipe",
             }
         ):
             # Movement, stop, markerless placement, and put_back invalidate a prior marker

@@ -50,6 +50,7 @@ MARKER_SYMBOLIC_V34_CONTROLLER_KEYS = {
     "place_touching": "manipulation.marker_symbolic_place_touching",
     "toggle_on": "manipulation.marker_symbolic_toggle_on",
     "toggle_off": "manipulation.marker_symbolic_toggle_off",
+    "wipe": "manipulation.marker_symbolic_wipe",
     "release": "manipulation.marker_symbolic_release",
     "place_on_floor": "manipulation.marker_symbolic_place_on_floor",
 }
@@ -81,6 +82,7 @@ _ACTION_FIRST_MARKER_OPERATIONS = frozenset(
         "close",
         "toggle_on",
         "toggle_off",
+        "wipe",
     }
 )
 _SECOND_STAGE_SELECTION_KINDS = {

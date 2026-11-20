@@ -74,6 +74,7 @@ _NO_STATE_ACTIONS = frozenset(
         "close",
         "toggle_on",
         "toggle_off",
+        "wipe",
         "wait",
         "stop",
     }

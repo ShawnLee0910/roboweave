@@ -43,6 +43,7 @@ PUBLIC_ACTION20_ORACLE_MARKER_STAGES = {
     "close": (("target", ("part", "object")),),
     "toggle_on": (("target", ("part", "object")),),
     "toggle_off": (("target", ("part", "object")),),
+    "wipe": (("target", ("object",)),),
 }
 
 

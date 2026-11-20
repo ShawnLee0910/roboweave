@@ -93,6 +93,12 @@ enabled by selecting a different family. Symbolic and Physical execution retain
 their frozen backends, prerequisites and success gates; identical public action
 names do not make their execution semantics interchangeable.
 
+The WIPE experiment adds one two-call Marker action to `l0-english-v2`.
+Set `ROBOWEAVE_EXPERIMENTAL_WIPE=1` for the run to enable it. Pick a
+compatible cleaning tool, request a `wipe` Marker, then select a visible
+target. Completion requires at least one original covering particle system
+to clear and the same cleaning tool to remain held.
+
 Run the synthetic replay for a concrete three-call Marker example. It exercises
 the real parser, conversation state machine and writers, with synthetic scene
 replies; it is not evidence of collision checks, manipulation or simulator

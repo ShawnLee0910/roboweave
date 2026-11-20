@@ -303,6 +303,7 @@ def build_b1_picking_up_toys_dispatcher(
         "place_under",
         *(("place_touching",) if action23_mode else ()),
     )
+    wipe_actions = ("wipe",) if action20_mode and "wipe" in expected_by_action else ()
     if symbolic_wait_mode:
         expected_actions = {
             *BASE_ACTIONS,
@@ -315,6 +316,7 @@ def build_b1_picking_up_toys_dispatcher(
             "close",
             "toggle_on",
             "toggle_off",
+            *wipe_actions,
             "wait",
         }
         if action23_mode:
@@ -400,6 +402,7 @@ def build_b1_picking_up_toys_dispatcher(
                 "close",
                 "toggle_on",
                 "toggle_off",
+                *wipe_actions,
                 markerless_place_action,
             )
         )
