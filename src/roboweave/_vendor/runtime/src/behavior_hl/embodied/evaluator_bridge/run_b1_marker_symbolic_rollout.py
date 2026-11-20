@@ -125,6 +125,7 @@ from behavior_hl.embodied.evaluator_bridge.private_observation_ingress import (
     HEAD_RGB_KEY,
     capture_action_boundary_observation as _capture_action_boundary_observation,
     capture_rendered_oracle_observation as _capture_rendered_oracle_observation,
+    refresh_head_render_product,
 )
 from behavior_hl.embodied.evaluator_bridge.private_head_segmentation_side_channel import (
     PrivateHeadSegmentationSideChannelError,
@@ -8149,24 +8150,12 @@ def _execute_core(
         else:
             if (
                 runtime.zero_physics
-                and action.action in {"pick", "toggle_off", "toggle_on", "wipe", *HOUSEHOLD_ACTIONS}
+                and action.action in {"pick", "toggle_off", "toggle_on", "wipe"}
                 and result.status == "completed"
                 and "wipe" in runtime.registry.names
+                and "spread" not in runtime.registry.names
             ):
-                import omnigibson as og
-
-                # The existing head render product can retain pixels from the old object state.
-                evaluator = runtime.environment.evaluator_state()
-                head_sensor = evaluator.robot.sensors[CAMERA_SENSOR_NAMES["head"]]
-                texture = head_sensor.render_product.hydra_texture
-                with og.sim.editing_usd():
-                    texture.set_updates_enabled(False)
-                try:
-                    og.sim.render()
-                finally:
-                    with og.sim.editing_usd():
-                        texture.set_updates_enabled(True)
-                    og.sim.update_handles()
+                refresh_head_render_product(runtime.environment.evaluator_state())
             capture_timing_token = _ACTION_BOUNDARY_TIMING_PRIVATE.set(
                 after_capture_timing
             )
