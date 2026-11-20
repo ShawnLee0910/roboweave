@@ -2645,6 +2645,7 @@ class R1ProMarkerSymbolicComponentBuilder:
 
                 held = self._primitives._get_obj_in_hand()
                 covered = target.states[Covered]
+                covered.clear_cache()
                 dirty_systems = tuple(
                     system
                     for system in target.scene.system_registry.objects
@@ -2653,6 +2654,8 @@ class R1ProMarkerSymbolicComponentBuilder:
                 yield from self._primitives.apply_ref(
                     self._wipe_primitive, target, attempts=1
                 )
+                # Action20 WIPE can change the target within the same physics step.
+                covered.clear_cache()
                 cleared = sorted(
                     system.name for system in dirty_systems if not covered.get_value(system)
                 )
