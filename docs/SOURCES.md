@@ -35,6 +35,7 @@ SHA256 and candidate destination:
 - [Additional frozen Bench/Runtime profiles and L0 identity delta](../provenance/imports_profiles.json)
 - [A/M/V resource bindings](../provenance/imports_amv.json)
 - [Physical/L2 resource and public-input bindings](../provenance/imports_physical_l2.json)
+- [Formal L2 task selection](../provenance/imports_l2_formal20.json)
 - [Original source preservation checks](../provenance/source_preservation.json)
 
 This is a new Git repository with no imported internal history or remote.

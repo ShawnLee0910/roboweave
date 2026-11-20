@@ -1,7 +1,8 @@
 # Supported profiles and evidence boundary
 
-The public catalog contains **257 configurations across eight executable
-profiles**. Each selects its own frozen Bench and Runtime, family adapter and
+The public catalog contains **240 configurations across eight executable
+profiles**, including the formal 210 tasks and a separate 30-task L1-V suite.
+Each selects its own frozen Bench and Runtime, family adapter and
 private-resource manifest. There are six Bench bundles and seven Runtime bundles;
 the common M/V Runtime and common P Bench are stored once.
 
@@ -14,7 +15,7 @@ the common M/V Runtime and common P Bench are stored once.
 | `l1-p-inside5` | 5 | Physical | `955585540d95cba02f672c0d3cdb94048db23bf2` | `7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb` |
 | `l1-p-ontop5` | 5 | Physical | `c813a24f853bb90ba3772365ca5182ecb28c553b` | `7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb` |
 | `l1-p-additions20` | 20 | Physical | `ab615d43d4ede7e6a50eaeda189077529bef361a` | `7ebc9c948a047ba7f51e0a1d2bd768b228fad5eb` |
-| `l2-collection37` | 37 | 23 Symbolic, 14 Physical | `aa878b489d402aaa9b1e30b083d0435cf44b26be` | `4c8364842157153875d098ebb529adcc0620a714` |
+| `l2-collection37` | 20 | 9 Symbolic, 11 Physical | `aa878b489d402aaa9b1e30b083d0435cf44b26be` | `4c8364842157153875d098ebb529adcc0620a714` |
 
 All eight have source selection, checked resource import/materialization,
 native metadata admission, common Bench model integration and score archival.
@@ -28,7 +29,7 @@ in [Validation](VALIDATION.md); older L0-only receipts remain historical.
 | A/M | Their frozen public instructions, process/history contracts and prepared state; no substitution of L0 code. |
 | V | Explicit collection identity, D1 branch, intervention package and prepared bundle; protocol completion remains a success gate. |
 | P | Three distinct Runtime revisions, native model-start admission and physical qualification; Q alone is insufficient. |
-| L2 collection | Approved public English overlay, task-specific mode and composite verification. The 14 Physical entries reconstruct their declared world instead of restoring a symbolic prepared state. |
+| L2 collection | Approved public English overlay, task-specific mode and composite verification. The 11 Physical entries reconstruct their declared world. |
 
 The candidate uses the selected Bench's **common** model harness. Historical
 native model runners, prompts, controllers, retries and result files remain
@@ -47,9 +48,8 @@ and result classification rather than assuming one global episode deadline.
 three complete packages, six Base-only entries and 27 blocked entries. Its
 Runtime reference is `e75bcd742ee093e5e9d64f8079d44b11fcc4d9b1` and compiler reference
 is `37160fd489b56cbd893299c47a16d23f60b77c46`. It has no executable Bench binding and
-cannot be passed to `run` or `doctor`. It is neither an alias nor a predecessor
-version label for the 37 collection entries; authoring restrictions in that
-older audit do not define the collection's exact supported combinations.
+cannot be passed to `run` or `doctor`. The formal L2 selection comprises 20
+tasks from the historical source collection under the `l2-collection37` ID.
 Arbitrary new task or axis combinations remain outside the frozen catalog.
 
 Bindings come from the per-family release/handoff records, not directory dates

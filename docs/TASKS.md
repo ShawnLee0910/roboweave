@@ -1,8 +1,9 @@
 # Task definitions and release identity
 
-The public evaluation catalog has **257 configurations**: L0 English-v2 (100),
-L1 A/M/V/P (30 each), and L2 collection (37). Eight profiles connect those
-definitions to exact source bundles and private-input adapters. The separate
+The public evaluation catalog has **240 configurations**: L0 English-v2 (100),
+L1 A/M/P (30 each) and L2 (20) make up the formal 210 tasks. The 30-task L1-V
+suite is tracked separately. Eight profiles connect those definitions to exact
+source bundles and private-input adapters. The separate
 36-proposal L2 authoring audit is not part of the executable catalog. Every
 profile remains Live-unverified; see [Support matrix](SUPPORT_MATRIX.md).
 
@@ -59,10 +60,11 @@ P uses the `inside`, `ontop` and `additions` subpackages under
 respectively. Each subpackage retains its distinct Physical Runtime and original
 model-start/qualification contract.
 
-L2 collection is the frozen 37-entry collection, with 23 Symbolic entries and
-14 Physical entries. It includes an approved model-facing English overlay; the
-original TaskSpec wording remains in private source evidence. The 23 prepared
-routes and 14 native `physical_collection` routes are selected per task.
+The formal L2 suite selects 20 tasks from the historical 37-task source
+collection and retains its `l2-collection37` profile ID and original task handles.
+The approved model-facing English overlay and source TaskSpec wording keep
+their original bindings. The 9 Symbolic tasks use prepared routes and the
+11 Physical tasks use native `physical_collection` routes.
 Physical collection reconstructs and verifies the declared world; its historical
 camera/preparation bundle is evidence, not a symbolic state-restoration recipe.
 The exact task list defines support; it does not enable arbitrary combinations

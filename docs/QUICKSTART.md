@@ -23,9 +23,9 @@ roboweave tasks show am200v1_a001_b2_control --family L0
 ```
 
 The catalog shows permitted public task metadata. It does not expose the private
-initial state or verifier inputs. The catalog has 257 configurations across eight
-execution profiles. Every task must use its own profile; choosing a family does
-not redirect it through L0. Use `tasks list --family L1-A`, `L1-M`, `L1-V`, `L1-P`
+initial state or verifier inputs. The catalog has 240 configurations across eight
+execution profiles, including the separate 30-task L1-V suite. Every task runs
+under its own profile. Use `tasks list --family L1-A`, `L1-M`, `L1-V`, `L1-P`
 or `L2` to inspect the other families. `l2-proposals` is an authoring audit, not an
 execution profile.
 
@@ -74,8 +74,9 @@ cp configs/live.example.json configs/live.local.json
 
 Edit `configs/live.local.json` before using it. Match `profile`, `run.family` and
 `run.task_id` using [Tasks](TASKS.md). For example, the L2 configuration
-`l2r_am_02_20260916_w0_challenge` uses family `L2` and profile `l2-collection37`;
-its `assets.root` must be a separate directory such as
+`l2r_am_02_20260916_w0_challenge` uses family `L2` and profile `l2-collection37`.
+That profile ID still identifies the frozen runtime and now serves the formal
+20-task L2 suite. Its `assets.root` must be a separate directory such as
 `../assets/local/l2-collection37`. Configure the new environment's
 Python, official BEHAVIOR checkout and data root, the authorized `mdl_root`, runtime toolchain paths, a new
 workspace, an owned GPU UUID, a free port, and your explicit model endpoint and

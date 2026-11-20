@@ -138,6 +138,11 @@ def build():
     input_revision = subprocess.check_output(['git', '--no-optional-locks', '-C', str(BASE/'fb-batchctl-20260825'), 'rev-parse', 'HEAD'], text=True).strip()
     ledgers = [lane['initial_ledger'] for lane in profile['dispatcher']['lanes']]
     tasks = read(inputs / 'tasks.json')['stages'][0]['tasks']
+    [selection] = read(REPO / 'provenance/imports_l2_formal20.json')
+    selected = set(selection['selected_task_ids'])
+    tasks = [task for task in tasks if task['task_name'] in selected]
+    if len(tasks) != 20 or {task['task_name'] for task in tasks} != selected:
+        raise ValueError('Formal L2 selection does not resolve to 20 unique frozen tasks')
     review = read(inputs / 'instructions.json')
     if review['status'] != 'APPROVED':
         raise ValueError('L2 English overlay lacks approval')
@@ -178,7 +183,7 @@ def build():
             return subprocess.check_output(['git','--no-optional-locks','-C',str(path),*args],text=True).strip()
         sources.append(dict(path=str(path),head=git('rev-parse','HEAD'),
             tracked_status=git('status','--porcelain','--untracked-files=no')))
-    payload=dict(schema_version=1, scope='P30 and L2 collection37 explicit metadata/resource references only',
+    payload=dict(schema_version=1, scope='P30 and formal L2 task metadata/resource references only',
         origin_profile=dict(path=str(source_profile),sha256=sha(source_profile),
             fields_used=['dispatcher.lanes[].initial_ledger.instruction_budgets',
                          'dispatcher.lanes[].initial_ledger.instruction_jobs']),

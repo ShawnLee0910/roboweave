@@ -151,15 +151,15 @@ def test_bundled_manifest_totals_and_release_boundaries():
     from importlib.resources import files
     root=files('roboweave').joinpath('data')
     total=0
-    for profile,count in [('l1-p-inside5',5),('l1-p-ontop5',5),('l1-p-additions20',20),('l2-collection37',37)]:
+    for profile,count in [('l1-p-inside5',5),('l1-p-ontop5',5),('l1-p-additions20',20),('l2-collection37',20)]:
         manifest=json.loads(root.joinpath(f'assets/{profile}.json').read_text())
         assert len(manifest['inputs_by_task'])==count
         assert all('selection' in row for row in manifest['files'])
         assert not any(row['source_path'].endswith('/profile.json') for row in manifest['files'])
         assert all(len(row['sha256'])==64 and row['bytes']>0 for row in manifest['files'])
         total+=count
-    assert total==67
+    assert total==50
     catalog=json.loads(root.joinpath('tasks/l2-collection37.json').read_text())['tasks']
-    assert len(catalog)==37
-    assert sum(t['action_mode']=='Physical' for t in catalog)==14
-    assert sum(t['action_mode']=='Symbolic' for t in catalog)==23
+    assert len(catalog)==20
+    assert sum(t['action_mode']=='Physical' for t in catalog)==11
+    assert sum(t['action_mode']=='Symbolic' for t in catalog)==9

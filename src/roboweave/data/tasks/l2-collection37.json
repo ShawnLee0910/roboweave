@@ -27,31 +27,6 @@
       "split": "train"
     },
     {
-      "task_id": "l2r_am_03_20260916_w0_challenge",
-      "instruction_id": "l2r_am_03_20260916_w0_challenge",
-      "runtime_instruction_id": "l2r_am_03_20260916_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Inspect the two keyboards and two mice on the desk. First move the mouse initially on a keyboard to a clear spot on the desk. Then put the mouse initially loose on the desk on the keyboard that was empty at the start. Finally return the temporarily moved mouse to its original keyboard. Do not move either keyboard.",
-      "instruction_sha256": "07adf3167f50e958f44f1e6943711e7b961cab321659ecd184b5e8ea55937d20",
-      "scene_model": "house_double_floor_upper",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 1860,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 1,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
       "task_id": "l2r_mv_02_20260916_b0_challenge",
       "instruction_id": "l2r_mv_02_20260916_b0_challenge",
       "runtime_instruction_id": "l2r_mv_02_20260916_b0_challenge",
@@ -102,31 +77,6 @@
       "split": "train"
     },
     {
-      "task_id": "l2r_mv_04_20260916_w0_challenge",
-      "instruction_id": "l2r_mv_04_20260916_w0_challenge",
-      "runtime_instruction_id": "l2r_mv_04_20260916_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp two off-on cycles and the flashlight one on-off cycle; interleaving is allowed, ending with the lamp on and flashlight off.",
-      "instruction_sha256": "e2f66e313ad64e348702f4febb36ce66b039ae034a3e3b667f9f8e541151ea41",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 255,
-        "maximum_model_calls": 765,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 4,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
       "task_id": "l2r_mv_05_20260916_w0_challenge",
       "instruction_id": "l2r_mv_05_20260916_w0_challenge",
       "runtime_instruction_id": "l2r_mv_05_20260916_w0_challenge",
@@ -146,56 +96,6 @@
         "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
         "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
         "row_index": 5,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2r_mv_06_20260916_w0_challenge",
-      "instruction_id": "l2r_mv_06_20260916_w0_challenge",
-      "runtime_instruction_id": "l2r_mv_06_20260916_w0_challenge",
-      "family": "L2",
-      "instruction_en": "First move the two pens that initially rest on the two notebooks onto the desktop, then place each one on the other pen's original notebook. Do not move the third pen that started on the desktop or any of the three notebooks. Before finishing, keep the two pens on each other's original notebooks.",
-      "instruction_sha256": "539121662f5a312a1c445e3ea9f91c8c2e2f92429f8b10ce4b5978542e5a78b1",
-      "scene_model": "house_double_floor_upper",
-      "budget": {
-        "maximum_action_decisions": 75,
-        "maximum_model_calls": 225,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 6,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2r_amv_02_20260916_w0_challenge",
-      "instruction_id": "l2r_amv_02_20260916_w0_challenge",
-      "runtime_instruction_id": "l2r_amv_02_20260916_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Inspect the two keyboards and two mice on the desk. First move the mouse initially on a keyboard to a clear spot on the desk. Then put the mouse initially loose on the desk on the keyboard that was empty at the start. Finally return the temporarily moved mouse to its original keyboard. Do not move either keyboard. Keep both mouse-keyboard relations until the task ends.",
-      "instruction_sha256": "39bf5090eff86e85f704100a4de88266dacfb5e7dbfdfef26b6e3c919c202a87",
-      "scene_model": "house_double_floor_upper",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 1905,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 7,
         "state": "untracked",
         "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
       },
@@ -302,31 +202,6 @@
       "split": "train"
     },
     {
-      "task_id": "l2x_p50_support_001_20260914",
-      "instruction_id": "l2x_p50_support_001_20260914",
-      "runtime_instruction_id": "l2x_p50_support_001_20260914",
-      "family": "L2",
-      "instruction_en": "Place the apple steadily on one of the two cutting boards. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
-      "instruction_sha256": "7639af8be6733f1c5d7e8017ea8b4af688ce6e2f49244ec95a06526e0f332a87",
-      "scene_model": "house_single_floor",
-      "budget": {
-        "maximum_action_decisions": 70,
-        "maximum_model_calls": 210,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Physical",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 12,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
       "task_id": "l2x_p50_support_002_20260914",
       "instruction_id": "l2x_p50_support_002_20260914",
       "runtime_instruction_id": "l2x_p50_support_002_20260914",
@@ -427,56 +302,6 @@
       "split": "train"
     },
     {
-      "task_id": "l2x_pdiv12_012_20260915",
-      "instruction_id": "l2x_pdiv12_012_20260915",
-      "runtime_instruction_id": "l2x_pdiv12_012_20260915",
-      "family": "L2",
-      "instruction_en": "Place the orange steadily on one of the two plates on the desk. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
-      "instruction_sha256": "550b62c52e4f396769cfec815eea4dc28345e600c380ca8dbcb0fe1f82306712",
-      "scene_model": "house_double_floor_lower",
-      "budget": {
-        "maximum_action_decisions": 60,
-        "maximum_model_calls": 180,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Physical",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 17,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_pnext40_026_20260916",
-      "instruction_id": "l2x_pnext40_026_20260916",
-      "runtime_instruction_id": "l2x_pnext40_026_20260916",
-      "family": "L2",
-      "instruction_en": "Place the water bottle on whichever of the two supports on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
-      "instruction_sha256": "1318384487841384166909a0b9b38552bb46ab3901a765ef18750f9acb95eeb3",
-      "scene_model": "hotel_suite_small",
-      "budget": {
-        "maximum_action_decisions": 80,
-        "maximum_model_calls": 240,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Physical",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 18,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
       "task_id": "l2x_pnext40_018_20260916",
       "instruction_id": "l2x_pnext40_018_20260916",
       "runtime_instruction_id": "l2x_pnext40_018_20260916",
@@ -552,31 +377,6 @@
       "split": "train"
     },
     {
-      "task_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 1 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "c684de574eee9e7b22773f3f23c7d8b4cc3f89e03807cd7809557d380955b1ad",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 245,
-        "maximum_model_calls": 735,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 22,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
       "task_id": "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
       "instruction_id": "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
       "runtime_instruction_id": "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
@@ -596,31 +396,6 @@
         "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
         "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
         "row_index": 23,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 1 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "dc7f0a15bb4de2cb623add65cb817a858c3ee4f013b3f567075438e0bdd3d798",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 265,
-        "maximum_model_calls": 795,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 24,
         "state": "untracked",
         "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
       },
@@ -721,206 +496,6 @@
         "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
         "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
         "row_index": 28,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "b4ca9329697984a2143ec2c2f7e78a1584f648faa3dc875ec1d9c7fe21c7c834",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 265,
-        "maximum_model_calls": 795,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 29,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 2 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "151a33678dc6c9348e3e0b350de54be9d78061627b0e23d91cdca0f536a4fd79",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 1920,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 30,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "e0ceccc1d4d4b68b1ad7e05be38803b69800282a1ec82fa65ade059eb7706443",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 2760,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 31,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 4 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "25c03bda13373dd3f00db476e455774457cf5b50165b2dd664d8f04f7a7335e9",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 2790,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 32,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "dbd98ff7bafe8059e5691010068ed3c3da98ac3f257b4ad9811f0a30c758ca74",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 275,
-        "maximum_model_calls": 825,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 33,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 2 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "a9f5a1b1b1b0b23416de563530375a495f3f7f4167078944d31c19c053d8e136",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 1950,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 34,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "6db192bd382dc79ba12732a7d8f51fe1122d8894637cba4fd8939b6f17ae5831",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 2790,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 35,
-        "state": "untracked",
-        "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
-      },
-      "split": "train"
-    },
-    {
-      "task_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
-      "instruction_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
-      "runtime_instruction_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
-      "family": "L2",
-      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 4 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "instruction_sha256": "93a2c5bfad3de8227021b0fdd09504dc0c4e69ec2d8fd08db2128095277b33a2",
-      "scene_model": "office_vendor_machine",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 3810,
-        "wall_clock_seconds": 7200
-      },
-      "action_mode": "Symbolic",
-      "profile": "l2-collection37",
-      "source": {
-        "root": "fb-batchctl-20260825",
-        "path": "campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/tasks.json",
-        "sha256": "6f36848c2e5fa8906e7c0006e8938b74a50976d3f47178d6e6b825ea938d01d7",
-        "row_index": 36,
         "state": "untracked",
         "revision": "7fdfb35c1dbfaa9cce7de1ae8dd697c1024183df"
       },

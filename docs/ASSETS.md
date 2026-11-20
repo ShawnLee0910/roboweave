@@ -27,7 +27,7 @@ identities, byte counts, SHA256, task membership and relocation bindings.
 | `l1-p-inside5` | 52 |
 | `l1-p-ontop5` | 52 |
 | `l1-p-additions20` | 202 |
-| `l2-collection37` | 353 |
+| `l2-collection37` | 193 |
 
 Counts are per profile and may include files shared with another profile; they
 are not counts of separately licensed simulator assets. The L0 manifest includes
@@ -102,8 +102,8 @@ The selected profile's isolated worker then invokes its original metadata
 validators. A/M retain preparation and process contracts; V additionally validates
 collection identity, D1 intervention and inherited preparation; P invokes its
 physical admission. L2 retains approved public English separately from source
-TaskSpec text. Its 14 Physical entries use native fresh-world construction,
-while the 23 Symbolic entries use prepared routes. Relocation does not silently
+TaskSpec text. Its 11 Physical entries use native fresh-world construction,
+while the 9 Symbolic entries use prepared routes. Relocation does not silently
 convert one route or action mode into another.
 Before native admission, the public inspection entry checks the model handle,
 instruction, budgets and instruction provenance against the installed catalog,

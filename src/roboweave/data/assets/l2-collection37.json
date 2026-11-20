@@ -4,7 +4,6 @@
   "source_roots": [
     "action20-capability-benchmark",
     "fb-batchctl-20260825",
-    "l2-batch-author-20260918",
     "l2-consolidated-20260918",
     "l2-delivery37-20260924",
     "l2-expanded50-20260921",
@@ -12,9 +11,7 @@
     "oracle-adonor25-a2c1c4a-20260912-ops",
     "oracle-m120-live-tail-20260913-ops",
     "oracle-mnext120-rest92-20260913-ops",
-    "oracle-mnext28-20260912-ops",
     "oracle-mtarget12-20260912-ops",
-    "oracle_full_28cfbd6_20260910_local1",
     "worktrees"
   ],
   "private_assets_not_distributed": true,
@@ -58,128 +55,25 @@
       ],
       "task_ids": [
         "l2r_am_02_20260916_w0_challenge",
-        "l2r_am_03_20260916_w0_challenge",
         "l2r_mv_02_20260916_b0_challenge",
         "l2r_mv_03_20260916_w0_challenge",
-        "l2r_mv_04_20260916_w0_challenge",
         "l2r_mv_05_20260916_w0_challenge",
-        "l2r_mv_06_20260916_w0_challenge",
-        "l2r_amv_02_20260916_w0_challenge",
         "l2r_mvp_03_20260916_base",
         "l2x_p50_inside_002_20260914",
         "l2x_p50_inside_011_20260914",
         "l2x_p50_inside_004_20260914",
-        "l2x_p50_support_001_20260914",
         "l2x_p50_support_002_20260914",
         "l2x_p50_support_006_20260914",
         "l2x_p50_support_007_20260914",
         "l2x_pdiv12_010_20260915",
-        "l2x_pdiv12_012_20260915",
-        "l2x_pnext40_026_20260916",
         "l2x_pnext40_018_20260916",
         "l2x_pnext40_020_20260916",
         "l2x_pnext40_028_20260916",
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-batch-author-20260918/mv/artifacts/l2r_mv_04_20260916/base/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-batch-author-20260918",
-      "source_path": "mv/artifacts/l2r_mv_04_20260916/base/build/combined/prepared_oracle_states.json",
-      "sha256": "3011917c2d07c67ba847df8e579468fb483950c5c8c1efb2efa0dfdd0fe45943",
-      "bytes": 3119,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2r_mv_04_20260916_w0_challenge": [
-            "l2r_mv_04_20260916_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-batch-author-20260918/mv/artifacts/l2r_mv_04_20260916/base/build/compiled/official_compatible/template_contracts/l2r_mv_04_20260916_w0_challenge.json",
-          "task_ids": [
-            "l2r_mv_04_20260916_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-batch-author-20260918/mv/artifacts/l2r_mv_04_20260916/base/build/compiled/official_compatible/activity_definitions/l2r_mv_04_20260916_w0_challenge/problem0.bddl",
-      "source_root": "l2-batch-author-20260918",
-      "source_path": "mv/artifacts/l2r_mv_04_20260916/base/build/compiled/official_compatible/activity_definitions/l2r_mv_04_20260916_w0_challenge/problem0.bddl",
-      "sha256": "ba7ccd47007ef9182deaff980eaf09e8f104612eef2cd004e5e31c0af5e0a08c",
-      "bytes": 805,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-batch-author-20260918/mv/artifacts/l2r_mv_04_20260916/base/build/compiled/official_compatible/template_contracts/l2r_mv_04_20260916_w0_challenge.json",
-      "source_root": "l2-batch-author-20260918",
-      "source_path": "mv/artifacts/l2r_mv_04_20260916/base/build/compiled/official_compatible/template_contracts/l2r_mv_04_20260916_w0_challenge.json",
-      "sha256": "688d419f3a4c86b02b2de27eb4d3e2d52b8577633faeb80a20e592c9aa80eceb",
-      "bytes": 12170,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-batch-author-20260918/mv/artifacts/l2r_mv_04_20260916/base/build/frozen/template/l2r_mv_04_20260916_w0_challenge.json",
-      "source_root": "l2-batch-author-20260918",
-      "source_path": "mv/artifacts/l2r_mv_04_20260916/base/build/frozen/template/l2r_mv_04_20260916_w0_challenge.json",
-      "sha256": "9c5dc573f17ab8e44124400d6018f32ae52ecb3305c87fc30e9bf8c6d8a18d9d",
-      "bytes": 218183,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-batch-author-20260918/mv/artifacts/l2r_mv_04_20260916/base/build/frozen/tro_state/l2r_mv_04_20260916_w0_challenge.json",
-      "source_root": "l2-batch-author-20260918",
-      "source_path": "mv/artifacts/l2r_mv_04_20260916/base/build/frozen/tro_state/l2r_mv_04_20260916_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
+        "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -391,132 +285,6 @@
         "ids": {
           "l2r_mv_02_20260916_b0_challenge": [
             "l2r_mv_02_20260916_b0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-consolidated-20260918/d1_packages_readback/mv06_d1_001/catalog.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "d1_packages_readback/mv06_d1_001/catalog.json",
-      "sha256": "53c6c7a5c66f90b250391fb7f49e3c5db94b7d4bdcaaa5429fa3cc30b55238fb",
-      "bytes": 20368,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2r_mv_06_20260916_w0_challenge": [
-            "l2r_mv_06_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-consolidated-20260918/d1_packages_readback/mv06_d1_001/package.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "d1_packages_readback/mv06_d1_001/package.json",
-      "sha256": "f78a373044ce4b426f38ab7b91e6988d73af1ba56841b0cedbe265d6c719d76d",
-      "bytes": 3693,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2r_mv_06_20260916_w0_challenge": [
-            "l2r_mv_06_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-consolidated-20260918/d1_packages_readback/mv06_d1_001/task_specs.jsonl",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "d1_packages_readback/mv06_d1_001/task_specs.jsonl",
-      "sha256": "454ab5a063d58429c0c9c4f544acd1416a1b81a1827a38e1cc8a7b5ba12dea8b",
-      "bytes": 35772,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2r_mv_06_20260916_w0_challenge": [
-            "l2r_mv_06_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-consolidated-20260918/mv04_d1_package/catalog.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "mv04_d1_package/catalog.json",
-      "sha256": "6cfe09b29815d131339daebca9d03da2b8950718502f9e18dbdb85fd8d546877",
-      "bytes": 17437,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2r_mv_04_20260916_w0_challenge": [
-            "l2r_mv_04_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-consolidated-20260918/mv04_d1_package/package.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "mv04_d1_package/package.json",
-      "sha256": "0ba5019dce6d4d2e2ac207e1e987cd08be2193f579b84948682406e1614da97d",
-      "bytes": 3631,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2r_mv_04_20260916_w0_challenge": [
-            "l2r_mv_04_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-consolidated-20260918/mv04_d1_package/task_specs.jsonl",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "mv04_d1_package/task_specs.jsonl",
-      "sha256": "9e45d390e02f0f6458c358c73c9949a6f0a4f958fd13f3d35bb96da76576dd55",
-      "bytes": 22993,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2r_mv_04_20260916_w0_challenge": [
-            "l2r_mv_04_20260916_w0_challenge"
           ]
         }
       }
@@ -820,155 +588,6 @@
       "selection": null
     },
     {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_am_03_20260916/build/combined/prepared_oracle_states.json",
-      "sha256": "275d45d17d3822de13c2395fbff89f6533fecae248fc73b4e2c5ae19915447fc",
-      "bytes": 3065,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2r_am_03_20260916_w0_challenge": [
-            "l2r_am_03_20260916_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/compiled/official_compatible/template_contracts/l2r_am_03_20260916_w0_challenge.json",
-          "task_ids": [
-            "l2r_am_03_20260916_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/compiled/official_compatible/activity_definitions/l2r_am_03_20260916_w0_challenge/problem0.bddl",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_am_03_20260916/build/compiled/official_compatible/activity_definitions/l2r_am_03_20260916_w0_challenge/problem0.bddl",
-      "sha256": "f35dff239a8a45487f38e4a91f6ee4d57ee77528308c0a8f705814c7889b46ce",
-      "bytes": 856,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/compiled/official_compatible/template_contracts/l2r_am_03_20260916_w0_challenge.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_am_03_20260916/build/compiled/official_compatible/template_contracts/l2r_am_03_20260916_w0_challenge.json",
-      "sha256": "f6f46780f075ce95aff3b59821f7eb5867ae157403550747a9b6b15440184c81",
-      "bytes": 15923,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/frozen/template/l2r_am_03_20260916_w0_challenge.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_am_03_20260916/build/frozen/template/l2r_am_03_20260916_w0_challenge.json",
-      "sha256": "9192529324db8ad23e9d9c39a26fe53da6124f391548efe790188b42bd95abc0",
-      "bytes": 161300,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/frozen/tro_state/l2r_am_03_20260916_w0_challenge.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_am_03_20260916/build/frozen/tro_state/l2r_am_03_20260916_w0_challenge.json",
-      "sha256": "3b490c19140f12231efb7173b1820ab4dcf481b87aa553c13a916f1164d6d380",
-      "bytes": 3231,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/l2/catalog.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_am_03_20260916/build/l2/catalog.json",
-      "sha256": "f49e1c9da26ae360d2ce1da697a902b9fc02938c5651ef6dab75a3f0e35ef625",
-      "bytes": 20497,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2r_am_03_20260916_w0_challenge": [
-            "l2r_am_03_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/l2/package.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_am_03_20260916/build/l2/package.json",
-      "sha256": "e0fb0edaf9a1c5b2ddd25ab5ccd78b8802f7f8cd3292719ef9903d094224d9bf",
-      "bytes": 3085,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2r_am_03_20260916_w0_challenge": [
-            "l2r_am_03_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/l2/task_specs.jsonl",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_am_03_20260916/build/l2/task_specs.jsonl",
-      "sha256": "484a658e8dc258ab946826eb8ae292736edbf4622fe38bfa6941ead45617c683",
-      "bytes": 32025,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2r_am_03_20260916_w0_challenge": [
-            "l2r_am_03_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
       "key": "l2-consolidated-20260918/supported_batch/l2r_mv_02_20260916/build/combined/prepared_oracle_states.json",
       "source_root": "l2-consolidated-20260918",
       "source_path": "supported_batch/l2r_mv_02_20260916/build/combined/prepared_oracle_states.json",
@@ -1055,92 +674,6 @@
       "selection": null
     },
     {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_mv_06_20260916/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_mv_06_20260916/build/combined/prepared_oracle_states.json",
-      "sha256": "2c722e55c87f10fa85d75dc2d349de2aca543e7b88fa7e008a00c2c3bb961897",
-      "bytes": 3009,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2r_mv_06_20260916_w0_challenge": [
-            "l2r_mv_06_20260916_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-consolidated-20260918/supported_batch/l2r_mv_06_20260916/build/compiled/official_compatible/template_contracts/l2r_mv_06_20260916_w0_challenge.json",
-          "task_ids": [
-            "l2r_mv_06_20260916_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_mv_06_20260916/build/compiled/official_compatible/activity_definitions/l2r_mv_06_20260916_w0_challenge/problem0.bddl",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_mv_06_20260916/build/compiled/official_compatible/activity_definitions/l2r_mv_06_20260916_w0_challenge/problem0.bddl",
-      "sha256": "2666bc729aa6b10e55ea22387ae404057aed2afdfd32a3cbc797992480ae85bf",
-      "bytes": 856,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_mv_06_20260916/build/compiled/official_compatible/template_contracts/l2r_mv_06_20260916_w0_challenge.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_mv_06_20260916/build/compiled/official_compatible/template_contracts/l2r_mv_06_20260916_w0_challenge.json",
-      "sha256": "c32bff65928641202bb9d4304dfafdbfaf29c38c610155c8be3533e459502240",
-      "bytes": 17270,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_mv_06_20260916/build/frozen/template/l2r_mv_06_20260916_w0_challenge.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_mv_06_20260916/build/frozen/template/l2r_mv_06_20260916_w0_challenge.json",
-      "sha256": "1e109b650e6d3e869b58b0f41700f14450c4cc84f71cee89e3afbf4057c8cf37",
-      "bytes": 164080,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-consolidated-20260918/supported_batch/l2r_mv_06_20260916/build/frozen/tro_state/l2r_mv_06_20260916_w0_challenge.json",
-      "source_root": "l2-consolidated-20260918",
-      "source_path": "supported_batch/l2r_mv_06_20260916/build/frozen/tro_state/l2r_mv_06_20260916_w0_challenge.json",
-      "sha256": "8b00ccbe8aeb4a4ab710103a94ecdf1969ec60d9698bce682a35682f1c1b44c5",
-      "bytes": 4432,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-delivery37-20260924/model/physical_1/handoff.json",
       "source_root": "l2-delivery37-20260924",
       "source_path": "model/physical_1/handoff.json",
@@ -1154,13 +687,10 @@
         "l2x_p50_inside_002_20260914",
         "l2x_p50_inside_011_20260914",
         "l2x_p50_inside_004_20260914",
-        "l2x_p50_support_001_20260914",
         "l2x_p50_support_002_20260914",
         "l2x_p50_support_006_20260914",
         "l2x_p50_support_007_20260914",
         "l2x_pdiv12_010_20260915",
-        "l2x_pdiv12_012_20260915",
-        "l2x_pnext40_026_20260916",
         "l2x_pnext40_018_20260916",
         "l2x_pnext40_020_20260916",
         "l2x_pnext40_028_20260916"
@@ -1180,9 +710,6 @@
           "l2x_p50_inside_004_20260914": [
             "l2x_p50_inside_004_20260914"
           ],
-          "l2x_p50_support_001_20260914": [
-            "l2x_p50_support_001_20260914"
-          ],
           "l2x_p50_support_002_20260914": [
             "l2x_p50_support_002_20260914"
           ],
@@ -1194,12 +721,6 @@
           ],
           "l2x_pdiv12_010_20260915": [
             "l2x_pdiv12_010_20260915"
-          ],
-          "l2x_pdiv12_012_20260915": [
-            "l2x_pdiv12_012_20260915"
-          ],
-          "l2x_pnext40_026_20260916": [
-            "l2x_pnext40_026_20260916"
           ],
           "l2x_pnext40_018_20260916": [
             "l2x_pnext40_018_20260916"
@@ -1227,13 +748,10 @@
         "l2x_p50_inside_002_20260914",
         "l2x_p50_inside_011_20260914",
         "l2x_p50_inside_004_20260914",
-        "l2x_p50_support_001_20260914",
         "l2x_p50_support_002_20260914",
         "l2x_p50_support_006_20260914",
         "l2x_p50_support_007_20260914",
         "l2x_pdiv12_010_20260915",
-        "l2x_pdiv12_012_20260915",
-        "l2x_pnext40_026_20260916",
         "l2x_pnext40_018_20260916",
         "l2x_pnext40_020_20260916",
         "l2x_pnext40_028_20260916"
@@ -1253,9 +771,6 @@
           "l2x_p50_inside_004_20260914": [
             "l2x_p50_inside_004_20260914"
           ],
-          "l2x_p50_support_001_20260914": [
-            "l2x_p50_support_001_20260914"
-          ],
           "l2x_p50_support_002_20260914": [
             "l2x_p50_support_002_20260914"
           ],
@@ -1267,12 +782,6 @@
           ],
           "l2x_pdiv12_010_20260915": [
             "l2x_pdiv12_010_20260915"
-          ],
-          "l2x_pdiv12_012_20260915": [
-            "l2x_pdiv12_012_20260915"
-          ],
-          "l2x_pnext40_026_20260916": [
-            "l2x_pnext40_026_20260916"
           ],
           "l2x_pnext40_018_20260916": [
             "l2x_pnext40_018_20260916"
@@ -1318,13 +827,6 @@
           "pointer": "/handoff_sha256",
           "key": "l2-delivery37-20260924/model/physical_1/handoff.json",
           "task_ids": [
-            "l2x_p50_support_001_20260914"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/physical_1/handoff.json",
-          "task_ids": [
             "l2x_p50_support_002_20260914"
           ]
         },
@@ -1347,20 +849,6 @@
           "key": "l2-delivery37-20260924/model/physical_1/handoff.json",
           "task_ids": [
             "l2x_pdiv12_010_20260915"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/physical_1/handoff.json",
-          "task_ids": [
-            "l2x_pdiv12_012_20260915"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/physical_1/handoff.json",
-          "task_ids": [
-            "l2x_pnext40_026_20260916"
           ]
         },
         {
@@ -1443,20 +931,6 @@
       "selection": null
     },
     {
-      "key": "l2-delivery37-20260924/model/physical_1/prepared/l2x_p50_support_001_20260914.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/physical_1/prepared/l2x_p50_support_001_20260914.json",
-      "sha256": "ccd692987b948ba29458ab6808696d1652773f05b6292621c8eac19bc801ef4e",
-      "bytes": 8886,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_p50_support_001_20260914"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-delivery37-20260924/model/physical_1/prepared/l2x_p50_support_002_20260914.json",
       "source_root": "l2-delivery37-20260924",
       "source_path": "model/physical_1/prepared/l2x_p50_support_002_20260914.json",
@@ -1513,20 +987,6 @@
       "selection": null
     },
     {
-      "key": "l2-delivery37-20260924/model/physical_1/prepared/l2x_pdiv12_012_20260915.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/physical_1/prepared/l2x_pdiv12_012_20260915.json",
-      "sha256": "47cfd84b9c98321bd0c07d411e752cf998e7fa3b5f5071487747006e4800b495",
-      "bytes": 8748,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_pdiv12_012_20260915"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-delivery37-20260924/model/physical_1/prepared/l2x_pnext40_018_20260916.json",
       "source_root": "l2-delivery37-20260924",
       "source_path": "model/physical_1/prepared/l2x_pnext40_018_20260916.json",
@@ -1555,20 +1015,6 @@
       "selection": null
     },
     {
-      "key": "l2-delivery37-20260924/model/physical_1/prepared/l2x_pnext40_026_20260916.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/physical_1/prepared/l2x_pnext40_026_20260916.json",
-      "sha256": "bebdfe4361d6bc8e283e2a7a21d27a059d647e2d9b98f178602748b57a589e9f",
-      "bytes": 8690,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_pnext40_026_20260916"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-delivery37-20260924/model/physical_1/prepared/l2x_pnext40_028_20260916.json",
       "source_root": "l2-delivery37-20260924",
       "source_path": "model/physical_1/prepared/l2x_pnext40_028_20260916.json",
@@ -1593,28 +1039,14 @@
       ],
       "task_ids": [
         "l2r_am_02_20260916_w0_challenge",
-        "l2r_am_03_20260916_w0_challenge",
         "l2r_mv_02_20260916_b0_challenge",
         "l2r_mv_03_20260916_w0_challenge",
-        "l2r_mv_04_20260916_w0_challenge",
         "l2r_mv_05_20260916_w0_challenge",
-        "l2r_mv_06_20260916_w0_challenge",
-        "l2r_amv_02_20260916_w0_challenge",
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
+        "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
       ],
       "selection": {
         "kind": "handoff",
@@ -1622,35 +1054,17 @@
           "l2r_am_02_20260916_w0_challenge": [
             "l2r_am_02_20260916_w0_challenge"
           ],
-          "l2r_am_03_20260916_w0_challenge": [
-            "l2r_am_03_20260916_w0_challenge"
-          ],
           "l2r_mv_02_20260916_b0_challenge": [
             "l2r_mv_02_20260916_b0_challenge"
           ],
           "l2r_mv_03_20260916_w0_challenge": [
             "l2r_mv_03_20260916_w0_challenge"
           ],
-          "l2r_mv_04_20260916_w0_challenge": [
-            "l2r_mv_04_20260916_w0_challenge"
-          ],
           "l2r_mv_05_20260916_w0_challenge": [
             "l2r_mv_05_20260916_w0_challenge"
           ],
-          "l2r_mv_06_20260916_w0_challenge": [
-            "l2r_mv_06_20260916_w0_challenge"
-          ],
-          "l2r_amv_02_20260916_w0_challenge": [
-            "l2r_amv_02_20260916_w0_challenge"
-          ],
-          "l2x_mv_cycles_l1_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-          ],
           "l2x_mv_cycles_l1_f2_20260921_w0_challenge": [
             "l2x_mv_cycles_l1_f2_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l1_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
           ],
           "l2x_mv_cycles_l1_f4_20260921_w0_challenge": [
             "l2x_mv_cycles_l1_f4_20260921_w0_challenge"
@@ -1663,30 +1077,6 @@
           ],
           "l2x_mv_cycles_l2_f4_20260921_w0_challenge": [
             "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l3_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l3_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l3_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l3_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l4_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l4_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l4_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l4_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
           ]
         }
       }
@@ -1702,28 +1092,14 @@
       ],
       "task_ids": [
         "l2r_am_02_20260916_w0_challenge",
-        "l2r_am_03_20260916_w0_challenge",
         "l2r_mv_02_20260916_b0_challenge",
         "l2r_mv_03_20260916_w0_challenge",
-        "l2r_mv_04_20260916_w0_challenge",
         "l2r_mv_05_20260916_w0_challenge",
-        "l2r_mv_06_20260916_w0_challenge",
-        "l2r_amv_02_20260916_w0_challenge",
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
+        "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
       ],
       "selection": {
         "kind": "prepared_index",
@@ -1731,35 +1107,17 @@
           "l2r_am_02_20260916_w0_challenge": [
             "l2r_am_02_20260916_w0_challenge"
           ],
-          "l2r_am_03_20260916_w0_challenge": [
-            "l2r_am_03_20260916_w0_challenge"
-          ],
           "l2r_mv_02_20260916_b0_challenge": [
             "l2r_mv_02_20260916_b0_challenge"
           ],
           "l2r_mv_03_20260916_w0_challenge": [
             "l2r_mv_03_20260916_w0_challenge"
           ],
-          "l2r_mv_04_20260916_w0_challenge": [
-            "l2r_mv_04_20260916_w0_challenge"
-          ],
           "l2r_mv_05_20260916_w0_challenge": [
             "l2r_mv_05_20260916_w0_challenge"
           ],
-          "l2r_mv_06_20260916_w0_challenge": [
-            "l2r_mv_06_20260916_w0_challenge"
-          ],
-          "l2r_amv_02_20260916_w0_challenge": [
-            "l2r_amv_02_20260916_w0_challenge"
-          ],
-          "l2x_mv_cycles_l1_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-          ],
           "l2x_mv_cycles_l1_f2_20260921_w0_challenge": [
             "l2x_mv_cycles_l1_f2_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l1_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
           ],
           "l2x_mv_cycles_l1_f4_20260921_w0_challenge": [
             "l2x_mv_cycles_l1_f4_20260921_w0_challenge"
@@ -1772,30 +1130,6 @@
           ],
           "l2x_mv_cycles_l2_f4_20260921_w0_challenge": [
             "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l3_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l3_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l3_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l3_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l4_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l4_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l4_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-          ],
-          "l2x_mv_cycles_l4_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
           ]
         }
       },
@@ -1811,13 +1145,6 @@
           "pointer": "/handoff_sha256",
           "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
           "task_ids": [
-            "l2r_am_03_20260916_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
             "l2r_mv_02_20260916_b0_challenge"
           ]
         },
@@ -1832,13 +1159,6 @@
           "pointer": "/handoff_sha256",
           "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
           "task_ids": [
-            "l2r_mv_04_20260916_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
             "l2r_mv_05_20260916_w0_challenge"
           ]
         },
@@ -1846,35 +1166,7 @@
           "pointer": "/handoff_sha256",
           "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
           "task_ids": [
-            "l2r_mv_06_20260916_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2r_amv_02_20260916_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
             "l2x_mv_cycles_l1_f2_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
           ]
         },
         {
@@ -1904,62 +1196,6 @@
           "task_ids": [
             "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
           ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-          ]
-        },
-        {
-          "pointer": "/handoff_sha256",
-          "key": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-          "task_ids": [
-            "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-          ]
         }
       ]
     },
@@ -1974,34 +1210,6 @@
       ],
       "task_ids": [
         "l2r_am_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_am_03_20260916_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2r_am_03_20260916_w0_challenge.json",
-      "sha256": "8546428302e431d5a8cd5eaeb4bc7f750211c7409af9b56b855fd38f4d7fce2f",
-      "bytes": 8741,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_amv_02_20260916_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2r_amv_02_20260916_w0_challenge.json",
-      "sha256": "4c38a1197a2df982e1806fd645c2518245d613aee02155fcb108d9fb2451372e",
-      "bytes": 8786,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
       ],
       "selection": null
     },
@@ -2034,20 +1242,6 @@
       "selection": null
     },
     {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_mv_04_20260916_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2r_mv_04_20260916_w0_challenge.json",
-      "sha256": "65fb4fd8154dce656cac4cc4e56f82fa6707f5b86a0cc4529027d31cdbfeb12d",
-      "bytes": 8671,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_mv_05_20260916_w0_challenge.json",
       "source_root": "l2-delivery37-20260924",
       "source_path": "model/symbolic_2/prepared/l2r_mv_05_20260916_w0_challenge.json",
@@ -2062,34 +1256,6 @@
       "selection": null
     },
     {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_mv_06_20260916_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2r_mv_06_20260916_w0_challenge.json",
-      "sha256": "8637efdeba3b93e2b9495abb7bb6799a6e6830dbdddd66dcdf0a1412189e5c0c",
-      "bytes": 9208,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "sha256": "3f36adc588c7bc0310b52055dbc2cedc8a33ebf6f5b164dfd1d94e8a2f6ab6d5",
-      "bytes": 8989,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l1_f2_20260921_w0_challenge.json",
       "source_root": "l2-delivery37-20260924",
       "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l1_f2_20260921_w0_challenge.json",
@@ -2100,20 +1266,6 @@
       ],
       "task_ids": [
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "sha256": "e6285ae837f4750bfa9c15bde81d7c9b80954887cb75b564e91a578e1ec2eb65",
-      "bytes": 8990,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -2174,118 +1326,6 @@
       "selection": null
     },
     {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "sha256": "5c439d812d68dde6bffd019e2a8585ef971eba0bd51f41d082dbcb75295a3514",
-      "bytes": 8990,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "sha256": "61c85cb30bc87c82f6315adad74b0d0354c02dff981ccaa4357ab3462ce5f817",
-      "bytes": 9000,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "sha256": "9a0a13da4e22cee56461b031543e4cc7f2214b2587dc2ccd9581719e7460120c",
-      "bytes": 9001,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "sha256": "59a088eef9a7a076fd2160d30c41c9c57c8d2fdb365684c79408f98cd58fd8cd",
-      "bytes": 9001,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "sha256": "cedfb899149122b047622cd33817ed5503a74df034dd639b356423abea27e451",
-      "bytes": 9001,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "sha256": "ec59fdc1786ddb41db1278616a454f0c8829d7c7c25afeec2751a206bad223f5",
-      "bytes": 9001,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "sha256": "63072145d39e99cf725fc1004fa9e8b52646cd25b8264ac174597660e838e3cc",
-      "bytes": 9001,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "source_root": "l2-delivery37-20260924",
-      "source_path": "model/symbolic_2/prepared/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "sha256": "5dda5981eeef3f4cd3007929ec505a775ecde37c584796503e312261017aa41c",
-      "bytes": 9001,
-      "roles": [
-        "prepared_bundle"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-expanded50-20260921/build_002/l2x_p50_inside_002_20260914/base/template_contracts/l2x_p50_inside_002_20260914.json",
       "source_root": "l2-expanded50-20260921",
       "source_path": "build_002/l2x_p50_inside_002_20260914/base/template_contracts/l2x_p50_inside_002_20260914.json",
@@ -2324,20 +1364,6 @@
       ],
       "task_ids": [
         "l2x_p50_inside_011_20260914"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_002/l2x_p50_support_001_20260914/base/template_contracts/l2x_p50_support_001_20260914.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_002/l2x_p50_support_001_20260914/base/template_contracts/l2x_p50_support_001_20260914.json",
-      "sha256": "34e7f9908d70cc1a710b1eb28de7c8b8c0368c00151e5afefd040195dae0d003",
-      "bytes": 15874,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_p50_support_001_20260914"
       ],
       "selection": null
     },
@@ -2396,83 +1422,6 @@
         "l2x_pdiv12_010_20260915"
       ],
       "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_002/l2x_pdiv12_012_20260915/base/template_contracts/l2x_pdiv12_012_20260915.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_002/l2x_pdiv12_012_20260915/base/template_contracts/l2x_pdiv12_012_20260915.json",
-      "sha256": "d906600ba8f8114085eeb8d38bd25fd95f1b9f96270793a490777a14fb8b5462",
-      "bytes": 16106,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_pdiv12_012_20260915"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_002/l2x_pdiv12_012_20260915/d1_qualified_001/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_002/l2x_pdiv12_012_20260915/d1_qualified_001/catalog.json",
-      "sha256": "406194023bb42a1fe7bd7893eb5606a3fd8f14bb217280e4fe5d67bcbfede14f",
-      "bytes": 13486,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_pdiv12_012_20260915"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_pdiv12_012_20260915": [
-            "l2x_pdiv12_012_20260915"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/build_002/l2x_pdiv12_012_20260915/d1_qualified_001/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_002/l2x_pdiv12_012_20260915/d1_qualified_001/package.json",
-      "sha256": "45612f34c3ff06c9d9b9639cc112dc8600a3334a083fb4a7ac08659c03a5b333",
-      "bytes": 3397,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_pdiv12_012_20260915"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_pdiv12_012_20260915": [
-            "l2x_pdiv12_012_20260915"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/build_002/l2x_pdiv12_012_20260915/d1_qualified_001/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_002/l2x_pdiv12_012_20260915/d1_qualified_001/task_specs.jsonl",
-      "sha256": "c91a3ed05f83f36885f656d54c3eedfa07e09c68a89369fd1d705915f8e6271b",
-      "bytes": 20995,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_pdiv12_012_20260915"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_pdiv12_012_20260915": [
-            "l2x_pdiv12_012_20260915"
-          ]
-        }
-      }
     },
     {
       "key": "l2-expanded50-20260921/build_002/l2x_pnext40_018_20260916/base/template_contracts/l2x_pnext40_018_20260916.json",
@@ -2566,20 +1515,6 @@
       }
     },
     {
-      "key": "l2-expanded50-20260921/build_002/l2x_pnext40_026_20260916/base/template_contracts/l2x_pnext40_026_20260916.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_002/l2x_pnext40_026_20260916/base/template_contracts/l2x_pnext40_026_20260916.json",
-      "sha256": "dceea5841022f73ffe885ca2fa62a8a046382005ede7d4587efa14cb8619713c",
-      "bytes": 13991,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_pnext40_026_20260916"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-expanded50-20260921/build_002/l2x_pnext40_028_20260916/base/template_contracts/l2x_pnext40_028_20260916.json",
       "source_root": "l2-expanded50-20260921",
       "source_path": "build_002/l2x_pnext40_028_20260916/base/template_contracts/l2x_pnext40_028_20260916.json",
@@ -2590,92 +1525,6 @@
       ],
       "task_ids": [
         "l2x_pnext40_028_20260916"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f1_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f1_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "be9eb63080050b3e87618c953a9944fd30a17c00025cc872061693d867634682",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l1_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f1_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l1_f1_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f1_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l1_f1_20260921_w0_challenge/problem0.bddl",
-      "sha256": "670971a1453b2f2836ee373e3851259b592d2d8a1fb4474ddff409a83ceb4952",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "sha256": "d570da8754443304aaecc01fbadd635b0ca9ff679ed4b59bfad58acf8c0f3a06",
-      "bytes": 11062,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f1_20260921/build/frozen/template/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f1_20260921/build/frozen/template/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "sha256": "2d2cbd4ec3e546d63831cda4e61625cedede312b27e1850ccf8612919188a98a",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f1_20260921/build/frozen/tro_state/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f1_20260921/build/frozen/tro_state/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -2762,92 +1611,6 @@
       ],
       "task_ids": [
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f3_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f3_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "dc08b722f04d1f7e0e8966d245024447ab63f6f6d0f8f0417435cf690366c3b1",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l1_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f3_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l1_f3_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f3_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l1_f3_20260921_w0_challenge/problem0.bddl",
-      "sha256": "c132b8911c80b2dbc5c5a2cbc4909f96bb597e5a02cd180e4515aabb8f54a5e1",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "sha256": "e1d70995f5fe075de5026f5f95f49d4c3d3abdff5a9a90655a2dc4d1f545d892",
-      "bytes": 13602,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f3_20260921/build/frozen/template/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f3_20260921/build/frozen/template/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "sha256": "d45d64e545128760a961bd27d100dfbd90830775843452d558c663300485fb19",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l1_f3_20260921/build/frozen/tro_state/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l1_f3_20260921/build/frozen/tro_state/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -3196,694 +1959,6 @@
       "selection": null
     },
     {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f1_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f1_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "7dbfd06e4cb99c08423361c0ddc334e75418f70655981f8f8058ef4c971cd391",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l3_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f1_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l3_f1_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f1_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l3_f1_20260921_w0_challenge/problem0.bddl",
-      "sha256": "5b1eb01f351d290206a5ea4a0f0e8d3c7d5d3f73adea2a591feec9fd2f266738",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "sha256": "dcae8399674f8e0ff2ffa4b8ecee6b47df3e8d38b2a0b59348593014fe13d7f1",
-      "bytes": 13458,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f1_20260921/build/frozen/template/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f1_20260921/build/frozen/template/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "sha256": "158617c69add14b1d8ceac48badf5dfca5f5aa52ba2fbe4bc6afb7650035a3f7",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f1_20260921/build/frozen/tro_state/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f1_20260921/build/frozen/tro_state/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f2_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f2_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "4483ecf5af7a2f87cdd650c5713e985c0c12060207c65373a35fdcb0574b2ddd",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l3_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f2_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f2_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l3_f2_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f2_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l3_f2_20260921_w0_challenge/problem0.bddl",
-      "sha256": "80155d6c01aaf611100d7c0a958ccb0e5ddeb011f93f934a8252b5f1b30bb242",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f2_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f2_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "sha256": "1c65fba99a042eac35c9719e4b8d173a8f6536ce0d112e316d3fa3ac6bda3b08",
-      "bytes": 14728,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f2_20260921/build/frozen/template/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f2_20260921/build/frozen/template/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "sha256": "053557de61e9dddfe93facfa4cf001661bbbbae2b4f20d73103316dbf8882e8a",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f2_20260921/build/frozen/tro_state/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f2_20260921/build/frozen/tro_state/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f3_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f3_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "f107d0ec145f044e8ae0cb8334f68d2791e58b3df829524166dfc424f60e7200",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l3_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f3_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l3_f3_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f3_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l3_f3_20260921_w0_challenge/problem0.bddl",
-      "sha256": "0749f908e8655f106fdec2b24c18b1934c7cecbe33ae2c35f6a5032e48c27b62",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "sha256": "8b7e8c061450d4abbf2fc33b32551215709360f3d6c7737026db8d8eaf74fc58",
-      "bytes": 15998,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f3_20260921/build/frozen/template/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f3_20260921/build/frozen/template/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "sha256": "a76067ff42af6abac77ab6080e91336bf575025140fc7ea7c8f2c478412be713",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f3_20260921/build/frozen/tro_state/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f3_20260921/build/frozen/tro_state/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f4_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f4_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "ffdaf80f9ad9c8a393dca9ecd56d008de92a88c458ee49dac000cca27b84935f",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l3_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f4_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f4_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l3_f4_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f4_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l3_f4_20260921_w0_challenge/problem0.bddl",
-      "sha256": "3cc8c6c3143058adcf9977dc606fde6123bf4f99351b88560078c0622fb9ebae",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f4_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f4_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "sha256": "217b60e51471035733b67b13490303d5b37b43f56d4aa303f7442ed0cad1d68c",
-      "bytes": 17268,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f4_20260921/build/frozen/template/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f4_20260921/build/frozen/template/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "sha256": "914dc9140ff64eda24ffc94791102cb8ec4a3634626cfcf634ed5eee6d08ee2e",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l3_f4_20260921/build/frozen/tro_state/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l3_f4_20260921/build/frozen/tro_state/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f1_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f1_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "e83660c17f1270a3e9ccfceb6ce0e3c9828259631caa3da889f463870f441641",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l4_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f1_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l4_f1_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f1_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l4_f1_20260921_w0_challenge/problem0.bddl",
-      "sha256": "b50527113dc36b3b373b97c26e8c09837a5bf01a9dae020d53c49a951094e0a5",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f1_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "sha256": "ee74c0f1167ae5d30d37736f54f0da7ebe9ac33fd0c27bcc75c674fa9d167163",
-      "bytes": 14656,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f1_20260921/build/frozen/template/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f1_20260921/build/frozen/template/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "sha256": "c47e33e081e5574b8df126a9a203d6d0afc85ff251ef0174a5e7a1dfb1577a42",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f1_20260921/build/frozen/tro_state/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f1_20260921/build/frozen/tro_state/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f2_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f2_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "61e52ae7720ff8f21273de17c790dd6bb779f8005488f68b2cba6efcf6a552af",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l4_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f2_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f2_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l4_f2_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f2_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l4_f2_20260921_w0_challenge/problem0.bddl",
-      "sha256": "e84e1103fef0f503b459b0fb072f64b9a24fa090f205b33b88249ab2e7c4b057",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f2_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f2_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "sha256": "3fd82d2d15797a016d2f71a38c2fe38ae07b22bde09fc8041cc6b6384a24c299",
-      "bytes": 15926,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f2_20260921/build/frozen/template/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f2_20260921/build/frozen/template/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "sha256": "b49e56b9d6cfa784baa03fd3594b0a680fc4f6fd32ca8e376c45d011a7e2638b",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f2_20260921/build/frozen/tro_state/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f2_20260921/build/frozen/tro_state/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f3_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f3_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "cee3ebf238752a53b112d087b12ce5d3cf40530607ef975be65f2137b50bf6d3",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l4_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f3_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l4_f3_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f3_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l4_f3_20260921_w0_challenge/problem0.bddl",
-      "sha256": "81509981d63d405fa015eaa58d9f31bf24232bbc01616d123d7348f4958449e5",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f3_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "sha256": "fac7f64593f97325dd42a25523d1e5d68a487f015e5c18ba40e5e594f72627ff",
-      "bytes": 17196,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f3_20260921/build/frozen/template/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f3_20260921/build/frozen/template/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "sha256": "734d789c82aa044b22c7c09f135dccc8e9703219a955b52692be7a9b6e17a44c",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f3_20260921/build/frozen/tro_state/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f3_20260921/build/frozen/tro_state/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f4_20260921/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f4_20260921/build/combined/prepared_oracle_states.json",
-      "sha256": "43b03672799bb6ea149a5389c51bf42c6ac9f7a8f9dc40f0c2daafbc208a7f64",
-      "bytes": 3129,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2x_mv_cycles_l4_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f4_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-          "task_ids": [
-            "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f4_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l4_f4_20260921_w0_challenge/problem0.bddl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f4_20260921/build/compiled/official_compatible/activity_definitions/l2x_mv_cycles_l4_f4_20260921_w0_challenge/problem0.bddl",
-      "sha256": "97e8bae4955322cc1a342f9c4d50801af12f2e6eb5d2b2cb01da5d938cc32a92",
-      "bytes": 815,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f4_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f4_20260921/build/compiled/official_compatible/template_contracts/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "sha256": "9fa235ae8e394c85f9470553ca0b574da58531136bb5ea91e0aaa6f4d7b95f47",
-      "bytes": 18466,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f4_20260921/build/frozen/template/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f4_20260921/build/frozen/template/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "sha256": "b556a38df6ec9fd4f3a5b10f9e0d9680785e6b7d9a935cd69d96512923701c2e",
-      "bytes": 218273,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-expanded50-20260921/build_003/l2x_mv_cycles_l4_f4_20260921/build/frozen/tro_state/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "build_003/l2x_mv_cycles_l4_f4_20260921/build/frozen/tro_state/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "sha256": "3d8363fd1dab5a2e96c9c5d9efc478dc756f28b39adb0e05bbbea64700dbf78e",
-      "bytes": 2562,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_002/l2x_mv_cycles_l2_f2_20260921/catalog.json",
       "source_root": "l2-expanded50-20260921",
       "source_path": "qualified_cycle_d1_31917_002/l2x_mv_cycles_l2_f2_20260921/catalog.json",
@@ -4073,573 +2148,6 @@
       }
     },
     {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/catalog.json",
-      "sha256": "6c825b78dca2e572afedf01ca41a6060bc27568cfd39fe18226ed72b5fd65c28",
-      "bytes": 19042,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l3_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/package.json",
-      "sha256": "c88ad28208386d060cdcd81cf76d414c49fb0b131c5d6204a723fb775b6febb8",
-      "bytes": 3800,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l3_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/task_specs.jsonl",
-      "sha256": "20d963c184c9a6626cb0ccaf83b14a3790df9ccd1fd34fec2b8ac570ca561c22",
-      "bytes": 24054,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l3_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f1_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/catalog.json",
-      "sha256": "8fb542374bbcb8b60787d369c882503f209ddf04e792d559c9487a853f85a21b",
-      "bytes": 20496,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l3_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/package.json",
-      "sha256": "178b6c5161a358c56458352b381031ab73dda759e58f2e9ed46feecf868b1401",
-      "bytes": 3800,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l3_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/task_specs.jsonl",
-      "sha256": "a37f5afe6f2e76e2d0537cace35c3e079a6f1b0c1901520ca84f5cd674a3fb18",
-      "bytes": 24959,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l3_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f2_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/catalog.json",
-      "sha256": "e54d134978920e270d8fba048fb6ba79b82b5d27eee5da738c171265c4c98b2e",
-      "bytes": 21950,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l3_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/package.json",
-      "sha256": "6059f3ed09025523b1a1d1503da3856875d4be45ba002774f6fb55a5ddb30fc0",
-      "bytes": 3800,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l3_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/task_specs.jsonl",
-      "sha256": "69857b5ed76b4d5121572d8424fd0af9e33951ed1f17e3e823cd4d9897ec2659",
-      "bytes": 25864,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l3_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/catalog.json",
-      "sha256": "ccfa73156f1d95c9174741c3c15ee454e7d2af8bf7cbdef9a07842dafd9c7947",
-      "bytes": 23404,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l3_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/package.json",
-      "sha256": "b3d3691ef9807d1b6bb1e6425401d08dd35c949f943fb8be161350595c5e23f8",
-      "bytes": 3800,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l3_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/task_specs.jsonl",
-      "sha256": "dab501a4f55397322e408272e50428234f9156b7e0cadfbd9efb4ff833783ec2",
-      "bytes": 26769,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l3_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l3_f4_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/catalog.json",
-      "sha256": "ef5887f613d3b67eb4f2028d8a84c2dd1d05bfeb5153ee34f5dd9c7c5d72f411",
-      "bytes": 20424,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l4_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/package.json",
-      "sha256": "17561d4f3bf1c288d5193c516495b60e10802e2d8b4052b9d570d0063003e9be",
-      "bytes": 3800,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l4_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/task_specs.jsonl",
-      "sha256": "827f0371eae744af07af05dd9118af13581ee9a01206b6750aada8ba6923e175",
-      "bytes": 24851,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l4_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f1_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/catalog.json",
-      "sha256": "51ab9a54501b108770bd359adb959c1c0d2fddb39f7986d1a1889df236121fc4",
-      "bytes": 21878,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l4_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/package.json",
-      "sha256": "a179a971d1670e4e656c81b7f5f82621cfd6058ea351794aa41d0c3e87dc4ae6",
-      "bytes": 3800,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l4_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/task_specs.jsonl",
-      "sha256": "a9ebe9d358ee7f514c9f229fe26c10da17d1fed2bdde78553e9b052df9fe4c2c",
-      "bytes": 25756,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l4_f2_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f2_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/catalog.json",
-      "sha256": "08ce9af15d81fd96e93318eba53362ca8c71a9967ac6ac4d07fc330b7216d27a",
-      "bytes": 23332,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l4_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/package.json",
-      "sha256": "1b28309e19517fb3a0ac949ea676c397ad2243a917767caef9329180d62e4564",
-      "bytes": 3800,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l4_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/task_specs.jsonl",
-      "sha256": "9b04f2c23a4c3c5823ea85769ecc29f56af1b458e45f181e3a04d7a2302afd9e",
-      "bytes": 26661,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l4_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/catalog.json",
-      "sha256": "56e20740a2e8e297311db3c4a16d20f25c85a617f80285c0bc44fcdbf4c66fcc",
-      "bytes": 24786,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l4_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/package.json",
-      "sha256": "fc4dc1f8b3bf5bf2a455beb129c424512ef40db531dc423df1c64058ec695fb5",
-      "bytes": 3800,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l4_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/task_specs.jsonl",
-      "sha256": "6a1ee7d6d9121fb219a2aad100d01c696a60b6b96fa4e0673c7828d19c278138",
-      "bytes": 27566,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l4_f4_20260921_w0_challenge": [
-            "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/AMV02/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/AMV02/catalog.json",
-      "sha256": "7928f121f061722f4ba1dd27deb2abbb330495ef0e1bc80561c1609c85042b72",
-      "bytes": 20895,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2r_amv_02_20260916_w0_challenge": [
-            "l2r_amv_02_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/AMV02/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/AMV02/package.json",
-      "sha256": "c47f0bb7ebbc0cbf027fa09d73d07d1ba0eaf4afbe53533c6498daaa55a59ab1",
-      "bytes": 3677,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2r_amv_02_20260916_w0_challenge": [
-            "l2r_amv_02_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/AMV02/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/AMV02/task_specs.jsonl",
-      "sha256": "d5ce8b21e234948a6274fd72135e7837dcb111d988a680eb5cbfee3d18b07203",
-      "bytes": 32593,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2r_amv_02_20260916_w0_challenge": [
-            "l2r_amv_02_20260916_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
       "key": "l2-expanded50-20260921/qualified_d1_31917_001/MVP03/catalog.json",
       "source_root": "l2-expanded50-20260921",
       "source_path": "qualified_d1_31917_001/MVP03/catalog.json",
@@ -4698,69 +2206,6 @@
         "ids": {
           "l2r_mvp_03_20260916_base": [
             "l2r_mvp_03_20260916_base"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/catalog.json",
-      "sha256": "7779c5843416cceb8e7667a02f893efa8acc216565a793a130e7178afd67eb7c",
-      "bytes": 16272,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l1_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/package.json",
-      "sha256": "db2ed29c5b46c946c3afe266ef4653300744e756252c5cdbd19a321eaaad0975",
-      "bytes": 3782,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l1_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/task_specs.jsonl",
-      "sha256": "a60b7ec7cd828876032474cd50fe5d124ae3ff4a0151d4ac2bc44cbbca256639",
-      "bytes": 22454,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l1_f1_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f1_20260921_w0_challenge"
           ]
         }
       }
@@ -4829,69 +2274,6 @@
       }
     },
     {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/catalog.json",
-      "sha256": "05d56b9cfe26ae10f977e3e6b6f877744580be322414490d0302c46ddcf6ec26",
-      "bytes": 19180,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_mv_cycles_l1_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/package.json",
-      "sha256": "fc63762722ca061fd62941633494f6b415e08ea26f04a2e83a4e89a65caa91d5",
-      "bytes": 3782,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_mv_cycles_l1_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/task_specs.jsonl",
-      "sha256": "63448475d9c0603df690c8a769e99b7ebc424e9b7bbf47f46a25a6a4ee11aa09",
-      "bytes": 24264,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_mv_cycles_l1_f3_20260921_w0_challenge": [
-            "l2x_mv_cycles_l1_f3_20260921_w0_challenge"
-          ]
-        }
-      }
-    },
-    {
       "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f4_20260921/catalog.json",
       "source_root": "l2-expanded50-20260921",
       "source_path": "qualified_d1_31917_001/l2x_mv_cycles_l1_f4_20260921/catalog.json",
@@ -4955,69 +2337,6 @@
       }
     },
     {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_p50_support_001_20260914/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_p50_support_001_20260914/catalog.json",
-      "sha256": "fa20fea6d1f7f77178b23eb0e01dc7c05ddac126722b2137ce4d4ba94b39b086",
-      "bytes": 13441,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_p50_support_001_20260914"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_p50_support_001_20260914": [
-            "l2x_p50_support_001_20260914"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_p50_support_001_20260914/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_p50_support_001_20260914/package.json",
-      "sha256": "b31efba9eb4722612b34f722895654db7053baafd5523fd4f2e66277fbad0a57",
-      "bytes": 3401,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_p50_support_001_20260914"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_p50_support_001_20260914": [
-            "l2x_p50_support_001_20260914"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_p50_support_001_20260914/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_p50_support_001_20260914/task_specs.jsonl",
-      "sha256": "6cde67c1be76b4b252d9ba621599c1ce7925fc674dfa932c9d00574850998035",
-      "bytes": 20630,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_p50_support_001_20260914"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_p50_support_001_20260914": [
-            "l2x_p50_support_001_20260914"
-          ]
-        }
-      }
-    },
-    {
       "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_p50_support_006_20260914/catalog.json",
       "source_root": "l2-expanded50-20260921",
       "source_path": "qualified_d1_31917_001/l2x_p50_support_006_20260914/catalog.json",
@@ -5076,69 +2395,6 @@
         "ids": {
           "l2x_p50_support_006_20260914": [
             "l2x_p50_support_006_20260914"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_pnext40_026_20260916/catalog.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_pnext40_026_20260916/catalog.json",
-      "sha256": "e0d003de5fb5c682e8ccadb3d2262e8668d688273c77893851d16c217b4c25d3",
-      "bytes": 12823,
-      "roles": [
-        "registration_catalog"
-      ],
-      "task_ids": [
-        "l2x_pnext40_026_20260916"
-      ],
-      "selection": {
-        "kind": "registration_catalog",
-        "ids": {
-          "l2x_pnext40_026_20260916": [
-            "l2x_pnext40_026_20260916"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_pnext40_026_20260916/package.json",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_pnext40_026_20260916/package.json",
-      "sha256": "16354319e67316a57b6aa2fd2fb7ec5f63079c04c5387d685a16b07c2bec2e1e",
-      "bytes": 3368,
-      "roles": [
-        "package"
-      ],
-      "task_ids": [
-        "l2x_pnext40_026_20260916"
-      ],
-      "selection": {
-        "kind": "package",
-        "ids": {
-          "l2x_pnext40_026_20260916": [
-            "l2x_pnext40_026_20260916"
-          ]
-        }
-      }
-    },
-    {
-      "key": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_pnext40_026_20260916/task_specs.jsonl",
-      "source_root": "l2-expanded50-20260921",
-      "source_path": "qualified_d1_31917_001/l2x_pnext40_026_20260916/task_specs.jsonl",
-      "sha256": "0a0458a6505b91eff253535913d2abfaba7dfd40a72c48c0fc115b3e828030f3",
-      "bytes": 18435,
-      "roles": [
-        "task_specs"
-      ],
-      "task_ids": [
-        "l2x_pnext40_026_20260916"
-      ],
-      "selection": {
-        "kind": "task_specs",
-        "ids": {
-          "l2x_pnext40_026_20260916": [
-            "l2x_pnext40_026_20260916"
           ]
         }
       }
@@ -5546,92 +2802,6 @@
       }
     },
     {
-      "key": "l2-testable-batch-20260920/attempt_001/packages/amv02_base/build/combined/prepared_oracle_states.json",
-      "source_root": "l2-testable-batch-20260920",
-      "source_path": "attempt_001/packages/amv02_base/build/combined/prepared_oracle_states.json",
-      "sha256": "fd2be564eb61dd6ffd767764a16d8de4fb67bb27e18c033108a062f859f4f518",
-      "bytes": 3066,
-      "roles": [
-        "prepared_oracle_states"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": {
-        "kind": "prepared_oracle_states",
-        "ids": {
-          "l2r_amv_02_20260916_w0_challenge": [
-            "l2r_amv_02_20260916_w0_challenge"
-          ]
-        }
-      },
-      "hash_bindings": [
-        {
-          "pointer": "/items/0/target_template_contract_sha256",
-          "key": "l2-testable-batch-20260920/attempt_001/packages/amv02_base/build/compiled/official_compatible/template_contracts/l2r_amv_02_20260916_w0_challenge.json",
-          "task_ids": [
-            "l2r_amv_02_20260916_w0_challenge"
-          ]
-        }
-      ]
-    },
-    {
-      "key": "l2-testable-batch-20260920/attempt_001/packages/amv02_base/build/compiled/official_compatible/activity_definitions/l2r_amv_02_20260916_w0_challenge/problem0.bddl",
-      "source_root": "l2-testable-batch-20260920",
-      "source_path": "attempt_001/packages/amv02_base/build/compiled/official_compatible/activity_definitions/l2r_amv_02_20260916_w0_challenge/problem0.bddl",
-      "sha256": "ef246f9c544a9039611431487751495d2b916b4b9e0ce528225b2bc82a1a2951",
-      "bytes": 857,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-testable-batch-20260920/attempt_001/packages/amv02_base/build/compiled/official_compatible/template_contracts/l2r_amv_02_20260916_w0_challenge.json",
-      "source_root": "l2-testable-batch-20260920",
-      "source_path": "attempt_001/packages/amv02_base/build/compiled/official_compatible/template_contracts/l2r_amv_02_20260916_w0_challenge.json",
-      "sha256": "5f795da7d080570d348debe31cd10af399d830d8e49fbb72b51707eb70e4aac8",
-      "bytes": 15937,
-      "roles": [
-        "template_contract"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-testable-batch-20260920/attempt_001/packages/amv02_base/build/frozen/template/l2r_amv_02_20260916_w0_challenge.json",
-      "source_root": "l2-testable-batch-20260920",
-      "source_path": "attempt_001/packages/amv02_base/build/frozen/template/l2r_amv_02_20260916_w0_challenge.json",
-      "sha256": "b0bc84fec82ad091c2f5eb7ae32c2200a02a250b271b3880c9e163bd7258bfd8",
-      "bytes": 161317,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "l2-testable-batch-20260920/attempt_001/packages/amv02_base/build/frozen/tro_state/l2r_amv_02_20260916_w0_challenge.json",
-      "source_root": "l2-testable-batch-20260920",
-      "source_path": "attempt_001/packages/amv02_base/build/frozen/tro_state/l2r_amv_02_20260916_w0_challenge.json",
-      "sha256": "3b490c19140f12231efb7173b1820ab4dcf481b87aa553c13a916f1164d6d380",
-      "bytes": 3231,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
       "key": "l2-testable-batch-20260920/attempt_001/packages/mvp03_base/template_contracts/l2r_mvp_03_20260916_base.json",
       "source_root": "l2-testable-batch-20260920",
       "source_path": "attempt_001/packages/mvp03_base/template_contracts/l2r_mvp_03_20260916_base.json",
@@ -5725,22 +2895,11 @@
         "donor_camera_tuning"
       ],
       "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge",
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
+        "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -5754,22 +2913,11 @@
         "donor_camera_structure"
       ],
       "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge",
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
+        "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -5783,22 +2931,11 @@
         "donor_donor_initial_construction"
       ],
       "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge",
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
+        "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -5812,22 +2949,11 @@
         "donor_donor_success"
       ],
       "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge",
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
+        "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -5841,22 +2967,11 @@
         "donor_prepared"
       ],
       "task_ids": [
-        "l2r_mv_04_20260916_w0_challenge",
-        "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
         "l2x_mv_cycles_l1_f4_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f2_20260921_w0_challenge",
         "l2x_mv_cycles_l2_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l2_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "l2x_mv_cycles_l4_f4_20260921_w0_challenge"
+        "l2x_mv_cycles_l2_f4_20260921_w0_challenge"
       ],
       "selection": null
     },
@@ -6001,123 +3116,6 @@
       "selection": null
     },
     {
-      "key": "oracle-mnext120-rest92-20260913-ops/artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/gripper_visible_camera_tuning.json",
-      "source_root": "oracle-mnext120-rest92-20260913-ops",
-      "source_path": "artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/gripper_visible_camera_tuning.json",
-      "sha256": "f13e2113dc484f7b516d54906f535f2cfa2e3569ed3711f77c39e1465dec1bea",
-      "bytes": 449,
-      "roles": [
-        "donor_camera_tuning"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge",
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle-mnext120-rest92-20260913-ops/artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/predeclared_camera_structure_attestation.json",
-      "source_root": "oracle-mnext120-rest92-20260913-ops",
-      "source_path": "artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/predeclared_camera_structure_attestation.json",
-      "sha256": "277e59d0201744126fc88ef155464595728f816e4ace9f70ddd2ac297821daa8",
-      "bytes": 1307,
-      "roles": [
-        "donor_camera_structure"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge",
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle-mnext120-rest92-20260913-ops/artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/resident_tasks/mnext120_m1_13_w0_challenge/live_initial_construction.json",
-      "source_root": "oracle-mnext120-rest92-20260913-ops",
-      "source_path": "artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/resident_tasks/mnext120_m1_13_w0_challenge/live_initial_construction.json",
-      "sha256": "862f7aa9a0cdf8b4f55a3c80be0d877e4ed94cd9fe6695e80875c9037c4353d7",
-      "bytes": 242141,
-      "roles": [
-        "donor_donor_initial_construction"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge",
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle-mnext120-rest92-20260913-ops/artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/resident_tasks/mnext120_m1_13_w0_challenge/oracle_result.json",
-      "source_root": "oracle-mnext120-rest92-20260913-ops",
-      "source_path": "artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/resident_tasks/mnext120_m1_13_w0_challenge/oracle_result.json",
-      "sha256": "d455964a257c558ec812083a2a341d9c31dde1fce26ae6171081b12b8e569d92",
-      "bytes": 369771,
-      "roles": [
-        "donor_donor_success"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge",
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle-mnext120-rest92-20260913-ops/artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/resident_tasks/mnext120_m1_13_w0_challenge/prepared_initial_state.json",
-      "source_root": "oracle-mnext120-rest92-20260913-ops",
-      "source_path": "artifacts/oracle-mnext120-rest92-20260913/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g5_s0__registered_scene__house_double_floor_upper__000__a000/20260913T042009Z_b1_single_load_187010/private/resident_tasks/mnext120_m1_13_w0_challenge/prepared_initial_state.json",
-      "sha256": "d067474500c28776c0b5a375d2bb13fd976cda50eb2e1025e1deda3ada762c78",
-      "bytes": 4557,
-      "roles": [
-        "donor_prepared"
-      ],
-      "task_ids": [
-        "l2r_am_03_20260916_w0_challenge",
-        "l2r_amv_02_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle-mnext28-20260912-ops/artifacts/oracle-mnext28-20260912/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g4_s0__registered_scene__house_double_floor_upper__000__a000/20260912T223100Z_b1_single_load_3217/private/resident_tasks/mnext28_m1_03_w0_challenge/live_initial_construction.json",
-      "source_root": "oracle-mnext28-20260912-ops",
-      "source_path": "artifacts/oracle-mnext28-20260912/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g4_s0__registered_scene__house_double_floor_upper__000__a000/20260912T223100Z_b1_single_load_3217/private/resident_tasks/mnext28_m1_03_w0_challenge/live_initial_construction.json",
-      "sha256": "1602b47796de970e42f17efc11929388598916ea917dcce89c319d028605ed06",
-      "bytes": 232149,
-      "roles": [
-        "donor_donor_initial_construction"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle-mnext28-20260912-ops/artifacts/oracle-mnext28-20260912/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g4_s0__registered_scene__house_double_floor_upper__000__a000/20260912T223100Z_b1_single_load_3217/private/resident_tasks/mnext28_m1_03_w0_challenge/oracle_result.json",
-      "source_root": "oracle-mnext28-20260912-ops",
-      "source_path": "artifacts/oracle-mnext28-20260912/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g4_s0__registered_scene__house_double_floor_upper__000__a000/20260912T223100Z_b1_single_load_3217/private/resident_tasks/mnext28_m1_03_w0_challenge/oracle_result.json",
-      "sha256": "67fb629b8453bc1a39e6c9b829f49bbfc6750f6cdbe4253352949a03b380731e",
-      "bytes": 44411,
-      "roles": [
-        "donor_donor_success"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle-mnext28-20260912-ops/artifacts/oracle-mnext28-20260912/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g4_s0__registered_scene__house_double_floor_upper__000__a000/20260912T223100Z_b1_single_load_3217/private/resident_tasks/mnext28_m1_03_w0_challenge/prepared_initial_state.json",
-      "source_root": "oracle-mnext28-20260912-ops",
-      "source_path": "artifacts/oracle-mnext28-20260912/batches/registered_scene__house_double_floor_upper__000/attempt_000/workers/local_g4_s0__registered_scene__house_double_floor_upper__000__a000/20260912T223100Z_b1_single_load_3217/private/resident_tasks/mnext28_m1_03_w0_challenge/prepared_initial_state.json",
-      "sha256": "3b5082955cdc6910aef2bda88a246c0742368188935f9ad25b3d8de50f2dfe84",
-      "bytes": 4975,
-      "roles": [
-        "donor_prepared"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
       "key": "oracle-mtarget12-20260912-ops/artifacts/oracle-mtarget12-20260912/batches/registered_family__mtarget12_m1_01_b0_b0_challenge__000/attempt_000/workers/local_g0_s0__registered_family__mtarget12_m1_01_b0_b0_challenge__000__a000/20260912T211803Z_b1_single_load_92442/private/resident_tasks/mtarget12_m1_01_b0_b0_challenge/live_initial_construction.json",
       "source_root": "oracle-mtarget12-20260912-ops",
       "source_path": "artifacts/oracle-mtarget12-20260912/batches/registered_family__mtarget12_m1_01_b0_b0_challenge__000/attempt_000/workers/local_g0_s0__registered_family__mtarget12_m1_01_b0_b0_challenge__000__a000/20260912T211803Z_b1_single_load_92442/private/resident_tasks/mtarget12_m1_01_b0_b0_challenge/live_initial_construction.json",
@@ -6156,34 +3154,6 @@
       ],
       "task_ids": [
         "l2r_mv_02_20260916_b0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle_full_28cfbd6_20260910_local1/batches/registered_resident__house_double_floor_upper__056/attempt_000/workers/local_g2_s0__registered_resident__house_double_floor_upper__056__a000/20260910T114757Z_b1_single_load_106438/private/gripper_visible_camera_tuning.json",
-      "source_root": "oracle_full_28cfbd6_20260910_local1",
-      "source_path": "batches/registered_resident__house_double_floor_upper__056/attempt_000/workers/local_g2_s0__registered_resident__house_double_floor_upper__056__a000/20260910T114757Z_b1_single_load_106438/private/gripper_visible_camera_tuning.json",
-      "sha256": "f13e2113dc484f7b516d54906f535f2cfa2e3569ed3711f77c39e1465dec1bea",
-      "bytes": 449,
-      "roles": [
-        "donor_camera_tuning"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
-      ],
-      "selection": null
-    },
-    {
-      "key": "oracle_full_28cfbd6_20260910_local1/batches/registered_resident__house_double_floor_upper__056/attempt_000/workers/local_g2_s0__registered_resident__house_double_floor_upper__056__a000/20260910T114757Z_b1_single_load_106438/private/predeclared_camera_structure_attestation.json",
-      "source_root": "oracle_full_28cfbd6_20260910_local1",
-      "source_path": "batches/registered_resident__house_double_floor_upper__056/attempt_000/workers/local_g2_s0__registered_resident__house_double_floor_upper__056__a000/20260910T114757Z_b1_single_load_106438/private/predeclared_camera_structure_attestation.json",
-      "sha256": "277e59d0201744126fc88ef155464595728f816e4ace9f70ddd2ac297821daa8",
-      "bytes": 1307,
-      "roles": [
-        "donor_camera_structure"
-      ],
-      "task_ids": [
-        "l2r_mv_06_20260916_w0_challenge"
       ],
       "selection": null
     },
@@ -6356,48 +3326,6 @@
       "selection": null
     },
     {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_ontop_house_single_floor_20260914/attempt_001/p50_support_001_20260914/compiled/activity_definitions/p50_support_001_20260914/problem0.bddl",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_ontop_house_single_floor_20260914/attempt_001/p50_support_001_20260914/compiled/activity_definitions/p50_support_001_20260914/problem0.bddl",
-      "sha256": "1d40272d8a4fe01ea38718ed2f793be35ae7c5ae9cf96f6bb23dd000da155afa",
-      "bytes": 800,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_p50_support_001_20260914"
-      ],
-      "selection": null
-    },
-    {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_ontop_house_single_floor_20260914/attempt_001/p50_support_001_20260914/registration/templates/house_single_floor_task_p50_support_001_20260914_0_0_template.json",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_ontop_house_single_floor_20260914/attempt_001/p50_support_001_20260914/registration/templates/house_single_floor_task_p50_support_001_20260914_0_0_template.json",
-      "sha256": "532ed3a8e329a090311cbfb6ece096954e86bb1757a4725cd24b446b17edf912",
-      "bytes": 690283,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_p50_support_001_20260914"
-      ],
-      "selection": null
-    },
-    {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_ontop_house_single_floor_20260914/attempt_001/p50_support_001_20260914/registration/tro_states/house_single_floor_task_p50_support_001_20260914_0_0_template-tro_state.json",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_ontop_house_single_floor_20260914/attempt_001/p50_support_001_20260914/registration/tro_states/house_single_floor_task_p50_support_001_20260914_0_0_template-tro_state.json",
-      "sha256": "434a38318645b3a10e60b1ce245f6051b4968a1d0691738ba21dcd54e2af11ea",
-      "bytes": 2401,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_p50_support_001_20260914"
-      ],
-      "selection": null
-    },
-    {
       "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_ontop_house_single_floor_20260914/attempt_001/p50_support_002_20260914/compiled/activity_definitions/p50_support_002_20260914/problem0.bddl",
       "source_root": "worktrees",
       "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/p50_ontop_house_single_floor_20260914/attempt_001/p50_support_002_20260914/compiled/activity_definitions/p50_support_002_20260914/problem0.bddl",
@@ -6566,90 +3494,6 @@
       "selection": null
     },
     {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pdiv12_ontop_house_double_floor_lower_20260915/attempt_001/pdiv12_012_20260915/compiled/activity_definitions/pdiv12_012_20260915/problem0.bddl",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pdiv12_ontop_house_double_floor_lower_20260915/attempt_001/pdiv12_012_20260915/compiled/activity_definitions/pdiv12_012_20260915/problem0.bddl",
-      "sha256": "0563192efcb50552d8d2fcfe130c95661e1e967d38cc67aab7387dbd50f4f0b7",
-      "bytes": 759,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_pdiv12_012_20260915"
-      ],
-      "selection": null
-    },
-    {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pdiv12_ontop_house_double_floor_lower_20260915/attempt_001/pdiv12_012_20260915/registration/templates/house_double_floor_lower_task_pdiv12_012_20260915_0_0_template.json",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pdiv12_ontop_house_double_floor_lower_20260915/attempt_001/pdiv12_012_20260915/registration/templates/house_double_floor_lower_task_pdiv12_012_20260915_0_0_template.json",
-      "sha256": "7ebced74dd91f9ce828984455d809b568a105b976e25fb42247480eb9b6ad919",
-      "bytes": 308798,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_pdiv12_012_20260915"
-      ],
-      "selection": null
-    },
-    {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pdiv12_ontop_house_double_floor_lower_20260915/attempt_001/pdiv12_012_20260915/registration/tro_states/house_double_floor_lower_task_pdiv12_012_20260915_0_0_template-tro_state.json",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pdiv12_ontop_house_double_floor_lower_20260915/attempt_001/pdiv12_012_20260915/registration/tro_states/house_double_floor_lower_task_pdiv12_012_20260915_0_0_template-tro_state.json",
-      "sha256": "e9c6fd8e6a596dfdd6d235073cfc26c28e6b7e982356dbef6cd58d6cb8eeff3b",
-      "bytes": 2546,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_pdiv12_012_20260915"
-      ],
-      "selection": null
-    },
-    {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_ontop_hotel_suite_small_20260916/attempt_001/pnext40_026_20260916/compiled/activity_definitions/pnext40_026_20260916/problem0.bddl",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_ontop_hotel_suite_small_20260916/attempt_001/pnext40_026_20260916/compiled/activity_definitions/pnext40_026_20260916/problem0.bddl",
-      "sha256": "3daba819268e3e4ab229392b438a53dd56ead7cb1e0f7e23f628e1e71d5eecba",
-      "bytes": 675,
-      "roles": [
-        "bddl"
-      ],
-      "task_ids": [
-        "l2x_pnext40_026_20260916"
-      ],
-      "selection": null
-    },
-    {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_ontop_hotel_suite_small_20260916/attempt_001/pnext40_026_20260916/registration/templates/hotel_suite_small_task_pnext40_026_20260916_0_0_template.json",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_ontop_hotel_suite_small_20260916/attempt_001/pnext40_026_20260916/registration/templates/hotel_suite_small_task_pnext40_026_20260916_0_0_template.json",
-      "sha256": "a8664084f10490b75220c9fa0be9de43d0c87768e5d214c93b5a88ede1514754",
-      "bytes": 49046,
-      "roles": [
-        "template"
-      ],
-      "task_ids": [
-        "l2x_pnext40_026_20260916"
-      ],
-      "selection": null
-    },
-    {
-      "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_ontop_hotel_suite_small_20260916/attempt_001/pnext40_026_20260916/registration/tro_states/hotel_suite_small_task_pnext40_026_20260916_0_0_template-tro_state.json",
-      "source_root": "worktrees",
-      "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_ontop_hotel_suite_small_20260916/attempt_001/pnext40_026_20260916/registration/tro_states/hotel_suite_small_task_pnext40_026_20260916_0_0_template-tro_state.json",
-      "sha256": "98d7ce00148b30a4d7d89333defcb45466a5f2e2d183601cfc3a4f5eccd567c2",
-      "bytes": 1999,
-      "roles": [
-        "tro_state"
-      ],
-      "task_ids": [
-        "l2x_pnext40_026_20260916"
-      ],
-      "selection": null
-    },
-    {
       "key": "worktrees/action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_ontop_house_single_floor_20260916/attempt_001/pnext40_018_20260916/compiled/activity_definitions/pnext40_018_20260916/problem0.bddl",
       "source_root": "worktrees",
       "source_path": "action20-capability-benchmark/p12-templates-20260912/benchmark/l1/build/pnext40_ontop_house_single_floor_20260916/attempt_001/pnext40_018_20260916/compiled/activity_definitions/pnext40_018_20260916/problem0.bddl",
@@ -6806,35 +3650,6 @@
       "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
       "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
     },
-    "l2r_am_03_20260916_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/l2/package.json",
-      "task_specs_jsonl": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/l2/task_specs.jsonl",
-      "registration_catalog_json": "l2-consolidated-20260918/supported_batch/l2r_am_03_20260916/build/l2/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_am_03_20260916_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2r_am_03_20260916_w0_challenge",
-        "scene_model": "house_double_floor_upper",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 1,
-      "instruction_id": "l2r_am_03_20260916_w0_challenge",
-      "instruction_en": "Inspect the two keyboards and two mice on the desk. First move the mouse initially on a keyboard to a clear spot on the desk. Then put the mouse initially loose on the desk on the keyboard that was empty at the start. Finally return the temporarily moved mouse to its original keyboard. Do not move either keyboard.",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 1860,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
     "l2r_mv_02_20260916_b0_challenge": {
       "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
       "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
@@ -6893,35 +3708,6 @@
       "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
       "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
     },
-    "l2r_mv_04_20260916_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-consolidated-20260918/mv04_d1_package/package.json",
-      "task_specs_jsonl": "l2-consolidated-20260918/mv04_d1_package/task_specs.jsonl",
-      "registration_catalog_json": "l2-consolidated-20260918/mv04_d1_package/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_mv_04_20260916_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2r_mv_04_20260916_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 4,
-      "instruction_id": "l2r_mv_04_20260916_w0_challenge",
-      "instruction_en": "Give the lamp two off-on cycles and the flashlight one on-off cycle; interleaving is allowed, ending with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 255,
-        "maximum_model_calls": 765,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
     "l2r_mv_05_20260916_w0_challenge": {
       "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
       "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
@@ -6945,64 +3731,6 @@
       "budget": {
         "maximum_action_decisions": 40,
         "maximum_model_calls": 120,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2r_mv_06_20260916_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-consolidated-20260918/d1_packages_readback/mv06_d1_001/package.json",
-      "task_specs_jsonl": "l2-consolidated-20260918/d1_packages_readback/mv06_d1_001/task_specs.jsonl",
-      "registration_catalog_json": "l2-consolidated-20260918/d1_packages_readback/mv06_d1_001/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_mv_06_20260916_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2r_mv_06_20260916_w0_challenge",
-        "scene_model": "house_double_floor_upper",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 6,
-      "instruction_id": "l2r_mv_06_20260916_w0_challenge",
-      "instruction_en": "First move the two pens that initially rest on the two notebooks onto the desktop, then place each one on the other pen's original notebook. Do not move the third pen that started on the desktop or any of the three notebooks. Before finishing, keep the two pens on each other's original notebooks.",
-      "budget": {
-        "maximum_action_decisions": 75,
-        "maximum_model_calls": 225,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2r_amv_02_20260916_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_d1_31917_001/AMV02/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_d1_31917_001/AMV02/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_d1_31917_001/AMV02/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2r_amv_02_20260916_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2r_amv_02_20260916_w0_challenge",
-        "scene_model": "house_double_floor_upper",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 7,
-      "instruction_id": "l2r_amv_02_20260916_w0_challenge",
-      "instruction_en": "Inspect the two keyboards and two mice on the desk. First move the mouse initially on a keyboard to a clear spot on the desk. Then put the mouse initially loose on the desk on the keyboard that was empty at the start. Finally return the temporarily moved mouse to its original keyboard. Do not move either keyboard. Keep both mouse-keyboard relations until the task ends.",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 1905,
         "wall_clock_seconds": 7200
       },
       "history_turns": 5,
@@ -7125,35 +3853,6 @@
       "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
       "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
     },
-    "l2x_p50_support_001_20260914": {
-      "handoff_json": "l2-delivery37-20260924/model/physical_1/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/physical_1/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_p50_support_001_20260914/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_p50_support_001_20260914/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_p50_support_001_20260914/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/physical_1/prepared/l2x_p50_support_001_20260914.json",
-      "source_task_identity": {
-        "task_id": 55035,
-        "task_name": "l2x_p50_support_001_20260914",
-        "scene_model": "house_single_floor",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Physical",
-      "entrypoint": "physical_collection",
-      "public_task_id": 12,
-      "instruction_id": "l2x_p50_support_001_20260914",
-      "instruction_en": "Place the apple steadily on one of the two cutting boards. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
-      "budget": {
-        "maximum_action_decisions": 70,
-        "maximum_model_calls": 210,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
     "l2x_p50_support_002_20260914": {
       "handoff_json": "l2-delivery37-20260924/model/physical_1/handoff.json",
       "prepared_index_json": "l2-delivery37-20260924/model/physical_1/prepared/index.json",
@@ -7270,64 +3969,6 @@
       "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
       "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
     },
-    "l2x_pdiv12_012_20260915": {
-      "handoff_json": "l2-delivery37-20260924/model/physical_1/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/physical_1/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/build_002/l2x_pdiv12_012_20260915/d1_qualified_001/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/build_002/l2x_pdiv12_012_20260915/d1_qualified_001/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/build_002/l2x_pdiv12_012_20260915/d1_qualified_001/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/physical_1/prepared/l2x_pdiv12_012_20260915.json",
-      "source_task_identity": {
-        "task_id": 58012,
-        "task_name": "l2x_pdiv12_012_20260915",
-        "scene_model": "house_double_floor_lower",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Physical",
-      "entrypoint": "physical_collection",
-      "public_task_id": 17,
-      "instruction_id": "l2x_pdiv12_012_20260915",
-      "instruction_en": "Place the orange steadily on one of the two plates on the desk. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
-      "budget": {
-        "maximum_action_decisions": 60,
-        "maximum_model_calls": 180,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_pnext40_026_20260916": {
-      "handoff_json": "l2-delivery37-20260924/model/physical_1/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/physical_1/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_pnext40_026_20260916/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_pnext40_026_20260916/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_pnext40_026_20260916/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/physical_1/prepared/l2x_pnext40_026_20260916.json",
-      "source_task_identity": {
-        "task_id": 59026,
-        "task_name": "l2x_pnext40_026_20260916",
-        "scene_model": "hotel_suite_small",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Physical",
-      "entrypoint": "physical_collection",
-      "public_task_id": 18,
-      "instruction_id": "l2x_pnext40_026_20260916",
-      "instruction_en": "Place the water bottle on whichever of the two supports on the desk is suitable. After the first successful placement, remember the chosen destination, return the target object to a clear spot on its original surface, then place it back in the same destination chosen the first time. Do not move either candidate destination object or the original surface used for temporary placement throughout the task.",
-      "budget": {
-        "maximum_action_decisions": 80,
-        "maximum_model_calls": 240,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
     "l2x_pnext40_018_20260916": {
       "handoff_json": "l2-delivery37-20260924/model/physical_1/handoff.json",
       "prepared_index_json": "l2-delivery37-20260924/model/physical_1/prepared/index.json",
@@ -7415,35 +4056,6 @@
       "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
       "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
     },
-    "l2x_mv_cycles_l1_f1_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f1_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l1_f1_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 22,
-      "instruction_id": "l2x_mv_cycles_l1_f1_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 1 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 245,
-        "maximum_model_calls": 735,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
     "l2x_mv_cycles_l1_f2_20260921_w0_challenge": {
       "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
       "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
@@ -7467,35 +4079,6 @@
       "budget": {
         "maximum_action_decisions": 255,
         "maximum_model_calls": 765,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l1_f3_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_d1_31917_001/l2x_mv_cycles_l1_f3_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l1_f3_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 24,
-      "instruction_id": "l2x_mv_cycles_l1_f3_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 1 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 265,
-        "maximum_model_calls": 795,
         "wall_clock_seconds": 7200
       },
       "history_turns": 5,
@@ -7612,238 +4195,6 @@
       "budget": {
         "maximum_action_decisions": 300,
         "maximum_model_calls": 1950,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l3_f1_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_002/l2x_mv_cycles_l3_f1_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l3_f1_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 29,
-      "instruction_id": "l2x_mv_cycles_l3_f1_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 265,
-        "maximum_model_calls": 795,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l3_f2_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f2_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l3_f2_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 30,
-      "instruction_id": "l2x_mv_cycles_l3_f2_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 2 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 1920,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l3_f3_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f3_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l3_f3_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 31,
-      "instruction_id": "l2x_mv_cycles_l3_f3_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 2760,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l3_f4_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l3_f4_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l3_f4_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 32,
-      "instruction_id": "l2x_mv_cycles_l3_f4_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 3 off-on cycles and the flashlight exactly 4 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 2790,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l4_f1_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f1_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l4_f1_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 33,
-      "instruction_id": "l2x_mv_cycles_l4_f1_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 1 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 275,
-        "maximum_model_calls": 825,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l4_f2_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f2_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l4_f2_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 34,
-      "instruction_id": "l2x_mv_cycles_l4_f2_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 2 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 1950,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l4_f3_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f3_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l4_f3_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 35,
-      "instruction_id": "l2x_mv_cycles_l4_f3_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 3 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 2790,
-        "wall_clock_seconds": 7200
-      },
-      "history_turns": 5,
-      "instruction_review_json": "fb-batchctl-20260825/campaigns/l2_37_gpt6max_pair_19slot_20260925.inputs/instructions.json",
-      "source_profile_sha256": "bf0f3df7931fb8b8ecf8ba94317e1d3e85f3beb57d0fa85df53a3d65c0584add"
-    },
-    "l2x_mv_cycles_l4_f4_20260921_w0_challenge": {
-      "handoff_json": "l2-delivery37-20260924/model/symbolic_2/handoff.json",
-      "prepared_index_json": "l2-delivery37-20260924/model/symbolic_2/prepared/index.json",
-      "benchmark_package_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/package.json",
-      "task_specs_jsonl": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/task_specs.jsonl",
-      "registration_catalog_json": "l2-expanded50-20260921/qualified_cycle_d1_31917_003/l2x_mv_cycles_l4_f4_20260921/catalog.json",
-      "prepared_bundle_json": "l2-delivery37-20260924/model/symbolic_2/prepared/l2x_mv_cycles_l4_f4_20260921_w0_challenge.json",
-      "source_task_identity": {
-        "task_id": 40000,
-        "task_name": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
-        "scene_model": "office_vendor_machine",
-        "split": "train",
-        "instance_id": 0
-      },
-      "seed": 19506,
-      "action_mode": "Symbolic",
-      "entrypoint": "prepared",
-      "public_task_id": 36,
-      "instruction_id": "l2x_mv_cycles_l4_f4_20260921_w0_challenge",
-      "instruction_en": "Give the lamp exactly 4 off-on cycles and the flashlight exactly 4 on-off cycles. Interleaving is allowed. End with the lamp on and flashlight off.",
-      "budget": {
-        "maximum_action_decisions": 300,
-        "maximum_model_calls": 3810,
         "wall_clock_seconds": 7200
       },
       "history_turns": 5,
