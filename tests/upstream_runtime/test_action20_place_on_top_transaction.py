@@ -180,6 +180,38 @@ def test_recovered_sampling_error_is_blocked_only_when_carry_is_restored():
     )
 
 
+@pytest.mark.parametrize("rollback, other_cause, expected", [
+    ("boundary", False, "blocked"), ("prepared", False, "blocked"),
+    ("boundary", True, "uncertain"), (None, False, "uncertain"),
+])
+def test_inside_group_preserves_collision_only_after_rollback(rollback, other_cause, expected):
+    class ActionPrimitiveError(Exception):
+        metadata = {"action20_blocked_category": "placement_collision_blocked"}
+
+    class ActionPrimitiveErrorGroup(Exception):
+        exceptions = [ActionPrimitiveError(), RuntimeError() if other_cause else ActionPrimitiveError()]
+
+    def reject(_target):
+        yield from ()
+        raise ActionPrimitiveErrorGroup()
+
+    backend = _backend(prepare=None, place_factory=reject, held=object())
+    backend._place_generator = reject
+    token = backend.begin_symbolic_operation(operation="place_inside", target_token=object())
+    if rollback == "boundary":
+        token.placement_rollback = lambda: {"accepted": True}
+    elif rollback == "prepared":
+        token.preparation_finalize = lambda _success: _complete_commit_rejection_report()["rollback_private"]
+    state = SimpleNamespace(backend=backend, operation="place_inside", stage="symbolic", driver_token=token, status=None)
+    plugin = MarkerSymbolicV34OperationPlugin("place_inside")
+    assert plugin.tick(state, None).done
+    result = plugin.finish(state, None)
+    assert result.status == expected
+    assert result.public_feedback.get("blocked_category") == (
+        "placement_collision_blocked" if expected == "blocked" else None
+    )
+
+
 def test_unknown_placement_failure_remains_uncertain():
     held = object()
 
@@ -254,7 +286,11 @@ def test_special_on_top_station_failure_preserves_public_failure_cause(failure):
         if isinstance(node, ast.FunctionDef)
         and node.name == "_action20_on_top_station_prepare"
     )
-    held, target = object(), SimpleNamespace(name="support")
+    held = SimpleNamespace(
+        get_position_orientation=lambda: (np.zeros(3), (0.0, 0.0, 0.0, 1.0)),
+        collision_points_world=np.array([[-0.1, 0.0, 0.0], [0.1, 0.0, 0.1]]),
+    )
+    target = SimpleNamespace(name="support")
     pose = PlanarPose(0.0, 0.0, 0.0, 0.0)
     calls = {name: [] for name in ("route", "placement", "step", "rollback")}
     binding = SimpleNamespace(
@@ -269,7 +305,8 @@ def test_special_on_top_station_failure_preserves_public_failure_cause(failure):
     }
     plan_calls = []
 
-    def live_plan(*_args, **_kwargs):
+    def live_plan(*_args, **kwargs):
+        np.testing.assert_allclose(kwargs["collision_points_in_root"], held.collision_points_world)
         plan_calls.append(True)
         return SimpleNamespace(candidate_plan=SimpleNamespace(planning_metadata_private={}), bindings=(
             () if failure == "no_geometry" or (

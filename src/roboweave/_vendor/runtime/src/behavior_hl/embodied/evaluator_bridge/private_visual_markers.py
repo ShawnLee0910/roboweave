@@ -1914,10 +1914,12 @@ def current_target_visibility(
     frame: PrivateInstanceSegmentationFrame,
     target: Any,
     minimum_visible_pixels: int = 8,
+    object_name: str | None = None,
 ) -> tuple[int, str | None]:
     """Count one live target's current pixels using the marker fallback."""
 
-    object_name = str(getattr(target, "name", ""))
+    if object_name is None:
+        object_name = str(getattr(target, "name", ""))
     if not object_name:
         return 0, None
     instance_mask = np.zeros(frame.segmentation.shape, dtype=np.bool_)

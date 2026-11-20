@@ -1363,6 +1363,10 @@ def marker_symbolic_spatial_generator(
                 held,
                 target,
                 broad_diagnostic_objects=blockers,
+                collision_points_in_root=(
+                    carry_projection_reference.geometry_points_in_root_frame_m
+                    if symbolic_direct_readback and operation == "place_on_top" else None
+                ),
                 preferred_orientation_xyzw=(
                     None
                     if owner._logical_inventory_origin_pose is None
