@@ -8143,6 +8143,26 @@ def _execute_core(
                 }
             )
         else:
+            if (
+                runtime.zero_physics
+                and action.action in {"pick", "wipe"}
+                and result.status == "completed"
+                and "wipe" in runtime.registry.names
+            ):
+                import omnigibson as og
+
+                # The existing head render product can retain pixels from the old object state.
+                evaluator = runtime.environment.evaluator_state()
+                head_sensor = evaluator.robot.sensors[CAMERA_SENSOR_NAMES["head"]]
+                texture = head_sensor.render_product.hydra_texture
+                with og.sim.editing_usd():
+                    texture.set_updates_enabled(False)
+                try:
+                    og.sim.render()
+                finally:
+                    with og.sim.editing_usd():
+                        texture.set_updates_enabled(True)
+                    og.sim.update_handles()
             capture_timing_token = _ACTION_BOUNDARY_TIMING_PRIVATE.set(
                 after_capture_timing
             )
