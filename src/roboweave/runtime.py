@@ -311,7 +311,8 @@ def _main(argv=None):
     if Path(sys.prefix).resolve() != Path(runtime["overlay_root"]).resolve():
         raise ValueError("Live interpreter did not activate the configured isolated environment")
     from importlib import metadata, util
-    if metadata.version("isaacsim") != "5.1.0":
+    # The official 5.1.0 release reports 5.1.0.0 in its package metadata.
+    if metadata.version("isaacsim") not in ("5.1.0", "5.1.0.0"):
         raise ValueError("Live requires the frozen Isaac Sim 5.1.0 dependency")
     for module, expected in (("omnigibson", "OmniGibson/omnigibson"), ("bddl", "bddl3/bddl")):
         spec = util.find_spec(module)

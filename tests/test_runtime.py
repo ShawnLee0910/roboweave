@@ -1,4 +1,5 @@
 import hashlib
+from importlib import metadata, util
 import json
 from pathlib import Path
 import socket
@@ -114,6 +115,27 @@ def test_official_checkout_rejects_untracked_files_before_scene_launch(tmp_path,
     monkeypatch.setattr(runtime.subprocess, "run", git)
     with pytest.raises(ValueError, match="untracked"):
         runtime._official_identity(tmp_path)
+
+
+@pytest.mark.parametrize(("version", "next_error"), [
+    ("5.1.0", "omnigibson resolves outside"),
+    ("5.1.0.0", "omnigibson resolves outside"),
+    ("5.1.1", r"requires the frozen Isaac Sim 5\.1\.0"),
+])
+def test_live_preflight_accepts_the_frozen_isaac_sim_release(tmp_path, monkeypatch, version, next_error):
+    from types import SimpleNamespace
+    from roboweave._native import bootstrap
+
+    monkeypatch.setattr(bootstrap, "activate", lambda profile: None)
+    monkeypatch.setattr(runtime, "verify_runtime_sources", lambda profile: None)
+    monkeypatch.setattr(runtime, "_verify_materialized_inputs", lambda *args, **kwargs: None)
+    monkeypatch.setattr(runtime, "sys", SimpleNamespace(version_info=(3, 11), prefix=str(tmp_path)))
+    monkeypatch.setattr(metadata, "version", lambda name: version)
+    # Stop at the first simulator import check, after checking the installed version.
+    monkeypatch.setattr(util, "find_spec", lambda name: None)
+    launch = {"profile": runtime.DEFAULT_PROFILE, "runtime": {"overlay_root": str(tmp_path)}, "task_inputs": {}}
+    with pytest.raises(ValueError, match=next_error):
+        runtime._main(["--launch-json", json.dumps(launch)])
 
 
 def test_plan_is_read_only_and_launch_keeps_virtualenv_path(tmp_path, monkeypatch, frozen_task):
