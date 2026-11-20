@@ -191,7 +191,7 @@
     "src/behavior_hl/embodied/evaluator_bridge/run_b1_diagnostic_sweep.py": "798fa47d1a24cc87f032c02a5ac1f236525a8994fdd0de2ede7c2bd1dfaeda31",
     "src/behavior_hl/embodied/evaluator_bridge/run_b1_marker_symbolic_rollout.py": "5cd6a54fbc053c1555f65fffb097981e184c026a20e0cfac019a8d1f21d5c0d9",
     "src/behavior_hl/embodied/evaluator_bridge/run_b1_render_step_microbenchmark.py": "ab5d64654766a74833ad6312295704a0797e851ae301f7c70c0139a6f9ae61c2",
-    "src/behavior_hl/embodied/evaluator_bridge/run_b1_single_load.py": "366bb1acdbe5159ff723eedb339569676e7d46876e51280a5dd920ec7ccbc82c",
+    "src/behavior_hl/embodied/evaluator_bridge/run_b1_single_load.py": "b1e96beba0fd16f844b8ef7fabf57952d3e8252b9574fae4e467293c8898bb81",
     "src/behavior_hl/embodied/evaluator_bridge/run_b1_strategy_sweep.py": "7150410c23b8c3a8e415f54beaf46b50f0ca5d54150825effe82b8bf0193599c",
     "src/behavior_hl/embodied/evaluator_bridge/run_b1_timestep_microbenchmark.py": "957942aed8c146f6d3bc03fef3e47fb23467ab265c4987f6225e1a75433409d5",
     "src/behavior_hl/embodied/evaluator_bridge/run_g1_canary.py": "20feed67cfac7f8ea0f28a4b53386c05550eec7261d00530761f648d6d8ed894",
@@ -336,7 +336,7 @@
     "src/behavior_hl/embodied/runtime/prompt.py": "opt-in experimental WIPE through the existing Action20 execution chain (rc5 baseline SHA256 6d5b260c656fdaaa9719a158dbf8acdc0688459aff9b1cfceae5e06568a65208). Wire the optional household Marker actions.",
     "src/behavior_hl/embodied/runtime/public_action_feedback.py": "opt-in experimental WIPE through the existing Action20 execution chain (rc5 baseline SHA256 35814658fcb46fe22b8cef5b1aea2ba284ca2b56224ba8ff5b3a2a5580cf8873). Wire the optional household Marker actions.",
     "src/behavior_hl/embodied/runtime/public_carry_state.py": "opt-in experimental WIPE through the existing Action20 execution chain (rc5 baseline SHA256 bbc89ac9416ae6ace0849a16a06fb3567459f17487aef432f97e4e5c309faf94). Wire the optional household Marker actions.",
-    "src/behavior_hl/embodied/evaluator_bridge/run_b1_single_load.py": "Wire the optional household Marker actions from the RoboWeave baseline SHA256 82a931ba7666cac928acbe8ea1763eb9c1748bb7f1436f6301542ef6b616ea06.",
+    "src/behavior_hl/embodied/evaluator_bridge/run_b1_single_load.py": "Wire the optional household Marker actions from the RoboWeave baseline SHA256 82a931ba7666cac928acbe8ea1763eb9c1748bb7f1436f6301542ef6b616ea06. Enable GPU dynamics after the Evaluator sets its defaults.",
     "src/behavior_hl/embodied/policy/protocol.py": "Wire the optional household Marker actions from the RoboWeave baseline SHA256 2e334416179c180ed10445635d75c525f2f7c9d4e118aa9610a05dc4877020d7."
   }
 }

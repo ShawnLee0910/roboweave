@@ -1143,16 +1143,16 @@ def run_b1_single_load(
         from omegaconf import OmegaConf
         from omnigibson.macros import gm, macros
 
-        if os.environ.get("ROBOWEAVE_EXPERIMENTAL_HOUSEHOLD_ACTIONS") == "1":
-            with gm.unlocked():
-                gm.USE_GPU_DYNAMICS = True
-
         gm.HEADLESS = True
         checkpoint_timing = configure_preconstruction_checkpoint_frequency(
             global_macros=gm,
             macros_module=macros,
         )
         import omnigibson.eval.evaluator as evaluator_module
+
+        if os.environ.get("ROBOWEAVE_EXPERIMENTAL_HOUSEHOLD_ACTIONS") == "1":
+            with gm.unlocked():
+                gm.USE_GPU_DYNAMICS = True
 
         if evaluator_module_configurer is not None:
             evaluator_module_cleanup = evaluator_module_configurer(
