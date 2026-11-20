@@ -2716,7 +2716,6 @@ class R1ProMarkerSymbolicComponentBuilder:
                 from omnigibson.action_primitives.symbolic_semantic_action_primitives import (
                     SymbolicSemanticActionPrimitiveSet,
                 )
-                from omnigibson.systems.system_base import PhysicalParticleSystem
                 from omnigibson.utils.constants import PrimType
 
                 scene = target.scene
@@ -2757,8 +2756,18 @@ class R1ProMarkerSymbolicComponentBuilder:
                 def set_true(state: Any, *args: Any) -> bool:
                     if state is None:
                         return False
+                    contacts = (
+                        state.obj.states[states.ContactParticles]
+                        if isinstance(state, states.Covered)
+                        else None
+                    )
+                    if contacts is not None:
+                        contacts.clear_cache()
                     if not state.set_value(*args, True):
                         return False
+                    # Covered's setter reads the contacts before adding particles.
+                    if contacts is not None:
+                        contacts.clear_cache()
                     state.clear_cache()
                     return bool(state.get_value(*args))
 
@@ -2815,9 +2824,8 @@ class R1ProMarkerSymbolicComponentBuilder:
                                 continue
                             source_count = int(sender.get_value(system).n_in_volume)
                             total = system.n_particles
-                            # The pinned micro-system override drops max_samples.
-                            PhysicalParticleSystem.generate_particles_from_link(
-                                system, obj=target, link=receiver.link, max_samples=source_count
+                            system.generate_particles_from_link(
+                                obj=target, link=receiver.link, max_samples=source_count
                             )
                             added = system.n_particles - total
                             if added:
