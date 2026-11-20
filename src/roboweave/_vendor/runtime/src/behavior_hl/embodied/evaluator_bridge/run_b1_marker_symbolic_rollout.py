@@ -6636,10 +6636,16 @@ def _build_marker_runtime(
             }
 
         def live_plan():
+            collision_points_in_root = None
+            if action20_enabled and not placement_physical_consequences_enabled:
+                position, orientation = object_pose(held)
+                points = _private_finite_points(held.collision_points_world, label="held collision points")
+                collision_points_in_root = (points - position) @ quaternion_xyzw_to_matrix(orientation)
             plan = plan_on_top_support_layer_candidates(
                 held,
                 target,
                 broad_diagnostic_objects=blockers,
+                collision_points_in_root=collision_points_in_root,
                 preferred_orientation_xyzw=(
                     None
                     if symbolic._logical_inventory_origin_pose is None

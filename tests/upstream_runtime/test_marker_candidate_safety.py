@@ -1463,47 +1463,43 @@ def test_place_under_non_goal_markers_require_a_ray_verified_candidate(monkeypat
 
 @pytest.mark.parametrize("visible", [True, False])
 def test_under_goal_fallback_marks_visible_target_without_admitting_a_pose(monkeypatch, visible):
-    held, child, desk, other = (
+    held, child, desk, other, blocked = (
         _Object(name, "object", (0, 0, 0), (1, 1, 1))
-        for name in ("held", "child", "desk", "other")
+        for name in ("held", "child", "desk", "other", "blocked")
     )
     probed = []
 
-    def no_plans(**kwargs):
-        probed.append(kwargs["target"])
-        return ()
+    def plans(**kwargs):
+        target = kwargs["target"]
+        probed.append(target)
+        assert blocked in kwargs["supports"]
+        candidates = (1,) if target is other else ()
+        return (SimpleNamespace(candidate_plan=SimpleNamespace(candidates=candidates)),)
 
     monkeypatch.setattr(
         "behavior_hl.embodied.evaluator_bridge.r1pro_b1_component_builders."
-        "plan_live_under_supports", no_plans,
+        "plan_live_under_supports", plans,
     )
-    candidates = _under_marker_target_objects(
-        {"held": held, "child": child, "other": other},
-        held=held,
-        scene_objects=(held, child, desk, other),
-        robot=object(),
-        logical_snapshot=SimpleNamespace(object_refs=(held, child)),
-        task_fallback_names={"held", "child", "desk"},
-    )
-    assert candidates == {"desk": desk}
-    assert probed == [other]
-
     rgb = np.zeros((32, 32, 3), dtype=np.uint8)
     segmentation = np.zeros((32, 32), dtype=np.int64)
     if visible:
-        segmentation[4:28, 4:28] = 1
+        segmentation[4:20, 4:12] = 1
+        segmentation[4:20, 16:24] = 2
+        segmentation[24:28, 4:12] = 3
+    else:
+        segmentation[4, 16] = 2  # Below the object marker pixel threshold.
     store = PrivateVisualMarkerStore()
     physics_commands = []
     evaluator = SimpleNamespace(
         obs={HEAD_RGB_KEY: rgb, HEAD_INSTANCE_SEGMENTATION_KEY: segmentation},
-        robot=SimpleNamespace(sensors={
-            CAMERA_SENSOR_NAMES["head"]: SimpleNamespace(INSTANCE_REGISTRY={1: "desk"}),
+        robot=SimpleNamespace(get_position_orientation=held.get_position_orientation, sensors={
+            CAMERA_SENSOR_NAMES["head"]: SimpleNamespace(INSTANCE_REGISTRY={1: "desk", 2: "other", 3: "blocked"}),
         }),
-        env=SimpleNamespace(scene=SimpleNamespace(objects=(held, child, desk, other))),
+        env=SimpleNamespace(scene=SimpleNamespace(objects=(held, child, desk, other, blocked))),
     )
     monkeypatch.setattr(
         "behavior_hl.embodied.evaluator_bridge.r1pro_b1_component_builders."
-        "official_instance_bboxes", lambda _frame: ((4, 4, 27, 27, 1),),
+        "official_instance_bboxes", lambda _frame: ((4, 4, 11, 19, 1),),
     )
     builder = R1ProMarkerSymbolicComponentBuilder(
         symbolic_primitives=SimpleNamespace(
@@ -1518,9 +1514,9 @@ def test_under_goal_fallback_marks_visible_target_without_admitting_a_pose(monke
         marker_store=store,
         implicit_hand="left",
         local_approach_enabled=False,
-        marker_objects_provider=lambda _evaluator: {"other": other},
+        marker_objects_provider=lambda _evaluator: {"other": other, "blocked": blocked, "child": child},
         marker_roles_provider=lambda _evaluator: ((), ()),
-        under_task_fallback_names_provider=lambda: {"desk"},
+        under_task_fallback_names_provider=lambda: {"desk", "child"},
     )
     services = builder.build(
         action=ActionEnvelope("place_under", MarkerTargetOrRequestArgs()),
@@ -1538,11 +1534,17 @@ def test_under_goal_fallback_marks_visible_target_without_admitting_a_pose(monke
     backend = services[MARKER_SYMBOLIC_BACKEND_SERVICE]
     assert backend.publish_operation_markers(
         operation="place_under", action_index=0,
-    ) == int(visible)
+    ) == (2 if visible else 0)
+    assert probed == ([other, blocked] if visible else [])
     assert not physics_commands
     if visible:
         assert store.active_snapshot.stage == "target"
         assert store.active_snapshot.bindings["C1"].target_token is desk
+        assert store.active_snapshot.bindings["C2"].target_token is other
+        probed.clear()
+        chosen = backend.consume_marker(marker="C2", action_index=1, operation="place_under")
+        assert chosen.binding.target_token is other
+        assert probed == [other]
 
 
 def _publish_task_fallback_markers(

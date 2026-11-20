@@ -47,6 +47,7 @@ from behavior_hl.embodied.runtime.public_action_feedback import (
     ACTION20_BLOCKED_CATEGORIES,
     ACTION20_BLOCKED_CATEGORY_METADATA_KEY,
     EXECUTION_UNVERIFIED,
+    PLACEMENT_COLLISION_BLOCKED,
     RELATION_NOT_REALIZED,
     action20_blocked_detail,
 )
@@ -106,6 +107,23 @@ _TRUSTED_ACTION20_BLOCKED_CATEGORIES = (
 _TWO_STAGE_OPERATIONS = frozenset(
     {"place_inside", "place_on_top", "place_next_to", "place_touching"}
 )
+
+
+def _verified_preparation_rollback(report: Any) -> bool:
+    if not isinstance(report, Mapping):
+        return False
+    logical = report.get("logical_restore_private")
+    poses = report.get("protected_pose_restore_private")
+    return (
+        report.get("status") == "rolled_back"
+        and report.get("rollback_applied") is True
+        and report.get("base_pose_restored") is True
+        and report.get("inside_edges_restored") is True
+        and isinstance(poses, Mapping) and poses.get("accepted") is True
+        and isinstance(logical, Mapping)
+        and logical.get("held_identity_restored") is True
+        and logical.get("logical_inventory_identity_restored") is True
+    )
 
 
 def _base_marker_target(target: Any) -> Any:
@@ -297,6 +315,7 @@ class MarkerSymbolicGraspBackendAdapter:
             [str], Mapping[str, Any]
         ]
         | None = None,
+        under_marker_objects_provider: Callable[[Callable[[str, Any], bool]], Mapping[str, Any]] | None = None,
         on_top_snapshot_provider: Callable[..., PrivateMarkerSnapshot] | None = None,
         next_to_snapshot_provider: Callable[..., PrivateMarkerSnapshot] | None = None,
         toggleable_object_names_provider: Callable[[], Sequence[str]] | None = None,
@@ -351,6 +370,7 @@ class MarkerSymbolicGraspBackendAdapter:
         ):
             raise TypeError("operation_marker_objects_provider must be callable")
         self._operation_marker_objects = operation_marker_objects_provider
+        self._under_marker_objects = under_marker_objects_provider
         if on_top_snapshot_provider is not None and not callable(
             on_top_snapshot_provider
         ):
@@ -569,7 +589,20 @@ class MarkerSymbolicGraspBackendAdapter:
             return 0
         rgb = self._raw_rgb()
         if reference_binding is None:
-            marker_objects = self._operation_marker_objects_for(operation)
+            if operation == "place_under":
+                # Mesh pixels can belong to nested prim roots. Keep partial masks
+                # for the snapshot to resolve ownership across admitted objects.
+                min_pixels = 1 if frame.part_segmentation is not None and frame.part_id_to_prim_path else 8
+
+                def visible(name, target):
+                    pixels, _ = current_target_visibility(
+                        frame=frame, target=target, object_name=name, minimum_visible_pixels=1,
+                    )
+                    return pixels >= min_pixels
+
+                marker_objects = self._operation_marker_objects_for(operation, include_under_target=visible)
+            else:
+                marker_objects = self._operation_marker_objects_for(operation)
             if operation == "place_on_top":
                 self._publication_report["surface_provider_called"] = self._on_top_snapshot is not None
                 arguments = {
@@ -818,6 +851,12 @@ class MarkerSymbolicGraspBackendAdapter:
             admitted = set(self._openable_names())
         elif operation == "place_on_top":
             admitted = set(self._support_names())
+        elif operation == "place_under":
+            binding = resolution.binding
+            admitted = self._operation_marker_objects_for(
+                operation,
+                include_under_target=lambda name, obj: (name == binding.object_name and obj is binding.target_token),
+            )
         elif operation in _SPATIAL_OPERATIONS or operation in {"wipe", *HOUSEHOLD_ACTIONS}:
             admitted = set(self._operation_marker_objects_for(operation))
         elif operation in {"toggle_on", "toggle_off"}:
@@ -901,11 +940,17 @@ class MarkerSymbolicGraspBackendAdapter:
                 )
         return resolution
 
-    def _operation_marker_objects_for(self, operation: str) -> dict[str, Any]:
-        if self._operation_marker_objects is not None:
+    def _operation_marker_objects_for(
+        self, operation: str, *, include_under_target: Callable[[str, Any], bool] | None = None,
+    ) -> dict[str, Any]:
+        scoped_under = include_under_target is not None and self._under_marker_objects is not None
+        if scoped_under or self._operation_marker_objects is not None:
             if getattr(self, "_publication_report", None) is not None:
                 self._publication_report["provider_called"] = True
-            eligible = dict(self._operation_marker_objects(operation))
+            if scoped_under:
+                eligible = dict(self._under_marker_objects(include_under_target))
+            else:
+                eligible = dict(self._operation_marker_objects(operation))
             report = getattr(self._operation_marker_objects, "publication_diagnostic", None)
             if isinstance(report, Mapping) and getattr(self, "_publication_report", None) is not None:
                 self._publication_report["provider_private"] = dict(report)
@@ -918,6 +963,8 @@ class MarkerSymbolicGraspBackendAdapter:
                 )
         else:
             eligible = dict(self._eligible())
+        if include_under_target is not None and not scoped_under:
+            eligible = {name: obj for name, obj in eligible.items() if include_under_target(name, obj)}
         if operation == "pick":
             admitted_names = set(self._graspable_names())
         elif operation == "place_inside":
@@ -1120,32 +1167,10 @@ class MarkerSymbolicGraspBackendAdapter:
                     if isinstance(private_report, Mapping)
                     else None
                 )
-                logical_restore = (
-                    rollback_report.get("logical_restore_private")
-                    if isinstance(rollback_report, Mapping)
-                    else None
-                )
-                pose_restore = (
-                    rollback_report.get("protected_pose_restore_private")
-                    if isinstance(rollback_report, Mapping)
-                    else None
-                )
                 restore_attested = bool(
                     isinstance(private_report, Mapping)
                     and private_report.get("status") == "commit_rejected"
-                    and isinstance(rollback_report, Mapping)
-                    and rollback_report.get("status") == "rolled_back"
-                    and rollback_report.get("rollback_applied") is True
-                    and rollback_report.get("base_pose_restored") is True
-                    and isinstance(pose_restore, Mapping)
-                    and pose_restore.get("accepted") is True
-                    and rollback_report.get("inside_edges_restored") is True
-                    and isinstance(logical_restore, Mapping)
-                    and logical_restore.get("held_identity_restored") is True
-                    and logical_restore.get(
-                        "logical_inventory_identity_restored"
-                    )
-                    is True
+                    and _verified_preparation_rollback(rollback_report)
                     and token.acted_object is not None
                     and self._held_object() is token.acted_object
                 )
@@ -1409,6 +1434,7 @@ class MarkerSymbolicGraspBackendAdapter:
         token: _SymbolicToken,
         exc: Exception,
     ) -> SymbolicGraspTick:
+        boundary_rollback = token.placement_rollback is not None
         private_report = getattr(exc, "private_report", None)
         if not isinstance(private_report, Mapping) and type(exc).__name__ == "ActionPrimitiveErrorGroup":
             # apply_ref wraps the current primitive error after its cleanup.
@@ -1519,6 +1545,21 @@ class MarkerSymbolicGraspBackendAdapter:
             and token.acted_object is not None
             and self._held_object() is token.acted_object
         )
+        if (
+            blocked_category is None and token.operation == "place_inside"
+            and placement_restored and type(exc).__name__ == "ActionPrimitiveErrorGroup"
+            and not self._placement_physical_consequences_enabled
+            and (boundary_rollback or _verified_preparation_rollback(token.preparation_finalization_private))
+        ):
+            # The boundary finalizer above verified restoration; children only supply the cause.
+            attempts = getattr(exc, "exceptions", ())
+            if isinstance(attempts, (tuple, list)) and attempts and all(
+                type(attempt).__name__ == "ActionPrimitiveError"
+                and isinstance(getattr(attempt, "metadata", None), Mapping)
+                and attempt.metadata.get(ACTION20_BLOCKED_CATEGORY_METADATA_KEY) == PLACEMENT_COLLISION_BLOCKED
+                for attempt in attempts
+            ):
+                blocked_category = PLACEMENT_COLLISION_BLOCKED
         action_primitive_reason = getattr(
             getattr(exc, "reason", None),
             "name",

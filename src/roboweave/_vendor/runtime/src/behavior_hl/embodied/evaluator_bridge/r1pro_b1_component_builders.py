@@ -604,6 +604,7 @@ def _under_marker_target_objects(
     logical_snapshot: Any | None,
     task_fallback_names: Iterable[str] = (),
     symbolic_support: bool = False,
+    include_target: Callable[[str, Any], bool] | None = None,
 ) -> dict[str, Any]:
     """Offer ray-verified targets plus task references; execution still checks fit."""
 
@@ -622,7 +623,8 @@ def _under_marker_target_objects(
     return {
         name: target
         for name, target in {**candidates, **fallback_objects}.items()
-        if id(target) not in held_ids
+        if (include_target is None or include_target(name, target))
+        and id(target) not in held_ids
         and (
             name in fallback_objects
             or any(
@@ -2242,7 +2244,9 @@ class R1ProMarkerSymbolicComponentBuilder:
                 }
                 marker_objects.update(household_objects)
 
-            def operation_marker_objects_for(operation: str) -> dict[str, Any]:
+            def operation_marker_objects_for(
+                operation: str, *, include_under_target: Callable[[str, Any], bool] | None = None,
+            ) -> dict[str, Any]:
                 diagnostic = {
                     "operation": operation, "filters_private": [],
                     "candidate_source": "custom_provider" if self._operation_marker_provider_custom else "marker_objects",
@@ -2299,6 +2303,16 @@ class R1ProMarkerSymbolicComponentBuilder:
                 }
                 if operation == "place_under":
                     before_under = set(candidates)
+
+                    def in_scope(name, target):
+                        if include_under_target is None or include_under_target(name, target):
+                            return True
+                        before_under.discard(name)
+                        diagnostic["filters_private"].append(
+                            {"target_private": name, "reason": "OUTSIDE_MARKER_SCOPE"}
+                        )
+                        return False
+
                     candidates = _under_marker_target_objects(
                         candidates,
                         held=self._primitives._get_obj_in_hand(),
@@ -2310,6 +2324,7 @@ class R1ProMarkerSymbolicComponentBuilder:
                             None,
                         ),
                         task_fallback_names=self._under_task_fallback_names_provider(),
+                        include_target=in_scope,
                         symbolic_support=(
                             self._symbolic_zero_physics
                             and not self._placement_physical_consequences_enabled
@@ -3266,11 +3281,10 @@ class R1ProMarkerSymbolicComponentBuilder:
                         arrived_distance = float(
                             np.linalg.norm(arrived_nearest_xy - arrived_xy)
                         )
+                        target_name = str(getattr(geometry_target, "name", ""))
                         live_candidates = operation_marker_objects_for(
-                            operation
-                        )
-                        target_name = str(
-                            getattr(geometry_target, "name", "")
+                            operation,
+                            include_under_target=lambda name, obj: name == target_name and obj is geometry_target,
                         )
                         same_target_legal = bool(
                             target_name
@@ -3678,6 +3692,9 @@ class R1ProMarkerSymbolicComponentBuilder:
                 openable_object_names_provider=lambda: openable_names,
                 support_object_names_provider=lambda: support_names,
                 operation_marker_objects_provider=operation_marker_objects_for,
+                under_marker_objects_provider=lambda include: operation_marker_objects_for(
+                    "place_under", include_under_target=include,
+                ),
                 on_top_snapshot_provider=self._on_top_snapshot_provider,
                 next_to_snapshot_provider=self._next_to_snapshot_provider,
                 toggleable_object_names_provider=lambda: toggleable_names,

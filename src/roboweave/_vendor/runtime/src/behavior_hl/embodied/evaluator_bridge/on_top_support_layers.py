@@ -69,6 +69,7 @@ class OnTopCandidateBinding:
     orientation_quarter_turn: int
     future_aabb_min_world: np.ndarray
     future_aabb_max_world: np.ndarray
+    height_from_collision_points: bool = False
 
     def to_private_dict(self) -> dict[str, Any]:
         return {
@@ -84,7 +85,10 @@ class OnTopCandidateBinding:
             "future_aabb_max_world_private": (
                 self.future_aabb_max_world.tolist()
             ),
-            "future_aabb_source_private": "base_aligned_box_at_candidate_rotation",
+            "future_aabb_source_private": (
+                "base_aligned_xy_and_collision_point_z_at_candidate_rotation"
+                if self.height_from_collision_points else "base_aligned_box_at_candidate_rotation"
+            ),
         }
 
 
@@ -613,6 +617,7 @@ def _plane_candidates(
     region_extent_xy: Any | None = None,
     surface_z_m: float | None = None,
     include_support_center: bool = False,
+    collision_points_in_root: np.ndarray | None = None,
 ) -> tuple[OnTopCandidateBinding, ...]:
     support_min, support_max = object_aabb(destination)
     support_z = float(support_max[2])
@@ -643,6 +648,11 @@ def _plane_candidates(
     for orientation_index, rotation in enumerate(rotations):
         preserves_original_orientation = orientation_index < preferred_rotation_count
         world_half = np.abs(rotation) @ (held_box.extent_local / 2.0)
+        # Irregular objects need not touch the lowest corner of their rotated box.
+        height_offsets = None
+        if collision_points_in_root is not None:
+            heights = collision_points_in_root @ rotation[2]
+            height_offsets = np.array([heights.min(), heights.max()])
         available_min = np.maximum(
             center_min,
             support_min[:2] + world_half[:2] + DEFAULT_FOOTPRINT_MARGIN_M,
@@ -696,7 +706,11 @@ def _plane_candidates(
                 )
             )
             root = desired_center - rotation @ held_box.center_local
+            if height_offsets is not None:
+                root[2] = support_z + DEFAULT_SUPPORT_CLEARANCE_M - height_offsets[0]
             lower, upper = _future_aabb(held_box, root, rotation)
+            if height_offsets is not None:
+                lower[2], upper[2] = root[2] + height_offsets
             free = footprint_fit and not _overlaps_any(
                 lower,
                 upper,
@@ -727,6 +741,7 @@ def _plane_candidates(
                         if preserves_original_orientation
                         else orientation_index - preferred_rotation_count
                     ),
+                    height_from_collision_points=height_offsets is not None,
                     future_aabb_min_world=lower,
                     future_aabb_max_world=upper,
                 )
@@ -759,6 +774,7 @@ def plan_on_top_support_layer_candidates(
     allow_overhang: bool = True,
     include_support_center: bool = False,
     maximum_candidates: int = DEFAULT_MAX_CANDIDATES,
+    collision_points_in_root: np.ndarray | None = None,
 ) -> OnTopSupportLayerPlan:
     """Try the pre-pick orientation, then stable thin-axis fallbacks."""
 
@@ -792,6 +808,7 @@ def plan_on_top_support_layer_candidates(
         region_extent_xy=region_extent_xy,
         surface_z_m=surface_z_m,
         include_support_center=include_support_center,
+        collision_points_in_root=collision_points_in_root,
     )
     bindings = tuple(
         item for item in plane if allow_overhang or item.broad_footprint_fit

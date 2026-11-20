@@ -65,6 +65,7 @@ from behavior_hl.embodied.evaluator_bridge.on_top_support_layers import (
     fitting_inside_orientation_matrices,
     on_top_binding_horizontal_distance,
     plan_on_top_support_layer_candidates,
+    quaternion_to_matrix_xyzw,
     restrict_and_rank_on_top_plan,
     summarize_original_destination_on_top,
 )
@@ -1194,6 +1195,9 @@ def test_on_top_candidates_use_the_selected_surface_height():
     held = _Box((0.0, 0.0, 0.5), (0.1, 0.1, 0.1))
     support = _Box((0.0, 0.0, 0.5), (1.0, 1.0, 1.0))
 
+    # The six collision vertices leave the corners of the base-aligned box empty.
+    points = np.concatenate((np.eye(3), -np.eye(3))) * 0.05
+    tilted = (0.0, np.sin(np.pi / 8), 0.0, np.cos(np.pi / 8))
     plan = plan_on_top_support_layer_candidates(
         held,
         support,
@@ -1201,6 +1205,8 @@ def test_on_top_candidates_use_the_selected_surface_height():
         region_extent_xy=(0.5, 0.5),
         surface_z_m=0.3,
         allow_overhang=False,
+        preferred_orientation_xyzw=tilted,
+        collision_points_in_root=points,
     )
 
     assert plan.candidates
@@ -1209,6 +1215,13 @@ def test_on_top_candidates_use_the_selected_surface_height():
         for binding in plan.bindings
     )
     assert plan.candidate_plan.planning_metadata_private["surface_z_m"] == 0.3
+
+    for binding in plan.bindings:
+        pose = binding.candidate
+        world = points @ quaternion_to_matrix_xyzw(pose.orientation_xyzw).T + pose.position
+        assert world[:, 2].min() == pytest.approx(0.303)
+        assert binding.future_aabb_min_world[2] == pytest.approx(world[:, 2].min())
+        assert binding.future_aabb_max_world[2] == pytest.approx(world[:, 2].max())
 
 
 def test_on_top_region_uses_full_support_and_can_opt_into_overhang():
